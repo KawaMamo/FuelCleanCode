@@ -1,7 +1,9 @@
 package org.example.model;
 
-public class Buyer {
+import lombok.Data;
+
+@Data
+public class Seller {
     private Long id;
     private String name;
-    private String organization;
 }

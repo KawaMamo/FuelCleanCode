@@ -5,7 +5,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 @Data
 public class User {
-    private Long Id;
+    private Long id;
     private Person person;
     private AccountType accountType;
     private Document digitalSignature;

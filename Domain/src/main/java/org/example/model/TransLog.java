@@ -5,7 +5,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 @Data
 public class TransLog {
-    private Long Id;
+    private Long id;
     private Vehicle vehicle;
     private TransLine transLine;
     private Money fees;

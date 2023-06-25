@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 @Data
 public class Partition {
 
-    private Long Id;
+    private Long id;
     private Material material;
     private Transportation transportation;
     private Integer amount;
