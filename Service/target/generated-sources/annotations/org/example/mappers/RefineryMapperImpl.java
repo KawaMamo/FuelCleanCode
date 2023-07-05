@@ -2,11 +2,11 @@ package org.example.mappers;
 
 import javax.annotation.processing.Generated;
 import org.example.model.Refinery;
-import org.example.repositories.entity.RefineryEntity;
+import org.example.repositories.entities.RefineryEntity;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-07-01T18:02:31+0300",
+    date = "2023-07-04T17:39:56+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class RefineryMapperImpl implements RefineryMapper {

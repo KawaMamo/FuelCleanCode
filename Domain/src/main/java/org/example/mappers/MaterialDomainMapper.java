@@ -1,0 +1,12 @@
+package org.example.mappers;
+
+import org.example.contract.request.CreateMaterialRequest;
+import org.example.contract.response.MaterialResponse;
+import org.example.model.Material;
+import org.mapstruct.Mapper;
+
+@Mapper
+public interface MaterialDomainMapper {
+    Material requestToDomain(CreateMaterialRequest request);
+    MaterialResponse domainToResponse(Material material);
+}

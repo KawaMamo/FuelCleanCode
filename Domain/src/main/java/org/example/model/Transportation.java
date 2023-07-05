@@ -13,7 +13,6 @@ public class Transportation {
     private Boolean isDivided;
     private Boolean isPriced;
     private Long size;
-
     private LocalDateTime createdAt;
     private List<Partition> partitions;
     private TransportationType type;

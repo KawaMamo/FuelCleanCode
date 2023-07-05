@@ -1,6 +1,6 @@
 package org.example.repositories;
 
-import org.example.repositories.entity.TransportationEntity;
+import org.example.repositories.entities.TransportationEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.PagingAndSortingRepository;

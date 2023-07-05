@@ -1,7 +1,7 @@
 package org.example.mappers;
 
 import org.example.model.Refinery;
-import org.example.repositories.entity.RefineryEntity;
+import org.example.repositories.entities.RefineryEntity;
 import org.mapstruct.Mapper;
 
 @Mapper

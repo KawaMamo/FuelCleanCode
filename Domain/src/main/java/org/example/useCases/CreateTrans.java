@@ -27,7 +27,7 @@ public class CreateTrans {
         final Transportation transportation = domainTransMapper.toDomain(request);
         addSystemValues(transportation);
         final Transportation save = transRepo.save(transportation);
-        return domainTransMapper.toResponse(transportation);
+        return domainTransMapper.toResponse(save);
     }
 
     public void addSystemValues(Transportation transportation){

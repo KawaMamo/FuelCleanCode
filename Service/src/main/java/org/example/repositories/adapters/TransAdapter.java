@@ -4,7 +4,7 @@ import org.example.contract.repository.TransRepo;
 import org.example.mappers.TransMapper;
 import org.example.model.Transportation;
 import org.example.repositories.TransRepoJpa;
-import org.example.repositories.entity.TransportationEntity;
+import org.example.repositories.entities.TransportationEntity;
 
 public class TransAdapter implements TransRepo {
 

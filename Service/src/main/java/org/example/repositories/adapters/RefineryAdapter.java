@@ -4,7 +4,7 @@ import org.example.contract.repository.RefineryRepo;
 import org.example.mappers.RefineryMapper;
 import org.example.model.Refinery;
 import org.example.repositories.RefineryRepository;
-import org.example.repositories.entity.RefineryEntity;
+import org.example.repositories.entities.RefineryEntity;
 
 public class RefineryAdapter implements RefineryRepo {
 
@@ -20,6 +20,6 @@ public class RefineryAdapter implements RefineryRepo {
     public Refinery save(Refinery refinery) {
         final RefineryEntity refineryEntity = mapper.toEntity(refinery);
         final RefineryEntity save = repository.save(refineryEntity);
-        return mapper.toDomain(refineryEntity);
+        return mapper.toDomain(save);
     }
 }

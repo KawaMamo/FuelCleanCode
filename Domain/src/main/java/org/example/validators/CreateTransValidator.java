@@ -32,7 +32,7 @@ public class CreateTransValidator {
         }
 
         if(!errorDetails.isEmpty()){
-            new DomainValidationException(errorDetails);
+            throw new DomainValidationException(errorDetails);
         }
 
     }

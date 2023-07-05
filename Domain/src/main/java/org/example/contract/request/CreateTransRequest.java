@@ -5,7 +5,7 @@ import org.example.model.Refinery;
 import org.example.model.TransportationType;
 import org.example.model.Vehicle;
 @Data
-public class CreateTransRequest {
+public class CreateTransRequest implements Request{
 
     private Long refinery_id;
     private Long vehicle_id;

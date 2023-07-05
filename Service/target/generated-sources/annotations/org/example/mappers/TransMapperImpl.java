@@ -8,16 +8,16 @@ import org.example.model.Refinery;
 import org.example.model.TrafficCenter;
 import org.example.model.Transportation;
 import org.example.model.Vehicle;
-import org.example.repositories.entity.OfficeEntity;
-import org.example.repositories.entity.PersonEntity;
-import org.example.repositories.entity.RefineryEntity;
-import org.example.repositories.entity.TrafficCenterEntity;
-import org.example.repositories.entity.TransportationEntity;
-import org.example.repositories.entity.TransportationType;
+import org.example.repositories.entities.OfficeEntity;
+import org.example.repositories.entities.PersonEntity;
+import org.example.repositories.entities.RefineryEntity;
+import org.example.repositories.entities.TrafficCenterEntity;
+import org.example.repositories.entities.TransportationEntity;
+import org.example.repositories.entities.TransportationType;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-07-01T18:02:31+0300",
+    date = "2023-07-04T17:39:57+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class TransMapperImpl implements TransMapper {
@@ -67,16 +67,18 @@ public class TransMapperImpl implements TransMapper {
     }
 
     @Override
-    public org.example.repositories.entity.Vehicle toVehicle(Vehicle vehicle) {
+    public org.example.repositories.entities.Vehicle toVehicle(Vehicle vehicle) {
         if ( vehicle == null ) {
             return null;
         }
 
-        org.example.repositories.entity.Vehicle vehicle1 = new org.example.repositories.entity.Vehicle();
+        org.example.repositories.entities.Vehicle vehicle1 = new org.example.repositories.entities.Vehicle();
 
         vehicle1.setId( vehicle.getId() );
         vehicle1.setPlateNumber( vehicle.getPlateNumber() );
+        vehicle1.setTrafficCenter( toEntity( vehicle.getTrafficCenter() ) );
         vehicle1.setSize( vehicle.getSize() );
+        vehicle1.setOffice( toEntity( vehicle.getOffice() ) );
         vehicle1.setDriver( toEntity( vehicle.getDriver() ) );
         vehicle1.setCreatedAt( vehicle.getCreatedAt() );
 
@@ -117,6 +119,10 @@ public class TransMapperImpl implements TransMapper {
 
         OfficeEntity officeEntity = new OfficeEntity();
 
+        officeEntity.setId( office.getId() );
+        officeEntity.setName( office.getName() );
+        officeEntity.setCreatedAt( office.getCreatedAt() );
+
         return officeEntity;
     }
 
@@ -149,12 +155,12 @@ public class TransMapperImpl implements TransMapper {
         return transportationType1;
     }
 
-    protected org.example.repositories.entity.Document documentToDocument(Document document) {
+    protected org.example.repositories.entities.Document documentToDocument(Document document) {
         if ( document == null ) {
             return null;
         }
 
-        org.example.repositories.entity.Document document1 = new org.example.repositories.entity.Document();
+        org.example.repositories.entities.Document document1 = new org.example.repositories.entities.Document();
 
         document1.setId( document.getId() );
         document1.setUrl( document.getUrl() );
@@ -163,6 +169,30 @@ public class TransMapperImpl implements TransMapper {
         document1.setCreatedAt( document.getCreatedAt() );
 
         return document1;
+    }
+
+    protected TrafficCenter trafficCenterEntityToTrafficCenter(TrafficCenterEntity trafficCenterEntity) {
+        if ( trafficCenterEntity == null ) {
+            return null;
+        }
+
+        TrafficCenter trafficCenter = new TrafficCenter();
+
+        return trafficCenter;
+    }
+
+    protected Office officeEntityToOffice(OfficeEntity officeEntity) {
+        if ( officeEntity == null ) {
+            return null;
+        }
+
+        Office office = new Office();
+
+        office.setId( officeEntity.getId() );
+        office.setName( officeEntity.getName() );
+        office.setCreatedAt( officeEntity.getCreatedAt() );
+
+        return office;
     }
 
     protected Person personEntityToPerson(PersonEntity personEntity) {
@@ -175,7 +205,7 @@ public class TransMapperImpl implements TransMapper {
         return person;
     }
 
-    protected Vehicle vehicleToVehicle(org.example.repositories.entity.Vehicle vehicle) {
+    protected Vehicle vehicleToVehicle(org.example.repositories.entities.Vehicle vehicle) {
         if ( vehicle == null ) {
             return null;
         }
@@ -184,7 +214,9 @@ public class TransMapperImpl implements TransMapper {
 
         vehicle1.setId( vehicle.getId() );
         vehicle1.setPlateNumber( vehicle.getPlateNumber() );
+        vehicle1.setTrafficCenter( trafficCenterEntityToTrafficCenter( vehicle.getTrafficCenter() ) );
         vehicle1.setSize( vehicle.getSize() );
+        vehicle1.setOffice( officeEntityToOffice( vehicle.getOffice() ) );
         vehicle1.setDriver( personEntityToPerson( vehicle.getDriver() ) );
         vehicle1.setCreatedAt( vehicle.getCreatedAt() );
 
@@ -223,7 +255,7 @@ public class TransMapperImpl implements TransMapper {
         return transportationType1;
     }
 
-    protected Document documentToDocument1(org.example.repositories.entity.Document document) {
+    protected Document documentToDocument1(org.example.repositories.entities.Document document) {
         if ( document == null ) {
             return null;
         }

@@ -13,6 +13,5 @@ public class Person {
     private String nationalId;
     private String birthPlace;
     private LocalDate birthDate;
-    private Boolean isActive;
     private LocalDateTime createdAt;
 }

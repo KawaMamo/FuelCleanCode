@@ -1,8 +1,8 @@
 package org.example.mappers;
 
 import org.example.model.*;
-import org.example.repositories.entity.*;
-import org.example.repositories.entity.Vehicle;
+import org.example.repositories.entities.*;
+import org.example.repositories.entities.Vehicle;
 import org.mapstruct.Mapper;
 
 @Mapper
