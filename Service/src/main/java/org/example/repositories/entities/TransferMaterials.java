@@ -18,7 +18,7 @@ public class TransferMaterials {
     @OneToOne
     private Material material;
     private Long amount;
-    @OneToOne
-    private Money price;
+    private String priceCurrency;
+    private Double priceAmount;
     private LocalDateTime createdAt;
 }

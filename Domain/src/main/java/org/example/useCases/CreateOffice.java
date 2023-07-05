@@ -23,8 +23,8 @@ public class CreateOffice {
     public OfficeResponse execute(CreateOfficeRequest request){
         validator.validate(request);
         final Office office = mapper.requestToDomain(request);
+        office.setCreatedAt(LocalDateTime.now());
         final Office save = repo.save(office);
-        save.setCreatedAt(LocalDateTime.now());
         return mapper.domainToResponse(save);
     }
 }

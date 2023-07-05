@@ -9,7 +9,6 @@ public class Partition {
 
     private Long id;
     private Material material;
-    private Transportation transportation;
     private Integer amount;
     private Integer correctedAmount;
     private Money price;

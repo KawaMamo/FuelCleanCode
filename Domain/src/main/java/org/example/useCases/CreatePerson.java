@@ -24,8 +24,8 @@ public class CreatePerson {
     public PersonResponse execute(CreatePersonRequest request){
         validator.validate(request);
         final Person person = mapper.requestToDomain(request);
+        person.setCreatedAt(LocalDateTime.now());
         final Person save = personRepo.save(person);
-        save.setCreatedAt(LocalDateTime.now());
         return mapper.domainToResponse(save);
     }
 }

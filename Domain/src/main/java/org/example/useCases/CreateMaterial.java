@@ -23,8 +23,8 @@ public class CreateMaterial {
     public MaterialResponse execute(CreateMaterialRequest request){
         validator.validate(request);
         final Material material = mapper.requestToDomain(request);
+        material.setCreatedAt(LocalDateTime.now());
         final Material save = materialRepo.save(material);
-        save.setCreatedAt(LocalDateTime.now());
         return mapper.domainToResponse(save);
     }
 }

@@ -17,7 +17,7 @@ import org.example.repositories.entities.TransportationType;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-07-04T17:39:57+0300",
+    date = "2023-07-06T01:19:09+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class TransMapperImpl implements TransMapper {

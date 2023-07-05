@@ -13,10 +13,10 @@ public class ReturnedMaterial {
     @OneToOne
     private Material material;
     private Long amount;
-    @OneToOne
-    private Money price;
-    @OneToOne
-    private Money centerPrice;
+    private String priceCurrency;
+    private Double priceAmount;
+    private String centerPriceCurrency;
+    private Double centerPriceAmount;
     private String status;
     @OneToOne
     private Buyer buyer;

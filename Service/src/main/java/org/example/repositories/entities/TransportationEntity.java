@@ -26,7 +26,6 @@ public class TransportationEntity {
     private Long size;
     private LocalDateTime createdAt;
     @OneToMany
-    @ToString.Exclude
     private List<PartitionEntity> partition;
     @Enumerated
     private TransportationType type;

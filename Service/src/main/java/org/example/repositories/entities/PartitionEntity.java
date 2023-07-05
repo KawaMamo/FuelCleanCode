@@ -13,12 +13,10 @@ public class PartitionEntity {
     private Long id;
     @OneToOne
     private Material material;
-    @OneToOne
-    private TransportationEntity transportation;
     private Integer amount;
     private Integer correctedAmount;
-    @OneToOne
-    private Money price;
+    private String priceCurrency;
+    private Double priceAmount;
     @OneToOne
     private GasStation gasStation;
     private String notes;

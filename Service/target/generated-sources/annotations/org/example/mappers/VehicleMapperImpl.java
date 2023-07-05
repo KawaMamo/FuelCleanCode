@@ -3,7 +3,6 @@ package org.example.mappers;
 import javax.annotation.processing.Generated;
 import org.example.model.BuyOperation;
 import org.example.model.Document;
-import org.example.model.Money;
 import org.example.model.Office;
 import org.example.model.Person;
 import org.example.model.Refinery;
@@ -17,7 +16,7 @@ import org.example.repositories.entities.TransportationType;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-07-04T17:39:57+0300",
+    date = "2023-07-06T01:19:09+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class VehicleMapperImpl implements VehicleMapper {
@@ -71,7 +70,6 @@ public class VehicleMapperImpl implements VehicleMapper {
         buyOperation1.setDocument( documentToDocument( buyOperation.getDocument() ) );
         buyOperation1.setDeletedAt( buyOperation.getDeletedAt() );
         buyOperation1.setSource( buyOperation.getSource() );
-        buyOperation1.setPrice( moneyToMoney( buyOperation.getPrice() ) );
 
         return buyOperation1;
     }
@@ -167,19 +165,6 @@ public class VehicleMapperImpl implements VehicleMapper {
         document1.setCreatedAt( document.getCreatedAt() );
 
         return document1;
-    }
-
-    protected org.example.repositories.entities.Money moneyToMoney(Money money) {
-        if ( money == null ) {
-            return null;
-        }
-
-        org.example.repositories.entities.Money money1 = new org.example.repositories.entities.Money();
-
-        money1.setCurrency( money.getCurrency() );
-        money1.setAmount( money.getAmount() );
-
-        return money1;
     }
 
     protected TrafficCenter trafficCenterEntityToTrafficCenter(TrafficCenterEntity trafficCenterEntity) {

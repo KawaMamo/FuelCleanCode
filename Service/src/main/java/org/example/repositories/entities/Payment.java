@@ -11,8 +11,8 @@ public abstract class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @OneToOne
-    private Money amount;
+    private String priceCurrency;
+    private Double priceAmount;
     private Long billNumber;
     private LocalDateTime createdAt;
     private String notes;

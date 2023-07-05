@@ -16,8 +16,9 @@ import java.util.Objects;
 public class BuyOperation extends TransportationEntity {
 
     private String source;
-    @OneToOne
-    private Money price;
+
+    private String priceCurrency;
+    private Double priceAmount;
 
     @Override
     public final boolean equals(Object object) {

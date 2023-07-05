@@ -15,8 +15,8 @@ public class TransLine {
     private Place source;
     @OneToOne
     private Place destination;
-    @OneToOne
-    private Money fee;
+    private String feeCurrency;
+    private Double feeAmount;
     private LocalDateTime createdAt;
 
 }

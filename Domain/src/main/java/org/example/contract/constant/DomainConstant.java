@@ -19,5 +19,6 @@ public interface DomainConstant {
     String BIRTH_DATE_FIELD = "Error in birth date";
     String BIRTH_PLACE = "Error in birth place";
     String NATIONAL_ID_RULES = "national id should be 11 numbers long";
+    String PRICE_CATEGORY_FIELD = "Error in Price Category";
 
 }
