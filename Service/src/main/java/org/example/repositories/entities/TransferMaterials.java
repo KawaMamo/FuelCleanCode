@@ -16,7 +16,7 @@ public class TransferMaterials {
     @OneToOne
     private GasStation destination;
     @OneToOne
-    private Material material;
+    private MaterialEntity material;
     private Long amount;
     private String priceCurrency;
     private Double priceAmount;

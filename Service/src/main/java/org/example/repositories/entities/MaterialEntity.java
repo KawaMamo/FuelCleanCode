@@ -6,7 +6,8 @@ import lombok.Data;
 import java.time.LocalDateTime;
 @Data
 @Entity
-public class PriceCategory {
+public class MaterialEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

@@ -12,7 +12,7 @@ public class PartitionEntity {
     @Column(name = "id")
     private Long id;
     @OneToOne
-    private Material material;
+    private MaterialEntity material;
     private Integer amount;
     private Integer correctedAmount;
     private String priceCurrency;

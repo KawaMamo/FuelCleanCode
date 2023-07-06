@@ -11,7 +11,7 @@ public class ReturnedMaterial {
     @OneToOne
     private GasStation gasStation;
     @OneToOne
-    private Material material;
+    private MaterialEntity material;
     private Long amount;
     private String priceCurrency;
     private Double priceAmount;

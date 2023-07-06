@@ -2,22 +2,10 @@ package org.example.beans;
 
 import org.example.contract.repository.OfficeRepo;
 import org.example.mappers.*;
-import org.example.repositories.OfficeRepository;
-import org.example.repositories.RefineryRepository;
-import org.example.repositories.TransRepoJpa;
-import org.example.repositories.VehicleRepository;
-import org.example.repositories.adapters.OfficeAdapter;
-import org.example.repositories.adapters.RefineryAdapter;
-import org.example.repositories.adapters.TransAdapter;
-import org.example.repositories.adapters.VehicleAdapter;
-import org.example.useCases.CreateOffice;
-import org.example.useCases.CreateRefinery;
-import org.example.useCases.CreateTrans;
-import org.example.useCases.CreateVehicle;
-import org.example.validators.CreateOfficeValidator;
-import org.example.validators.CreateRefineryValidator;
-import org.example.validators.CreateTransValidator;
-import org.example.validators.CreateVehicleValidator;
+import org.example.repositories.*;
+import org.example.repositories.adapters.*;
+import org.example.useCases.*;
+import org.example.validators.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -62,6 +50,32 @@ public class Beans {
     @Bean
     OfficeRepo officeRepo(OfficeRepository officeRepository){
         return new OfficeAdapter(officeRepository, new OfficeMapperImpl());
+    }
+
+    @Bean
+    CreateCategory category(CategoryRepository categoryRepository, PriceCategoryAdapter priceCategoryAdapter){
+        return new CreateCategory(new CreateCategoryValidator(priceCategoryAdapter),
+                new CategoryDomainMapperImpl(),
+                new CategoryAdapter(categoryRepository, new CategoryMapperImpl()));
+    }
+
+    @Bean
+    CreatePriceCategory createPriceCategory(PriceCategoryRepository priceCategoryRepository, PriceCategoryAdapter priceCategoryAdapter){
+        return new CreatePriceCategory(new CreatePriceCategoryValidator(),
+                new PriceCategoryDomainMapperImpl(),
+                priceCategoryAdapter);
+    }
+
+    @Bean
+    PriceCategoryAdapter priceCategoryAdapter(PriceCategoryRepository priceCategoryRepository){
+        return new PriceCategoryAdapter(priceCategoryRepository, new PriceCategoryMapperImpl());
+    }
+
+    @Bean
+    CreateMaterial createMaterial(MaterialRepository repository){
+        return new CreateMaterial(new CreateMaterialValidator(),
+                new MaterialAdapter(repository, new MaterialMapperImpl()),
+                new MaterialDomainMapperImpl());
     }
 
 }

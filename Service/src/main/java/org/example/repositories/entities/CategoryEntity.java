@@ -1,34 +1,27 @@
 package org.example.repositories.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToOne;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import jakarta.persistence.*;
+import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-@Entity
 @Getter
 @Setter
 @ToString
 @RequiredArgsConstructor
-public class GasStation extends Place {
-
-    protected String name;
-    protected LocalDateTime createdAt;
-    @OneToOne
-    private PriceCategoryEntity priceCategory;
-    private Long debtLimit;
-    @OneToOne
-    private Region region;
-    @OneToOne
-    private PersonEntity owner;
-    @OneToOne
-    private GroupEntity group;
+@Entity
+public class CategoryEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+    private Long priceCategoryId;
+    private Long materialId;
+    private String priceCurrency;
+    private Double priceAmount;
+    private LocalDateTime createdAt;
 
     @Override
     public final boolean equals(Object object) {
@@ -37,7 +30,7 @@ public class GasStation extends Place {
         Class<?> oEffectiveClass = object instanceof HibernateProxy ? ((HibernateProxy) object).getHibernateLazyInitializer().getPersistentClass() : object.getClass();
         Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
-        GasStation that = (GasStation) object;
+        CategoryEntity that = (CategoryEntity) object;
         return getId() != null && Objects.equals(getId(), that.getId());
     }
 
