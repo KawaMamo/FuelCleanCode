@@ -1,5 +1,6 @@
 package org.example.beans;
 
+import org.example.contract.repository.MaterialRepo;
 import org.example.contract.repository.OfficeRepo;
 import org.example.mappers.*;
 import org.example.repositories.*;
@@ -53,10 +54,13 @@ public class Beans {
     }
 
     @Bean
-    CreateCategory category(CategoryRepository categoryRepository, PriceCategoryAdapter priceCategoryAdapter){
+    CreateCategory category(CategoryRepository categoryRepository,
+                            PriceCategoryAdapter priceCategoryAdapter,
+                            MaterialRepo materialRepo,
+                            CategoryMapper categoryMapper){
         return new CreateCategory(new CreateCategoryValidator(priceCategoryAdapter),
                 new CategoryDomainMapperImpl(),
-                new CategoryAdapter(categoryRepository, new CategoryMapperImpl()));
+                new CategoryAdapter(categoryRepository, categoryMapper), priceCategoryAdapter, materialRepo);
     }
 
     @Bean
@@ -72,10 +76,23 @@ public class Beans {
     }
 
     @Bean
-    CreateMaterial createMaterial(MaterialRepository repository){
+    CreateMaterial createMaterial(MaterialRepository repository, MaterialMapper materialMapper){
         return new CreateMaterial(new CreateMaterialValidator(),
-                new MaterialAdapter(repository, new MaterialMapperImpl()),
+                new MaterialAdapter(repository, materialMapper),
                 new MaterialDomainMapperImpl());
     }
+
+    @Bean
+    MaterialRepo materialRepo(MaterialRepository repository, MaterialMapper mapper){
+        return new MaterialAdapter(repository, mapper);
+    }
+
+    @Bean
+    MaterialMapper materialMapper(){
+        return new MaterialMapperImpl();
+    }
+
+    @Bean
+    CategoryMapper categoryMapper(){return new CategoryMapperImpl();}
 
 }
