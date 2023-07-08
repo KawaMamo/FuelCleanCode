@@ -44,7 +44,7 @@ public class CreatePersonValidator{
 
         if(Objects.isNull(request.getNationalId())){
             errorDetails.add(new ValidationErrorDetails(NATIONAL_ID_FIELD, ILLEGAL_VALUE));
-        }else if(request.getNationalId().length() != 11 || Long.parseLong(request.getNationalId()) > 0){
+        }else if(request.getNationalId().length() != 11 || Long.parseLong(request.getNationalId()) <= 0){
             errorDetails.add(new ValidationErrorDetails(NATIONAL_ID_FIELD, NATIONAL_ID_RULES));
         }
 

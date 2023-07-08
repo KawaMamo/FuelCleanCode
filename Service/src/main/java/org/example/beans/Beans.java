@@ -1,10 +1,9 @@
 package org.example.beans;
 
-import org.example.contract.repository.MaterialRepo;
-import org.example.contract.repository.OfficeRepo;
+import org.example.adapters.*;
+import org.example.contract.repository.*;
 import org.example.mappers.*;
 import org.example.repositories.*;
-import org.example.repositories.adapters.*;
 import org.example.useCases.*;
 import org.example.validators.*;
 import org.springframework.context.annotation.Bean;
@@ -14,10 +13,33 @@ import org.springframework.context.annotation.Configuration;
 public class Beans {
 
     @Bean
-    public CreateTrans createTrans(TransRepoJpa transRepoJpa, CreateTransValidator createTransValidator){
+    public CreateTrans createTrans(TransRepoJpa transRepoJpa,
+                                   CreateTransValidator createTransValidator,
+                                   VehicleRepo vehicleRepo,
+                                   RefineryRepo refineryRepo){
         return new CreateTrans(createTransValidator,
                 new DomainTransMapperImpl(),
-                new TransAdapter(transRepoJpa, new TransMapperImpl()));
+                new TransAdapter(transRepoJpa, new TransMapperImpl()), vehicleRepo, refineryRepo);
+    }
+
+    @Bean
+    VehicleMapper vehicleMapper(){
+        return new VehicleMapperImpl();
+    }
+
+    @Bean
+    VehicleRepo vehicleRepo(VehicleRepository repository, VehicleMapper mapper){
+        return new VehicleAdapter(repository, mapper);
+    }
+
+    @Bean
+    RefineryRepo refineryRepo(RefineryRepository repository, RefineryMapper mapper){
+        return new RefineryAdapter(repository, mapper);
+    }
+
+    @Bean
+    RefineryMapper refineryMapper(){
+        return new RefineryMapperImpl();
     }
 
     @Bean
@@ -33,9 +55,12 @@ public class Beans {
     }
 
     @Bean
-    public CreateVehicle createVehicle(VehicleRepository repository){
-        return new CreateVehicle(new CreateVehicleValidator(), new VehicleDomainMapperImpl(),
-                new VehicleAdapter(repository, new VehicleMapperImpl()));
+    public CreateVehicle createVehicle(VehicleRepository repository,
+                                       OfficeRepo officeRepo,
+                                       PersonRepo personRepo,
+                                       TrafficCenterRepo trafficCenterRepo, VehicleRepo vehicleRepo){
+        return new CreateVehicle(new CreateVehicleValidator(personRepo, officeRepo, trafficCenterRepo), new VehicleDomainMapperImpl(),
+                vehicleRepo, trafficCenterRepo, officeRepo, personRepo);
     }
 
     @Bean
@@ -94,5 +119,98 @@ public class Beans {
 
     @Bean
     CategoryMapper categoryMapper(){return new CategoryMapperImpl();}
+
+    @Bean
+    CreateTrafficCenter createTrafficCenter(CreateTrafficCenterValidator createTrafficCenterValidator
+            , TrafficCenterDomainMapper mapper, TrafficCenterRepo trafficCenterRepo){
+        return new CreateTrafficCenter(createTrafficCenterValidator, mapper, trafficCenterRepo);
+    }
+
+    @Bean
+    CreateTrafficCenterValidator createTrafficCenterValidator(){
+        return new CreateTrafficCenterValidator();
+    }
+
+    @Bean
+    TrafficCenterDomainMapper trafficCenterDomainMapper(){
+        return new TrafficCenterDomainMapperImpl();
+    }
+
+    @Bean
+    TrafficCenterRepo trafficCenterRepo(TrafficCenterRepository repository, TrafficCenterMapper trafficCenterMapper){
+        return new TrafficCenterAdapter(repository, trafficCenterMapper);
+    }
+
+    @Bean
+    TrafficCenterMapper trafficCenterMapper(){
+        return new TrafficCenterMapperImpl();
+    }
+
+    @Bean
+    CreatePerson createPerson(PersonRepo personRepo){
+        return new CreatePerson(personRepo, new PersonDomainMapperImpl(), new CreatePersonValidator());
+    }
+
+    @Bean
+    PersonRepo personRepo(PersonRepository repository){
+        return new PersonAdapter(repository, new PersonMapperImpl());
+    }
+    @Bean
+    CreateRegion createRegion(RegionRepository repository){
+        return new CreateRegion(new CreateRegionValidator(),
+                new RegionDomainMapperImpl(),
+                new RegionAdapter(repository, new RegionMapperImpl()));
+    }
+
+    @Bean
+    CreateGroup createGroup(GroupRepository repository){
+        return new CreateGroup(new CreateGroupValidator(),
+                new GroupDomainMapperImpl(),
+                new GroupAdapter(repository, new GroupMapperImpl()));
+    }
+
+    @Bean
+    CreateGasStation createGasStation(CreateGasStationValidator createGasStationValidator,
+                                      GasStationDomainMapper gasStationDomainMapper,
+                                      GasStationRepo gasStationRepo,
+                                      PriceCategoryRepo priceCategoryRepo,
+                                      RegionRepo regionRepo,
+                                      PersonRepo personRepo,
+                                      GroupRepo groupRepo){
+        return new CreateGasStation(createGasStationValidator,
+                gasStationDomainMapper,
+                gasStationRepo, priceCategoryRepo, regionRepo, personRepo, groupRepo);
+    }
+
+    @Bean
+    CreateGasStationValidator createGasStationValidator(PriceCategoryRepo priceCategoryRepo,
+                                                        RegionRepo regionRepo,
+                                                        GroupRepo groupRepo,
+                                                        PersonRepo personRepo){
+        return new CreateGasStationValidator(priceCategoryRepo,
+                regionRepo,
+                groupRepo,
+                personRepo);
+    }
+
+    @Bean
+    GasStationDomainMapper gasStationDomainMapper(){
+        return new GasStationDomainMapperImpl();
+    }
+
+    @Bean
+    GasStationRepo gasStationRepo(GasStationRepository gasStationRepository){
+        return new GasStationAdapter(gasStationRepository, new GasStationMapperImpl());
+    }
+
+    @Bean
+    RegionRepo regionRepo(RegionRepository regionRepository){
+        return new RegionAdapter(regionRepository, new RegionMapperImpl());
+    }
+
+    @Bean
+    GroupRepo groupRepo(GroupRepository groupRepository){
+        return new GroupAdapter(groupRepository, new GroupMapperImpl());
+    }
 
 }

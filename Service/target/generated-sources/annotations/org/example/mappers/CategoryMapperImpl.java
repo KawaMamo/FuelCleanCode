@@ -1,15 +1,15 @@
 package org.example.mappers;
 
 import javax.annotation.processing.Generated;
+import org.example.entities.CategoryEntity;
 import org.example.model.Category;
 import org.example.model.Material;
 import org.example.model.Money;
 import org.example.model.PriceCategory;
-import org.example.repositories.entities.CategoryEntity;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-07-06T19:26:08+0300",
+    date = "2023-07-08T19:25:22+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class CategoryMapperImpl implements CategoryMapper {

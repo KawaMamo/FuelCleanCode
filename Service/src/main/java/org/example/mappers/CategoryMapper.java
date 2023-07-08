@@ -1,7 +1,7 @@
 package org.example.mappers;
 
 import org.example.model.Category;
-import org.example.repositories.entities.CategoryEntity;
+import org.example.entities.CategoryEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

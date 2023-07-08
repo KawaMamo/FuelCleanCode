@@ -22,8 +22,11 @@ public class CreateCategory {
     private final PriceCategoryRepo priceCategoryRepo;
     private final MaterialRepo materialRepo;
 
-
-    public CreateCategory(CreateCategoryValidator validator, CategoryDomainMapper mapper, CategoryRepo categoryRepo, PriceCategoryRepo priceCategoryRepo, MaterialRepo materialRepo) {
+    public CreateCategory(CreateCategoryValidator validator,
+                          CategoryDomainMapper mapper,
+                          CategoryRepo categoryRepo,
+                          PriceCategoryRepo priceCategoryRepo,
+                          MaterialRepo materialRepo) {
         this.validator = validator;
         this.mapper = mapper;
         this.categoryRepo = categoryRepo;

@@ -1,43 +1,41 @@
 package org.example.mappers;
 
 import javax.annotation.processing.Generated;
-import org.example.model.BuyOperation;
-import org.example.model.Document;
+import org.example.entities.BuyOperation;
+import org.example.entities.OfficeEntity;
+import org.example.entities.PersonEntity;
+import org.example.entities.TrafficCenterEntity;
+import org.example.entities.TransportationType;
+import org.example.entities.VehicleEntity;
 import org.example.model.Office;
 import org.example.model.Person;
-import org.example.model.Refinery;
 import org.example.model.TrafficCenter;
 import org.example.model.Vehicle;
-import org.example.repositories.entities.OfficeEntity;
-import org.example.repositories.entities.PersonEntity;
-import org.example.repositories.entities.RefineryEntity;
-import org.example.repositories.entities.TrafficCenterEntity;
-import org.example.repositories.entities.TransportationType;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-07-06T19:26:08+0300",
+    date = "2023-07-08T19:25:22+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class VehicleMapperImpl implements VehicleMapper {
 
     @Override
-    public org.example.repositories.entities.Vehicle domainToEntity(Vehicle vehicle) {
+    public VehicleEntity domainToEntity(Vehicle vehicle) {
         if ( vehicle == null ) {
             return null;
         }
 
-        org.example.repositories.entities.Vehicle vehicle1 = new org.example.repositories.entities.Vehicle();
+        VehicleEntity vehicleEntity = new VehicleEntity();
 
-        vehicle1.setId( vehicle.getId() );
-        vehicle1.setPlateNumber( vehicle.getPlateNumber() );
-        vehicle1.setTrafficCenter( domainToEntity( vehicle.getTrafficCenter() ) );
-        vehicle1.setSize( vehicle.getSize() );
-        vehicle1.setOffice( domainToEntity( vehicle.getOffice() ) );
-        vehicle1.setDriver( domainToEntity( vehicle.getDriver() ) );
-        vehicle1.setCreatedAt( vehicle.getCreatedAt() );
+        vehicleEntity.setId( vehicle.getId() );
+        vehicleEntity.setPlateNumber( vehicle.getPlateNumber() );
+        vehicleEntity.setTrafficCenter( domainToEntity( vehicle.getTrafficCenter() ) );
+        vehicleEntity.setSize( vehicle.getSize() );
+        vehicleEntity.setOffice( domainToEntity( vehicle.getOffice() ) );
+        vehicleEntity.setDriver( domainToEntity( vehicle.getDriver() ) );
+        vehicleEntity.setCreatedAt( vehicle.getCreatedAt() );
 
-        return vehicle1;
+        return vehicleEntity;
     }
 
     @Override
@@ -48,26 +46,32 @@ public class VehicleMapperImpl implements VehicleMapper {
 
         PersonEntity personEntity = new PersonEntity();
 
+        personEntity.setId( person.getId() );
+        personEntity.setName( person.getName() );
+        personEntity.setFather( person.getFather() );
+        personEntity.setMother( person.getMother() );
+        personEntity.setNationalId( person.getNationalId() );
+        personEntity.setBirthPlace( person.getBirthPlace() );
+        personEntity.setBirthDate( person.getBirthDate() );
+        personEntity.setCreatedAt( person.getCreatedAt() );
+
         return personEntity;
     }
 
     @Override
-    public org.example.repositories.entities.BuyOperation domainToEntity(BuyOperation buyOperation) {
+    public BuyOperation domainToEntity(org.example.model.BuyOperation buyOperation) {
         if ( buyOperation == null ) {
             return null;
         }
 
-        org.example.repositories.entities.BuyOperation buyOperation1 = new org.example.repositories.entities.BuyOperation();
+        BuyOperation buyOperation1 = new BuyOperation();
 
         buyOperation1.setId( buyOperation.getId() );
-        buyOperation1.setVehicle( domainToEntity( buyOperation.getVehicle() ) );
-        buyOperation1.setRefinery( refineryToRefineryEntity( buyOperation.getRefinery() ) );
         buyOperation1.setIsDivided( buyOperation.getIsDivided() );
         buyOperation1.setIsPriced( buyOperation.getIsPriced() );
         buyOperation1.setSize( buyOperation.getSize() );
         buyOperation1.setCreatedAt( buyOperation.getCreatedAt() );
         buyOperation1.setType( transportationTypeToTransportationType( buyOperation.getType() ) );
-        buyOperation1.setDocument( documentToDocument( buyOperation.getDocument() ) );
         buyOperation1.setDeletedAt( buyOperation.getDeletedAt() );
         buyOperation1.setSource( buyOperation.getSource() );
 
@@ -75,7 +79,7 @@ public class VehicleMapperImpl implements VehicleMapper {
     }
 
     @Override
-    public Vehicle EntityToDomain(org.example.repositories.entities.Vehicle save) {
+    public Vehicle EntityToDomain(VehicleEntity save) {
         if ( save == null ) {
             return null;
         }
@@ -116,21 +120,11 @@ public class VehicleMapperImpl implements VehicleMapper {
 
         TrafficCenterEntity trafficCenterEntity = new TrafficCenterEntity();
 
+        trafficCenterEntity.setId( trafficCenter.getId() );
+        trafficCenterEntity.setName( trafficCenter.getName() );
+        trafficCenterEntity.setCreatedAt( trafficCenter.getCreatedAt() );
+
         return trafficCenterEntity;
-    }
-
-    protected RefineryEntity refineryToRefineryEntity(Refinery refinery) {
-        if ( refinery == null ) {
-            return null;
-        }
-
-        RefineryEntity refineryEntity = new RefineryEntity();
-
-        refineryEntity.setId( refinery.getId() );
-        refineryEntity.setName( refinery.getName() );
-        refineryEntity.setCreatedAt( refinery.getCreatedAt() );
-
-        return refineryEntity;
     }
 
     protected TransportationType transportationTypeToTransportationType(org.example.model.TransportationType transportationType) {
@@ -151,28 +145,16 @@ public class VehicleMapperImpl implements VehicleMapper {
         return transportationType1;
     }
 
-    protected org.example.repositories.entities.Document documentToDocument(Document document) {
-        if ( document == null ) {
-            return null;
-        }
-
-        org.example.repositories.entities.Document document1 = new org.example.repositories.entities.Document();
-
-        document1.setId( document.getId() );
-        document1.setUrl( document.getUrl() );
-        document1.setType( document.getType() );
-        document1.setResourceId( document.getResourceId() );
-        document1.setCreatedAt( document.getCreatedAt() );
-
-        return document1;
-    }
-
     protected TrafficCenter trafficCenterEntityToTrafficCenter(TrafficCenterEntity trafficCenterEntity) {
         if ( trafficCenterEntity == null ) {
             return null;
         }
 
         TrafficCenter trafficCenter = new TrafficCenter();
+
+        trafficCenter.setId( trafficCenterEntity.getId() );
+        trafficCenter.setName( trafficCenterEntity.getName() );
+        trafficCenter.setCreatedAt( trafficCenterEntity.getCreatedAt() );
 
         return trafficCenter;
     }
@@ -197,6 +179,15 @@ public class VehicleMapperImpl implements VehicleMapper {
         }
 
         Person person = new Person();
+
+        person.setId( personEntity.getId() );
+        person.setName( personEntity.getName() );
+        person.setFather( personEntity.getFather() );
+        person.setMother( personEntity.getMother() );
+        person.setNationalId( personEntity.getNationalId() );
+        person.setBirthPlace( personEntity.getBirthPlace() );
+        person.setBirthDate( personEntity.getBirthDate() );
+        person.setCreatedAt( personEntity.getCreatedAt() );
 
         return person;
     }

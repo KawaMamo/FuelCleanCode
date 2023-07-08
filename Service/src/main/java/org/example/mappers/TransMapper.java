@@ -1,24 +1,29 @@
 package org.example.mappers;
 
+import org.example.entities.TransportationEntity;
 import org.example.model.*;
-import org.example.repositories.entities.*;
-import org.example.repositories.entities.Vehicle;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Named;
 
 @Mapper
 public interface TransMapper {
 
-    TransportationEntity transportationEntity(Transportation transportation);
+    @Mapping(source = "vehicle.id", target = "vehicleEntityId")
+    @Mapping(source = "refinery.id", target = "refineryId")
+    @Mapping(source = "document.id", target = "documentId")
+    TransportationEntity domainToEntity(Transportation transportation);
 
-    Transportation toTransportation(TransportationEntity transportationEntity);
+    @Mapping(target = "vehicle.id", source = "vehicleEntityId")
+    @Mapping(target = "refinery.id", source = "refineryId")
+    @Mapping(target = "document.id", source = "documentId")
+    Transportation entityToDomain(TransportationEntity transportationEntity);
 
-    Vehicle toVehicle(org.example.model.Vehicle vehicle);
+    @Named("partitionToIds")
+    static Long partitionToIds(Partition partition) {
+        return partition.getId();
+    }
 
-    RefineryEntity toRefinery(org.example.model.Refinery refinery);
 
-    TrafficCenterEntity toEntity(TrafficCenter trafficCenter);
 
-    OfficeEntity toEntity(Office office);
-
-    PersonEntity toEntity(Person person);
 }

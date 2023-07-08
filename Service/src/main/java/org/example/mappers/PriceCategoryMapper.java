@@ -1,7 +1,7 @@
 package org.example.mappers;
 
 import org.example.model.PriceCategory;
-import org.example.repositories.entities.PriceCategoryEntity;
+import org.example.entities.PriceCategoryEntity;
 import org.mapstruct.Mapper;
 
 @Mapper

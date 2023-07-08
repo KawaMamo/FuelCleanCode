@@ -1,6 +1,6 @@
 package org.example.repositories;
 
-import org.example.repositories.entities.MaterialEntity;
+import org.example.entities.MaterialEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.PagingAndSortingRepository;

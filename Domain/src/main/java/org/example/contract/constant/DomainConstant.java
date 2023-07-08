@@ -22,5 +22,9 @@ public interface DomainConstant {
     String PRICE_CATEGORY_FIELD = "Error in Price Category";
     String MATERIAL_FIELD = "Error in Material";
     String ELEMENT_NOT_FOUND = "No Element is found with given id";
+    String DEBT_LIMIT = "Error in Debt Limit";
+    String OWNER_FIELD = "Error In Owner";
+    String GROUP_FIELD = "Error in Group";
+    String REGION_FIELD = "Error in Region";
 
 }

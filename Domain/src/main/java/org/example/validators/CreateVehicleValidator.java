@@ -1,8 +1,12 @@
 package org.example.validators;
 
+import org.example.contract.repository.OfficeRepo;
+import org.example.contract.repository.PersonRepo;
+import org.example.contract.repository.TrafficCenterRepo;
 import org.example.contract.request.CreateVehicleRequest;
 import org.example.exceptions.DomainValidationException;
 import org.example.exceptions.ValidationErrorDetails;
+
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -10,6 +14,16 @@ import static org.example.contract.constant.DomainConstant.*;
 import static org.example.contract.constant.DomainConstant.OFFICE_FIELD;
 
 public class CreateVehicleValidator {
+
+    private final PersonRepo personRepo;
+    private final OfficeRepo officeRepo;
+    private final TrafficCenterRepo trafficCenterRepo;
+
+    public CreateVehicleValidator(PersonRepo personRepo, OfficeRepo officeRepo, TrafficCenterRepo trafficCenterRepo) {
+        this.personRepo = personRepo;
+        this.officeRepo = officeRepo;
+        this.trafficCenterRepo = trafficCenterRepo;
+    }
 
     public void validate(CreateVehicleRequest request){
         Set<ValidationErrorDetails> validationErrorDetails = new HashSet<>();
@@ -32,6 +46,18 @@ public class CreateVehicleValidator {
 
         if(request.getTrafficCenter_id()<=0){
             validationErrorDetails.add(new ValidationErrorDetails(TRAFFIC_CENTER, ILLEGAL_VALUE));
+        }
+
+        if(trafficCenterRepo.findById(request.getTrafficCenter_id()).isEmpty()){
+            validationErrorDetails.add(new ValidationErrorDetails(TRAFFIC_CENTER, ELEMENT_NOT_FOUND));
+        }
+
+        if(officeRepo.findById(request.getOffice_id()).isEmpty()){
+            validationErrorDetails.add(new ValidationErrorDetails(OFFICE_FIELD, ELEMENT_NOT_FOUND));
+        }
+
+        if(personRepo.findById(request.getDriver_id()).isEmpty()){
+            validationErrorDetails.add(new ValidationErrorDetails(OFFICE_FIELD, ELEMENT_NOT_FOUND));
         }
 
         if(!validationErrorDetails.isEmpty())

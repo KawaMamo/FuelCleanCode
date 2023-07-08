@@ -1,6 +1,8 @@
 package org.example.useCases;
 
+import org.example.contract.repository.RefineryRepo;
 import org.example.contract.repository.TransRepo;
+import org.example.contract.repository.VehicleRepo;
 import org.example.contract.request.CreateTransRequest;
 import org.example.contract.response.CreateTransResponse;
 import org.example.mappers.DomainTransMapper;
@@ -14,11 +16,15 @@ public class CreateTrans {
     private final CreateTransValidator validator;
     private final DomainTransMapper domainTransMapper;
     private final TransRepo transRepo;
+    private final VehicleRepo vehicleRepo;
+    private final RefineryRepo refineryRepo;
 
-    public CreateTrans(CreateTransValidator validator, DomainTransMapper domainTransMapper, TransRepo transRepo) {
+    public CreateTrans(CreateTransValidator validator, DomainTransMapper domainTransMapper, TransRepo transRepo, VehicleRepo vehicleRepo, RefineryRepo refineryRepo) {
         this.validator = validator;
         this.domainTransMapper = domainTransMapper;
         this.transRepo = transRepo;
+        this.vehicleRepo = vehicleRepo;
+        this.refineryRepo = refineryRepo;
     }
 
     public CreateTransResponse execute(CreateTransRequest request){
@@ -27,6 +33,8 @@ public class CreateTrans {
         final Transportation transportation = domainTransMapper.toDomain(request);
         addSystemValues(transportation);
         final Transportation save = transRepo.save(transportation);
+        vehicleRepo.findById(save.getVehicle().getId()).ifPresent(save::setVehicle);
+        refineryRepo.findById(save.getRefinery().getId()).ifPresent(save::setRefinery);
         return domainTransMapper.toResponse(save);
     }
 
