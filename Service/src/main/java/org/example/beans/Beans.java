@@ -213,4 +213,29 @@ public class Beans {
         return new GroupAdapter(groupRepository, new GroupMapperImpl());
     }
 
+    @Bean
+    CreatePartition createPartition(PartitionDomainMapper partitionDomainMapper, PartitionRepo partitionRepo, TransRepo transRepo){
+        return new CreatePartition(new CreatePartitionValidator(), partitionDomainMapper, partitionRepo, transRepo);
+    }
+
+    @Bean
+    PartitionDomainMapper partitionDomainMapper(){
+        return new PartitionDomainMapperImpl();
+    }
+
+    @Bean
+    PartitionRepo partitionRepo(PartitionRepository repository){
+        return new PartitionAdapter(repository, new PartitionMapperImpl());
+    }
+
+    @Bean
+    TransRepo transRepo(TransRepoJpa transRepoJpa, TransMapper transMapper){
+        return new TransAdapter(transRepoJpa, transMapper);
+    }
+
+    @Bean
+    TransMapper transMapper(){
+        return new TransMapperImpl();
+    }
+
 }

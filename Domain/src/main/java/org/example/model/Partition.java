@@ -16,6 +16,7 @@ public class Partition {
     private String notes;
     private String extraNotes;
     private Document document;
+    private Transportation transportation;
     private LocalDateTime createdAt;
 
 }

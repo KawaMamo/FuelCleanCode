@@ -1,0 +1,53 @@
+package org.example.mappers;
+
+import java.util.Arrays;
+import javax.annotation.processing.Generated;
+import org.example.contract.request.CreateDocumentRequest;
+import org.example.contract.response.DocumentResponse;
+import org.example.model.Document;
+
+@Generated(
+    value = "org.mapstruct.ap.MappingProcessor",
+    date = "2023-07-13T01:12:18+0300",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
+)
+public class DocumentDomainMapperImpl implements DocumentDomainMapper {
+
+    @Override
+    public Document requestToDomain(CreateDocumentRequest request) {
+        if ( request == null ) {
+            return null;
+        }
+
+        Document document = new Document();
+
+        document.setType( request.getType() );
+        byte[] content = request.getContent();
+        if ( content != null ) {
+            document.setContent( Arrays.copyOf( content, content.length ) );
+        }
+
+        return document;
+    }
+
+    @Override
+    public DocumentResponse domainToResponse(Document document) {
+        if ( document == null ) {
+            return null;
+        }
+
+        DocumentResponse documentResponse = new DocumentResponse();
+
+        documentResponse.setId( document.getId() );
+        documentResponse.setUrl( document.getUrl() );
+        documentResponse.setType( document.getType() );
+        documentResponse.setResourceId( document.getResourceId() );
+        byte[] content = document.getContent();
+        if ( content != null ) {
+            documentResponse.setContent( Arrays.copyOf( content, content.length ) );
+        }
+        documentResponse.setCreatedAt( document.getCreatedAt() );
+
+        return documentResponse;
+    }
+}

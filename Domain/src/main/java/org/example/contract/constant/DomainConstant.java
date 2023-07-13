@@ -26,5 +26,9 @@ public interface DomainConstant {
     String OWNER_FIELD = "Error In Owner";
     String GROUP_FIELD = "Error in Group";
     String REGION_FIELD = "Error in Region";
+    String DOCUMENT_CONTENT_FIELD = "Error in Content";
+    String TYPE_FIELD = "Error in type";
 
+    String AMOUNT_FIELD = "Error in Amount";
+    String GAS_STATION_FIELD = "Error in Gas Station";
 }

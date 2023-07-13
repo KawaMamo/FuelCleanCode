@@ -20,6 +20,7 @@
         </processorPath>
         <module name="Domain" />
         <module name="Service" />
+        <module name="Document-Service" />
       </profile>
     </annotationProcessing>
   </component>

@@ -7,7 +7,7 @@ import org.example.model.Region;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-07-08T19:25:19+0300",
+    date = "2023-07-13T01:12:18+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class RegionDomainMapperImpl implements RegionDomainMapper {

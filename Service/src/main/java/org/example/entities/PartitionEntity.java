@@ -1,30 +1,28 @@
 package org.example.entities;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Entity
+@Data
 public class PartitionEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @OneToOne
-    private MaterialEntity material;
+    private Long materialId;
     private Integer amount;
     private Integer correctedAmount;
     private String priceCurrency;
     private Double priceAmount;
-    @OneToOne
-    private GasStationEntity gasStation;
+    private Long gasStationId;
     private String notes;
     private String extraNotes;
-    @OneToOne
-    private Document document;
+    private Long documentId;
     private LocalDateTime createdAt;
-    @ManyToOne
-    private TransportationEntity transportation;
+    private Long transportationId;
 
 }

@@ -11,6 +11,7 @@
     <modules>
         <module>Domain</module>
         <module>Service</module>
+        <module>Document-Service</module>
     </modules>
 
     <properties>

@@ -6,6 +6,8 @@ import org.example.model.Transportation;
 import org.example.repositories.TransRepoJpa;
 import org.example.entities.TransportationEntity;
 
+import java.util.Optional;
+
 public class TransAdapter implements TransRepo {
 
     private final TransRepoJpa transRepoJpa;
@@ -23,5 +25,13 @@ public class TransAdapter implements TransRepo {
         final TransportationEntity save = transRepoJpa.save(transportationEntity);
 
         return transMapper.entityToDomain(save);
+    }
+
+    @Override
+    public Optional<Transportation> findById(Long id) {
+        final Optional<TransportationEntity> byId = transRepoJpa.findById(id);
+        final TransportationEntity transportationEntity = byId.orElse(null);
+        final Transportation transportation = transMapper.entityToDomain(transportationEntity);
+        return Optional.ofNullable(transportation);
     }
 }
