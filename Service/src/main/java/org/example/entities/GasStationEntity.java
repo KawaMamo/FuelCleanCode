@@ -1,6 +1,7 @@
 package org.example.entities;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -15,15 +16,19 @@ import java.util.Objects;
 @Setter
 @ToString
 @RequiredArgsConstructor
-public class GasStationEntity extends Place {
+public class GasStationEntity extends PlaceEntity {
 
     protected String name;
     protected LocalDateTime createdAt;
-    private Long priceCategoryId;
+    @OneToOne
+    private PriceCategoryEntity priceCategory;
     private Long debtLimit;
-    private Long regionId;
-    private Long ownerId;
-    private Long groupId;
+    @OneToOne
+    private RegionEntity region;
+    @OneToOne
+    private PersonEntity owner;
+    @OneToOne
+    private GroupEntity group;
 
     @Override
     public final boolean equals(Object object) {

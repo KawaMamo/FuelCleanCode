@@ -12,7 +12,7 @@ import java.util.Objects;
 @Setter
 @ToString
 @RequiredArgsConstructor
-public class RefineryEntity extends Place {
+public class RefineryEntity extends PlaceEntity {
 
     private String name;
     private LocalDateTime createdAt;

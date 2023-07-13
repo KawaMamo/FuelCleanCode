@@ -3,7 +3,6 @@ package org.example.mappers;
 import javax.annotation.processing.Generated;
 import org.example.contract.request.CreatePartitionRequest;
 import org.example.contract.response.PartitionResponse;
-import org.example.model.Document;
 import org.example.model.GasStation;
 import org.example.model.Material;
 import org.example.model.Partition;
@@ -11,8 +10,8 @@ import org.example.model.Transportation;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-07-13T01:13:24+0300",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
+    date = "2023-07-13T16:54:24+0300",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class PartitionDomainMapperImpl implements PartitionDomainMapper {
 
@@ -26,7 +25,6 @@ public class PartitionDomainMapperImpl implements PartitionDomainMapper {
 
         partition.setMaterial( createPartitionRequestToMaterial( request ) );
         partition.setGasStation( createPartitionRequestToGasStation( request ) );
-        partition.setDocument( createPartitionRequestToDocument( request ) );
         partition.setTransportation( createPartitionRequestToTransportation( request ) );
         partition.setAmount( request.getAmount() );
         partition.setCorrectedAmount( request.getCorrectedAmount() );
@@ -82,18 +80,6 @@ public class PartitionDomainMapperImpl implements PartitionDomainMapper {
         gasStation.setId( createPartitionRequest.getGasStationId() );
 
         return gasStation;
-    }
-
-    protected Document createPartitionRequestToDocument(CreatePartitionRequest createPartitionRequest) {
-        if ( createPartitionRequest == null ) {
-            return null;
-        }
-
-        Document document = new Document();
-
-        document.setId( createPartitionRequest.getDocumentId() );
-
-        return document;
     }
 
     protected Transportation createPartitionRequestToTransportation(CreatePartitionRequest createPartitionRequest) {

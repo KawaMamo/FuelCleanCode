@@ -2,6 +2,8 @@ package org.example.mappers;
 
 import javax.annotation.processing.Generated;
 import org.example.entities.CategoryEntity;
+import org.example.entities.MaterialEntity;
+import org.example.entities.PriceCategoryEntity;
 import org.example.model.Category;
 import org.example.model.Material;
 import org.example.model.Money;
@@ -9,8 +11,8 @@ import org.example.model.PriceCategory;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-07-13T01:12:22+0300",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
+    date = "2023-07-13T16:54:43+0300",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class CategoryMapperImpl implements CategoryMapper {
 
@@ -22,11 +24,11 @@ public class CategoryMapperImpl implements CategoryMapper {
 
         CategoryEntity categoryEntity = new CategoryEntity();
 
-        categoryEntity.setPriceCategoryId( categoryPriceCategoryId( category ) );
-        categoryEntity.setMaterialId( categoryMaterialId( category ) );
         categoryEntity.setPriceCurrency( categoryPriceCurrency( category ) );
         categoryEntity.setPriceAmount( categoryPriceAmount( category ) );
         categoryEntity.setId( category.getId() );
+        categoryEntity.setPriceCategory( priceCategoryToPriceCategoryEntity( category.getPriceCategory() ) );
+        categoryEntity.setMaterial( materialToMaterialEntity( category.getMaterial() ) );
         categoryEntity.setCreatedAt( category.getCreatedAt() );
 
         return categoryEntity;
@@ -40,43 +42,13 @@ public class CategoryMapperImpl implements CategoryMapper {
 
         Category category = new Category();
 
-        category.setPriceCategory( categoryEntityToPriceCategory( categoryEntity ) );
-        category.setMaterial( categoryEntityToMaterial( categoryEntity ) );
         category.setPrice( categoryEntityToMoney( categoryEntity ) );
         category.setId( categoryEntity.getId() );
+        category.setPriceCategory( priceCategoryEntityToPriceCategory( categoryEntity.getPriceCategory() ) );
+        category.setMaterial( materialEntityToMaterial( categoryEntity.getMaterial() ) );
         category.setCreatedAt( categoryEntity.getCreatedAt() );
 
         return category;
-    }
-
-    private Long categoryPriceCategoryId(Category category) {
-        if ( category == null ) {
-            return null;
-        }
-        PriceCategory priceCategory = category.getPriceCategory();
-        if ( priceCategory == null ) {
-            return null;
-        }
-        Long id = priceCategory.getId();
-        if ( id == null ) {
-            return null;
-        }
-        return id;
-    }
-
-    private Long categoryMaterialId(Category category) {
-        if ( category == null ) {
-            return null;
-        }
-        Material material = category.getMaterial();
-        if ( material == null ) {
-            return null;
-        }
-        Long id = material.getId();
-        if ( id == null ) {
-            return null;
-        }
-        return id;
     }
 
     private String categoryPriceCurrency(Category category) {
@@ -109,28 +81,32 @@ public class CategoryMapperImpl implements CategoryMapper {
         return amount;
     }
 
-    protected PriceCategory categoryEntityToPriceCategory(CategoryEntity categoryEntity) {
-        if ( categoryEntity == null ) {
+    protected PriceCategoryEntity priceCategoryToPriceCategoryEntity(PriceCategory priceCategory) {
+        if ( priceCategory == null ) {
             return null;
         }
 
-        PriceCategory priceCategory = new PriceCategory();
+        PriceCategoryEntity priceCategoryEntity = new PriceCategoryEntity();
 
-        priceCategory.setId( categoryEntity.getPriceCategoryId() );
+        priceCategoryEntity.setId( priceCategory.getId() );
+        priceCategoryEntity.setName( priceCategory.getName() );
+        priceCategoryEntity.setCreatedAt( priceCategory.getCreatedAt() );
 
-        return priceCategory;
+        return priceCategoryEntity;
     }
 
-    protected Material categoryEntityToMaterial(CategoryEntity categoryEntity) {
-        if ( categoryEntity == null ) {
+    protected MaterialEntity materialToMaterialEntity(Material material) {
+        if ( material == null ) {
             return null;
         }
 
-        Material material = new Material();
+        MaterialEntity materialEntity = new MaterialEntity();
 
-        material.setId( categoryEntity.getMaterialId() );
+        materialEntity.setId( material.getId() );
+        materialEntity.setName( material.getName() );
+        materialEntity.setCreatedAt( material.getCreatedAt() );
 
-        return material;
+        return materialEntity;
     }
 
     protected Money categoryEntityToMoney(CategoryEntity categoryEntity) {
@@ -144,5 +120,33 @@ public class CategoryMapperImpl implements CategoryMapper {
         money.setAmount( categoryEntity.getPriceAmount() );
 
         return money;
+    }
+
+    protected PriceCategory priceCategoryEntityToPriceCategory(PriceCategoryEntity priceCategoryEntity) {
+        if ( priceCategoryEntity == null ) {
+            return null;
+        }
+
+        PriceCategory priceCategory = new PriceCategory();
+
+        priceCategory.setId( priceCategoryEntity.getId() );
+        priceCategory.setName( priceCategoryEntity.getName() );
+        priceCategory.setCreatedAt( priceCategoryEntity.getCreatedAt() );
+
+        return priceCategory;
+    }
+
+    protected Material materialEntityToMaterial(MaterialEntity materialEntity) {
+        if ( materialEntity == null ) {
+            return null;
+        }
+
+        Material material = new Material();
+
+        material.setId( materialEntity.getId() );
+        material.setName( materialEntity.getName() );
+        material.setCreatedAt( materialEntity.getCreatedAt() );
+
+        return material;
     }
 }

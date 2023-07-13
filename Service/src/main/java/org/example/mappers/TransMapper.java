@@ -9,14 +9,14 @@ import org.mapstruct.Named;
 @Mapper
 public interface TransMapper {
 
-    @Mapping(source = "vehicle.id", target = "vehicleEntityId")
-    @Mapping(source = "refinery.id", target = "refineryId")
-    @Mapping(source = "document.id", target = "documentId")
+    @Mapping(source = "vehicle", target = "vehicleEntity")
+    @Mapping(source = "refinery", target = "refinery")
+    @Mapping(source = "document", target = "document")
     TransportationEntity domainToEntity(Transportation transportation);
 
-    @Mapping(target = "vehicle.id", source = "vehicleEntityId")
-    @Mapping(target = "refinery.id", source = "refineryId")
-    @Mapping(target = "document.id", source = "documentId")
+    @Mapping(target = "vehicle", source = "vehicleEntity")
+    @Mapping(target = "refinery", source = "refinery")
+    @Mapping(target = "document", source = "document")
     Transportation entityToDomain(TransportationEntity transportationEntity);
 
     @Named("partitionToIds")

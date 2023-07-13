@@ -2,31 +2,24 @@ package org.example.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.example.model.Money;
+import org.example.model.Partition;
+import org.example.model.Vehicle;
 
 import java.time.LocalDateTime;
-
 @Entity
 @Data
-public class PartitionEntity {
-
+public class ForfeitEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
     @OneToOne
-    private MaterialEntity material;
-    private Integer amount;
-    private Integer correctedAmount;
+    private VehicleEntity vehicles;
+    @OneToOne
+    private PartitionEntity partition;
     private String priceCurrency;
     private Double priceAmount;
-    @OneToOne
-    private GasStationEntity gasStation;
-    private String notes;
-    private String extraNotes;
-    @OneToOne
-    private Document document;
+    private String reason;
     private LocalDateTime createdAt;
-    @OneToOne
-    private TransportationEntity transportation;
-
 }

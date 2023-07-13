@@ -16,15 +16,18 @@ public class TransportationEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    private Long vehicleEntityId;
-    private Long refineryId;
+    @OneToOne
+    private VehicleEntity vehicleEntity;
+    @OneToOne
+    private RefineryEntity refinery;
     private Boolean isDivided;
     private Boolean isPriced;
     private Long size;
     private LocalDateTime createdAt;
     @Enumerated
     private TransportationType type;
-    private Long documentId;
+    @OneToOne
+    private Document document;
     private LocalDateTime deletedAt;
 
 }

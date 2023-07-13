@@ -6,11 +6,12 @@ import lombok.Data;
 
 @Entity
 @Data
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class Place {
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class PlaceEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
+    private String placeType;
 }

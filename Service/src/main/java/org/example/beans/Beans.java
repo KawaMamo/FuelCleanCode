@@ -79,7 +79,7 @@ public class Beans {
     }
 
     @Bean
-    CreateCategory category(CategoryRepository categoryRepository,
+    CreateCategory createCategory(CategoryRepository categoryRepository,
                             PriceCategoryAdapter priceCategoryAdapter,
                             MaterialRepo materialRepo,
                             CategoryMapper categoryMapper){
@@ -202,6 +202,7 @@ public class Beans {
     GasStationRepo gasStationRepo(GasStationRepository gasStationRepository){
         return new GasStationAdapter(gasStationRepository, new GasStationMapperImpl());
     }
+
 
     @Bean
     RegionRepo regionRepo(RegionRepository regionRepository){

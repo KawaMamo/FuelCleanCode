@@ -7,6 +7,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface GasStationRepository extends JpaRepository<GasStationEntity, Long>,
-        PagingAndSortingRepository<GasStationEntity, Long>, JpaSpecificationExecutor<GasStationEntity> {
+public interface GasStationRepository extends PlaceRepository {
 }

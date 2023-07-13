@@ -12,9 +12,9 @@ public class TransLine {
     @Column(name = "id")
     private Long id;
     @OneToOne
-    private Place source;
+    private PlaceEntity source;
     @OneToOne
-    private Place destination;
+    private PlaceEntity destination;
     private String feeCurrency;
     private Double feeAmount;
     private LocalDateTime createdAt;

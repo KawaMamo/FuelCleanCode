@@ -12,6 +12,5 @@ public class CreatePartitionRequest {
     private Long gasStationId;
     private String notes;
     private String extraNotes;
-    private Long documentId;
     private Long transportationId;
 }

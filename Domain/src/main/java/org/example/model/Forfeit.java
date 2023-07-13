@@ -1,14 +1,14 @@
 package org.example.model;
 
-import java.time.LocalDateTime;
+import lombok.Data;
 
+import java.time.LocalDateTime;
+@Data
 public class Forfeit {
     private Long id;
     private Vehicle vehicles;
     private Partition partition;
-    private Money amount;
+    private Money price;
     private String reason;
     private LocalDateTime createdAt;
-
-
 }

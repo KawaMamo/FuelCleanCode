@@ -20,8 +20,7 @@ public class CreateGasStation {
 
     public CreateGasStation(CreateGasStationValidator validator,
                             GasStationDomainMapper mapper,
-                            GasStationRepo gasStationRepo,
-                            PriceCategoryRepo priceCategoryRepo,
+                            GasStationRepo gasStationRepo, PriceCategoryRepo priceCategoryRepo,
                             RegionRepo regionRepo,
                             PersonRepo personRepo,
                             GroupRepo groupRepo) {

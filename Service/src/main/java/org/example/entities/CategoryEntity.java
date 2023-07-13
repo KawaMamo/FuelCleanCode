@@ -17,8 +17,10 @@ public class CategoryEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    private Long priceCategoryId;
-    private Long materialId;
+    @OneToOne
+    private PriceCategoryEntity priceCategory;
+    @OneToOne
+    private MaterialEntity material;
     private String priceCurrency;
     private Double priceAmount;
     private LocalDateTime createdAt;

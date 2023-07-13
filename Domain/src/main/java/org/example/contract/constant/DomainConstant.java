@@ -31,4 +31,8 @@ public interface DomainConstant {
 
     String AMOUNT_FIELD = "Error in Amount";
     String GAS_STATION_FIELD = "Error in Gas Station";
+    String PARTITION_FIELD = "Error in Partition";
+    String PRICE_FIELD = "Error in Price";
+    String Currency_FIELD = "Error in Currency";
+    String REASON_FIELD = "Error in Reason";
 }

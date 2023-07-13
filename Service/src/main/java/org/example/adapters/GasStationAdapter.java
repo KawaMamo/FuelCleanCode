@@ -2,6 +2,7 @@ package org.example.adapters;
 
 import org.example.contract.repository.GasStationRepo;
 import org.example.entities.GasStationEntity;
+import org.example.entities.PlaceEntity;
 import org.example.mappers.GasStationMapper;
 import org.example.model.GasStation;
 import org.example.repositories.GasStationRepository;
@@ -23,14 +24,15 @@ public class GasStationAdapter implements GasStationRepo {
     public GasStation save(GasStation gasStation) {
         final GasStationEntity gasStationEntity = mapper.domainToEntity(gasStation);
         gasStationEntity.setCreatedAt(LocalDateTime.now());
+        gasStationEntity.setPlaceType("GasStation");
         final GasStationEntity save = gasStationRepository.save(gasStationEntity);
         return mapper.entityToDomain(save);
     }
 
     @Override
     public Optional<GasStation> findById(Long id) {
-        final Optional<GasStationEntity> byId = gasStationRepository.findById(id);
-        final GasStationEntity gasStationEntity = byId.orElse(null);
+        final Optional<PlaceEntity> byId = gasStationRepository.findById(id);
+        final GasStationEntity gasStationEntity = (GasStationEntity) byId.orElse(null);
         final GasStation gasStation = mapper.entityToDomain(gasStationEntity);
         return Optional.ofNullable(gasStation);
     }

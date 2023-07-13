@@ -1,21 +1,25 @@
 package org.example.mappers;
 
+import java.util.Arrays;
 import javax.annotation.processing.Generated;
 import org.example.entities.BuyOperation;
 import org.example.entities.OfficeEntity;
 import org.example.entities.PersonEntity;
+import org.example.entities.RefineryEntity;
 import org.example.entities.TrafficCenterEntity;
 import org.example.entities.TransportationType;
 import org.example.entities.VehicleEntity;
+import org.example.model.Document;
 import org.example.model.Office;
 import org.example.model.Person;
+import org.example.model.Refinery;
 import org.example.model.TrafficCenter;
 import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-07-13T01:12:22+0300",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
+    date = "2023-07-13T16:54:43+0300",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class VehicleMapperImpl implements VehicleMapper {
 
@@ -67,11 +71,13 @@ public class VehicleMapperImpl implements VehicleMapper {
         BuyOperation buyOperation1 = new BuyOperation();
 
         buyOperation1.setId( buyOperation.getId() );
+        buyOperation1.setRefinery( refineryToRefineryEntity( buyOperation.getRefinery() ) );
         buyOperation1.setIsDivided( buyOperation.getIsDivided() );
         buyOperation1.setIsPriced( buyOperation.getIsPriced() );
         buyOperation1.setSize( buyOperation.getSize() );
         buyOperation1.setCreatedAt( buyOperation.getCreatedAt() );
         buyOperation1.setType( transportationTypeToTransportationType( buyOperation.getType() ) );
+        buyOperation1.setDocument( documentToDocument( buyOperation.getDocument() ) );
         buyOperation1.setDeletedAt( buyOperation.getDeletedAt() );
         buyOperation1.setSource( buyOperation.getSource() );
 
@@ -127,6 +133,20 @@ public class VehicleMapperImpl implements VehicleMapper {
         return trafficCenterEntity;
     }
 
+    protected RefineryEntity refineryToRefineryEntity(Refinery refinery) {
+        if ( refinery == null ) {
+            return null;
+        }
+
+        RefineryEntity refineryEntity = new RefineryEntity();
+
+        refineryEntity.setId( refinery.getId() );
+        refineryEntity.setName( refinery.getName() );
+        refineryEntity.setCreatedAt( refinery.getCreatedAt() );
+
+        return refineryEntity;
+    }
+
     protected TransportationType transportationTypeToTransportationType(org.example.model.TransportationType transportationType) {
         if ( transportationType == null ) {
             return null;
@@ -143,6 +163,26 @@ public class VehicleMapperImpl implements VehicleMapper {
         }
 
         return transportationType1;
+    }
+
+    protected org.example.entities.Document documentToDocument(Document document) {
+        if ( document == null ) {
+            return null;
+        }
+
+        org.example.entities.Document document1 = new org.example.entities.Document();
+
+        document1.setId( document.getId() );
+        document1.setUrl( document.getUrl() );
+        document1.setType( document.getType() );
+        document1.setResourceId( document.getResourceId() );
+        byte[] content = document.getContent();
+        if ( content != null ) {
+            document1.setContent( Arrays.copyOf( content, content.length ) );
+        }
+        document1.setCreatedAt( document.getCreatedAt() );
+
+        return document1;
     }
 
     protected TrafficCenter trafficCenterEntityToTrafficCenter(TrafficCenterEntity trafficCenterEntity) {
