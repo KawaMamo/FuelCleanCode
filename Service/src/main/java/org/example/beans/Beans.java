@@ -43,8 +43,8 @@ public class Beans {
     }
 
     @Bean
-    public CreateTransValidator createTransValidator(){
-        return new CreateTransValidator();
+    public CreateTransValidator createTransValidator(RefineryRepo refineryRepo, VehicleRepo vehicleRepo){
+        return new CreateTransValidator(refineryRepo, vehicleRepo);
     }
 
     @Bean
@@ -215,8 +215,12 @@ public class Beans {
     }
 
     @Bean
-    CreatePartition createPartition(PartitionDomainMapper partitionDomainMapper, PartitionRepo partitionRepo, TransRepo transRepo){
-        return new CreatePartition(new CreatePartitionValidator(), partitionDomainMapper, partitionRepo, transRepo);
+    CreatePartition createPartition(PartitionDomainMapper partitionDomainMapper,
+                                    PartitionRepo partitionRepo,
+                                    MaterialRepo materialRepo,
+                                    GasStationRepo gasStationRepo,
+                                    TransRepo transRepo){
+        return new CreatePartition(new CreatePartitionValidator(materialRepo, gasStationRepo, transRepo), partitionDomainMapper, partitionRepo, transRepo, gasStationRepo, materialRepo);
     }
 
     @Bean
@@ -238,5 +242,55 @@ public class Beans {
     TransMapper transMapper(){
         return new TransMapperImpl();
     }
+
+    @Bean
+    CreateForfeit createForfeit(ForfeitRepository repository, VehicleRepo vehicleRepo, PartitionRepo partitionRepo, ForfeitRepo forfeitRepo){
+        return new CreateForfeit(forfeitRepo, new ForfeitDomainMapperImpl(), new CreateForfeitValidator(partitionRepo, vehicleRepo), vehicleRepo, partitionRepo);
+    }
+
+    @Bean
+    ForfeitRepo forfeitRepo(ForfeitRepository repository, ForfeitMapper forfeitMapper){
+        return new ForfeitAdapter(repository, forfeitMapper);
+    }
+
+    @Bean
+    ForfeitMapper forfeitMapper(){
+        return new ForfeitMapperImpl();
+    }
+
+    @Bean
+    CreateTransLine createTransLine(TransLineRepo transLineRepo,
+                                    TransLineDomainMapper transLineDomainMapper,
+                                    CreateTransLineValidator validator,
+                                    PlaceTypeDetector placeTypeDetector){
+        return new CreateTransLine(transLineRepo, transLineDomainMapper, validator, placeTypeDetector);
+    }
+
+    @Bean
+    PlaceTypeDetector placeTypeDetector(GasStationRepo gasStationRepo,
+                                        RefineryRepo refineryRepo){
+        return new PlaceTypeDetector(gasStationRepo, refineryRepo);
+    }
+
+    @Bean
+    TransLineRepo transLineRepo(TransLineRepository repository, TransLineMapper transLineMapper){
+        return new TransLineAdapter(repository, transLineMapper);
+    }
+
+    @Bean
+    TransLineDomainMapper transLineDomainMapper(){
+        return new TransLineDomainMapperImpl();
+    }
+
+    @Bean
+    TransLineMapper transLineMapper(){
+        return new TransLineMapperImpl();
+    }
+
+    @Bean
+    CreateTransLineValidator createTransLineValidator(GasStationRepo gasStationRepo, RefineryRepo refineryRepo){
+        return new CreateTransLineValidator(gasStationRepo, refineryRepo);
+    }
+
 
 }

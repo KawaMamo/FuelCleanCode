@@ -1,5 +1,8 @@
 package org.example.contract.request;
 
+import lombok.Data;
+
+@Data
 public class CreateTransLineRequest {
     private Long sourceId;
     private Long destinationId;

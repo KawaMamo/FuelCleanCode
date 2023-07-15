@@ -28,11 +28,16 @@ public interface DomainConstant {
     String REGION_FIELD = "Error in Region";
     String DOCUMENT_CONTENT_FIELD = "Error in Content";
     String TYPE_FIELD = "Error in type";
-
+    String DESTINATION_FIELD = "error in destination";
+    String SOURCE_FIELD = "Error in Source";
     String AMOUNT_FIELD = "Error in Amount";
     String GAS_STATION_FIELD = "Error in Gas Station";
     String PARTITION_FIELD = "Error in Partition";
     String PRICE_FIELD = "Error in Price";
     String Currency_FIELD = "Error in Currency";
     String REASON_FIELD = "Error in Reason";
+    String FEE_FIELD = "Error in Fee";
+    String TRANS_LINE_FIELD = "TransLine";
+    String NOTES_FIELD = "Error in Notes";
+    String TRANS_FIELD = "Transportation";
 }

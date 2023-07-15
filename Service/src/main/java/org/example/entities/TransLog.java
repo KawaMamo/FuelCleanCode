@@ -14,7 +14,7 @@ public class TransLog {
     @OneToOne
     private VehicleEntity vehicle;
     @OneToOne
-    private TransLine transLine;
+    private TransLineEntity transLine;
     private String feesCurrency;
     private Double feesAmount;
     @OneToOne

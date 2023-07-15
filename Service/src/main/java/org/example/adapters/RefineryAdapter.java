@@ -32,7 +32,11 @@ public class RefineryAdapter implements RefineryRepo {
     @Override
     public Optional<Refinery> findById(Long id) {
         final Optional<PlaceEntity> byId = repository.findById(id);
-        final RefineryEntity refineryEntity = (RefineryEntity) byId.orElse(null);
+        PlaceEntity place = byId.orElse(null);
+        RefineryEntity refineryEntity;
+        if(place instanceof RefineryEntity){
+            refineryEntity = (RefineryEntity) place;
+        }else refineryEntity = null;
         final Refinery refinery = mapper.toDomain(refineryEntity);
         return Optional.ofNullable(refinery);
     }

@@ -11,7 +11,7 @@ import org.example.model.Region;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-07-13T16:54:24+0300",
+    date = "2023-07-15T22:39:35+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class GasStationDomainMapperImpl implements GasStationDomainMapper {
@@ -42,6 +42,7 @@ public class GasStationDomainMapperImpl implements GasStationDomainMapper {
 
         GasStationResponse gasStationResponse = new GasStationResponse();
 
+        gasStationResponse.setPlaceType( gasStation.getPlaceType() );
         gasStationResponse.setId( gasStation.getId() );
         gasStationResponse.setName( gasStation.getName() );
         gasStationResponse.setPriceCategory( gasStation.getPriceCategory() );

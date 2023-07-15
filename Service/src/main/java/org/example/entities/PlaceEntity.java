@@ -1,6 +1,7 @@
 package org.example.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 
@@ -8,7 +9,6 @@ import lombok.Data;
 @Data
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class PlaceEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")

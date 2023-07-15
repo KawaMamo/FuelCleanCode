@@ -26,8 +26,8 @@ import org.example.model.Transportation;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-07-13T16:54:43+0300",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
+    date = "2023-07-15T22:39:41+0300",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class PartitionMapperImpl implements PartitionMapper {
 
@@ -173,6 +173,7 @@ public class PartitionMapperImpl implements PartitionMapper {
 
         GasStation gasStation = new GasStation();
 
+        gasStation.setPlaceType( gasStationEntity.getPlaceType() );
         gasStation.setId( gasStationEntity.getId() );
         gasStation.setName( gasStationEntity.getName() );
         gasStation.setPriceCategory( priceCategoryEntityToPriceCategory( gasStationEntity.getPriceCategory() ) );
@@ -212,6 +213,7 @@ public class PartitionMapperImpl implements PartitionMapper {
 
         Refinery refinery = new Refinery();
 
+        refinery.setPlaceType( refineryEntity.getPlaceType() );
         refinery.setId( refineryEntity.getId() );
         refinery.setName( refineryEntity.getName() );
         refinery.setCreatedAt( refineryEntity.getCreatedAt() );
@@ -370,6 +372,7 @@ public class PartitionMapperImpl implements PartitionMapper {
         GasStationEntity gasStationEntity = new GasStationEntity();
 
         gasStationEntity.setId( gasStation.getId() );
+        gasStationEntity.setPlaceType( gasStation.getPlaceType() );
         gasStationEntity.setName( gasStation.getName() );
         gasStationEntity.setCreatedAt( gasStation.getCreatedAt() );
         gasStationEntity.setPriceCategory( priceCategoryToPriceCategoryEntity( gasStation.getPriceCategory() ) );
@@ -409,6 +412,7 @@ public class PartitionMapperImpl implements PartitionMapper {
         RefineryEntity refineryEntity = new RefineryEntity();
 
         refineryEntity.setId( refinery.getId() );
+        refineryEntity.setPlaceType( refinery.getPlaceType() );
         refineryEntity.setName( refinery.getName() );
         refineryEntity.setCreatedAt( refinery.getCreatedAt() );
 

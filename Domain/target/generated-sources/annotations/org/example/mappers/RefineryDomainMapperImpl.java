@@ -7,7 +7,7 @@ import org.example.model.Refinery;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-07-13T16:54:24+0300",
+    date = "2023-07-15T22:39:34+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class RefineryDomainMapperImpl implements RefineryDomainMapper {
@@ -33,6 +33,7 @@ public class RefineryDomainMapperImpl implements RefineryDomainMapper {
 
         CreateRefineryResponse createRefineryResponse = new CreateRefineryResponse();
 
+        createRefineryResponse.setPlaceType( refinery.getPlaceType() );
         createRefineryResponse.setId( refinery.getId() );
         createRefineryResponse.setName( refinery.getName() );
         createRefineryResponse.setCreatedAt( refinery.getCreatedAt() );
