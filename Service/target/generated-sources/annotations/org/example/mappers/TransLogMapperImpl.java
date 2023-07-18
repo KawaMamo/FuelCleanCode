@@ -4,68 +4,97 @@ import java.util.Arrays;
 import javax.annotation.processing.Generated;
 import org.example.entities.OfficeEntity;
 import org.example.entities.PersonEntity;
-import org.example.entities.RefineryEntity;
 import org.example.entities.TrafficCenterEntity;
+import org.example.entities.TransLogEntity;
 import org.example.entities.TransportationEntity;
 import org.example.entities.TransportationType;
 import org.example.entities.VehicleEntity;
 import org.example.model.Document;
+import org.example.model.Money;
 import org.example.model.Office;
 import org.example.model.Person;
-import org.example.model.Refinery;
 import org.example.model.TrafficCenter;
+import org.example.model.TransLog;
 import org.example.model.Transportation;
 import org.example.model.Vehicle;
+import org.mapstruct.factory.Mappers;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
     date = "2023-07-18T16:18:25+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
-public class TransMapperImpl implements TransMapper {
+public class TransLogMapperImpl implements TransLogMapper {
+
+    private final TransLineMapper transLineMapper = Mappers.getMapper( TransLineMapper.class );
 
     @Override
-    public TransportationEntity domainToEntity(Transportation transportation) {
-        if ( transportation == null ) {
+    public TransLogEntity domainToEntity(TransLog transLog) {
+        if ( transLog == null ) {
             return null;
         }
 
-        TransportationEntity transportationEntity = new TransportationEntity();
+        TransLogEntity transLogEntity = new TransLogEntity();
 
-        transportationEntity.setVehicleEntity( vehicleToVehicleEntity( transportation.getVehicle() ) );
-        transportationEntity.setRefinery( refineryToRefineryEntity( transportation.getRefinery() ) );
-        transportationEntity.setDocument( documentToDocument( transportation.getDocument() ) );
-        transportationEntity.setId( transportation.getId() );
-        transportationEntity.setIsDivided( transportation.getIsDivided() );
-        transportationEntity.setIsPriced( transportation.getIsPriced() );
-        transportationEntity.setSize( transportation.getSize() );
-        transportationEntity.setCreatedAt( transportation.getCreatedAt() );
-        transportationEntity.setType( transportationTypeToTransportationType( transportation.getType() ) );
-        transportationEntity.setDeletedAt( transportation.getDeletedAt() );
+        transLogEntity.setFeesCurrency( transLogFeesCurrency( transLog ) );
+        transLogEntity.setFeesAmount( transLogFeesAmount( transLog ) );
+        transLogEntity.setId( transLog.getId() );
+        transLogEntity.setVehicle( vehicleToVehicleEntity( transLog.getVehicle() ) );
+        transLogEntity.setTransLine( transLineMapper.domainToEntity( transLog.getTransLine() ) );
+        transLogEntity.setTransportation( transportationToTransportationEntity( transLog.getTransportation() ) );
+        transLogEntity.setNotes( transLog.getNotes() );
+        transLogEntity.setCreatedAt( transLog.getCreatedAt() );
 
-        return transportationEntity;
+        return transLogEntity;
     }
 
     @Override
-    public Transportation entityToDomain(TransportationEntity transportationEntity) {
-        if ( transportationEntity == null ) {
+    public TransLog entityToDomain(TransLogEntity transLog) {
+        if ( transLog == null ) {
             return null;
         }
 
-        Transportation transportation = new Transportation();
+        TransLog transLog1 = new TransLog();
 
-        transportation.setVehicle( vehicleEntityToVehicle( transportationEntity.getVehicleEntity() ) );
-        transportation.setRefinery( refineryEntityToRefinery( transportationEntity.getRefinery() ) );
-        transportation.setDocument( documentToDocument1( transportationEntity.getDocument() ) );
-        transportation.setId( transportationEntity.getId() );
-        transportation.setIsDivided( transportationEntity.getIsDivided() );
-        transportation.setIsPriced( transportationEntity.getIsPriced() );
-        transportation.setSize( transportationEntity.getSize() );
-        transportation.setCreatedAt( transportationEntity.getCreatedAt() );
-        transportation.setType( transportationTypeToTransportationType1( transportationEntity.getType() ) );
-        transportation.setDeletedAt( transportationEntity.getDeletedAt() );
+        transLog1.setFees( transLogEntityToMoney( transLog ) );
+        transLog1.setId( transLog.getId() );
+        transLog1.setVehicle( vehicleEntityToVehicle( transLog.getVehicle() ) );
+        transLog1.setTransLine( transLineMapper.entityToDomain( transLog.getTransLine() ) );
+        transLog1.setTransportation( transportationEntityToTransportation( transLog.getTransportation() ) );
+        transLog1.setNotes( transLog.getNotes() );
+        transLog1.setCreatedAt( transLog.getCreatedAt() );
 
-        return transportation;
+        return transLog1;
+    }
+
+    private String transLogFeesCurrency(TransLog transLog) {
+        if ( transLog == null ) {
+            return null;
+        }
+        Money fees = transLog.getFees();
+        if ( fees == null ) {
+            return null;
+        }
+        String currency = fees.getCurrency();
+        if ( currency == null ) {
+            return null;
+        }
+        return currency;
+    }
+
+    private Double transLogFeesAmount(TransLog transLog) {
+        if ( transLog == null ) {
+            return null;
+        }
+        Money fees = transLog.getFees();
+        if ( fees == null ) {
+            return null;
+        }
+        Double amount = fees.getAmount();
+        if ( amount == null ) {
+            return null;
+        }
+        return amount;
     }
 
     protected TrafficCenterEntity trafficCenterToTrafficCenterEntity(TrafficCenter trafficCenter) {
@@ -133,19 +162,22 @@ public class TransMapperImpl implements TransMapper {
         return vehicleEntity;
     }
 
-    protected RefineryEntity refineryToRefineryEntity(Refinery refinery) {
-        if ( refinery == null ) {
+    protected TransportationType transportationTypeToTransportationType(org.example.model.TransportationType transportationType) {
+        if ( transportationType == null ) {
             return null;
         }
 
-        RefineryEntity refineryEntity = new RefineryEntity();
+        TransportationType transportationType1;
 
-        refineryEntity.setId( refinery.getId() );
-        refineryEntity.setPlaceType( refinery.getPlaceType() );
-        refineryEntity.setName( refinery.getName() );
-        refineryEntity.setCreatedAt( refinery.getCreatedAt() );
+        switch ( transportationType ) {
+            case NORMAL: transportationType1 = TransportationType.NORMAL;
+            break;
+            case COMMERCIAL: transportationType1 = TransportationType.COMMERCIAL;
+            break;
+            default: throw new IllegalArgumentException( "Unexpected enum constant: " + transportationType );
+        }
 
-        return refineryEntity;
+        return transportationType1;
     }
 
     protected org.example.entities.Document documentToDocument(Document document) {
@@ -168,22 +200,37 @@ public class TransMapperImpl implements TransMapper {
         return document1;
     }
 
-    protected TransportationType transportationTypeToTransportationType(org.example.model.TransportationType transportationType) {
-        if ( transportationType == null ) {
+    protected TransportationEntity transportationToTransportationEntity(Transportation transportation) {
+        if ( transportation == null ) {
             return null;
         }
 
-        TransportationType transportationType1;
+        TransportationEntity transportationEntity = new TransportationEntity();
 
-        switch ( transportationType ) {
-            case NORMAL: transportationType1 = TransportationType.NORMAL;
-            break;
-            case COMMERCIAL: transportationType1 = TransportationType.COMMERCIAL;
-            break;
-            default: throw new IllegalArgumentException( "Unexpected enum constant: " + transportationType );
+        transportationEntity.setId( transportation.getId() );
+        transportationEntity.setRefinery( transLineMapper.refineryToEntity( transportation.getRefinery() ) );
+        transportationEntity.setIsDivided( transportation.getIsDivided() );
+        transportationEntity.setIsPriced( transportation.getIsPriced() );
+        transportationEntity.setSize( transportation.getSize() );
+        transportationEntity.setCreatedAt( transportation.getCreatedAt() );
+        transportationEntity.setType( transportationTypeToTransportationType( transportation.getType() ) );
+        transportationEntity.setDocument( documentToDocument( transportation.getDocument() ) );
+        transportationEntity.setDeletedAt( transportation.getDeletedAt() );
+
+        return transportationEntity;
+    }
+
+    protected Money transLogEntityToMoney(TransLogEntity transLogEntity) {
+        if ( transLogEntity == null ) {
+            return null;
         }
 
-        return transportationType1;
+        Money money = new Money();
+
+        money.setCurrency( transLogEntity.getFeesCurrency() );
+        money.setAmount( transLogEntity.getFeesAmount() );
+
+        return money;
     }
 
     protected TrafficCenter trafficCenterEntityToTrafficCenter(TrafficCenterEntity trafficCenterEntity) {
@@ -251,19 +298,22 @@ public class TransMapperImpl implements TransMapper {
         return vehicle;
     }
 
-    protected Refinery refineryEntityToRefinery(RefineryEntity refineryEntity) {
-        if ( refineryEntity == null ) {
+    protected org.example.model.TransportationType transportationTypeToTransportationType1(TransportationType transportationType) {
+        if ( transportationType == null ) {
             return null;
         }
 
-        Refinery refinery = new Refinery();
+        org.example.model.TransportationType transportationType1;
 
-        refinery.setPlaceType( refineryEntity.getPlaceType() );
-        refinery.setId( refineryEntity.getId() );
-        refinery.setName( refineryEntity.getName() );
-        refinery.setCreatedAt( refineryEntity.getCreatedAt() );
+        switch ( transportationType ) {
+            case NORMAL: transportationType1 = org.example.model.TransportationType.NORMAL;
+            break;
+            case COMMERCIAL: transportationType1 = org.example.model.TransportationType.COMMERCIAL;
+            break;
+            default: throw new IllegalArgumentException( "Unexpected enum constant: " + transportationType );
+        }
 
-        return refinery;
+        return transportationType1;
     }
 
     protected Document documentToDocument1(org.example.entities.Document document) {
@@ -286,21 +336,23 @@ public class TransMapperImpl implements TransMapper {
         return document1;
     }
 
-    protected org.example.model.TransportationType transportationTypeToTransportationType1(TransportationType transportationType) {
-        if ( transportationType == null ) {
+    protected Transportation transportationEntityToTransportation(TransportationEntity transportationEntity) {
+        if ( transportationEntity == null ) {
             return null;
         }
 
-        org.example.model.TransportationType transportationType1;
+        Transportation transportation = new Transportation();
 
-        switch ( transportationType ) {
-            case NORMAL: transportationType1 = org.example.model.TransportationType.NORMAL;
-            break;
-            case COMMERCIAL: transportationType1 = org.example.model.TransportationType.COMMERCIAL;
-            break;
-            default: throw new IllegalArgumentException( "Unexpected enum constant: " + transportationType );
-        }
+        transportation.setId( transportationEntity.getId() );
+        transportation.setRefinery( transLineMapper.refineryToDomain( transportationEntity.getRefinery() ) );
+        transportation.setIsDivided( transportationEntity.getIsDivided() );
+        transportation.setIsPriced( transportationEntity.getIsPriced() );
+        transportation.setSize( transportationEntity.getSize() );
+        transportation.setCreatedAt( transportationEntity.getCreatedAt() );
+        transportation.setType( transportationTypeToTransportationType1( transportationEntity.getType() ) );
+        transportation.setDocument( documentToDocument1( transportationEntity.getDocument() ) );
+        transportation.setDeletedAt( transportationEntity.getDeletedAt() );
 
-        return transportationType1;
+        return transportation;
     }
 }

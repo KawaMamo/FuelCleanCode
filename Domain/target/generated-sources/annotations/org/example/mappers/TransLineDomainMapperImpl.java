@@ -8,8 +8,8 @@ import org.example.model.TransLine;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-07-15T22:39:58+0300",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
+    date = "2023-07-18T16:18:19+0300",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class TransLineDomainMapperImpl implements TransLineDomainMapper {
 

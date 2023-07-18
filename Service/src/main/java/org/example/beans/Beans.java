@@ -292,5 +292,22 @@ public class Beans {
         return new CreateTransLineValidator(gasStationRepo, refineryRepo);
     }
 
+    @Bean
+    CreateTransLog createTransLog(TransLogRepo transLogRepo,
+                                  TransLineRepo transLineRepo,
+                                  VehicleRepo vehicleRepo,
+                                  TransRepo transRepo){
+        return new CreateTransLog(transLogRepo,
+                new TransLogDomainMapperImpl(),
+                new CreateTransLogValidator(transLineRepo,
+                        vehicleRepo,
+                        transRepo), vehicleRepo, transLineRepo, transRepo);
+    }
+
+    @Bean
+    TransLogRepo transLogRepo(TransLogRepository transLogRepository){
+        return new TransLogAdapter(transLogRepository, new TransLogMapperImpl());
+    }
+
 
 }

@@ -27,11 +27,11 @@ public class CreateTransLineValidator {
         Set<ValidationErrorDetails> errorDetails = new HashSet<>();
 
         if (gasStationRepo.findById(request.getDestinationId()).isEmpty() && refineryRepo.findById(request.getDestinationId()).isEmpty()) {
-            errorDetails.add(new ValidationErrorDetails(DESTINATION_FIELD, NULL_ERROR_MSG));
+            errorDetails.add(new ValidationErrorDetails(DESTINATION_FIELD, ELEMENT_NOT_FOUND));
         }
 
         if (refineryRepo.findById(request.getSourceId()).isEmpty() && gasStationRepo.findById(request.getSourceId()).isEmpty()) {
-            errorDetails.add(new ValidationErrorDetails(SOURCE_FIELD, NULL_ERROR_MSG));
+            errorDetails.add(new ValidationErrorDetails(SOURCE_FIELD, ELEMENT_NOT_FOUND));
         }
 
         if(Objects.isNull(request.getFeeAmount())){

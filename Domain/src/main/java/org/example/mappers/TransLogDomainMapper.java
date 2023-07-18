@@ -8,6 +8,9 @@ import org.mapstruct.Mapping;
 
 @Mapper
 public interface TransLogDomainMapper {
+    @Mapping(source = "vehicleId", target = "vehicle.id")
+    @Mapping(source = "transLineId", target = "transLine.id")
+    @Mapping(source = "transportationId", target = "transportation.id")
     TransLog requestToDomain(CreateTransLogRequest request);
     TransLogResponse domainToResponse(TransLog transLog);
 }

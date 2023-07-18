@@ -6,7 +6,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 @Data
 @Entity
-public class TransLog {
+public class TransLogEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
