@@ -309,5 +309,24 @@ public class Beans {
         return new TransLogAdapter(transLogRepository, new TransLogMapperImpl());
     }
 
+    @Bean
+    CreateTransferMaterial createTransferMaterial(CreateTransferMaterialValidator createTransferMaterialValidator,
+                                                  TransferMaterialRepo transferMaterialRepo,
+                                                  GasStationRepo gasStationRepo,
+                                                  MaterialRepo materialRepo){
+        return new CreateTransferMaterial(createTransferMaterialValidator,
+                new TransferMaterialDomainMapperImpl(),
+                transferMaterialRepo, gasStationRepo, materialRepo);
+    }
+
+    @Bean
+    CreateTransferMaterialValidator createTransferMaterialValidator(MaterialRepo materialRepo, GasStationRepo gasStationRepo){
+        return new CreateTransferMaterialValidator(materialRepo, gasStationRepo);
+    }
+
+    @Bean
+    TransferMaterialRepo transferMaterialRepo(TransferMaterialRepository transferMaterialRepository){
+        return new TransferMaterialsAdapter(transferMaterialRepository, new TransferMaterialsMapperImpl());
+    }
 
 }

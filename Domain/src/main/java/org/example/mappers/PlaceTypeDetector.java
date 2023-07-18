@@ -1,7 +1,6 @@
 package org.example.mappers;
 
 import org.example.contract.repository.GasStationRepo;
-import org.example.contract.repository.PlaceRepo;
 import org.example.contract.repository.RefineryRepo;
 import org.example.model.GasStation;
 import org.example.model.Place;

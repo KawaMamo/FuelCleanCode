@@ -19,7 +19,7 @@ import org.example.model.TransLine;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-07-18T16:18:25+0300",
+    date = "2023-07-18T20:15:15+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class TransLineMapperImpl implements TransLineMapper {
