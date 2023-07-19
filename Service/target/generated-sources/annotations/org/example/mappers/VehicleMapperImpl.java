@@ -18,7 +18,7 @@ import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-07-19T20:55:22+0300",
+    date = "2023-07-19T22:46:29+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class VehicleMapperImpl implements VehicleMapper {
