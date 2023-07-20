@@ -9,12 +9,12 @@ import org.mapstruct.Named;
 @Mapper
 public interface TransMapper {
 
-    @Mapping(source = "vehicle", target = "vehicleEntity")
+    @Mapping(source = "vehicle", target = "vehicle")
     @Mapping(source = "refinery", target = "refinery")
     @Mapping(source = "document", target = "document")
     TransportationEntity domainToEntity(Transportation transportation);
 
-    @Mapping(target = "vehicle", source = "vehicleEntity")
+    @Mapping(target = "vehicle", source = "vehicle")
     @Mapping(target = "refinery", source = "refinery")
     @Mapping(target = "document", source = "document")
     Transportation entityToDomain(TransportationEntity transportationEntity);

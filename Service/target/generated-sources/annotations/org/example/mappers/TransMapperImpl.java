@@ -19,8 +19,8 @@ import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-07-19T22:46:30+0300",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
+    date = "2023-07-19T23:30:12+0300",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class TransMapperImpl implements TransMapper {
 
@@ -32,7 +32,7 @@ public class TransMapperImpl implements TransMapper {
 
         TransportationEntity transportationEntity = new TransportationEntity();
 
-        transportationEntity.setVehicleEntity( vehicleToVehicleEntity( transportation.getVehicle() ) );
+        transportationEntity.setVehicle( vehicleToVehicleEntity( transportation.getVehicle() ) );
         transportationEntity.setRefinery( refineryToRefineryEntity( transportation.getRefinery() ) );
         transportationEntity.setDocument( documentToDocument( transportation.getDocument() ) );
         transportationEntity.setId( transportation.getId() );
@@ -54,7 +54,7 @@ public class TransMapperImpl implements TransMapper {
 
         Transportation transportation = new Transportation();
 
-        transportation.setVehicle( vehicleEntityToVehicle( transportationEntity.getVehicleEntity() ) );
+        transportation.setVehicle( vehicleEntityToVehicle( transportationEntity.getVehicle() ) );
         transportation.setRefinery( refineryEntityToRefinery( transportationEntity.getRefinery() ) );
         transportation.setDocument( documentToDocument1( transportationEntity.getDocument() ) );
         transportation.setId( transportationEntity.getId() );

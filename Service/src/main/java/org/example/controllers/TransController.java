@@ -6,13 +6,15 @@ import org.example.entities.TransportationEntity;
 import org.example.mappers.TransMapper;
 import org.example.model.Transportation;
 import org.example.repositories.TransRepoJpa;
-import org.example.specifications.TransSpecifications;
+import org.example.specifications.*;
 import org.example.useCases.CreateTrans;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.PagedModel;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/trans")
@@ -39,8 +41,17 @@ public class TransController {
     }
 
     @PostMapping("/listTrans")
-    public PagedModel<CreateTransResponse> listTrans(@RequestBody TransSpecifications specifications,Pageable pageable){
+    public PagedModel<CreateTransResponse> listTrans(@RequestBody TransSpecifications specifications, Pageable pageable){
         final Page<Transportation> map = transRepoJpa.findAll(specifications, pageable).map(transMapper::entityToDomain);
         return pagedResourcesAssembler.toModel(map);
     }
+
+    @GetMapping
+    public PagedModel<CreateTransResponse> getTrans(SearchFilter criteria, Pageable pageable){
+        List<SearchCriteria> searchCriteria = CriteriaArrayToList.getCriteriaList(criteria);
+        final FilterSpecifications<TransportationEntity> specifications = new FilterSpecifications<>(searchCriteria);
+        final Page<Transportation> map = transRepoJpa.findAll(specifications, pageable).map(transMapper::entityToDomain);
+        return pagedResourcesAssembler.toModel(map);
+    }
+
 }

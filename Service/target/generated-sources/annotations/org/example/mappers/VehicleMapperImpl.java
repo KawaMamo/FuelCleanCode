@@ -18,8 +18,8 @@ import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-07-19T22:46:29+0300",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
+    date = "2023-07-19T23:30:12+0300",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class VehicleMapperImpl implements VehicleMapper {
 
@@ -71,6 +71,7 @@ public class VehicleMapperImpl implements VehicleMapper {
         BuyOperation buyOperation1 = new BuyOperation();
 
         buyOperation1.setId( buyOperation.getId() );
+        buyOperation1.setVehicle( domainToEntity( buyOperation.getVehicle() ) );
         buyOperation1.setRefinery( refineryToRefineryEntity( buyOperation.getRefinery() ) );
         buyOperation1.setIsDivided( buyOperation.getIsDivided() );
         buyOperation1.setIsPriced( buyOperation.getIsPriced() );

@@ -21,8 +21,8 @@ import org.mapstruct.factory.Mappers;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-07-19T22:46:29+0300",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
+    date = "2023-07-19T23:30:12+0300",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class TransLogMapperImpl implements TransLogMapper {
 
@@ -208,6 +208,7 @@ public class TransLogMapperImpl implements TransLogMapper {
         TransportationEntity transportationEntity = new TransportationEntity();
 
         transportationEntity.setId( transportation.getId() );
+        transportationEntity.setVehicle( vehicleToVehicleEntity( transportation.getVehicle() ) );
         transportationEntity.setRefinery( transLineMapper.refineryToEntity( transportation.getRefinery() ) );
         transportationEntity.setIsDivided( transportation.getIsDivided() );
         transportationEntity.setIsPriced( transportation.getIsPriced() );
@@ -344,6 +345,7 @@ public class TransLogMapperImpl implements TransLogMapper {
         Transportation transportation = new Transportation();
 
         transportation.setId( transportationEntity.getId() );
+        transportation.setVehicle( vehicleEntityToVehicle( transportationEntity.getVehicle() ) );
         transportation.setRefinery( transLineMapper.refineryToDomain( transportationEntity.getRefinery() ) );
         transportation.setIsDivided( transportationEntity.getIsDivided() );
         transportation.setIsPriced( transportationEntity.getIsPriced() );

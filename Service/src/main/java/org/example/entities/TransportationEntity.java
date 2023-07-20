@@ -17,7 +17,7 @@ public class TransportationEntity {
     @Column(name = "id")
     private Long id;
     @OneToOne
-    private VehicleEntity vehicleEntity;
+    private VehicleEntity vehicle;
     @OneToOne
     private RefineryEntity refinery;
     private Boolean isDivided;

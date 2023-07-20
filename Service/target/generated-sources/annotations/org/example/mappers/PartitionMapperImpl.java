@@ -5,29 +5,35 @@ import javax.annotation.processing.Generated;
 import org.example.entities.GasStationEntity;
 import org.example.entities.GroupEntity;
 import org.example.entities.MaterialEntity;
+import org.example.entities.OfficeEntity;
 import org.example.entities.PartitionEntity;
 import org.example.entities.PersonEntity;
 import org.example.entities.PriceCategoryEntity;
 import org.example.entities.RefineryEntity;
 import org.example.entities.RegionEntity;
+import org.example.entities.TrafficCenterEntity;
 import org.example.entities.TransportationEntity;
 import org.example.entities.TransportationType;
+import org.example.entities.VehicleEntity;
 import org.example.model.Document;
 import org.example.model.GasStation;
 import org.example.model.Group;
 import org.example.model.Material;
 import org.example.model.Money;
+import org.example.model.Office;
 import org.example.model.Partition;
 import org.example.model.Person;
 import org.example.model.PriceCategory;
 import org.example.model.Refinery;
 import org.example.model.Region;
+import org.example.model.TrafficCenter;
 import org.example.model.Transportation;
+import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-07-19T22:46:29+0300",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
+    date = "2023-07-19T23:30:12+0300",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class PartitionMapperImpl implements PartitionMapper {
 
@@ -206,6 +212,52 @@ public class PartitionMapperImpl implements PartitionMapper {
         return document1;
     }
 
+    protected TrafficCenter trafficCenterEntityToTrafficCenter(TrafficCenterEntity trafficCenterEntity) {
+        if ( trafficCenterEntity == null ) {
+            return null;
+        }
+
+        TrafficCenter trafficCenter = new TrafficCenter();
+
+        trafficCenter.setId( trafficCenterEntity.getId() );
+        trafficCenter.setName( trafficCenterEntity.getName() );
+        trafficCenter.setCreatedAt( trafficCenterEntity.getCreatedAt() );
+
+        return trafficCenter;
+    }
+
+    protected Office officeEntityToOffice(OfficeEntity officeEntity) {
+        if ( officeEntity == null ) {
+            return null;
+        }
+
+        Office office = new Office();
+
+        office.setId( officeEntity.getId() );
+        office.setName( officeEntity.getName() );
+        office.setCreatedAt( officeEntity.getCreatedAt() );
+
+        return office;
+    }
+
+    protected Vehicle vehicleEntityToVehicle(VehicleEntity vehicleEntity) {
+        if ( vehicleEntity == null ) {
+            return null;
+        }
+
+        Vehicle vehicle = new Vehicle();
+
+        vehicle.setId( vehicleEntity.getId() );
+        vehicle.setPlateNumber( vehicleEntity.getPlateNumber() );
+        vehicle.setTrafficCenter( trafficCenterEntityToTrafficCenter( vehicleEntity.getTrafficCenter() ) );
+        vehicle.setSize( vehicleEntity.getSize() );
+        vehicle.setOffice( officeEntityToOffice( vehicleEntity.getOffice() ) );
+        vehicle.setDriver( personEntityToPerson( vehicleEntity.getDriver() ) );
+        vehicle.setCreatedAt( vehicleEntity.getCreatedAt() );
+
+        return vehicle;
+    }
+
     protected Refinery refineryEntityToRefinery(RefineryEntity refineryEntity) {
         if ( refineryEntity == null ) {
             return null;
@@ -247,6 +299,7 @@ public class PartitionMapperImpl implements PartitionMapper {
         Transportation transportation = new Transportation();
 
         transportation.setId( transportationEntity.getId() );
+        transportation.setVehicle( vehicleEntityToVehicle( transportationEntity.getVehicle() ) );
         transportation.setRefinery( refineryEntityToRefinery( transportationEntity.getRefinery() ) );
         transportation.setIsDivided( transportationEntity.getIsDivided() );
         transportation.setIsPriced( transportationEntity.getIsPriced() );
@@ -404,6 +457,52 @@ public class PartitionMapperImpl implements PartitionMapper {
         return document1;
     }
 
+    protected TrafficCenterEntity trafficCenterToTrafficCenterEntity(TrafficCenter trafficCenter) {
+        if ( trafficCenter == null ) {
+            return null;
+        }
+
+        TrafficCenterEntity trafficCenterEntity = new TrafficCenterEntity();
+
+        trafficCenterEntity.setId( trafficCenter.getId() );
+        trafficCenterEntity.setName( trafficCenter.getName() );
+        trafficCenterEntity.setCreatedAt( trafficCenter.getCreatedAt() );
+
+        return trafficCenterEntity;
+    }
+
+    protected OfficeEntity officeToOfficeEntity(Office office) {
+        if ( office == null ) {
+            return null;
+        }
+
+        OfficeEntity officeEntity = new OfficeEntity();
+
+        officeEntity.setId( office.getId() );
+        officeEntity.setName( office.getName() );
+        officeEntity.setCreatedAt( office.getCreatedAt() );
+
+        return officeEntity;
+    }
+
+    protected VehicleEntity vehicleToVehicleEntity(Vehicle vehicle) {
+        if ( vehicle == null ) {
+            return null;
+        }
+
+        VehicleEntity vehicleEntity = new VehicleEntity();
+
+        vehicleEntity.setId( vehicle.getId() );
+        vehicleEntity.setPlateNumber( vehicle.getPlateNumber() );
+        vehicleEntity.setTrafficCenter( trafficCenterToTrafficCenterEntity( vehicle.getTrafficCenter() ) );
+        vehicleEntity.setSize( vehicle.getSize() );
+        vehicleEntity.setOffice( officeToOfficeEntity( vehicle.getOffice() ) );
+        vehicleEntity.setDriver( personToPersonEntity( vehicle.getDriver() ) );
+        vehicleEntity.setCreatedAt( vehicle.getCreatedAt() );
+
+        return vehicleEntity;
+    }
+
     protected RefineryEntity refineryToRefineryEntity(Refinery refinery) {
         if ( refinery == null ) {
             return null;
@@ -445,6 +544,7 @@ public class PartitionMapperImpl implements PartitionMapper {
         TransportationEntity transportationEntity = new TransportationEntity();
 
         transportationEntity.setId( transportation.getId() );
+        transportationEntity.setVehicle( vehicleToVehicleEntity( transportation.getVehicle() ) );
         transportationEntity.setRefinery( refineryToRefineryEntity( transportation.getRefinery() ) );
         transportationEntity.setIsDivided( transportation.getIsDivided() );
         transportationEntity.setIsPriced( transportation.getIsPriced() );
