@@ -6,7 +6,7 @@ import org.example.model.Office;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-07-19T23:30:11+0300",
+    date = "2023-07-20T19:00:50+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class OfficeMapperImpl implements OfficeMapper {

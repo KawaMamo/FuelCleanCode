@@ -18,8 +18,6 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class GasStationEntity extends PlaceEntity {
 
-    protected String name;
-    protected LocalDateTime createdAt;
     @OneToOne
     private PriceCategoryEntity priceCategory;
     private Long debtLimit;

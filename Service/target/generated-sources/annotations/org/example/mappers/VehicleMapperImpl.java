@@ -18,7 +18,7 @@ import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-07-19T23:30:12+0300",
+    date = "2023-07-20T19:00:49+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class VehicleMapperImpl implements VehicleMapper {
@@ -143,8 +143,8 @@ public class VehicleMapperImpl implements VehicleMapper {
 
         refineryEntity.setId( refinery.getId() );
         refineryEntity.setPlaceType( refinery.getPlaceType() );
-        refineryEntity.setName( refinery.getName() );
         refineryEntity.setCreatedAt( refinery.getCreatedAt() );
+        refineryEntity.setName( refinery.getName() );
 
         return refineryEntity;
     }

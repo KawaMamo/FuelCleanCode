@@ -14,8 +14,6 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class RefineryEntity extends PlaceEntity {
 
-    private String name;
-    private LocalDateTime createdAt;
 
     @Override
     public final boolean equals(Object object) {

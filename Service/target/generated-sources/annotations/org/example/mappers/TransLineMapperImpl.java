@@ -19,7 +19,7 @@ import org.example.model.TransLine;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-07-19T23:30:11+0300",
+    date = "2023-07-20T19:00:50+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class TransLineMapperImpl implements TransLineMapper {
@@ -69,8 +69,8 @@ public class TransLineMapperImpl implements TransLineMapper {
 
         gasStationEntity.setId( gasStation.getId() );
         gasStationEntity.setPlaceType( gasStation.getPlaceType() );
-        gasStationEntity.setName( gasStation.getName() );
         gasStationEntity.setCreatedAt( gasStation.getCreatedAt() );
+        gasStationEntity.setName( gasStation.getName() );
         gasStationEntity.setPriceCategory( priceCategoryToPriceCategoryEntity( gasStation.getPriceCategory() ) );
         gasStationEntity.setDebtLimit( gasStation.getDebtLimit() );
         gasStationEntity.setRegion( regionToRegionEntity( gasStation.getRegion() ) );
@@ -90,8 +90,8 @@ public class TransLineMapperImpl implements TransLineMapper {
 
         refineryEntity.setId( refinery.getId() );
         refineryEntity.setPlaceType( refinery.getPlaceType() );
-        refineryEntity.setName( refinery.getName() );
         refineryEntity.setCreatedAt( refinery.getCreatedAt() );
+        refineryEntity.setName( refinery.getName() );
 
         return refineryEntity;
     }

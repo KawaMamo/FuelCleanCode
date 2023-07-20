@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 
 @Entity
 @Data
@@ -14,4 +16,6 @@ public abstract class PlaceEntity {
     @Column(name = "id")
     private Long id;
     private String placeType;
+    private LocalDateTime createdAt;
+    private String name;
 }

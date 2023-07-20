@@ -203,6 +203,11 @@ public class Beans {
         return new GasStationAdapter(gasStationRepository, new GasStationMapperImpl());
     }
 
+    @Bean
+    GasStationMapper gasStationMapper(){
+        return new GasStationMapperImpl();
+    }
+
 
     @Bean
     RegionRepo regionRepo(RegionRepository regionRepository){
