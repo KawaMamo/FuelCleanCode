@@ -7,5 +7,5 @@ import org.mapstruct.Mapper;
 @Mapper
 public interface MaterialMapper {
     MaterialEntity domainToEntity(Material material);
-    Material EntityToDomain(MaterialEntity material);
+    Material entityToDomain(MaterialEntity material);
 }

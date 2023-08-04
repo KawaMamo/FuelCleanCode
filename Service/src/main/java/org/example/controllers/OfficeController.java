@@ -2,23 +2,51 @@ package org.example.controllers;
 
 import org.example.contract.request.CreateOfficeRequest;
 import org.example.contract.response.OfficeResponse;
+import org.example.entities.OfficeEntity;
+import org.example.mappers.OfficeMapper;
+import org.example.model.Office;
+import org.example.repositories.OfficeRepository;
+import org.example.specifications.CriteriaArrayToList;
+import org.example.specifications.FilterSpecifications;
+import org.example.specifications.SearchCriteria;
+import org.example.specifications.SearchFilter;
 import org.example.useCases.CreateOffice;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PagedResourcesAssembler;
+import org.springframework.hateoas.PagedModel;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/office")
 public class OfficeController {
 
     private final CreateOffice createOffice;
+    private final OfficeRepository officeRepository;
+    private final OfficeMapper officeMapper;
+    private final PagedResourcesAssembler pagedResourcesAssembler;
 
-    public OfficeController(CreateOffice createOffice) {
+    public OfficeController(CreateOffice createOffice,
+                            OfficeRepository officeRepository,
+                            OfficeMapper officeMapper,
+                            PagedResourcesAssembler pagedResourcesAssembler) {
         this.createOffice = createOffice;
+        this.officeRepository = officeRepository;
+        this.officeMapper = officeMapper;
+        this.pagedResourcesAssembler = pagedResourcesAssembler;
     }
     @PostMapping
     public OfficeResponse createOffice(@RequestBody CreateOfficeRequest request){
         return createOffice.execute(request);
+    }
+
+    @GetMapping
+    public PagedModel<OfficeResponse> listOffices(SearchFilter filter, Pageable pageable){
+        final List<SearchCriteria> criteriaList = CriteriaArrayToList.getCriteriaList(filter);
+        final FilterSpecifications<OfficeEntity> specifications = new FilterSpecifications<>(criteriaList);
+        final Page<Office> page = officeRepository.findAll(specifications, pageable).map(officeMapper::entityToDomain);
+        return pagedResourcesAssembler.toModel(page);
     }
 }

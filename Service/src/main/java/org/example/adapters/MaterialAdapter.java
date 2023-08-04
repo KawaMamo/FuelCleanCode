@@ -24,14 +24,14 @@ public class MaterialAdapter implements MaterialRepo {
         final MaterialEntity materialEntity = mapper.domainToEntity(material);
         materialEntity.setCreatedAt(LocalDateTime.now());
         final MaterialEntity save = repository.save(materialEntity);
-        return mapper.EntityToDomain(save);
+        return mapper.entityToDomain(save);
     }
 
     @Override
     public Optional<Material> findById(Long id) {
         final Optional<MaterialEntity> byId = repository.findById(id);
         final MaterialEntity materialEntity = byId.orElse(null);
-        final Material material = mapper.EntityToDomain(materialEntity);
+        final Material material = mapper.entityToDomain(materialEntity);
         return Optional.ofNullable(material);
     }
 }

@@ -74,8 +74,13 @@ public class Beans {
     }
 
     @Bean
-    OfficeRepo officeRepo(OfficeRepository officeRepository){
-        return new OfficeAdapter(officeRepository, new OfficeMapperImpl());
+    OfficeRepo officeRepo(OfficeRepository officeRepository, OfficeMapper officeMapper){
+        return new OfficeAdapter(officeRepository, officeMapper);
+    }
+
+    @Bean
+    OfficeMapper officeMapper(){
+        return new OfficeMapperImpl();
     }
 
     @Bean
@@ -96,8 +101,13 @@ public class Beans {
     }
 
     @Bean
-    PriceCategoryAdapter priceCategoryAdapter(PriceCategoryRepository priceCategoryRepository){
-        return new PriceCategoryAdapter(priceCategoryRepository, new PriceCategoryMapperImpl());
+    PriceCategoryAdapter priceCategoryAdapter(PriceCategoryRepository priceCategoryRepository, PriceCategoryMapper mapper){
+        return new PriceCategoryAdapter(priceCategoryRepository, mapper);
+    }
+
+    @Bean
+    PriceCategoryMapper priceCategoryMapper(){
+        return new PriceCategoryMapperImpl();
     }
 
     @Bean
@@ -152,8 +162,13 @@ public class Beans {
     }
 
     @Bean
-    PersonRepo personRepo(PersonRepository repository){
-        return new PersonAdapter(repository, new PersonMapperImpl());
+    PersonRepo personRepo(PersonRepository repository, PersonMapper personMapper){
+        return new PersonAdapter(repository, personMapper);
+    }
+
+    @Bean
+    PersonMapper personMapper(){
+        return new PersonMapperImpl();
     }
     @Bean
     CreateRegion createRegion(RegionRepository repository){
@@ -215,8 +230,13 @@ public class Beans {
     }
 
     @Bean
-    GroupRepo groupRepo(GroupRepository groupRepository){
-        return new GroupAdapter(groupRepository, new GroupMapperImpl());
+    GroupRepo groupRepo(GroupRepository groupRepository, GroupMapper groupMapper){
+        return new GroupAdapter(groupRepository, groupMapper);
+    }
+
+    @Bean
+    GroupMapper groupMapper(){
+        return new GroupMapperImpl();
     }
 
     @Bean
@@ -234,8 +254,13 @@ public class Beans {
     }
 
     @Bean
-    PartitionRepo partitionRepo(PartitionRepository repository){
-        return new PartitionAdapter(repository, new PartitionMapperImpl());
+    PartitionRepo partitionRepo(PartitionRepository repository, PartitionMapper partitionMapper){
+        return new PartitionAdapter(repository, partitionMapper);
+    }
+
+    @Bean
+    PartitionMapper partitionMapper(){
+        return new PartitionMapperImpl();
     }
 
     @Bean
