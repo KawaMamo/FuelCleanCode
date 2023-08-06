@@ -5,7 +5,9 @@ import org.example.contract.repository.*;
 import org.example.mappers.*;
 import org.example.repositories.*;
 import org.example.useCases.*;
+import org.example.useCases.update.UpdateCategory;
 import org.example.validators.*;
+import org.example.validators.update.UpdateCategoryValidator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -377,6 +379,30 @@ public class Beans {
     @Bean
     TransferMaterialsMapper transferMaterialsMapper(){
         return new TransferMaterialsMapperImpl();
+    }
+
+    @Bean
+    UpdateCategory updateCategory(UpdateCategoryValidator updateCategoryValidator,
+                                  CategoryDomainMapper mapper,
+                                  CategoryRepo categoryRepo,
+                                  PriceCategoryRepo priceCategoryRepo,
+                                  MaterialRepo materialRepo){
+        return new UpdateCategory(updateCategoryValidator, mapper, categoryRepo, priceCategoryRepo, materialRepo);
+    }
+
+    @Bean
+    UpdateCategoryValidator updateCategoryValidator(PriceCategoryRepo priceCategoryRepo, MaterialRepo materialRepo){
+        return new UpdateCategoryValidator(priceCategoryRepo, materialRepo);
+    }
+
+    @Bean
+    CategoryDomainMapper categoryDomainMapper(){
+        return new CategoryDomainMapperImpl();
+    }
+
+    @Bean
+    CategoryRepo categoryRepo(CategoryRepository categoryRepository, CategoryMapper categoryMapper){
+        return new CategoryAdapter(categoryRepository, categoryMapper);
     }
 
 }

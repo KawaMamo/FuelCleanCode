@@ -11,7 +11,7 @@ import org.example.model.PriceCategory;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-07-20T19:00:50+0300",
+    date = "2023-08-06T21:32:02+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class CategoryMapperImpl implements CategoryMapper {
@@ -30,6 +30,7 @@ public class CategoryMapperImpl implements CategoryMapper {
         categoryEntity.setPriceCategory( priceCategoryToPriceCategoryEntity( category.getPriceCategory() ) );
         categoryEntity.setMaterial( materialToMaterialEntity( category.getMaterial() ) );
         categoryEntity.setCreatedAt( category.getCreatedAt() );
+        categoryEntity.setUpdatedAt( category.getUpdatedAt() );
 
         return categoryEntity;
     }
@@ -47,6 +48,7 @@ public class CategoryMapperImpl implements CategoryMapper {
         category.setPriceCategory( priceCategoryEntityToPriceCategory( categoryEntity.getPriceCategory() ) );
         category.setMaterial( materialEntityToMaterial( categoryEntity.getMaterial() ) );
         category.setCreatedAt( categoryEntity.getCreatedAt() );
+        category.setUpdatedAt( categoryEntity.getUpdatedAt() );
 
         return category;
     }

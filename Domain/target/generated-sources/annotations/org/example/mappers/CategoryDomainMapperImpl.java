@@ -2,6 +2,7 @@ package org.example.mappers;
 
 import javax.annotation.processing.Generated;
 import org.example.contract.request.CreateCategoryRequest;
+import org.example.contract.request.update.UpdateCategoryRequest;
 import org.example.contract.response.CategoryResponse;
 import org.example.model.Category;
 import org.example.model.Material;
@@ -9,7 +10,7 @@ import org.example.model.PriceCategory;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-07-20T19:00:44+0300",
+    date = "2023-08-06T21:31:57+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class CategoryDomainMapperImpl implements CategoryDomainMapper {
@@ -42,8 +43,25 @@ public class CategoryDomainMapperImpl implements CategoryDomainMapper {
         categoryResponse.setMaterial( category.getMaterial() );
         categoryResponse.setPrice( category.getPrice() );
         categoryResponse.setCreatedAt( category.getCreatedAt() );
+        categoryResponse.setUpdatedAt( category.getUpdatedAt() );
 
         return categoryResponse;
+    }
+
+    @Override
+    public Category requestToDomain(UpdateCategoryRequest request) {
+        if ( request == null ) {
+            return null;
+        }
+
+        Category category = new Category();
+
+        category.setPriceCategory( updateCategoryRequestToPriceCategory( request ) );
+        category.setMaterial( updateCategoryRequestToMaterial( request ) );
+        category.setId( request.getId() );
+        category.setPrice( request.getPrice() );
+
+        return category;
     }
 
     protected PriceCategory createCategoryRequestToPriceCategory(CreateCategoryRequest createCategoryRequest) {
@@ -66,6 +84,30 @@ public class CategoryDomainMapperImpl implements CategoryDomainMapper {
         Material material = new Material();
 
         material.setId( createCategoryRequest.getMaterialId() );
+
+        return material;
+    }
+
+    protected PriceCategory updateCategoryRequestToPriceCategory(UpdateCategoryRequest updateCategoryRequest) {
+        if ( updateCategoryRequest == null ) {
+            return null;
+        }
+
+        PriceCategory priceCategory = new PriceCategory();
+
+        priceCategory.setId( updateCategoryRequest.getPriceCategoryId() );
+
+        return priceCategory;
+    }
+
+    protected Material updateCategoryRequestToMaterial(UpdateCategoryRequest updateCategoryRequest) {
+        if ( updateCategoryRequest == null ) {
+            return null;
+        }
+
+        Material material = new Material();
+
+        material.setId( updateCategoryRequest.getMaterialId() );
 
         return material;
     }

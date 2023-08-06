@@ -11,4 +11,5 @@ public class Category {
     private Material material;
     private Money price;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }

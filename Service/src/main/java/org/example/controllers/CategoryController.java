@@ -1,6 +1,7 @@
 package org.example.controllers;
 
 import org.example.contract.request.CreateCategoryRequest;
+import org.example.contract.request.update.UpdateCategoryRequest;
 import org.example.contract.response.CategoryResponse;
 import org.example.entities.CategoryEntity;
 import org.example.mappers.CategoryMapper;
@@ -11,11 +12,12 @@ import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
 import org.example.specifications.SearchFilter;
 import org.example.useCases.CreateCategory;
+import org.example.useCases.update.UpdateCategory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
-import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.PagedModel;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,15 +30,17 @@ public class CategoryController {
     private final CategoryRepository categoryRepository;
     private final PagedResourcesAssembler pagedResourcesAssembler;
     private final CategoryMapper categoryMapper;
+    private final UpdateCategory updateCategory;
 
     public CategoryController(CreateCategory createCategoryUserCase,
                               CategoryRepository categoryRepository,
                               PagedResourcesAssembler pagedResourcesAssembler,
-                              CategoryMapper categoryMapper) {
+                              CategoryMapper categoryMapper, UpdateCategory updateCategory) {
         this.createCategoryUserCase = createCategoryUserCase;
         this.categoryRepository = categoryRepository;
         this.pagedResourcesAssembler = pagedResourcesAssembler;
         this.categoryMapper = categoryMapper;
+        this.updateCategory = updateCategory;
     }
 
     @PostMapping
@@ -50,5 +54,10 @@ public class CategoryController {
         final FilterSpecifications<CategoryEntity> specifications = new FilterSpecifications<>(criteriaList);
         final Page<Category> page = categoryRepository.findAll(specifications, pageable).map(categoryMapper::entityToDomain);
         return pagedResourcesAssembler.toModel(page);
+    }
+
+    @PatchMapping
+    public ResponseEntity<CategoryResponse> update(@RequestBody UpdateCategoryRequest request){
+        return ResponseEntity.ok(updateCategory.execute(request));
     }
 }

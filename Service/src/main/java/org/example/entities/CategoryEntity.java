@@ -24,6 +24,7 @@ public class CategoryEntity {
     private String priceCurrency;
     private Double priceAmount;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
     @Override
     public final boolean equals(Object object) {

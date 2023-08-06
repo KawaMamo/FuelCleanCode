@@ -1,7 +1,9 @@
-package org.example.validators;
+package org.example.validators.update;
 
+import org.example.contract.repository.MaterialRepo;
 import org.example.contract.repository.PriceCategoryRepo;
-import org.example.contract.request.CreateCategoryRequest;
+import org.example.contract.request.update.UpdateCategoryRequest;
+import org.example.exceptions.DomainValidationException;
 import org.example.exceptions.ValidationErrorDetails;
 
 import java.util.HashSet;
@@ -9,19 +11,23 @@ import java.util.Objects;
 import java.util.Set;
 
 import static org.example.contract.constant.DomainConstant.*;
-import static org.example.validators.update.ExceptionThrower.throwIfNotEmpty;
 
-public class CreateCategoryValidator {
+public class UpdateCategoryValidator {
 
     private final PriceCategoryRepo priceCategoryRepo;
+    public final MaterialRepo materialRepo;
 
-    public CreateCategoryValidator(PriceCategoryRepo priceCategoryRepo) {
+    public UpdateCategoryValidator(PriceCategoryRepo priceCategoryRepo, MaterialRepo materialRepo) {
         this.priceCategoryRepo = priceCategoryRepo;
+        this.materialRepo = materialRepo;
     }
 
-    public void validate(CreateCategoryRequest request){
+    public void validate(UpdateCategoryRequest request){
         Set<ValidationErrorDetails> errorDetails = new HashSet<>();
 
+        if(Objects.isNull(request.getId())){
+            errorDetails.add(new ValidationErrorDetails(ID_FIELD, NULL_ERROR_MSG));
+        }
         if(Objects.isNull(request.getPriceCategoryId())){
             errorDetails.add(new ValidationErrorDetails(PRICE_CATEGORY_FIELD, NULL_ERROR_MSG));
         }else if (request.getPriceCategoryId()<=0){
@@ -35,8 +41,11 @@ public class CreateCategoryValidator {
         priceCategoryRepo.findById(request.getPriceCategoryId()).ifPresentOrElse( (s)->{},
                 ()-> errorDetails.add(new ValidationErrorDetails(PRICE_CATEGORY_FIELD, ELEMENT_NOT_FOUND)));
 
-        throwIfNotEmpty(errorDetails);
+        materialRepo.findById(request.getMaterialId())
+                .ifPresentOrElse(material -> {}, ()-> errorDetails.add(new ValidationErrorDetails(MATERIAL_FIELD, ELEMENT_NOT_FOUND)));
+
+        if(!errorDetails.isEmpty()){
+            throw new DomainValidationException(errorDetails);
+        }
     }
-
-
 }

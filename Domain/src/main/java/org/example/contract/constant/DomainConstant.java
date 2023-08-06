@@ -40,4 +40,5 @@ public interface DomainConstant {
     String TRANS_LINE_FIELD = "TransLine";
     String NOTES_FIELD = "Error in Notes";
     String TRANS_FIELD = "Transportation";
+    String ID_FIELD = "id";
 }

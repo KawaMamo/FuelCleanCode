@@ -5,6 +5,9 @@ import org.example.mappers.CategoryMapper;
 import org.example.model.Category;
 import org.example.repositories.CategoryRepository;
 import org.example.entities.CategoryEntity;
+import org.springframework.data.crossstore.ChangeSetPersister;
+
+import java.util.NoSuchElementException;
 
 public class CategoryAdapter implements CategoryRepo {
 
@@ -22,4 +25,11 @@ public class CategoryAdapter implements CategoryRepo {
         final CategoryEntity save = categoryRepository.save(categoryEntity);
         return mapper.entityToDomain(save);
     }
+
+    @Override
+    public Category findById(Long id) {
+        final CategoryEntity categoryEntity = categoryRepository.findById(id).orElseThrow(NoSuchElementException::new);
+        return mapper.entityToDomain(categoryEntity);
+    }
+
 }
