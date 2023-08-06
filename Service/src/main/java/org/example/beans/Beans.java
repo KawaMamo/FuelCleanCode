@@ -106,6 +106,11 @@ public class Beans {
     }
 
     @Bean
+    PlaceMapper placeMapper(){
+        return new PlaceMapperImpl();
+    }
+
+    @Bean
     PriceCategoryMapper priceCategoryMapper(){
         return new PriceCategoryMapperImpl();
     }
@@ -171,10 +176,15 @@ public class Beans {
         return new PersonMapperImpl();
     }
     @Bean
-    CreateRegion createRegion(RegionRepository repository){
+    CreateRegion createRegion(RegionRepository repository, RegionMapper regionMapper){
         return new CreateRegion(new CreateRegionValidator(),
                 new RegionDomainMapperImpl(),
-                new RegionAdapter(repository, new RegionMapperImpl()));
+                new RegionAdapter(repository, regionMapper));
+    }
+
+    @Bean
+    RegionMapper regionMapper(){
+        return new RegionMapperImpl();
     }
 
     @Bean
@@ -335,8 +345,13 @@ public class Beans {
     }
 
     @Bean
-    TransLogRepo transLogRepo(TransLogRepository transLogRepository){
-        return new TransLogAdapter(transLogRepository, new TransLogMapperImpl());
+    TransLogRepo transLogRepo(TransLogRepository transLogRepository, TransLogMapper transLogMapper){
+        return new TransLogAdapter(transLogRepository, transLogMapper);
+    }
+
+    @Bean
+    TransLogMapper transLogMapper(){
+        return new TransLogMapperImpl();
     }
 
     @Bean
@@ -355,8 +370,13 @@ public class Beans {
     }
 
     @Bean
-    TransferMaterialRepo transferMaterialRepo(TransferMaterialRepository transferMaterialRepository){
-        return new TransferMaterialsAdapter(transferMaterialRepository, new TransferMaterialsMapperImpl());
+    TransferMaterialRepo transferMaterialRepo(TransferMaterialRepository transferMaterialRepository, TransferMaterialsMapper transferMaterialsMapper){
+        return new TransferMaterialsAdapter(transferMaterialRepository, transferMaterialsMapper);
+    }
+
+    @Bean
+    TransferMaterialsMapper transferMaterialsMapper(){
+        return new TransferMaterialsMapperImpl();
     }
 
 }

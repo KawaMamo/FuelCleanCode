@@ -2,24 +2,53 @@ package org.example.controllers;
 
 import org.example.contract.request.CreateTransferMaterialRequest;
 import org.example.contract.response.TransferMaterialResponse;
+import org.example.entities.TransferMaterialsEntity;
+import org.example.mappers.TransferMaterialsMapper;
+import org.example.model.TransferMaterials;
+import org.example.repositories.TransferMaterialRepository;
+import org.example.specifications.CriteriaArrayToList;
+import org.example.specifications.FilterSpecifications;
+import org.example.specifications.SearchCriteria;
+import org.example.specifications.SearchFilter;
 import org.example.useCases.CreateTransferMaterial;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PagedResourcesAssembler;
+import org.springframework.hateoas.PagedModel;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/transfer-materials")
 public class TransferMaterialController {
 
     private final CreateTransferMaterial createTransferMaterial;
+    private final TransferMaterialRepository transferMaterialRepository;
+    private final TransferMaterialsMapper transferMaterialsMapper;
+    private final PagedResourcesAssembler assembler;
 
-    public TransferMaterialController(CreateTransferMaterial createTransferMaterial) {
+    public TransferMaterialController(CreateTransferMaterial createTransferMaterial,
+                                      TransferMaterialRepository transferMaterialRepository,
+                                      TransferMaterialsMapper transferMaterialsMapper,
+                                      PagedResourcesAssembler assembler) {
         this.createTransferMaterial = createTransferMaterial;
+        this.transferMaterialRepository = transferMaterialRepository;
+        this.transferMaterialsMapper = transferMaterialsMapper;
+        this.assembler = assembler;
     }
 
     @PostMapping
     public TransferMaterialResponse createTransferMaterial(@RequestBody CreateTransferMaterialRequest request){
         return createTransferMaterial.execute(request);
+    }
+
+    @GetMapping
+    public PagedModel<TransferMaterialResponse> listTransfers(SearchFilter filter, Pageable pageable){
+        final List<SearchCriteria> criteriaList = CriteriaArrayToList.getCriteriaList(filter);
+        final FilterSpecifications<TransferMaterialsEntity> specifications = new FilterSpecifications<>(criteriaList);
+        final Page<TransferMaterials> page = transferMaterialRepository.findAll(specifications, pageable)
+                .map(transferMaterialsMapper::entityToDomain);
+        return assembler.toModel(page);
     }
 }

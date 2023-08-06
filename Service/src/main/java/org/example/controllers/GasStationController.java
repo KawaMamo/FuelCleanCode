@@ -45,9 +45,16 @@ public class GasStationController {
 
     @GetMapping
     public PagedModel<GasStationResponse> listGasStation(SearchFilter searchFilter, Pageable pageable){
+        final SearchFilter gasStationFilter = new SearchFilter(new String[]{"placeType"},
+                new String[]{"Refinery"},
+                new String[]{":"},
+                null);
         final List<SearchCriteria> criteriaList = CriteriaArrayToList.getCriteriaList(searchFilter);
+        final List<SearchCriteria> criteria = CriteriaArrayToList.getCriteriaList(gasStationFilter);
+        criteriaList.addAll(criteria);
         final FilterSpecifications<PlaceEntity> specifications = new FilterSpecifications<>(criteriaList);
-        final Page<GasStation> page = gasStationRepository.findAll(specifications, pageable).map(place -> gasStationMapper.entityToDomain((GasStationEntity) place));
+        final Page<GasStation> page = gasStationRepository.findAll(specifications, pageable)
+                .map(place -> gasStationMapper.entityToDomain((GasStationEntity) place));
         return pagedResourcesAssembler.toModel(page);
     }
 }
