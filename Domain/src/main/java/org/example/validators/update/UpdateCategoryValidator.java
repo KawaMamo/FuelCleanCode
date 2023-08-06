@@ -3,7 +3,6 @@ package org.example.validators.update;
 import org.example.contract.repository.MaterialRepo;
 import org.example.contract.repository.PriceCategoryRepo;
 import org.example.contract.request.update.UpdateCategoryRequest;
-import org.example.exceptions.DomainValidationException;
 import org.example.exceptions.ValidationErrorDetails;
 
 import java.util.HashSet;
@@ -44,8 +43,6 @@ public class UpdateCategoryValidator {
         materialRepo.findById(request.getMaterialId())
                 .ifPresentOrElse(material -> {}, ()-> errorDetails.add(new ValidationErrorDetails(MATERIAL_FIELD, ELEMENT_NOT_FOUND)));
 
-        if(!errorDetails.isEmpty()){
-            throw new DomainValidationException(errorDetails);
-        }
+        ExceptionThrower.throwIfNotEmpty(errorDetails);
     }
 }
