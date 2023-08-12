@@ -21,7 +21,6 @@ public class GroupAdapter implements GroupRepo {
     @Override
     public Group save(Group group) {
         final GroupEntity groupEntity = mapper.domainToEntity(group);
-        groupEntity.setCreatedAt(LocalDateTime.now());
         final GroupEntity save = groupRepository.save(groupEntity);
         return mapper.entityToDomain(save);
     }

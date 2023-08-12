@@ -2,12 +2,13 @@ package org.example.beans;
 
 import org.example.adapters.*;
 import org.example.contract.repository.*;
+import org.example.contract.request.update.UpdateGasStationRequest;
 import org.example.mappers.*;
 import org.example.repositories.*;
 import org.example.useCases.*;
-import org.example.useCases.update.UpdateCategory;
+import org.example.useCases.update.*;
 import org.example.validators.*;
-import org.example.validators.update.UpdateCategoryValidator;
+import org.example.validators.update.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -190,9 +191,9 @@ public class Beans {
     }
 
     @Bean
-    CreateGroup createGroup(GroupRepository repository){
+    CreateGroup createGroup(GroupRepository repository, GroupDomainMapper groupDomainMapper){
         return new CreateGroup(new CreateGroupValidator(),
-                new GroupDomainMapperImpl(),
+                groupDomainMapper,
                 new GroupAdapter(repository, new GroupMapperImpl()));
     }
 
@@ -403,6 +404,84 @@ public class Beans {
     @Bean
     CategoryRepo categoryRepo(CategoryRepository categoryRepository, CategoryMapper categoryMapper){
         return new CategoryAdapter(categoryRepository, categoryMapper);
+    }
+
+    @Bean
+    UpdateDocument updateDocument(DocumentRepo documentRepo, DocumentDomainMapper documentDomainMapper, UpdateDocumentValidator validator){
+        return new UpdateDocument(documentRepo, documentDomainMapper, validator);
+    }
+
+    @Bean
+    DocumentRepo documentRepo(DocumentRepository repository, DocumentMapper mapper){
+        return new DocumentAdapter(repository, mapper);
+    }
+
+    @Bean
+    DocumentMapper documentMapper(){
+        return new DocumentMapperImpl();
+    }
+
+    @Bean
+    DocumentDomainMapper documentDomainMapper(){
+        return new DocumentDomainMapperImpl();
+    }
+
+    @Bean
+    UpdateDocumentValidator updateDocumentValidator(){
+        return new UpdateDocumentValidator();
+    }
+
+    @Bean
+    CreateDocument createDocument(CreateDocumentValidator validator, DocumentDomainMapper mapper, DocumentRepo documentRepo){
+        return new CreateDocument(validator, mapper, documentRepo);
+    }
+
+    @Bean
+    CreateDocumentValidator createDocumentValidator(){
+        return new CreateDocumentValidator();
+    }
+
+    @Bean
+    UpdateForfeit updateForfeit(UpdateForfeitValidator validator, ForfeitDomainMapper mapper, ForfeitRepo forfeitRepo){
+        return new UpdateForfeit(validator, mapper, forfeitRepo);
+    }
+
+    @Bean
+    UpdateForfeitValidator updateForfeitValidator(PartitionRepo partitionRepo, VehicleRepo vehicleRepo){
+        return new UpdateForfeitValidator(partitionRepo, vehicleRepo);
+    }
+
+    @Bean
+    ForfeitDomainMapper forfeitDomainMapper(){
+        return new ForfeitDomainMapperImpl();
+    }
+
+    @Bean
+    UpdateGasStation updateGasStation(UpdateGasStationValidator validator, GasStationDomainMapper gasStationDomainMapper, GasStationRepo gasStationRepo){
+        return new UpdateGasStation(validator, gasStationDomainMapper, gasStationRepo);
+    }
+
+    @Bean
+    UpdateGasStationValidator updateGasStationValidator(PriceCategoryRepo priceCategoryRepo,
+                                                        RegionRepo regionRepo,
+                                                        GroupRepo groupRepo,
+                                                        PersonRepo personRepo){
+        return new UpdateGasStationValidator(priceCategoryRepo, regionRepo, groupRepo, personRepo);
+    }
+
+    @Bean
+    UpdateGroup updateGroup(UpdateGroupValidator validator, GroupDomainMapper mapper, GroupRepo groupRepo){
+        return new UpdateGroup(validator, mapper, groupRepo);
+    }
+
+    @Bean
+    UpdateGroupValidator updateGroupValidator(){
+        return new UpdateGroupValidator();
+    }
+
+    @Bean
+    GroupDomainMapper groupDomainMapper(){
+        return new GroupDomainMapperImpl();
     }
 
 }

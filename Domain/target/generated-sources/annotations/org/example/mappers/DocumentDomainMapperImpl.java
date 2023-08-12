@@ -3,12 +3,13 @@ package org.example.mappers;
 import java.util.Arrays;
 import javax.annotation.processing.Generated;
 import org.example.contract.request.CreateDocumentRequest;
+import org.example.contract.request.update.UpdateDocumentRequest;
 import org.example.contract.response.DocumentResponse;
 import org.example.model.Document;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-06T21:31:56+0300",
+    date = "2023-08-12T16:24:08+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class DocumentDomainMapperImpl implements DocumentDomainMapper {
@@ -47,7 +48,26 @@ public class DocumentDomainMapperImpl implements DocumentDomainMapper {
             documentResponse.setContent( Arrays.copyOf( content, content.length ) );
         }
         documentResponse.setCreatedAt( document.getCreatedAt() );
+        documentResponse.setUpdatedAt( document.getUpdatedAt() );
 
         return documentResponse;
+    }
+
+    @Override
+    public Document requestToDomain(UpdateDocumentRequest request) {
+        if ( request == null ) {
+            return null;
+        }
+
+        Document document = new Document();
+
+        document.setId( request.getId() );
+        document.setType( request.getType() );
+        byte[] content = request.getContent();
+        if ( content != null ) {
+            document.setContent( Arrays.copyOf( content, content.length ) );
+        }
+
+        return document;
     }
 }

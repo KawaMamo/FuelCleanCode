@@ -2,12 +2,13 @@ package org.example.mappers;
 
 import javax.annotation.processing.Generated;
 import org.example.contract.request.CreateMaterialRequest;
+import org.example.contract.request.update.UpdateMaterialRequest;
 import org.example.contract.response.MaterialResponse;
 import org.example.model.Material;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-06T21:31:57+0300",
+    date = "2023-08-12T16:24:08+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class MaterialDomainMapperImpl implements MaterialDomainMapper {
@@ -38,5 +39,19 @@ public class MaterialDomainMapperImpl implements MaterialDomainMapper {
         materialResponse.setCreatedAt( material.getCreatedAt() );
 
         return materialResponse;
+    }
+
+    @Override
+    public Material requestToDomain(UpdateMaterialRequest request) {
+        if ( request == null ) {
+            return null;
+        }
+
+        Material material = new Material();
+
+        material.setId( request.getId() );
+        material.setName( request.getName() );
+
+        return material;
     }
 }

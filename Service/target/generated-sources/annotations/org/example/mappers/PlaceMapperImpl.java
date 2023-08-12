@@ -16,7 +16,7 @@ import org.example.model.Region;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-06T21:32:02+0300",
+    date = "2023-08-12T16:24:14+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class PlaceMapperImpl implements PlaceMapper {
@@ -32,6 +32,7 @@ public class PlaceMapperImpl implements PlaceMapper {
         gasStationEntity.setId( gasStation.getId() );
         gasStationEntity.setPlaceType( gasStation.getPlaceType() );
         gasStationEntity.setCreatedAt( gasStation.getCreatedAt() );
+        gasStationEntity.setUpdatedAt( gasStation.getUpdatedAt() );
         gasStationEntity.setName( gasStation.getName() );
         gasStationEntity.setPriceCategory( priceCategoryToPriceCategoryEntity( gasStation.getPriceCategory() ) );
         gasStationEntity.setDebtLimit( gasStation.getDebtLimit() );
@@ -75,6 +76,7 @@ public class PlaceMapperImpl implements PlaceMapper {
         gasStation1.setOwner( personEntityToPerson( gasStation.getOwner() ) );
         gasStation1.setGroup( groupEntityToGroup( gasStation.getGroup() ) );
         gasStation1.setCreatedAt( gasStation.getCreatedAt() );
+        gasStation1.setUpdatedAt( gasStation.getUpdatedAt() );
 
         return gasStation1;
     }
@@ -152,6 +154,7 @@ public class PlaceMapperImpl implements PlaceMapper {
         groupEntity.setId( group.getId() );
         groupEntity.setName( group.getName() );
         groupEntity.setCreatedAt( group.getCreatedAt() );
+        groupEntity.setUpdatedAt( group.getUpdatedAt() );
 
         return groupEntity;
     }
@@ -213,6 +216,7 @@ public class PlaceMapperImpl implements PlaceMapper {
         group.setId( groupEntity.getId() );
         group.setName( groupEntity.getName() );
         group.setCreatedAt( groupEntity.getCreatedAt() );
+        group.setUpdatedAt( groupEntity.getUpdatedAt() );
 
         return group;
     }

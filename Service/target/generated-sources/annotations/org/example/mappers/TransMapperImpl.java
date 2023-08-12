@@ -2,6 +2,7 @@ package org.example.mappers;
 
 import java.util.Arrays;
 import javax.annotation.processing.Generated;
+import org.example.entities.DocumentEntity;
 import org.example.entities.OfficeEntity;
 import org.example.entities.PersonEntity;
 import org.example.entities.RefineryEntity;
@@ -19,7 +20,7 @@ import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-06T21:32:02+0300",
+    date = "2023-08-12T16:24:15+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class TransMapperImpl implements TransMapper {
@@ -34,7 +35,7 @@ public class TransMapperImpl implements TransMapper {
 
         transportationEntity.setVehicle( vehicleToVehicleEntity( transportation.getVehicle() ) );
         transportationEntity.setRefinery( refineryToRefineryEntity( transportation.getRefinery() ) );
-        transportationEntity.setDocument( documentToDocument( transportation.getDocument() ) );
+        transportationEntity.setDocument( documentToDocumentEntity( transportation.getDocument() ) );
         transportationEntity.setId( transportation.getId() );
         transportationEntity.setIsDivided( transportation.getIsDivided() );
         transportationEntity.setIsPriced( transportation.getIsPriced() );
@@ -56,7 +57,7 @@ public class TransMapperImpl implements TransMapper {
 
         transportation.setVehicle( vehicleEntityToVehicle( transportationEntity.getVehicle() ) );
         transportation.setRefinery( refineryEntityToRefinery( transportationEntity.getRefinery() ) );
-        transportation.setDocument( documentToDocument1( transportationEntity.getDocument() ) );
+        transportation.setDocument( documentEntityToDocument( transportationEntity.getDocument() ) );
         transportation.setId( transportationEntity.getId() );
         transportation.setIsDivided( transportationEntity.getIsDivided() );
         transportation.setIsPriced( transportationEntity.getIsPriced() );
@@ -148,24 +149,25 @@ public class TransMapperImpl implements TransMapper {
         return refineryEntity;
     }
 
-    protected org.example.entities.Document documentToDocument(Document document) {
+    protected DocumentEntity documentToDocumentEntity(Document document) {
         if ( document == null ) {
             return null;
         }
 
-        org.example.entities.Document document1 = new org.example.entities.Document();
+        DocumentEntity documentEntity = new DocumentEntity();
 
-        document1.setId( document.getId() );
-        document1.setUrl( document.getUrl() );
-        document1.setType( document.getType() );
-        document1.setResourceId( document.getResourceId() );
+        documentEntity.setId( document.getId() );
+        documentEntity.setUrl( document.getUrl() );
+        documentEntity.setType( document.getType() );
+        documentEntity.setResourceId( document.getResourceId() );
         byte[] content = document.getContent();
         if ( content != null ) {
-            document1.setContent( Arrays.copyOf( content, content.length ) );
+            documentEntity.setContent( Arrays.copyOf( content, content.length ) );
         }
-        document1.setCreatedAt( document.getCreatedAt() );
+        documentEntity.setCreatedAt( document.getCreatedAt() );
+        documentEntity.setUpdatedAt( document.getUpdatedAt() );
 
-        return document1;
+        return documentEntity;
     }
 
     protected TransportationType transportationTypeToTransportationType(org.example.model.TransportationType transportationType) {
@@ -266,24 +268,25 @@ public class TransMapperImpl implements TransMapper {
         return refinery;
     }
 
-    protected Document documentToDocument1(org.example.entities.Document document) {
-        if ( document == null ) {
+    protected Document documentEntityToDocument(DocumentEntity documentEntity) {
+        if ( documentEntity == null ) {
             return null;
         }
 
-        Document document1 = new Document();
+        Document document = new Document();
 
-        document1.setId( document.getId() );
-        document1.setUrl( document.getUrl() );
-        document1.setType( document.getType() );
-        document1.setResourceId( document.getResourceId() );
-        byte[] content = document.getContent();
+        document.setId( documentEntity.getId() );
+        document.setUrl( documentEntity.getUrl() );
+        document.setType( documentEntity.getType() );
+        document.setResourceId( documentEntity.getResourceId() );
+        byte[] content = documentEntity.getContent();
         if ( content != null ) {
-            document1.setContent( Arrays.copyOf( content, content.length ) );
+            document.setContent( Arrays.copyOf( content, content.length ) );
         }
-        document1.setCreatedAt( document.getCreatedAt() );
+        document.setCreatedAt( documentEntity.getCreatedAt() );
+        document.setUpdatedAt( documentEntity.getUpdatedAt() );
 
-        return document1;
+        return document;
     }
 
     protected org.example.model.TransportationType transportationTypeToTransportationType1(TransportationType transportationType) {

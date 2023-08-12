@@ -14,5 +14,6 @@ public class MaterialEntity {
     private Long id;
     private String name;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
 }

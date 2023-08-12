@@ -4,6 +4,7 @@ import org.example.contract.constant.DomainConstant;
 import org.example.contract.request.CreateGroupRequest;
 import org.example.exceptions.DomainValidationException;
 import org.example.exceptions.ValidationErrorDetails;
+import org.example.validators.update.ExceptionThrower;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -19,8 +20,6 @@ public class CreateGroupValidator {
             errorDetails.add(new ValidationErrorDetails(NAME_FIELD, NULL_ERROR_MSG));
         }
 
-        if(!errorDetails.isEmpty()){
-            throw new DomainValidationException(errorDetails);
-        }
+        ExceptionThrower.throwIfNotEmpty(errorDetails);
     }
 }

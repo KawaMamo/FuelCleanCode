@@ -2,6 +2,7 @@ package org.example.mappers;
 
 import java.util.Arrays;
 import javax.annotation.processing.Generated;
+import org.example.entities.DocumentEntity;
 import org.example.entities.GasStationEntity;
 import org.example.entities.GroupEntity;
 import org.example.entities.MaterialEntity;
@@ -32,7 +33,7 @@ import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-06T21:32:02+0300",
+    date = "2023-08-12T16:24:14+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class PartitionMapperImpl implements PartitionMapper {
@@ -53,7 +54,7 @@ public class PartitionMapperImpl implements PartitionMapper {
         partition1.setGasStation( gasStationEntityToGasStation( partition.getGasStation() ) );
         partition1.setNotes( partition.getNotes() );
         partition1.setExtraNotes( partition.getExtraNotes() );
-        partition1.setDocument( documentToDocument( partition.getDocument() ) );
+        partition1.setDocument( documentEntityToDocument( partition.getDocument() ) );
         partition1.setTransportation( transportationEntityToTransportation( partition.getTransportation() ) );
         partition1.setCreatedAt( partition.getCreatedAt() );
 
@@ -77,7 +78,7 @@ public class PartitionMapperImpl implements PartitionMapper {
         partitionEntity.setGasStation( gasStationToGasStationEntity( partition.getGasStation() ) );
         partitionEntity.setNotes( partition.getNotes() );
         partitionEntity.setExtraNotes( partition.getExtraNotes() );
-        partitionEntity.setDocument( documentToDocument1( partition.getDocument() ) );
+        partitionEntity.setDocument( documentToDocumentEntity( partition.getDocument() ) );
         partitionEntity.setCreatedAt( partition.getCreatedAt() );
         partitionEntity.setTransportation( transportationToTransportationEntity( partition.getTransportation() ) );
 
@@ -168,6 +169,7 @@ public class PartitionMapperImpl implements PartitionMapper {
         group.setId( groupEntity.getId() );
         group.setName( groupEntity.getName() );
         group.setCreatedAt( groupEntity.getCreatedAt() );
+        group.setUpdatedAt( groupEntity.getUpdatedAt() );
 
         return group;
     }
@@ -188,28 +190,30 @@ public class PartitionMapperImpl implements PartitionMapper {
         gasStation.setOwner( personEntityToPerson( gasStationEntity.getOwner() ) );
         gasStation.setGroup( groupEntityToGroup( gasStationEntity.getGroup() ) );
         gasStation.setCreatedAt( gasStationEntity.getCreatedAt() );
+        gasStation.setUpdatedAt( gasStationEntity.getUpdatedAt() );
 
         return gasStation;
     }
 
-    protected Document documentToDocument(org.example.entities.Document document) {
-        if ( document == null ) {
+    protected Document documentEntityToDocument(DocumentEntity documentEntity) {
+        if ( documentEntity == null ) {
             return null;
         }
 
-        Document document1 = new Document();
+        Document document = new Document();
 
-        document1.setId( document.getId() );
-        document1.setUrl( document.getUrl() );
-        document1.setType( document.getType() );
-        document1.setResourceId( document.getResourceId() );
-        byte[] content = document.getContent();
+        document.setId( documentEntity.getId() );
+        document.setUrl( documentEntity.getUrl() );
+        document.setType( documentEntity.getType() );
+        document.setResourceId( documentEntity.getResourceId() );
+        byte[] content = documentEntity.getContent();
         if ( content != null ) {
-            document1.setContent( Arrays.copyOf( content, content.length ) );
+            document.setContent( Arrays.copyOf( content, content.length ) );
         }
-        document1.setCreatedAt( document.getCreatedAt() );
+        document.setCreatedAt( documentEntity.getCreatedAt() );
+        document.setUpdatedAt( documentEntity.getUpdatedAt() );
 
-        return document1;
+        return document;
     }
 
     protected TrafficCenter trafficCenterEntityToTrafficCenter(TrafficCenterEntity trafficCenterEntity) {
@@ -306,7 +310,7 @@ public class PartitionMapperImpl implements PartitionMapper {
         transportation.setSize( transportationEntity.getSize() );
         transportation.setCreatedAt( transportationEntity.getCreatedAt() );
         transportation.setType( transportationTypeToTransportationType( transportationEntity.getType() ) );
-        transportation.setDocument( documentToDocument( transportationEntity.getDocument() ) );
+        transportation.setDocument( documentEntityToDocument( transportationEntity.getDocument() ) );
         transportation.setDeletedAt( transportationEntity.getDeletedAt() );
 
         return transportation;
@@ -413,6 +417,7 @@ public class PartitionMapperImpl implements PartitionMapper {
         groupEntity.setId( group.getId() );
         groupEntity.setName( group.getName() );
         groupEntity.setCreatedAt( group.getCreatedAt() );
+        groupEntity.setUpdatedAt( group.getUpdatedAt() );
 
         return groupEntity;
     }
@@ -427,6 +432,7 @@ public class PartitionMapperImpl implements PartitionMapper {
         gasStationEntity.setId( gasStation.getId() );
         gasStationEntity.setPlaceType( gasStation.getPlaceType() );
         gasStationEntity.setCreatedAt( gasStation.getCreatedAt() );
+        gasStationEntity.setUpdatedAt( gasStation.getUpdatedAt() );
         gasStationEntity.setName( gasStation.getName() );
         gasStationEntity.setPriceCategory( priceCategoryToPriceCategoryEntity( gasStation.getPriceCategory() ) );
         gasStationEntity.setDebtLimit( gasStation.getDebtLimit() );
@@ -437,24 +443,25 @@ public class PartitionMapperImpl implements PartitionMapper {
         return gasStationEntity;
     }
 
-    protected org.example.entities.Document documentToDocument1(Document document) {
+    protected DocumentEntity documentToDocumentEntity(Document document) {
         if ( document == null ) {
             return null;
         }
 
-        org.example.entities.Document document1 = new org.example.entities.Document();
+        DocumentEntity documentEntity = new DocumentEntity();
 
-        document1.setId( document.getId() );
-        document1.setUrl( document.getUrl() );
-        document1.setType( document.getType() );
-        document1.setResourceId( document.getResourceId() );
+        documentEntity.setId( document.getId() );
+        documentEntity.setUrl( document.getUrl() );
+        documentEntity.setType( document.getType() );
+        documentEntity.setResourceId( document.getResourceId() );
         byte[] content = document.getContent();
         if ( content != null ) {
-            document1.setContent( Arrays.copyOf( content, content.length ) );
+            documentEntity.setContent( Arrays.copyOf( content, content.length ) );
         }
-        document1.setCreatedAt( document.getCreatedAt() );
+        documentEntity.setCreatedAt( document.getCreatedAt() );
+        documentEntity.setUpdatedAt( document.getUpdatedAt() );
 
-        return document1;
+        return documentEntity;
     }
 
     protected TrafficCenterEntity trafficCenterToTrafficCenterEntity(TrafficCenter trafficCenter) {
@@ -551,7 +558,7 @@ public class PartitionMapperImpl implements PartitionMapper {
         transportationEntity.setSize( transportation.getSize() );
         transportationEntity.setCreatedAt( transportation.getCreatedAt() );
         transportationEntity.setType( transportationTypeToTransportationType1( transportation.getType() ) );
-        transportationEntity.setDocument( documentToDocument1( transportation.getDocument() ) );
+        transportationEntity.setDocument( documentToDocumentEntity( transportation.getDocument() ) );
         transportationEntity.setDeletedAt( transportation.getDeletedAt() );
 
         return transportationEntity;

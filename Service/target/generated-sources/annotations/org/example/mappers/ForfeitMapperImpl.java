@@ -2,6 +2,7 @@ package org.example.mappers;
 
 import java.util.Arrays;
 import javax.annotation.processing.Generated;
+import org.example.entities.DocumentEntity;
 import org.example.entities.ForfeitEntity;
 import org.example.entities.GasStationEntity;
 import org.example.entities.GroupEntity;
@@ -21,6 +22,7 @@ import org.example.model.Forfeit;
 import org.example.model.GasStation;
 import org.example.model.Group;
 import org.example.model.Material;
+import org.example.model.Money;
 import org.example.model.Office;
 import org.example.model.Partition;
 import org.example.model.Person;
@@ -33,7 +35,7 @@ import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-06T21:32:02+0300",
+    date = "2023-08-12T16:24:15+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class ForfeitMapperImpl implements ForfeitMapper {
@@ -46,11 +48,13 @@ public class ForfeitMapperImpl implements ForfeitMapper {
 
         Forfeit forfeit1 = new Forfeit();
 
+        forfeit1.setPrice( forfeitEntityToMoney( forfeit ) );
         forfeit1.setId( forfeit.getId() );
         forfeit1.setVehicles( vehicleEntityToVehicle( forfeit.getVehicles() ) );
         forfeit1.setPartition( partitionEntityToPartition( forfeit.getPartition() ) );
         forfeit1.setReason( forfeit.getReason() );
         forfeit1.setCreatedAt( forfeit.getCreatedAt() );
+        forfeit1.setUpdatedAt( forfeit.getUpdatedAt() );
 
         return forfeit1;
     }
@@ -63,13 +67,29 @@ public class ForfeitMapperImpl implements ForfeitMapper {
 
         ForfeitEntity forfeitEntity = new ForfeitEntity();
 
+        forfeitEntity.setPriceAmount( forfeitPriceAmount( forfeit ) );
+        forfeitEntity.setPriceCurrency( forfeitPriceCurrency( forfeit ) );
         forfeitEntity.setId( forfeit.getId() );
         forfeitEntity.setVehicles( vehicleToVehicleEntity( forfeit.getVehicles() ) );
         forfeitEntity.setPartition( partitionToPartitionEntity( forfeit.getPartition() ) );
         forfeitEntity.setReason( forfeit.getReason() );
         forfeitEntity.setCreatedAt( forfeit.getCreatedAt() );
+        forfeitEntity.setUpdatedAt( forfeit.getUpdatedAt() );
 
         return forfeitEntity;
+    }
+
+    protected Money forfeitEntityToMoney(ForfeitEntity forfeitEntity) {
+        if ( forfeitEntity == null ) {
+            return null;
+        }
+
+        Money money = new Money();
+
+        money.setAmount( forfeitEntity.getPriceAmount() );
+        money.setCurrency( forfeitEntity.getPriceCurrency() );
+
+        return money;
     }
 
     protected TrafficCenter trafficCenterEntityToTrafficCenter(TrafficCenterEntity trafficCenterEntity) {
@@ -189,6 +209,7 @@ public class ForfeitMapperImpl implements ForfeitMapper {
         group.setId( groupEntity.getId() );
         group.setName( groupEntity.getName() );
         group.setCreatedAt( groupEntity.getCreatedAt() );
+        group.setUpdatedAt( groupEntity.getUpdatedAt() );
 
         return group;
     }
@@ -209,28 +230,30 @@ public class ForfeitMapperImpl implements ForfeitMapper {
         gasStation.setOwner( personEntityToPerson( gasStationEntity.getOwner() ) );
         gasStation.setGroup( groupEntityToGroup( gasStationEntity.getGroup() ) );
         gasStation.setCreatedAt( gasStationEntity.getCreatedAt() );
+        gasStation.setUpdatedAt( gasStationEntity.getUpdatedAt() );
 
         return gasStation;
     }
 
-    protected Document documentToDocument(org.example.entities.Document document) {
-        if ( document == null ) {
+    protected Document documentEntityToDocument(DocumentEntity documentEntity) {
+        if ( documentEntity == null ) {
             return null;
         }
 
-        Document document1 = new Document();
+        Document document = new Document();
 
-        document1.setId( document.getId() );
-        document1.setUrl( document.getUrl() );
-        document1.setType( document.getType() );
-        document1.setResourceId( document.getResourceId() );
-        byte[] content = document.getContent();
+        document.setId( documentEntity.getId() );
+        document.setUrl( documentEntity.getUrl() );
+        document.setType( documentEntity.getType() );
+        document.setResourceId( documentEntity.getResourceId() );
+        byte[] content = documentEntity.getContent();
         if ( content != null ) {
-            document1.setContent( Arrays.copyOf( content, content.length ) );
+            document.setContent( Arrays.copyOf( content, content.length ) );
         }
-        document1.setCreatedAt( document.getCreatedAt() );
+        document.setCreatedAt( documentEntity.getCreatedAt() );
+        document.setUpdatedAt( documentEntity.getUpdatedAt() );
 
-        return document1;
+        return document;
     }
 
     protected Refinery refineryEntityToRefinery(RefineryEntity refineryEntity) {
@@ -281,7 +304,7 @@ public class ForfeitMapperImpl implements ForfeitMapper {
         transportation.setSize( transportationEntity.getSize() );
         transportation.setCreatedAt( transportationEntity.getCreatedAt() );
         transportation.setType( transportationTypeToTransportationType( transportationEntity.getType() ) );
-        transportation.setDocument( documentToDocument( transportationEntity.getDocument() ) );
+        transportation.setDocument( documentEntityToDocument( transportationEntity.getDocument() ) );
         transportation.setDeletedAt( transportationEntity.getDeletedAt() );
 
         return transportation;
@@ -301,11 +324,41 @@ public class ForfeitMapperImpl implements ForfeitMapper {
         partition.setGasStation( gasStationEntityToGasStation( partitionEntity.getGasStation() ) );
         partition.setNotes( partitionEntity.getNotes() );
         partition.setExtraNotes( partitionEntity.getExtraNotes() );
-        partition.setDocument( documentToDocument( partitionEntity.getDocument() ) );
+        partition.setDocument( documentEntityToDocument( partitionEntity.getDocument() ) );
         partition.setTransportation( transportationEntityToTransportation( partitionEntity.getTransportation() ) );
         partition.setCreatedAt( partitionEntity.getCreatedAt() );
 
         return partition;
+    }
+
+    private Double forfeitPriceAmount(Forfeit forfeit) {
+        if ( forfeit == null ) {
+            return null;
+        }
+        Money price = forfeit.getPrice();
+        if ( price == null ) {
+            return null;
+        }
+        Double amount = price.getAmount();
+        if ( amount == null ) {
+            return null;
+        }
+        return amount;
+    }
+
+    private String forfeitPriceCurrency(Forfeit forfeit) {
+        if ( forfeit == null ) {
+            return null;
+        }
+        Money price = forfeit.getPrice();
+        if ( price == null ) {
+            return null;
+        }
+        String currency = price.getCurrency();
+        if ( currency == null ) {
+            return null;
+        }
+        return currency;
     }
 
     protected TrafficCenterEntity trafficCenterToTrafficCenterEntity(TrafficCenter trafficCenter) {
@@ -425,6 +478,7 @@ public class ForfeitMapperImpl implements ForfeitMapper {
         groupEntity.setId( group.getId() );
         groupEntity.setName( group.getName() );
         groupEntity.setCreatedAt( group.getCreatedAt() );
+        groupEntity.setUpdatedAt( group.getUpdatedAt() );
 
         return groupEntity;
     }
@@ -439,6 +493,7 @@ public class ForfeitMapperImpl implements ForfeitMapper {
         gasStationEntity.setId( gasStation.getId() );
         gasStationEntity.setPlaceType( gasStation.getPlaceType() );
         gasStationEntity.setCreatedAt( gasStation.getCreatedAt() );
+        gasStationEntity.setUpdatedAt( gasStation.getUpdatedAt() );
         gasStationEntity.setName( gasStation.getName() );
         gasStationEntity.setPriceCategory( priceCategoryToPriceCategoryEntity( gasStation.getPriceCategory() ) );
         gasStationEntity.setDebtLimit( gasStation.getDebtLimit() );
@@ -449,24 +504,25 @@ public class ForfeitMapperImpl implements ForfeitMapper {
         return gasStationEntity;
     }
 
-    protected org.example.entities.Document documentToDocument1(Document document) {
+    protected DocumentEntity documentToDocumentEntity(Document document) {
         if ( document == null ) {
             return null;
         }
 
-        org.example.entities.Document document1 = new org.example.entities.Document();
+        DocumentEntity documentEntity = new DocumentEntity();
 
-        document1.setId( document.getId() );
-        document1.setUrl( document.getUrl() );
-        document1.setType( document.getType() );
-        document1.setResourceId( document.getResourceId() );
+        documentEntity.setId( document.getId() );
+        documentEntity.setUrl( document.getUrl() );
+        documentEntity.setType( document.getType() );
+        documentEntity.setResourceId( document.getResourceId() );
         byte[] content = document.getContent();
         if ( content != null ) {
-            document1.setContent( Arrays.copyOf( content, content.length ) );
+            documentEntity.setContent( Arrays.copyOf( content, content.length ) );
         }
-        document1.setCreatedAt( document.getCreatedAt() );
+        documentEntity.setCreatedAt( document.getCreatedAt() );
+        documentEntity.setUpdatedAt( document.getUpdatedAt() );
 
-        return document1;
+        return documentEntity;
     }
 
     protected RefineryEntity refineryToRefineryEntity(Refinery refinery) {
@@ -517,7 +573,7 @@ public class ForfeitMapperImpl implements ForfeitMapper {
         transportationEntity.setSize( transportation.getSize() );
         transportationEntity.setCreatedAt( transportation.getCreatedAt() );
         transportationEntity.setType( transportationTypeToTransportationType1( transportation.getType() ) );
-        transportationEntity.setDocument( documentToDocument1( transportation.getDocument() ) );
+        transportationEntity.setDocument( documentToDocumentEntity( transportation.getDocument() ) );
         transportationEntity.setDeletedAt( transportation.getDeletedAt() );
 
         return transportationEntity;
@@ -537,7 +593,7 @@ public class ForfeitMapperImpl implements ForfeitMapper {
         partitionEntity.setGasStation( gasStationToGasStationEntity( partition.getGasStation() ) );
         partitionEntity.setNotes( partition.getNotes() );
         partitionEntity.setExtraNotes( partition.getExtraNotes() );
-        partitionEntity.setDocument( documentToDocument1( partition.getDocument() ) );
+        partitionEntity.setDocument( documentToDocumentEntity( partition.getDocument() ) );
         partitionEntity.setCreatedAt( partition.getCreatedAt() );
         partitionEntity.setTransportation( transportationToTransportationEntity( partition.getTransportation() ) );
 

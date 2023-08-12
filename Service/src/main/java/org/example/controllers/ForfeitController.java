@@ -1,6 +1,7 @@
 package org.example.controllers;
 
 import org.example.contract.request.CreateForfeitRequest;
+import org.example.contract.request.update.UpdateForfeitRequest;
 import org.example.contract.response.ForfeitResponse;
 import org.example.entities.ForfeitEntity;
 import org.example.mappers.ForfeitMapper;
@@ -11,10 +12,12 @@ import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
 import org.example.specifications.SearchFilter;
 import org.example.useCases.CreateForfeit;
+import org.example.useCases.update.UpdateForfeit;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.PagedModel;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,15 +30,18 @@ public class ForfeitController {
     private final ForfeitRepository forfeitRepository;
     private final ForfeitMapper forfeitMapper;
     private final PagedResourcesAssembler pagedResourcesAssembler;
+    private final UpdateForfeit updateForfeit;
 
     public ForfeitController(CreateForfeit createForfeit,
                              ForfeitRepository forfeitRepository,
                              ForfeitMapper forfeitMapper,
-                             PagedResourcesAssembler pagedResourcesAssembler) {
+                             PagedResourcesAssembler pagedResourcesAssembler,
+                             UpdateForfeit updateForfeit) {
         this.createForfeit = createForfeit;
         this.forfeitRepository = forfeitRepository;
         this.forfeitMapper = forfeitMapper;
         this.pagedResourcesAssembler = pagedResourcesAssembler;
+        this.updateForfeit = updateForfeit;
     }
 
     @PostMapping
@@ -49,5 +55,10 @@ public class ForfeitController {
         final FilterSpecifications<ForfeitEntity> specifications = new FilterSpecifications<>(criteriaList);
         final Page<Forfeit> page = forfeitRepository.findAll(specifications, pageable).map(forfeitMapper::entityToDomain);
         return pagedResourcesAssembler.toModel(page);
+    }
+
+    @PatchMapping
+    public ResponseEntity<ForfeitResponse> updateForfeit(@RequestBody UpdateForfeitRequest request){
+        return ResponseEntity.ok(updateForfeit.execute(request));
     }
 }

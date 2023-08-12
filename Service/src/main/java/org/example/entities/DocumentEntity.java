@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Data
-public class Document {
+public class DocumentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -17,4 +17,5 @@ public class Document {
     private Long resourceId;
     private byte[] content;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }

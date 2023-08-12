@@ -27,7 +27,7 @@ public class TransportationEntity {
     @Enumerated
     private TransportationType type;
     @OneToOne
-    private Document document;
+    private DocumentEntity document;
     private LocalDateTime deletedAt;
 
 }

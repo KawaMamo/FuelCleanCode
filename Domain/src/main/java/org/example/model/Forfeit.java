@@ -11,4 +11,5 @@ public class Forfeit {
     private Money price;
     private String reason;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }

@@ -3,6 +3,7 @@ package org.example.mappers;
 import java.util.Arrays;
 import javax.annotation.processing.Generated;
 import org.example.entities.BuyOperation;
+import org.example.entities.DocumentEntity;
 import org.example.entities.OfficeEntity;
 import org.example.entities.PersonEntity;
 import org.example.entities.RefineryEntity;
@@ -18,7 +19,7 @@ import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-06T21:32:02+0300",
+    date = "2023-08-12T16:24:15+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class VehicleMapperImpl implements VehicleMapper {
@@ -78,7 +79,7 @@ public class VehicleMapperImpl implements VehicleMapper {
         buyOperation1.setSize( buyOperation.getSize() );
         buyOperation1.setCreatedAt( buyOperation.getCreatedAt() );
         buyOperation1.setType( transportationTypeToTransportationType( buyOperation.getType() ) );
-        buyOperation1.setDocument( documentToDocument( buyOperation.getDocument() ) );
+        buyOperation1.setDocument( documentToDocumentEntity( buyOperation.getDocument() ) );
         buyOperation1.setDeletedAt( buyOperation.getDeletedAt() );
         buyOperation1.setSource( buyOperation.getSource() );
 
@@ -167,24 +168,25 @@ public class VehicleMapperImpl implements VehicleMapper {
         return transportationType1;
     }
 
-    protected org.example.entities.Document documentToDocument(Document document) {
+    protected DocumentEntity documentToDocumentEntity(Document document) {
         if ( document == null ) {
             return null;
         }
 
-        org.example.entities.Document document1 = new org.example.entities.Document();
+        DocumentEntity documentEntity = new DocumentEntity();
 
-        document1.setId( document.getId() );
-        document1.setUrl( document.getUrl() );
-        document1.setType( document.getType() );
-        document1.setResourceId( document.getResourceId() );
+        documentEntity.setId( document.getId() );
+        documentEntity.setUrl( document.getUrl() );
+        documentEntity.setType( document.getType() );
+        documentEntity.setResourceId( document.getResourceId() );
         byte[] content = document.getContent();
         if ( content != null ) {
-            document1.setContent( Arrays.copyOf( content, content.length ) );
+            documentEntity.setContent( Arrays.copyOf( content, content.length ) );
         }
-        document1.setCreatedAt( document.getCreatedAt() );
+        documentEntity.setCreatedAt( document.getCreatedAt() );
+        documentEntity.setUpdatedAt( document.getUpdatedAt() );
 
-        return document1;
+        return documentEntity;
     }
 
     protected TrafficCenter trafficCenterEntityToTrafficCenter(TrafficCenterEntity trafficCenterEntity) {

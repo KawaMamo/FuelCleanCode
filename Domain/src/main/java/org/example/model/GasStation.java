@@ -16,4 +16,5 @@ public class GasStation extends Place{
     private Person owner;
     private Group group;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }

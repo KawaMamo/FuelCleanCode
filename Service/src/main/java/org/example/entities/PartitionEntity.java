@@ -24,7 +24,7 @@ public class PartitionEntity {
     private String notes;
     private String extraNotes;
     @OneToOne
-    private Document document;
+    private DocumentEntity document;
     private LocalDateTime createdAt;
     @OneToOne
     private TransportationEntity transportation;

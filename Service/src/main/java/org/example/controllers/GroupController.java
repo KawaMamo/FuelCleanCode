@@ -1,6 +1,7 @@
 package org.example.controllers;
 
 import org.example.contract.request.CreateGroupRequest;
+import org.example.contract.request.update.UpdateGroupRequest;
 import org.example.contract.response.GroupResponse;
 import org.example.entities.GroupEntity;
 import org.example.mappers.GroupMapper;
@@ -11,10 +12,12 @@ import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
 import org.example.specifications.SearchFilter;
 import org.example.useCases.CreateGroup;
+import org.example.useCases.update.UpdateGroup;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.PagedModel;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,15 +29,18 @@ public class GroupController {
     private final GroupRepository groupRepository;
     private final GroupMapper groupMapper;
     private final PagedResourcesAssembler pagedResourcesAssembler;
+    private final UpdateGroup updateGroup;
 
     public GroupController(CreateGroup createGroup,
                            GroupRepository groupRepository,
                            GroupMapper groupMapper,
-                           PagedResourcesAssembler pagedResourcesAssembler) {
+                           PagedResourcesAssembler pagedResourcesAssembler,
+                           UpdateGroup updateGroup) {
         this.createGroup = createGroup;
         this.groupRepository = groupRepository;
         this.groupMapper = groupMapper;
         this.pagedResourcesAssembler = pagedResourcesAssembler;
+        this.updateGroup = updateGroup;
     }
 
     @PostMapping
@@ -48,5 +54,10 @@ public class GroupController {
         final FilterSpecifications<GroupEntity> specifications = new FilterSpecifications<>(criteriaList);
         final Page<Group> page = groupRepository.findAll(specifications, pageable).map(groupMapper::entityToDomain);
         return pagedResourcesAssembler.toModel(page);
+    }
+
+    @PatchMapping
+    public ResponseEntity<GroupResponse> updateGroup(@RequestBody UpdateGroupRequest request){
+        return ResponseEntity.ok(updateGroup.execute(request));
     }
 }

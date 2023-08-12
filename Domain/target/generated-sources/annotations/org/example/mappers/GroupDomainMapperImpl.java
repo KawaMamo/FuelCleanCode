@@ -2,12 +2,13 @@ package org.example.mappers;
 
 import javax.annotation.processing.Generated;
 import org.example.contract.request.CreateGroupRequest;
+import org.example.contract.request.update.UpdateGroupRequest;
 import org.example.contract.response.GroupResponse;
 import org.example.model.Group;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-06T21:31:56+0300",
+    date = "2023-08-12T16:24:08+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class GroupDomainMapperImpl implements GroupDomainMapper {
@@ -36,7 +37,22 @@ public class GroupDomainMapperImpl implements GroupDomainMapper {
         groupResponse.setId( group.getId() );
         groupResponse.setName( group.getName() );
         groupResponse.setCreatedAt( group.getCreatedAt() );
+        groupResponse.setUpdatedAt( group.getUpdatedAt() );
 
         return groupResponse;
+    }
+
+    @Override
+    public Group requestToDomain(UpdateGroupRequest request) {
+        if ( request == null ) {
+            return null;
+        }
+
+        Group group = new Group();
+
+        group.setId( request.getId() );
+        group.setName( request.getName() );
+
+        return group;
     }
 }

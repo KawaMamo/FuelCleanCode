@@ -6,7 +6,7 @@ import org.example.model.Group;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-06T21:32:02+0300",
+    date = "2023-08-12T16:24:14+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class GroupMapperImpl implements GroupMapper {
@@ -22,6 +22,7 @@ public class GroupMapperImpl implements GroupMapper {
         groupEntity.setId( group.getId() );
         groupEntity.setName( group.getName() );
         groupEntity.setCreatedAt( group.getCreatedAt() );
+        groupEntity.setUpdatedAt( group.getUpdatedAt() );
 
         return groupEntity;
     }
@@ -37,6 +38,7 @@ public class GroupMapperImpl implements GroupMapper {
         group1.setId( group.getId() );
         group1.setName( group.getName() );
         group1.setCreatedAt( group.getCreatedAt() );
+        group1.setUpdatedAt( group.getUpdatedAt() );
 
         return group1;
     }

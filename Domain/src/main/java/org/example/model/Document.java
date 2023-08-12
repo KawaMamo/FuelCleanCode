@@ -12,4 +12,5 @@ public class Document {
     private Long resourceId;
     private byte[] content;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }

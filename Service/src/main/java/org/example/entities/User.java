@@ -15,7 +15,7 @@ public class User {
     private PersonEntity person;
     private AccountType accountType;
     @OneToOne
-    private Document digitalSignature;
+    private DocumentEntity digitalSignature;
     private String branch;
     private Boolean isActivated;
     private byte[] fingerprint;

@@ -11,6 +11,7 @@ import org.example.model.Partition;
 import org.example.validators.CreatePartitionValidator;
 
 import java.time.LocalDateTime;
+import java.util.NoSuchElementException;
 
 public class CreatePartition {
     private final CreatePartitionValidator validator;
@@ -39,7 +40,7 @@ public class CreatePartition {
         partition.setCreatedAt(LocalDateTime.now());
         final Partition save = partitionRepo.save(partition);
         transRepo.findById(save.getTransportation().getId()).ifPresent(save::setTransportation);
-        gasStationRepo.findById(save.getGasStation().getId()).ifPresent(save::setGasStation);
+        gasStationRepo.findById(save.getGasStation().getId()).ifPresentOrElse(save::setGasStation, NoSuchElementException::new);
         materialRepo.findById(save.getMaterial().getId()).ifPresent(save::setMaterial);
         return mapper.domainToResponse(save);
     }

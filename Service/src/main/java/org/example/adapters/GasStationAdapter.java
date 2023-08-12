@@ -3,11 +3,13 @@ package org.example.adapters;
 import org.example.contract.repository.GasStationRepo;
 import org.example.entities.GasStationEntity;
 import org.example.entities.PlaceEntity;
+import org.example.exceptions.DomainValidationException;
 import org.example.mappers.GasStationMapper;
 import org.example.model.GasStation;
 import org.example.repositories.GasStationRepository;
 
 import java.time.LocalDateTime;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 public class GasStationAdapter implements GasStationRepo {
@@ -32,7 +34,14 @@ public class GasStationAdapter implements GasStationRepo {
     @Override
     public Optional<GasStation> findById(Long id) {
         final Optional<PlaceEntity> byId = gasStationRepository.findById(id);
-        final GasStationEntity gasStationEntity = (GasStationEntity) byId.orElse(null);
+        final PlaceEntity place = byId.orElseThrow(NoSuchElementException::new);
+        GasStationEntity gasStationEntity;
+        if(place instanceof GasStationEntity){
+            gasStationEntity = (GasStationEntity) place;
+        }else {
+            throw new NoSuchElementException("No such Gas Station");
+        }
+
         final GasStation gasStation = mapper.entityToDomain(gasStationEntity);
         return Optional.ofNullable(gasStation);
     }

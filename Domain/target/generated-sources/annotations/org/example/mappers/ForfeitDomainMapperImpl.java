@@ -2,6 +2,7 @@ package org.example.mappers;
 
 import javax.annotation.processing.Generated;
 import org.example.contract.request.CreateForfeitRequest;
+import org.example.contract.request.update.UpdateForfeitRequest;
 import org.example.contract.response.ForfeitResponse;
 import org.example.model.Forfeit;
 import org.example.model.Partition;
@@ -9,7 +10,7 @@ import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-06T21:31:57+0300",
+    date = "2023-08-12T16:24:08+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class ForfeitDomainMapperImpl implements ForfeitDomainMapper {
@@ -44,8 +45,26 @@ public class ForfeitDomainMapperImpl implements ForfeitDomainMapper {
         forfeitResponse.setPrice( forfeit.getPrice() );
         forfeitResponse.setReason( forfeit.getReason() );
         forfeitResponse.setCreatedAt( forfeit.getCreatedAt() );
+        forfeitResponse.setUpdatedAt( forfeit.getUpdatedAt() );
 
         return forfeitResponse;
+    }
+
+    @Override
+    public Forfeit requestToDomain(UpdateForfeitRequest request) {
+        if ( request == null ) {
+            return null;
+        }
+
+        Forfeit forfeit = new Forfeit();
+
+        forfeit.setVehicles( updateForfeitRequestToVehicle( request ) );
+        forfeit.setPartition( updateForfeitRequestToPartition( request ) );
+        forfeit.setId( request.getId() );
+        forfeit.setPrice( request.getPrice() );
+        forfeit.setReason( request.getReason() );
+
+        return forfeit;
     }
 
     protected Vehicle createForfeitRequestToVehicle(CreateForfeitRequest createForfeitRequest) {
@@ -68,6 +87,30 @@ public class ForfeitDomainMapperImpl implements ForfeitDomainMapper {
         Partition partition = new Partition();
 
         partition.setId( createForfeitRequest.getPartitionId() );
+
+        return partition;
+    }
+
+    protected Vehicle updateForfeitRequestToVehicle(UpdateForfeitRequest updateForfeitRequest) {
+        if ( updateForfeitRequest == null ) {
+            return null;
+        }
+
+        Vehicle vehicle = new Vehicle();
+
+        vehicle.setId( updateForfeitRequest.getVehiclesId() );
+
+        return vehicle;
+    }
+
+    protected Partition updateForfeitRequestToPartition(UpdateForfeitRequest updateForfeitRequest) {
+        if ( updateForfeitRequest == null ) {
+            return null;
+        }
+
+        Partition partition = new Partition();
+
+        partition.setId( updateForfeitRequest.getPartitionId() );
 
         return partition;
     }

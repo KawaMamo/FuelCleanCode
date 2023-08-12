@@ -17,5 +17,6 @@ public abstract class PlaceEntity {
     private Long id;
     private String placeType;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
     private String name;
 }

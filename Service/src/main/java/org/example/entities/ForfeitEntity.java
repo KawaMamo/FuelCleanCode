@@ -22,4 +22,5 @@ public class ForfeitEntity {
     private Double priceAmount;
     private String reason;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }

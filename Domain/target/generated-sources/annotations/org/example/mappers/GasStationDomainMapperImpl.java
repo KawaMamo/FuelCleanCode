@@ -2,6 +2,7 @@ package org.example.mappers;
 
 import javax.annotation.processing.Generated;
 import org.example.contract.request.CreateGasStationRequest;
+import org.example.contract.request.update.UpdateGasStationRequest;
 import org.example.contract.response.GasStationResponse;
 import org.example.model.GasStation;
 import org.example.model.Group;
@@ -11,7 +12,7 @@ import org.example.model.Region;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-06T21:31:56+0300",
+    date = "2023-08-12T16:24:07+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class GasStationDomainMapperImpl implements GasStationDomainMapper {
@@ -51,8 +52,28 @@ public class GasStationDomainMapperImpl implements GasStationDomainMapper {
         gasStationResponse.setOwner( gasStation.getOwner() );
         gasStationResponse.setGroup( gasStation.getGroup() );
         gasStationResponse.setCreatedAt( gasStation.getCreatedAt() );
+        gasStationResponse.setUpdatedAt( gasStation.getUpdatedAt() );
 
         return gasStationResponse;
+    }
+
+    @Override
+    public GasStation requestToDomain(UpdateGasStationRequest request) {
+        if ( request == null ) {
+            return null;
+        }
+
+        GasStation gasStation = new GasStation();
+
+        gasStation.setPriceCategory( updateGasStationRequestToPriceCategory( request ) );
+        gasStation.setRegion( updateGasStationRequestToRegion( request ) );
+        gasStation.setOwner( updateGasStationRequestToPerson( request ) );
+        gasStation.setGroup( updateGasStationRequestToGroup( request ) );
+        gasStation.setId( request.getId() );
+        gasStation.setName( request.getName() );
+        gasStation.setDebtLimit( request.getDebtLimit() );
+
+        return gasStation;
     }
 
     protected PriceCategory createGasStationRequestToPriceCategory(CreateGasStationRequest createGasStationRequest) {
@@ -99,6 +120,54 @@ public class GasStationDomainMapperImpl implements GasStationDomainMapper {
         Group group = new Group();
 
         group.setId( createGasStationRequest.getGroupId() );
+
+        return group;
+    }
+
+    protected PriceCategory updateGasStationRequestToPriceCategory(UpdateGasStationRequest updateGasStationRequest) {
+        if ( updateGasStationRequest == null ) {
+            return null;
+        }
+
+        PriceCategory priceCategory = new PriceCategory();
+
+        priceCategory.setId( updateGasStationRequest.getPriceCategoryId() );
+
+        return priceCategory;
+    }
+
+    protected Region updateGasStationRequestToRegion(UpdateGasStationRequest updateGasStationRequest) {
+        if ( updateGasStationRequest == null ) {
+            return null;
+        }
+
+        Region region = new Region();
+
+        region.setId( updateGasStationRequest.getRegionId() );
+
+        return region;
+    }
+
+    protected Person updateGasStationRequestToPerson(UpdateGasStationRequest updateGasStationRequest) {
+        if ( updateGasStationRequest == null ) {
+            return null;
+        }
+
+        Person person = new Person();
+
+        person.setId( updateGasStationRequest.getOwnerId() );
+
+        return person;
+    }
+
+    protected Group updateGasStationRequestToGroup(UpdateGasStationRequest updateGasStationRequest) {
+        if ( updateGasStationRequest == null ) {
+            return null;
+        }
+
+        Group group = new Group();
+
+        group.setId( updateGasStationRequest.getGroupId() );
 
         return group;
     }
