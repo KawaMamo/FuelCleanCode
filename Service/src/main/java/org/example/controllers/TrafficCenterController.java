@@ -1,6 +1,6 @@
 package org.example.controllers;
 
-import org.example.contract.request.CreateTrafficCenterRequest;
+import org.example.contract.request.create.CreateTrafficCenterRequest;
 import org.example.contract.response.TrafficCenterResponse;
 import org.example.entities.TrafficCenterEntity;
 import org.example.mappers.TrafficCenterMapper;
@@ -10,7 +10,7 @@ import org.example.specifications.CriteriaArrayToList;
 import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
 import org.example.specifications.SearchFilter;
-import org.example.useCases.CreateTrafficCenter;
+import org.example.useCases.create.CreateTrafficCenter;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;

@@ -1,6 +1,6 @@
 package org.example.controllers;
 
-import org.example.contract.request.CreateVehicleRequest;
+import org.example.contract.request.create.CreateVehicleRequest;
 import org.example.contract.response.VehicleResponse;
 import org.example.entities.VehicleEntity;
 import org.example.mappers.VehicleMapper;
@@ -10,7 +10,7 @@ import org.example.specifications.CriteriaArrayToList;
 import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
 import org.example.specifications.SearchFilter;
-import org.example.useCases.CreateVehicle;
+import org.example.useCases.create.CreateVehicle;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;

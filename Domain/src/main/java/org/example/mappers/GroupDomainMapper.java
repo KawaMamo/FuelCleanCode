@@ -1,6 +1,6 @@
 package org.example.mappers;
 
-import org.example.contract.request.CreateGroupRequest;
+import org.example.contract.request.create.CreateGroupRequest;
 import org.example.contract.request.update.UpdateGroupRequest;
 import org.example.contract.response.GroupResponse;
 import org.example.model.Group;

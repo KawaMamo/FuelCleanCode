@@ -1,6 +1,6 @@
 package org.example.controllers;
 
-import org.example.contract.request.CreateForfeitRequest;
+import org.example.contract.request.create.CreateForfeitRequest;
 import org.example.contract.request.update.UpdateForfeitRequest;
 import org.example.contract.response.ForfeitResponse;
 import org.example.entities.ForfeitEntity;
@@ -11,7 +11,7 @@ import org.example.specifications.CriteriaArrayToList;
 import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
 import org.example.specifications.SearchFilter;
-import org.example.useCases.CreateForfeit;
+import org.example.useCases.create.CreateForfeit;
 import org.example.useCases.update.UpdateForfeit;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

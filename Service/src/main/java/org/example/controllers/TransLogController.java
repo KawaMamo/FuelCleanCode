@@ -1,6 +1,6 @@
 package org.example.controllers;
 
-import org.example.contract.request.CreateTransLogRequest;
+import org.example.contract.request.create.CreateTransLogRequest;
 import org.example.contract.response.TransLogResponse;
 import org.example.entities.TransLogEntity;
 import org.example.mappers.TransLogMapper;
@@ -10,7 +10,7 @@ import org.example.specifications.CriteriaArrayToList;
 import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
 import org.example.specifications.SearchFilter;
-import org.example.useCases.CreateTransLog;
+import org.example.useCases.create.CreateTransLog;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;

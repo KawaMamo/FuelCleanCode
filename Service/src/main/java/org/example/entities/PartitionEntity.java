@@ -26,6 +26,7 @@ public class PartitionEntity {
     @OneToOne
     private DocumentEntity document;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
     @OneToOne
     private TransportationEntity transportation;
 

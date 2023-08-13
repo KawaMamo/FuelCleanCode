@@ -10,5 +10,4 @@ public class Refinery extends Place{
 
     private Long id;
     private String name;
-    private LocalDateTime createdAt;
 }

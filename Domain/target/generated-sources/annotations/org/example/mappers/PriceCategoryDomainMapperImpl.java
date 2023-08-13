@@ -1,14 +1,15 @@
 package org.example.mappers;
 
 import javax.annotation.processing.Generated;
-import org.example.contract.request.CreatePriceCategoryRequest;
+import org.example.contract.request.create.CreatePriceCategoryRequest;
+import org.example.contract.request.update.UpdatePriceCategoryRequest;
 import org.example.contract.response.PriceCategoryResponse;
 import org.example.model.PriceCategory;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-12T16:24:08+0300",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
+    date = "2023-08-13T21:26:07+0300",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class PriceCategoryDomainMapperImpl implements PriceCategoryDomainMapper {
 
@@ -36,7 +37,22 @@ public class PriceCategoryDomainMapperImpl implements PriceCategoryDomainMapper 
         priceCategoryResponse.setId( priceCategory.getId() );
         priceCategoryResponse.setName( priceCategory.getName() );
         priceCategoryResponse.setCreatedAt( priceCategory.getCreatedAt() );
+        priceCategoryResponse.setUpdatedAt( priceCategory.getUpdatedAt() );
 
         return priceCategoryResponse;
+    }
+
+    @Override
+    public PriceCategory requestToDomain(UpdatePriceCategoryRequest request) {
+        if ( request == null ) {
+            return null;
+        }
+
+        PriceCategory priceCategory = new PriceCategory();
+
+        priceCategory.setId( request.getId() );
+        priceCategory.setName( request.getName() );
+
+        return priceCategory;
     }
 }

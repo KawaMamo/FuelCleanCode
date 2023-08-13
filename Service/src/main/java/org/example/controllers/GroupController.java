@@ -1,6 +1,6 @@
 package org.example.controllers;
 
-import org.example.contract.request.CreateGroupRequest;
+import org.example.contract.request.create.CreateGroupRequest;
 import org.example.contract.request.update.UpdateGroupRequest;
 import org.example.contract.response.GroupResponse;
 import org.example.entities.GroupEntity;
@@ -11,7 +11,7 @@ import org.example.specifications.CriteriaArrayToList;
 import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
 import org.example.specifications.SearchFilter;
-import org.example.useCases.CreateGroup;
+import org.example.useCases.create.CreateGroup;
 import org.example.useCases.update.UpdateGroup;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

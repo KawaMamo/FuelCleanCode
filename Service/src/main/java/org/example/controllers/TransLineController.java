@@ -1,6 +1,6 @@
 package org.example.controllers;
 
-import org.example.contract.request.CreateTransLineRequest;
+import org.example.contract.request.create.CreateTransLineRequest;
 import org.example.contract.response.TransLineResponse;
 import org.example.entities.TransLineEntity;
 import org.example.mappers.TransLineMapper;
@@ -10,7 +10,7 @@ import org.example.specifications.CriteriaArrayToList;
 import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
 import org.example.specifications.SearchFilter;
-import org.example.useCases.CreateTransLine;
+import org.example.useCases.create.CreateTransLine;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;

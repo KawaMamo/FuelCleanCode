@@ -2,12 +2,11 @@ package org.example.beans;
 
 import org.example.adapters.*;
 import org.example.contract.repository.*;
-import org.example.contract.request.update.UpdateGasStationRequest;
 import org.example.mappers.*;
 import org.example.repositories.*;
-import org.example.useCases.*;
+import org.example.useCases.create.*;
 import org.example.useCases.update.*;
-import org.example.validators.*;
+import org.example.validators.create.*;
 import org.example.validators.update.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -51,10 +50,15 @@ public class Beans {
     }
 
     @Bean
-    public CreateRefinery createRefinery(RefineryRepository repository){
+    public CreateRefinery createRefinery(RefineryRepository repository, RefineryDomainMapper refineryDomainMapper){
         return new CreateRefinery(new CreateRefineryValidator(),
-                new RefineryDomainMapperImpl(),
+                refineryDomainMapper,
                 new RefineryAdapter(repository, new RefineryMapperImpl()));
+    }
+
+    @Bean
+    RefineryDomainMapper refineryDomainMapper(){
+        return new RefineryDomainMapperImpl();
     }
 
     @Bean
@@ -88,18 +92,19 @@ public class Beans {
 
     @Bean
     CreateCategory createCategory(CategoryRepository categoryRepository,
-                            PriceCategoryAdapter priceCategoryAdapter,
-                            MaterialRepo materialRepo,
-                            CategoryMapper categoryMapper){
+                                  PriceCategoryAdapter priceCategoryAdapter,
+                                  MaterialRepo materialRepo,
+                                  CategoryMapper categoryMapper){
         return new CreateCategory(new CreateCategoryValidator(priceCategoryAdapter),
                 new CategoryDomainMapperImpl(),
                 new CategoryAdapter(categoryRepository, categoryMapper), priceCategoryAdapter, materialRepo);
     }
 
     @Bean
-    CreatePriceCategory createPriceCategory(PriceCategoryRepository priceCategoryRepository, PriceCategoryAdapter priceCategoryAdapter){
+    CreatePriceCategory createPriceCategory(PriceCategoryRepository priceCategoryRepository,
+                                            PriceCategoryAdapter priceCategoryAdapter, PriceCategoryDomainMapper mapper){
         return new CreatePriceCategory(new CreatePriceCategoryValidator(),
-                new PriceCategoryDomainMapperImpl(),
+                mapper,
                 priceCategoryAdapter);
     }
 
@@ -119,10 +124,10 @@ public class Beans {
     }
 
     @Bean
-    CreateMaterial createMaterial(MaterialRepository repository, MaterialMapper materialMapper){
+    CreateMaterial createMaterial(MaterialRepository repository, MaterialMapper materialMapper, MaterialDomainMapper materialDomainMapper){
         return new CreateMaterial(new CreateMaterialValidator(),
                 new MaterialAdapter(repository, materialMapper),
-                new MaterialDomainMapperImpl());
+                materialDomainMapper);
     }
 
     @Bean
@@ -165,8 +170,13 @@ public class Beans {
     }
 
     @Bean
-    CreatePerson createPerson(PersonRepo personRepo){
-        return new CreatePerson(personRepo, new PersonDomainMapperImpl(), new CreatePersonValidator());
+    CreatePerson createPerson(PersonRepo personRepo, PersonDomainMapper personDomainMapper){
+        return new CreatePerson(personRepo, personDomainMapper, new CreatePersonValidator());
+    }
+
+    @Bean
+    PersonDomainMapper personDomainMapper(){
+        return new PersonDomainMapperImpl();
     }
 
     @Bean
@@ -484,4 +494,71 @@ public class Beans {
         return new GroupDomainMapperImpl();
     }
 
+    @Bean
+    UpdateMaterial updateMaterial(UpdateMaterialValidator updateMaterialValidator, MaterialDomainMapper mapper, MaterialRepo materialRepo){
+        return new UpdateMaterial(updateMaterialValidator, mapper, materialRepo);
+    }
+
+    @Bean
+    MaterialDomainMapper materialDomainMapper(){
+        return new MaterialDomainMapperImpl();
+    }
+
+    @Bean
+    UpdateMaterialValidator updateMaterialValidator(){
+        return new UpdateMaterialValidator();
+    }
+
+    @Bean
+    UpdateOffice updateOffice(UpdateOfficeValidator validator, OfficeDomainMapper mapper, OfficeRepo officeRepo){
+        return new UpdateOffice(validator, mapper, officeRepo);
+    }
+
+    @Bean
+    UpdateOfficeValidator updateOfficeValidator(){
+        return new UpdateOfficeValidator();
+    }
+
+    @Bean
+    UpdatePartition updatePartition(UpdatePartitionValidator validator, PartitionDomainMapper mapper, PartitionRepo partitionRepo){
+        return new UpdatePartition(validator, mapper, partitionRepo);
+    }
+
+    @Bean
+    UpdatePartitionValidator updatePartitionValidator(MaterialRepo materialRepo, GasStationRepo gasStationRepo, TransRepo transRepo){
+        return new UpdatePartitionValidator(materialRepo, gasStationRepo, transRepo);
+    }
+
+    @Bean
+    UpdatePerson updatePerson(UpdatePersonValidator validator, PersonDomainMapper mapper, PersonRepo personRepo){
+        return new UpdatePerson(validator, mapper, personRepo);
+    }
+
+    @Bean
+    UpdatePersonValidator updatePersonValidator(){
+        return new UpdatePersonValidator();
+    }
+
+    @Bean
+    UpdatePriceCategory updatePriceCategory(UpdatePriceCategoryValidator validator, PriceCategoryDomainMapper mapper, PriceCategoryRepo priceCategoryRepo){
+        return new UpdatePriceCategory(validator, mapper, priceCategoryRepo);
+    }
+    @Bean
+    UpdatePriceCategoryValidator updatePriceCategoryValidator(){
+        return new UpdatePriceCategoryValidator();
+    }
+    @Bean
+    UpdateRefinery updateRefinery(UpdateRefineryValidator validator, RefineryDomainMapper mapper, RefineryRepo refineryRepo){
+        return new UpdateRefinery(validator, refineryRepo, mapper);
+    }
+
+    @Bean
+    UpdateRefineryValidator updateRefineryValidator(){
+        return new UpdateRefineryValidator();
+    }
+
+    @Bean
+    PriceCategoryDomainMapper priceCategoryDomainMapper(){
+        return new PriceCategoryDomainMapperImpl();
+    }
 }

@@ -1,6 +1,7 @@
 package org.example.controllers;
 
-import org.example.contract.request.CreatePriceCategoryRequest;
+import org.example.contract.request.create.CreatePriceCategoryRequest;
+import org.example.contract.request.update.UpdatePriceCategoryRequest;
 import org.example.contract.response.PriceCategoryResponse;
 import org.example.entities.PriceCategoryEntity;
 import org.example.mappers.PriceCategoryMapper;
@@ -10,11 +11,13 @@ import org.example.specifications.CriteriaArrayToList;
 import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
 import org.example.specifications.SearchFilter;
-import org.example.useCases.CreatePriceCategory;
+import org.example.useCases.create.CreatePriceCategory;
+import org.example.useCases.update.UpdatePriceCategory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.PagedModel;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,15 +29,18 @@ public class PriceCategoryController {
     private final PriceCategoryRepository priceCategoryRepository;
     private final PriceCategoryMapper priceCategoryMapper;
     private final PagedResourcesAssembler assembler;
+    private final UpdatePriceCategory updatePriceCategory;
 
     public PriceCategoryController(CreatePriceCategory createPriceCategory,
                                    PriceCategoryRepository priceCategoryRepository,
                                    PriceCategoryMapper priceCategoryMapper,
-                                   PagedResourcesAssembler assembler) {
+                                   PagedResourcesAssembler assembler,
+                                   UpdatePriceCategory updatePriceCategory) {
         this.createPriceCategory = createPriceCategory;
         this.priceCategoryRepository = priceCategoryRepository;
         this.priceCategoryMapper = priceCategoryMapper;
         this.assembler = assembler;
+        this.updatePriceCategory = updatePriceCategory;
     }
 
     @PostMapping
@@ -48,5 +54,10 @@ public class PriceCategoryController {
         final FilterSpecifications<PriceCategoryEntity> specifications = new FilterSpecifications<>(criteriaList);
         final Page<PriceCategory> page = priceCategoryRepository.findAll(specifications, pageable).map(priceCategoryMapper::entityToDomain);
         return assembler.toModel(page);
+    }
+
+    @PatchMapping
+    public ResponseEntity<PriceCategoryResponse> updatePriceCategory(@RequestBody UpdatePriceCategoryRequest request){
+        return ResponseEntity.ok(updatePriceCategory.execute(request));
     }
 }

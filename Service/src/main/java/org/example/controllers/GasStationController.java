@@ -1,6 +1,6 @@
 package org.example.controllers;
 
-import org.example.contract.request.CreateGasStationRequest;
+import org.example.contract.request.create.CreateGasStationRequest;
 import org.example.contract.request.update.UpdateGasStationRequest;
 import org.example.contract.response.GasStationResponse;
 import org.example.entities.GasStationEntity;
@@ -12,7 +12,7 @@ import org.example.specifications.CriteriaArrayToList;
 import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
 import org.example.specifications.SearchFilter;
-import org.example.useCases.CreateGasStation;
+import org.example.useCases.create.CreateGasStation;
 import org.example.useCases.update.UpdateGasStation;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

@@ -1,6 +1,7 @@
 package org.example.controllers;
 
-import org.example.contract.request.CreatePartitionRequest;
+import org.example.contract.request.create.CreatePartitionRequest;
+import org.example.contract.request.update.UpdatePartitionRequest;
 import org.example.contract.response.PartitionResponse;
 import org.example.entities.PartitionEntity;
 import org.example.mappers.PartitionMapper;
@@ -10,11 +11,13 @@ import org.example.specifications.CriteriaArrayToList;
 import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
 import org.example.specifications.SearchFilter;
-import org.example.useCases.CreatePartition;
+import org.example.useCases.create.CreatePartition;
+import org.example.useCases.update.UpdatePartition;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.PagedModel;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,15 +30,18 @@ public class PartitionController {
     private final PartitionRepository partitionRepository;
     private final PartitionMapper partitionMapper;
     private final PagedResourcesAssembler assembler;
+    private final UpdatePartition updatePartition;
 
     public PartitionController(CreatePartition createPartition,
                                PartitionRepository partitionRepository,
                                PartitionMapper partitionMapper,
-                               PagedResourcesAssembler assembler) {
+                               PagedResourcesAssembler assembler,
+                               UpdatePartition updatePartition) {
         this.createPartition = createPartition;
         this.partitionRepository = partitionRepository;
         this.partitionMapper = partitionMapper;
         this.assembler = assembler;
+        this.updatePartition = updatePartition;
     }
 
     @PostMapping
@@ -49,5 +55,10 @@ public class PartitionController {
         final FilterSpecifications<PartitionEntity> specifications = new FilterSpecifications<>(criteriaList);
         final Page<Partition> page = partitionRepository.findAll(specifications, pageable).map(partitionMapper::entityToDomain);
         return assembler.toModel(page);
+    }
+
+    @PatchMapping
+    ResponseEntity<PartitionResponse> updatePartition(@RequestBody UpdatePartitionRequest request){
+        return ResponseEntity.ok(updatePartition.execute(request));
     }
 }

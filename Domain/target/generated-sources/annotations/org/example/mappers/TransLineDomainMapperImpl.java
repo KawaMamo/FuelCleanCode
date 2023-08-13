@@ -1,15 +1,16 @@
 package org.example.mappers;
 
 import javax.annotation.processing.Generated;
-import org.example.contract.request.CreateFatTransLineRequest;
+import org.example.contract.request.create.CreateFatTransLineRequest;
+import org.example.contract.request.update.UpdateFatTransLineRequest;
 import org.example.contract.response.TransLineResponse;
 import org.example.model.Money;
 import org.example.model.TransLine;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-12T16:24:08+0300",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
+    date = "2023-08-13T21:26:07+0300",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class TransLineDomainMapperImpl implements TransLineDomainMapper {
 
@@ -45,6 +46,22 @@ public class TransLineDomainMapperImpl implements TransLineDomainMapper {
         return transLineResponse;
     }
 
+    @Override
+    public TransLine requestToDomain(UpdateFatTransLineRequest request) {
+        if ( request == null ) {
+            return null;
+        }
+
+        TransLine transLine = new TransLine();
+
+        transLine.setFee( updateFatTransLineRequestToMoney( request ) );
+        transLine.setId( request.getId() );
+        transLine.setSource( request.getSource() );
+        transLine.setDestination( request.getDestination() );
+
+        return transLine;
+    }
+
     protected Money createFatTransLineRequestToMoney(CreateFatTransLineRequest createFatTransLineRequest) {
         if ( createFatTransLineRequest == null ) {
             return null;
@@ -54,6 +71,19 @@ public class TransLineDomainMapperImpl implements TransLineDomainMapper {
 
         money.setCurrency( createFatTransLineRequest.getFeeCurrency() );
         money.setAmount( createFatTransLineRequest.getFeeAmount() );
+
+        return money;
+    }
+
+    protected Money updateFatTransLineRequestToMoney(UpdateFatTransLineRequest updateFatTransLineRequest) {
+        if ( updateFatTransLineRequest == null ) {
+            return null;
+        }
+
+        Money money = new Money();
+
+        money.setCurrency( updateFatTransLineRequest.getFeeCurrency() );
+        money.setAmount( updateFatTransLineRequest.getFeeAmount() );
 
         return money;
     }

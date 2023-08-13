@@ -1,7 +1,8 @@
 package org.example.mappers;
 
 import javax.annotation.processing.Generated;
-import org.example.contract.request.CreateTransLogRequest;
+import org.example.contract.request.create.CreateTransLogRequest;
+import org.example.contract.request.update.UpdateTransLogRequest;
 import org.example.contract.response.TransLogResponse;
 import org.example.model.TransLine;
 import org.example.model.TransLog;
@@ -10,8 +11,8 @@ import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-12T16:24:07+0300",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
+    date = "2023-08-13T21:26:07+0300",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class TransLogDomainMapperImpl implements TransLogDomainMapper {
 
@@ -51,6 +52,24 @@ public class TransLogDomainMapperImpl implements TransLogDomainMapper {
         return transLogResponse;
     }
 
+    @Override
+    public TransLog requestToDomain(UpdateTransLogRequest request) {
+        if ( request == null ) {
+            return null;
+        }
+
+        TransLog transLog = new TransLog();
+
+        transLog.setVehicle( updateTransLogRequestToVehicle( request ) );
+        transLog.setTransLine( updateTransLogRequestToTransLine( request ) );
+        transLog.setTransportation( updateTransLogRequestToTransportation( request ) );
+        transLog.setId( request.getId() );
+        transLog.setFees( request.getFees() );
+        transLog.setNotes( request.getNotes() );
+
+        return transLog;
+    }
+
     protected Vehicle createTransLogRequestToVehicle(CreateTransLogRequest createTransLogRequest) {
         if ( createTransLogRequest == null ) {
             return null;
@@ -83,6 +102,42 @@ public class TransLogDomainMapperImpl implements TransLogDomainMapper {
         Transportation transportation = new Transportation();
 
         transportation.setId( createTransLogRequest.getTransportationId() );
+
+        return transportation;
+    }
+
+    protected Vehicle updateTransLogRequestToVehicle(UpdateTransLogRequest updateTransLogRequest) {
+        if ( updateTransLogRequest == null ) {
+            return null;
+        }
+
+        Vehicle vehicle = new Vehicle();
+
+        vehicle.setId( updateTransLogRequest.getVehicleId() );
+
+        return vehicle;
+    }
+
+    protected TransLine updateTransLogRequestToTransLine(UpdateTransLogRequest updateTransLogRequest) {
+        if ( updateTransLogRequest == null ) {
+            return null;
+        }
+
+        TransLine transLine = new TransLine();
+
+        transLine.setId( updateTransLogRequest.getTransLineId() );
+
+        return transLine;
+    }
+
+    protected Transportation updateTransLogRequestToTransportation(UpdateTransLogRequest updateTransLogRequest) {
+        if ( updateTransLogRequest == null ) {
+            return null;
+        }
+
+        Transportation transportation = new Transportation();
+
+        transportation.setId( updateTransLogRequest.getTransportationId() );
 
         return transportation;
     }

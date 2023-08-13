@@ -1,6 +1,6 @@
 package org.example.controllers;
 
-import org.example.contract.request.CreateTransferMaterialRequest;
+import org.example.contract.request.create.CreateTransferMaterialRequest;
 import org.example.contract.response.TransferMaterialResponse;
 import org.example.entities.TransferMaterialsEntity;
 import org.example.mappers.TransferMaterialsMapper;
@@ -10,7 +10,7 @@ import org.example.specifications.CriteriaArrayToList;
 import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
 import org.example.specifications.SearchFilter;
-import org.example.useCases.CreateTransferMaterial;
+import org.example.useCases.create.CreateTransferMaterial;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;

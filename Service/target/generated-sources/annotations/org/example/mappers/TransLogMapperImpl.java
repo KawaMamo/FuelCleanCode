@@ -22,7 +22,7 @@ import org.mapstruct.factory.Mappers;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-12T16:24:15+0300",
+    date = "2023-08-13T17:00:58+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class TransLogMapperImpl implements TransLogMapper {
@@ -122,6 +122,7 @@ public class TransLogMapperImpl implements TransLogMapper {
         officeEntity.setId( office.getId() );
         officeEntity.setName( office.getName() );
         officeEntity.setCreatedAt( office.getCreatedAt() );
+        officeEntity.setUpdateAt( office.getUpdateAt() );
 
         return officeEntity;
     }
@@ -260,6 +261,7 @@ public class TransLogMapperImpl implements TransLogMapper {
         office.setId( officeEntity.getId() );
         office.setName( officeEntity.getName() );
         office.setCreatedAt( officeEntity.getCreatedAt() );
+        office.setUpdateAt( officeEntity.getUpdateAt() );
 
         return office;
     }

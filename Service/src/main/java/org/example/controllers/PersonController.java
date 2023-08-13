@@ -1,6 +1,6 @@
 package org.example.controllers;
 
-import org.example.contract.request.CreatePersonRequest;
+import org.example.contract.request.create.CreatePersonRequest;
 import org.example.contract.response.PersonResponse;
 import org.example.entities.PersonEntity;
 import org.example.mappers.PersonMapper;
@@ -10,7 +10,7 @@ import org.example.specifications.CriteriaArrayToList;
 import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
 import org.example.specifications.SearchFilter;
-import org.example.useCases.CreatePerson;
+import org.example.useCases.create.CreatePerson;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;

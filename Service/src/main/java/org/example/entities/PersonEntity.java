@@ -20,4 +20,5 @@ public class PersonEntity {
     private LocalDate birthDate;
     private Boolean isActive;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }

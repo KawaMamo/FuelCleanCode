@@ -1,6 +1,7 @@
 package org.example.controllers;
 
-import org.example.contract.request.CreateOfficeRequest;
+import org.example.contract.request.create.CreateOfficeRequest;
+import org.example.contract.request.update.UpdateOfficeRequest;
 import org.example.contract.response.OfficeResponse;
 import org.example.entities.OfficeEntity;
 import org.example.mappers.OfficeMapper;
@@ -10,11 +11,13 @@ import org.example.specifications.CriteriaArrayToList;
 import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
 import org.example.specifications.SearchFilter;
-import org.example.useCases.CreateOffice;
+import org.example.useCases.create.CreateOffice;
+import org.example.useCases.update.UpdateOffice;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.PagedModel;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,15 +30,18 @@ public class OfficeController {
     private final OfficeRepository officeRepository;
     private final OfficeMapper officeMapper;
     private final PagedResourcesAssembler pagedResourcesAssembler;
+    private final UpdateOffice updateOffice;
 
     public OfficeController(CreateOffice createOffice,
                             OfficeRepository officeRepository,
                             OfficeMapper officeMapper,
-                            PagedResourcesAssembler pagedResourcesAssembler) {
+                            PagedResourcesAssembler pagedResourcesAssembler,
+                            UpdateOffice updateOffice) {
         this.createOffice = createOffice;
         this.officeRepository = officeRepository;
         this.officeMapper = officeMapper;
         this.pagedResourcesAssembler = pagedResourcesAssembler;
+        this.updateOffice = updateOffice;
     }
     @PostMapping
     public OfficeResponse createOffice(@RequestBody CreateOfficeRequest request){
@@ -48,5 +54,10 @@ public class OfficeController {
         final FilterSpecifications<OfficeEntity> specifications = new FilterSpecifications<>(criteriaList);
         final Page<Office> page = officeRepository.findAll(specifications, pageable).map(officeMapper::entityToDomain);
         return pagedResourcesAssembler.toModel(page);
+    }
+
+    @PatchMapping
+    ResponseEntity<OfficeResponse> updateOffice(@RequestBody UpdateOfficeRequest request){
+        return ResponseEntity.ok(updateOffice.execute(request));
     }
 }

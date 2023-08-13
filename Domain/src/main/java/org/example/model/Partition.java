@@ -18,5 +18,6 @@ public class Partition {
     private Document document;
     private Transportation transportation;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
 }

@@ -1,6 +1,7 @@
 package org.example.controllers;
 
-import org.example.contract.request.CreateMaterialRequest;
+import org.example.contract.request.create.CreateMaterialRequest;
+import org.example.contract.request.update.UpdateMaterialRequest;
 import org.example.contract.response.MaterialResponse;
 import org.example.entities.MaterialEntity;
 import org.example.mappers.MaterialMapper;
@@ -10,15 +11,14 @@ import org.example.specifications.CriteriaArrayToList;
 import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
 import org.example.specifications.SearchFilter;
-import org.example.useCases.CreateMaterial;
+import org.example.useCases.create.CreateMaterial;
+import org.example.useCases.update.UpdateMaterial;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.PagedModel;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,15 +30,18 @@ public class MaterialController {
     private final MaterialRepository materialRepository;
     private final PagedResourcesAssembler pagedResourcesAssembler;
     private final MaterialMapper materialMapper;
+    private final UpdateMaterial updateMaterial;
 
     public MaterialController(CreateMaterial createMaterial,
                               MaterialRepository materialRepository,
                               PagedResourcesAssembler pagedResourcesAssembler,
-                              MaterialMapper materialMapper) {
+                              MaterialMapper materialMapper,
+                              UpdateMaterial updateMaterial) {
         this.createMaterial = createMaterial;
         this.materialRepository = materialRepository;
         this.pagedResourcesAssembler = pagedResourcesAssembler;
         this.materialMapper = materialMapper;
+        this.updateMaterial = updateMaterial;
     }
 
     @PostMapping
@@ -52,5 +55,10 @@ public class MaterialController {
         final FilterSpecifications<MaterialEntity> specifications = new FilterSpecifications<>(criteriaList);
         final Page<Material> page = materialRepository.findAll(specifications, pageable).map(materialMapper::entityToDomain);
         return pagedResourcesAssembler.toModel(page);
+    }
+
+    @PatchMapping
+    ResponseEntity<MaterialResponse> updateMaterial(@RequestBody UpdateMaterialRequest request){
+        return ResponseEntity.ok(updateMaterial.execute(request));
     }
 }

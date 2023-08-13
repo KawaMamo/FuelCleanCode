@@ -5,7 +5,6 @@ import org.example.contract.repository.PersonRepo;
 import org.example.contract.repository.PriceCategoryRepo;
 import org.example.contract.repository.RegionRepo;
 import org.example.contract.request.update.UpdateGasStationRequest;
-import org.example.exceptions.DomainValidationException;
 import org.example.exceptions.ValidationErrorDetails;
 
 import java.util.HashSet;

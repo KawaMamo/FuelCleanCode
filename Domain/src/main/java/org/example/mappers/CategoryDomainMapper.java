@@ -1,6 +1,6 @@
 package org.example.mappers;
 
-import org.example.contract.request.CreateCategoryRequest;
+import org.example.contract.request.create.CreateCategoryRequest;
 import org.example.contract.request.update.UpdateCategoryRequest;
 import org.example.contract.response.CategoryResponse;
 import org.example.model.Category;

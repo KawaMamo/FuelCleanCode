@@ -14,4 +14,5 @@ public class Person {
     private String birthPlace;
     private LocalDate birthDate;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }

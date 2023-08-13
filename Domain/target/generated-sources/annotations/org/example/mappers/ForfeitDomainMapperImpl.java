@@ -1,7 +1,7 @@
 package org.example.mappers;
 
 import javax.annotation.processing.Generated;
-import org.example.contract.request.CreateForfeitRequest;
+import org.example.contract.request.create.CreateForfeitRequest;
 import org.example.contract.request.update.UpdateForfeitRequest;
 import org.example.contract.response.ForfeitResponse;
 import org.example.model.Forfeit;
@@ -10,7 +10,7 @@ import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-12T16:24:08+0300",
+    date = "2023-08-13T17:00:51+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class ForfeitDomainMapperImpl implements ForfeitDomainMapper {

@@ -1,6 +1,6 @@
 package org.example.mappers;
 
-import org.example.contract.request.CreateMaterialRequest;
+import org.example.contract.request.create.CreateMaterialRequest;
 import org.example.contract.request.update.UpdateMaterialRequest;
 import org.example.contract.response.MaterialResponse;
 import org.example.model.Material;

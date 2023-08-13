@@ -1,9 +1,8 @@
 package org.example.controllers;
 
-import org.example.contract.request.CreateRegionRequest;
+import org.example.contract.request.create.CreateRegionRequest;
 import org.example.contract.response.RegionResponse;
 import org.example.entities.RegionEntity;
-import org.example.mappers.RefineryMapper;
 import org.example.mappers.RegionMapper;
 import org.example.model.Region;
 import org.example.repositories.RegionRepository;
@@ -11,7 +10,7 @@ import org.example.specifications.CriteriaArrayToList;
 import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
 import org.example.specifications.SearchFilter;
-import org.example.useCases.CreateRegion;
+import org.example.useCases.create.CreateRegion;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;

@@ -1,13 +1,13 @@
 package org.example.controllers;
 
-import org.example.contract.request.CreateTransRequest;
+import org.example.contract.request.create.CreateTransRequest;
 import org.example.contract.response.CreateTransResponse;
 import org.example.entities.TransportationEntity;
 import org.example.mappers.TransMapper;
 import org.example.model.Transportation;
 import org.example.repositories.TransRepoJpa;
 import org.example.specifications.*;
-import org.example.useCases.CreateTrans;
+import org.example.useCases.create.CreateTrans;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;

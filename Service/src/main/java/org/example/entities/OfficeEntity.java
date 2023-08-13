@@ -15,5 +15,6 @@ public class OfficeEntity {
 
     private String name;
     private LocalDateTime createdAt;
+    private LocalDateTime updateAt;
 
 }

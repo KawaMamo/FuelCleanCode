@@ -1,7 +1,6 @@
 package org.example.validators.update;
 
 import org.example.contract.request.update.UpdateMaterialRequest;
-import org.example.exceptions.DomainValidationException;
 import org.example.exceptions.ValidationErrorDetails;
 
 import java.util.HashSet;

@@ -22,7 +22,6 @@ public class MaterialAdapter implements MaterialRepo {
     @Override
     public Material save(Material material) {
         final MaterialEntity materialEntity = mapper.domainToEntity(material);
-        materialEntity.setCreatedAt(LocalDateTime.now());
         final MaterialEntity save = repository.save(materialEntity);
         return mapper.entityToDomain(save);
     }

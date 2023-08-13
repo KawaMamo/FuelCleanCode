@@ -1,6 +1,6 @@
 package org.example.controllers;
 
-import org.example.contract.request.CreateDocumentRequest;
+import org.example.contract.request.create.CreateDocumentRequest;
 import org.example.contract.request.update.UpdateDocumentRequest;
 import org.example.contract.response.DocumentResponse;
 import org.example.entities.DocumentEntity;
@@ -9,7 +9,7 @@ import org.example.specifications.CriteriaArrayToList;
 import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
 import org.example.specifications.SearchFilter;
-import org.example.useCases.CreateDocument;
+import org.example.useCases.create.CreateDocument;
 import org.example.useCases.update.UpdateDocument;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

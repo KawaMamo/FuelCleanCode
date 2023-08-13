@@ -1,6 +1,6 @@
 package org.example.controllers;
 
-import org.example.contract.request.CreateCategoryRequest;
+import org.example.contract.request.create.CreateCategoryRequest;
 import org.example.contract.request.update.UpdateCategoryRequest;
 import org.example.contract.response.CategoryResponse;
 import org.example.entities.CategoryEntity;
@@ -11,7 +11,7 @@ import org.example.specifications.CriteriaArrayToList;
 import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
 import org.example.specifications.SearchFilter;
-import org.example.useCases.CreateCategory;
+import org.example.useCases.create.CreateCategory;
 import org.example.useCases.update.UpdateCategory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

@@ -1,6 +1,6 @@
 package org.example.mappers;
 
-import org.example.contract.request.CreateDocumentRequest;
+import org.example.contract.request.create.CreateDocumentRequest;
 import org.example.contract.request.update.UpdateDocumentRequest;
 import org.example.contract.response.DocumentResponse;
 import org.example.model.Document;

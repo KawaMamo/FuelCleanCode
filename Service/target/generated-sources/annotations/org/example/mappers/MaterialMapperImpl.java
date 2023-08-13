@@ -6,7 +6,7 @@ import org.example.model.Material;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-12T16:24:15+0300",
+    date = "2023-08-13T17:00:58+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class MaterialMapperImpl implements MaterialMapper {
@@ -22,6 +22,7 @@ public class MaterialMapperImpl implements MaterialMapper {
         materialEntity.setId( material.getId() );
         materialEntity.setName( material.getName() );
         materialEntity.setCreatedAt( material.getCreatedAt() );
+        materialEntity.setUpdatedAt( material.getUpdatedAt() );
 
         return materialEntity;
     }
@@ -37,6 +38,7 @@ public class MaterialMapperImpl implements MaterialMapper {
         material1.setId( material.getId() );
         material1.setName( material.getName() );
         material1.setCreatedAt( material.getCreatedAt() );
+        material1.setUpdatedAt( material.getUpdatedAt() );
 
         return material1;
     }

@@ -1,14 +1,15 @@
 package org.example.mappers;
 
 import javax.annotation.processing.Generated;
-import org.example.contract.request.CreateTrafficCenterRequest;
+import org.example.contract.request.create.CreateTrafficCenterRequest;
+import org.example.contract.request.update.UpdateTrafficCenterRequest;
 import org.example.contract.response.TrafficCenterResponse;
 import org.example.model.TrafficCenter;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-12T16:24:08+0300",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
+    date = "2023-08-13T21:26:07+0300",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class TrafficCenterDomainMapperImpl implements TrafficCenterDomainMapper {
 
@@ -38,5 +39,19 @@ public class TrafficCenterDomainMapperImpl implements TrafficCenterDomainMapper 
         trafficCenterResponse.setCreatedAt( trafficCenter.getCreatedAt() );
 
         return trafficCenterResponse;
+    }
+
+    @Override
+    public TrafficCenter requestToDomain(UpdateTrafficCenterRequest request) {
+        if ( request == null ) {
+            return null;
+        }
+
+        TrafficCenter trafficCenter = new TrafficCenter();
+
+        trafficCenter.setId( request.getId() );
+        trafficCenter.setName( request.getName() );
+
+        return trafficCenter;
     }
 }

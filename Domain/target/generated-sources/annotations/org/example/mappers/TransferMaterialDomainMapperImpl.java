@@ -1,7 +1,8 @@
 package org.example.mappers;
 
 import javax.annotation.processing.Generated;
-import org.example.contract.request.CreateTransferMaterialRequest;
+import org.example.contract.request.create.CreateTransferMaterialRequest;
+import org.example.contract.request.update.UpdateTransferMaterialRequest;
 import org.example.contract.response.TransferMaterialResponse;
 import org.example.model.GasStation;
 import org.example.model.Material;
@@ -9,8 +10,8 @@ import org.example.model.TransferMaterials;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-12T16:24:08+0300",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
+    date = "2023-08-13T21:26:07+0300",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class TransferMaterialDomainMapperImpl implements TransferMaterialDomainMapper {
 
@@ -50,6 +51,24 @@ public class TransferMaterialDomainMapperImpl implements TransferMaterialDomainM
         return transferMaterialResponse;
     }
 
+    @Override
+    public TransferMaterials requestToDomain(UpdateTransferMaterialRequest request) {
+        if ( request == null ) {
+            return null;
+        }
+
+        TransferMaterials transferMaterials = new TransferMaterials();
+
+        transferMaterials.setSource( updateTransferMaterialRequestToGasStation( request ) );
+        transferMaterials.setDestination( updateTransferMaterialRequestToGasStation1( request ) );
+        transferMaterials.setMaterial( updateTransferMaterialRequestToMaterial( request ) );
+        transferMaterials.setId( request.getId() );
+        transferMaterials.setAmount( request.getAmount() );
+        transferMaterials.setPrice( request.getPrice() );
+
+        return transferMaterials;
+    }
+
     protected GasStation createTransferMaterialRequestToGasStation(CreateTransferMaterialRequest createTransferMaterialRequest) {
         if ( createTransferMaterialRequest == null ) {
             return null;
@@ -82,6 +101,42 @@ public class TransferMaterialDomainMapperImpl implements TransferMaterialDomainM
         Material material = new Material();
 
         material.setId( createTransferMaterialRequest.getMaterialId() );
+
+        return material;
+    }
+
+    protected GasStation updateTransferMaterialRequestToGasStation(UpdateTransferMaterialRequest updateTransferMaterialRequest) {
+        if ( updateTransferMaterialRequest == null ) {
+            return null;
+        }
+
+        GasStation gasStation = new GasStation();
+
+        gasStation.setId( updateTransferMaterialRequest.getSourceId() );
+
+        return gasStation;
+    }
+
+    protected GasStation updateTransferMaterialRequestToGasStation1(UpdateTransferMaterialRequest updateTransferMaterialRequest) {
+        if ( updateTransferMaterialRequest == null ) {
+            return null;
+        }
+
+        GasStation gasStation = new GasStation();
+
+        gasStation.setId( updateTransferMaterialRequest.getDestinationId() );
+
+        return gasStation;
+    }
+
+    protected Material updateTransferMaterialRequestToMaterial(UpdateTransferMaterialRequest updateTransferMaterialRequest) {
+        if ( updateTransferMaterialRequest == null ) {
+            return null;
+        }
+
+        Material material = new Material();
+
+        material.setId( updateTransferMaterialRequest.getMaterialId() );
 
         return material;
     }

@@ -1,7 +1,8 @@
 package org.example.mappers;
 
 import javax.annotation.processing.Generated;
-import org.example.contract.request.CreatePartitionRequest;
+import org.example.contract.request.create.CreatePartitionRequest;
+import org.example.contract.request.update.UpdatePartitionRequest;
 import org.example.contract.response.PartitionResponse;
 import org.example.model.GasStation;
 import org.example.model.Material;
@@ -10,8 +11,8 @@ import org.example.model.Transportation;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-12T16:24:08+0300",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
+    date = "2023-08-13T21:26:07+0300",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class PartitionDomainMapperImpl implements PartitionDomainMapper {
 
@@ -54,8 +55,30 @@ public class PartitionDomainMapperImpl implements PartitionDomainMapper {
         partitionResponse.setDocument( partition.getDocument() );
         partitionResponse.setTransportation( partition.getTransportation() );
         partitionResponse.setCreatedAt( partition.getCreatedAt() );
+        partitionResponse.setUpdatedAt( partition.getUpdatedAt() );
 
         return partitionResponse;
+    }
+
+    @Override
+    public Partition requestToDomain(UpdatePartitionRequest request) {
+        if ( request == null ) {
+            return null;
+        }
+
+        Partition partition = new Partition();
+
+        partition.setMaterial( updatePartitionRequestToMaterial( request ) );
+        partition.setGasStation( updatePartitionRequestToGasStation( request ) );
+        partition.setTransportation( updatePartitionRequestToTransportation( request ) );
+        partition.setId( request.getId() );
+        partition.setAmount( request.getAmount() );
+        partition.setCorrectedAmount( request.getCorrectedAmount() );
+        partition.setPrice( request.getPrice() );
+        partition.setNotes( request.getNotes() );
+        partition.setExtraNotes( request.getExtraNotes() );
+
+        return partition;
     }
 
     protected Material createPartitionRequestToMaterial(CreatePartitionRequest createPartitionRequest) {
@@ -90,6 +113,42 @@ public class PartitionDomainMapperImpl implements PartitionDomainMapper {
         Transportation transportation = new Transportation();
 
         transportation.setId( createPartitionRequest.getTransportationId() );
+
+        return transportation;
+    }
+
+    protected Material updatePartitionRequestToMaterial(UpdatePartitionRequest updatePartitionRequest) {
+        if ( updatePartitionRequest == null ) {
+            return null;
+        }
+
+        Material material = new Material();
+
+        material.setId( updatePartitionRequest.getMaterialId() );
+
+        return material;
+    }
+
+    protected GasStation updatePartitionRequestToGasStation(UpdatePartitionRequest updatePartitionRequest) {
+        if ( updatePartitionRequest == null ) {
+            return null;
+        }
+
+        GasStation gasStation = new GasStation();
+
+        gasStation.setId( updatePartitionRequest.getGasStationId() );
+
+        return gasStation;
+    }
+
+    protected Transportation updatePartitionRequestToTransportation(UpdatePartitionRequest updatePartitionRequest) {
+        if ( updatePartitionRequest == null ) {
+            return null;
+        }
+
+        Transportation transportation = new Transportation();
+
+        transportation.setId( updatePartitionRequest.getTransportationId() );
 
         return transportation;
     }

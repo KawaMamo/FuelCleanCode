@@ -1,14 +1,15 @@
 package org.example.mappers;
 
 import javax.annotation.processing.Generated;
-import org.example.contract.request.CreateRegionRequest;
+import org.example.contract.request.create.CreateRegionRequest;
+import org.example.contract.request.update.UpdateRegionRequest;
 import org.example.contract.response.RegionResponse;
 import org.example.model.Region;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-12T16:24:08+0300",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
+    date = "2023-08-13T21:26:07+0300",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class RegionDomainMapperImpl implements RegionDomainMapper {
 
@@ -38,5 +39,19 @@ public class RegionDomainMapperImpl implements RegionDomainMapper {
         regionResponse.setCreatedAt( region.getCreatedAt() );
 
         return regionResponse;
+    }
+
+    @Override
+    public Region requestToDomain(UpdateRegionRequest request) {
+        if ( request == null ) {
+            return null;
+        }
+
+        Region region = new Region();
+
+        region.setId( request.getId() );
+        region.setName( request.getName() );
+
+        return region;
     }
 }
