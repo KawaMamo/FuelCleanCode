@@ -14,6 +14,7 @@ public class Transportation {
     private Boolean isPriced;
     private Long size;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
     private List<Partition> partitions;
     private TransportationType type;
     private Document document;

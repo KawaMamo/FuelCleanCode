@@ -19,7 +19,7 @@ import org.example.model.TransferMaterials;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-13T17:00:57+0300",
+    date = "2023-08-14T14:36:30+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class TransferMaterialsMapperImpl implements TransferMaterialsMapper {
@@ -39,6 +39,7 @@ public class TransferMaterialsMapperImpl implements TransferMaterialsMapper {
         transferMaterials1.setMaterial( materialEntityToMaterial( transferMaterials.getMaterial() ) );
         transferMaterials1.setAmount( transferMaterials.getAmount() );
         transferMaterials1.setCreatedAt( transferMaterials.getCreatedAt() );
+        transferMaterials1.setUpdatedAt( transferMaterials.getUpdatedAt() );
 
         return transferMaterials1;
     }
@@ -59,6 +60,7 @@ public class TransferMaterialsMapperImpl implements TransferMaterialsMapper {
         transferMaterialsEntity.setMaterial( materialToMaterialEntity( transferMaterials.getMaterial() ) );
         transferMaterialsEntity.setAmount( transferMaterials.getAmount() );
         transferMaterialsEntity.setCreatedAt( transferMaterials.getCreatedAt() );
+        transferMaterialsEntity.setUpdatedAt( transferMaterials.getUpdatedAt() );
 
         return transferMaterialsEntity;
     }
@@ -86,6 +88,7 @@ public class TransferMaterialsMapperImpl implements TransferMaterialsMapper {
         priceCategory.setId( priceCategoryEntity.getId() );
         priceCategory.setName( priceCategoryEntity.getName() );
         priceCategory.setCreatedAt( priceCategoryEntity.getCreatedAt() );
+        priceCategory.setUpdatedAt( priceCategoryEntity.getUpdatedAt() );
 
         return priceCategory;
     }
@@ -100,6 +103,7 @@ public class TransferMaterialsMapperImpl implements TransferMaterialsMapper {
         region.setId( regionEntity.getId() );
         region.setName( regionEntity.getName() );
         region.setCreatedAt( regionEntity.getCreatedAt() );
+        region.setUpdatedAt( regionEntity.getUpdatedAt() );
 
         return region;
     }
@@ -119,6 +123,7 @@ public class TransferMaterialsMapperImpl implements TransferMaterialsMapper {
         person.setBirthPlace( personEntity.getBirthPlace() );
         person.setBirthDate( personEntity.getBirthDate() );
         person.setCreatedAt( personEntity.getCreatedAt() );
+        person.setUpdatedAt( personEntity.getUpdatedAt() );
 
         return person;
     }
@@ -214,6 +219,7 @@ public class TransferMaterialsMapperImpl implements TransferMaterialsMapper {
         priceCategoryEntity.setId( priceCategory.getId() );
         priceCategoryEntity.setName( priceCategory.getName() );
         priceCategoryEntity.setCreatedAt( priceCategory.getCreatedAt() );
+        priceCategoryEntity.setUpdatedAt( priceCategory.getUpdatedAt() );
 
         return priceCategoryEntity;
     }
@@ -228,6 +234,7 @@ public class TransferMaterialsMapperImpl implements TransferMaterialsMapper {
         regionEntity.setId( region.getId() );
         regionEntity.setName( region.getName() );
         regionEntity.setCreatedAt( region.getCreatedAt() );
+        regionEntity.setUpdatedAt( region.getUpdatedAt() );
 
         return regionEntity;
     }
@@ -247,6 +254,7 @@ public class TransferMaterialsMapperImpl implements TransferMaterialsMapper {
         personEntity.setBirthPlace( person.getBirthPlace() );
         personEntity.setBirthDate( person.getBirthDate() );
         personEntity.setCreatedAt( person.getCreatedAt() );
+        personEntity.setUpdatedAt( person.getUpdatedAt() );
 
         return personEntity;
     }

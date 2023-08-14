@@ -6,7 +6,7 @@ import org.example.model.Person;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-13T17:00:58+0300",
+    date = "2023-08-14T14:36:30+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class PersonMapperImpl implements PersonMapper {
@@ -27,6 +27,7 @@ public class PersonMapperImpl implements PersonMapper {
         personEntity.setBirthPlace( person.getBirthPlace() );
         personEntity.setBirthDate( person.getBirthDate() );
         personEntity.setCreatedAt( person.getCreatedAt() );
+        personEntity.setUpdatedAt( person.getUpdatedAt() );
 
         return personEntity;
     }
@@ -47,6 +48,7 @@ public class PersonMapperImpl implements PersonMapper {
         person1.setBirthPlace( person.getBirthPlace() );
         person1.setBirthDate( person.getBirthDate() );
         person1.setCreatedAt( person.getCreatedAt() );
+        person1.setUpdatedAt( person.getUpdatedAt() );
 
         return person1;
     }

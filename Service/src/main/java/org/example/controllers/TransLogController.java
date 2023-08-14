@@ -1,6 +1,7 @@
 package org.example.controllers;
 
 import org.example.contract.request.create.CreateTransLogRequest;
+import org.example.contract.request.update.UpdateTransLogRequest;
 import org.example.contract.response.TransLogResponse;
 import org.example.entities.TransLogEntity;
 import org.example.mappers.TransLogMapper;
@@ -11,10 +12,12 @@ import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
 import org.example.specifications.SearchFilter;
 import org.example.useCases.create.CreateTransLog;
+import org.example.useCases.update.UpdateTransLog;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.PagedModel;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,15 +30,17 @@ public class TransLogController {
     private final TransLogRepository transLogRepository;
     private final TransLogMapper transLogMapper;
     private final PagedResourcesAssembler assembler;
+    private final UpdateTransLog updateTransLog;
 
     public TransLogController(CreateTransLog createTransLog,
                               TransLogRepository transLogRepository,
                               TransLogMapper transLogMapper,
-                              PagedResourcesAssembler assembler) {
+                              PagedResourcesAssembler assembler, UpdateTransLog updateTransLog) {
         this.createTransLog = createTransLog;
         this.transLogRepository = transLogRepository;
         this.transLogMapper = transLogMapper;
         this.assembler = assembler;
+        this.updateTransLog = updateTransLog;
     }
 
     @PostMapping
@@ -49,5 +54,9 @@ public class TransLogController {
         final FilterSpecifications<TransLogEntity> specifications = new FilterSpecifications<>(criteriaList);
         final Page<TransLog> page = transLogRepository.findAll(specifications, pageable).map(transLogMapper::entityToDomain);
         return assembler.toModel(page);
+    }
+    @PatchMapping
+    public ResponseEntity<TransLogResponse> updateTransLog(@RequestBody UpdateTransLogRequest request){
+        return ResponseEntity.ok(updateTransLog.execute(request));
     }
 }

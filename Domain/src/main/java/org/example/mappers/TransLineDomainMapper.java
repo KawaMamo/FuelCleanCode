@@ -2,6 +2,7 @@ package org.example.mappers;
 
 import org.example.contract.request.create.CreateFatTransLineRequest;
 import org.example.contract.request.update.UpdateFatTransLineRequest;
+import org.example.contract.request.update.UpdateTransLineRequest;
 import org.example.contract.response.TransLineResponse;
 import org.example.model.TransLine;
 import org.mapstruct.Mapper;
@@ -15,6 +16,6 @@ public interface TransLineDomainMapper {
     TransLineResponse domainToResponse(TransLine transLine);
     @Mapping(source = "feeCurrency", target = "fee.currency")
     @Mapping(source = "feeAmount", target = "fee.amount")
-    TransLine requestToDomain(UpdateFatTransLineRequest request);
+    TransLine requestToDomain(UpdateTransLineRequest request);
 
 }

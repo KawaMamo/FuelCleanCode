@@ -16,7 +16,7 @@ import org.example.model.Region;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-13T17:00:58+0300",
+    date = "2023-08-14T14:36:30+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class PlaceMapperImpl implements PlaceMapper {
@@ -54,6 +54,7 @@ public class PlaceMapperImpl implements PlaceMapper {
         refineryEntity.setId( refinery.getId() );
         refineryEntity.setPlaceType( refinery.getPlaceType() );
         refineryEntity.setCreatedAt( refinery.getCreatedAt() );
+        refineryEntity.setUpdatedAt( refinery.getUpdatedAt() );
         refineryEntity.setName( refinery.getName() );
 
         return refineryEntity;
@@ -90,9 +91,10 @@ public class PlaceMapperImpl implements PlaceMapper {
         Refinery refinery1 = new Refinery();
 
         refinery1.setPlaceType( refinery.getPlaceType() );
+        refinery1.setCreatedAt( refinery.getCreatedAt() );
+        refinery1.setUpdatedAt( refinery.getUpdatedAt() );
         refinery1.setId( refinery.getId() );
         refinery1.setName( refinery.getName() );
-        refinery1.setCreatedAt( refinery.getCreatedAt() );
 
         return refinery1;
     }
@@ -107,6 +109,7 @@ public class PlaceMapperImpl implements PlaceMapper {
         priceCategoryEntity.setId( priceCategory.getId() );
         priceCategoryEntity.setName( priceCategory.getName() );
         priceCategoryEntity.setCreatedAt( priceCategory.getCreatedAt() );
+        priceCategoryEntity.setUpdatedAt( priceCategory.getUpdatedAt() );
 
         return priceCategoryEntity;
     }
@@ -121,6 +124,7 @@ public class PlaceMapperImpl implements PlaceMapper {
         regionEntity.setId( region.getId() );
         regionEntity.setName( region.getName() );
         regionEntity.setCreatedAt( region.getCreatedAt() );
+        regionEntity.setUpdatedAt( region.getUpdatedAt() );
 
         return regionEntity;
     }
@@ -140,6 +144,7 @@ public class PlaceMapperImpl implements PlaceMapper {
         personEntity.setBirthPlace( person.getBirthPlace() );
         personEntity.setBirthDate( person.getBirthDate() );
         personEntity.setCreatedAt( person.getCreatedAt() );
+        personEntity.setUpdatedAt( person.getUpdatedAt() );
 
         return personEntity;
     }
@@ -169,6 +174,7 @@ public class PlaceMapperImpl implements PlaceMapper {
         priceCategory.setId( priceCategoryEntity.getId() );
         priceCategory.setName( priceCategoryEntity.getName() );
         priceCategory.setCreatedAt( priceCategoryEntity.getCreatedAt() );
+        priceCategory.setUpdatedAt( priceCategoryEntity.getUpdatedAt() );
 
         return priceCategory;
     }
@@ -183,6 +189,7 @@ public class PlaceMapperImpl implements PlaceMapper {
         region.setId( regionEntity.getId() );
         region.setName( regionEntity.getName() );
         region.setCreatedAt( regionEntity.getCreatedAt() );
+        region.setUpdatedAt( regionEntity.getUpdatedAt() );
 
         return region;
     }
@@ -202,6 +209,7 @@ public class PlaceMapperImpl implements PlaceMapper {
         person.setBirthPlace( personEntity.getBirthPlace() );
         person.setBirthDate( personEntity.getBirthDate() );
         person.setCreatedAt( personEntity.getCreatedAt() );
+        person.setUpdatedAt( personEntity.getUpdatedAt() );
 
         return person;
     }

@@ -1,6 +1,7 @@
 package org.example.controllers;
 
 import org.example.contract.request.create.CreateTransferMaterialRequest;
+import org.example.contract.request.update.UpdateTransferMaterialRequest;
 import org.example.contract.response.TransferMaterialResponse;
 import org.example.entities.TransferMaterialsEntity;
 import org.example.mappers.TransferMaterialsMapper;
@@ -11,10 +12,12 @@ import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
 import org.example.specifications.SearchFilter;
 import org.example.useCases.create.CreateTransferMaterial;
+import org.example.useCases.update.UpdateTransferMaterial;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.PagedModel;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,15 +30,17 @@ public class TransferMaterialController {
     private final TransferMaterialRepository transferMaterialRepository;
     private final TransferMaterialsMapper transferMaterialsMapper;
     private final PagedResourcesAssembler assembler;
+    private final UpdateTransferMaterial updateTransferMaterial;
 
     public TransferMaterialController(CreateTransferMaterial createTransferMaterial,
                                       TransferMaterialRepository transferMaterialRepository,
                                       TransferMaterialsMapper transferMaterialsMapper,
-                                      PagedResourcesAssembler assembler) {
+                                      PagedResourcesAssembler assembler, UpdateTransferMaterial updateTransferMaterial) {
         this.createTransferMaterial = createTransferMaterial;
         this.transferMaterialRepository = transferMaterialRepository;
         this.transferMaterialsMapper = transferMaterialsMapper;
         this.assembler = assembler;
+        this.updateTransferMaterial = updateTransferMaterial;
     }
 
     @PostMapping
@@ -50,5 +55,10 @@ public class TransferMaterialController {
         final Page<TransferMaterials> page = transferMaterialRepository.findAll(specifications, pageable)
                 .map(transferMaterialsMapper::entityToDomain);
         return assembler.toModel(page);
+    }
+
+    @PatchMapping
+    public ResponseEntity<TransferMaterialResponse> updateTransferMaterials(@RequestBody UpdateTransferMaterialRequest request){
+        return ResponseEntity.ok(updateTransferMaterial.execute(request));
     }
 }

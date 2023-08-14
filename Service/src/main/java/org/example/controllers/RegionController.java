@@ -1,6 +1,7 @@
 package org.example.controllers;
 
 import org.example.contract.request.create.CreateRegionRequest;
+import org.example.contract.request.update.UpdateRegionRequest;
 import org.example.contract.response.RegionResponse;
 import org.example.entities.RegionEntity;
 import org.example.mappers.RegionMapper;
@@ -11,10 +12,12 @@ import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
 import org.example.specifications.SearchFilter;
 import org.example.useCases.create.CreateRegion;
+import org.example.useCases.update.UpdateRegion;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.PagedModel;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,15 +29,18 @@ public class RegionController {
     private final RegionRepository regionRepository;
     private final RegionMapper regionMapper;
     private final PagedResourcesAssembler assembler;
+    private final UpdateRegion updateRegion;
 
     public RegionController(CreateRegion createRegion,
                             RegionRepository regionRepository,
                             RegionMapper regionMapper,
-                            PagedResourcesAssembler assembler) {
+                            PagedResourcesAssembler assembler,
+                            UpdateRegion updateRegion) {
         this.createRegion = createRegion;
         this.regionRepository = regionRepository;
         this.regionMapper = regionMapper;
         this.assembler = assembler;
+        this.updateRegion = updateRegion;
     }
 
     @PostMapping
@@ -48,5 +54,10 @@ public class RegionController {
         final FilterSpecifications<RegionEntity> specifications = new FilterSpecifications<>(criteriaList);
         final Page<Region> page = regionRepository.findAll(specifications, pageable).map(regionMapper::entityToDomain);
         return assembler.toModel(page);
+    }
+
+    @PatchMapping
+    public ResponseEntity<RegionResponse> updateRegion(@RequestBody UpdateRegionRequest request){
+        return ResponseEntity.ok(updateRegion.execute(request));
     }
 }

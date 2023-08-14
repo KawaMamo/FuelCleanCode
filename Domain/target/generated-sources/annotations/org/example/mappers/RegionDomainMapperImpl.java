@@ -8,8 +8,8 @@ import org.example.model.Region;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-13T21:26:07+0300",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
+    date = "2023-08-14T14:36:23+0300",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class RegionDomainMapperImpl implements RegionDomainMapper {
 
@@ -37,6 +37,7 @@ public class RegionDomainMapperImpl implements RegionDomainMapper {
         regionResponse.setId( region.getId() );
         regionResponse.setName( region.getName() );
         regionResponse.setCreatedAt( region.getCreatedAt() );
+        regionResponse.setUpdatedAt( region.getUpdatedAt() );
 
         return regionResponse;
     }

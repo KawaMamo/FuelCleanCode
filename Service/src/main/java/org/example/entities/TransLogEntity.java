@@ -21,4 +21,5 @@ public class TransLogEntity {
     private TransportationEntity transportation;
     private String notes;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }

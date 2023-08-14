@@ -24,6 +24,7 @@ public class TransportationEntity {
     private Boolean isPriced;
     private Long size;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
     @Enumerated
     private TransportationType type;
     @OneToOne

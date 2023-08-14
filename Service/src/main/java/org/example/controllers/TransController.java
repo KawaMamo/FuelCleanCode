@@ -1,6 +1,7 @@
 package org.example.controllers;
 
 import org.example.contract.request.create.CreateTransRequest;
+import org.example.contract.request.update.UpdateTransRequest;
 import org.example.contract.response.CreateTransResponse;
 import org.example.entities.TransportationEntity;
 import org.example.mappers.TransMapper;
@@ -8,10 +9,12 @@ import org.example.model.Transportation;
 import org.example.repositories.TransRepoJpa;
 import org.example.specifications.*;
 import org.example.useCases.create.CreateTrans;
+import org.example.useCases.update.UpdateTrans;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.PagedModel;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,15 +27,17 @@ public class TransController {
     private final TransRepoJpa transRepoJpa;
     private final PagedResourcesAssembler pagedResourcesAssembler;
     private final TransMapper transMapper;
+    private final UpdateTrans updateTrans;
 
     public TransController(CreateTrans createTrans,
                            TransRepoJpa transRepoJpa,
                            PagedResourcesAssembler pagedResourcesAssembler,
-                           TransMapper transMapper) {
+                           TransMapper transMapper, UpdateTrans updateTrans) {
         this.createTrans = createTrans;
         this.transRepoJpa = transRepoJpa;
         this.pagedResourcesAssembler = pagedResourcesAssembler;
         this.transMapper = transMapper;
+        this.updateTrans = updateTrans;
     }
 
     @PostMapping
@@ -52,6 +57,11 @@ public class TransController {
         final FilterSpecifications<TransportationEntity> specifications = new FilterSpecifications<>(searchCriteria);
         final Page<Transportation> map = transRepoJpa.findAll(specifications, pageable).map(transMapper::entityToDomain);
         return pagedResourcesAssembler.toModel(map);
+    }
+
+    @PatchMapping
+    public ResponseEntity<CreateTransResponse> updateTrans(@RequestBody UpdateTransRequest request){
+        return ResponseEntity.ok(updateTrans.execute(request));
     }
 
 }

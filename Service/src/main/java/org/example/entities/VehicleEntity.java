@@ -26,6 +26,7 @@ public class VehicleEntity {
     @OneToOne
     private PersonEntity driver;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
     @Override
     public final boolean equals(Object object) {

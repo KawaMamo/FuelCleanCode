@@ -20,7 +20,7 @@ import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-13T17:00:58+0300",
+    date = "2023-08-14T14:36:30+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class TransMapperImpl implements TransMapper {
@@ -41,6 +41,7 @@ public class TransMapperImpl implements TransMapper {
         transportationEntity.setIsPriced( transportation.getIsPriced() );
         transportationEntity.setSize( transportation.getSize() );
         transportationEntity.setCreatedAt( transportation.getCreatedAt() );
+        transportationEntity.setUpdatedAt( transportation.getUpdatedAt() );
         transportationEntity.setType( transportationTypeToTransportationType( transportation.getType() ) );
         transportationEntity.setDeletedAt( transportation.getDeletedAt() );
 
@@ -63,6 +64,7 @@ public class TransMapperImpl implements TransMapper {
         transportation.setIsPriced( transportationEntity.getIsPriced() );
         transportation.setSize( transportationEntity.getSize() );
         transportation.setCreatedAt( transportationEntity.getCreatedAt() );
+        transportation.setUpdatedAt( transportationEntity.getUpdatedAt() );
         transportation.setType( transportationTypeToTransportationType1( transportationEntity.getType() ) );
         transportation.setDeletedAt( transportationEntity.getDeletedAt() );
 
@@ -79,6 +81,7 @@ public class TransMapperImpl implements TransMapper {
         trafficCenterEntity.setId( trafficCenter.getId() );
         trafficCenterEntity.setName( trafficCenter.getName() );
         trafficCenterEntity.setCreatedAt( trafficCenter.getCreatedAt() );
+        trafficCenterEntity.setUpdatedAt( trafficCenter.getUpdatedAt() );
 
         return trafficCenterEntity;
     }
@@ -113,6 +116,7 @@ public class TransMapperImpl implements TransMapper {
         personEntity.setBirthPlace( person.getBirthPlace() );
         personEntity.setBirthDate( person.getBirthDate() );
         personEntity.setCreatedAt( person.getCreatedAt() );
+        personEntity.setUpdatedAt( person.getUpdatedAt() );
 
         return personEntity;
     }
@@ -131,6 +135,7 @@ public class TransMapperImpl implements TransMapper {
         vehicleEntity.setOffice( officeToOfficeEntity( vehicle.getOffice() ) );
         vehicleEntity.setDriver( personToPersonEntity( vehicle.getDriver() ) );
         vehicleEntity.setCreatedAt( vehicle.getCreatedAt() );
+        vehicleEntity.setUpdatedAt( vehicle.getUpdatedAt() );
 
         return vehicleEntity;
     }
@@ -145,6 +150,7 @@ public class TransMapperImpl implements TransMapper {
         refineryEntity.setId( refinery.getId() );
         refineryEntity.setPlaceType( refinery.getPlaceType() );
         refineryEntity.setCreatedAt( refinery.getCreatedAt() );
+        refineryEntity.setUpdatedAt( refinery.getUpdatedAt() );
         refineryEntity.setName( refinery.getName() );
 
         return refineryEntity;
@@ -199,6 +205,7 @@ public class TransMapperImpl implements TransMapper {
         trafficCenter.setId( trafficCenterEntity.getId() );
         trafficCenter.setName( trafficCenterEntity.getName() );
         trafficCenter.setCreatedAt( trafficCenterEntity.getCreatedAt() );
+        trafficCenter.setUpdatedAt( trafficCenterEntity.getUpdatedAt() );
 
         return trafficCenter;
     }
@@ -233,6 +240,7 @@ public class TransMapperImpl implements TransMapper {
         person.setBirthPlace( personEntity.getBirthPlace() );
         person.setBirthDate( personEntity.getBirthDate() );
         person.setCreatedAt( personEntity.getCreatedAt() );
+        person.setUpdatedAt( personEntity.getUpdatedAt() );
 
         return person;
     }
@@ -251,6 +259,7 @@ public class TransMapperImpl implements TransMapper {
         vehicle.setOffice( officeEntityToOffice( vehicleEntity.getOffice() ) );
         vehicle.setDriver( personEntityToPerson( vehicleEntity.getDriver() ) );
         vehicle.setCreatedAt( vehicleEntity.getCreatedAt() );
+        vehicle.setUpdatedAt( vehicleEntity.getUpdatedAt() );
 
         return vehicle;
     }
@@ -263,9 +272,10 @@ public class TransMapperImpl implements TransMapper {
         Refinery refinery = new Refinery();
 
         refinery.setPlaceType( refineryEntity.getPlaceType() );
+        refinery.setCreatedAt( refineryEntity.getCreatedAt() );
+        refinery.setUpdatedAt( refineryEntity.getUpdatedAt() );
         refinery.setId( refineryEntity.getId() );
         refinery.setName( refineryEntity.getName() );
-        refinery.setCreatedAt( refineryEntity.getCreatedAt() );
 
         return refinery;
     }

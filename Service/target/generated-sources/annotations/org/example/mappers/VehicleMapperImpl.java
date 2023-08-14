@@ -19,7 +19,7 @@ import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-13T17:00:58+0300",
+    date = "2023-08-14T14:36:30+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class VehicleMapperImpl implements VehicleMapper {
@@ -39,6 +39,7 @@ public class VehicleMapperImpl implements VehicleMapper {
         vehicleEntity.setOffice( domainToEntity( vehicle.getOffice() ) );
         vehicleEntity.setDriver( domainToEntity( vehicle.getDriver() ) );
         vehicleEntity.setCreatedAt( vehicle.getCreatedAt() );
+        vehicleEntity.setUpdatedAt( vehicle.getUpdatedAt() );
 
         return vehicleEntity;
     }
@@ -59,6 +60,7 @@ public class VehicleMapperImpl implements VehicleMapper {
         personEntity.setBirthPlace( person.getBirthPlace() );
         personEntity.setBirthDate( person.getBirthDate() );
         personEntity.setCreatedAt( person.getCreatedAt() );
+        personEntity.setUpdatedAt( person.getUpdatedAt() );
 
         return personEntity;
     }
@@ -78,6 +80,7 @@ public class VehicleMapperImpl implements VehicleMapper {
         buyOperation1.setIsPriced( buyOperation.getIsPriced() );
         buyOperation1.setSize( buyOperation.getSize() );
         buyOperation1.setCreatedAt( buyOperation.getCreatedAt() );
+        buyOperation1.setUpdatedAt( buyOperation.getUpdatedAt() );
         buyOperation1.setType( transportationTypeToTransportationType( buyOperation.getType() ) );
         buyOperation1.setDocument( documentToDocumentEntity( buyOperation.getDocument() ) );
         buyOperation1.setDeletedAt( buyOperation.getDeletedAt() );
@@ -101,6 +104,7 @@ public class VehicleMapperImpl implements VehicleMapper {
         vehicle.setOffice( officeEntityToOffice( save.getOffice() ) );
         vehicle.setDriver( personEntityToPerson( save.getDriver() ) );
         vehicle.setCreatedAt( save.getCreatedAt() );
+        vehicle.setUpdatedAt( save.getUpdatedAt() );
 
         return vehicle;
     }
@@ -132,6 +136,7 @@ public class VehicleMapperImpl implements VehicleMapper {
         trafficCenterEntity.setId( trafficCenter.getId() );
         trafficCenterEntity.setName( trafficCenter.getName() );
         trafficCenterEntity.setCreatedAt( trafficCenter.getCreatedAt() );
+        trafficCenterEntity.setUpdatedAt( trafficCenter.getUpdatedAt() );
 
         return trafficCenterEntity;
     }
@@ -146,6 +151,7 @@ public class VehicleMapperImpl implements VehicleMapper {
         refineryEntity.setId( refinery.getId() );
         refineryEntity.setPlaceType( refinery.getPlaceType() );
         refineryEntity.setCreatedAt( refinery.getCreatedAt() );
+        refineryEntity.setUpdatedAt( refinery.getUpdatedAt() );
         refineryEntity.setName( refinery.getName() );
 
         return refineryEntity;
@@ -200,6 +206,7 @@ public class VehicleMapperImpl implements VehicleMapper {
         trafficCenter.setId( trafficCenterEntity.getId() );
         trafficCenter.setName( trafficCenterEntity.getName() );
         trafficCenter.setCreatedAt( trafficCenterEntity.getCreatedAt() );
+        trafficCenter.setUpdatedAt( trafficCenterEntity.getUpdatedAt() );
 
         return trafficCenter;
     }
@@ -234,6 +241,7 @@ public class VehicleMapperImpl implements VehicleMapper {
         person.setBirthPlace( personEntity.getBirthPlace() );
         person.setBirthDate( personEntity.getBirthDate() );
         person.setCreatedAt( personEntity.getCreatedAt() );
+        person.setUpdatedAt( personEntity.getUpdatedAt() );
 
         return person;
     }

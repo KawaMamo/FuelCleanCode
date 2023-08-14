@@ -12,4 +12,5 @@ public class TransferMaterials {
     private Long amount;
     private Money price;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }

@@ -33,7 +33,7 @@ import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-13T17:00:58+0300",
+    date = "2023-08-14T14:36:30+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class PartitionMapperImpl implements PartitionMapper {
@@ -57,6 +57,7 @@ public class PartitionMapperImpl implements PartitionMapper {
         partition1.setDocument( documentEntityToDocument( partition.getDocument() ) );
         partition1.setTransportation( transportationEntityToTransportation( partition.getTransportation() ) );
         partition1.setCreatedAt( partition.getCreatedAt() );
+        partition1.setUpdatedAt( partition.getUpdatedAt() );
 
         return partition1;
     }
@@ -80,6 +81,7 @@ public class PartitionMapperImpl implements PartitionMapper {
         partitionEntity.setExtraNotes( partition.getExtraNotes() );
         partitionEntity.setDocument( documentToDocumentEntity( partition.getDocument() ) );
         partitionEntity.setCreatedAt( partition.getCreatedAt() );
+        partitionEntity.setUpdatedAt( partition.getUpdatedAt() );
         partitionEntity.setTransportation( transportationToTransportationEntity( partition.getTransportation() ) );
 
         return partitionEntity;
@@ -123,6 +125,7 @@ public class PartitionMapperImpl implements PartitionMapper {
         priceCategory.setId( priceCategoryEntity.getId() );
         priceCategory.setName( priceCategoryEntity.getName() );
         priceCategory.setCreatedAt( priceCategoryEntity.getCreatedAt() );
+        priceCategory.setUpdatedAt( priceCategoryEntity.getUpdatedAt() );
 
         return priceCategory;
     }
@@ -137,6 +140,7 @@ public class PartitionMapperImpl implements PartitionMapper {
         region.setId( regionEntity.getId() );
         region.setName( regionEntity.getName() );
         region.setCreatedAt( regionEntity.getCreatedAt() );
+        region.setUpdatedAt( regionEntity.getUpdatedAt() );
 
         return region;
     }
@@ -156,6 +160,7 @@ public class PartitionMapperImpl implements PartitionMapper {
         person.setBirthPlace( personEntity.getBirthPlace() );
         person.setBirthDate( personEntity.getBirthDate() );
         person.setCreatedAt( personEntity.getCreatedAt() );
+        person.setUpdatedAt( personEntity.getUpdatedAt() );
 
         return person;
     }
@@ -227,6 +232,7 @@ public class PartitionMapperImpl implements PartitionMapper {
         trafficCenter.setId( trafficCenterEntity.getId() );
         trafficCenter.setName( trafficCenterEntity.getName() );
         trafficCenter.setCreatedAt( trafficCenterEntity.getCreatedAt() );
+        trafficCenter.setUpdatedAt( trafficCenterEntity.getUpdatedAt() );
 
         return trafficCenter;
     }
@@ -260,6 +266,7 @@ public class PartitionMapperImpl implements PartitionMapper {
         vehicle.setOffice( officeEntityToOffice( vehicleEntity.getOffice() ) );
         vehicle.setDriver( personEntityToPerson( vehicleEntity.getDriver() ) );
         vehicle.setCreatedAt( vehicleEntity.getCreatedAt() );
+        vehicle.setUpdatedAt( vehicleEntity.getUpdatedAt() );
 
         return vehicle;
     }
@@ -272,9 +279,10 @@ public class PartitionMapperImpl implements PartitionMapper {
         Refinery refinery = new Refinery();
 
         refinery.setPlaceType( refineryEntity.getPlaceType() );
+        refinery.setCreatedAt( refineryEntity.getCreatedAt() );
+        refinery.setUpdatedAt( refineryEntity.getUpdatedAt() );
         refinery.setId( refineryEntity.getId() );
         refinery.setName( refineryEntity.getName() );
-        refinery.setCreatedAt( refineryEntity.getCreatedAt() );
 
         return refinery;
     }
@@ -311,6 +319,7 @@ public class PartitionMapperImpl implements PartitionMapper {
         transportation.setIsPriced( transportationEntity.getIsPriced() );
         transportation.setSize( transportationEntity.getSize() );
         transportation.setCreatedAt( transportationEntity.getCreatedAt() );
+        transportation.setUpdatedAt( transportationEntity.getUpdatedAt() );
         transportation.setType( transportationTypeToTransportationType( transportationEntity.getType() ) );
         transportation.setDocument( documentEntityToDocument( transportationEntity.getDocument() ) );
         transportation.setDeletedAt( transportationEntity.getDeletedAt() );
@@ -373,6 +382,7 @@ public class PartitionMapperImpl implements PartitionMapper {
         priceCategoryEntity.setId( priceCategory.getId() );
         priceCategoryEntity.setName( priceCategory.getName() );
         priceCategoryEntity.setCreatedAt( priceCategory.getCreatedAt() );
+        priceCategoryEntity.setUpdatedAt( priceCategory.getUpdatedAt() );
 
         return priceCategoryEntity;
     }
@@ -387,6 +397,7 @@ public class PartitionMapperImpl implements PartitionMapper {
         regionEntity.setId( region.getId() );
         regionEntity.setName( region.getName() );
         regionEntity.setCreatedAt( region.getCreatedAt() );
+        regionEntity.setUpdatedAt( region.getUpdatedAt() );
 
         return regionEntity;
     }
@@ -406,6 +417,7 @@ public class PartitionMapperImpl implements PartitionMapper {
         personEntity.setBirthPlace( person.getBirthPlace() );
         personEntity.setBirthDate( person.getBirthDate() );
         personEntity.setCreatedAt( person.getCreatedAt() );
+        personEntity.setUpdatedAt( person.getUpdatedAt() );
 
         return personEntity;
     }
@@ -477,6 +489,7 @@ public class PartitionMapperImpl implements PartitionMapper {
         trafficCenterEntity.setId( trafficCenter.getId() );
         trafficCenterEntity.setName( trafficCenter.getName() );
         trafficCenterEntity.setCreatedAt( trafficCenter.getCreatedAt() );
+        trafficCenterEntity.setUpdatedAt( trafficCenter.getUpdatedAt() );
 
         return trafficCenterEntity;
     }
@@ -510,6 +523,7 @@ public class PartitionMapperImpl implements PartitionMapper {
         vehicleEntity.setOffice( officeToOfficeEntity( vehicle.getOffice() ) );
         vehicleEntity.setDriver( personToPersonEntity( vehicle.getDriver() ) );
         vehicleEntity.setCreatedAt( vehicle.getCreatedAt() );
+        vehicleEntity.setUpdatedAt( vehicle.getUpdatedAt() );
 
         return vehicleEntity;
     }
@@ -524,6 +538,7 @@ public class PartitionMapperImpl implements PartitionMapper {
         refineryEntity.setId( refinery.getId() );
         refineryEntity.setPlaceType( refinery.getPlaceType() );
         refineryEntity.setCreatedAt( refinery.getCreatedAt() );
+        refineryEntity.setUpdatedAt( refinery.getUpdatedAt() );
         refineryEntity.setName( refinery.getName() );
 
         return refineryEntity;
@@ -561,6 +576,7 @@ public class PartitionMapperImpl implements PartitionMapper {
         transportationEntity.setIsPriced( transportation.getIsPriced() );
         transportationEntity.setSize( transportation.getSize() );
         transportationEntity.setCreatedAt( transportation.getCreatedAt() );
+        transportationEntity.setUpdatedAt( transportation.getUpdatedAt() );
         transportationEntity.setType( transportationTypeToTransportationType1( transportation.getType() ) );
         transportationEntity.setDocument( documentToDocumentEntity( transportation.getDocument() ) );
         transportationEntity.setDeletedAt( transportation.getDeletedAt() );

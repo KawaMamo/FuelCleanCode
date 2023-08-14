@@ -6,7 +6,7 @@ import org.example.model.TrafficCenter;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-13T17:00:58+0300",
+    date = "2023-08-14T14:36:30+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class TrafficCenterMapperImpl implements TrafficCenterMapper {
@@ -22,6 +22,7 @@ public class TrafficCenterMapperImpl implements TrafficCenterMapper {
         trafficCenterEntity.setId( trafficCenter.getId() );
         trafficCenterEntity.setName( trafficCenter.getName() );
         trafficCenterEntity.setCreatedAt( trafficCenter.getCreatedAt() );
+        trafficCenterEntity.setUpdatedAt( trafficCenter.getUpdatedAt() );
 
         return trafficCenterEntity;
     }
@@ -37,6 +38,7 @@ public class TrafficCenterMapperImpl implements TrafficCenterMapper {
         trafficCenter1.setId( trafficCenter.getId() );
         trafficCenter1.setName( trafficCenter.getName() );
         trafficCenter1.setCreatedAt( trafficCenter.getCreatedAt() );
+        trafficCenter1.setUpdatedAt( trafficCenter.getUpdatedAt() );
 
         return trafficCenter1;
     }

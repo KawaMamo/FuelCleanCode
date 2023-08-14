@@ -10,4 +10,5 @@ public class TransLine {
     private Place destination;
     private Money fee;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }

@@ -19,7 +19,7 @@ import org.example.model.TransLine;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-13T17:00:57+0300",
+    date = "2023-08-14T14:36:30+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class TransLineMapperImpl implements TransLineMapper {
@@ -38,6 +38,7 @@ public class TransLineMapperImpl implements TransLineMapper {
         transLineEntity.setFeeAmount( transLineFeeAmount( transLine ) );
         transLineEntity.setId( transLine.getId() );
         transLineEntity.setCreatedAt( transLine.getCreatedAt() );
+        transLineEntity.setUpdatedAt( transLine.getUpdatedAt() );
 
         return transLineEntity;
     }
@@ -55,6 +56,7 @@ public class TransLineMapperImpl implements TransLineMapper {
         transLine1.setDestination( toDomain( transLine.getDestination() ) );
         transLine1.setId( transLine.getId() );
         transLine1.setCreatedAt( transLine.getCreatedAt() );
+        transLine1.setUpdatedAt( transLine.getUpdatedAt() );
 
         return transLine1;
     }
@@ -92,6 +94,7 @@ public class TransLineMapperImpl implements TransLineMapper {
         refineryEntity.setId( refinery.getId() );
         refineryEntity.setPlaceType( refinery.getPlaceType() );
         refineryEntity.setCreatedAt( refinery.getCreatedAt() );
+        refineryEntity.setUpdatedAt( refinery.getUpdatedAt() );
         refineryEntity.setName( refinery.getName() );
 
         return refineryEntity;
@@ -128,9 +131,10 @@ public class TransLineMapperImpl implements TransLineMapper {
         Refinery refinery1 = new Refinery();
 
         refinery1.setPlaceType( refinery.getPlaceType() );
+        refinery1.setCreatedAt( refinery.getCreatedAt() );
+        refinery1.setUpdatedAt( refinery.getUpdatedAt() );
         refinery1.setId( refinery.getId() );
         refinery1.setName( refinery.getName() );
-        refinery1.setCreatedAt( refinery.getCreatedAt() );
 
         return refinery1;
     }
@@ -188,6 +192,7 @@ public class TransLineMapperImpl implements TransLineMapper {
         priceCategoryEntity.setId( priceCategory.getId() );
         priceCategoryEntity.setName( priceCategory.getName() );
         priceCategoryEntity.setCreatedAt( priceCategory.getCreatedAt() );
+        priceCategoryEntity.setUpdatedAt( priceCategory.getUpdatedAt() );
 
         return priceCategoryEntity;
     }
@@ -202,6 +207,7 @@ public class TransLineMapperImpl implements TransLineMapper {
         regionEntity.setId( region.getId() );
         regionEntity.setName( region.getName() );
         regionEntity.setCreatedAt( region.getCreatedAt() );
+        regionEntity.setUpdatedAt( region.getUpdatedAt() );
 
         return regionEntity;
     }
@@ -221,6 +227,7 @@ public class TransLineMapperImpl implements TransLineMapper {
         personEntity.setBirthPlace( person.getBirthPlace() );
         personEntity.setBirthDate( person.getBirthDate() );
         personEntity.setCreatedAt( person.getCreatedAt() );
+        personEntity.setUpdatedAt( person.getUpdatedAt() );
 
         return personEntity;
     }
@@ -250,6 +257,7 @@ public class TransLineMapperImpl implements TransLineMapper {
         priceCategory.setId( priceCategoryEntity.getId() );
         priceCategory.setName( priceCategoryEntity.getName() );
         priceCategory.setCreatedAt( priceCategoryEntity.getCreatedAt() );
+        priceCategory.setUpdatedAt( priceCategoryEntity.getUpdatedAt() );
 
         return priceCategory;
     }
@@ -264,6 +272,7 @@ public class TransLineMapperImpl implements TransLineMapper {
         region.setId( regionEntity.getId() );
         region.setName( regionEntity.getName() );
         region.setCreatedAt( regionEntity.getCreatedAt() );
+        region.setUpdatedAt( regionEntity.getUpdatedAt() );
 
         return region;
     }
@@ -283,6 +292,7 @@ public class TransLineMapperImpl implements TransLineMapper {
         person.setBirthPlace( personEntity.getBirthPlace() );
         person.setBirthDate( personEntity.getBirthDate() );
         person.setCreatedAt( personEntity.getCreatedAt() );
+        person.setUpdatedAt( personEntity.getUpdatedAt() );
 
         return person;
     }

@@ -18,5 +18,6 @@ public class TransLineEntity {
     private String feeCurrency;
     private Double feeAmount;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
 }

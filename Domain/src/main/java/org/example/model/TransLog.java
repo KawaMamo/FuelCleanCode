@@ -12,4 +12,5 @@ public class TransLog {
     private Transportation transportation;
     private String notes;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }

@@ -13,5 +13,6 @@ public class Vehicle {
     private Office office;
     private Person driver;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
 }

@@ -21,4 +21,5 @@ public class TransferMaterialsEntity {
     private String priceCurrency;
     private Double priceAmount;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }

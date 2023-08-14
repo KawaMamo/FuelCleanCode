@@ -18,10 +18,15 @@ public class Beans {
     public CreateTrans createTrans(TransRepoJpa transRepoJpa,
                                    CreateTransValidator createTransValidator,
                                    VehicleRepo vehicleRepo,
-                                   RefineryRepo refineryRepo){
+                                   RefineryRepo refineryRepo, DomainTransMapper domainTransMapper){
         return new CreateTrans(createTransValidator,
-                new DomainTransMapperImpl(),
+                domainTransMapper,
                 new TransAdapter(transRepoJpa, new TransMapperImpl()), vehicleRepo, refineryRepo);
+    }
+
+    @Bean
+    DomainTransMapper domainTransMapper(){
+        return new DomainTransMapperImpl();
     }
 
     @Bean
@@ -65,8 +70,8 @@ public class Beans {
     public CreateVehicle createVehicle(VehicleRepository repository,
                                        OfficeRepo officeRepo,
                                        PersonRepo personRepo,
-                                       TrafficCenterRepo trafficCenterRepo, VehicleRepo vehicleRepo){
-        return new CreateVehicle(new CreateVehicleValidator(personRepo, officeRepo, trafficCenterRepo), new VehicleDomainMapperImpl(),
+                                       TrafficCenterRepo trafficCenterRepo, VehicleRepo vehicleRepo, VehicleDomainMapper vehicleDomainMapper){
+        return new CreateVehicle(new CreateVehicleValidator(personRepo, officeRepo, trafficCenterRepo), vehicleDomainMapper,
                 vehicleRepo, trafficCenterRepo, officeRepo, personRepo);
     }
 
@@ -189,9 +194,9 @@ public class Beans {
         return new PersonMapperImpl();
     }
     @Bean
-    CreateRegion createRegion(RegionRepository repository, RegionMapper regionMapper){
+    CreateRegion createRegion(RegionRepository repository, RegionMapper regionMapper, RegionDomainMapper regionDomainMapper){
         return new CreateRegion(new CreateRegionValidator(),
-                new RegionDomainMapperImpl(),
+                regionDomainMapper,
                 new RegionAdapter(repository, regionMapper));
     }
 
@@ -349,9 +354,9 @@ public class Beans {
     CreateTransLog createTransLog(TransLogRepo transLogRepo,
                                   TransLineRepo transLineRepo,
                                   VehicleRepo vehicleRepo,
-                                  TransRepo transRepo){
+                                  TransRepo transRepo, TransLogDomainMapper transLogDomainMapper){
         return new CreateTransLog(transLogRepo,
-                new TransLogDomainMapperImpl(),
+                transLogDomainMapper,
                 new CreateTransLogValidator(transLineRepo,
                         vehicleRepo,
                         transRepo), vehicleRepo, transLineRepo, transRepo);
@@ -560,5 +565,82 @@ public class Beans {
     @Bean
     PriceCategoryDomainMapper priceCategoryDomainMapper(){
         return new PriceCategoryDomainMapperImpl();
+    }
+    @Bean
+    UpdateRegion updateRegion(UpdateRegionValidator validator, RegionDomainMapper mapper, RegionRepo regionRepo){
+        return new UpdateRegion(validator, mapper, regionRepo);
+    }
+    @Bean
+    UpdateRegionValidator updateRegionValidator(){
+        return new UpdateRegionValidator();
+    }
+
+    @Bean
+    RegionDomainMapper regionDomainMapper(){
+        return new RegionDomainMapperImpl();
+    }
+    @Bean
+    UpdateTrafficCenter updateTrafficCenter(UpdateTrafficCenterValidator validator, TrafficCenterDomainMapper mapper, TrafficCenterRepo repo){
+        return new UpdateTrafficCenter(validator, mapper, repo);
+    }
+    @Bean
+    UpdateTrafficCenterValidator updateTrafficCenterValidator(){
+        return new UpdateTrafficCenterValidator();
+    }
+    @Bean
+    UpdateTrans updateTrans(UpdateTransValidator validator, DomainTransMapper mapper, TransRepo repo){
+        return new UpdateTrans(validator, mapper, repo);
+    }
+    @Bean
+    UpdateTransValidator updateTransValidator(RefineryRepo refineryRepo, VehicleRepo vehicleRepo){
+        return new UpdateTransValidator(refineryRepo, vehicleRepo);
+    }
+    @Bean
+    UpdateTransferMaterial updateTransferMaterial(UpdateTransferMaterialValidator validator,
+                                                  TransferMaterialDomainMapper mapper,
+                                                  TransferMaterialRepo repo){
+        return new UpdateTransferMaterial(validator, repo, mapper);
+    }
+
+    @Bean
+    UpdateTransferMaterialValidator updateTransferMaterialValidator(MaterialRepo materialRepo, GasStationRepo gasStationRepo){
+        return new UpdateTransferMaterialValidator(materialRepo, gasStationRepo);
+    }
+    @Bean
+    TransferMaterialDomainMapper transferMaterialDomainMapper(){
+        return new TransferMaterialDomainMapperImpl();
+    }
+    @Bean
+    UpdateTransLine updateTransLine(UpdateTransLineValidator validator, TransLineDomainMapper mapper, TransLineRepo transLineRepo){
+        return new UpdateTransLine(validator, mapper, transLineRepo);
+    }
+    @Bean
+    UpdateTransLineValidator updateTransLineValidator(GasStationRepo gasStationRepo, RefineryRepo refineryRepo){
+        return new UpdateTransLineValidator(gasStationRepo, refineryRepo);
+    }
+    @Bean
+    UpdateTransLog updateTransLog(UpdateTransLogValidator validator, TransLogDomainMapper mapper, TransLogRepo transLogRepo){
+        return new UpdateTransLog(validator, transLogRepo, mapper);
+    }
+    @Bean
+    UpdateTransLogValidator updateTransLogValidator(TransLineRepo transLineRepo, VehicleRepo vehicleRepo, TransRepo transRepo){
+        return new UpdateTransLogValidator(transLineRepo, vehicleRepo, transRepo);
+    }
+
+    @Bean
+    TransLogDomainMapper transLogDomainMapper(){
+        return new TransLogDomainMapperImpl();
+    }
+    @Bean
+    UpdateVehicle updateVehicle(UpdateVehicleValidator validator, VehicleDomainMapper mapper, VehicleRepo vehicleRepo){
+        return new UpdateVehicle(validator, vehicleRepo, mapper);
+    }
+    @Bean
+    UpdateVehicleValidator updateVehicleValidator(PersonRepo personRepo, OfficeRepo officeRepo, TrafficCenterRepo trafficCenterRepo){
+        return new UpdateVehicleValidator(personRepo, officeRepo, trafficCenterRepo);
+    }
+    @Bean
+    VehicleDomainMapper vehicleDomainMapper(){
+        return new VehicleDomainMapperImpl();
     }
 }

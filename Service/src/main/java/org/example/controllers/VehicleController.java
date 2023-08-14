@@ -1,6 +1,7 @@
 package org.example.controllers;
 
 import org.example.contract.request.create.CreateVehicleRequest;
+import org.example.contract.request.update.UpdateVehicleRequest;
 import org.example.contract.response.VehicleResponse;
 import org.example.entities.VehicleEntity;
 import org.example.mappers.VehicleMapper;
@@ -11,10 +12,12 @@ import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
 import org.example.specifications.SearchFilter;
 import org.example.useCases.create.CreateVehicle;
+import org.example.useCases.update.UpdateVehicle;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.PagedModel;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,14 +30,16 @@ public class VehicleController {
     private final VehicleRepository vehicleRepository;
     private final PagedResourcesAssembler pagedResourcesAssembler;
     private final VehicleMapper vehicleMapper;
+    private final UpdateVehicle updateVehicle;
 
     public VehicleController(CreateVehicle createVehicle,
                              VehicleRepository vehicleRepository,
-                             PagedResourcesAssembler pagedResourcesAssembler, VehicleMapper vehicleMapper) {
+                             PagedResourcesAssembler pagedResourcesAssembler, VehicleMapper vehicleMapper, UpdateVehicle updateVehicle) {
         this.createVehicle = createVehicle;
         this.vehicleRepository = vehicleRepository;
         this.pagedResourcesAssembler = pagedResourcesAssembler;
         this.vehicleMapper = vehicleMapper;
+        this.updateVehicle = updateVehicle;
     }
 
     @PostMapping
@@ -48,5 +53,10 @@ public class VehicleController {
         final FilterSpecifications<VehicleEntity> specifications = new FilterSpecifications<>(criteriaList);
         final Page<Vehicle> page = vehicleRepository.findAll(specifications, pageable).map(vehicleMapper::EntityToDomain);
         return pagedResourcesAssembler.toModel(page);
+    }
+
+    @PatchMapping
+    public ResponseEntity<VehicleResponse> updateVehicle(@RequestBody UpdateVehicleRequest request){
+        return ResponseEntity.ok(updateVehicle.execute(request));
     }
 }
