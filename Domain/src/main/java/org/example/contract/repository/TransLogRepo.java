@@ -7,4 +7,5 @@ import java.util.Optional;
 public interface TransLogRepo {
     TransLog save(TransLog transLog);
     Optional<TransLog> findById(Long id);
+    void delete(TransLog transLog);
 }

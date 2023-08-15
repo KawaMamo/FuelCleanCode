@@ -7,4 +7,5 @@ import java.util.Optional;
 public interface RegionRepo {
     Region save(Region region);
     Optional<Region> findById(Long id);
+    void delete(Region region);
 }

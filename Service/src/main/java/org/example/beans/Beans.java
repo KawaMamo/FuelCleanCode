@@ -5,6 +5,7 @@ import org.example.contract.repository.*;
 import org.example.mappers.*;
 import org.example.repositories.*;
 import org.example.useCases.create.*;
+import org.example.useCases.delete.DeleteCategory;
 import org.example.useCases.update.*;
 import org.example.validators.create.*;
 import org.example.validators.update.*;
@@ -642,5 +643,10 @@ public class Beans {
     @Bean
     VehicleDomainMapper vehicleDomainMapper(){
         return new VehicleDomainMapperImpl();
+    }
+
+    @Bean
+    DeleteCategory deleteCategory(CategoryRepo categoryRepo, CategoryDomainMapper mapper){
+        return new DeleteCategory(categoryRepo, mapper);
     }
 }

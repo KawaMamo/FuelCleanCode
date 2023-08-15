@@ -7,4 +7,5 @@ import java.util.Optional;
 public interface TransLineRepo {
     TransLine save(TransLine transLine);
     Optional<TransLine> findById(Long id);
+    void delete(TransLine transLine);
 }

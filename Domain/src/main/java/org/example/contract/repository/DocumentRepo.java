@@ -7,4 +7,5 @@ import java.util.Optional;
 public interface DocumentRepo {
     Document save(Document document);
     Optional<Document> findById(Long id);
+    void delete(Document document);
 }

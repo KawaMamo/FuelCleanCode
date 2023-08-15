@@ -29,4 +29,9 @@ public class PlaceAdapter implements PlaceRepo {
         final PlaceEntity place = byId.orElse(null);
         return Optional.ofNullable(placeMapper.toDomain(place));
     }
+
+    @Override
+    public void delete(Place place) {
+        placeRepository.delete(placeMapper.toEntity(place));
+    }
 }

@@ -45,4 +45,9 @@ public class GasStationAdapter implements GasStationRepo {
         final GasStation gasStation = mapper.entityToDomain(gasStationEntity);
         return Optional.ofNullable(gasStation);
     }
+
+    @Override
+    public void delete(GasStation gasStation) {
+        gasStationRepository.delete(mapper.domainToEntity(gasStation));
+    }
 }

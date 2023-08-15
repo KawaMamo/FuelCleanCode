@@ -12,7 +12,10 @@ import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
 import org.example.specifications.SearchFilter;
 import org.example.useCases.create.CreateCategory;
+import org.example.useCases.delete.DeleteCategory;
 import org.example.useCases.update.UpdateCategory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
@@ -31,16 +34,21 @@ public class CategoryController {
     private final PagedResourcesAssembler pagedResourcesAssembler;
     private final CategoryMapper categoryMapper;
     private final UpdateCategory updateCategory;
+    private final DeleteCategory deleteCategory;
+    final Logger logger = LoggerFactory.getLogger(CategoryController.class);
 
     public CategoryController(CreateCategory createCategoryUserCase,
                               CategoryRepository categoryRepository,
                               PagedResourcesAssembler pagedResourcesAssembler,
-                              CategoryMapper categoryMapper, UpdateCategory updateCategory) {
+                              CategoryMapper categoryMapper,
+                              UpdateCategory updateCategory,
+                              DeleteCategory deleteCategory) {
         this.createCategoryUserCase = createCategoryUserCase;
         this.categoryRepository = categoryRepository;
         this.pagedResourcesAssembler = pagedResourcesAssembler;
         this.categoryMapper = categoryMapper;
         this.updateCategory = updateCategory;
+        this.deleteCategory = deleteCategory;
     }
 
     @PostMapping
@@ -58,6 +66,14 @@ public class CategoryController {
 
     @PatchMapping
     public ResponseEntity<CategoryResponse> update(@RequestBody UpdateCategoryRequest request){
+        logger.info(request.toString());
         return ResponseEntity.ok(updateCategory.execute(request));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<CategoryResponse> delete(@PathVariable Long id){
+        //TODO log deletion with user name.
+        logger.info("Deleted Category "+id.toString());
+        return ResponseEntity.ok(deleteCategory.execute(id));
     }
 }

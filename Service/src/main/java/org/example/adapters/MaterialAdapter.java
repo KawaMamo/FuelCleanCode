@@ -33,4 +33,9 @@ public class MaterialAdapter implements MaterialRepo {
         final Material material = mapper.entityToDomain(materialEntity);
         return Optional.ofNullable(material);
     }
+
+    @Override
+    public void delete(Material material) {
+        repository.delete(mapper.domainToEntity(material));
+    }
 }

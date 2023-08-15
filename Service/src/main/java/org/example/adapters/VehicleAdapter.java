@@ -31,4 +31,9 @@ public class VehicleAdapter implements VehicleRepo {
         final Vehicle vehicle = mapper.EntityToDomain(vehicleEntity);
         return Optional.ofNullable(vehicle);
     }
+
+    @Override
+    public void delete(Vehicle vehicle) {
+        vehicleRepository.delete(mapper.domainToEntity(vehicle));
+    }
 }

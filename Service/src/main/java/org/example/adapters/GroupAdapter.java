@@ -32,4 +32,9 @@ public class GroupAdapter implements GroupRepo {
         final Group group = mapper.entityToDomain(groupEntity);
         return Optional.ofNullable(group);
     }
+
+    @Override
+    public void delete(Group group) {
+        groupRepository.delete(mapper.domainToEntity(group));
+    }
 }

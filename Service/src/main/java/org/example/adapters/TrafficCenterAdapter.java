@@ -33,4 +33,9 @@ public class TrafficCenterAdapter implements TrafficCenterRepo {
         final TrafficCenter trafficCenter = mapper.entityToDomain(trafficCenterEntity);
         return Optional.ofNullable(trafficCenter);
     }
+
+    @Override
+    public void delete(TrafficCenter trafficCenter) {
+        repository.delete(mapper.domainToEntity(trafficCenter));
+    }
 }

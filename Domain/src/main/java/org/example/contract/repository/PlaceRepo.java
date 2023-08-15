@@ -7,4 +7,5 @@ import java.util.Optional;
 public interface PlaceRepo {
     Place save(Place place);
     Optional<Place> findById(Long id);
+    void delete(Place place);
 }

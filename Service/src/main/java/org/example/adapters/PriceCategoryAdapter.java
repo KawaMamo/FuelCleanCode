@@ -34,4 +34,9 @@ public class PriceCategoryAdapter implements PriceCategoryRepo {
         final PriceCategory priceCategory = mapper.entityToDomain(priceCategoryEntity);
         return Optional.ofNullable(priceCategory);
     }
+
+    @Override
+    public void delete(PriceCategory priceCategory) {
+        repository.delete(mapper.domainToEntity(priceCategory));
+    }
 }

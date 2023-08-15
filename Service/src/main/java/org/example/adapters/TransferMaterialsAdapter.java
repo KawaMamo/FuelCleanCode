@@ -31,4 +31,9 @@ public class TransferMaterialsAdapter implements TransferMaterialRepo {
         final Optional<TransferMaterialsEntity> byId = repository.findById(id);
         return Optional.ofNullable(mapper.entityToDomain(byId.orElse(null)));
     }
+
+    @Override
+    public void delete(TransferMaterials transferMaterials) {
+        repository.delete(mapper.domainToEntity(transferMaterials));
+    }
 }

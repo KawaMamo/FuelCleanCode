@@ -7,4 +7,5 @@ import java.util.Optional;
 public interface PersonRepo {
     Person save(Person person);
     Optional<Person> findById(Long id);
+    void delete(Person person);
 }

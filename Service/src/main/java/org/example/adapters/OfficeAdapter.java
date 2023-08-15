@@ -33,4 +33,9 @@ public class OfficeAdapter implements OfficeRepo {
         final Office office = mapper.entityToDomain(officeEntity);
         return Optional.ofNullable(office);
     }
+
+    @Override
+    public void delete(Office office) {
+        repository.delete(mapper.domainToEntity(office));
+    }
 }

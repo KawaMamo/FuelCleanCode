@@ -7,4 +7,5 @@ import java.util.Optional;
 public interface OfficeRepo {
     Office save(Office office);
     Optional<Office> findById(Long id);
+    void delete(Office office);
 }

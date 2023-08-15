@@ -32,4 +32,9 @@ public class CategoryAdapter implements CategoryRepo {
         return mapper.entityToDomain(categoryEntity);
     }
 
+    @Override
+    public void delete(Category category) {
+        categoryRepository.deleteById(category.getId());
+    }
+
 }

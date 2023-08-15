@@ -30,4 +30,9 @@ public class TransLogAdapter implements TransLogRepo {
         final Optional<TransLogEntity> byId = transLogRepository.findById(id);
         return Optional.ofNullable(transLogMapper.entityToDomain(byId.orElse(null)));
     }
+
+    @Override
+    public void delete(TransLog transLog) {
+        transLogRepository.delete(transLogMapper.domainToEntity(transLog));
+    }
 }

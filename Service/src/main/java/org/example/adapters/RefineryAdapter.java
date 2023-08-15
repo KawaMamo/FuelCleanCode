@@ -40,4 +40,9 @@ public class RefineryAdapter implements RefineryRepo {
         final Refinery refinery = mapper.toDomain(refineryEntity);
         return Optional.ofNullable(refinery);
     }
+
+    @Override
+    public void delete(Refinery refinery) {
+        repository.delete(mapper.toEntity(refinery));
+    }
 }

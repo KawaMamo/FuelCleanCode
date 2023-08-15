@@ -31,4 +31,9 @@ public class DocumentAdapter implements DocumentRepo {
         final DocumentEntity documentEntity = repository.findById(id).orElseThrow(NoSuchElementException::new);
         return Optional.ofNullable(mapper.toDomain(documentEntity));
     }
+
+    @Override
+    public void delete(Document document) {
+        repository.delete(mapper.toEntity(document));
+    }
 }

@@ -31,4 +31,9 @@ public class PartitionAdapter implements PartitionRepo {
         final Partition partition = mapper.entityToDomain(partitionEntity);
         return Optional.ofNullable(partition);
     }
+
+    @Override
+    public void delete(Partition partition) {
+        partitionRepository.delete(mapper.domainToEntity(partition));
+    }
 }

@@ -7,4 +7,5 @@ import java.util.Optional;
 public interface PriceCategoryRepo {
     PriceCategory save(PriceCategory priceCategory);
     Optional<PriceCategory> findById(Long id);
+    void delete(PriceCategory priceCategory);
 }

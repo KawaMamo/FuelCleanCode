@@ -7,4 +7,5 @@ import java.util.Optional;
 public interface GroupRepo {
     Group save(Group group);
     Optional<Group> findById(Long id);
+    void delete(Group group);
 }

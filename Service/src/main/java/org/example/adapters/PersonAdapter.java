@@ -33,4 +33,9 @@ public class PersonAdapter implements PersonRepo {
         final Person person = mapper.entityToDomain(personEntity);
         return Optional.ofNullable(person);
     }
+
+    @Override
+    public void delete(Person person) {
+        repository.delete(mapper.domainToEntity(person));
+    }
 }

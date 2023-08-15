@@ -33,4 +33,9 @@ public class ForfeitAdapter implements ForfeitRepo {
         final Forfeit forfeit = mapper.entityToDomain(forfeitEntity);
         return Optional.ofNullable(forfeit);
     }
+
+    @Override
+    public void delete(Forfeit forfeit) {
+        repository.delete(mapper.domainToEntity(forfeit));
+    }
 }

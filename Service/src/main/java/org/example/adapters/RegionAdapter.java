@@ -34,4 +34,9 @@ public class RegionAdapter implements RegionRepo {
         final Region region = mapper.entityToDomain(regionEntity);
         return Optional.ofNullable(region);
     }
+
+    @Override
+    public void delete(Region region) {
+        repository.delete(mapper.domainToEntity(region));
+    }
 }

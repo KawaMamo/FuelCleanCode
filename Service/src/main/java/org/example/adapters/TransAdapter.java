@@ -34,4 +34,9 @@ public class TransAdapter implements TransRepo {
         final Transportation transportation = transMapper.entityToDomain(transportationEntity);
         return Optional.ofNullable(transportation);
     }
+
+    @Override
+    public void delete(Transportation transportation) {
+        transRepoJpa.delete(transMapper.domainToEntity(transportation));
+    }
 }

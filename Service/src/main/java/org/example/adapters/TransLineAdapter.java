@@ -32,4 +32,9 @@ public class TransLineAdapter implements TransLineRepo {
         final TransLine transLine = transLineMapper.entityToDomain(transLineEntity);
         return Optional.ofNullable(transLine);
     }
+
+    @Override
+    public void delete(TransLine transLine) {
+        transLineRepository.delete(transLineMapper.domainToEntity(transLine));
+    }
 }
