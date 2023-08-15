@@ -45,7 +45,9 @@ public class TokenService {
     }
 
     public String getJWTToken(String authHeader){
-        return authHeader.substring("Bearer ".length());
+        if(Objects.nonNull(authHeader))
+            return authHeader.substring("Bearer ".length());
+        return "";
     }
 
     private Claims extractClaims(String token){

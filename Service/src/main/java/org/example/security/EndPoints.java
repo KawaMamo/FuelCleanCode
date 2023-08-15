@@ -15,8 +15,7 @@ public class EndPoints {
 
     private List<String> getPublicEndPoints(){
         List<String> publicEndPoints = new ArrayList<>();
-        publicEndPoints.add("/api/v1/auth/authenticate");
-        publicEndPoints.add("/api/v1/auth/publicKey");
+        publicEndPoints.add("/swagger-ui/index.html");
         return publicEndPoints;
     }
 

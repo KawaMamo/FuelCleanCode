@@ -3,6 +3,7 @@ package org.example.security;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.Objects;
 
 import static org.apache.tomcat.websocket.Constants.UNAUTHORIZED;
 
@@ -42,40 +44,43 @@ public class CustomFilter implements Filter {
         JWTVerifier verifier = JWT.require(Algorithm.RSA256(tokenService.getPublicKey(), null)).build();
         logger.atWarn().log(request.getServletPath()+"");
 
-        if(endPoints.isAuthenticatedEndPoint(request)){
+        if(endPoints.isAuthenticatedEndPoint(request) && !request.getServletPath().startsWith("/swagger-ui/") && !request.getServletPath().startsWith("/api-docs")){
+            DecodedJWT verify = null;
             try {
-                verifier.verify(jwtToken);
+                verify = verifier.verify(jwtToken);
             }catch (Exception e){
                 ((HttpServletResponse) servletResponse).addHeader("TOKEN-STATUS", "Invalid");
                 ((HttpServletResponse) servletResponse).sendError(UNAUTHORIZED, "Unauthorized");
             }
 
-            if(tokenService.isExpiredToken(jwtToken)){
-                ((HttpServletResponse) servletResponse).addHeader("tokenStatus", "Expired");
-                ((HttpServletResponse) servletResponse).sendError(UNAUTHORIZED, "Unauthorized");
-            }
-
-            String path = request.getServletPath();
-            final String[] split = path.split("/");
-            int anInt = 0;
-            try {
-                anInt = Integer.parseInt(split[split.length - 1]);
-                if( anInt > 0){
-                    path = path.substring(0, (path.length() - split[split.length-1].length()));
+            if(Objects.nonNull(verify)){
+                if(tokenService.isExpiredToken(jwtToken)){
+                    ((HttpServletResponse) servletResponse).addHeader("tokenStatus", "Expired");
+                    ((HttpServletResponse) servletResponse).sendError(UNAUTHORIZED, "Unauthorized");
                 }
-            }catch (NumberFormatException ignored){
 
+                String path = request.getServletPath();
+                final String[] split = path.split("/");
+                int anInt = 0;
+                try {
+                    anInt = Integer.parseInt(split[split.length - 1]);
+                    if( anInt > 0){
+                        path = path.substring(0, (path.length() - split[split.length-1].length()));
+                    }
+                }catch (NumberFormatException ignored){
+
+                }
+
+
+
+                final ArrayList<LinkedHashMap<String, String>> roles = tokenService.getRoles(jwtToken);
+                if(!endPoints.isAllowed(roles, path)){
+                    logger.atWarn().log(path+" is not allowed for "+roles+request.getHeaders("AUTHORIZATION"));
+                    ((HttpServletResponse) servletResponse).addHeader("tokenStatus", "Unauthorized User");
+                    ((HttpServletResponse) servletResponse).sendError(UNAUTHORIZED, "Unauthorized");
+                }
+                logger.atWarn().log(path+" headers "+request.getHeaders("AUTHORIZATION"));
             }
-
-
-
-            final ArrayList<LinkedHashMap<String, String>> roles = tokenService.getRoles(jwtToken);
-            if(!endPoints.isAllowed(roles, path)){
-                logger.atWarn().log(path+" is not allowed for "+roles+request.getHeaders("AUTHORIZATION"));
-                ((HttpServletResponse) servletResponse).addHeader("tokenStatus", "Unauthorized User");
-                ((HttpServletResponse) servletResponse).sendError(UNAUTHORIZED, "Unauthorized");
-            }
-            logger.atWarn().log(path+" headers "+request.getHeaders("AUTHORIZATION"));
 
         }
         filterChain.doFilter(servletRequest, servletResponse);
