@@ -4,6 +4,8 @@ import org.example.adapters.*;
 import org.example.contract.repository.*;
 import org.example.mappers.*;
 import org.example.repositories.*;
+import org.example.security.EndPoints;
+import org.example.security.TokenService;
 import org.example.useCases.create.*;
 import org.example.useCases.delete.*;
 import org.example.useCases.update.*;
@@ -716,6 +718,15 @@ public class Beans {
     @Bean
     DeleteDocument deleteDocument(DocumentRepo documentRepo, DocumentDomainMapper documentDomainMapper){
         return new DeleteDocument(documentDomainMapper, documentRepo);
+    }
+    @Bean
+    TokenService tokenService(){
+        return new TokenService();
+    }
+
+    @Bean
+    EndPoints endPoints(){
+        return new EndPoints();
     }
 
 }
