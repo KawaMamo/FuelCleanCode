@@ -12,6 +12,7 @@ import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
 import org.example.specifications.SearchFilter;
 import org.example.useCases.create.CreateTrafficCenter;
+import org.example.useCases.delete.DeleteTrafficCenter;
 import org.example.useCases.update.UpdateTrafficCenter;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,17 +32,19 @@ public class TrafficCenterController {
     private final TrafficCenterMapper trafficCenterMapper;
     private final PagedResourcesAssembler centerPagedResourcesAssembler;
     private final UpdateTrafficCenter updateTrafficCenter;
+    private final DeleteTrafficCenter deleteTrafficCenter;
 
     public TrafficCenterController(CreateTrafficCenter createTrafficCenter,
                                    TrafficCenterRepository trafficCenterRepository,
                                    TrafficCenterMapper trafficCenterMapper,
                                    PagedResourcesAssembler centerPagedResourcesAssembler,
-                                   UpdateTrafficCenter updateTrafficCenter) {
+                                   UpdateTrafficCenter updateTrafficCenter, DeleteTrafficCenter deleteTrafficCenter) {
         this.createTrafficCenter = createTrafficCenter;
         this.trafficCenterRepository = trafficCenterRepository;
         this.trafficCenterMapper = trafficCenterMapper;
         this.centerPagedResourcesAssembler = centerPagedResourcesAssembler;
         this.updateTrafficCenter = updateTrafficCenter;
+        this.deleteTrafficCenter = deleteTrafficCenter;
     }
     @PostMapping
     TrafficCenterResponse createTrafficCenter(@RequestBody CreateTrafficCenterRequest request){
@@ -60,6 +63,10 @@ public class TrafficCenterController {
     @PatchMapping
     public ResponseEntity<TrafficCenterResponse> updateTrafficCenter(@RequestBody UpdateTrafficCenterRequest request){
         return ResponseEntity.ok(updateTrafficCenter.execute(request));
+    }
+    @DeleteMapping("/{id}")
+    public TrafficCenterResponse delete(@PathVariable Long id){
+        return deleteTrafficCenter.execute(id);
     }
 
 }

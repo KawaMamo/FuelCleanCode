@@ -12,6 +12,7 @@ import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
 import org.example.specifications.SearchFilter;
 import org.example.useCases.create.CreatePartition;
+import org.example.useCases.delete.DeletePartition;
 import org.example.useCases.update.UpdatePartition;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,17 +32,19 @@ public class PartitionController {
     private final PartitionMapper partitionMapper;
     private final PagedResourcesAssembler assembler;
     private final UpdatePartition updatePartition;
+    private final DeletePartition deletePartition;
 
     public PartitionController(CreatePartition createPartition,
                                PartitionRepository partitionRepository,
                                PartitionMapper partitionMapper,
                                PagedResourcesAssembler assembler,
-                               UpdatePartition updatePartition) {
+                               UpdatePartition updatePartition, DeletePartition deletePartition) {
         this.createPartition = createPartition;
         this.partitionRepository = partitionRepository;
         this.partitionMapper = partitionMapper;
         this.assembler = assembler;
         this.updatePartition = updatePartition;
+        this.deletePartition = deletePartition;
     }
 
     @PostMapping
@@ -60,5 +63,9 @@ public class PartitionController {
     @PatchMapping
     ResponseEntity<PartitionResponse> updatePartition(@RequestBody UpdatePartitionRequest request){
         return ResponseEntity.ok(updatePartition.execute(request));
+    }
+    @DeleteMapping("/{id}")
+    public PartitionResponse delete(@PathVariable Long id){
+        return deletePartition.execute(id);
     }
 }

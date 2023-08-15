@@ -12,6 +12,7 @@ import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
 import org.example.specifications.SearchFilter;
 import org.example.useCases.create.CreateMaterial;
+import org.example.useCases.delete.DeleteMaterial;
 import org.example.useCases.update.UpdateMaterial;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,17 +32,19 @@ public class MaterialController {
     private final PagedResourcesAssembler pagedResourcesAssembler;
     private final MaterialMapper materialMapper;
     private final UpdateMaterial updateMaterial;
+    private final DeleteMaterial deleteMaterial;
 
     public MaterialController(CreateMaterial createMaterial,
                               MaterialRepository materialRepository,
                               PagedResourcesAssembler pagedResourcesAssembler,
                               MaterialMapper materialMapper,
-                              UpdateMaterial updateMaterial) {
+                              UpdateMaterial updateMaterial, DeleteMaterial deleteMaterial) {
         this.createMaterial = createMaterial;
         this.materialRepository = materialRepository;
         this.pagedResourcesAssembler = pagedResourcesAssembler;
         this.materialMapper = materialMapper;
         this.updateMaterial = updateMaterial;
+        this.deleteMaterial = deleteMaterial;
     }
 
     @PostMapping
@@ -60,5 +63,9 @@ public class MaterialController {
     @PatchMapping
     ResponseEntity<MaterialResponse> updateMaterial(@RequestBody UpdateMaterialRequest request){
         return ResponseEntity.ok(updateMaterial.execute(request));
+    }
+    @DeleteMapping("/{id}")
+    private MaterialResponse delete(@PathVariable Long id){
+        return deleteMaterial.execute(id);
     }
 }

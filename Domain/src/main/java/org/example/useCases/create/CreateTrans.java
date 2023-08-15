@@ -4,7 +4,7 @@ import org.example.contract.repository.RefineryRepo;
 import org.example.contract.repository.TransRepo;
 import org.example.contract.repository.VehicleRepo;
 import org.example.contract.request.create.CreateTransRequest;
-import org.example.contract.response.CreateTransResponse;
+import org.example.contract.response.TransResponse;
 import org.example.mappers.DomainTransMapper;
 import org.example.model.Transportation;
 import org.example.validators.create.CreateTransValidator;
@@ -27,7 +27,7 @@ public class CreateTrans {
         this.refineryRepo = refineryRepo;
     }
 
-    public CreateTransResponse execute(CreateTransRequest request){
+    public TransResponse execute(CreateTransRequest request){
 
         validator.validate(request);
         final Transportation transportation = domainTransMapper.toDomain(request);

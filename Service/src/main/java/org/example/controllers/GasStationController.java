@@ -13,6 +13,7 @@ import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
 import org.example.specifications.SearchFilter;
 import org.example.useCases.create.CreateGasStation;
+import org.example.useCases.delete.DeleteGasStation;
 import org.example.useCases.update.UpdateGasStation;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,17 +32,19 @@ public class GasStationController {
     private final GasStationMapper gasStationMapper;
     private final PagedResourcesAssembler pagedResourcesAssembler;
     private final UpdateGasStation updateGasStation;
+    private final DeleteGasStation deleteGasStation;
 
     public GasStationController(CreateGasStation createGasStation,
                                 GasStationRepository gasStationRepository,
                                 GasStationMapper gasStationMapper,
                                 PagedResourcesAssembler pagedResourcesAssembler,
-                                UpdateGasStation updateGasStation) {
+                                UpdateGasStation updateGasStation, DeleteGasStation deleteGasStation) {
         this.createGasStation = createGasStation;
         this.gasStationRepository = gasStationRepository;
         this.gasStationMapper = gasStationMapper;
         this.pagedResourcesAssembler = pagedResourcesAssembler;
         this.updateGasStation = updateGasStation;
+        this.deleteGasStation = deleteGasStation;
     }
 
     @PostMapping
@@ -67,5 +70,10 @@ public class GasStationController {
     @PatchMapping
     public ResponseEntity<GasStationResponse> updateGasStation(@RequestBody UpdateGasStationRequest request){
         return ResponseEntity.ok(updateGasStation.execute(request));
+    }
+
+    @DeleteMapping("/{id}")
+    public GasStationResponse delete(@PathVariable Long id){
+        return deleteGasStation.execute(id);
     }
 }

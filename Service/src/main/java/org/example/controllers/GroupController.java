@@ -12,6 +12,7 @@ import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
 import org.example.specifications.SearchFilter;
 import org.example.useCases.create.CreateGroup;
+import org.example.useCases.delete.DeleteGroup;
 import org.example.useCases.update.UpdateGroup;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -30,17 +31,19 @@ public class GroupController {
     private final GroupMapper groupMapper;
     private final PagedResourcesAssembler pagedResourcesAssembler;
     private final UpdateGroup updateGroup;
+    private final DeleteGroup deleteGroup;
 
     public GroupController(CreateGroup createGroup,
                            GroupRepository groupRepository,
                            GroupMapper groupMapper,
                            PagedResourcesAssembler pagedResourcesAssembler,
-                           UpdateGroup updateGroup) {
+                           UpdateGroup updateGroup, DeleteGroup deleteGroup) {
         this.createGroup = createGroup;
         this.groupRepository = groupRepository;
         this.groupMapper = groupMapper;
         this.pagedResourcesAssembler = pagedResourcesAssembler;
         this.updateGroup = updateGroup;
+        this.deleteGroup = deleteGroup;
     }
 
     @PostMapping
@@ -59,5 +62,9 @@ public class GroupController {
     @PatchMapping
     public ResponseEntity<GroupResponse> updateGroup(@RequestBody UpdateGroupRequest request){
         return ResponseEntity.ok(updateGroup.execute(request));
+    }
+    @DeleteMapping("/{id}")
+    public GroupResponse delete(@PathVariable Long id) {
+        return deleteGroup.execute(id);
     }
 }

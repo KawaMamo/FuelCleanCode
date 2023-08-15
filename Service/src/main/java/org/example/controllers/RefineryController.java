@@ -14,6 +14,7 @@ import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
 import org.example.specifications.SearchFilter;
 import org.example.useCases.create.CreateRefinery;
+import org.example.useCases.delete.DeleteRefinery;
 import org.example.useCases.update.UpdateRefinery;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -33,16 +34,18 @@ public class RefineryController {
     private final RefineryMapper placeMapper;
     private final PagedResourcesAssembler assembler;
     private final UpdateRefinery updateRefinery;
+    private final DeleteRefinery deleteRefinery;
 
     public RefineryController(CreateRefinery createRefinery,
                               RefineryRepository refineryRepository,
                               RefineryMapper placeMapper,
-                              PagedResourcesAssembler assembler, UpdateRefinery updateRefinery) {
+                              PagedResourcesAssembler assembler, UpdateRefinery updateRefinery, DeleteRefinery deleteRefinery) {
         this.createRefinery = createRefinery;
         this.refineryRepository = refineryRepository;
         this.placeMapper = placeMapper;
         this.assembler = assembler;
         this.updateRefinery = updateRefinery;
+        this.deleteRefinery = deleteRefinery;
     }
 
     @PostMapping
@@ -68,5 +71,9 @@ public class RefineryController {
     @PatchMapping
     public ResponseEntity<RefineryResponse> updateRefinery(@RequestBody UpdateRefineryRequest request){
         return ResponseEntity.ok(updateRefinery.execute(request));
+    }
+    @DeleteMapping("/{id}")
+    public RefineryResponse deleteRefinery(@PathVariable Long id){
+        return deleteRefinery.execute(id);
     }
 }

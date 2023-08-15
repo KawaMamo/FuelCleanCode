@@ -12,6 +12,7 @@ import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
 import org.example.specifications.SearchFilter;
 import org.example.useCases.create.CreateTransferMaterial;
+import org.example.useCases.delete.DeleteTransferMaterial;
 import org.example.useCases.update.UpdateTransferMaterial;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,16 +32,18 @@ public class TransferMaterialController {
     private final TransferMaterialsMapper transferMaterialsMapper;
     private final PagedResourcesAssembler assembler;
     private final UpdateTransferMaterial updateTransferMaterial;
+    private final DeleteTransferMaterial deleteTransferMaterial;
 
     public TransferMaterialController(CreateTransferMaterial createTransferMaterial,
                                       TransferMaterialRepository transferMaterialRepository,
                                       TransferMaterialsMapper transferMaterialsMapper,
-                                      PagedResourcesAssembler assembler, UpdateTransferMaterial updateTransferMaterial) {
+                                      PagedResourcesAssembler assembler, UpdateTransferMaterial updateTransferMaterial, DeleteTransferMaterial deleteTransferMaterial) {
         this.createTransferMaterial = createTransferMaterial;
         this.transferMaterialRepository = transferMaterialRepository;
         this.transferMaterialsMapper = transferMaterialsMapper;
         this.assembler = assembler;
         this.updateTransferMaterial = updateTransferMaterial;
+        this.deleteTransferMaterial = deleteTransferMaterial;
     }
 
     @PostMapping
@@ -60,5 +63,10 @@ public class TransferMaterialController {
     @PatchMapping
     public ResponseEntity<TransferMaterialResponse> updateTransferMaterials(@RequestBody UpdateTransferMaterialRequest request){
         return ResponseEntity.ok(updateTransferMaterial.execute(request));
+    }
+
+    @DeleteMapping("/{id}")
+    public TransferMaterialResponse delete(@PathVariable Long id){
+        return deleteTransferMaterial.execute(id);
     }
 }

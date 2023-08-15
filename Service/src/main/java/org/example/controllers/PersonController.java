@@ -12,6 +12,7 @@ import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
 import org.example.specifications.SearchFilter;
 import org.example.useCases.create.CreatePerson;
+import org.example.useCases.delete.DeletePerson;
 import org.example.useCases.update.UpdatePerson;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -30,16 +31,18 @@ public class PersonController {
     private final PersonMapper personMapper;
     private final PagedResourcesAssembler assembler;
     private final UpdatePerson updatePerson;
+    private final DeletePerson deletePerson;
 
     public PersonController(CreatePerson createPerson,
                             PersonRepository personRepository,
                             PersonMapper personMapper,
-                            PagedResourcesAssembler assembler, UpdatePerson updatePerson) {
+                            PagedResourcesAssembler assembler, UpdatePerson updatePerson, DeletePerson deletePerson) {
         this.createPerson = createPerson;
         this.personRepository = personRepository;
         this.personMapper = personMapper;
         this.assembler = assembler;
         this.updatePerson = updatePerson;
+        this.deletePerson = deletePerson;
     }
     @PostMapping
     public PersonResponse createPerson(@RequestBody CreatePersonRequest request){
@@ -57,5 +60,9 @@ public class PersonController {
     @PatchMapping
     public ResponseEntity<PersonResponse> updatePerson(@RequestBody UpdatePersonRequest request){
         return ResponseEntity.ok(updatePerson.execute(request));
+    }
+    @DeleteMapping("/{id}")
+    public PersonResponse delete(@PathVariable Long id){
+        return deletePerson.execute(id);
     }
 }

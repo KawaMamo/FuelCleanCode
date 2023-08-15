@@ -10,6 +10,7 @@ import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
 import org.example.specifications.SearchFilter;
 import org.example.useCases.create.CreateDocument;
+import org.example.useCases.delete.DeleteDocument;
 import org.example.useCases.update.UpdateDocument;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -28,14 +29,16 @@ public class DocumentController {
     private final CreateDocument createDocument;
     private final DocumentRepository documentRepository;
     private final PagedResourcesAssembler assembler;
+    private final DeleteDocument deleteDocument;
 
     public DocumentController(UpdateDocument updateDocument,
                               CreateDocument createDocument,
-                              DocumentRepository documentRepository, PagedResourcesAssembler assembler) {
+                              DocumentRepository documentRepository, PagedResourcesAssembler assembler, DeleteDocument deleteDocument) {
         this.updateDocument = updateDocument;
         this.createDocument = createDocument;
         this.documentRepository = documentRepository;
         this.assembler = assembler;
+        this.deleteDocument = deleteDocument;
     }
 
     @PostMapping
@@ -56,5 +59,9 @@ public class DocumentController {
         return ResponseEntity.ok(updateDocument.execute(request));
     }
 
+    @DeleteMapping("/{id}")
+    public DocumentResponse delete(@PathVariable Long id){
+        return deleteDocument.execute(id);
+    }
 
 }

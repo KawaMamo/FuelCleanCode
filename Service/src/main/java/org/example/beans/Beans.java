@@ -5,7 +5,7 @@ import org.example.contract.repository.*;
 import org.example.mappers.*;
 import org.example.repositories.*;
 import org.example.useCases.create.*;
-import org.example.useCases.delete.DeleteCategory;
+import org.example.useCases.delete.*;
 import org.example.useCases.update.*;
 import org.example.validators.create.*;
 import org.example.validators.update.*;
@@ -649,4 +649,73 @@ public class Beans {
     DeleteCategory deleteCategory(CategoryRepo categoryRepo, CategoryDomainMapper mapper){
         return new DeleteCategory(categoryRepo, mapper);
     }
+    @Bean
+    DeleteForfeit deleteForfeit(ForfeitRepo forfeitRepo, ForfeitDomainMapper mapper){
+        return new DeleteForfeit(forfeitRepo, mapper);
+    }
+    @Bean
+    DeleteGasStation deleteGasStation(GasStationRepo gasStationRepo, GasStationDomainMapper gasStationDomainMapper){
+        return new DeleteGasStation(gasStationRepo, gasStationDomainMapper);
+    }
+    @Bean
+    DeleteGroup deleteGroup(GroupRepo groupRepo, GroupDomainMapper groupDomainMapper){
+        return new DeleteGroup(groupRepo, groupDomainMapper);
+    }
+    @Bean
+    DeleteMaterial deleteMaterial(MaterialRepo materialRepo, MaterialDomainMapper materialDomainMapper){
+        return new DeleteMaterial(materialRepo, materialDomainMapper);
+    }
+    @Bean
+    DeleteOffice deleteOffice(OfficeRepo officeRepo, OfficeDomainMapper officeDomainMapper){
+        return new DeleteOffice(officeRepo, officeDomainMapper);
+    }
+    @Bean
+    DeletePartition deletePartition(PartitionRepo partitionRepo, PartitionDomainMapper partitionDomainMapper){
+        return new DeletePartition(partitionRepo, partitionDomainMapper);
+    }
+    @Bean
+    DeletePerson deletePerson(PersonRepo personRepo, PersonDomainMapper personDomainMapper){
+        return new DeletePerson(personRepo, personDomainMapper);
+    }
+    @Bean
+    DeletePriceCategory deletePriceCategory(PriceCategoryRepo priceCategoryRepo, PriceCategoryDomainMapper priceCategoryDomainMapper){
+        return new DeletePriceCategory(priceCategoryRepo, priceCategoryDomainMapper);
+    }
+    @Bean
+    DeleteRefinery deleteRefinery(RefineryRepo refineryRepo, RefineryDomainMapper refineryDomainMapper){
+        return new DeleteRefinery(refineryRepo, refineryDomainMapper);
+    }
+    @Bean
+    DeleteRegion deleteRegion(RegionRepo regionRepo, RegionDomainMapper regionDomainMapper){
+        return new DeleteRegion(regionRepo, regionDomainMapper);
+    }
+    @Bean
+    DeleteTrafficCenter deleteTrafficCenter(TrafficCenterRepo trafficCenterRepo, TrafficCenterDomainMapper trafficCenterDomainMapper){
+        return new DeleteTrafficCenter(trafficCenterRepo, trafficCenterDomainMapper);
+    }
+    @Bean
+    DeleteTrans deleteTrans(TransRepo transRepo, DomainTransMapper transDomainMapper){
+        return new DeleteTrans(transRepo, transDomainMapper);
+    }
+    @Bean
+    DeleteTransferMaterial deleteTransferMaterial(TransferMaterialRepo transferMaterialRepo, TransferMaterialDomainMapper transferMaterialDomainMapper){
+        return new DeleteTransferMaterial(transferMaterialDomainMapper, transferMaterialRepo);
+    }
+    @Bean
+    DeleteTransLine deleteTransLine(TransLineRepo transLineRepo, TransLineDomainMapper transLineDomainMapper){
+        return new DeleteTransLine(transLineRepo, transLineDomainMapper);
+    }
+    @Bean
+    DeleteTransLog deleteTransLog(TransLogRepo transLogRepo, TransLogDomainMapper transLogDomainMapper){
+        return new DeleteTransLog(transLogDomainMapper, transLogRepo);
+    }
+    @Bean
+    DeleteVehicle deleteVehicle(VehicleRepo vehicleRepo, VehicleDomainMapper vehicleDomainMapper){
+        return new DeleteVehicle(vehicleRepo, vehicleDomainMapper);
+    }
+    @Bean
+    DeleteDocument deleteDocument(DocumentRepo documentRepo, DocumentDomainMapper documentDomainMapper){
+        return new DeleteDocument(documentDomainMapper, documentRepo);
+    }
+
 }

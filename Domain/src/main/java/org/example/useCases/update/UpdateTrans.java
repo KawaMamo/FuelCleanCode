@@ -3,7 +3,7 @@ package org.example.useCases.update;
 
 import org.example.contract.repository.TransRepo;
 import org.example.contract.request.update.UpdateTransRequest;
-import org.example.contract.response.CreateTransResponse;
+import org.example.contract.response.TransResponse;
 import org.example.mappers.DomainTransMapper;
 import org.example.model.Transportation;
 import org.example.validators.update.UpdateTransValidator;
@@ -22,7 +22,7 @@ public class UpdateTrans {
         this.transRepo = transRepo;
     }
 
-    public CreateTransResponse execute(UpdateTransRequest request){
+    public TransResponse execute(UpdateTransRequest request){
         final Transportation original = transRepo.findById(request.getId()).orElseThrow(NoSuchElementException::new);
         validator.validate(request);
         final Transportation transportation = mapper.toDomain(request);

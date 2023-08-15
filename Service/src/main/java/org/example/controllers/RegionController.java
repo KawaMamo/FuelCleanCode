@@ -12,6 +12,7 @@ import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
 import org.example.specifications.SearchFilter;
 import org.example.useCases.create.CreateRegion;
+import org.example.useCases.delete.DeleteRegion;
 import org.example.useCases.update.UpdateRegion;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -30,17 +31,19 @@ public class RegionController {
     private final RegionMapper regionMapper;
     private final PagedResourcesAssembler assembler;
     private final UpdateRegion updateRegion;
+    private final DeleteRegion deleteRegion;
 
     public RegionController(CreateRegion createRegion,
                             RegionRepository regionRepository,
                             RegionMapper regionMapper,
                             PagedResourcesAssembler assembler,
-                            UpdateRegion updateRegion) {
+                            UpdateRegion updateRegion, DeleteRegion deleteRegion) {
         this.createRegion = createRegion;
         this.regionRepository = regionRepository;
         this.regionMapper = regionMapper;
         this.assembler = assembler;
         this.updateRegion = updateRegion;
+        this.deleteRegion = deleteRegion;
     }
 
     @PostMapping
@@ -59,5 +62,9 @@ public class RegionController {
     @PatchMapping
     public ResponseEntity<RegionResponse> updateRegion(@RequestBody UpdateRegionRequest request){
         return ResponseEntity.ok(updateRegion.execute(request));
+    }
+    @DeleteMapping("/{id}")
+    public RegionResponse delete(@PathVariable Long id){
+        return deleteRegion.execute(id);
     }
 }

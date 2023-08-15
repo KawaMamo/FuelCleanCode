@@ -5,7 +5,7 @@ import java.util.List;
 import javax.annotation.processing.Generated;
 import org.example.contract.request.create.CreateTransRequest;
 import org.example.contract.request.update.UpdateTransRequest;
-import org.example.contract.response.CreateTransResponse;
+import org.example.contract.response.TransResponse;
 import org.example.model.Partition;
 import org.example.model.Refinery;
 import org.example.model.Transportation;
@@ -13,8 +13,8 @@ import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-14T14:36:24+0300",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
+    date = "2023-08-15T15:34:19+0300",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class DomainTransMapperImpl implements DomainTransMapper {
 
@@ -35,30 +35,30 @@ public class DomainTransMapperImpl implements DomainTransMapper {
     }
 
     @Override
-    public CreateTransResponse toResponse(Transportation transportation) {
+    public TransResponse toResponse(Transportation transportation) {
         if ( transportation == null ) {
             return null;
         }
 
-        CreateTransResponse createTransResponse = new CreateTransResponse();
+        TransResponse transResponse = new TransResponse();
 
-        createTransResponse.setId( transportation.getId() );
-        createTransResponse.setVehicle( transportation.getVehicle() );
-        createTransResponse.setRefinery( transportation.getRefinery() );
-        createTransResponse.setIsDivided( transportation.getIsDivided() );
-        createTransResponse.setIsPriced( transportation.getIsPriced() );
-        createTransResponse.setSize( transportation.getSize() );
-        createTransResponse.setCreatedAt( transportation.getCreatedAt() );
-        createTransResponse.setUpdatedAt( transportation.getUpdatedAt() );
+        transResponse.setId( transportation.getId() );
+        transResponse.setVehicle( transportation.getVehicle() );
+        transResponse.setRefinery( transportation.getRefinery() );
+        transResponse.setIsDivided( transportation.getIsDivided() );
+        transResponse.setIsPriced( transportation.getIsPriced() );
+        transResponse.setSize( transportation.getSize() );
+        transResponse.setCreatedAt( transportation.getCreatedAt() );
+        transResponse.setUpdatedAt( transportation.getUpdatedAt() );
         List<Partition> list = transportation.getPartitions();
         if ( list != null ) {
-            createTransResponse.setPartitions( new ArrayList<Partition>( list ) );
+            transResponse.setPartitions( new ArrayList<Partition>( list ) );
         }
-        createTransResponse.setType( transportation.getType() );
-        createTransResponse.setDocument( transportation.getDocument() );
-        createTransResponse.setDeletedAt( transportation.getDeletedAt() );
+        transResponse.setType( transportation.getType() );
+        transResponse.setDocument( transportation.getDocument() );
+        transResponse.setDeletedAt( transportation.getDeletedAt() );
 
-        return createTransResponse;
+        return transResponse;
     }
 
     @Override

@@ -12,6 +12,7 @@ import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
 import org.example.specifications.SearchFilter;
 import org.example.useCases.create.CreateForfeit;
+import org.example.useCases.delete.DeleteForfeit;
 import org.example.useCases.update.UpdateForfeit;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,17 +32,19 @@ public class ForfeitController {
     private final ForfeitMapper forfeitMapper;
     private final PagedResourcesAssembler pagedResourcesAssembler;
     private final UpdateForfeit updateForfeit;
+    private final DeleteForfeit deleteForfeit;
 
     public ForfeitController(CreateForfeit createForfeit,
                              ForfeitRepository forfeitRepository,
                              ForfeitMapper forfeitMapper,
                              PagedResourcesAssembler pagedResourcesAssembler,
-                             UpdateForfeit updateForfeit) {
+                             UpdateForfeit updateForfeit, DeleteForfeit deleteForfeit) {
         this.createForfeit = createForfeit;
         this.forfeitRepository = forfeitRepository;
         this.forfeitMapper = forfeitMapper;
         this.pagedResourcesAssembler = pagedResourcesAssembler;
         this.updateForfeit = updateForfeit;
+        this.deleteForfeit = deleteForfeit;
     }
 
     @PostMapping
@@ -60,5 +63,9 @@ public class ForfeitController {
     @PatchMapping
     public ResponseEntity<ForfeitResponse> updateForfeit(@RequestBody UpdateForfeitRequest request){
         return ResponseEntity.ok(updateForfeit.execute(request));
+    }
+    @DeleteMapping("/{id}")
+    public ForfeitResponse deleteForfeit(@PathVariable Long id){
+        return deleteForfeit.execute(id);
     }
 }

@@ -12,6 +12,7 @@ import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
 import org.example.specifications.SearchFilter;
 import org.example.useCases.create.CreateTransLog;
+import org.example.useCases.delete.DeleteTransLog;
 import org.example.useCases.update.UpdateTransLog;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,16 +32,18 @@ public class TransLogController {
     private final TransLogMapper transLogMapper;
     private final PagedResourcesAssembler assembler;
     private final UpdateTransLog updateTransLog;
+    private final DeleteTransLog deleteTransLog;
 
     public TransLogController(CreateTransLog createTransLog,
                               TransLogRepository transLogRepository,
                               TransLogMapper transLogMapper,
-                              PagedResourcesAssembler assembler, UpdateTransLog updateTransLog) {
+                              PagedResourcesAssembler assembler, UpdateTransLog updateTransLog, DeleteTransLog deleteTransLog) {
         this.createTransLog = createTransLog;
         this.transLogRepository = transLogRepository;
         this.transLogMapper = transLogMapper;
         this.assembler = assembler;
         this.updateTransLog = updateTransLog;
+        this.deleteTransLog = deleteTransLog;
     }
 
     @PostMapping
@@ -58,5 +61,9 @@ public class TransLogController {
     @PatchMapping
     public ResponseEntity<TransLogResponse> updateTransLog(@RequestBody UpdateTransLogRequest request){
         return ResponseEntity.ok(updateTransLog.execute(request));
+    }
+    @DeleteMapping("/{id}")
+    public TransLogResponse deleteTransLog(@PathVariable Long id){
+        return deleteTransLog.execute(id);
     }
 }
