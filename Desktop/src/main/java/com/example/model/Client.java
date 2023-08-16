@@ -7,6 +7,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.Objects;
 
 @Data
 public class Client {
@@ -15,17 +16,25 @@ public class Client {
     private static String contentType = "application/json";
     private static String url = "http://localhost:8089/";
     private final HttpClient httpClient = HttpClient.newHttpClient();
+    private String authorization;
 
     public HttpResponse<String> post(String endPoint, String payload) {
-        HttpRequest request = HttpRequest.newBuilder()
-              .uri(URI.create(url+endPoint))
-              .header("Content-Type", contentType)
-              .POST(HttpRequest.BodyPublishers.ofString(payload))
-              .build();
+        final HttpRequest.Builder builder = HttpRequest.newBuilder()
+                .uri(URI.create(url + endPoint))
+                .header("Content-Type", contentType)
+                .POST(HttpRequest.BodyPublishers.ofString(payload));
+        addAuthorizationToken(builder);
+        final HttpRequest request = builder.build();
         try {
             return httpClient.send(request, HttpResponse.BodyHandlers.ofString());
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    private void addAuthorizationToken(HttpRequest.Builder builder) {
+        if(Objects.nonNull(authorization)){
+            builder.header("Authorization", authorization);
         }
     }
 

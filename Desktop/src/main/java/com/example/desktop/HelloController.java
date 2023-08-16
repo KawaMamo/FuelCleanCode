@@ -3,14 +3,13 @@ package com.example.desktop;
 import com.example.model.Client;
 import com.example.model.JWTToken;
 import com.google.gson.Gson;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-import java.io.IOException;
 import java.net.http.HttpResponse;
+import java.util.HashMap;
 
 public class HelloController {
     @FXML
@@ -26,11 +25,21 @@ public class HelloController {
 
 
     @FXML
-    void submit(ActionEvent event) {
-        String payload = "{\"email\":\""+usernameTF.getText()+"\",\""+passwordTF.getText()+"\":\"password\"}";
-        HttpResponse<String> post = client.post("api/v1/auth/authenticate", payload);
+    void submit() {
+        submitBtn.setDisable(true);
+        final String json = getString();
+        HttpResponse<String> post = client.post("api/v1/auth/authenticate", json);
         final JWTToken jwtToken = new Gson().fromJson(post.body(), JWTToken.class);
-        System.out.println(jwtToken.getToken());
+        client.setAuthorization("Bearer "+jwtToken.getToken());
+        submitBtn.setDisable(false);
+        System.out.println(client.getAuthorization());
+    }
+
+    private String getString() {
+        final HashMap<String, String> payloadObj = new HashMap<>();
+        payloadObj.put("email", usernameTF.getText());
+        payloadObj.put("password", passwordTF.getText());
+        return new Gson().toJson(payloadObj);
     }
 
 }
