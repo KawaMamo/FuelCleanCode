@@ -6,7 +6,7 @@ import org.example.model.Refinery;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-15T20:09:32+0300",
+    date = "2023-08-16T21:16:40+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class RefineryMapperImpl implements RefineryMapper {

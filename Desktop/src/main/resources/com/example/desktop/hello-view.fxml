@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.desktop.HelloController">
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="244.0" prefWidth="310.0" spacing="15.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.desktop.HelloController">
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+        <Insets bottom="20.0" left="40.0" right="40.0" top="20.0" />
     </padding>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
+    <Label text="LogIn">
+      <font>
+         <Font name="System Bold" size="18.0" />
+      </font></Label>
+   <TextField fx:id="usernameTF" prefHeight="33.0" text="admin" />
+   <PasswordField fx:id="passwordTF" prefHeight="33.0" text="password" />
+    <Button fx:id="submitBtn" onAction="#submit" text="Submit" />
 </VBox>

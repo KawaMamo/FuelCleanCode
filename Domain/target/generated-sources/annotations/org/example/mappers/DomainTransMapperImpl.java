@@ -13,7 +13,7 @@ import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-15T15:34:19+0300",
+    date = "2023-08-16T21:16:30+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class DomainTransMapperImpl implements DomainTransMapper {
