@@ -67,6 +67,13 @@ public class GasStationController {
         return pagedResourcesAssembler.toModel(page);
     }
 
+    @GetMapping("/all")
+    public List<GasStation> getAll(){
+        return gasStationRepository.findAll().stream()
+                .map(gasStation -> gasStationMapper.entityToDomain((GasStationEntity) gasStation))
+                .toList();
+    }
+
     @PatchMapping
     public ResponseEntity<GasStationResponse> updateGasStation(@RequestBody UpdateGasStationRequest request){
         return ResponseEntity.ok(updateGasStation.execute(request));

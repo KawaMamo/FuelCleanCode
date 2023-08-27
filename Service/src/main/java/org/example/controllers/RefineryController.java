@@ -68,6 +68,11 @@ public class RefineryController {
         return assembler.toModel(page);
     }
 
+    @GetMapping("/")
+    public List<Refinery> getRefineryList(){
+        return refineryRepository.findAll().stream().map(refinery -> placeMapper.toDomain((RefineryEntity) refinery)).toList();
+    }
+
     @PatchMapping
     public ResponseEntity<RefineryResponse> updateRefinery(@RequestBody UpdateRefineryRequest request){
         return ResponseEntity.ok(updateRefinery.execute(request));

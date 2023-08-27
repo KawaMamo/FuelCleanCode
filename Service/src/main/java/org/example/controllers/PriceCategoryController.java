@@ -59,6 +59,11 @@ public class PriceCategoryController {
         return assembler.toModel(page);
     }
 
+    @GetMapping("/all")
+    public List<PriceCategory> listAllPriceCategories(){
+        return priceCategoryRepository.findAll().stream().map(priceCategoryMapper::entityToDomain).toList();
+    }
+
     @PatchMapping
     public ResponseEntity<PriceCategoryResponse> updatePriceCategory(@RequestBody UpdatePriceCategoryRequest request){
         return ResponseEntity.ok(updatePriceCategory.execute(request));

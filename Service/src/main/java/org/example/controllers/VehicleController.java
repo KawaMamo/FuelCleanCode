@@ -54,8 +54,13 @@ public class VehicleController {
     public PagedModel<VehicleResponse> listVehicles(SearchFilter searchFilters, Pageable pageable){
         final List<SearchCriteria> criteriaList = CriteriaArrayToList.getCriteriaList(searchFilters);
         final FilterSpecifications<VehicleEntity> specifications = new FilterSpecifications<>(criteriaList);
-        final Page<Vehicle> page = vehicleRepository.findAll(specifications, pageable).map(vehicleMapper::EntityToDomain);
+        final Page<Vehicle> page = vehicleRepository.findAll(specifications, pageable).map(vehicleMapper::entityToDomain);
         return pagedResourcesAssembler.toModel(page);
+    }
+
+    @GetMapping("/all")
+    public List<Vehicle> listVehicles(){
+        return vehicleRepository.findAll().stream().map(vehicleMapper::entityToDomain).toList();
     }
 
     @PatchMapping

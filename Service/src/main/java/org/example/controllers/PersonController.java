@@ -16,6 +16,7 @@ import org.example.useCases.delete.DeletePerson;
 import org.example.useCases.update.UpdatePerson;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.PagedModel;
 import org.springframework.http.ResponseEntity;
@@ -50,11 +51,16 @@ public class PersonController {
     }
 
     @GetMapping
-    public PagedModel<PersonResponse> listPersons(SearchFilter filter, Pageable pageable){
+    public PagedModel<PersonResponse> listPersons(SearchFilter filter, @PageableDefault(value = Integer.MAX_VALUE) Pageable pageable){
         final List<SearchCriteria> criteriaList = CriteriaArrayToList.getCriteriaList(filter);
         final FilterSpecifications<PersonEntity> specifications = new FilterSpecifications<>(criteriaList);
         final Page<Person> page = personRepository.findAll(specifications, pageable).map(personMapper::entityToDomain);
         return assembler.toModel(page);
+    }
+
+    @GetMapping("/all")
+    public List<Person> listPersons(){
+        return personRepository.findAll().stream().map(personMapper::entityToDomain).toList();
     }
 
     @PatchMapping

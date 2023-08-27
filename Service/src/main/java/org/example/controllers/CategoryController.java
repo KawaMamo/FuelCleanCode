@@ -64,6 +64,11 @@ public class CategoryController {
         return pagedResourcesAssembler.toModel(page);
     }
 
+    @GetMapping("/all")
+    public List<Category> listAllCategories(){
+        return categoryRepository.findAll().stream().map(categoryMapper::entityToDomain).toList();
+    }
+
     @PatchMapping
     public ResponseEntity<CategoryResponse> update(@RequestBody UpdateCategoryRequest request){
         logger.info(request.toString());

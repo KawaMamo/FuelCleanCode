@@ -16,6 +16,7 @@ import org.example.useCases.delete.DeleteTrafficCenter;
 import org.example.useCases.update.UpdateTrafficCenter;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.PagedModel;
 import org.springframework.http.ResponseEntity;
@@ -52,12 +53,17 @@ public class TrafficCenterController {
     }
 
     @GetMapping
-    public PagedModel<TrafficCenterResponse> listTrafficCenters(SearchFilter filter, Pageable pageable){
+    public PagedModel<TrafficCenterResponse> listTrafficCenters(SearchFilter filter, @PageableDefault(3000)Pageable pageable){
         final List<SearchCriteria> criteriaList = CriteriaArrayToList.getCriteriaList(filter);
         final FilterSpecifications<TrafficCenterEntity> specifications = new FilterSpecifications<>(criteriaList);
         final Page<TrafficCenter> page = trafficCenterRepository.findAll(specifications, pageable)
                 .map(trafficCenterMapper::entityToDomain);
         return centerPagedResourcesAssembler.toModel(page);
+    }
+
+    @GetMapping("/all")
+    public List<TrafficCenter> listAllTrafficCenters(){
+        return trafficCenterRepository.findAll().stream().map(trafficCenterMapper::entityToDomain).toList();
     }
 
     @PatchMapping

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+
+<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" spacing="5.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.desktop.user.UserSection">
+   <children>
+      <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../icon/avatar2.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="usernameLbl" text="username" />
+      <MenuButton mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: transparent;" text="أحداث">
+        <items>
+          <MenuItem mnemonicParsing="false" onAction="#logout" text="خروج" />
+          <MenuItem mnemonicParsing="false" onAction="#passwordReset" text="تغيير كلمة المرور" />
+        </items>
+      </MenuButton>
+   </children>
+   <padding>
+      <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+   </padding>
+</HBox>

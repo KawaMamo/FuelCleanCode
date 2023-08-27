@@ -59,6 +59,11 @@ public class GroupController {
         return pagedResourcesAssembler.toModel(page);
     }
 
+    @GetMapping("/all")
+    public List<Group> listAllGroups(){
+        return groupRepository.findAll().stream().map(groupMapper::entityToDomain).toList();
+    }
+
     @PatchMapping
     public ResponseEntity<GroupResponse> updateGroup(@RequestBody UpdateGroupRequest request){
         return ResponseEntity.ok(updateGroup.execute(request));

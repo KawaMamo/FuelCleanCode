@@ -60,6 +60,11 @@ public class MaterialController {
         return pagedResourcesAssembler.toModel(page);
     }
 
+    @GetMapping("/all")
+    public List<Material> listMaterials(){
+        return materialRepository.findAll().stream().map(materialMapper::entityToDomain).toList();
+    }
+
     @PatchMapping
     ResponseEntity<MaterialResponse> updateMaterial(@RequestBody UpdateMaterialRequest request){
         return ResponseEntity.ok(updateMaterial.execute(request));

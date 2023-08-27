@@ -14,7 +14,7 @@ public interface VehicleMapper {
 
     BuyOperation domainToEntity(org.example.model.BuyOperation buyOperation);
 
-    org.example.model.Vehicle EntityToDomain(VehicleEntity save);
+    org.example.model.Vehicle entityToDomain(VehicleEntity save);
 
     OfficeEntity domainToEntity(Office office);
 

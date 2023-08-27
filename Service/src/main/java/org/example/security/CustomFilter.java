@@ -79,7 +79,7 @@ public class CustomFilter implements Filter {
                     ((HttpServletResponse) servletResponse).addHeader("tokenStatus", "Unauthorized User");
                     ((HttpServletResponse) servletResponse).sendError(UNAUTHORIZED, "Unauthorized");
                 }
-                logger.atWarn().log(path+" headers "+request.getHeaders("AUTHORIZATION"));
+                logger.atWarn().log(path+" headers "+request.getHeaders("AUTHORIZATION").toString());
             }
 
         }

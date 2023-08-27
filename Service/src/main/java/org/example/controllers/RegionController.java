@@ -59,6 +59,11 @@ public class RegionController {
         return assembler.toModel(page);
     }
 
+    @GetMapping("/")
+    public List<Region> listAll(){
+        return regionRepository.findAll().stream().map(regionMapper::entityToDomain).toList();
+    }
+
     @PatchMapping
     public ResponseEntity<RegionResponse> updateRegion(@RequestBody UpdateRegionRequest request){
         return ResponseEntity.ok(updateRegion.execute(request));

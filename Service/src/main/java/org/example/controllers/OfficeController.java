@@ -59,6 +59,11 @@ public class OfficeController {
         return pagedResourcesAssembler.toModel(page);
     }
 
+    @GetMapping("/all")
+    public List<Office> listAll(){
+        return officeRepository.findAll().stream().map(officeMapper::entityToDomain).toList();
+    }
+
     @PatchMapping
     ResponseEntity<OfficeResponse> updateOffice(@RequestBody UpdateOfficeRequest request){
         return ResponseEntity.ok(updateOffice.execute(request));

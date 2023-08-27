@@ -57,6 +57,11 @@ public class TransLineController {
         final Page<TransLine> page = transLineRepository.findAll(specifications, pageable).map(transLineMapper::entityToDomain);
         return assembler.toModel(page);
     }
+
+    @GetMapping("/")
+    public List<TransLine> listAll(){
+        return transLineRepository.findAll().stream().map(transLineMapper::entityToDomain).toList();
+    }
     @PatchMapping
     public ResponseEntity<TransLineResponse> update(@RequestBody UpdateTransLineRequest request){
         return ResponseEntity.ok(updateTransLine.execute(request));

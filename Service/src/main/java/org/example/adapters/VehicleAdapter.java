@@ -21,14 +21,14 @@ public class VehicleAdapter implements VehicleRepo {
     public Vehicle save(Vehicle vehicle) {
         final VehicleEntity entity = mapper.domainToEntity(vehicle);
         final VehicleEntity save = vehicleRepository.save(entity);
-        return mapper.EntityToDomain(save);
+        return mapper.entityToDomain(save);
     }
 
     @Override
     public Optional<Vehicle> findById(Long id) {
         final Optional<VehicleEntity> byId = vehicleRepository.findById(id);
         final VehicleEntity vehicleEntity = byId.orElse(null);
-        final Vehicle vehicle = mapper.EntityToDomain(vehicleEntity);
+        final Vehicle vehicle = mapper.entityToDomain(vehicleEntity);
         return Optional.ofNullable(vehicle);
     }
 

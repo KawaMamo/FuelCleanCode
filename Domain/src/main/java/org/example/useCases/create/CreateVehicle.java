@@ -10,7 +10,9 @@ import org.example.mappers.VehicleDomainMapper;
 import org.example.model.Vehicle;
 import org.example.validators.create.CreateVehicleValidator;
 
+import java.nio.charset.Charset;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class CreateVehicle {
 
@@ -36,7 +38,7 @@ public class CreateVehicle {
 
         validator.validate(request);
         final Vehicle vehicle = mapper.requestToDomain(request);
-        vehicle.setCreatedAt(LocalDateTime.now());
+        vehicle.setCreatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         final Vehicle save = vehicleRepo.save(vehicle);
         personRepo.findById(save.getDriver().getId()).ifPresent(save::setDriver);
         trafficCenterRepo.findById(save.getTrafficCenter().getId()).ifPresent(save::setTrafficCenter);
