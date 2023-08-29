@@ -4,7 +4,9 @@ import com.example.model.Service;
 import org.example.contract.request.create.CreateOfficeRequest;
 import org.example.model.Office;
 
+import java.net.http.HttpResponse;
 import java.util.List;
+import java.util.Objects;
 
 
 public class OfficeService implements Service<Office, CreateOfficeRequest> {
@@ -17,7 +19,15 @@ public class OfficeService implements Service<Office, CreateOfficeRequest> {
 
     @Override
     public List<Office> getItems(Integer page, Integer size) {
-        return null;
+        String getUrl;
+        if(Objects.isNull(page)){
+            getUrl = getEndPoint()+"/all";
+        }else {
+            getUrl = getEndPoint()+"?page="+page+"&size="+size+"&key=name&value=a&operation=%3E&sort=id,desc";
+        }
+        final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+        final Office[] offices = gson.fromJson(stringHttpResponse.body(), Office[].class);
+        return List.of(offices);
     }
 
     @Override

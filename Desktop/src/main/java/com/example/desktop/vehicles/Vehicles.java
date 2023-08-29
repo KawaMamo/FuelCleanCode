@@ -1,6 +1,6 @@
 package com.example.desktop.vehicles;
 
-import com.example.desktop.user.Users;
+import com.example.desktop.delete.DeleteConfirmation;
 import com.example.model.modal.Modal;
 import com.example.model.vehicle.VehicleService;
 import javafx.beans.property.SimpleStringProperty;
@@ -22,11 +22,13 @@ public class Vehicles {
     private TableView<Vehicle> tableTbl;
     private ObservableList<Vehicle> vehicles;
     private final VehicleService vehicleService = VehicleService.getInstance();
+    public static Vehicle selectedVehicle;
 
     @FXML
     private void initialize(){
         loadData();
         setTable();
+        tableTbl.getSelectionModel().selectedItemProperty().addListener((observableValue, vehicle, t1) -> selectedVehicle = t1);
     }
 
     private void setTable() {
@@ -78,7 +80,9 @@ public class Vehicles {
 
     @FXML
     void delete() {
-
+        DeleteConfirmation.selected = selectedVehicle.getId();
+        DeleteConfirmation.deleteUrl = "api/v1/vehicle";
+        Modal.start(Vehicle.class, "/com/example/desktop/delete/deleteConfirmation.fxml");
     }
 
     @FXML

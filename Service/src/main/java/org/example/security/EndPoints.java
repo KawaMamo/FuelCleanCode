@@ -42,13 +42,20 @@ public class EndPoints {
         return endPoints;
     }
 
-    public boolean isAllowed(ArrayList<LinkedHashMap<String, String>> roles, String endPoint){
+    public boolean isNotAllowed(ArrayList<LinkedHashMap<String, String>> roles, String endPoint){
         for (LinkedHashMap<String, String> role : roles) {
             final ArrayList<String> authority = getEndpointsForRole().get(role.get("authority"));
-            if(authority != null && authority.contains(endPoint)) {
-                return true;
+            if(authority != null){
+                for (String s : authority) {
+                    if(endPoint.startsWith(s))
+                        return false;
+                }
             }
+
+            /*if(authority != null && authority.contains(endPoint)) {
+                return true;
+            }*/
         }
-        return false;
+        return true;
     }
 }

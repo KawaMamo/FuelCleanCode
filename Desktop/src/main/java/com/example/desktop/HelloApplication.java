@@ -5,14 +5,18 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.util.Arrays;
 
 public class HelloApplication extends Application {
     private static Stage primaryStage;
     private static final ExceptionHandler exceptionHandler =ExceptionHandler.getInstance();
     @Override
     public void start(Stage stage) throws IOException {
+        //Thread.setDefaultUncaughtExceptionHandler(HelloApplication::showError);
         primaryStage = stage;
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
@@ -29,6 +33,10 @@ public class HelloApplication extends Application {
         } catch (IOException e) {
             exceptionHandler.setE(e);
         }
+    }
+
+    private static void showError(Thread t, Throwable e) {
+        Notifications.create().title("Error").text(e.getMessage()).showError();
     }
 
     public static void main(String[] args) {
