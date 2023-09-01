@@ -70,6 +70,7 @@ public class GasStationController {
     @GetMapping("/all")
     public List<GasStation> getAll(){
         return gasStationRepository.findAll().stream()
+                .filter(place -> place instanceof GasStationEntity)
                 .map(gasStation -> gasStationMapper.entityToDomain((GasStationEntity) gasStation))
                 .toList();
     }

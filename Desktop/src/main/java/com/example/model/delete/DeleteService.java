@@ -1,5 +1,6 @@
 package com.example.model.delete;
 
+import com.example.desktop.vehicles.Vehicles;
 import com.example.model.client.Client;
 
 public class DeleteService {

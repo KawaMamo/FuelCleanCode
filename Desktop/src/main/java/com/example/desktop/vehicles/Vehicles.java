@@ -1,6 +1,7 @@
 package com.example.desktop.vehicles;
 
 import com.example.desktop.delete.DeleteConfirmation;
+import com.example.model.TableController;
 import com.example.model.modal.Modal;
 import com.example.model.vehicle.VehicleService;
 import javafx.beans.property.SimpleStringProperty;
@@ -13,11 +14,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.model.Vehicle;
 
-public class Vehicles {
+public class Vehicles implements TableController {
 
     @FXML
     private TextField page;
-
     @FXML
     private TableView<Vehicle> tableTbl;
     private ObservableList<Vehicle> vehicles;
@@ -69,12 +69,24 @@ public class Vehicles {
         tableTbl.setItems(vehicles);
     }
 
-    private void loadData() {
+    public void loadData() {
         vehicles = FXCollections.observableArrayList(vehicleService.getVehicles(Integer.parseInt(page.getText())-1));
+    }
+
+    public void removeData(){
+        vehicles.remove(selectedVehicle);
+        loadData();
+    }
+
+    @Override
+    public void addData(Object obj) {
+        vehicles.add((Vehicle) obj);
+        loadData();
     }
 
     @FXML
     void add() {
+        AddVehicle.controller = this;
         Modal.start(Vehicles.class, "addVehicle.fxml");
     }
 
@@ -82,6 +94,7 @@ public class Vehicles {
     void delete() {
         DeleteConfirmation.selected = selectedVehicle.getId();
         DeleteConfirmation.deleteUrl = "api/v1/vehicle";
+        DeleteConfirmation.controller = this;
         Modal.start(Vehicle.class, "/com/example/desktop/delete/deleteConfirmation.fxml");
     }
 

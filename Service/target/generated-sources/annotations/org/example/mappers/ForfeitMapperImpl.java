@@ -35,8 +35,8 @@ import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-27T18:32:32+0300",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
+    date = "2023-09-01T16:47:39+0300",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class ForfeitMapperImpl implements ForfeitMapper {
 
@@ -228,16 +228,16 @@ public class ForfeitMapperImpl implements ForfeitMapper {
 
         GasStation gasStation = new GasStation();
 
-        gasStation.setPlaceType( gasStationEntity.getPlaceType() );
         gasStation.setId( gasStationEntity.getId() );
+        gasStation.setPlaceType( gasStationEntity.getPlaceType() );
+        gasStation.setCreatedAt( gasStationEntity.getCreatedAt() );
+        gasStation.setUpdatedAt( gasStationEntity.getUpdatedAt() );
         gasStation.setName( gasStationEntity.getName() );
         gasStation.setPriceCategory( priceCategoryEntityToPriceCategory( gasStationEntity.getPriceCategory() ) );
         gasStation.setDebtLimit( gasStationEntity.getDebtLimit() );
         gasStation.setRegion( regionEntityToRegion( gasStationEntity.getRegion() ) );
         gasStation.setOwner( personEntityToPerson( gasStationEntity.getOwner() ) );
         gasStation.setGroup( groupEntityToGroup( gasStationEntity.getGroup() ) );
-        gasStation.setCreatedAt( gasStationEntity.getCreatedAt() );
-        gasStation.setUpdatedAt( gasStationEntity.getUpdatedAt() );
 
         return gasStation;
     }

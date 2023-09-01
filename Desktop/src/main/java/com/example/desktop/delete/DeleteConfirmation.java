@@ -1,11 +1,13 @@
 package com.example.desktop.delete;
 
+import com.example.model.TableController;
 import com.example.model.delete.DeleteService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import org.controlsfx.control.Notifications;
 
 public class DeleteConfirmation {
+    public static TableController controller;
     public static Long selected;
     public static String deleteUrl;
     private final DeleteService deleteService = DeleteService.getInstance();
@@ -18,9 +20,9 @@ public class DeleteConfirmation {
     }
     @FXML
     public void confirm(){
-        System.out.println(deleteService.delete(deleteUrl, selected));
+        deleteService.delete(deleteUrl, selected);
         Notifications.create().text("Deleted").showInformation();
-
+        controller.removeData();
     }
 
 }

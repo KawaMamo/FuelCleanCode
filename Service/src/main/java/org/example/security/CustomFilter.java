@@ -71,8 +71,6 @@ public class CustomFilter implements Filter {
 
                 }
 
-
-
                 final ArrayList<LinkedHashMap<String, String>> roles = tokenService.getRoles(jwtToken);
                 if(endPoints.isNotAllowed(roles, path)){
                     logger.atWarn().log(path+" is not allowed for "+roles+request.getHeaders("AUTHORIZATION"));

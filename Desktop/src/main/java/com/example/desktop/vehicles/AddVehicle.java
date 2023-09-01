@@ -1,5 +1,6 @@
 package com.example.desktop.vehicles;
 
+import com.example.model.TableController;
 import com.example.model.office.OfficeService;
 import com.example.model.person.PersonService;
 import com.example.model.trafficCenter.TrafficCenterService;
@@ -22,6 +23,7 @@ import java.util.Objects;
 import java.util.stream.Stream;
 
 public class AddVehicle {
+    public static TableController controller;
 
     @FXML
     private TextField driverTF;
@@ -106,6 +108,7 @@ public class AddVehicle {
         }else {
             message = "something went wrong";
         }
+        controller.addData(vehicle);
         Notifications.create().title("Info").text(message).showInformation();
     }
 }
