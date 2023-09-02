@@ -20,7 +20,7 @@ public class Vehicles implements TableController {
     private TextField page;
     @FXML
     private TableView<Vehicle> tableTbl;
-    private ObservableList<Vehicle> vehicles;
+    private static ObservableList<Vehicle> vehicles;
     private final VehicleService vehicleService = VehicleService.getInstance();
     public static Vehicle selectedVehicle;
 
@@ -71,6 +71,7 @@ public class Vehicles implements TableController {
 
     public void loadData() {
         vehicles = FXCollections.observableArrayList(vehicleService.getVehicles(Integer.parseInt(page.getText())-1));
+        tableTbl.setItems(vehicles);
     }
 
     public void removeData(){

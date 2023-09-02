@@ -2,6 +2,7 @@ package com.example.model.typeAdapter;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.example.model.Place;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -15,6 +16,7 @@ public class AppGson {
             gson = new GsonBuilder()
                     .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeTypeAdapter())
                     .registerTypeAdapter(LocalDate.class, new LocalDateTypeAdapter())
+                    .registerTypeAdapter(Place.class, new PlaceTypeAdapter())
                     .setPrettyPrinting()
                     .create();
         }

@@ -1,6 +1,7 @@
 package com.example.desktop.vehicles;
 
 import com.example.model.TableController;
+import com.example.model.modal.Modal;
 import com.example.model.office.OfficeService;
 import com.example.model.person.PersonService;
 import com.example.model.trafficCenter.TrafficCenterService;
@@ -110,5 +111,6 @@ public class AddVehicle {
         }
         controller.addData(vehicle);
         Notifications.create().title("Info").text(message).showInformation();
+        Modal.close();
     }
 }

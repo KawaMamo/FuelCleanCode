@@ -62,6 +62,11 @@ public class TransLineController {
     public List<TransLine> listAll(){
         return transLineRepository.findAll().stream().map(transLineMapper::entityToDomain).toList();
     }
+
+    @GetMapping("/all")
+    public List<TransLine> listAllTransLines(){
+        return transLineRepository.findAll().stream().map(transLineMapper::entityToDomain).toList();
+    }
     @PatchMapping
     public ResponseEntity<TransLineResponse> update(@RequestBody UpdateTransLineRequest request){
         return ResponseEntity.ok(updateTransLine.execute(request));

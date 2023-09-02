@@ -22,7 +22,7 @@ public class PlaceTypeDetector {
             if(byId.isPresent()){
                 return byId.get();
             }
-        }catch (ClassCastException ignored){}
+        }catch (Exception ignored){}
 
         final Optional<Refinery> refinery = refineryRepo.findById(requestId);
         return refinery.orElse(null);

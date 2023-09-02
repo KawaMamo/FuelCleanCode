@@ -4,6 +4,7 @@ package com.example.desktop;
 import com.example.desktop.gasStation.GasStations;
 import com.example.desktop.group.Groups;
 import com.example.desktop.priceCategory.PriceCategories;
+import com.example.desktop.transLine.TransLines;
 import com.example.desktop.vehicles.Vehicles;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -76,7 +77,16 @@ public class AdminArea {
 
     @FXML
     void transLines() {
-
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("transLine/transLines.fxml"));
+        try {
+            final Node node = loader.load();
+            final TransLines controller = loader.getController();
+            workArea.getChildren().clear();
+            workArea.getChildren().add(node);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML

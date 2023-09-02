@@ -27,4 +27,8 @@ public class Modal {
         modal.show();
     }
 
+    public static void close(){
+        modal.hide();
+    }
+
 }
