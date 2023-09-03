@@ -1,14 +1,14 @@
 package com.example.model.transLine;
 
 import com.example.model.Service;
+import org.example.contract.request.create.CreateTransLineRequest;
 import org.example.model.TransLine;
-import org.example.useCases.create.CreateTransLine;
 
 import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.Objects;
 
-public class TransLineService implements Service<TransLine, CreateTransLine> {
+public class TransLineService implements Service<TransLine, CreateTransLineRequest> {
     private static final TransLineService INSTANCE = new TransLineService();
 
     public static TransLineService getInstance() {
@@ -30,7 +30,7 @@ public class TransLineService implements Service<TransLine, CreateTransLine> {
     }
 
     @Override
-    public TransLine addItem(CreateTransLine itemRequest) {
+    public TransLine addItem(CreateTransLineRequest itemRequest) {
         return null;
     }
 

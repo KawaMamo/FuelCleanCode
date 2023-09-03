@@ -59,7 +59,7 @@ public class RegionController {
         return assembler.toModel(page);
     }
 
-    @GetMapping("/")
+    @GetMapping("/all")
     public List<Region> listAll(){
         return regionRepository.findAll().stream().map(regionMapper::entityToDomain).toList();
     }

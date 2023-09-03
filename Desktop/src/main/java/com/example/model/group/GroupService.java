@@ -1,14 +1,14 @@
 package com.example.model.group;
 
 import com.example.model.Service;
+import org.example.contract.request.create.CreateGroupRequest;
 import org.example.model.Group;
-import org.example.useCases.create.CreateGroup;
 
 import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.Objects;
 
-public class GroupService implements Service<Group, CreateGroup> {
+public class GroupService implements Service<Group, CreateGroupRequest> {
     private static final GroupService INSTANCE = new GroupService();
 
     public static GroupService getInstance(){
@@ -29,7 +29,7 @@ public class GroupService implements Service<Group, CreateGroup> {
     }
 
     @Override
-    public Group addItem(CreateGroup itemRequest) {
+    public Group addItem(CreateGroupRequest itemRequest) {
         return null;
     }
 

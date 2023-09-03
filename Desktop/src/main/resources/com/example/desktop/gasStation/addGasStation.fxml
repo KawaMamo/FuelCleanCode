@@ -1,14 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.desktop.gasStation.AddGasStation"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="340.0" prefWidth="338.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.desktop.gasStation.AddGasStation">
+   <children>
+      <HBox layoutX="31.0" layoutY="65.0" spacing="50.0">
+         <children>
+            <VBox nodeOrientation="RIGHT_TO_LEFT" spacing="10.0">
+               <children>
+                  <TextField fx:id="nameTF" />
+                  <TextField fx:id="ownerTF" />
+                  <TextField fx:id="priceCatTF" />
+                  <TextField fx:id="debtLimitTF" />
+                  <TextField fx:id="regionTF" />
+                  <TextField fx:id="groupTF" />
+                  <Button fx:id="submitBtn" mnemonicParsing="false" onAction="#submit" prefHeight="26.0" prefWidth="150.0" text="تأكيد" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="18.0">
+               <children>
+                  <Label text="الاسم" />
+                  <Label text="المالك" />
+                  <Label text="فئة التسعير" />
+                  <Label text="الدين الأقصى" />
+                  <Label text="المنطقة" />
+                  <Label text="المجموعة" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Label layoutX="133.0" layoutY="25.0" text="إضافة كازية">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>

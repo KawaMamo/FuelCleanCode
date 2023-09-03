@@ -1,7 +1,9 @@
 package com.example.desktop.gasStation;
 
+import com.example.desktop.delete.DeleteConfirmation;
 import com.example.model.TableController;
 import com.example.model.gasStation.GasStationService;
+import com.example.model.modal.Modal;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,7 +24,7 @@ public class GasStations implements TableController {
     @FXML
     private TableView<GasStation> tableTbl;
 
-    private ObservableList<GasStation> gasStations;
+    private static ObservableList<GasStation> gasStations;
     public static GasStation selectedGasStation;
     private final GasStationService gasStationService = GasStationService.getInstance();
 
@@ -35,12 +37,16 @@ public class GasStations implements TableController {
 
     @FXML
     void add() {
-
+        AddGasStation.controller = this;
+        Modal.start(GasStations.class, "AddGasStation.fxml");
     }
 
     @FXML
     void delete() {
-
+        DeleteConfirmation.selected = selectedGasStation.getId();
+        DeleteConfirmation.deleteUrl = gasStationService.getEndPoint();
+        DeleteConfirmation.controller = this;
+        Modal.start(GasStations.class, "/com/example/desktop/delete/deleteConfirmation.fxml");
     }
 
     @FXML
@@ -72,12 +78,14 @@ public class GasStations implements TableController {
     }
     @Override
     public void removeData() {
-
+        gasStations.remove(selectedGasStation);
+        loadData();
     }
 
     @Override
     public void addData(Object object) {
-
+        gasStations.add((GasStation) object);
+        loadData();
     }
 
     private void setTable() {

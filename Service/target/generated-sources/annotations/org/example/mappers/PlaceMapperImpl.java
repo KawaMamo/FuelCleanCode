@@ -16,7 +16,7 @@ import org.example.model.Region;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-09-01T16:47:39+0300",
+    date = "2023-09-03T15:28:07+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class PlaceMapperImpl implements PlaceMapper {

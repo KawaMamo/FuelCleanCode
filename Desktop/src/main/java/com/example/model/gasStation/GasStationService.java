@@ -1,18 +1,16 @@
 package com.example.model.gasStation;
 
 import com.example.model.Service;
-import com.example.model.client.Client;
-import com.example.model.typeAdapter.AppGson;
 import com.google.gson.Gson;
+import org.example.contract.request.create.CreateGasStationRequest;
 import org.example.model.GasStation;
-import org.example.model.TrafficCenter;
-import org.example.useCases.create.CreateGasStation;
 
 import java.net.http.HttpResponse;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
-public class GasStationService implements Service<GasStation, CreateGasStation> {
+public class GasStationService implements Service<GasStation, CreateGasStationRequest> {
     private static final GasStationService INSTANCE = new GasStationService();
 
     public static GasStationService getInstance() {
@@ -33,12 +31,25 @@ public class GasStationService implements Service<GasStation, CreateGasStation> 
     }
 
     @Override
-    public GasStation addItem(CreateGasStation itemRequest) {
-        return null;
+    public GasStation addItem(CreateGasStationRequest itemRequest) {
+        final String payload = getPayload(itemRequest);
+        final HttpResponse<String> stringHttpResponse = client.parallelPost(getEndPoint(), payload);
+        return gson.fromJson(stringHttpResponse.body(), GasStation.class);
     }
 
     @Override
     public String getEndPoint() {
         return "api/v1/gas-station";
+    }
+
+    private static String getPayload(CreateGasStationRequest request) {
+        final HashMap<String, String> payloadObj = new HashMap<>();
+        payloadObj.put("name", request.getName());
+        payloadObj.put("priceCategoryId", String.valueOf(request.getPriceCategoryId()));
+        payloadObj.put("debtLimit", String.valueOf(request.getDebtLimit()));
+        payloadObj.put("regionId", request.getRegionId().toString());
+        payloadObj.put("ownerId", request.getOwnerId().toString());
+        payloadObj.put("groupId", request.getGroupId().toString());
+        return new Gson().toJson(payloadObj);
     }
 }

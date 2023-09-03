@@ -1,14 +1,14 @@
 package com.example.model.priceCategory;
 
 import com.example.model.Service;
+import org.example.contract.request.create.CreatePriceCategoryRequest;
 import org.example.model.PriceCategory;
-import org.example.useCases.create.CreatePriceCategory;
 
 import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.Objects;
 
-public class PriceCategoryService implements Service<PriceCategory, CreatePriceCategory> {
+public class PriceCategoryService implements Service<PriceCategory, CreatePriceCategoryRequest> {
     private final static PriceCategoryService instance = new PriceCategoryService();
 
     public static PriceCategoryService getInstance(){
@@ -29,7 +29,7 @@ public class PriceCategoryService implements Service<PriceCategory, CreatePriceC
     }
 
     @Override
-    public PriceCategory addItem(CreatePriceCategory itemRequest) {
+    public PriceCategory addItem(CreatePriceCategoryRequest itemRequest) {
         return null;
     }
 

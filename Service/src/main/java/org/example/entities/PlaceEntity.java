@@ -18,5 +18,6 @@ public abstract class PlaceEntity {
     private String placeType;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    @Column(unique = true)
     private String name;
 }

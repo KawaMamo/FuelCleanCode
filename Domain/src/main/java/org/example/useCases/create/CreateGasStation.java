@@ -8,6 +8,7 @@ import org.example.model.GasStation;
 import org.example.validators.create.CreateGasStationValidator;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class CreateGasStation {
     private final CreateGasStationValidator validator;
@@ -36,7 +37,7 @@ public class CreateGasStation {
     public GasStationResponse execute(CreateGasStationRequest request){
         validator.validate(request);
         final GasStation gasStation = mapper.requestToDomain(request);
-        gasStation.setCreatedAt(LocalDateTime.now());
+        gasStation.setCreatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         final GasStation save = gasStationRepo.save(gasStation);
         personRepo.findById(save.getOwner().getId()).ifPresent(save::setOwner);
         groupRepo.findById(save.getGroup().getId()).ifPresent(save::setGroup);
