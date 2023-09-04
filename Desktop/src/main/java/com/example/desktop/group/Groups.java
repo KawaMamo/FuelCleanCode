@@ -17,7 +17,7 @@ public class Groups implements TableController {
 
     @FXML
     private TableView<Group> tableTbl;
-    private ObservableList<Group> groups;
+    private static ObservableList<Group> groups;
     public static Group selectedGroup;
     private final GroupService groupService = GroupService.getInstance();
 

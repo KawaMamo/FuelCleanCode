@@ -1,6 +1,7 @@
 package com.example.desktop.transLine;
 
 import com.example.model.TableController;
+import com.example.model.modal.Modal;
 import com.example.model.transLine.TransLineService;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -24,7 +25,7 @@ public class TransLines implements TableController {
 
     @FXML
     private TableView<TransLine> tableTbl;
-    private ObservableList<TransLine> transLines;
+    private static ObservableList<TransLine> transLines;
     public static TransLine selectedTransLine;
 
     private final TransLineService transLineService = TransLineService.getInstance();
@@ -38,7 +39,7 @@ public class TransLines implements TableController {
 
     @FXML
     void add() {
-
+        Modal.start(this.getClass(), "addTransLine.fxml");
     }
 
     @FXML
