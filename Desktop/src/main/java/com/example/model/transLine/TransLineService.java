@@ -1,10 +1,12 @@
 package com.example.model.transLine;
 
 import com.example.model.Service;
+import com.google.gson.Gson;
 import org.example.contract.request.create.CreateTransLineRequest;
 import org.example.model.TransLine;
 
 import java.net.http.HttpResponse;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -31,11 +33,22 @@ public class TransLineService implements Service<TransLine, CreateTransLineReque
 
     @Override
     public TransLine addItem(CreateTransLineRequest itemRequest) {
-        return null;
+        final String payload = getPayload(itemRequest);
+        final HttpResponse<String> stringHttpResponse = client.parallelPost(getEndPoint(), payload);
+        return gson.fromJson(stringHttpResponse.body(), TransLine.class);
     }
 
     @Override
     public String getEndPoint() {
         return "app/v1/trans-line";
+    }
+
+    private static String getPayload(CreateTransLineRequest request) {
+        final HashMap<String, String> payloadObj = new HashMap<>();
+        payloadObj.put("sourceId", request.getSourceId().toString());
+        payloadObj.put("destinationId", String.valueOf(request.getDestinationId()));
+        payloadObj.put("feeCurrency", request.getFeeCurrency());
+        payloadObj.put("feeAmount", request.getFeeAmount().toString());
+        return new Gson().toJson(payloadObj);
     }
 }

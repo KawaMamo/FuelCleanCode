@@ -40,7 +40,8 @@ public class GasStationAdapter implements GasStationRepo {
         if(place instanceof GasStationEntity){
             gasStationEntity = (GasStationEntity) place;
         }else {
-            throw new NoSuchElementException("No such Gas Station");
+            //throw new NoSuchElementException("No such Gas Station");
+            gasStationEntity = null;
         }
 
         final GasStation gasStation = mapper.entityToDomain(gasStationEntity);

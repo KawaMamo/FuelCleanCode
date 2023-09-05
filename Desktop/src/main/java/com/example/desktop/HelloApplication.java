@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
@@ -38,7 +39,7 @@ public class HelloApplication extends Application {
     private static void showError(Thread t, Throwable e) {
         while (e.getCause() instanceof InvocationTargetException)
             e = e.getCause();
-        Notifications.create().title("Error").text(e.getCause().getMessage()).showError();
+        Notifications.create().title("Error").text(e.getCause().getMessage()).hideAfter(Duration.minutes(10)).showError();
     }
 
     public static void main(String[] args) {

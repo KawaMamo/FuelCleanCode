@@ -39,6 +39,7 @@ public class TransLines implements TableController {
 
     @FXML
     void add() {
+        AddTransLine.controller = this;
         Modal.start(this.getClass(), "addTransLine.fxml");
     }
 
@@ -68,12 +69,14 @@ public class TransLines implements TableController {
     }
     @Override
     public void removeData() {
-
+        transLines.remove(selectedTransLine);
+        loadData();
     }
 
     @Override
     public void addData(Object object) {
-
+        transLines.add((TransLine) object);
+        loadData();
     }
 
     public void loadData() {

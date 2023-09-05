@@ -7,6 +7,7 @@ import org.example.contract.response.RefineryResponse;
 import org.example.entities.PlaceEntity;
 import org.example.entities.RefineryEntity;
 import org.example.mappers.RefineryMapper;
+import org.example.mappers.RefineryMapperImpl;
 import org.example.model.Refinery;
 import org.example.repositories.RefineryRepository;
 import org.example.specifications.CriteriaArrayToList;
@@ -68,9 +69,9 @@ public class RefineryController {
         return assembler.toModel(page);
     }
 
-    @GetMapping("/")
+    @GetMapping("/all")
     public List<Refinery> getRefineryList(){
-        return refineryRepository.findAll().stream().map(refinery -> placeMapper.toDomain((RefineryEntity) refinery)).toList();
+        return refineryRepository.findAll().stream().filter(place -> place instanceof RefineryEntity).map(refinery -> new RefineryMapperImpl().toDomain((RefineryEntity) refinery)).toList();
     }
 
     @PatchMapping

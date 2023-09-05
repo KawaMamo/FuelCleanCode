@@ -11,6 +11,7 @@ import org.example.model.TransLine;
 import org.example.validators.create.CreateTransLineValidator;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class CreateTransLine {
     private final TransLineRepo transLineRepo;
@@ -33,7 +34,7 @@ public class CreateTransLine {
         final Place destination = placeTypeDetector.detect(request.getDestinationId());
         final CreateFatTransLineRequest createFatTransLineRequest = getCreateFatTransLineRequest(request, source, destination);
         final TransLine transLine = transLineDomainMapper.requestToDomain(createFatTransLineRequest);
-        transLine.setCreatedAt(LocalDateTime.now());
+        transLine.setCreatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         final TransLine save = transLineRepo.save(transLine);
         return transLineDomainMapper.domainToResponse(save);
     }

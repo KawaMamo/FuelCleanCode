@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @Data
 public class GasStation extends Place{
 
-    private String name;
+
     private PriceCategory priceCategory;
     private Long debtLimit;
     private Region region;
