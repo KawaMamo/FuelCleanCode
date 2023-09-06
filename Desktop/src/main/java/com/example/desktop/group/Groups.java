@@ -1,7 +1,9 @@
 package com.example.desktop.group;
 
+import com.example.desktop.delete.DeleteConfirmation;
 import com.example.model.TableController;
 import com.example.model.group.GroupService;
+import com.example.model.modal.Modal;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -31,12 +33,16 @@ public class Groups implements TableController {
 
     @FXML
     void add() {
-
+        AddGroup.controller = this;
+        Modal.start(this.getClass(), "addGroup.fxml");
     }
 
     @FXML
     void delete() {
-
+        DeleteConfirmation.deleteUrl = groupService.getEndPoint();
+        DeleteConfirmation.selected = selectedGroup.getId();
+        DeleteConfirmation.controller = this;
+        Modal.start(this.getClass(), "/com/example/desktop/delete/deleteConfirmation.fxml");
     }
 
     @FXML
@@ -60,16 +66,19 @@ public class Groups implements TableController {
     }
     @Override
     public void removeData() {
-
+        groups.remove(selectedGroup);
+        loadData();
     }
 
     @Override
     public void addData(Object object) {
-
+        groups.add((Group) object);
+        loadData();
     }
 
     public void loadData() {
         groups = FXCollections.observableArrayList(groupService.getItems(null, null));
+        tableTbl.setItems(groups);
     }
 
     private void setTable() {

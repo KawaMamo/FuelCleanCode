@@ -8,6 +8,7 @@ import org.example.model.PriceCategory;
 import org.example.validators.create.CreatePriceCategoryValidator;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class CreatePriceCategory {
     private final CreatePriceCategoryValidator validator;
@@ -23,7 +24,7 @@ public class CreatePriceCategory {
     public PriceCategoryResponse execute(CreatePriceCategoryRequest request){
         validator.validate(request);
         final PriceCategory priceCategory = mapper.requestToDomain(request);
-        priceCategory.setCreatedAt(LocalDateTime.now());
+        priceCategory.setCreatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         final PriceCategory save = priceCategoryRepo.save(priceCategory);
         return mapper.domainToResponse(save);
     }

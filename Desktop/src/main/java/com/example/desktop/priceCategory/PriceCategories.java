@@ -1,6 +1,8 @@
 package com.example.desktop.priceCategory;
 
+import com.example.desktop.delete.DeleteConfirmation;
 import com.example.model.TableController;
+import com.example.model.modal.Modal;
 import com.example.model.priceCategory.PriceCategoryService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -29,12 +31,16 @@ public class PriceCategories implements TableController {
     }
     @FXML
     void add() {
-
+        AddPriceCategory.controller = this;
+        Modal.start(this.getClass(), "addPriceCategory.fxml");
     }
 
     @FXML
     void delete() {
-
+        DeleteConfirmation.deleteUrl = priceCategoryService.getEndPoint();
+        DeleteConfirmation.selected = selectdPriceCategory.getId();
+        DeleteConfirmation.controller = this;
+        Modal.start(this.getClass(), "/com/example/desktop/delete/deleteConfirmation.fxml");
     }
 
     @FXML
@@ -59,16 +65,19 @@ public class PriceCategories implements TableController {
 
     @Override
     public void removeData() {
-
+        priceCategories.remove(selectdPriceCategory);
+        loadData();
     }
 
     @Override
     public void addData(Object object) {
-
+        priceCategories.add((PriceCategory) object);
+        loadData();
     }
 
     public void loadData() {
         priceCategories = FXCollections.observableArrayList(priceCategoryService.getItems(null, null));
+        tableTbl.setItems(priceCategories);
     }
 
     private void setTable() {

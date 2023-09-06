@@ -126,5 +126,6 @@ public class GasStations implements TableController {
 
     public void loadData() {
         gasStations = FXCollections.observableArrayList(gasStationService.getItems(null, null));
+        tableTbl.setItems(gasStations);
     }
 }

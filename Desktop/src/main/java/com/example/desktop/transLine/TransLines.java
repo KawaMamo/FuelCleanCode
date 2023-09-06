@@ -1,5 +1,6 @@
 package com.example.desktop.transLine;
 
+import com.example.desktop.delete.DeleteConfirmation;
 import com.example.model.TableController;
 import com.example.model.modal.Modal;
 import com.example.model.transLine.TransLineService;
@@ -45,7 +46,10 @@ public class TransLines implements TableController {
 
     @FXML
     void delete() {
-
+        DeleteConfirmation.controller = this;
+        DeleteConfirmation.selected = selectedTransLine.getId();
+        DeleteConfirmation.deleteUrl = transLineService.getEndPoint();
+        Modal.start(TransLines.class, "/com/example/desktop/delete/deleteConfirmation.fxml");
     }
 
     @FXML
@@ -81,6 +85,7 @@ public class TransLines implements TableController {
 
     public void loadData() {
         transLines = FXCollections.observableArrayList(transLineService.getItems(null, null));
+        tableTbl.setItems(transLines);
     }
 
     private void setTable() {

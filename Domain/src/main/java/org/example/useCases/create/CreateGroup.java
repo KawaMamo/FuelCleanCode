@@ -8,6 +8,7 @@ import org.example.model.Group;
 import org.example.validators.create.CreateGroupValidator;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class CreateGroup {
     private final CreateGroupValidator validator;
@@ -23,7 +24,7 @@ public class CreateGroup {
     public GroupResponse execute(CreateGroupRequest request){
         validator.validate(request);
         final Group group = mapper.requestToDomain(request);
-        group.setCreatedAt(LocalDateTime.now());
+        group.setCreatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         final Group save = groupRepo.save(group);
         return mapper.domainToResponse(save);
     }

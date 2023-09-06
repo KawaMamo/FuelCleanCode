@@ -7,6 +7,7 @@ import org.example.repositories.PriceCategoryRepository;
 import org.example.entities.PriceCategoryEntity;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 
 public class PriceCategoryAdapter implements PriceCategoryRepo {
@@ -22,7 +23,7 @@ public class PriceCategoryAdapter implements PriceCategoryRepo {
     @Override
     public PriceCategory save(PriceCategory priceCategory) {
         final PriceCategoryEntity priceCategoryEntity = mapper.domainToEntity(priceCategory);
-        priceCategoryEntity.setCreatedAt(LocalDateTime.now());
+        priceCategoryEntity.setCreatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         final PriceCategoryEntity save = repository.save(priceCategoryEntity);
         return mapper.entityToDomain(save);
     }

@@ -1,10 +1,12 @@
 package com.example.model.group;
 
 import com.example.model.Service;
+import com.google.gson.Gson;
 import org.example.contract.request.create.CreateGroupRequest;
 import org.example.model.Group;
 
 import java.net.http.HttpResponse;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -30,11 +32,19 @@ public class GroupService implements Service<Group, CreateGroupRequest> {
 
     @Override
     public Group addItem(CreateGroupRequest itemRequest) {
-        return null;
+        final String payload = getPayload(itemRequest);
+        final HttpResponse<String> stringHttpResponse = client.parallelPost(getEndPoint(), payload);
+        return gson.fromJson(stringHttpResponse.body(), Group.class);
     }
 
     @Override
     public String getEndPoint() {
         return "api/v1/group";
+    }
+
+    private static String getPayload(CreateGroupRequest request) {
+        final HashMap<String, String> payloadObj = new HashMap<>();
+        payloadObj.put("name", request.getName());
+        return new Gson().toJson(payloadObj);
     }
 }
