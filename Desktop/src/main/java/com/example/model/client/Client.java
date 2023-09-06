@@ -42,6 +42,20 @@ public class Client {
         }
     }
 
+    public HttpResponse<String> patch(String endPoint, String payload) {
+        final HttpRequest.Builder builder = HttpRequest.newBuilder()
+                .uri(URI.create(url + endPoint))
+                .header("Content-Type", contentType)
+                .method("PATCH", HttpRequest.BodyPublishers.ofString(payload));
+        addAuthorizationToken(builder);
+        final HttpRequest request = builder.build();
+        try {
+            return httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public HttpResponse<String> delete(String endPoint, String payload) {
         final HttpRequest.Builder builder = HttpRequest.newBuilder()
                 .uri(URI.create(url + endPoint+payload))
@@ -61,6 +75,22 @@ public class Client {
             @Override
             public HttpResponse<String> call() throws Exception {
                 return post(endPoint, payload);
+            }
+        };
+        parallelClient = new ParallelClient(callable);
+        try {
+            return parallelClient.call();
+        } catch (Exception e) {
+            Notifications.create().text("Something went wrong").showError();
+            throw new RuntimeException(e);
+        }
+    }
+
+    public HttpResponse<String> parallelPatch(String endPoint, String payload){
+        Callable<HttpResponse<String>> callable = new Callable<HttpResponse<String>>() {
+            @Override
+            public HttpResponse<String> call() throws Exception {
+                return patch(endPoint, payload);
             }
         };
         parallelClient = new ParallelClient(callable);

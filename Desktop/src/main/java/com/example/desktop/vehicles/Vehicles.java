@@ -23,7 +23,6 @@ public class Vehicles implements TableController {
     private static ObservableList<Vehicle> vehicles;
     private final VehicleService vehicleService = VehicleService.getInstance();
     public static Vehicle selectedVehicle;
-
     @FXML
     private void initialize(){
         loadData();
@@ -101,7 +100,9 @@ public class Vehicles implements TableController {
 
     @FXML
     void edit() {
-
+        AddVehicle.controller = this;
+        AddVehicle.isEditingForm = true;
+        Modal.start(Vehicles.class, "addVehicle.fxml");
     }
 
     @FXML
@@ -126,4 +127,6 @@ public class Vehicles implements TableController {
     void search(){
 
     }
+
+
 }

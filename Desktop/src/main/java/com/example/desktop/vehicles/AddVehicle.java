@@ -6,14 +6,13 @@ import com.example.model.office.OfficeService;
 import com.example.model.person.PersonService;
 import com.example.model.trafficCenter.TrafficCenterService;
 import com.example.model.vehicle.VehicleService;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.controlsfx.control.Notifications;
 import org.controlsfx.control.textfield.TextFields;
 import org.example.contract.request.create.CreateVehicleRequest;
+import org.example.contract.request.update.UpdateVehicleRequest;
 import org.example.model.Office;
 import org.example.model.Person;
 import org.example.model.TrafficCenter;
@@ -21,11 +20,10 @@ import org.example.model.Vehicle;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Stream;
 
 public class AddVehicle {
     public static TableController controller;
-
+    public static Boolean isEditingForm = false;
     @FXML
     private TextField driverTF;
 
@@ -53,6 +51,7 @@ public class AddVehicle {
 
     @FXML
     void initialize() {
+
         final List<Person> personList = personService.getPersonList(null, null);
         final List<String> stringList = personList.stream().map(person -> person.getName()+" "+person.getNationalId()).toList();
         TextFields.bindAutoCompletion(driverTF, stringList);
@@ -94,22 +93,53 @@ public class AddVehicle {
                 }
             }
         });
+
+        if(isEditingForm){
+            final Vehicle vehicle = vehicleService.getVehicle(Vehicles.selectedVehicle.getId());
+            driverTF.setText(vehicle.getDriver().getName());
+            officeTF.setText(vehicle.getOffice().getName());
+            plateNumberTF.setText(vehicle.getPlateNumber());
+            sizeTF.setText(vehicle.getSize().toString());
+            trafficCenterTF.setText(vehicle.getTrafficCenter().getName());
+            selectedDriverId = vehicle.getDriver().getId();
+            selectedOfficeId = vehicle.getOffice().getId();
+            selectedTrafficCenterId = vehicle.getTrafficCenter().getId();
+        }else {
+
+        }
+
     }
 
     @FXML
     void submit() {
-        final Vehicle vehicle = vehicleService.addVehicle(new CreateVehicleRequest(plateNumberTF.getText(),
-                selectedTrafficCenterId,
-                Integer.parseInt(sizeTF.getText()),
-                selectedOfficeId,
-                selectedDriverId));
+
+        final Vehicle vehicle;
+        if(isEditingForm){
+            vehicle = vehicleService.editVehicle(new UpdateVehicleRequest(Vehicles.selectedVehicle.getId(),
+                    plateNumberTF.getText(),
+                    selectedTrafficCenterId,
+                    Integer.valueOf(sizeTF.getText()),
+                    selectedOfficeId,
+                    selectedDriverId));
+            controller.loadData();
+        }else {
+            vehicle = vehicleService.addVehicle(new CreateVehicleRequest(plateNumberTF.getText(),
+                    selectedTrafficCenterId,
+                    Integer.parseInt(sizeTF.getText()),
+                    selectedOfficeId,
+                    selectedDriverId));
+            controller.addData(vehicle);
+        }
+        notifyUser(vehicle);
+    }
+
+    private static void notifyUser(Vehicle vehicle) {
         String message;
         if(Objects.nonNull(vehicle.getId())){
-            message = "Vehicle added";
+            message = "Vehicle added Or Edited";
         }else {
             message = "something went wrong";
         }
-        controller.addData(vehicle);
         Notifications.create().title("Info").text(message).showInformation();
         Modal.close();
     }

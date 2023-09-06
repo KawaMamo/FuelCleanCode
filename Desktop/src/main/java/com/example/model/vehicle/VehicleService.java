@@ -5,6 +5,7 @@ import com.example.model.typeAdapter.AppGson;
 import com.example.model.vehicle.response.VehicleResponse;
 import com.google.gson.*;
 import org.example.contract.request.create.CreateVehicleRequest;
+import org.example.contract.request.update.UpdateVehicleRequest;
 import org.example.model.Vehicle;
 
 import java.net.http.HttpResponse;
@@ -27,6 +28,12 @@ public class VehicleService {
         return vehicleResponse._embedded.vehicleList;
     }
 
+    public Vehicle getVehicle(Long id){
+        String getUrl = "api/v1/vehicle?page=0&size=10&key=id&value="+id+"&operation=%3A";
+        final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+        return gson.fromJson(stringHttpResponse.body(),VehicleResponse.class)._embedded.vehicleList.get(0);
+    }
+
     public Vehicle addVehicle(CreateVehicleRequest vehicle){
         final String payload = getPayload(vehicle);
         final HttpResponse<String> httpResponse = client.parallelPost("api/v1/vehicle", payload);
@@ -42,5 +49,12 @@ public class VehicleService {
         payloadObj.put("office_id", vehicle.getOffice_id().toString());
         return new Gson().toJson(payloadObj);
     }
+
+    public Vehicle editVehicle(UpdateVehicleRequest vehicle){
+        final String payload = gson.toJson(vehicle);
+        final HttpResponse<String> stringHttpResponse = client.parallelPatch("api/v1/vehicle", payload);
+        return gson.fromJson(stringHttpResponse.body(), Vehicle.class);
+    }
+
 }
 

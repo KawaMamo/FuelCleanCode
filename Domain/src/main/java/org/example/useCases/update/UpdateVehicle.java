@@ -8,6 +8,7 @@ import org.example.model.Vehicle;
 import org.example.validators.update.UpdateVehicleValidator;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.NoSuchElementException;
 
 public class UpdateVehicle {
@@ -26,7 +27,7 @@ public class UpdateVehicle {
         updateVehicleValidator.validate(request);
         Vehicle vehicle = mapper.requestToDomain(request);
         vehicle.setCreatedAt(original.getCreatedAt());
-        vehicle.setUpdatedAt(LocalDateTime.now());
+        vehicle.setUpdatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         vehicleRepo.save(vehicle);
         return mapper.domainToResponse(vehicle);
     }
