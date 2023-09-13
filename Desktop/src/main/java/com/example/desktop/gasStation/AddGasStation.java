@@ -56,7 +56,7 @@ public class AddGasStation {
     @FXML
     void initialize() {
 
-        final List<Person> personList = personService.getPersonList(null, null);
+        final List<Person> personList = personService.getItems(null, null);
         final List<String> stringList = personList.stream().map(person -> person.getName()+" "+person.getNationalId()).toList();
         TextFields.bindAutoCompletion(ownerTF, stringList);
 

@@ -32,7 +32,9 @@ public class OfficeService implements Service<Office, CreateOfficeRequest> {
 
     @Override
     public Office addItem(CreateOfficeRequest itemRequest) {
-        return null;
+        final String payload = gson.toJson(itemRequest);
+        final HttpResponse<String> stringHttpResponse = client.parallelPost(getEndPoint(), payload);
+        return gson.fromJson(stringHttpResponse.body(), Office.class);
     }
 
     @Override

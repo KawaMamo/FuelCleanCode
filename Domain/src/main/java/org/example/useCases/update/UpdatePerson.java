@@ -8,6 +8,7 @@ import org.example.model.Person;
 import org.example.validators.update.UpdatePersonValidator;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.NoSuchElementException;
 
 public class UpdatePerson {
@@ -28,7 +29,7 @@ public class UpdatePerson {
         final Person original = personRepo.findById(request.getId()).orElseThrow(NoSuchElementException::new);
         validator.validate(request);
         final Person person = mapper.requestToDomain(request);
-        person.setCreatedAt(original.getCreatedAt());
+        person.setCreatedAt(original.getCreatedAt().truncatedTo(ChronoUnit.SECONDS));
         person.setUpdatedAt(LocalDateTime.now());
         final Person save = personRepo.save(person);
         return mapper.domainToResponse(save);

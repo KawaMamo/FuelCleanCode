@@ -9,8 +9,10 @@ import org.example.contract.request.update.UpdateVehicleRequest;
 import org.example.model.Vehicle;
 
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 public class VehicleService {
     private static final VehicleService instance = new VehicleService();
@@ -25,7 +27,10 @@ public class VehicleService {
         String getUrl = "api/v1/vehicle?page="+page+"&size=10&key=plateNumber&value=1&operation=%3E&test.test=1&sort=id,desc";
         final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
         final VehicleResponse vehicleResponse = gson.fromJson(stringHttpResponse.body(), VehicleResponse.class);
-        return vehicleResponse._embedded.vehicleList;
+        if(Objects.nonNull(vehicleResponse._embedded)){
+            return vehicleResponse._embedded.vehicleList;
+        }
+        return new ArrayList<>();
     }
 
     public Vehicle getVehicle(Long id){

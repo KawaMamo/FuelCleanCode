@@ -7,6 +7,7 @@ import org.example.repositories.PersonRepository;
 import org.example.entities.PersonEntity;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 
 public class PersonAdapter implements PersonRepo {
@@ -21,7 +22,7 @@ public class PersonAdapter implements PersonRepo {
     @Override
     public Person save(Person person) {
         final PersonEntity personEntity = mapper.domainToEntity(person);
-        personEntity.setCreatedAt(LocalDateTime.now());
+        personEntity.setCreatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         final PersonEntity save = repository.save(personEntity);
         return mapper.entityToDomain(save);
     }

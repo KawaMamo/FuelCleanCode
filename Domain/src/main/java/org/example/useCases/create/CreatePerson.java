@@ -8,6 +8,7 @@ import org.example.model.Person;
 import org.example.validators.create.CreatePersonValidator;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class CreatePerson {
 
@@ -24,7 +25,7 @@ public class CreatePerson {
     public PersonResponse execute(CreatePersonRequest request){
         validator.validate(request);
         final Person person = mapper.requestToDomain(request);
-        person.setCreatedAt(LocalDateTime.now());
+        person.setCreatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         final Person save = personRepo.save(person);
         return mapper.domainToResponse(save);
     }

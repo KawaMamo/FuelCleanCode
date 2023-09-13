@@ -1,9 +1,11 @@
 package com.example.model.person;
 
+import com.example.model.Service;
 import com.example.model.client.Client;
 import com.example.model.person.response.PersonResponse;
 import com.example.model.typeAdapter.AppGson;
 import com.google.gson.Gson;
+import org.example.contract.request.create.CreatePersonRequest;
 import org.example.mappers.PersonDomainMapper;
 import org.example.model.Person;
 
@@ -13,12 +15,12 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Stream;
 
-public class PersonService {
-    Client client = Client.getInstance("http://localhost:8081/");
-    private final static PersonService instance = new PersonService();
-    Gson gson = AppGson.getGson();
+public class PersonService implements Service<Person, CreatePersonRequest> {
 
-    public List<Person> getPersonList(Integer page, Integer size) {
+    private final static PersonService instance = new PersonService();
+
+    @Override
+    public List<Person> getItems(Integer page, Integer size) {
         String getUrl;
         if(Objects.isNull(page)){
             getUrl = getEndPoint()+"/all";
@@ -32,6 +34,13 @@ public class PersonService {
 
     public static PersonService getInstance(){
         return instance;
+    }
+
+    @Override
+    public Person addItem(CreatePersonRequest itemRequest) {
+        final String toJson = gson.toJson(itemRequest);
+        final HttpResponse<String> stringHttpResponse = client.parallelPost(getEndPoint(), toJson);
+        return gson.fromJson(stringHttpResponse.body(),Person.class);
     }
 
     public String getEndPoint() {

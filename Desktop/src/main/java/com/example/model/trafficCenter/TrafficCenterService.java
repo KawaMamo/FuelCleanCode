@@ -28,7 +28,9 @@ public class TrafficCenterService implements Service<TrafficCenter, CreateTraffi
 
     @Override
     public TrafficCenter addItem(CreateTrafficCenterRequest itemRequest) {
-        return null;
+        final String payload = gson.toJson(itemRequest);
+        final HttpResponse<String> stringHttpResponse = client.parallelPost(getEndPoint(), payload);
+        return gson.fromJson(stringHttpResponse.body(), TrafficCenter.class);
     }
 
     @Override

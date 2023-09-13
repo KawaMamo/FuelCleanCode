@@ -7,6 +7,7 @@ import org.example.repositories.RegionRepository;
 import org.example.entities.RegionEntity;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 
 public class RegionAdapter implements RegionRepo {
@@ -22,7 +23,7 @@ public class RegionAdapter implements RegionRepo {
     @Override
     public Region save(Region region) {
         final RegionEntity regionEntity = mapper.domainToEntity(region);
-        regionEntity.setCreatedAt(LocalDateTime.now());
+        regionEntity.setCreatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         final RegionEntity save = repository.save(regionEntity);
         return mapper.entityToDomain(save);
     }

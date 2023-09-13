@@ -7,6 +7,7 @@ import org.example.repositories.TrafficCenterRepository;
 import org.example.entities.TrafficCenterEntity;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 
 public class TrafficCenterAdapter implements TrafficCenterRepo {
@@ -21,7 +22,7 @@ public class TrafficCenterAdapter implements TrafficCenterRepo {
     @Override
     public TrafficCenter save(TrafficCenter trafficCenter) {
         final TrafficCenterEntity trafficCenterEntity = mapper.domainToEntity(trafficCenter);
-        trafficCenterEntity.setCreatedAt(LocalDateTime.now());
+        trafficCenterEntity.setCreatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         final TrafficCenterEntity save = repository.save(trafficCenterEntity);
         return mapper.entityToDomain(save);
     }

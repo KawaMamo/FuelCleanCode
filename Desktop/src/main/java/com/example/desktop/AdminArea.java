@@ -3,7 +3,10 @@ package com.example.desktop;
 
 import com.example.desktop.gasStation.GasStations;
 import com.example.desktop.group.Groups;
+import com.example.desktop.office.Offices;
+import com.example.desktop.person.Persons;
 import com.example.desktop.priceCategory.PriceCategories;
+import com.example.desktop.trafficCenter.TrafficCenters;
 import com.example.desktop.transLine.TransLines;
 import com.example.desktop.vehicles.Vehicles;
 import javafx.fxml.FXML;
@@ -114,4 +117,52 @@ public class AdminArea {
             throw new RuntimeException(e);
         }
     }
+
+    @FXML
+    void offices() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("office/Offices.fxml"));
+        try {
+            final Node node = loader.load();
+            final Offices controller = loader.getController();
+            workArea.getChildren().clear();
+            workArea.getChildren().add(node);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    void persons() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("person/persons.fxml"));
+        try {
+            final Node node = loader.load();
+            final Persons controller = loader.getController();
+            workArea.getChildren().clear();
+            workArea.getChildren().add(node);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    void trafficCenters() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("trafficCenter/trafficCenters.fxml"));
+        try {
+            final Node node = loader.load();
+            final TrafficCenters controller = loader.getController();
+            workArea.getChildren().clear();
+            workArea.getChildren().add(node);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    void regions() {}
+
+    @FXML
+    void refineries(){}
 }

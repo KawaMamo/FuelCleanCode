@@ -8,6 +8,7 @@ import org.example.repositories.RefineryRepository;
 import org.example.entities.RefineryEntity;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 
 public class RefineryAdapter implements RefineryRepo {
@@ -24,7 +25,7 @@ public class RefineryAdapter implements RefineryRepo {
     public Refinery save(Refinery refinery) {
         final RefineryEntity refineryEntity = mapper.toEntity(refinery);
         refineryEntity.setPlaceType("Refinery");
-        refineryEntity.setCreatedAt(LocalDateTime.now());
+        refineryEntity.setCreatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         final RefineryEntity save = repository.save(refineryEntity);
         return mapper.toDomain(save);
     }

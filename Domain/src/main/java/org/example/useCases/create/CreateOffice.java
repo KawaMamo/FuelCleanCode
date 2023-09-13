@@ -8,6 +8,7 @@ import org.example.model.Office;
 import org.example.validators.create.CreateOfficeValidator;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class CreateOffice {
     private final OfficeDomainMapper mapper;
@@ -23,7 +24,7 @@ public class CreateOffice {
     public OfficeResponse execute(CreateOfficeRequest request){
         validator.validate(request);
         final Office office = mapper.requestToDomain(request);
-        office.setCreatedAt(LocalDateTime.now());
+        office.setCreatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         final Office save = repo.save(office);
         return mapper.domainToResponse(save);
     }
