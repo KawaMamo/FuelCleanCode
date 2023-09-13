@@ -1,6 +1,7 @@
 package com.example.model.region;
 
 import com.example.model.Service;
+import com.example.model.region.response.RegionResponseEntity;
 import org.example.contract.request.create.CreateRegionRequest;
 import org.example.contract.request.update.UpdateRegionRequest;
 import org.example.model.Region;
@@ -42,7 +43,7 @@ public class RegionService implements Service<Region, CreateRegionRequest, Updat
 
     @Override
     public Region getItem(Long id) {
-        return gson.fromJson(getResponse(id).body(), Region.class);
+        return gson.fromJson(getResponse(id).body(), RegionResponseEntity.class)._embedded.regionList.get(0);
     }
 
     @Override

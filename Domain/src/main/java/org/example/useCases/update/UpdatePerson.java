@@ -29,8 +29,8 @@ public class UpdatePerson {
         final Person original = personRepo.findById(request.getId()).orElseThrow(NoSuchElementException::new);
         validator.validate(request);
         final Person person = mapper.requestToDomain(request);
-        person.setCreatedAt(original.getCreatedAt().truncatedTo(ChronoUnit.SECONDS));
-        person.setUpdatedAt(LocalDateTime.now());
+        person.setCreatedAt(original.getCreatedAt());
+        person.setUpdatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         final Person save = personRepo.save(person);
         return mapper.domainToResponse(save);
     }

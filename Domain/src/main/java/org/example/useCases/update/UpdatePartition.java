@@ -8,6 +8,7 @@ import org.example.model.Partition;
 import org.example.validators.update.UpdatePartitionValidator;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.NoSuchElementException;
 
 public class UpdatePartition {
@@ -28,7 +29,7 @@ public class UpdatePartition {
         validator.validate(request);
         final Partition partition = mapper.requestToDomain(request);
         partition.setCreatedAt(original.getCreatedAt());
-        partition.setUpdatedAt(LocalDateTime.now());
+        partition.setUpdatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         final Partition save = partitionRepo.save(partition);
         return mapper.domainToResponse(save);
     }

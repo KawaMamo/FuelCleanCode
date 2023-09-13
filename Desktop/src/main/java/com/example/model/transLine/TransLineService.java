@@ -1,6 +1,7 @@
 package com.example.model.transLine;
 
 import com.example.model.Service;
+import com.example.model.transLine.response.TransLineResponseEntity;
 import com.google.gson.Gson;
 import org.example.contract.request.create.CreateTransLineRequest;
 import org.example.contract.request.update.UpdateTransLogRequest;
@@ -46,7 +47,7 @@ public class TransLineService implements Service<TransLine, CreateTransLineReque
 
     @Override
     public TransLine getItem(Long id) {
-        return gson.fromJson(getResponse(id).body(), TransLine.class);
+        return gson.fromJson(getResponse(id).body(), TransLineResponseEntity.class)._embedded.transLineList.get(0);
     }
 
     @Override

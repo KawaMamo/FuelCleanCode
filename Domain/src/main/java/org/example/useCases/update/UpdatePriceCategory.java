@@ -8,6 +8,7 @@ import org.example.model.PriceCategory;
 import org.example.validators.update.UpdatePriceCategoryValidator;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.NoSuchElementException;
 
 public class UpdatePriceCategory {
@@ -28,7 +29,7 @@ public class UpdatePriceCategory {
         validator.validate(request);
         final PriceCategory priceCategory = mapper.requestToDomain(request);
         priceCategory.setCreatedAt(original.getCreatedAt());
-        priceCategory.setUpdatedAt(LocalDateTime.now());
+        priceCategory.setUpdatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         final PriceCategory save = priceCategoryRepo.save(priceCategory);
         return mapper.domainToResponse(save);
     }

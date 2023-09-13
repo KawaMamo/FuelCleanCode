@@ -8,6 +8,7 @@ import org.example.model.TransferMaterials;
 import org.example.validators.update.UpdateTransferMaterialValidator;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.NoSuchElementException;
 
 public class UpdateTransferMaterial {
@@ -26,7 +27,7 @@ public class UpdateTransferMaterial {
         validator.validate(request);
         final TransferMaterials transferMaterials = mapper.requestToDomain(request);
         transferMaterials.setCreatedAt(original.getCreatedAt());
-        transferMaterials.setUpdatedAt(LocalDateTime.now());
+        transferMaterials.setUpdatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         final TransferMaterials save = transferMaterialRepo.save(transferMaterials);
         return mapper.domainToResponse(save);
     }

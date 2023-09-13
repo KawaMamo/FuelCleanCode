@@ -8,6 +8,7 @@ import org.example.model.TransLine;
 import org.example.validators.update.UpdateTransLineValidator;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.NoSuchElementException;
 
 public class UpdateTransLine {
@@ -28,7 +29,7 @@ public class UpdateTransLine {
         validator.validate(request);
         final TransLine transLine = mapper.requestToDomain(request);
         transLine.setCreatedAt(original.getCreatedAt());
-        transLine.setUpdatedAt(LocalDateTime.now());
+        transLine.setUpdatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         transLineRepo.save(transLine);
         return mapper.domainToResponse(transLineRepo.save(transLine));
     }

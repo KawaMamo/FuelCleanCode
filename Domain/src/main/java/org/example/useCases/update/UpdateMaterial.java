@@ -8,6 +8,7 @@ import org.example.model.Material;
 import org.example.validators.update.UpdateMaterialValidator;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.NoSuchElementException;
 
 public class UpdateMaterial {
@@ -29,7 +30,7 @@ public class UpdateMaterial {
         updateMaterialValidator.validate(request);
         final Material material = mapper.requestToDomain(request);
         material.setCreatedAt(original.getCreatedAt());
-        material.setUpdatedAt(LocalDateTime.now());
+        material.setUpdatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         final Material save = materialRepo.save(material);
         return mapper.domainToResponse(save);
     }

@@ -8,6 +8,7 @@ import org.example.model.Forfeit;
 import org.example.validators.update.UpdateForfeitValidator;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.NoSuchElementException;
 
 public class UpdateForfeit {
@@ -28,7 +29,7 @@ public class UpdateForfeit {
         validator.validate(request);
         final Forfeit domain = forfeitDomainMapper.requestToDomain(request);
         domain.setCreatedAt(original.getCreatedAt());
-        domain.setUpdatedAt(LocalDateTime.now());
+        domain.setUpdatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         final Forfeit save = forfeitRepo.save(domain);
         return forfeitDomainMapper.domainToResponse(save);
     }

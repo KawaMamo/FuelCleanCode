@@ -8,6 +8,7 @@ import org.example.model.Office;
 import org.example.validators.update.UpdateOfficeValidator;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.NoSuchElementException;
 
 public class UpdateOffice {
@@ -29,7 +30,7 @@ public class UpdateOffice {
         validator.validate(request);
         final Office office = officeDomainMapper.requestToDomain(request);
         office.setCreatedAt(original.getCreatedAt());
-        office.setUpdateAt(LocalDateTime.now());
+        office.setUpdateAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         final Office save = officeRepo.save(office);
         return officeDomainMapper.domainToResponse(save);
     }

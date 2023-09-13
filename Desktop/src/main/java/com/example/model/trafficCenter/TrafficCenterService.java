@@ -1,6 +1,7 @@
 package com.example.model.trafficCenter;
 
 import com.example.model.Service;
+import com.example.model.trafficCenter.response.TrafficCenterResponse;
 import org.example.contract.request.create.CreateTrafficCenterRequest;
 import org.example.contract.request.update.UpdateTrafficCenterRequest;
 import org.example.model.TrafficCenter;
@@ -41,7 +42,7 @@ public class TrafficCenterService implements Service<TrafficCenter, CreateTraffi
 
     @Override
     public TrafficCenter getItem(Long id) {
-        return gson.fromJson(getResponse(id).body(), TrafficCenter.class);
+        return gson.fromJson(getResponse(id).body(), TrafficCenterResponse.class)._embedded.trafficCenterList.get(0);
     }
 
     @Override

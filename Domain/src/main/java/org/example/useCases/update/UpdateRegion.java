@@ -9,6 +9,7 @@ import org.example.model.Region;
 import org.example.validators.update.UpdateRegionValidator;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.NoSuchElementException;
 
 public class UpdateRegion {
@@ -29,7 +30,7 @@ public class UpdateRegion {
         validator.Validate(request);
         Region region = mapper.requestToDomain(request);
         region.setCreatedAt(original.getCreatedAt());
-        region.setUpdatedAt(LocalDateTime.now());
+        region.setUpdatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         regionRepo.save(region);
         return mapper.domainToResponse(region);
     }

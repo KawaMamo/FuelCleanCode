@@ -8,6 +8,7 @@ import org.example.model.TransLog;
 import org.example.validators.update.UpdateTransLogValidator;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.NoSuchElementException;
 
 public class UpdateTransLog {
@@ -25,7 +26,7 @@ public class UpdateTransLog {
         validator.validate(request);
         final TransLog transLog = mapper.requestToDomain(request);
         transLog.setCreatedAt(original.getCreatedAt());
-        transLog.setUpdatedAt(LocalDateTime.now());
+        transLog.setUpdatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         transLogRepo.save(transLog);
         return mapper.domainToResponse(transLog);
     }

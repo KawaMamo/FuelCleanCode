@@ -8,6 +8,7 @@ import org.example.model.Document;
 import org.example.validators.update.UpdateDocumentValidator;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.NoSuchElementException;
 
 public class UpdateDocument {
@@ -28,7 +29,7 @@ public class UpdateDocument {
         validator.validate(request);
         final Document document = documentDomainMapper.requestToDomain(request);
         document.setCreatedAt(originalDocument.getCreatedAt());
-        document.setUpdatedAt(LocalDateTime.now());
+        document.setUpdatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         final Document save = documentRepo.save(document);
         return documentDomainMapper.domainToResponse(save);
     }

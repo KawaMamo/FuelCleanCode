@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.controlsfx.control.Notifications;
 import org.example.contract.request.create.CreateGroupRequest;
+import org.example.contract.request.update.UpdateGroupRequest;
 import org.example.model.Group;
 
 import java.util.Objects;
@@ -26,8 +27,21 @@ public class AddGroup {
     private final GroupService groupService = GroupService.getInstance();
 
     @FXML
+    private void initialize(){
+        if(isEditingForm){
+            final Group group = groupService.getItem(Groups.selectedGroup.getId());
+            nameTF.setText(group.getName());
+        }
+    }
+
+    @FXML
     void submit() {
-        final Group group = groupService.addItem(new CreateGroupRequest(nameTF.getText()));
+        final Group group;
+        if(isEditingForm){
+            group = groupService.editItem(new UpdateGroupRequest(Groups.selectedGroup.getId(), nameTF.getText()));
+        }else {
+            group = groupService.addItem(new CreateGroupRequest(nameTF.getText()));
+        }
         extracted(group);
     }
 

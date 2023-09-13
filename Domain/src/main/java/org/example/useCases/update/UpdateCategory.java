@@ -10,6 +10,7 @@ import org.example.model.Category;
 import org.example.validators.update.UpdateCategoryValidator;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class UpdateCategory {
 
@@ -35,7 +36,7 @@ public class UpdateCategory {
         Category original = categoryRepo.findById(request.getId());
         validator.validate(request);
         final Category category = mapper.requestToDomain(request);
-        category.setUpdatedAt(LocalDateTime.now());
+        category.setUpdatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         category.setCreatedAt(original.getCreatedAt());
         final Category update = categoryRepo.save(category);
         priceCategoryRepo.findById(update.getId()).ifPresent(update::setPriceCategory);

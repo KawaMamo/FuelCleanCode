@@ -9,6 +9,7 @@ import org.example.model.Transportation;
 import org.example.validators.update.UpdateTransValidator;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.NoSuchElementException;
 
 public class UpdateTrans {
@@ -27,7 +28,7 @@ public class UpdateTrans {
         validator.validate(request);
         final Transportation transportation = mapper.toDomain(request);
         transportation.setCreatedAt(original.getCreatedAt());
-        transportation.setUpdatedAt(LocalDateTime.now());
+        transportation.setUpdatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         final Transportation save = transRepo.save(transportation);
         return mapper.toResponse(save);
     }

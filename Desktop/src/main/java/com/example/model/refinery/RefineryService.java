@@ -1,6 +1,7 @@
 package com.example.model.refinery;
 
 import com.example.model.Service;
+import com.example.model.refinery.response.RefineryResponseEntity;
 import org.example.contract.request.create.CreateRefineryRequest;
 import org.example.contract.request.update.UpdateRefineryRequest;
 import org.example.model.GasStation;
@@ -43,7 +44,7 @@ public class RefineryService implements Service<Refinery, CreateRefineryRequest,
 
     @Override
     public Refinery getItem(Long id) {
-        return gson.fromJson(getResponse(id).body(), Refinery.class);
+        return gson.fromJson(getResponse(id).body(), RefineryResponseEntity.class)._embedded.refineryList.get(0);
     }
 
     @Override

@@ -8,6 +8,7 @@ import org.example.model.Refinery;
 import org.example.validators.update.UpdateRefineryValidator;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.NoSuchElementException;
 
 public class UpdateRefinery {
@@ -28,7 +29,7 @@ public class UpdateRefinery {
         validator.validate(request);
         final Refinery refinery = mapper.toDomain(request);
         refinery.setCreatedAt(original.getCreatedAt());
-        refinery.setUpdatedAt(LocalDateTime.now());
+        refinery.setUpdatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         return mapper.toResponse(refinery);
     }
 }

@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.controlsfx.control.Notifications;
 import org.example.contract.request.create.CreateOfficeRequest;
+import org.example.contract.request.update.UpdateOfficeRequest;
 import org.example.model.Office;
 
 import java.util.Objects;
@@ -25,8 +26,20 @@ public class AddOffice {
     private final OfficeService officeService = OfficeService.getInstance();
 
     @FXML
+    private void initialize(){
+        if(isEditingForm){
+            final Office office = officeService.getItem(Offices.slectedOffice.getId());
+            nameTF.setText(office.getName());
+        }
+    }
+    @FXML
     void submit() {
-        final Office office = officeService.addItem(new CreateOfficeRequest(nameTF.getText()));
+        final Office office;
+        if(isEditingForm){
+            office = officeService.editItem(new UpdateOfficeRequest(Offices.slectedOffice.getId(), nameTF.getText()));
+        }else {
+            office = officeService.addItem(new CreateOfficeRequest(nameTF.getText()));
+        }
         notify(office);
     }
 

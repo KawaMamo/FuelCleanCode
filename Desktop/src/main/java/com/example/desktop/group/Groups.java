@@ -47,7 +47,9 @@ public class Groups implements TableController {
 
     @FXML
     void edit() {
-
+        AddGroup.controller = this;
+        AddGroup.isEditingForm = true;
+        Modal.start(this.getClass(), "addGroup.fxml");
     }
 
     @FXML

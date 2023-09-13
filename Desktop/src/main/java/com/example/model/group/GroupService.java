@@ -1,6 +1,7 @@
 package com.example.model.group;
 
 import com.example.model.Service;
+import com.example.model.group.response.GroupResponseEntity;
 import com.google.gson.Gson;
 import org.example.contract.request.create.CreateGroupRequest;
 import org.example.contract.request.update.UpdateGroupRequest;
@@ -45,7 +46,7 @@ public class GroupService implements Service<Group, CreateGroupRequest, UpdateGr
 
     @Override
     public Group getItem(Long id) {
-        return gson.fromJson(getResponse(id).body(), Group[].class)[0];
+        return gson.fromJson(getResponse(id).body(), GroupResponseEntity.class)._embedded.groupList.get(0);
     }
 
     @Override

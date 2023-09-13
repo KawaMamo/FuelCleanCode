@@ -8,6 +8,7 @@ import org.example.model.TrafficCenter;
 import org.example.validators.update.UpdateTrafficCenterValidator;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.NoSuchElementException;
 
 public class UpdateTrafficCenter {
@@ -28,7 +29,7 @@ public class UpdateTrafficCenter {
         validator.validate(request);
         final TrafficCenter trafficCenter = mapper.requestToDomain(request);
         trafficCenter.setCreatedAt(original.getCreatedAt());
-        trafficCenter.setUpdatedAt(LocalDateTime.now());
+        trafficCenter.setUpdatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         return mapper.domainToResponse(trafficCenterRepo.save(trafficCenter));
     }
 }

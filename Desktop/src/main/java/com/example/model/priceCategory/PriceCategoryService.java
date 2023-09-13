@@ -1,6 +1,7 @@
 package com.example.model.priceCategory;
 
 import com.example.model.Service;
+import com.example.model.priceCategory.response.PriceCategoryResponseEntity;
 import com.google.gson.Gson;
 import org.example.contract.request.create.CreateGroupRequest;
 import org.example.contract.request.create.CreatePriceCategoryRequest;
@@ -46,7 +47,7 @@ public class PriceCategoryService implements Service<PriceCategory, CreatePriceC
 
     @Override
     public PriceCategory getItem(Long id) {
-        return gson.fromJson(getResponse(id).body(), PriceCategory.class);
+        return gson.fromJson(getResponse(id).body(), PriceCategoryResponseEntity.class)._embedded.priceCategoryList.get(0);
     }
 
     @Override

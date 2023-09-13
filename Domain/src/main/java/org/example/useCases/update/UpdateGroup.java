@@ -8,6 +8,7 @@ import org.example.model.Group;
 import org.example.validators.update.UpdateGroupValidator;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.NoSuchElementException;
 
 public class UpdateGroup {
@@ -27,7 +28,7 @@ public class UpdateGroup {
         validator.validate(request);
         final Group group = mapper.requestToDomain(request);
         group.setCreatedAt(original.getCreatedAt());
-        group.setUpdatedAt(LocalDateTime.now());
+        group.setUpdatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         final Group save = groupRepo.save(group);
         return mapper.domainToResponse(save);
     }
