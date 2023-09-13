@@ -23,11 +23,6 @@ public interface Service<T, U, V> {
         return stringHttpResponse;
     }
 
-    default String getResponseBody(UpdateGasStationRequest updateRequest) {
-        final String payload = gson.toJson(updateRequest);
-        return client.parallelPatch(getEndPoint(), payload).body();
-    }
-
     T editItem(V updateRequest);
 
 }

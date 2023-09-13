@@ -46,7 +46,9 @@ public class TrafficCenterService implements Service<TrafficCenter, CreateTraffi
 
     @Override
     public TrafficCenter editItem(UpdateTrafficCenterRequest updateRequest) {
-        return null;
+        final String json = gson.toJson(updateRequest);
+        final HttpResponse<String> stringHttpResponse = client.parallelPatch(getEndPoint(), json);
+        return gson.fromJson(stringHttpResponse.body(), TrafficCenter.class);
     }
 
     public static TrafficCenterService getInstance(){

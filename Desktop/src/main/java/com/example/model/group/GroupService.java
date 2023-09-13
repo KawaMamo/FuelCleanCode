@@ -50,7 +50,9 @@ public class GroupService implements Service<Group, CreateGroupRequest, UpdateGr
 
     @Override
     public Group editItem(UpdateGroupRequest updateRequest) {
-        return null;
+        final String json = gson.toJson(updateRequest);
+        final HttpResponse<String> stringHttpResponse = client.parallelPatch(getEndPoint(), json);
+        return gson.fromJson(stringHttpResponse.body(), Group.class);
     }
 
     private static String getPayload(CreateGroupRequest request) {

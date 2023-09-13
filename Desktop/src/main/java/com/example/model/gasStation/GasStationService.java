@@ -51,8 +51,11 @@ public class GasStationService implements Service<GasStation, CreateGasStationRe
 
     @Override
     public GasStation editItem(UpdateGasStationRequest updateRequest) {
-        return gson.fromJson(getResponseBody(updateRequest), GasStation.class);
+        final String payload = gson.toJson(updateRequest);
+        final String body = client.parallelPatch(getEndPoint(), payload).body();
+        return gson.fromJson(body, GasStation.class);
     }
+
 
     private static String getPayload(CreateGasStationRequest request) {
         final HashMap<String, String> payloadObj = new HashMap<>();

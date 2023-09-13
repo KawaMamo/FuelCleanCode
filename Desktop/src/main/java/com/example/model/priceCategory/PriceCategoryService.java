@@ -51,7 +51,9 @@ public class PriceCategoryService implements Service<PriceCategory, CreatePriceC
 
     @Override
     public PriceCategory editItem(UpdatePriceCategoryRequest updateRequest) {
-        return null;
+        final String json = gson.toJson(updateRequest);
+        final HttpResponse<String> stringHttpResponse = client.parallelPatch(getEndPoint(), json);
+        return gson.fromJson(stringHttpResponse.body(), PriceCategory.class);
     }
 
     private static String getPayload(CreatePriceCategoryRequest request) {

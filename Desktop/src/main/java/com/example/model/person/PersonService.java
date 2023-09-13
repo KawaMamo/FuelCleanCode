@@ -55,6 +55,8 @@ public class PersonService implements Service<Person, CreatePersonRequest, Updat
 
     @Override
     public Person editItem(UpdatePersonRequest updateRequest) {
-        return null;
+        final String json = gson.toJson(updateRequest);
+        final HttpResponse<String> stringHttpResponse = client.parallelPatch(getEndPoint(), json);
+        return gson.fromJson(stringHttpResponse.body(), Person.class);
     }
 }

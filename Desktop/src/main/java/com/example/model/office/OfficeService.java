@@ -50,6 +50,8 @@ public class OfficeService implements Service<Office, CreateOfficeRequest, Updat
 
     @Override
     public Office editItem(UpdateOfficeRequest updateRequest) {
-        return null;
+        final String json = gson.toJson(updateRequest);
+        final HttpResponse<String> stringHttpResponse = client.parallelPatch(getEndPoint(), json);
+        return gson.fromJson(stringHttpResponse.body(), Office.class);
     }
 }

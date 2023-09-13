@@ -48,6 +48,8 @@ public class RefineryService implements Service<Refinery, CreateRefineryRequest,
 
     @Override
     public Refinery editItem(UpdateRefineryRequest updateRequest) {
-        return null;
+        final String json = gson.toJson(updateRequest);
+        final HttpResponse<String> stringHttpResponse = client.parallelPatch(getEndPoint(), json);
+        return gson.fromJson(stringHttpResponse.body(), Refinery.class);
     }
 }

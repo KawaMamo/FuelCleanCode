@@ -51,7 +51,9 @@ public class TransLineService implements Service<TransLine, CreateTransLineReque
 
     @Override
     public TransLine editItem(UpdateTransLogRequest updateRequest) {
-        return null;
+        final String json = gson.toJson(updateRequest);
+        final HttpResponse<String> stringHttpResponse = client.parallelPatch(getEndPoint(), json);
+        return gson.fromJson(stringHttpResponse.body(), TransLine.class);
     }
 
     private static String getPayload(CreateTransLineRequest request) {

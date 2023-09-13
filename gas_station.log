@@ -687,3 +687,174 @@
 2023-09-13T20:14:13.103+03:00  INFO 21620 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2023-09-13T20:14:13.105+03:00  INFO 21620 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2023-09-13T20:14:13.114+03:00  INFO 21620 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-09-13T20:14:17.916+03:00  INFO 9248 --- [main] org.example.Main                         : Starting Main using Java 20 with PID 9248 (D:\fuelRefactored\FuelCleanCode\Service\target\classes started by GIGABYTE in D:\fuelRefactored\FuelCleanCode)
+2023-09-13T20:14:17.919+03:00  INFO 9248 --- [main] org.example.Main                         : No active profile set, falling back to 1 default profile: "default"
+2023-09-13T20:14:19.170+03:00  INFO 9248 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-13T20:14:19.351+03:00  INFO 9248 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 172 ms. Found 18 JPA repository interfaces.
+2023-09-13T20:14:20.139+03:00  INFO 9248 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2023-09-13T20:14:20.148+03:00  INFO 9248 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-09-13T20:14:20.148+03:00  INFO 9248 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.7]
+2023-09-13T20:14:20.265+03:00  INFO 9248 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-09-13T20:14:20.355+03:00  INFO 9248 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2386 ms
+2023-09-13T20:14:20.685+03:00  INFO 9248 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-13T20:14:20.739+03:00  INFO 9248 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2023-09-13T20:14:21.026+03:00  INFO 9248 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-09-13T20:14:21.194+03:00  INFO 9248 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@25589735
+2023-09-13T20:14:21.198+03:00  INFO 9248 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-09-13T20:14:21.236+03:00  WARN 9248 --- [main] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.0 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 5.7.0. Check the community dialects project for available legacy versions.
+2023-09-13T20:14:21.241+03:00  INFO 9248 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2023-09-13T20:14:22.706+03:00  INFO 9248 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-13T20:14:22.713+03:00  INFO 9248 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-13T20:14:23.745+03:00  WARN 9248 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-09-13T20:14:24.399+03:00  INFO 9248 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2023-09-13T20:14:24.486+03:00  INFO 9248 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2023-09-13T20:14:24.503+03:00  INFO 9248 --- [main] org.example.Main                         : Started Main in 7.101 seconds (process running for 7.622)
+2023-09-13T20:14:37.298+03:00  INFO 9248 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-09-13T20:14:37.300+03:00  INFO 9248 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-09-13T20:14:37.300+03:00  INFO 9248 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2023-09-13T20:14:37.371+03:00  WARN 9248 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T20:14:37.449+03:00  WARN 9248 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@734e5808
+2023-09-13T20:14:39.466+03:00  WARN 9248 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T20:14:39.478+03:00  WARN 9248 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@763897cf
+2023-09-13T20:14:39.508+03:00  WARN 9248 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T20:14:39.521+03:00  WARN 9248 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@471c7b08
+2023-09-13T20:14:39.534+03:00  WARN 9248 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/group/all
+2023-09-13T20:14:39.546+03:00  WARN 9248 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@1a5b4edc
+2023-09-13T20:14:39.558+03:00  WARN 9248 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/region/all
+2023-09-13T20:14:39.570+03:00  WARN 9248 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@10e08448
+2023-09-13T20:14:39.582+03:00  WARN 9248 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station/2
+2023-09-13T20:14:39.591+03:00  WARN 9248 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station/ headers org.apache.tomcat.util.http.ValuesEnumerator@adf7255
+2023-09-13T20:14:39.596+03:00  WARN 9248 --- [http-nio-8081-exec-6] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.controllers.GasStationController
+2023-09-13T20:14:45.848+03:00  WARN 9248 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T20:14:45.857+03:00  WARN 9248 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@54b05735
+2023-09-13T20:14:45.933+03:00  WARN 9248 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T20:14:45.944+03:00  WARN 9248 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@17cbdb6c
+2023-09-13T20:20:21.179+03:00  WARN 9248 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T20:20:21.190+03:00  WARN 9248 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@65358043
+2023-09-13T20:20:23.136+03:00  WARN 9248 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T20:20:23.146+03:00  WARN 9248 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@2648fc68
+2023-09-13T20:20:23.167+03:00  WARN 9248 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T20:20:23.176+03:00  WARN 9248 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@5c9db85d
+2023-09-13T20:20:23.200+03:00  WARN 9248 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/group/all
+2023-09-13T20:20:23.212+03:00  WARN 9248 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@98e3508
+2023-09-13T20:20:23.227+03:00  WARN 9248 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/region/all
+2023-09-13T20:20:23.238+03:00  WARN 9248 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@43ed3e5f
+2023-09-13T20:20:23.250+03:00  WARN 9248 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T20:20:23.260+03:00  WARN 9248 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@1edd122f
+2023-09-13T20:21:07.866+03:00  WARN 9248 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T20:21:07.877+03:00  WARN 9248 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@5ee158cc
+2023-09-13T20:21:09.528+03:00  WARN 9248 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T20:21:09.537+03:00  WARN 9248 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@591e9d23
+2023-09-13T20:21:09.557+03:00  WARN 9248 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T20:21:09.566+03:00  WARN 9248 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@7b07e801
+2023-09-13T20:21:09.579+03:00  WARN 9248 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/group/all
+2023-09-13T20:21:09.588+03:00  WARN 9248 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@6358f9fc
+2023-09-13T20:21:09.599+03:00  WARN 9248 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/region/all
+2023-09-13T20:21:09.608+03:00  WARN 9248 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@1c294110
+2023-09-13T20:21:22.894+03:00  WARN 9248 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T20:21:22.901+03:00  WARN 9248 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@3474566c
+2023-09-13T20:21:36.722+03:00  WARN 9248 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T20:21:36.733+03:00  WARN 9248 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@74acd465
+2023-09-13T20:21:41.676+03:00  WARN 9248 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T20:21:41.686+03:00  WARN 9248 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@93596a4
+2023-09-13T20:21:48.473+03:00  WARN 9248 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T20:21:48.481+03:00  WARN 9248 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@5ad99cbe
+2023-09-13T20:21:48.513+03:00  WARN 9248 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T20:21:48.520+03:00  WARN 9248 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@79456845
+2023-09-13T21:19:41.365+03:00  WARN 9248 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T21:19:41.374+03:00  WARN 9248 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@712191b6
+2023-09-13T21:19:43.833+03:00  WARN 9248 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T21:19:43.842+03:00  WARN 9248 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@25ffbbb3
+2023-09-13T21:19:43.860+03:00  WARN 9248 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T21:19:43.867+03:00  WARN 9248 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@170e0170
+2023-09-13T21:19:43.879+03:00  WARN 9248 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/group/all
+2023-09-13T21:19:43.887+03:00  WARN 9248 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@2989b3b6
+2023-09-13T21:19:43.897+03:00  WARN 9248 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/region/all
+2023-09-13T21:19:43.905+03:00  WARN 9248 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@2fa4af1b
+2023-09-13T21:19:43.924+03:00  WARN 9248 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T21:19:43.932+03:00  WARN 9248 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@afd86f4
+2023-09-13T21:19:53.038+03:00  WARN 9248 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T21:19:53.046+03:00  WARN 9248 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@1c351982
+2023-09-13T21:19:53.062+03:00  WARN 9248 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T21:19:53.070+03:00  WARN 9248 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@6b19e9ac
+2023-09-13T21:19:54.885+03:00  WARN 9248 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/vehicle
+2023-09-13T21:19:54.892+03:00  WARN 9248 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/vehicle headers org.apache.tomcat.util.http.ValuesEnumerator@5a2f85a9
+2023-09-13T21:19:55.546+03:00  WARN 9248 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T21:19:55.554+03:00  WARN 9248 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@568fff52
+2023-09-13T21:19:57.972+03:00  WARN 9248 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T21:19:57.980+03:00  WARN 9248 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@12784c78
+2023-09-13T21:19:58.924+03:00  WARN 9248 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T21:19:58.932+03:00  WARN 9248 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@5d8fe764
+2023-09-13T21:19:58.942+03:00  WARN 9248 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T21:19:58.949+03:00  WARN 9248 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@7bcfdeb3
+2023-09-13T21:19:58.959+03:00  WARN 9248 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/group/all
+2023-09-13T21:19:58.966+03:00  WARN 9248 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@42d26d29
+2023-09-13T21:19:58.976+03:00  WARN 9248 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/region/all
+2023-09-13T21:19:58.984+03:00  WARN 9248 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@24c29dd2
+2023-09-13T21:19:58.999+03:00  WARN 9248 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T21:19:59.008+03:00  WARN 9248 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@7ddb54b3
+2023-09-13T21:20:03.933+03:00  WARN 9248 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T21:20:03.943+03:00  WARN 9248 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@34a539dc
+2023-09-13T21:20:03.955+03:00  WARN 9248 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T21:20:03.963+03:00  WARN 9248 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@2d3354ac
+2023-09-13T21:20:05.992+03:00  WARN 9248 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T21:20:06.000+03:00  WARN 9248 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@1a60eb2c
+2023-09-13T21:20:06.767+03:00  WARN 9248 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/vehicle
+2023-09-13T21:20:06.773+03:00  WARN 9248 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/vehicle headers org.apache.tomcat.util.http.ValuesEnumerator@6f89146f
+2023-09-13T21:20:07.410+03:00  WARN 9248 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T21:20:07.418+03:00  WARN 9248 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@65868015
+2023-09-13T21:22:25.539+03:00  WARN 9248 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T21:22:25.547+03:00  WARN 9248 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@4a6648cb
+2023-09-13T21:22:27.596+03:00  WARN 9248 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T21:22:27.603+03:00  WARN 9248 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@5fc50b7b
+2023-09-13T21:22:27.619+03:00  WARN 9248 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T21:22:27.625+03:00  WARN 9248 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@46da675d
+2023-09-13T21:22:27.637+03:00  WARN 9248 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/group/all
+2023-09-13T21:22:27.643+03:00  WARN 9248 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@27f21609
+2023-09-13T21:22:27.654+03:00  WARN 9248 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/region/all
+2023-09-13T21:22:27.661+03:00  WARN 9248 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@31ca4c2b
+2023-09-13T21:22:27.678+03:00  WARN 9248 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T21:22:27.685+03:00  WARN 9248 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@71409763
+2023-09-13T21:22:32.630+03:00  WARN 9248 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T21:22:32.637+03:00  WARN 9248 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@46730337
+2023-09-13T21:22:32.669+03:00  WARN 9248 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T21:22:32.677+03:00  WARN 9248 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@217dee36
+2023-09-13T21:22:34.144+03:00  WARN 9248 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/vehicle
+2023-09-13T21:22:34.151+03:00  WARN 9248 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/vehicle headers org.apache.tomcat.util.http.ValuesEnumerator@71ff2676
+2023-09-13T21:22:34.982+03:00  WARN 9248 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T21:22:34.989+03:00  WARN 9248 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@647785d6
+2023-09-13T21:30:41.992+03:00  WARN 9248 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T21:30:42.000+03:00  WARN 9248 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@53d7d1e5
+2023-09-13T21:30:43.861+03:00  WARN 9248 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T21:30:43.869+03:00  WARN 9248 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@5abb40c2
+2023-09-13T21:30:43.886+03:00  WARN 9248 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T21:30:43.894+03:00  WARN 9248 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@1764d6fd
+2023-09-13T21:30:43.904+03:00  WARN 9248 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/group/all
+2023-09-13T21:30:43.912+03:00  WARN 9248 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@7d5e6171
+2023-09-13T21:30:43.923+03:00  WARN 9248 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/region/all
+2023-09-13T21:30:43.930+03:00  WARN 9248 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@21f751d8
+2023-09-13T21:31:10.065+03:00  WARN 9248 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T21:31:10.073+03:00  WARN 9248 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@118ec4f0
+2023-09-13T21:31:10.131+03:00  WARN 9248 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T21:31:10.141+03:00  WARN 9248 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@361e9387
+2023-09-13T21:31:12.173+03:00  WARN 9248 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T21:31:12.181+03:00  WARN 9248 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@7c1e471a
+2023-09-13T21:31:12.192+03:00  WARN 9248 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T21:31:12.199+03:00  WARN 9248 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@1e1f70c5
+2023-09-13T21:31:12.211+03:00  WARN 9248 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/group/all
+2023-09-13T21:31:12.218+03:00  WARN 9248 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@5b0786dd
+2023-09-13T21:31:12.227+03:00  WARN 9248 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/region/all
+2023-09-13T21:31:12.234+03:00  WARN 9248 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@50b3a90e
+2023-09-13T21:31:12.242+03:00  WARN 9248 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T21:31:12.248+03:00  WARN 9248 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@7a474b8b
+2023-09-13T21:31:16.779+03:00  WARN 9248 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T21:31:16.787+03:00  WARN 9248 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@1537aaa
+2023-09-13T21:31:16.819+03:00  WARN 9248 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T21:31:16.828+03:00  WARN 9248 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@3a76e96
+2023-09-13T21:31:18.301+03:00  WARN 9248 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/vehicle
+2023-09-13T21:31:18.308+03:00  WARN 9248 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/vehicle headers org.apache.tomcat.util.http.ValuesEnumerator@377a707b
+2023-09-13T21:31:18.915+03:00  WARN 9248 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T21:31:18.924+03:00  WARN 9248 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@565b78c5
+2023-09-13T21:31:24.389+03:00  INFO 9248 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-09-13T21:31:24.392+03:00  INFO 9248 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-09-13T21:31:24.395+03:00  INFO 9248 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
