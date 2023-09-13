@@ -1,8 +1,10 @@
 package com.example.model.gasStation;
 
 import com.example.model.Service;
+import com.example.model.gasStation.response.GasStationResponseEntity;
 import com.google.gson.Gson;
 import org.example.contract.request.create.CreateGasStationRequest;
+import org.example.contract.request.update.UpdateGasStationRequest;
 import org.example.model.GasStation;
 
 import java.net.http.HttpResponse;
@@ -10,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
-public class GasStationService implements Service<GasStation, CreateGasStationRequest> {
+public class GasStationService implements Service<GasStation, CreateGasStationRequest, UpdateGasStationRequest> {
     private static final GasStationService INSTANCE = new GasStationService();
 
     public static GasStationService getInstance() {
@@ -40,6 +42,16 @@ public class GasStationService implements Service<GasStation, CreateGasStationRe
     @Override
     public String getEndPoint() {
         return "api/v1/gas-station";
+    }
+
+    @Override
+    public GasStation getItem(Long id) {
+        return gson.fromJson(getResponse(id).body(), GasStationResponseEntity.class)._embedded.gasStationList.get(0);
+    }
+
+    @Override
+    public GasStation editItem(UpdateGasStationRequest updateRequest) {
+        return gson.fromJson(getResponseBody(updateRequest), GasStation.class);
     }
 
     private static String getPayload(CreateGasStationRequest request) {

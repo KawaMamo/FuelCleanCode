@@ -6,6 +6,8 @@ import com.example.desktop.group.Groups;
 import com.example.desktop.office.Offices;
 import com.example.desktop.person.Persons;
 import com.example.desktop.priceCategory.PriceCategories;
+import com.example.desktop.refinery.Refineries;
+import com.example.desktop.region.Regions;
 import com.example.desktop.trafficCenter.TrafficCenters;
 import com.example.desktop.transLine.TransLines;
 import com.example.desktop.vehicles.Vehicles;
@@ -161,8 +163,30 @@ public class AdminArea {
     }
 
     @FXML
-    void regions() {}
+    void regions() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("region/regions.fxml"));
+        try {
+            final Node node = loader.load();
+            final Regions controller = loader.getController();
+            workArea.getChildren().clear();
+            workArea.getChildren().add(node);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @FXML
-    void refineries(){}
+    void refineries(){
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("refinery/refineries.fxml"));
+        try {
+            final Node node = loader.load();
+            final Refineries controller = loader.getController();
+            workArea.getChildren().clear();
+            workArea.getChildren().add(node);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

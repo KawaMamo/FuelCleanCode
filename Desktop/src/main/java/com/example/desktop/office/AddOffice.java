@@ -14,6 +14,7 @@ import java.util.Objects;
 
 public class AddOffice {
 
+    public static Boolean isEditingForm = false;
     @FXML
     private TextField nameTF;
 

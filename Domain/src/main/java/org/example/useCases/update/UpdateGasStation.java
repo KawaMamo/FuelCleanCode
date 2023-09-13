@@ -8,6 +8,7 @@ import org.example.model.GasStation;
 import org.example.validators.update.UpdateGasStationValidator;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -29,7 +30,7 @@ public class UpdateGasStation {
         validator.validate(request);
         final GasStation gasStation = mapper.requestToDomain(request);
         gasStation.setCreatedAt(original.getCreatedAt());
-        gasStation.setUpdatedAt(LocalDateTime.now());
+        gasStation.setUpdatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         final GasStation save = gasStationRepo.save(gasStation);
         return mapper.domainToResponse(save);
     }

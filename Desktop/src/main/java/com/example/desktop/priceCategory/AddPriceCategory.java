@@ -16,6 +16,7 @@ import java.util.Objects;
 public class AddPriceCategory {
 
     public static TableController controller;
+    public static Boolean isEditingForm = false;
 
     @FXML
     private TextField nameTF;

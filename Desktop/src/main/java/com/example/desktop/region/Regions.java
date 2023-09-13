@@ -7,8 +7,10 @@ import com.example.model.region.RegionService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.model.Region;
 
 public class Regions implements TableController {
@@ -30,12 +32,27 @@ public class Regions implements TableController {
     }
 
     private void setTable() {
+        TableColumn<Region, String> idColumn = new TableColumn<>("التسلسل");
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
 
+        TableColumn<Region, String> nameColumn = new TableColumn<>("الاسم");
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+
+        TableColumn<Region, String> createdAtCol = new TableColumn<>("تاريخ الإنشاء");
+        createdAtCol.setCellValueFactory(
+                new PropertyValueFactory<>("createdAt"));
+
+        TableColumn<Region, String> updatedAtCol = new TableColumn<>("تاريخ التعديل");
+        updatedAtCol.setCellValueFactory(
+                new PropertyValueFactory<>("updatedAt"));
+        tableTbl.getColumns().addAll(idColumn, nameColumn, createdAtCol, updatedAtCol);
+        tableTbl.setItems(regions);
     }
 
     @FXML
     void add() {
-
+        AddRegion.controller = this;
+        Modal.start(this.getClass(), "addRegion.fxml");
     }
 
     @FXML

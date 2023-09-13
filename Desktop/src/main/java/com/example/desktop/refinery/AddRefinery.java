@@ -1,44 +1,43 @@
-package com.example.desktop.group;
+package com.example.desktop.refinery;
 
 import com.example.model.TableController;
-import com.example.model.group.GroupService;
 import com.example.model.modal.Modal;
+import com.example.model.refinery.RefineryService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.controlsfx.control.Notifications;
-import org.example.contract.request.create.CreateGroupRequest;
-import org.example.model.Group;
+import org.example.contract.request.create.CreateRefineryRequest;
+import org.example.model.Refinery;
 
 import java.util.Objects;
 
-public class AddGroup {
+public class AddRefinery {
 
     public static TableController controller;
     public static Boolean isEditingForm = false;
-
     @FXML
     private TextField nameTF;
 
     @FXML
     private Button submitBtn;
 
-    private final GroupService groupService = GroupService.getInstance();
+    private final RefineryService refineryService = RefineryService.getInstance();
 
     @FXML
     void submit() {
-        final Group group = groupService.addItem(new CreateGroupRequest(nameTF.getText()));
-        extracted(group);
+        final Refinery refinery = refineryService.addItem(new CreateRefineryRequest(nameTF.getText()));
+        notify(refinery);
     }
 
-    private static void extracted(Group group) {
+    private static void notify(Refinery refinery) {
         String message;
-        if(Objects.nonNull(group.getId())){
-            message = "group added";
+        if(Objects.nonNull(refinery.getId())){
+            message = "refinery added";
         }else {
             message = "something went wrong";
         }
-        controller.addData(group);
+        controller.addData(refinery);
         Notifications.create().title("Info").text(message).showInformation();
         Modal.close();
     }

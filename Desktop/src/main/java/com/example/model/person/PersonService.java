@@ -6,6 +6,7 @@ import com.example.model.person.response.PersonResponse;
 import com.example.model.typeAdapter.AppGson;
 import com.google.gson.Gson;
 import org.example.contract.request.create.CreatePersonRequest;
+import org.example.contract.request.update.UpdatePersonRequest;
 import org.example.mappers.PersonDomainMapper;
 import org.example.model.Person;
 
@@ -15,7 +16,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Stream;
 
-public class PersonService implements Service<Person, CreatePersonRequest> {
+public class PersonService implements Service<Person, CreatePersonRequest, UpdatePersonRequest> {
 
     private final static PersonService instance = new PersonService();
 
@@ -45,5 +46,15 @@ public class PersonService implements Service<Person, CreatePersonRequest> {
 
     public String getEndPoint() {
         return "api/v1/person";
+    }
+
+    @Override
+    public Person getItem(Long id) {
+        return gson.fromJson(getResponse(id).body(), Person.class);
+    }
+
+    @Override
+    public Person editItem(UpdatePersonRequest updateRequest) {
+        return null;
     }
 }

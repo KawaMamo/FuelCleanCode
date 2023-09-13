@@ -4,6 +4,7 @@ import com.example.model.Service;
 import com.google.gson.Gson;
 import org.example.contract.request.create.CreateGroupRequest;
 import org.example.contract.request.create.CreatePriceCategoryRequest;
+import org.example.contract.request.update.UpdatePriceCategoryRequest;
 import org.example.model.PriceCategory;
 
 import java.net.http.HttpResponse;
@@ -11,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
-public class PriceCategoryService implements Service<PriceCategory, CreatePriceCategoryRequest> {
+public class PriceCategoryService implements Service<PriceCategory, CreatePriceCategoryRequest, UpdatePriceCategoryRequest> {
     private final static PriceCategoryService instance = new PriceCategoryService();
 
     public static PriceCategoryService getInstance(){
@@ -41,6 +42,16 @@ public class PriceCategoryService implements Service<PriceCategory, CreatePriceC
     @Override
     public String getEndPoint() {
         return "api/v1/price-category";
+    }
+
+    @Override
+    public PriceCategory getItem(Long id) {
+        return gson.fromJson(getResponse(id).body(), PriceCategory.class);
+    }
+
+    @Override
+    public PriceCategory editItem(UpdatePriceCategoryRequest updateRequest) {
+        return null;
     }
 
     private static String getPayload(CreatePriceCategoryRequest request) {

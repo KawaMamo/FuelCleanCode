@@ -2,6 +2,7 @@ package com.example.model.refinery;
 
 import com.example.model.Service;
 import org.example.contract.request.create.CreateRefineryRequest;
+import org.example.contract.request.update.UpdateRefineryRequest;
 import org.example.model.GasStation;
 import org.example.model.Refinery;
 
@@ -9,7 +10,7 @@ import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.Objects;
 
-public class RefineryService implements Service<Refinery, CreateRefineryRequest> {
+public class RefineryService implements Service<Refinery, CreateRefineryRequest, UpdateRefineryRequest> {
     private static final RefineryService INSTANCE = new RefineryService();
     public static final RefineryService getInstance() {
         return INSTANCE;
@@ -30,11 +31,23 @@ public class RefineryService implements Service<Refinery, CreateRefineryRequest>
 
     @Override
     public Refinery addItem(CreateRefineryRequest itemRequest) {
-        return null;
+        final String payload = gson.toJson(itemRequest);
+        final HttpResponse<String> stringHttpResponse = client.parallelPost(getEndPoint(), payload);
+        return gson.fromJson(stringHttpResponse.body(), Refinery.class);
     }
 
     @Override
     public String getEndPoint() {
         return "api/v1/refinery";
+    }
+
+    @Override
+    public Refinery getItem(Long id) {
+        return gson.fromJson(getResponse(id).body(), Refinery.class);
+    }
+
+    @Override
+    public Refinery editItem(UpdateRefineryRequest updateRequest) {
+        return null;
     }
 }

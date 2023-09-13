@@ -104,8 +104,6 @@ public class AddVehicle {
             selectedDriverId = vehicle.getDriver().getId();
             selectedOfficeId = vehicle.getOffice().getId();
             selectedTrafficCenterId = vehicle.getTrafficCenter().getId();
-        }else {
-
         }
 
     }

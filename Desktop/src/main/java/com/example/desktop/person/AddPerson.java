@@ -17,6 +17,7 @@ import java.util.Objects;
 public class AddPerson {
 
     public static TableController controller;
+    public static Boolean isEditingForm = false;
 
     @FXML
     private DatePicker birthDateDP;

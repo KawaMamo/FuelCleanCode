@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import org.controlsfx.control.Notifications;
 import org.controlsfx.control.textfield.TextFields;
 import org.example.contract.request.create.CreateGasStationRequest;
+import org.example.contract.request.update.UpdateGasStationRequest;
 import org.example.model.*;
 
 import java.util.List;
@@ -22,6 +23,7 @@ import java.util.Objects;
 
 public class AddGasStation {
 
+    public static Boolean isEditingForm = false;
     @FXML
     private TextField debtLimitTF;
 
@@ -118,15 +120,41 @@ public class AddGasStation {
                 }
             }
         });
+
+        if(isEditingForm){
+            final GasStation gasStation = gasStationService.getItem(GasStations.selectedGasStation.getId());
+            nameTF.setText(gasStation.getName());
+            ownerTF.setText(gasStation.getOwner().getName());
+            priceCatTF.setText(gasStation.getPriceCategory().getName());
+            debtLimitTF.setText(gasStation.getDebtLimit().toString());
+            regionTF.setText(gasStation.getRegion().getName());
+            groupTF.setText(gasStation.getGroup().getName());
+            selectedOwnerId = gasStation.getOwner().getId();
+            selectedPriceCatId = gasStation.getPriceCategory().getId();
+            selectedRegionId = gasStation.getRegion().getId();
+            selectedGroupId = gasStation.getGroup().getId();
+        }
     }
     @FXML
     void submit() {
-        final GasStation gasStation = gasStationService.addItem(new CreateGasStationRequest(nameTF.getText(),
-                selectedPriceCatId,
-                Long.parseLong(debtLimitTF.getText()),
-                selectedRegionId,
-                selectedOwnerId,
-                selectedGroupId));
+        final GasStation gasStation;
+        if(isEditingForm){
+            gasStation = gasStationService.editItem(new UpdateGasStationRequest(GasStations.selectedGasStation.getId(),
+                    nameTF.getText(),
+                    selectedPriceCatId,
+                    Long.parseLong(debtLimitTF.getText()),
+                    selectedRegionId,
+                    selectedOwnerId,
+                    selectedGroupId));
+        }else {
+            gasStation = gasStationService.addItem(new CreateGasStationRequest(nameTF.getText(),
+                    selectedPriceCatId,
+                    Long.parseLong(debtLimitTF.getText()),
+                    selectedRegionId,
+                    selectedOwnerId,
+                    selectedGroupId));
+        }
+
         notify(gasStation);
     }
 

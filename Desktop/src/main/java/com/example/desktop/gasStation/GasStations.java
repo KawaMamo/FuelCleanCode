@@ -38,7 +38,7 @@ public class GasStations implements TableController {
     @FXML
     void add() {
         AddGasStation.controller = this;
-        Modal.start(GasStations.class, "AddGasStation.fxml");
+        Modal.start(GasStations.class, "addGasStation.fxml");
     }
 
     @FXML
@@ -51,7 +51,9 @@ public class GasStations implements TableController {
 
     @FXML
     void edit() {
-
+        AddGasStation.controller = this;
+        AddGasStation.isEditingForm = true;
+        Modal.start(GasStations.class, "addGasStation.fxml");
     }
 
     @FXML

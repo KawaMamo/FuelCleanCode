@@ -3,6 +3,7 @@ package com.example.model.group;
 import com.example.model.Service;
 import com.google.gson.Gson;
 import org.example.contract.request.create.CreateGroupRequest;
+import org.example.contract.request.update.UpdateGroupRequest;
 import org.example.model.Group;
 
 import java.net.http.HttpResponse;
@@ -10,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
-public class GroupService implements Service<Group, CreateGroupRequest> {
+public class GroupService implements Service<Group, CreateGroupRequest, UpdateGroupRequest> {
     private static final GroupService INSTANCE = new GroupService();
 
     public static GroupService getInstance(){
@@ -40,6 +41,16 @@ public class GroupService implements Service<Group, CreateGroupRequest> {
     @Override
     public String getEndPoint() {
         return "api/v1/group";
+    }
+
+    @Override
+    public Group getItem(Long id) {
+        return gson.fromJson(getResponse(id).body(), Group[].class)[0];
+    }
+
+    @Override
+    public Group editItem(UpdateGroupRequest updateRequest) {
+        return null;
     }
 
     private static String getPayload(CreateGroupRequest request) {

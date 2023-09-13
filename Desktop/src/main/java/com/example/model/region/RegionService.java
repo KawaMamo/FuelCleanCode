@@ -2,13 +2,14 @@ package com.example.model.region;
 
 import com.example.model.Service;
 import org.example.contract.request.create.CreateRegionRequest;
+import org.example.contract.request.update.UpdateRegionRequest;
 import org.example.model.Region;
 
 import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.Objects;
 
-public class RegionService implements Service<Region, CreateRegionRequest> {
+public class RegionService implements Service<Region, CreateRegionRequest, UpdateRegionRequest> {
     private static final RegionService INSTANCE = new RegionService();
     public static RegionService getInstance() {
         return INSTANCE;
@@ -29,11 +30,23 @@ public class RegionService implements Service<Region, CreateRegionRequest> {
 
     @Override
     public Region addItem(CreateRegionRequest itemRequest) {
-        return null;
+        final String payload = gson.toJson(itemRequest);
+        final HttpResponse<String> stringHttpResponse = client.parallelPost(getEndPoint(), payload);
+        return gson.fromJson(stringHttpResponse.body(), Region.class);
     }
 
     @Override
     public String getEndPoint() {
         return "api/v1/region";
+    }
+
+    @Override
+    public Region getItem(Long id) {
+        return gson.fromJson(getResponse(id).body(), Region.class);
+    }
+
+    @Override
+    public Region editItem(UpdateRegionRequest updateRequest) {
+        return null;
     }
 }

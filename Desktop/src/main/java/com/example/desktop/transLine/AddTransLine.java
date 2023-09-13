@@ -23,6 +23,7 @@ import java.util.Objects;
 
 public class AddTransLine {
     public static TableController controller;
+    public static Boolean isEditingForm = false;
 
     @FXML
     private TextField amountTF;

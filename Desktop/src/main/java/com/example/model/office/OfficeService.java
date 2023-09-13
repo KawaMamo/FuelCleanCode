@@ -2,6 +2,7 @@ package com.example.model.office;
 
 import com.example.model.Service;
 import org.example.contract.request.create.CreateOfficeRequest;
+import org.example.contract.request.update.UpdateOfficeRequest;
 import org.example.model.Office;
 
 import java.net.http.HttpResponse;
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 
-public class OfficeService implements Service<Office, CreateOfficeRequest> {
+public class OfficeService implements Service<Office, CreateOfficeRequest, UpdateOfficeRequest> {
 
     private final static OfficeService instance = new OfficeService();
 
@@ -40,5 +41,15 @@ public class OfficeService implements Service<Office, CreateOfficeRequest> {
     @Override
     public String getEndPoint() {
         return "api/v1/office";
+    }
+
+    @Override
+    public Office getItem(Long id) {
+        return gson.fromJson(getResponse(id).body(), Office.class);
+    }
+
+    @Override
+    public Office editItem(UpdateOfficeRequest updateRequest) {
+        return null;
     }
 }

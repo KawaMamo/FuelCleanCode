@@ -2,13 +2,14 @@ package com.example.model.trafficCenter;
 
 import com.example.model.Service;
 import org.example.contract.request.create.CreateTrafficCenterRequest;
+import org.example.contract.request.update.UpdateTrafficCenterRequest;
 import org.example.model.TrafficCenter;
 
 import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.Objects;
 
-public class TrafficCenterService implements Service<TrafficCenter, CreateTrafficCenterRequest> {
+public class TrafficCenterService implements Service<TrafficCenter, CreateTrafficCenterRequest, UpdateTrafficCenterRequest> {
 
     private static final TrafficCenterService INSTANCE = new TrafficCenterService();
 
@@ -36,6 +37,16 @@ public class TrafficCenterService implements Service<TrafficCenter, CreateTraffi
     @Override
     public String getEndPoint() {
         return "api/v1/traffic-center";
+    }
+
+    @Override
+    public TrafficCenter getItem(Long id) {
+        return gson.fromJson(getResponse(id).body(), TrafficCenter.class);
+    }
+
+    @Override
+    public TrafficCenter editItem(UpdateTrafficCenterRequest updateRequest) {
+        return null;
     }
 
     public static TrafficCenterService getInstance(){

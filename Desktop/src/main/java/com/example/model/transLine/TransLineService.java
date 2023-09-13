@@ -3,6 +3,7 @@ package com.example.model.transLine;
 import com.example.model.Service;
 import com.google.gson.Gson;
 import org.example.contract.request.create.CreateTransLineRequest;
+import org.example.contract.request.update.UpdateTransLogRequest;
 import org.example.model.TransLine;
 
 import java.net.http.HttpResponse;
@@ -10,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
-public class TransLineService implements Service<TransLine, CreateTransLineRequest> {
+public class TransLineService implements Service<TransLine, CreateTransLineRequest, UpdateTransLogRequest> {
     private static final TransLineService INSTANCE = new TransLineService();
 
     public static TransLineService getInstance() {
@@ -41,6 +42,16 @@ public class TransLineService implements Service<TransLine, CreateTransLineReque
     @Override
     public String getEndPoint() {
         return "app/v1/trans-line";
+    }
+
+    @Override
+    public TransLine getItem(Long id) {
+        return gson.fromJson(getResponse(id).body(), TransLine.class);
+    }
+
+    @Override
+    public TransLine editItem(UpdateTransLogRequest updateRequest) {
+        return null;
     }
 
     private static String getPayload(CreateTransLineRequest request) {

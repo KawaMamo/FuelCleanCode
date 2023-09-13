@@ -23,6 +23,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("api/v1/gas-station")
@@ -55,7 +56,7 @@ public class GasStationController {
     @GetMapping
     public PagedModel<GasStationResponse> listGasStation(SearchFilter searchFilter, Pageable pageable){
         final SearchFilter gasStationFilter = new SearchFilter(new String[]{"placeType"},
-                new String[]{"Refinery"},
+                new String[]{"GasStation"},
                 new String[]{":"},
                 null);
         final List<SearchCriteria> criteriaList = CriteriaArrayToList.getCriteriaList(searchFilter);
@@ -83,5 +84,13 @@ public class GasStationController {
     @DeleteMapping("/{id}")
     public GasStationResponse delete(@PathVariable Long id){
         return deleteGasStation.execute(id);
+    }
+
+    @GetMapping("/{id}")
+    public GasStation getByID(@PathVariable Long id){
+        final PlaceEntity place = gasStationRepository.findById(id).orElse(null);
+        if(place instanceof GasStationEntity)
+            return gasStationMapper.entityToDomain((GasStationEntity) place);
+        else throw new NoSuchElementException("No such Gas Station");
     }
 }

@@ -28,3 +28,662 @@
 2023-09-13T12:34:50.719+03:00  INFO 22212 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2023-09-13T12:34:50.721+03:00  INFO 22212 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2023-09-13T12:34:50.728+03:00  INFO 22212 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-09-13T12:34:54.001+03:00  INFO 20024 --- [main] org.example.Main                         : Starting Main using Java 20 with PID 20024 (D:\fuelRefactored\FuelCleanCode\Service\target\classes started by GIGABYTE in D:\fuelRefactored\FuelCleanCode)
+2023-09-13T12:34:54.003+03:00  INFO 20024 --- [main] org.example.Main                         : No active profile set, falling back to 1 default profile: "default"
+2023-09-13T12:34:55.065+03:00  INFO 20024 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-13T12:34:55.223+03:00  INFO 20024 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 148 ms. Found 18 JPA repository interfaces.
+2023-09-13T12:34:55.928+03:00  INFO 20024 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2023-09-13T12:34:55.938+03:00  INFO 20024 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-09-13T12:34:55.938+03:00  INFO 20024 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.7]
+2023-09-13T12:34:56.052+03:00  INFO 20024 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-09-13T12:34:56.052+03:00  INFO 20024 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2009 ms
+2023-09-13T12:34:56.341+03:00  INFO 20024 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-13T12:34:56.390+03:00  INFO 20024 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2023-09-13T12:34:56.638+03:00  INFO 20024 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-09-13T12:34:56.786+03:00  INFO 20024 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2b8cf049
+2023-09-13T12:34:56.788+03:00  INFO 20024 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-09-13T12:34:56.821+03:00  WARN 20024 --- [main] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.0 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 5.7.0. Check the community dialects project for available legacy versions.
+2023-09-13T12:34:56.825+03:00  INFO 20024 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2023-09-13T12:34:58.110+03:00  INFO 20024 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-13T12:34:58.118+03:00  INFO 20024 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-13T12:34:59.042+03:00  WARN 20024 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-09-13T12:34:59.648+03:00  INFO 20024 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2023-09-13T12:34:59.726+03:00  INFO 20024 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2023-09-13T12:34:59.739+03:00  INFO 20024 --- [main] org.example.Main                         : Started Main in 6.158 seconds (process running for 6.597)
+2023-09-13T12:35:28.444+03:00  INFO 20024 --- [http-nio-8081-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-09-13T12:35:28.444+03:00  INFO 20024 --- [http-nio-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-09-13T12:35:28.446+03:00  INFO 20024 --- [http-nio-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2023-09-13T12:35:28.514+03:00  WARN 20024 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/office
+2023-09-13T12:35:28.572+03:00  WARN 20024 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/office headers org.apache.tomcat.util.http.ValuesEnumerator@66a05aaa
+2023-09-13T12:39:43.917+03:00  WARN 20024 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/office/all
+2023-09-13T12:39:43.930+03:00  WARN 20024 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/office/all headers org.apache.tomcat.util.http.ValuesEnumerator@3c3dda39
+2023-09-13T12:40:12.902+03:00  WARN 20024 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/office/all
+2023-09-13T12:40:12.915+03:00  WARN 20024 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/office/all headers org.apache.tomcat.util.http.ValuesEnumerator@5934a835
+2023-09-13T12:40:22.879+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/office/all
+2023-09-13T12:40:22.893+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/office/all headers org.apache.tomcat.util.http.ValuesEnumerator@4255aa7a
+2023-09-13T12:42:11.352+03:00  WARN 20024 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/office/all
+2023-09-13T12:42:11.364+03:00  WARN 20024 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/office/all headers org.apache.tomcat.util.http.ValuesEnumerator@47fef8a0
+2023-09-13T12:42:18.343+03:00  WARN 20024 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/office
+2023-09-13T12:42:18.354+03:00  WARN 20024 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/office headers org.apache.tomcat.util.http.ValuesEnumerator@6f244ada
+2023-09-13T12:42:18.366+03:00  WARN 20024 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/office/all
+2023-09-13T12:42:18.376+03:00  WARN 20024 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/office/all headers org.apache.tomcat.util.http.ValuesEnumerator@686100f1
+2023-09-13T12:42:25.689+03:00  WARN 20024 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/office/3
+2023-09-13T12:42:25.700+03:00  WARN 20024 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/office/ headers org.apache.tomcat.util.http.ValuesEnumerator@4e940e96
+2023-09-13T12:42:25.704+03:00  WARN 20024 --- [http-nio-8081-exec-2] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.controllers.OfficeController
+2023-09-13T12:42:25.753+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/office/all
+2023-09-13T12:42:25.763+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/office/all headers org.apache.tomcat.util.http.ValuesEnumerator@72d2e18
+2023-09-13T12:42:28.184+03:00  WARN 20024 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/office/all
+2023-09-13T12:42:28.194+03:00  WARN 20024 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/office/all headers org.apache.tomcat.util.http.ValuesEnumerator@7b4612dc
+2023-09-13T12:42:31.305+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T12:42:31.315+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@1373144
+2023-09-13T12:42:32.869+03:00  WARN 20024 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/vehicle
+2023-09-13T12:42:32.881+03:00  WARN 20024 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/vehicle headers org.apache.tomcat.util.http.ValuesEnumerator@7d1336f8
+2023-09-13T12:42:34.148+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T12:42:34.159+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@382f3d5
+2023-09-13T12:42:34.190+03:00  WARN 20024 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/traffic-center/all
+2023-09-13T12:42:34.199+03:00  WARN 20024 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/traffic-center/all headers org.apache.tomcat.util.http.ValuesEnumerator@568639d2
+2023-09-13T12:42:34.211+03:00  WARN 20024 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/office/all
+2023-09-13T12:42:34.221+03:00  WARN 20024 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/office/all headers org.apache.tomcat.util.http.ValuesEnumerator@1664251f
+2023-09-13T12:42:55.139+03:00  WARN 20024 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/vehicle
+2023-09-13T12:42:55.150+03:00  WARN 20024 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/vehicle headers org.apache.tomcat.util.http.ValuesEnumerator@2f1a3dd0
+2023-09-13T12:42:56.786+03:00  WARN 20024 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T12:42:56.797+03:00  WARN 20024 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@18985ac9
+2023-09-13T12:42:57.867+03:00  WARN 20024 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /app/v1/trans-line/all
+2023-09-13T12:42:57.877+03:00  WARN 20024 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /app/v1/trans-line/all headers org.apache.tomcat.util.http.ValuesEnumerator@7e4c2244
+2023-09-13T12:42:58.636+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/group/all
+2023-09-13T12:42:58.644+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@e4dbc30
+2023-09-13T12:42:59.544+03:00  WARN 20024 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T12:42:59.552+03:00  WARN 20024 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@3e020ee2
+2023-09-13T12:43:00.693+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T12:43:00.703+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@1c177767
+2023-09-13T12:43:00.924+03:00  WARN 20024 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T12:43:00.933+03:00  WARN 20024 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@6edc41f6
+2023-09-13T12:43:01.128+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T12:43:01.136+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@7017684f
+2023-09-13T12:43:04.799+03:00  WARN 20024 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T12:43:04.808+03:00  WARN 20024 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@303fd5bd
+2023-09-13T12:43:05.706+03:00  WARN 20024 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/office/all
+2023-09-13T12:43:05.716+03:00  WARN 20024 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/office/all headers org.apache.tomcat.util.http.ValuesEnumerator@50388bd0
+2023-09-13T13:35:39.167+03:00  WARN 20024 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/traffic-center/all
+2023-09-13T13:35:39.184+03:00  WARN 20024 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/traffic-center/all headers org.apache.tomcat.util.http.ValuesEnumerator@1a8be774
+2023-09-13T13:37:15.536+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/traffic-center/all
+2023-09-13T13:37:15.548+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/traffic-center/all headers org.apache.tomcat.util.http.ValuesEnumerator@661d47c4
+2023-09-13T13:38:08.093+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/traffic-center/all
+2023-09-13T13:38:08.104+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/traffic-center/all headers org.apache.tomcat.util.http.ValuesEnumerator@1893b8b2
+2023-09-13T13:38:56.937+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/traffic-center/all
+2023-09-13T13:38:56.948+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/traffic-center/all headers org.apache.tomcat.util.http.ValuesEnumerator@7dfa6966
+2023-09-13T13:40:31.845+03:00  WARN 20024 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/traffic-center/all
+2023-09-13T13:40:31.856+03:00  WARN 20024 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/traffic-center/all headers org.apache.tomcat.util.http.ValuesEnumerator@3cb816ac
+2023-09-13T13:40:38.425+03:00  WARN 20024 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/traffic-center
+2023-09-13T13:40:38.436+03:00  WARN 20024 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/traffic-center headers org.apache.tomcat.util.http.ValuesEnumerator@6ee2910d
+2023-09-13T13:40:38.485+03:00  WARN 20024 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/traffic-center/all
+2023-09-13T13:40:38.496+03:00  WARN 20024 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/traffic-center/all headers org.apache.tomcat.util.http.ValuesEnumerator@6d77c810
+2023-09-13T13:41:55.263+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/traffic-center/all
+2023-09-13T13:41:55.273+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/traffic-center/all headers org.apache.tomcat.util.http.ValuesEnumerator@5a182d4a
+2023-09-13T13:42:40.275+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/traffic-center/all
+2023-09-13T13:42:40.285+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/traffic-center/all headers org.apache.tomcat.util.http.ValuesEnumerator@426e4198
+2023-09-13T13:43:12.009+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/traffic-center/all
+2023-09-13T13:43:12.036+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/traffic-center/all headers org.apache.tomcat.util.http.ValuesEnumerator@361defaa
+2023-09-13T13:43:17.729+03:00  WARN 20024 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/traffic-center/all
+2023-09-13T13:43:17.738+03:00  WARN 20024 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/traffic-center/all headers org.apache.tomcat.util.http.ValuesEnumerator@42beefbf
+2023-09-13T13:44:21.977+03:00  WARN 20024 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/office/all
+2023-09-13T13:44:21.985+03:00  WARN 20024 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/office/all headers org.apache.tomcat.util.http.ValuesEnumerator@760f7772
+2023-09-13T13:44:34.096+03:00  WARN 20024 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/traffic-center/all
+2023-09-13T13:44:34.107+03:00  WARN 20024 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/traffic-center/all headers org.apache.tomcat.util.http.ValuesEnumerator@6ff65355
+2023-09-13T13:46:11.789+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/traffic-center/all
+2023-09-13T13:46:11.799+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/traffic-center/all headers org.apache.tomcat.util.http.ValuesEnumerator@4f41b93f
+2023-09-13T13:50:12.978+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/traffic-center/all
+2023-09-13T13:50:12.989+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/traffic-center/all headers org.apache.tomcat.util.http.ValuesEnumerator@365d9f94
+2023-09-13T13:50:53.279+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/traffic-center/all
+2023-09-13T13:50:53.289+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/traffic-center/all headers org.apache.tomcat.util.http.ValuesEnumerator@2d7c0e0f
+2023-09-13T13:51:04.416+03:00  WARN 20024 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/traffic-center
+2023-09-13T13:51:04.425+03:00  WARN 20024 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/traffic-center headers org.apache.tomcat.util.http.ValuesEnumerator@2153980e
+2023-09-13T13:51:04.451+03:00  WARN 20024 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/traffic-center/all
+2023-09-13T13:51:04.460+03:00  WARN 20024 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/traffic-center/all headers org.apache.tomcat.util.http.ValuesEnumerator@5cd7637b
+2023-09-13T13:51:13.582+03:00  WARN 20024 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/traffic-center
+2023-09-13T13:51:13.594+03:00  WARN 20024 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/traffic-center headers org.apache.tomcat.util.http.ValuesEnumerator@401c6d1d
+2023-09-13T13:51:13.627+03:00  WARN 20024 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/traffic-center/all
+2023-09-13T13:51:13.639+03:00  WARN 20024 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/traffic-center/all headers org.apache.tomcat.util.http.ValuesEnumerator@a96d338
+2023-09-13T13:51:17.616+03:00  WARN 20024 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/traffic-center/3
+2023-09-13T13:51:17.625+03:00  WARN 20024 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/traffic-center/ headers org.apache.tomcat.util.http.ValuesEnumerator@76f60e19
+2023-09-13T13:51:17.645+03:00  WARN 20024 --- [http-nio-8081-exec-2] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.controllers.TrafficCenterController
+2023-09-13T13:51:17.685+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/traffic-center/all
+2023-09-13T13:51:17.692+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/traffic-center/all headers org.apache.tomcat.util.http.ValuesEnumerator@731ed202
+2023-09-13T13:51:21.129+03:00  WARN 20024 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/office/all
+2023-09-13T13:51:21.139+03:00  WARN 20024 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/office/all headers org.apache.tomcat.util.http.ValuesEnumerator@7a558d0f
+2023-09-13T13:52:09.383+03:00  WARN 20024 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/traffic-center/all
+2023-09-13T13:52:09.392+03:00  WARN 20024 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/traffic-center/all headers org.apache.tomcat.util.http.ValuesEnumerator@360d1cf4
+2023-09-13T13:52:11.552+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/office/all
+2023-09-13T13:52:11.560+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/office/all headers org.apache.tomcat.util.http.ValuesEnumerator@30445b2c
+2023-09-13T13:56:01.878+03:00  WARN 20024 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T13:56:01.892+03:00  WARN 20024 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@3014bc0c
+2023-09-13T14:05:41.006+03:00  WARN 20024 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T14:05:41.016+03:00  WARN 20024 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@3ccf91c5
+2023-09-13T14:05:41.614+03:00  WARN 20024 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/group/all
+2023-09-13T14:05:41.623+03:00  WARN 20024 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@3ad7715b
+2023-09-13T14:05:43.680+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T14:05:43.689+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@594510f1
+2023-09-13T14:05:50.015+03:00  WARN 20024 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/price-category
+2023-09-13T14:05:50.024+03:00  WARN 20024 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/price-category headers org.apache.tomcat.util.http.ValuesEnumerator@2afc46d7
+2023-09-13T14:05:50.052+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T14:05:50.060+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@69aaa226
+2023-09-13T14:05:52.382+03:00  WARN 20024 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/group/all
+2023-09-13T14:05:52.390+03:00  WARN 20024 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@347a9db3
+2023-09-13T14:05:57.386+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/group
+2023-09-13T14:05:57.396+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/group headers org.apache.tomcat.util.http.ValuesEnumerator@5b999a73
+2023-09-13T14:05:57.439+03:00  WARN 20024 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/group/all
+2023-09-13T14:05:57.451+03:00  WARN 20024 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@51acaefa
+2023-09-13T14:05:59.038+03:00  WARN 20024 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /app/v1/trans-line/all
+2023-09-13T14:05:59.047+03:00  WARN 20024 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /app/v1/trans-line/all headers org.apache.tomcat.util.http.ValuesEnumerator@37148d5f
+2023-09-13T14:06:02.340+03:00  WARN 20024 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T14:06:02.348+03:00  WARN 20024 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@668f69d9
+2023-09-13T14:24:41.852+03:00  WARN 20024 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/vehicle
+2023-09-13T14:24:41.861+03:00  WARN 20024 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/vehicle headers org.apache.tomcat.util.http.ValuesEnumerator@f3d9901
+2023-09-13T14:24:43.125+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T14:24:43.136+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@40b10fc6
+2023-09-13T14:24:43.172+03:00  WARN 20024 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/traffic-center/all
+2023-09-13T14:24:43.184+03:00  WARN 20024 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/traffic-center/all headers org.apache.tomcat.util.http.ValuesEnumerator@4a1734fc
+2023-09-13T14:24:43.199+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/office/all
+2023-09-13T14:24:43.210+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/office/all headers org.apache.tomcat.util.http.ValuesEnumerator@27ae1dc5
+2023-09-13T14:25:03.304+03:00  WARN 20024 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/vehicle
+2023-09-13T14:25:03.312+03:00  WARN 20024 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/vehicle headers org.apache.tomcat.util.http.ValuesEnumerator@3c3fd82c
+2023-09-13T14:25:03.360+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/vehicle
+2023-09-13T14:25:03.367+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/vehicle headers org.apache.tomcat.util.http.ValuesEnumerator@6d90a50
+2023-09-13T14:25:05.479+03:00  WARN 20024 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/traffic-center/all
+2023-09-13T14:25:05.487+03:00  WARN 20024 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/traffic-center/all headers org.apache.tomcat.util.http.ValuesEnumerator@c861fb6
+2023-09-13T14:25:10.205+03:00  WARN 20024 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/vehicle
+2023-09-13T14:25:10.214+03:00  WARN 20024 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/vehicle headers org.apache.tomcat.util.http.ValuesEnumerator@ef00261
+2023-09-13T14:25:11.307+03:00  WARN 20024 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/vehicle
+2023-09-13T14:25:11.316+03:00  WARN 20024 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/vehicle headers org.apache.tomcat.util.http.ValuesEnumerator@6c507849
+2023-09-13T14:25:17.048+03:00  WARN 20024 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T14:25:17.056+03:00  WARN 20024 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@683b8898
+2023-09-13T14:25:18.367+03:00  WARN 20024 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T14:25:18.375+03:00  WARN 20024 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@2e2f7ce
+2023-09-13T14:25:18.388+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T14:25:18.395+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@7ef54bd8
+2023-09-13T14:25:18.408+03:00  WARN 20024 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/group/all
+2023-09-13T14:25:18.416+03:00  WARN 20024 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@28831ca7
+2023-09-13T14:25:18.442+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/region/all
+2023-09-13T14:25:18.450+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@2b11dc6d
+2023-09-13T14:25:39.839+03:00  WARN 20024 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T14:25:39.847+03:00  WARN 20024 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@51f0ef08
+2023-09-13T14:25:46.848+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/price-category
+2023-09-13T14:25:46.857+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/price-category headers org.apache.tomcat.util.http.ValuesEnumerator@592570e1
+2023-09-13T14:25:46.881+03:00  WARN 20024 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T14:25:46.892+03:00  WARN 20024 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@7706dfaa
+2023-09-13T14:25:48.394+03:00  WARN 20024 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T14:25:48.402+03:00  WARN 20024 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@4300e124
+2023-09-13T14:25:49.535+03:00  WARN 20024 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T14:25:49.542+03:00  WARN 20024 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@b7f0613
+2023-09-13T14:25:49.553+03:00  WARN 20024 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T14:25:49.560+03:00  WARN 20024 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@6ff221ff
+2023-09-13T14:25:49.571+03:00  WARN 20024 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/group/all
+2023-09-13T14:25:49.580+03:00  WARN 20024 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@3b7bdf28
+2023-09-13T14:25:49.591+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/region/all
+2023-09-13T14:25:49.599+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@e18b20c
+2023-09-13T14:26:28.578+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T14:26:28.586+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@2b356643
+2023-09-13T14:26:28.597+03:00  WARN 20024 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T14:26:28.605+03:00  WARN 20024 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@6e4f4092
+2023-09-13T14:26:28.615+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/group/all
+2023-09-13T14:26:28.623+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@6d1ede00
+2023-09-13T14:26:28.633+03:00  WARN 20024 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/region/all
+2023-09-13T14:26:28.640+03:00  WARN 20024 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@229305ee
+2023-09-13T14:26:49.102+03:00  WARN 20024 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T14:26:49.110+03:00  WARN 20024 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@5e571ea3
+2023-09-13T14:26:50.389+03:00  WARN 20024 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/office/all
+2023-09-13T14:26:50.396+03:00  WARN 20024 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/office/all headers org.apache.tomcat.util.http.ValuesEnumerator@1c9cd4bf
+2023-09-13T14:26:50.871+03:00  WARN 20024 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/traffic-center/all
+2023-09-13T14:26:50.880+03:00  WARN 20024 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/traffic-center/all headers org.apache.tomcat.util.http.ValuesEnumerator@1aa8a5ef
+2023-09-13T14:26:52.338+03:00  WARN 20024 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T14:26:52.344+03:00  WARN 20024 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@4abae337
+2023-09-13T14:26:54.712+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/office/all
+2023-09-13T14:26:54.721+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/office/all headers org.apache.tomcat.util.http.ValuesEnumerator@77d98aa4
+2023-09-13T14:28:15.668+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/traffic-center/all
+2023-09-13T14:28:15.676+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/traffic-center/all headers org.apache.tomcat.util.http.ValuesEnumerator@54525af6
+2023-09-13T14:28:17.136+03:00  WARN 20024 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/office/all
+2023-09-13T14:28:17.145+03:00  WARN 20024 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/office/all headers org.apache.tomcat.util.http.ValuesEnumerator@14743378
+2023-09-13T14:28:18.546+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T14:28:18.553+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@571239c1
+2023-09-13T14:28:20.703+03:00  WARN 20024 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T14:28:20.711+03:00  WARN 20024 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@11bfe136
+2023-09-13T14:28:21.505+03:00  WARN 20024 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/group/all
+2023-09-13T14:28:21.512+03:00  WARN 20024 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@734d72f8
+2023-09-13T14:28:22.089+03:00  WARN 20024 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /app/v1/trans-line/all
+2023-09-13T14:28:22.096+03:00  WARN 20024 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /app/v1/trans-line/all headers org.apache.tomcat.util.http.ValuesEnumerator@270fbe8e
+2023-09-13T14:28:22.622+03:00  WARN 20024 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T14:28:22.629+03:00  WARN 20024 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@5d060f3b
+2023-09-13T14:28:23.101+03:00  WARN 20024 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/vehicle
+2023-09-13T14:28:23.107+03:00  WARN 20024 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/vehicle headers org.apache.tomcat.util.http.ValuesEnumerator@5391aaf5
+2023-09-13T14:28:24.283+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T14:28:24.290+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@2658d8c3
+2023-09-13T14:28:25.342+03:00  WARN 20024 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /app/v1/trans-line/all
+2023-09-13T14:28:25.348+03:00  WARN 20024 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /app/v1/trans-line/all headers org.apache.tomcat.util.http.ValuesEnumerator@421668a2
+2023-09-13T14:28:26.495+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/traffic-center/all
+2023-09-13T14:28:26.502+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/traffic-center/all headers org.apache.tomcat.util.http.ValuesEnumerator@3ef1e6f5
+2023-09-13T14:28:27.032+03:00  WARN 20024 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/office/all
+2023-09-13T14:28:27.039+03:00  WARN 20024 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/office/all headers org.apache.tomcat.util.http.ValuesEnumerator@5e6f3fdb
+2023-09-13T14:29:43.846+03:00  WARN 20024 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/office/all
+2023-09-13T14:29:43.854+03:00  WARN 20024 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/office/all headers org.apache.tomcat.util.http.ValuesEnumerator@56bda44e
+2023-09-13T14:29:45.252+03:00  WARN 20024 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T14:29:45.259+03:00  WARN 20024 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@237b47d4
+2023-09-13T14:29:46.752+03:00  WARN 20024 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/traffic-center/all
+2023-09-13T14:29:46.760+03:00  WARN 20024 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/traffic-center/all headers org.apache.tomcat.util.http.ValuesEnumerator@4e1e4989
+2023-09-13T14:31:07.466+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T14:31:07.473+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@3a33ab0c
+2023-09-13T14:31:08.379+03:00  WARN 20024 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T14:31:08.386+03:00  WARN 20024 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@723d2ed5
+2023-09-13T14:31:08.405+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T14:31:08.414+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@47dddcd6
+2023-09-13T14:31:08.425+03:00  WARN 20024 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/group/all
+2023-09-13T14:31:08.433+03:00  WARN 20024 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@45327410
+2023-09-13T14:31:08.445+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/region/all
+2023-09-13T14:31:08.453+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@319f3056
+2023-09-13T14:35:37.540+03:00  WARN 20024 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/vehicle
+2023-09-13T14:35:37.546+03:00  WARN 20024 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/vehicle headers org.apache.tomcat.util.http.ValuesEnumerator@5a299fcf
+2023-09-13T14:35:39.276+03:00  WARN 20024 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /app/v1/trans-line/all
+2023-09-13T14:35:39.282+03:00  WARN 20024 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /app/v1/trans-line/all headers org.apache.tomcat.util.http.ValuesEnumerator@634791e0
+2023-09-13T14:36:04.581+03:00  WARN 20024 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/vehicle
+2023-09-13T14:36:04.588+03:00  WARN 20024 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/vehicle headers org.apache.tomcat.util.http.ValuesEnumerator@3aac3988
+2023-09-13T14:36:06.219+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T14:36:06.229+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@5deb7c17
+2023-09-13T14:36:06.843+03:00  WARN 20024 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /app/v1/trans-line/all
+2023-09-13T14:36:06.849+03:00  WARN 20024 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /app/v1/trans-line/all headers org.apache.tomcat.util.http.ValuesEnumerator@5b5518d2
+2023-09-13T14:36:07.535+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/group/all
+2023-09-13T14:36:07.543+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@4b6ef355
+2023-09-13T15:01:31.204+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/vehicle
+2023-09-13T15:01:31.213+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/vehicle headers org.apache.tomcat.util.http.ValuesEnumerator@1093e4d3
+2023-09-13T15:01:32.059+03:00  WARN 20024 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T15:01:32.068+03:00  WARN 20024 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@596e3f9e
+2023-09-13T16:31:21.824+03:00  WARN 20024 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/refinery/all
+2023-09-13T16:31:21.840+03:00  WARN 20024 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/refinery/all headers org.apache.tomcat.util.http.ValuesEnumerator@5a3260d4
+2023-09-13T16:31:24.025+03:00  WARN 20024 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/region/all
+2023-09-13T16:31:24.034+03:00  WARN 20024 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@79809343
+2023-09-13T16:31:34.450+03:00  WARN 20024 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/refinery/all
+2023-09-13T16:31:34.457+03:00  WARN 20024 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/refinery/all headers org.apache.tomcat.util.http.ValuesEnumerator@3a3afbcc
+2023-09-13T16:35:17.431+03:00  WARN 20024 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/refinery/all
+2023-09-13T16:35:17.439+03:00  WARN 20024 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/refinery/all headers org.apache.tomcat.util.http.ValuesEnumerator@20cddfa4
+2023-09-13T16:35:23.916+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/refinery
+2023-09-13T16:35:23.925+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/refinery headers org.apache.tomcat.util.http.ValuesEnumerator@48d0af
+2023-09-13T16:35:25.678+03:00  WARN 20024 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/region/all
+2023-09-13T16:35:25.687+03:00  WARN 20024 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@38ecc508
+2023-09-13T16:35:31.900+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/region
+2023-09-13T16:35:31.907+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/region headers org.apache.tomcat.util.http.ValuesEnumerator@3ddff4ed
+2023-09-13T16:35:31.933+03:00  WARN 20024 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/region/all
+2023-09-13T16:35:31.940+03:00  WARN 20024 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@16e1f191
+2023-09-13T16:35:33.522+03:00  WARN 20024 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/vehicle
+2023-09-13T16:35:33.529+03:00  WARN 20024 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/vehicle headers org.apache.tomcat.util.http.ValuesEnumerator@6d01f6de
+2023-09-13T16:35:34.398+03:00  WARN 20024 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T16:35:34.406+03:00  WARN 20024 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@627942e1
+2023-09-13T16:35:35.233+03:00  WARN 20024 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T16:35:35.241+03:00  WARN 20024 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@6461c69b
+2023-09-13T16:35:35.261+03:00  WARN 20024 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T16:35:35.269+03:00  WARN 20024 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@2ea7966
+2023-09-13T16:35:35.279+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/group/all
+2023-09-13T16:35:35.288+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@163cef0d
+2023-09-13T16:35:35.302+03:00  WARN 20024 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/region/all
+2023-09-13T16:35:35.320+03:00  WARN 20024 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@2b6997d5
+2023-09-13T16:36:20.340+03:00  WARN 20024 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T16:36:20.349+03:00  WARN 20024 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@15ce56af
+2023-09-13T16:36:20.395+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T16:36:20.402+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@36a63a44
+2023-09-13T16:36:22.094+03:00  WARN 20024 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /app/v1/trans-line/all
+2023-09-13T16:36:22.099+03:00  WARN 20024 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /app/v1/trans-line/all headers org.apache.tomcat.util.http.ValuesEnumerator@4b07cd5a
+2023-09-13T16:36:23.284+03:00  WARN 20024 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/refinery/all
+2023-09-13T16:36:23.290+03:00  WARN 20024 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/refinery/all headers org.apache.tomcat.util.http.ValuesEnumerator@1aad7250
+2023-09-13T16:36:23.303+03:00  WARN 20024 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T16:36:23.310+03:00  WARN 20024 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@c121e51
+2023-09-13T16:36:32.148+03:00  WARN 20024 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /app/v1/trans-line
+2023-09-13T16:36:32.154+03:00  WARN 20024 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /app/v1/trans-line headers org.apache.tomcat.util.http.ValuesEnumerator@4db1c671
+2023-09-13T16:36:32.197+03:00  WARN 20024 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /app/v1/trans-line/all
+2023-09-13T16:36:32.202+03:00  WARN 20024 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /app/v1/trans-line/all headers org.apache.tomcat.util.http.ValuesEnumerator@5cdd2b72
+2023-09-13T16:36:33.811+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/group/all
+2023-09-13T16:36:33.817+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@5e790767
+2023-09-13T16:36:41.386+03:00  WARN 20024 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/group
+2023-09-13T16:36:41.392+03:00  WARN 20024 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/group headers org.apache.tomcat.util.http.ValuesEnumerator@7f77727e
+2023-09-13T16:36:41.415+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/group/all
+2023-09-13T16:36:41.422+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@6f3aa572
+2023-09-13T16:36:43.466+03:00  WARN 20024 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T16:36:43.473+03:00  WARN 20024 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@1e1446dc
+2023-09-13T16:36:48.695+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/price-category
+2023-09-13T16:36:48.702+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/price-category headers org.apache.tomcat.util.http.ValuesEnumerator@70f351f7
+2023-09-13T16:36:48.713+03:00  WARN 20024 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T16:36:48.719+03:00  WARN 20024 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@6c858378
+2023-09-13T16:36:52.214+03:00  WARN 20024 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T16:36:52.220+03:00  WARN 20024 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@3962502a
+2023-09-13T16:36:54.115+03:00  WARN 20024 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/office/all
+2023-09-13T16:36:54.122+03:00  WARN 20024 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/office/all headers org.apache.tomcat.util.http.ValuesEnumerator@202c5bc
+2023-09-13T16:36:56.084+03:00  WARN 20024 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/traffic-center/all
+2023-09-13T16:36:56.092+03:00  WARN 20024 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/traffic-center/all headers org.apache.tomcat.util.http.ValuesEnumerator@42c12ccf
+2023-09-13T16:36:57.229+03:00  WARN 20024 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/region/all
+2023-09-13T16:36:57.235+03:00  WARN 20024 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@220f8180
+2023-09-13T16:36:58.140+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/refinery/all
+2023-09-13T16:36:58.147+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/refinery/all headers org.apache.tomcat.util.http.ValuesEnumerator@523705ff
+2023-09-13T16:37:04.061+03:00  WARN 20024 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/vehicle
+2023-09-13T16:37:04.067+03:00  WARN 20024 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/vehicle headers org.apache.tomcat.util.http.ValuesEnumerator@1c0c8927
+2023-09-13T16:37:05.972+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T16:37:05.978+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@45e1179
+2023-09-13T16:37:05.987+03:00  WARN 20024 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/traffic-center/all
+2023-09-13T16:37:05.992+03:00  WARN 20024 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/traffic-center/all headers org.apache.tomcat.util.http.ValuesEnumerator@361c821a
+2023-09-13T16:37:06.000+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/office/all
+2023-09-13T16:37:06.008+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/office/all headers org.apache.tomcat.util.http.ValuesEnumerator@65818b83
+2023-09-13T16:37:06.018+03:00  WARN 20024 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/vehicle
+2023-09-13T16:37:06.025+03:00  WARN 20024 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/vehicle headers org.apache.tomcat.util.http.ValuesEnumerator@9f2b7e7
+2023-09-13T16:37:08.391+03:00  WARN 20024 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /app/v1/trans-line/all
+2023-09-13T16:37:08.397+03:00  WARN 20024 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /app/v1/trans-line/all headers org.apache.tomcat.util.http.ValuesEnumerator@3b7686cf
+2023-09-13T16:37:08.776+03:00  WARN 20024 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T16:37:08.783+03:00  WARN 20024 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@4b41483c
+2023-09-13T17:09:01.267+03:00  WARN 20024 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T17:09:01.275+03:00  WARN 20024 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@2735f2aa
+2023-09-13T18:40:59.645+03:00  WARN 20024 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T18:40:59.665+03:00  WARN 20024 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@3e06a0b5
+2023-09-13T18:41:01.566+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T18:41:01.575+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@50d06a67
+2023-09-13T18:41:01.596+03:00  WARN 20024 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T18:41:01.605+03:00  WARN 20024 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@78277041
+2023-09-13T18:41:01.617+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/group/all
+2023-09-13T18:41:01.625+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@7b8325e2
+2023-09-13T18:41:01.642+03:00  WARN 20024 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/region/all
+2023-09-13T18:41:01.650+03:00  WARN 20024 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@23ddf8f
+2023-09-13T18:41:01.668+03:00  WARN 20024 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T18:41:01.675+03:00  WARN 20024 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@468c495f
+2023-09-13T18:41:19.650+03:00  WARN 20024 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T18:41:19.657+03:00  WARN 20024 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@7ee46830
+2023-09-13T18:41:26.812+03:00  WARN 20024 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T18:41:26.820+03:00  WARN 20024 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@70b83441
+2023-09-13T18:41:30.738+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T18:41:30.749+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@6bfd5355
+2023-09-13T18:41:35.779+03:00  WARN 20024 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/group/all
+2023-09-13T18:41:35.789+03:00  WARN 20024 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@1d8778a2
+2023-09-13T18:41:40.248+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/region/all
+2023-09-13T18:41:40.261+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@1a1beb46
+2023-09-13T18:42:03.704+03:00  WARN 20024 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T18:42:03.736+03:00  WARN 20024 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@30201997
+2023-09-13T18:46:36.453+03:00  WARN 20024 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T18:46:36.479+03:00  WARN 20024 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@6865a127
+2023-09-13T18:48:02.868+03:00  WARN 20024 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T18:48:02.900+03:00  WARN 20024 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@1c949593
+2023-09-13T18:49:58.876+03:00  WARN 20024 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T18:49:58.883+03:00  WARN 20024 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@363b80fb
+2023-09-13T18:50:16.472+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T18:50:16.481+03:00  WARN 20024 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@36ea0a1a
+2023-09-13T18:50:16.493+03:00  WARN 20024 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T18:50:16.500+03:00  WARN 20024 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@6f39848b
+2023-09-13T18:50:16.510+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/group/all
+2023-09-13T18:50:16.518+03:00  WARN 20024 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@15eef665
+2023-09-13T18:50:16.527+03:00  WARN 20024 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/region/all
+2023-09-13T18:50:16.533+03:00  WARN 20024 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@75af2101
+2023-09-13T18:50:16.543+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T18:50:16.560+03:00  WARN 20024 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@3e44916c
+2023-09-13T18:51:13.378+03:00  WARN 20024 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m10s165ms241µs801ns).
+2023-09-13T18:51:13.475+03:00  INFO 20024 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-09-13T18:51:13.483+03:00  INFO 20024 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-09-13T18:51:13.487+03:00  INFO 20024 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-09-13T18:51:21.245+03:00  INFO 15148 --- [main] org.example.Main                         : Starting Main using Java 20 with PID 15148 (D:\fuelRefactored\FuelCleanCode\Service\target\classes started by GIGABYTE in D:\fuelRefactored\FuelCleanCode)
+2023-09-13T18:51:21.248+03:00  INFO 15148 --- [main] org.example.Main                         : No active profile set, falling back to 1 default profile: "default"
+2023-09-13T18:51:25.029+03:00  INFO 15148 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-13T18:51:25.232+03:00  INFO 15148 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 193 ms. Found 18 JPA repository interfaces.
+2023-09-13T18:51:26.199+03:00  INFO 15148 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2023-09-13T18:51:26.211+03:00  INFO 15148 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-09-13T18:51:26.211+03:00  INFO 15148 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.7]
+2023-09-13T18:51:26.334+03:00  INFO 15148 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-09-13T18:51:26.335+03:00  INFO 15148 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5037 ms
+2023-09-13T18:51:26.728+03:00  INFO 15148 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-13T18:51:26.819+03:00  INFO 15148 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2023-09-13T18:51:27.229+03:00  INFO 15148 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-09-13T18:51:27.461+03:00  INFO 15148 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6550ce46
+2023-09-13T18:51:27.464+03:00  INFO 15148 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-09-13T18:51:27.518+03:00  WARN 15148 --- [main] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.0 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 5.7.0. Check the community dialects project for available legacy versions.
+2023-09-13T18:51:27.526+03:00  INFO 15148 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2023-09-13T18:51:29.184+03:00  INFO 15148 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-13T18:51:29.195+03:00  INFO 15148 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-13T18:51:30.440+03:00  WARN 15148 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-09-13T18:51:31.176+03:00  INFO 15148 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2023-09-13T18:51:31.299+03:00  INFO 15148 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2023-09-13T18:51:31.321+03:00  INFO 15148 --- [main] org.example.Main                         : Started Main in 10.61 seconds (process running for 12.028)
+2023-09-13T18:51:43.665+03:00  INFO 15148 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-09-13T18:51:43.665+03:00  INFO 15148 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-09-13T18:51:43.667+03:00  INFO 15148 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2023-09-13T18:51:43.745+03:00  WARN 15148 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T18:51:43.809+03:00  WARN 15148 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@7edfa11
+2023-09-13T18:51:45.892+03:00  WARN 15148 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T18:51:45.905+03:00  WARN 15148 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@4a684d3f
+2023-09-13T18:51:45.927+03:00  WARN 15148 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T18:51:45.939+03:00  WARN 15148 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@11ce1d66
+2023-09-13T18:51:45.959+03:00  WARN 15148 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/group/all
+2023-09-13T18:51:45.971+03:00  WARN 15148 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@5385c590
+2023-09-13T18:51:45.984+03:00  WARN 15148 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/region/all
+2023-09-13T18:51:45.995+03:00  WARN 15148 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@5415314d
+2023-09-13T18:51:46.016+03:00  WARN 15148 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T18:51:46.025+03:00  WARN 15148 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@4d692a10
+2023-09-13T18:52:14.269+03:00  WARN 15148 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T18:52:14.279+03:00  WARN 15148 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@1cbb876f
+2023-09-13T18:52:14.293+03:00  WARN 15148 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T18:52:14.305+03:00  WARN 15148 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@6a5812f1
+2023-09-13T18:52:14.318+03:00  WARN 15148 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/group/all
+2023-09-13T18:52:14.328+03:00  WARN 15148 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@113c25ed
+2023-09-13T18:52:14.340+03:00  WARN 15148 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/region/all
+2023-09-13T18:52:14.354+03:00  WARN 15148 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@a67adb4
+2023-09-13T18:52:21.829+03:00  WARN 15148 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T18:52:21.838+03:00  WARN 15148 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@389b1788
+2023-09-13T18:52:27.492+03:00  WARN 15148 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T18:52:27.504+03:00  WARN 15148 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@420eae05
+2023-09-13T18:52:41.625+03:00  WARN 15148 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T18:52:41.636+03:00  WARN 15148 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@74c5eb6f
+2023-09-13T18:54:02.934+03:00  WARN 15148 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T18:54:02.943+03:00  WARN 15148 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@3ae12f71
+2023-09-13T18:54:04.658+03:00  WARN 15148 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T18:54:04.667+03:00  WARN 15148 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@2e794782
+2023-09-13T18:54:04.685+03:00  WARN 15148 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T18:54:04.695+03:00  WARN 15148 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@4ae89560
+2023-09-13T18:54:04.708+03:00  WARN 15148 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/group/all
+2023-09-13T18:54:04.717+03:00  WARN 15148 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@693904e4
+2023-09-13T18:54:04.738+03:00  WARN 15148 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/region/all
+2023-09-13T18:54:04.746+03:00  WARN 15148 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@65bc31a1
+2023-09-13T18:54:17.912+03:00  WARN 15148 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T18:54:17.921+03:00  WARN 15148 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@7b329f04
+2023-09-13T18:54:39.397+03:00  WARN 15148 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T18:54:39.405+03:00  WARN 15148 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@1e940373
+2023-09-13T18:55:03.929+03:00  WARN 15148 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T18:55:03.939+03:00  WARN 15148 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@37ebe689
+2023-09-13T18:56:27.686+03:00  WARN 15148 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T18:56:27.695+03:00  WARN 15148 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@206287b5
+2023-09-13T18:56:29.594+03:00  WARN 15148 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T18:56:29.602+03:00  WARN 15148 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@29ca6717
+2023-09-13T18:56:29.621+03:00  WARN 15148 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T18:56:29.631+03:00  WARN 15148 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@2b7849c0
+2023-09-13T18:56:29.641+03:00  WARN 15148 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/group/all
+2023-09-13T18:56:29.649+03:00  WARN 15148 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@3ccac863
+2023-09-13T18:56:29.660+03:00  WARN 15148 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/region/all
+2023-09-13T18:56:29.668+03:00  WARN 15148 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@72956b26
+2023-09-13T18:56:39.822+03:00  WARN 15148 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T18:56:39.831+03:00  WARN 15148 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@200e694a
+2023-09-13T18:59:16.780+03:00  WARN 15148 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T18:59:16.790+03:00  WARN 15148 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@37424d98
+2023-09-13T18:59:24.442+03:00  WARN 15148 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T18:59:24.450+03:00  WARN 15148 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@3bd048c5
+2023-09-13T18:59:26.267+03:00  WARN 15148 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T18:59:26.276+03:00  WARN 15148 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@3004ec3e
+2023-09-13T18:59:26.295+03:00  WARN 15148 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T18:59:26.301+03:00  WARN 15148 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@78badfa7
+2023-09-13T18:59:26.312+03:00  WARN 15148 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/group/all
+2023-09-13T18:59:26.322+03:00  WARN 15148 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@557fe85d
+2023-09-13T18:59:26.332+03:00  WARN 15148 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/region/all
+2023-09-13T18:59:26.341+03:00  WARN 15148 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@5e7031fa
+2023-09-13T18:59:36.133+03:00  WARN 15148 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T18:59:36.141+03:00  WARN 15148 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@6f575ecf
+2023-09-13T18:59:42.358+03:00  WARN 15148 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T18:59:42.367+03:00  WARN 15148 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@1decdc32
+2023-09-13T18:59:55.913+03:00  WARN 15148 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T18:59:55.921+03:00  WARN 15148 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@36a37d3e
+2023-09-13T19:00:05.355+03:00  WARN 15148 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T19:00:05.364+03:00  WARN 15148 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@3063856b
+2023-09-13T19:00:22.768+03:00  WARN 15148 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T19:00:22.775+03:00  WARN 15148 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@1208acdf
+2023-09-13T19:01:49.911+03:00  WARN 15148 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T19:01:49.920+03:00  WARN 15148 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@6a4990e6
+2023-09-13T19:02:18.233+03:00  WARN 15148 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T19:02:18.241+03:00  WARN 15148 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@1dccfd2d
+2023-09-13T19:02:21.901+03:00  WARN 15148 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T19:02:21.909+03:00  WARN 15148 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@311762e8
+2023-09-13T19:02:21.927+03:00  WARN 15148 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T19:02:21.935+03:00  WARN 15148 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@53728650
+2023-09-13T19:02:21.945+03:00  WARN 15148 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/group/all
+2023-09-13T19:02:21.954+03:00  WARN 15148 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@117a5bf
+2023-09-13T19:02:21.965+03:00  WARN 15148 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/region/all
+2023-09-13T19:02:21.972+03:00  WARN 15148 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@199a4341
+2023-09-13T19:02:21.982+03:00  WARN 15148 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T19:02:21.988+03:00  WARN 15148 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@4eaac5fe
+2023-09-13T19:02:29.571+03:00  WARN 15148 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T19:02:29.579+03:00  WARN 15148 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@4eca29f2
+2023-09-13T19:02:48.586+03:00  WARN 15148 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T19:02:48.597+03:00  WARN 15148 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@339aeb38
+2023-09-13T19:15:08.870+03:00  WARN 15148 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T19:15:08.878+03:00  WARN 15148 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@15175cb4
+2023-09-13T19:15:11.261+03:00  WARN 15148 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T19:15:11.267+03:00  WARN 15148 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@13c6163
+2023-09-13T19:15:11.286+03:00  WARN 15148 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T19:15:11.294+03:00  WARN 15148 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@5342222
+2023-09-13T19:15:11.306+03:00  WARN 15148 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/group/all
+2023-09-13T19:15:11.316+03:00  WARN 15148 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@533a2d17
+2023-09-13T19:15:11.326+03:00  WARN 15148 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/region/all
+2023-09-13T19:15:11.333+03:00  WARN 15148 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@ea1985
+2023-09-13T19:15:11.344+03:00  WARN 15148 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station/2
+2023-09-13T19:15:11.351+03:00  WARN 15148 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station/ headers org.apache.tomcat.util.http.ValuesEnumerator@7deb602d
+2023-09-13T19:15:11.355+03:00  WARN 15148 --- [http-nio-8081-exec-1] o.s.web.servlet.PageNotFound             : Request method 'GET' is not supported
+2023-09-13T19:15:23.646+03:00  WARN 15148 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T19:15:23.654+03:00  WARN 15148 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@71a30c5d
+2023-09-13T19:15:25.519+03:00  WARN 15148 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T19:15:25.526+03:00  WARN 15148 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@313c3b88
+2023-09-13T19:15:25.547+03:00  WARN 15148 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T19:15:25.555+03:00  WARN 15148 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@66d14570
+2023-09-13T19:15:25.565+03:00  WARN 15148 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/group/all
+2023-09-13T19:15:25.574+03:00  WARN 15148 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@11f96176
+2023-09-13T19:15:25.593+03:00  WARN 15148 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/region/all
+2023-09-13T19:15:25.601+03:00  WARN 15148 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@2d5c8ab7
+2023-09-13T19:15:34.396+03:00  WARN 15148 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/gas-station/2
+2023-09-13T19:15:34.403+03:00  WARN 15148 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/gas-station/ headers org.apache.tomcat.util.http.ValuesEnumerator@115ee2f0
+2023-09-13T19:15:34.404+03:00  WARN 15148 --- [http-nio-8081-exec-8] o.s.web.servlet.PageNotFound             : Request method 'GET' is not supported
+2023-09-13T19:15:46.044+03:00  INFO 15148 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-09-13T19:15:46.046+03:00  INFO 15148 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-09-13T19:15:46.053+03:00  INFO 15148 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-09-13T19:15:50.226+03:00  INFO 22096 --- [main] org.example.Main                         : Starting Main using Java 20 with PID 22096 (D:\fuelRefactored\FuelCleanCode\Service\target\classes started by GIGABYTE in D:\fuelRefactored\FuelCleanCode)
+2023-09-13T19:15:50.230+03:00  INFO 22096 --- [main] org.example.Main                         : No active profile set, falling back to 1 default profile: "default"
+2023-09-13T19:15:51.767+03:00  INFO 22096 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-13T19:15:51.975+03:00  INFO 22096 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 197 ms. Found 18 JPA repository interfaces.
+2023-09-13T19:15:52.853+03:00  INFO 22096 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2023-09-13T19:15:52.862+03:00  INFO 22096 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-09-13T19:15:52.862+03:00  INFO 22096 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.7]
+2023-09-13T19:15:52.985+03:00  INFO 22096 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-09-13T19:15:52.986+03:00  INFO 22096 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2690 ms
+2023-09-13T19:15:53.357+03:00  INFO 22096 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-13T19:15:53.412+03:00  INFO 22096 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2023-09-13T19:15:53.725+03:00  INFO 22096 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-09-13T19:15:53.909+03:00  INFO 22096 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4a944af9
+2023-09-13T19:15:53.911+03:00  INFO 22096 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-09-13T19:15:53.963+03:00  WARN 22096 --- [main] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.0 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 5.7.0. Check the community dialects project for available legacy versions.
+2023-09-13T19:15:53.970+03:00  INFO 22096 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2023-09-13T19:15:55.556+03:00  INFO 22096 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-13T19:15:55.563+03:00  INFO 22096 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-13T19:15:56.682+03:00  WARN 22096 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-09-13T19:15:57.451+03:00  INFO 22096 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2023-09-13T19:15:57.611+03:00  INFO 22096 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2023-09-13T19:15:57.640+03:00  INFO 22096 --- [main] org.example.Main                         : Started Main in 8.058 seconds (process running for 8.685)
+2023-09-13T19:17:17.653+03:00  INFO 22096 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-09-13T19:17:17.654+03:00  INFO 22096 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-09-13T19:17:17.655+03:00  INFO 22096 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-09-13T19:17:17.725+03:00  WARN 22096 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station/2
+2023-09-13T19:17:17.787+03:00  WARN 22096 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station/ headers org.apache.tomcat.util.http.ValuesEnumerator@634b0995
+2023-09-13T19:17:17.814+03:00  WARN 22096 --- [http-nio-8081-exec-1] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.controllers.GasStationController
+2023-09-13T19:17:21.507+03:00  WARN 22096 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T19:17:21.518+03:00  WARN 22096 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@4e65404f
+2023-09-13T19:17:21.591+03:00  WARN 22096 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T19:17:21.602+03:00  WARN 22096 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@323db1f8
+2023-09-13T19:17:21.614+03:00  WARN 22096 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/group/all
+2023-09-13T19:17:21.624+03:00  WARN 22096 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@25910a46
+2023-09-13T19:17:21.636+03:00  WARN 22096 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/region/all
+2023-09-13T19:17:21.646+03:00  WARN 22096 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@4df807f8
+2023-09-13T19:17:28.911+03:00  WARN 22096 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station/2
+2023-09-13T19:17:28.922+03:00  WARN 22096 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station/ headers org.apache.tomcat.util.http.ValuesEnumerator@448468eb
+2023-09-13T19:17:35.075+03:00  WARN 22096 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station/2
+2023-09-13T19:17:35.084+03:00  WARN 22096 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station/ headers org.apache.tomcat.util.http.ValuesEnumerator@221a072c
+2023-09-13T19:17:48.423+03:00  WARN 22096 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/gas-station/2
+2023-09-13T19:17:48.432+03:00  WARN 22096 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/gas-station/ headers org.apache.tomcat.util.http.ValuesEnumerator@152e8d89
+2023-09-13T19:17:55.774+03:00  WARN 22096 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/gas-station/2
+2023-09-13T19:17:55.787+03:00  WARN 22096 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/gas-station/ headers org.apache.tomcat.util.http.ValuesEnumerator@5a53043e
+2023-09-13T20:02:31.890+03:00  WARN 22096 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T20:02:31.900+03:00  WARN 22096 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@79e67a11
+2023-09-13T20:02:33.823+03:00  WARN 22096 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T20:02:33.844+03:00  WARN 22096 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@2ed31052
+2023-09-13T20:02:33.869+03:00  WARN 22096 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T20:02:33.882+03:00  WARN 22096 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@2056f90e
+2023-09-13T20:02:33.897+03:00  WARN 22096 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/group/all
+2023-09-13T20:02:33.909+03:00  WARN 22096 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@55d90d70
+2023-09-13T20:02:33.920+03:00  WARN 22096 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/region/all
+2023-09-13T20:02:33.929+03:00  WARN 22096 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@1cd1b77
+2023-09-13T20:02:36.992+03:00  WARN 22096 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station/2
+2023-09-13T20:02:37.004+03:00  WARN 22096 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station/ headers org.apache.tomcat.util.http.ValuesEnumerator@29f049ae
+2023-09-13T20:02:46.393+03:00  WARN 22096 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T20:02:46.401+03:00  WARN 22096 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@190df46
+2023-09-13T20:02:57.591+03:00  WARN 22096 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T20:02:57.600+03:00  WARN 22096 --- [http-nio-8081-exec-8] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@5254adb3
+2023-09-13T20:07:19.093+03:00  INFO 22096 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-09-13T20:07:19.096+03:00  INFO 22096 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-09-13T20:07:19.099+03:00  INFO 22096 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-09-13T20:07:23.392+03:00  INFO 21620 --- [main] org.example.Main                         : Starting Main using Java 20 with PID 21620 (D:\fuelRefactored\FuelCleanCode\Service\target\classes started by GIGABYTE in D:\fuelRefactored\FuelCleanCode)
+2023-09-13T20:07:23.394+03:00  INFO 21620 --- [main] org.example.Main                         : No active profile set, falling back to 1 default profile: "default"
+2023-09-13T20:07:24.826+03:00  INFO 21620 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-13T20:07:25.051+03:00  INFO 21620 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 214 ms. Found 18 JPA repository interfaces.
+2023-09-13T20:07:25.937+03:00  INFO 21620 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2023-09-13T20:07:25.946+03:00  INFO 21620 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-09-13T20:07:25.946+03:00  INFO 21620 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.7]
+2023-09-13T20:07:26.059+03:00  INFO 21620 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-09-13T20:07:26.060+03:00  INFO 21620 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2599 ms
+2023-09-13T20:07:26.433+03:00  INFO 21620 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-13T20:07:26.499+03:00  INFO 21620 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2023-09-13T20:07:26.836+03:00  INFO 21620 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-09-13T20:07:27.014+03:00  INFO 21620 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@120d6cbf
+2023-09-13T20:07:27.016+03:00  INFO 21620 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-09-13T20:07:27.049+03:00  WARN 21620 --- [main] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.0 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 5.7.0. Check the community dialects project for available legacy versions.
+2023-09-13T20:07:27.053+03:00  INFO 21620 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2023-09-13T20:07:28.489+03:00  INFO 21620 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-13T20:07:28.497+03:00  INFO 21620 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-13T20:07:29.664+03:00  WARN 21620 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-09-13T20:07:30.357+03:00  INFO 21620 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2023-09-13T20:07:30.446+03:00  INFO 21620 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2023-09-13T20:07:30.464+03:00  INFO 21620 --- [main] org.example.Main                         : Started Main in 7.624 seconds (process running for 8.197)
+2023-09-13T20:07:40.175+03:00  INFO 21620 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-09-13T20:07:40.175+03:00  INFO 21620 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-09-13T20:07:40.176+03:00  INFO 21620 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-09-13T20:07:40.245+03:00  WARN 21620 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T20:07:40.302+03:00  WARN 21620 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@5eadc28
+2023-09-13T20:07:42.297+03:00  WARN 21620 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T20:07:42.309+03:00  WARN 21620 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@4d544567
+2023-09-13T20:07:42.337+03:00  WARN 21620 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T20:07:42.347+03:00  WARN 21620 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@8ce3b45
+2023-09-13T20:07:42.361+03:00  WARN 21620 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/group/all
+2023-09-13T20:07:42.372+03:00  WARN 21620 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@139a699
+2023-09-13T20:07:42.386+03:00  WARN 21620 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/region/all
+2023-09-13T20:07:42.395+03:00  WARN 21620 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@6c0320b6
+2023-09-13T20:07:42.410+03:00  WARN 21620 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station/2
+2023-09-13T20:07:42.420+03:00  WARN 21620 --- [http-nio-8081-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station/ headers org.apache.tomcat.util.http.ValuesEnumerator@c41d74a
+2023-09-13T20:07:42.424+03:00  WARN 21620 --- [http-nio-8081-exec-6] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.controllers.GasStationController
+2023-09-13T20:07:49.326+03:00  WARN 21620 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T20:07:49.334+03:00  WARN 21620 --- [http-nio-8081-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@4617743f
+2023-09-13T20:11:15.557+03:00  WARN 21620 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2023-09-13T20:11:15.566+03:00  WARN 21620 --- [http-nio-8081-exec-9] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@79593b5e
+2023-09-13T20:11:17.404+03:00  WARN 21620 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/person/all
+2023-09-13T20:11:17.415+03:00  WARN 21620 --- [http-nio-8081-exec-10] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@32de5b91
+2023-09-13T20:11:17.433+03:00  WARN 21620 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-09-13T20:11:17.441+03:00  WARN 21620 --- [http-nio-8081-exec-1] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@60267ead
+2023-09-13T20:11:17.451+03:00  WARN 21620 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/group/all
+2023-09-13T20:11:17.462+03:00  WARN 21620 --- [http-nio-8081-exec-2] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@29e373ea
+2023-09-13T20:11:17.474+03:00  WARN 21620 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/region/all
+2023-09-13T20:11:17.483+03:00  WARN 21620 --- [http-nio-8081-exec-3] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@7d7f4fee
+2023-09-13T20:11:17.500+03:00  WARN 21620 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/gas-station/2
+2023-09-13T20:11:17.510+03:00  WARN 21620 --- [http-nio-8081-exec-4] org.example.security.CustomFilter        : /api/v1/gas-station/ headers org.apache.tomcat.util.http.ValuesEnumerator@2a272710
+2023-09-13T20:11:20.071+03:00  WARN 21620 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-09-13T20:11:20.079+03:00  WARN 21620 --- [http-nio-8081-exec-5] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@5180208b
+2023-09-13T20:14:13.103+03:00  INFO 21620 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-09-13T20:14:13.105+03:00  INFO 21620 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-09-13T20:14:13.114+03:00  INFO 21620 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
