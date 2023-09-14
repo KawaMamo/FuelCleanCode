@@ -6,8 +6,8 @@ import org.example.model.Refinery;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-09-03T15:28:07+0300",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
+    date = "2023-09-14T22:57:33+0300",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class RefineryMapperImpl implements RefineryMapper {
 
@@ -36,11 +36,11 @@ public class RefineryMapperImpl implements RefineryMapper {
 
         Refinery refinery = new Refinery();
 
+        refinery.setId( refineryEntity.getId() );
+        refinery.setName( refineryEntity.getName() );
         refinery.setPlaceType( refineryEntity.getPlaceType() );
         refinery.setCreatedAt( refineryEntity.getCreatedAt() );
         refinery.setUpdatedAt( refineryEntity.getUpdatedAt() );
-        refinery.setId( refineryEntity.getId() );
-        refinery.setName( refineryEntity.getName() );
 
         return refinery;
     }

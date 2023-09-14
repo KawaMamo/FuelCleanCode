@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.controlsfx.control.Notifications;
 import org.example.contract.request.create.CreateRefineryRequest;
+import org.example.contract.request.update.UpdateRefineryRequest;
 import org.example.model.Refinery;
 
 import java.util.Objects;
@@ -25,8 +26,21 @@ public class AddRefinery {
     private final RefineryService refineryService = RefineryService.getInstance();
 
     @FXML
+    private void initialize(){
+        if(isEditingForm){
+            final Refinery refinery = refineryService.getItem(Refineries.selectedRefinery.getId());
+            nameTF.setText(refinery.getName());
+        }
+    }
+    @FXML
     void submit() {
-        final Refinery refinery = refineryService.addItem(new CreateRefineryRequest(nameTF.getText()));
+        final Refinery refinery;
+        if(isEditingForm){
+            refinery = refineryService.editItem(new UpdateRefineryRequest(Refineries.selectedRefinery.getId(), nameTF.getText()));
+        }else {
+            refinery = refineryService.addItem(new CreateRefineryRequest(nameTF.getText()));
+        }
+        isEditingForm = false;
         notify(refinery);
     }
 

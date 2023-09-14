@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import org.controlsfx.control.Notifications;
 import org.controlsfx.control.textfield.TextFields;
 import org.example.contract.request.create.CreateTransLineRequest;
+import org.example.contract.request.update.UpdateTransLineRequest;
 import org.example.model.GasStation;
 import org.example.model.Place;
 import org.example.model.Refinery;
@@ -85,10 +86,38 @@ public class AddTransLine {
             }
         });
 
+        if(isEditingForm){
+            final TransLine transLine = transLineService.getItem(TransLines.selectedTransLine.getId());
+            sourceTF.setText(transLine.getSource().getName());
+            destinationTF.setText(transLine.getDestination().getName());
+            amountTF.setText(String.valueOf(transLine.getFee().getAmount()));
+            currencyCB.setValue(transLine.getFee().getCurrency());
+            selectedSourceId = transLine.getSource().getId();
+            selectedDestinationId = transLine.getDestination().getId();
+        }
+
     }
     @FXML
     void submit() {
-        final TransLine transLine = transLineService.addItem(new CreateTransLineRequest(selectedSourceId, selectedDestinationId, currencyCB.getValue(), Double.parseDouble(amountTF.getText())));
+        final TransLine transLine;
+        if(isEditingForm){
+            transLine = transLineService.editItem(new UpdateTransLineRequest(TransLines.selectedTransLine.getId(),
+                    selectedSourceId,
+                    selectedDestinationId,
+                    currencyCB.getValue(),
+                    Double.parseDouble(amountTF.getText())));
+        }else {
+            transLine = transLineService.addItem(new CreateTransLineRequest(selectedSourceId,
+                    selectedDestinationId,
+                    currencyCB.getValue(),
+                    Double.parseDouble(amountTF.getText())));
+        }
+
+        isEditingForm = false;
+        notify(transLine);
+    }
+
+    private static void notify(TransLine transLine) {
         String message;
         if(Objects.nonNull(transLine.getId())){
             message = "Vehicle added";

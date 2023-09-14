@@ -154,7 +154,7 @@ public class AddGasStation {
                     selectedOwnerId,
                     selectedGroupId));
         }
-
+        isEditingForm = false;
         notify(gasStation);
     }
 

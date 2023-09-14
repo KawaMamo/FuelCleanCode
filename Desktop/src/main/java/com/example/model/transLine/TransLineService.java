@@ -4,7 +4,7 @@ import com.example.model.Service;
 import com.example.model.transLine.response.TransLineResponseEntity;
 import com.google.gson.Gson;
 import org.example.contract.request.create.CreateTransLineRequest;
-import org.example.contract.request.update.UpdateTransLogRequest;
+import org.example.contract.request.update.UpdateTransLineRequest;
 import org.example.model.TransLine;
 
 import java.net.http.HttpResponse;
@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
-public class TransLineService implements Service<TransLine, CreateTransLineRequest, UpdateTransLogRequest> {
+public class TransLineService implements Service<TransLine, CreateTransLineRequest, UpdateTransLineRequest> {
     private static final TransLineService INSTANCE = new TransLineService();
 
     public static TransLineService getInstance() {
@@ -51,7 +51,7 @@ public class TransLineService implements Service<TransLine, CreateTransLineReque
     }
 
     @Override
-    public TransLine editItem(UpdateTransLogRequest updateRequest) {
+    public TransLine editItem(UpdateTransLineRequest updateRequest) {
         final String json = gson.toJson(updateRequest);
         final HttpResponse<String> stringHttpResponse = client.parallelPatch(getEndPoint(), json);
         return gson.fromJson(stringHttpResponse.body(), TransLine.class);

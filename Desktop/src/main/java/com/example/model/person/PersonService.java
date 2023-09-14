@@ -50,7 +50,7 @@ public class PersonService implements Service<Person, CreatePersonRequest, Updat
 
     @Override
     public Person getItem(Long id) {
-        return gson.fromJson(getResponse(id).body(), Person.class);
+        return gson.fromJson(getResponse(id).body(), PersonResponse.class)._embedded.personList.get(0);
     }
 
     @Override

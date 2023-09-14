@@ -66,7 +66,9 @@ public class Refineries implements TableController {
 
     @FXML
     void edit() {
-
+        AddRefinery.controller = this;
+        AddRefinery.isEditingForm = true;
+        Modal.start(this.getClass(), "addRefinery.fxml");
     }
 
     @FXML
@@ -93,6 +95,7 @@ public class Refineries implements TableController {
     @Override
     public void addData(Object object) {
         refineries.add((Refinery) object);
+        loadData();
     }
 
     @Override

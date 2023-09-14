@@ -50,7 +50,9 @@ public class Persons implements TableController {
 
     @FXML
     void edit() {
-
+        AddPerson.controller = this;
+        AddPerson.isEditingForm = true;
+        Modal.start(this.getClass(), "addPerson.fxml");
     }
 
     @FXML

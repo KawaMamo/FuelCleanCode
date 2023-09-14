@@ -2,14 +2,14 @@ package org.example.mappers;
 
 import javax.annotation.processing.Generated;
 import org.example.contract.request.create.CreateFatTransLineRequest;
-import org.example.contract.request.update.UpdateTransLineRequest;
+import org.example.contract.request.update.UpdateFatTransLineRequest;
 import org.example.contract.response.TransLineResponse;
 import org.example.model.Money;
 import org.example.model.TransLine;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-09-03T15:24:38+0300",
+    date = "2023-09-14T22:58:03+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class TransLineDomainMapperImpl implements TransLineDomainMapper {
@@ -48,15 +48,17 @@ public class TransLineDomainMapperImpl implements TransLineDomainMapper {
     }
 
     @Override
-    public TransLine requestToDomain(UpdateTransLineRequest request) {
+    public TransLine requestToDomain(UpdateFatTransLineRequest request) {
         if ( request == null ) {
             return null;
         }
 
         TransLine transLine = new TransLine();
 
-        transLine.setFee( updateTransLineRequestToMoney( request ) );
+        transLine.setFee( updateFatTransLineRequestToMoney( request ) );
         transLine.setId( request.getId() );
+        transLine.setSource( request.getSource() );
+        transLine.setDestination( request.getDestination() );
 
         return transLine;
     }
@@ -74,15 +76,15 @@ public class TransLineDomainMapperImpl implements TransLineDomainMapper {
         return money;
     }
 
-    protected Money updateTransLineRequestToMoney(UpdateTransLineRequest updateTransLineRequest) {
-        if ( updateTransLineRequest == null ) {
+    protected Money updateFatTransLineRequestToMoney(UpdateFatTransLineRequest updateFatTransLineRequest) {
+        if ( updateFatTransLineRequest == null ) {
             return null;
         }
 
         Money money = new Money();
 
-        money.setCurrency( updateTransLineRequest.getFeeCurrency() );
-        money.setAmount( updateTransLineRequest.getFeeAmount() );
+        money.setCurrency( updateFatTransLineRequest.getFeeCurrency() );
+        money.setAmount( updateFatTransLineRequest.getFeeAmount() );
 
         return money;
     }

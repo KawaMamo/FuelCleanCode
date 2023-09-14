@@ -29,7 +29,9 @@ public class UpdateRefinery {
         validator.validate(request);
         final Refinery refinery = mapper.toDomain(request);
         refinery.setCreatedAt(original.getCreatedAt());
+        refinery.setPlaceType(original.getPlaceType());
         refinery.setUpdatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
+        refineryRepo.save(refinery);
         return mapper.toResponse(refinery);
     }
 }

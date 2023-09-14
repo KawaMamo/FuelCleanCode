@@ -42,6 +42,7 @@ public class AddGroup {
         }else {
             group = groupService.addItem(new CreateGroupRequest(nameTF.getText()));
         }
+        isEditingForm = false;
         extracted(group);
     }
 

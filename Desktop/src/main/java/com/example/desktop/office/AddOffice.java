@@ -40,6 +40,7 @@ public class AddOffice {
         }else {
             office = officeService.addItem(new CreateOfficeRequest(nameTF.getText()));
         }
+        isEditingForm = false;
         notify(office);
     }
 

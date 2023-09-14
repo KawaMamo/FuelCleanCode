@@ -16,8 +16,8 @@ import org.example.model.Region;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-09-03T15:28:07+0300",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
+    date = "2023-09-14T22:57:32+0300",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class PlaceMapperImpl implements PlaceMapper {
 
@@ -69,10 +69,10 @@ public class PlaceMapperImpl implements PlaceMapper {
         GasStation gasStation1 = new GasStation();
 
         gasStation1.setId( gasStation.getId() );
+        gasStation1.setName( gasStation.getName() );
         gasStation1.setPlaceType( gasStation.getPlaceType() );
         gasStation1.setCreatedAt( gasStation.getCreatedAt() );
         gasStation1.setUpdatedAt( gasStation.getUpdatedAt() );
-        gasStation1.setName( gasStation.getName() );
         gasStation1.setPriceCategory( priceCategoryEntityToPriceCategory( gasStation.getPriceCategory() ) );
         gasStation1.setDebtLimit( gasStation.getDebtLimit() );
         gasStation1.setRegion( regionEntityToRegion( gasStation.getRegion() ) );
@@ -90,11 +90,11 @@ public class PlaceMapperImpl implements PlaceMapper {
 
         Refinery refinery1 = new Refinery();
 
+        refinery1.setId( refinery.getId() );
+        refinery1.setName( refinery.getName() );
         refinery1.setPlaceType( refinery.getPlaceType() );
         refinery1.setCreatedAt( refinery.getCreatedAt() );
         refinery1.setUpdatedAt( refinery.getUpdatedAt() );
-        refinery1.setId( refinery.getId() );
-        refinery1.setName( refinery.getName() );
 
         return refinery1;
     }

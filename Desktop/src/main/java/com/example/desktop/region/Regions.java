@@ -65,7 +65,9 @@ public class Regions implements TableController {
 
     @FXML
     void edit() {
-
+        AddRegion.controller = this;
+        AddRegion.isEditingForm = true;
+        Modal.start(this.getClass(), "addRegion.fxml");
     }
 
     @FXML

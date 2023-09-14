@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.controlsfx.control.Notifications;
 import org.example.contract.request.create.CreateRegionRequest;
+import org.example.contract.request.update.UpdateRegionRequest;
 import org.example.model.Group;
 import org.example.model.Region;
 
@@ -27,8 +28,21 @@ public class AddRegion {
     private final RegionService regionService = RegionService.getInstance();
 
     @FXML
+    private void initialize(){
+        if(isEditingForm){
+            final Region region = regionService.getItem(Regions.selectedRegion.getId());
+            nameTF.setText(region.getName());
+        }
+    }
+    @FXML
     void submit() {
-        final Region region = regionService.addItem(new CreateRegionRequest(nameTF.getText()));
+        final Region region;
+        if(isEditingForm){
+            region = regionService.editItem(new UpdateRegionRequest(Regions.selectedRegion.getId(), nameTF.getText()));
+        }else {
+            region = regionService.addItem(new CreateRegionRequest(nameTF.getText()));
+        }
+        isEditingForm = false;
         notify(region);
     }
 

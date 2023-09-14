@@ -123,7 +123,7 @@ public class AdminArea {
     @FXML
     void offices() {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("office/Offices.fxml"));
+        loader.setLocation(getClass().getResource("office/offices.fxml"));
         try {
             final Node node = loader.load();
             final Offices controller = loader.getController();

@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.controlsfx.control.Notifications;
 import org.example.contract.request.create.CreatePriceCategoryRequest;
+import org.example.contract.request.update.UpdatePriceCategoryRequest;
 import org.example.model.Group;
 import org.example.model.PriceCategory;
 
@@ -27,8 +28,22 @@ public class AddPriceCategory {
     private final PriceCategoryService priceCategoryService = PriceCategoryService.getInstance();
 
     @FXML
+    private void initialize(){
+        if(isEditingForm){
+            final PriceCategory priceCategory = priceCategoryService.getItem(PriceCategories.selectdPriceCategory.getId());
+            nameTF.setText(priceCategory.getName());
+        }
+    }
+    @FXML
     void submit() {
-        final PriceCategory priceCategory = priceCategoryService.addItem(new CreatePriceCategoryRequest(nameTF.getText()));
+        final PriceCategory priceCategory;
+        if(isEditingForm){
+            priceCategory = priceCategoryService.editItem(new UpdatePriceCategoryRequest(PriceCategories.selectdPriceCategory.getId(),
+                    nameTF.getText()));
+        }else {
+            priceCategory = priceCategoryService.addItem(new CreatePriceCategoryRequest(nameTF.getText()));
+        }
+        isEditingForm = false;
         extracted(priceCategory);
     }
 

@@ -45,7 +45,9 @@ public class PriceCategories implements TableController {
 
     @FXML
     void edit() {
-
+        AddPriceCategory.controller = this;
+        AddPriceCategory.isEditingForm = true;
+        Modal.start(this.getClass(), "addPriceCategory.fxml");
     }
 
     @FXML

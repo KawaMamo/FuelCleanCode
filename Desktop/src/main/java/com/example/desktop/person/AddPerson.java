@@ -9,9 +9,11 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import org.controlsfx.control.Notifications;
 import org.example.contract.request.create.CreatePersonRequest;
+import org.example.contract.request.update.UpdatePersonRequest;
 import org.example.model.Group;
 import org.example.model.Person;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class AddPerson {
@@ -43,13 +45,37 @@ public class AddPerson {
     private final PersonService personService = PersonService.getInstance();
 
     @FXML
+    private void initialize(){
+        if(isEditingForm){
+            final Person person = personService.getItem(Persons.selectedPerson.getId());
+            nameTF.setText(person.getName());
+            fatherTF.setText(person.getFather());
+            motherTF.setText(person.getMother());
+            nationalIdTF.setText(person.getNationalId());
+            birthPlaceTF.setText(person.getBirthPlace());
+            birthDateDP.setValue(person.getBirthDate());
+        }
+    }
+    @FXML
     void submit() {
-        final Person person = personService.addItem(new CreatePersonRequest(nameTF.getText(),
-                fatherTF.getText(),
-                motherTF.getText(),
-                nationalIdTF.getText(),
-                birthPlaceTF.getText(),
-                birthDateDP.getValue()));
+        final Person person;
+        if(isEditingForm){
+            person = personService.editItem(new UpdatePersonRequest(Persons.selectedPerson.getId(),
+                    nameTF.getText(),
+                    fatherTF.getText(),
+                    motherTF.getText(),
+                    nationalIdTF.getText(),
+                    birthPlaceTF.getText(),
+                    birthDateDP.getValue()));
+        }else {
+            person = personService.addItem(new CreatePersonRequest(nameTF.getText(),
+                    fatherTF.getText(),
+                    motherTF.getText(),
+                    nationalIdTF.getText(),
+                    birthPlaceTF.getText(),
+                    birthDateDP.getValue()));
+        }
+        isEditingForm = false;
         extracted(person);
     }
 

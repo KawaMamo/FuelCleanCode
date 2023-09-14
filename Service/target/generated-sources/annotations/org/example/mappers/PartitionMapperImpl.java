@@ -33,8 +33,8 @@ import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-09-03T15:28:06+0300",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
+    date = "2023-09-14T22:57:32+0300",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class PartitionMapperImpl implements PartitionMapper {
 
@@ -188,10 +188,10 @@ public class PartitionMapperImpl implements PartitionMapper {
         GasStation gasStation = new GasStation();
 
         gasStation.setId( gasStationEntity.getId() );
+        gasStation.setName( gasStationEntity.getName() );
         gasStation.setPlaceType( gasStationEntity.getPlaceType() );
         gasStation.setCreatedAt( gasStationEntity.getCreatedAt() );
         gasStation.setUpdatedAt( gasStationEntity.getUpdatedAt() );
-        gasStation.setName( gasStationEntity.getName() );
         gasStation.setPriceCategory( priceCategoryEntityToPriceCategory( gasStationEntity.getPriceCategory() ) );
         gasStation.setDebtLimit( gasStationEntity.getDebtLimit() );
         gasStation.setRegion( regionEntityToRegion( gasStationEntity.getRegion() ) );
@@ -278,11 +278,11 @@ public class PartitionMapperImpl implements PartitionMapper {
 
         Refinery refinery = new Refinery();
 
+        refinery.setId( refineryEntity.getId() );
+        refinery.setName( refineryEntity.getName() );
         refinery.setPlaceType( refineryEntity.getPlaceType() );
         refinery.setCreatedAt( refineryEntity.getCreatedAt() );
         refinery.setUpdatedAt( refineryEntity.getUpdatedAt() );
-        refinery.setId( refineryEntity.getId() );
-        refinery.setName( refineryEntity.getName() );
 
         return refinery;
     }

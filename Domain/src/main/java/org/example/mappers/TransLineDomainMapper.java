@@ -16,6 +16,6 @@ public interface TransLineDomainMapper {
     TransLineResponse domainToResponse(TransLine transLine);
     @Mapping(source = "feeCurrency", target = "fee.currency")
     @Mapping(source = "feeAmount", target = "fee.amount")
-    TransLine requestToDomain(UpdateTransLineRequest request);
+    TransLine requestToDomain(UpdateFatTransLineRequest request);
 
 }

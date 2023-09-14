@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.controlsfx.control.Notifications;
 import org.example.contract.request.create.CreateTrafficCenterRequest;
+import org.example.contract.request.update.UpdateTrafficCenterRequest;
 import org.example.model.TrafficCenter;
 
 import java.util.Objects;
@@ -25,8 +26,21 @@ public class AddTrafficCenter {
     private final TrafficCenterService service = TrafficCenterService.getInstance();
 
     @FXML
+    private void initialize(){
+        if(isEditingForm){
+            final TrafficCenter trafficCenter = service.getItem(TrafficCenters.selectedTrafficCenter.getId());
+            nameTF.setText(trafficCenter.getName());
+        }
+    }
+    @FXML
     void submit() {
-        final TrafficCenter trafficCenter = service.addItem(new CreateTrafficCenterRequest(nameTF.getText()));
+        final TrafficCenter trafficCenter;
+        if(isEditingForm){
+            trafficCenter = service.editItem(new UpdateTrafficCenterRequest(TrafficCenters.selectedTrafficCenter.getId(), nameTF.getText()));
+        }else {
+            trafficCenter = service.addItem(new CreateTrafficCenterRequest(nameTF.getText()));
+        }
+        isEditingForm = false;
         notify(trafficCenter);
     }
 

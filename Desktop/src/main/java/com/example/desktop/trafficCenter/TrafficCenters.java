@@ -68,7 +68,9 @@ public class TrafficCenters implements TableController {
 
     @FXML
     void edit() {
-
+        AddTrafficCenter.controller = this;
+        AddTrafficCenter.isEditingForm = true;
+        Modal.start(this.getClass(), "addTrafficCenter.fxml");
     }
 
     @FXML

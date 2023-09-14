@@ -614,8 +614,8 @@ public class Beans {
         return new TransferMaterialDomainMapperImpl();
     }
     @Bean
-    UpdateTransLine updateTransLine(UpdateTransLineValidator validator, TransLineDomainMapper mapper, TransLineRepo transLineRepo){
-        return new UpdateTransLine(validator, mapper, transLineRepo);
+    UpdateTransLine updateTransLine(UpdateTransLineValidator validator, TransLineDomainMapper mapper, TransLineRepo transLineRepo, PlaceTypeDetector placeTypeDetector){
+        return new UpdateTransLine(validator, mapper, transLineRepo, placeTypeDetector);
     }
     @Bean
     UpdateTransLineValidator updateTransLineValidator(GasStationRepo gasStationRepo, RefineryRepo refineryRepo){
