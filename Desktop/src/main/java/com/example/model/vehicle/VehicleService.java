@@ -1,6 +1,7 @@
 package com.example.model.vehicle;
 
 import com.example.model.client.Client;
+import com.example.model.properties.AppProperty;
 import com.example.model.typeAdapter.AppGson;
 import com.example.model.vehicle.response.VehicleResponse;
 import com.google.gson.*;
@@ -14,9 +15,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
+import static com.example.model.properties.AppProperty.*;
+
 public class VehicleService {
     private static final VehicleService instance = new VehicleService();
-    private final Client client = Client.getInstance("http://localhost:8081/");
+    private final Client client = Client.getInstance(getProperties().getProperty("fuel.service.host")+":"+ getProperties().getProperty("fuel.service.port") +"/");
     private final Gson gson = AppGson.getGson();
 
     public static VehicleService getInstance() {

@@ -35,6 +35,7 @@ public class Offices implements TableController {
     @FXML
     void add() {
         AddOffice.controller = this;
+        AddOffice.isEditingForm = false;
         Modal.start(this.getClass(), "addOffice.fxml");
     }
 

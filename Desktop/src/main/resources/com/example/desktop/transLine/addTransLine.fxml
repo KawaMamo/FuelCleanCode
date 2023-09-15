@@ -24,8 +24,8 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="18.0">
                <children>
-                  <Label text="المصدر" />
-                  <Label text="الوجهة" />
+                  <Label style="-fx-border-color: gray;" text="المصدر" />
+                  <Label style="-fx-border-color: gray;" text="الوجهة" />
                   <Label text="القيمة" />
                   <Label text="العملة" />
                </children>

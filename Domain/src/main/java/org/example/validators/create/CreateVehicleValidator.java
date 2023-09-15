@@ -45,7 +45,7 @@ public class CreateVehicleValidator {
             validationErrorDetails.add(new ValidationErrorDetails(SIZE_FIELD, ILLEGAL_VALUE));
         }
 
-        if(request.getTrafficCenter_id()<=0){
+        if(Objects.isNull(request.getTrafficCenter_id()) || request.getTrafficCenter_id()<=0){
             validationErrorDetails.add(new ValidationErrorDetails(TRAFFIC_CENTER, ILLEGAL_VALUE));
         }
 

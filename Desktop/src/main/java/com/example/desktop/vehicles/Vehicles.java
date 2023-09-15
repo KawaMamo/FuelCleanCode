@@ -87,6 +87,7 @@ public class Vehicles implements TableController {
     @FXML
     void add() {
         AddVehicle.controller = this;
+        AddVehicle.isEditingForm = false;
         Modal.start(Vehicles.class, "addVehicle.fxml");
     }
 

@@ -76,6 +76,8 @@ public class AddVehicle {
                     final TrafficCenter trafficCenter = trafficCenters.get(trafficNames.indexOf(trafficCenterTF.getText()));
                     if(Objects.nonNull(trafficCenter))
                         selectedTrafficCenterId = trafficCenter.getId();
+                }else {
+                    selectedTrafficCenterId = null;
                 }
             }
         });
@@ -90,6 +92,8 @@ public class AddVehicle {
                     final Office office = officeList.get(officeNames.indexOf(officeTF.getText()));
                     if(Objects.nonNull(office))
                         selectedOfficeId = office.getId();
+                }else {
+                    selectedOfficeId = null;
                 }
             }
         });
@@ -128,6 +132,7 @@ public class AddVehicle {
                     selectedDriverId));
             controller.addData(vehicle);
         }
+        isEditingForm = false;
         notifyUser(vehicle);
     }
 

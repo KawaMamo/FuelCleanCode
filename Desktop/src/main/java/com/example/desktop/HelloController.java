@@ -15,6 +15,8 @@ import java.net.http.HttpResponse;
 import java.util.Base64;
 import java.util.HashMap;
 
+import static com.example.model.properties.AppProperty.getProperties;
+
 public class HelloController {
     @FXML
     private PasswordField passwordTF;
@@ -22,7 +24,7 @@ public class HelloController {
     private Button submitBtn;
     @FXML
     private TextField usernameTF;
-    private final Client client = Client.getInstance("http://localhost:8089/");
+    private final Client client = Client.getInstance(getProperties().getProperty("identity.provider.host")+":"+ getProperties().getProperty("identity.provider.port") +"/");
 
     @FXML
     void submit() {

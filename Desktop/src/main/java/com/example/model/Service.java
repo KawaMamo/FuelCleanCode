@@ -8,8 +8,10 @@ import org.example.contract.request.update.UpdateGasStationRequest;
 import java.net.http.HttpResponse;
 import java.util.List;
 
+import static com.example.model.properties.AppProperty.getProperties;
+
 public interface Service<T, U, V> {
-    Client client = Client.getInstance("http://localhost:8081/");
+    Client client = Client.getInstance(getProperties().getProperty("fuel.service.host")+":"+ getProperties().getProperty("fuel.service.port") +"/");
     Gson gson = AppGson.getGson();
 
     List<T> getItems(Integer page, Integer size);

@@ -12,10 +12,12 @@ import java.net.http.HttpResponse;
 import java.util.HashMap;
 import java.util.List;
 
+import static com.example.model.properties.AppProperty.getProperties;
+
 public class UserService {
 
     private static final UserService instance = new UserService();
-    Client client = Client.getInstance("http://localhost:8089/");
+    Client client = Client.getInstance(getProperties().getProperty("identity.provider.host")+":"+ getProperties().getProperty("identity.provider.port") +"/");
     private UserMapper userMapper = new UserMapperImpl();
 
     private UserService(){}

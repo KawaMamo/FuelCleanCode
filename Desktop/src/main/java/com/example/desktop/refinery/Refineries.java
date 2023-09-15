@@ -53,6 +53,7 @@ public class Refineries implements TableController {
     @FXML
     void add() {
         AddRefinery.controller = this;
+        AddRefinery.isEditingForm = false;
         Modal.start(this.getClass(), "addRefinery.fxml");
     }
 

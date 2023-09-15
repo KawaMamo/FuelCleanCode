@@ -24,11 +24,11 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="18.0">
                <children>
-                  <Label text="السائق" />
+                  <Label style="-fx-border-color: gray;" text="السائق" />
                   <Label text="رقم اللوحة" />
-                  <Label text="مركز المرور" />
+                  <Label style="-fx-border-color: gray;" text="مركز المرور" />
                   <Label text="الحجم" />
-                  <Label text="المكتب" />
+                  <Label style="-fx-border-color: gray;" text="المكتب" />
                </children>
             </VBox>
          </children>

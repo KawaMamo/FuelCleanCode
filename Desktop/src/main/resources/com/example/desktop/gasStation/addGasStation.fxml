@@ -26,11 +26,11 @@
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="18.0">
                <children>
                   <Label text="الاسم" />
-                  <Label text="المالك" />
-                  <Label text="فئة التسعير" />
+                  <Label style="-fx-border-color: gray;" text="المالك" />
+                  <Label style="-fx-border-color: gray;" text="فئة التسعير" />
                   <Label text="الدين الأقصى" />
-                  <Label text="المنطقة" />
-                  <Label text="المجموعة" />
+                  <Label style="-fx-border-color: gray;" text="المنطقة" />
+                  <Label style="-fx-border-color: gray;" text="المجموعة" />
                </children>
             </VBox>
          </children>

@@ -41,6 +41,7 @@ public class TransLines implements TableController {
     @FXML
     void add() {
         AddTransLine.controller = this;
+        AddTransLine.isEditingForm = false;
         Modal.start(this.getClass(), "addTransLine.fxml");
     }
 

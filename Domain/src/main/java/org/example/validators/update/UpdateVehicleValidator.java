@@ -48,11 +48,11 @@ public class UpdateVehicleValidator {
             validationErrorDetails.add(new ValidationErrorDetails(SIZE_FIELD, ILLEGAL_VALUE));
         }
 
-        if(request.getTrafficCenter_id()<=0){
+        if(Objects.isNull(request.getTrafficCenter_id()) || request.getTrafficCenter_id()<=0){
             validationErrorDetails.add(new ValidationErrorDetails(TRAFFIC_CENTER, ILLEGAL_VALUE));
         }
 
-        if(trafficCenterRepo.findById(request.getTrafficCenter_id()).isEmpty()){
+        if(Objects.nonNull(request.getTrafficCenter_id()) && trafficCenterRepo.findById(request.getTrafficCenter_id()).isEmpty()){
             validationErrorDetails.add(new ValidationErrorDetails(TRAFFIC_CENTER, ELEMENT_NOT_FOUND));
         }
 

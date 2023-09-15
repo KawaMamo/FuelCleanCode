@@ -39,7 +39,7 @@ public class HelloApplication extends Application {
     private static void showError(Thread t, Throwable e) {
         while (e.getCause() instanceof InvocationTargetException)
             e = e.getCause();
-        Notifications.create().title("Error").text(e.getCause().getMessage()).hideAfter(Duration.minutes(10)).showError();
+        Notifications.create().title("Error").text(e.getCause().getMessage()).hideAfter(Duration.minutes(1)).showError();
     }
 
     public static void main(String[] args) {

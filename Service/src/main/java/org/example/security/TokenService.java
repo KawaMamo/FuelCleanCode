@@ -2,7 +2,10 @@ package org.example.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.core.env.Environment;
+import org.springframework.core.env.StandardEnvironment;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.server.ServerWebExchange;
 
@@ -17,12 +20,15 @@ import java.util.*;
 public class TokenService {
 
 
+    @Autowired
+    private Environment env;
     public String test(){
         return "TokenService.test";
     }
 
     public String getIdentityProviderAddress(){
-        return "http://localhost:8089/";
+        final String port = env.getProperty("identity.provider.port");
+        return env.getProperty("identity.provider.host")+":"+port+"/";
     }
 
     public RSAPublicKey getPublicKey(){
