@@ -1,6 +1,7 @@
 package com.example.desktop;
 
 
+import com.example.desktop.category.Categories;
 import com.example.desktop.gasStation.GasStations;
 import com.example.desktop.group.Groups;
 import com.example.desktop.material.Materials;
@@ -198,6 +199,20 @@ public class AdminArea {
         try {
             final Node node = loader.load();
             final Materials controller = loader.getController();
+            workArea.getChildren().clear();
+            workArea.getChildren().add(node);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    void prices(){
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("category/categories.fxml"));
+        try {
+            final Node node = loader.load();
+            final Categories controller = loader.getController();
             workArea.getChildren().clear();
             workArea.getChildren().add(node);
         } catch (IOException e) {

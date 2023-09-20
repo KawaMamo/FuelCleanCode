@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="253.0" prefWidth="338.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.desktop.category.AddCategory">
+   <children>
+      <HBox layoutX="31.0" layoutY="65.0" spacing="50.0">
+         <children>
+            <VBox nodeOrientation="RIGHT_TO_LEFT" spacing="10.0">
+               <children>
+                  <TextField fx:id="priceCategoryTF" />
+                  <TextField fx:id="materialTF" />
+                  <TextField fx:id="amountTF" />
+                  <ChoiceBox fx:id="currencyCB" prefWidth="150.0" />
+                  <Button fx:id="submitBtn" mnemonicParsing="false" onAction="#submit" prefHeight="26.0" prefWidth="150.0" text="تأكيد" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="18.0">
+               <children>
+                  <Label style="-fx-border-color: gray;" text="الفئة" />
+                  <Label style="-fx-border-color: gray;" text="المادة" />
+                  <Label text="القيمة" />
+                  <Label text="العملة" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Label layoutX="95.0" layoutY="24.0" text="ضبط سعر مادة ضمن فئة">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

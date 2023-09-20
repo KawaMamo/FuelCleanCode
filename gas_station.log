@@ -399,3 +399,54 @@
 2023-09-20T13:40:36.461+03:00  INFO 22212 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2023-09-20T13:40:36.463+03:00  INFO 22212 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2023-09-20T13:40:36.470+03:00  INFO 22212 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-09-20T13:40:39.635+03:00  INFO 16616 --- [main] org.example.Main                         : Starting Main using Java 20 with PID 16616 (D:\fuelRefactored\FuelCleanCode\Service\target\classes started by GIGABYTE in D:\fuelRefactored\FuelCleanCode)
+2023-09-20T13:40:39.637+03:00  INFO 16616 --- [main] org.example.Main                         : No active profile set, falling back to 1 default profile: "default"
+2023-09-20T13:40:40.721+03:00  INFO 16616 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-20T13:40:40.877+03:00  INFO 16616 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 148 ms. Found 18 JPA repository interfaces.
+2023-09-20T13:40:41.783+03:00  INFO 16616 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9091 (http)
+2023-09-20T13:40:41.792+03:00  INFO 16616 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-09-20T13:40:41.792+03:00  INFO 16616 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.7]
+2023-09-20T13:40:41.890+03:00  INFO 16616 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-09-20T13:40:41.890+03:00  INFO 16616 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2211 ms
+2023-09-20T13:40:42.157+03:00  INFO 16616 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-20T13:40:42.203+03:00  INFO 16616 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2023-09-20T13:40:42.450+03:00  INFO 16616 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-09-20T13:40:42.592+03:00  INFO 16616 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@25589735
+2023-09-20T13:40:42.594+03:00  INFO 16616 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-09-20T13:40:42.627+03:00  WARN 16616 --- [main] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.0 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 5.7.0. Check the community dialects project for available legacy versions.
+2023-09-20T13:40:42.631+03:00  INFO 16616 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2023-09-20T13:40:43.810+03:00  INFO 16616 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-20T13:40:43.817+03:00  INFO 16616 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-20T13:40:44.798+03:00  WARN 16616 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-09-20T13:40:45.370+03:00  INFO 16616 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2023-09-20T13:40:45.445+03:00  INFO 16616 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9091 (http) with context path ''
+2023-09-20T13:40:45.460+03:00  INFO 16616 --- [main] org.example.Main                         : Started Main in 6.319 seconds (process running for 6.764)
+2023-09-20T13:41:07.520+03:00  INFO 16616 --- [http-nio-9091-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-09-20T13:41:07.520+03:00  INFO 16616 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-09-20T13:41:07.522+03:00  INFO 16616 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-09-20T13:41:07.589+03:00  WARN 16616 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/material/all
+2023-09-20T13:41:07.640+03:00  WARN 16616 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@4d9f26c7
+2023-09-20T13:41:15.363+03:00  WARN 16616 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/material
+2023-09-20T13:41:15.373+03:00  WARN 16616 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/material headers org.apache.tomcat.util.http.ValuesEnumerator@49ad7e96
+2023-09-20T13:48:49.163+03:00  WARN 16616 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/material/all
+2023-09-20T13:48:49.175+03:00  WARN 16616 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@e004615
+2023-09-20T13:48:55.440+03:00  WARN 16616 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/material/all
+2023-09-20T13:48:55.460+03:00  WARN 16616 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@11cb8c4a
+2023-09-20T13:54:51.941+03:00  WARN 16616 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/material/all
+2023-09-20T13:54:51.951+03:00  WARN 16616 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@26fff342
+2023-09-20T13:54:58.350+03:00  WARN 16616 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/material
+2023-09-20T13:54:58.359+03:00  WARN 16616 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/material headers org.apache.tomcat.util.http.ValuesEnumerator@fa88bff
+2023-09-20T13:55:06.732+03:00  WARN 16616 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/material/all
+2023-09-20T13:55:06.741+03:00  WARN 16616 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@787ad12b
+2023-09-20T13:56:46.304+03:00  WARN 16616 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/material/all
+2023-09-20T13:56:46.313+03:00  WARN 16616 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@f588d13
+2023-09-20T13:57:56.209+03:00  WARN 16616 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/material
+2023-09-20T13:57:56.218+03:00  WARN 16616 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/material headers org.apache.tomcat.util.http.ValuesEnumerator@4ab5ac61
+2023-09-20T13:58:01.868+03:00  WARN 16616 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/material
+2023-09-20T13:58:01.876+03:00  WARN 16616 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/material headers org.apache.tomcat.util.http.ValuesEnumerator@5473ff4c
+2023-09-20T14:05:12.215+03:00  WARN 16616 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/material/all
+2023-09-20T14:05:12.225+03:00  WARN 16616 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@1c62ffbc
+2023-09-20T14:05:17.535+03:00  WARN 16616 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/material
+2023-09-20T14:05:17.545+03:00  WARN 16616 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/material headers org.apache.tomcat.util.http.ValuesEnumerator@7b6f52fd
+2023-09-20T14:05:20.966+03:00  WARN 16616 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/material/all
+2023-09-20T14:05:20.974+03:00  WARN 16616 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@7f50acff

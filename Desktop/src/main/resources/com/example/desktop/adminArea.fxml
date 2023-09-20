@@ -10,7 +10,7 @@
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.desktop.AdminArea">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="900.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="1000.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
   </columnConstraints>
   <rowConstraints>
@@ -37,6 +37,7 @@
                   <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#regions" prefHeight="30.0" text="المناطق" />
                   <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#refineries" prefHeight="30.0" text="المصافي" />
                   <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#materials" prefHeight="30.0" text="المواد" />
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#prices" prefHeight="30.0" text="الأسعار" />
                </children>
                <padding>
                   <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />

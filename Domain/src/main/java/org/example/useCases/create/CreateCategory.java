@@ -12,6 +12,7 @@ import org.example.model.PriceCategory;
 import org.example.validators.create.CreateCategoryValidator;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 
 public class CreateCategory {
@@ -37,7 +38,7 @@ public class CreateCategory {
     public CategoryResponse execute(CreateCategoryRequest request){
         validator.validate(request);
         final Category category = mapper.requestToDomain(request);
-        category.setCreatedAt(LocalDateTime.now());
+        category.setCreatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         final Category save = categoryRepo.save(category);
         final Optional<PriceCategory> optionalPriceCategory = priceCategoryRepo.findById(save.getPriceCategory().getId());
         final Optional<Material> material = materialRepo.findById(save.getMaterial().getId());
