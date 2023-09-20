@@ -58,12 +58,14 @@ public class Categories implements TableController {
 
     @FXML
     void pageDown() {
-
+        page.setText(String.valueOf(Integer.parseInt(page.getText())-1));
+        loadData();
     }
 
     @FXML
     void pageUp() {
-
+        page.setText(String.valueOf(Integer.parseInt(page.getText())+1));
+        loadData();
     }
 
     @FXML
@@ -110,7 +112,7 @@ public class Categories implements TableController {
 
     @Override
     public void loadData() {
-        categories = FXCollections.observableArrayList(categoryService.getItems(null, null));
+        categories = FXCollections.observableArrayList(categoryService.getItems(Integer.parseInt(page.getText())-1, 15));
         tableTbl.setItems(categories);
     }
 }

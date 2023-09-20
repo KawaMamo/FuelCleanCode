@@ -9,6 +9,8 @@ import org.example.model.Category;
 import org.example.model.Group;
 
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -22,14 +24,22 @@ public class CategoryService implements Service<Category, CreateCategoryRequest,
     @Override
     public List<Category> getItems(Integer page, Integer size) {
         String getUrl;
+        List<Category> categoryList = null;
         if(Objects.isNull(page)){
             getUrl = getEndPoint()+"/all";
+            final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+            final Category[] categories = gson.fromJson(stringHttpResponse.body(),
+                    Category[].class);
+            categoryList = List.of(categories);
         }else {
-            getUrl = getEndPoint()+"?page="+page+"&size="+size+"&key=name&value=a&operation=%3E&sort=id,desc";
+            getUrl = getEndPoint()+"?page="+page+"&size="+size+"&key=id&value=0&operation=%3E&sort=id,desc";
+            final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+            final CategoryResponseEntity categoryResponseEntity = gson.fromJson(stringHttpResponse.body(),
+                    CategoryResponseEntity.class);
+            if(Objects.nonNull(categoryResponseEntity._embedded))
+                categoryList = categoryResponseEntity._embedded.categoryList;
         }
-        final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
-        final Category[] categories = gson.fromJson(stringHttpResponse.body(), Category[].class);
-        return List.of(categories);
+        return categoryList;
     }
 
     @Override
