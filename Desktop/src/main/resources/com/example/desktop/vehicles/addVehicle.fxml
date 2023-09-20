@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="296.0" prefWidth="338.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.desktop.vehicles.AddVehicle">
+<AnchorPane prefHeight="333.0" prefWidth="338.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.desktop.vehicles.AddVehicle">
    <children>
       <HBox layoutX="31.0" layoutY="65.0" spacing="50.0">
          <children>
@@ -19,6 +19,7 @@
                   <TextField fx:id="trafficCenterTF" />
                   <TextField fx:id="sizeTF" />
                   <TextField fx:id="officeTF" />
+                  <TextField fx:id="turnTF" />
                   <Button fx:id="submitBtn" mnemonicParsing="false" onAction="#submit" prefHeight="26.0" prefWidth="150.0" text="تأكيد" />
                </children>
             </VBox>
@@ -29,6 +30,7 @@
                   <Label style="-fx-border-color: gray;" text="مركز المرور" />
                   <Label text="الحجم" />
                   <Label style="-fx-border-color: gray;" text="المكتب" />
+                  <Label text="الدور" />
                </children>
             </VBox>
          </children>

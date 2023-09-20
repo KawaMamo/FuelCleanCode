@@ -43,19 +43,9 @@ public class VehicleService {
     }
 
     public Vehicle addVehicle(CreateVehicleRequest vehicle){
-        final String payload = getPayload(vehicle);
+        final String payload = gson.toJson(vehicle);
         final HttpResponse<String> httpResponse = client.parallelPost("api/v1/vehicle", payload);
         return gson.fromJson(httpResponse.body(), Vehicle.class);
-    }
-
-    private static String getPayload(CreateVehicleRequest vehicle) {
-        final HashMap<String, String> payloadObj = new HashMap<>();
-        payloadObj.put("plateNumber", vehicle.getPlateNumber());
-        payloadObj.put("trafficCenter_id", String.valueOf(vehicle.getTrafficCenter_id()));
-        payloadObj.put("driver_id", String.valueOf(vehicle.getDriver_id()));
-        payloadObj.put("size", vehicle.getSize().toString());
-        payloadObj.put("office_id", vehicle.getOffice_id().toString());
-        return new Gson().toJson(payloadObj);
     }
 
     public Vehicle editVehicle(UpdateVehicleRequest vehicle){

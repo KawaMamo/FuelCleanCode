@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CreateVehicleRequest implements Request {
+    private Long turn;
     private String plateNumber;
     private Long trafficCenter_id;
     private Integer size;

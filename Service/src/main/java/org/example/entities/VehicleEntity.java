@@ -17,6 +17,8 @@ public class VehicleEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+    @Column(unique = true)
+    private Long turn;
     private String plateNumber;
     @OneToOne
     private TrafficCenterEntity trafficCenter;

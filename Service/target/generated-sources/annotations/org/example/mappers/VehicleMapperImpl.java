@@ -19,7 +19,7 @@ import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-09-20T13:38:01+0300",
+    date = "2023-09-20T23:42:41+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class VehicleMapperImpl implements VehicleMapper {
@@ -33,6 +33,7 @@ public class VehicleMapperImpl implements VehicleMapper {
         VehicleEntity vehicleEntity = new VehicleEntity();
 
         vehicleEntity.setId( vehicle.getId() );
+        vehicleEntity.setTurn( vehicle.getTurn() );
         vehicleEntity.setPlateNumber( vehicle.getPlateNumber() );
         vehicleEntity.setTrafficCenter( domainToEntity( vehicle.getTrafficCenter() ) );
         vehicleEntity.setSize( vehicle.getSize() );
@@ -98,6 +99,7 @@ public class VehicleMapperImpl implements VehicleMapper {
         Vehicle vehicle = new Vehicle();
 
         vehicle.setId( save.getId() );
+        vehicle.setTurn( save.getTurn() );
         vehicle.setPlateNumber( save.getPlateNumber() );
         vehicle.setTrafficCenter( trafficCenterEntityToTrafficCenter( save.getTrafficCenter() ) );
         vehicle.setSize( save.getSize() );

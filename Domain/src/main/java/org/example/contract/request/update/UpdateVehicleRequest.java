@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UpdateVehicleRequest {
     private Long id;
+    private Long turn;
     private String plateNumber;
     private Long trafficCenter_id;
     private Integer size;

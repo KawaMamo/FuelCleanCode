@@ -12,6 +12,7 @@ public class MaterialEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+    @Column(unique = true)
     private String name;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

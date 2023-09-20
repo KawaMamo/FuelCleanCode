@@ -56,6 +56,9 @@ public class Vehicles implements TableController {
         driverCol.setCellValueFactory(
                 data -> new SimpleStringProperty(data.getValue().getDriver().getName()));
 
+        TableColumn<Vehicle, String> turnCol = new TableColumn<>("الدور");
+        turnCol.setCellValueFactory(new PropertyValueFactory<>("turn"));
+
         TableColumn<Vehicle, String> createdAtCol = new TableColumn<>("تاريخ الإنشاء");
         createdAtCol.setCellValueFactory(
                 new PropertyValueFactory<>("createdAt"));
@@ -64,7 +67,7 @@ public class Vehicles implements TableController {
         updatedAtCol.setCellValueFactory(
                 new PropertyValueFactory<>("updatedAt"));
 
-        tableTbl.getColumns().addAll(idCol, plateNumberCol, trafficCenterCol, sizeCol, officeCol, driverCol, createdAtCol, updatedAtCol);
+        tableTbl.getColumns().addAll(idCol, plateNumberCol, trafficCenterCol, sizeCol, officeCol, driverCol, turnCol, createdAtCol, updatedAtCol);
         tableTbl.setItems(vehicles);
     }
 

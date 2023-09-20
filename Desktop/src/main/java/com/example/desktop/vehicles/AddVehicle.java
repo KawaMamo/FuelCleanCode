@@ -37,6 +37,9 @@ public class AddVehicle {
     private TextField sizeTF;
 
     @FXML
+    private TextField turnTF;
+
+    @FXML
     private Button submitBtn;
 
     @FXML
@@ -118,6 +121,7 @@ public class AddVehicle {
         final Vehicle vehicle;
         if(isEditingForm){
             vehicle = vehicleService.editVehicle(new UpdateVehicleRequest(Vehicles.selectedVehicle.getId(),
+                    Long.parseLong(turnTF.getText()),
                     plateNumberTF.getText(),
                     selectedTrafficCenterId,
                     Integer.valueOf(sizeTF.getText()),
@@ -125,7 +129,9 @@ public class AddVehicle {
                     selectedDriverId));
             controller.loadData();
         }else {
-            vehicle = vehicleService.addVehicle(new CreateVehicleRequest(plateNumberTF.getText(),
+            vehicle = vehicleService.addVehicle(new CreateVehicleRequest(
+                    Long.parseLong(turnTF.getText()),
+                    plateNumberTF.getText(),
                     selectedTrafficCenterId,
                     Integer.parseInt(sizeTF.getText()),
                     selectedOfficeId,

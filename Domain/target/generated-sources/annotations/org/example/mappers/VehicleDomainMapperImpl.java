@@ -11,7 +11,7 @@ import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-09-20T13:37:55+0300",
+    date = "2023-09-20T23:42:32+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class VehicleDomainMapperImpl implements VehicleDomainMapper {
@@ -27,6 +27,7 @@ public class VehicleDomainMapperImpl implements VehicleDomainMapper {
         vehicle.setTrafficCenter( createVehicleRequestToTrafficCenter( request ) );
         vehicle.setOffice( createVehicleRequestToOffice( request ) );
         vehicle.setDriver( createVehicleRequestToPerson( request ) );
+        vehicle.setTurn( request.getTurn() );
         vehicle.setPlateNumber( request.getPlateNumber() );
         vehicle.setSize( request.getSize() );
 
@@ -42,6 +43,7 @@ public class VehicleDomainMapperImpl implements VehicleDomainMapper {
         VehicleResponse vehicleResponse = new VehicleResponse();
 
         vehicleResponse.setId( vehicle.getId() );
+        vehicleResponse.setTurn( vehicle.getTurn() );
         vehicleResponse.setPlateNumber( vehicle.getPlateNumber() );
         vehicleResponse.setTrafficCenter( vehicle.getTrafficCenter() );
         vehicleResponse.setSize( vehicle.getSize() );
@@ -65,6 +67,7 @@ public class VehicleDomainMapperImpl implements VehicleDomainMapper {
         vehicle.setOffice( updateVehicleRequestToOffice( request ) );
         vehicle.setDriver( updateVehicleRequestToPerson( request ) );
         vehicle.setId( request.getId() );
+        vehicle.setTurn( request.getTurn() );
         vehicle.setPlateNumber( request.getPlateNumber() );
         vehicle.setSize( request.getSize() );
 
