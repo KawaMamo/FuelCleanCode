@@ -329,8 +329,8 @@ public class Beans {
 
     @Bean
     PlaceTypeDetector placeTypeDetector(GasStationRepo gasStationRepo,
-                                        RefineryRepo refineryRepo){
-        return new PlaceTypeDetector(gasStationRepo, refineryRepo);
+                                        RefineryRepo refineryRepo, RegionRepo regionRepo){
+        return new PlaceTypeDetector(gasStationRepo, refineryRepo, regionRepo);
     }
 
     @Bean
@@ -349,8 +349,8 @@ public class Beans {
     }
 
     @Bean
-    CreateTransLineValidator createTransLineValidator(GasStationRepo gasStationRepo, RefineryRepo refineryRepo){
-        return new CreateTransLineValidator(gasStationRepo, refineryRepo);
+    CreateTransLineValidator createTransLineValidator(GasStationRepo gasStationRepo, RefineryRepo refineryRepo, RegionRepo regionRepo){
+        return new CreateTransLineValidator(gasStationRepo, refineryRepo, regionRepo);
     }
 
     @Bean
@@ -618,8 +618,8 @@ public class Beans {
         return new UpdateTransLine(validator, mapper, transLineRepo, placeTypeDetector);
     }
     @Bean
-    UpdateTransLineValidator updateTransLineValidator(GasStationRepo gasStationRepo, RefineryRepo refineryRepo){
-        return new UpdateTransLineValidator(gasStationRepo, refineryRepo);
+    UpdateTransLineValidator updateTransLineValidator(GasStationRepo gasStationRepo, RefineryRepo refineryRepo, RegionRepo regionRepo){
+        return new UpdateTransLineValidator(gasStationRepo, refineryRepo, regionRepo);
     }
     @Bean
     UpdateTransLog updateTransLog(UpdateTransLogValidator validator, TransLogDomainMapper mapper, TransLogRepo transLogRepo){

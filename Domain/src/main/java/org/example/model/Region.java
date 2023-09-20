@@ -1,12 +1,11 @@
 package org.example.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.time.LocalDateTime;
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class Region {
-    private Long id;
-    private String name;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+public class Region extends Place{
+
 }

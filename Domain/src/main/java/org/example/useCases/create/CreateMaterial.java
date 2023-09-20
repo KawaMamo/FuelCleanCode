@@ -8,6 +8,7 @@ import org.example.model.Material;
 import org.example.validators.create.CreateMaterialValidator;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class CreateMaterial {
     private final CreateMaterialValidator validator;
@@ -23,7 +24,7 @@ public class CreateMaterial {
     public MaterialResponse execute(CreateMaterialRequest request){
         validator.validate(request);
         final Material material = mapper.requestToDomain(request);
-        material.setCreatedAt(LocalDateTime.now());
+        material.setCreatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         final Material save = materialRepo.save(material);
         return mapper.domainToResponse(save);
     }

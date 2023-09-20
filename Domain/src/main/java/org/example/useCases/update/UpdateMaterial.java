@@ -29,7 +29,7 @@ public class UpdateMaterial {
         final Material original = materialRepo.findById(request.getId()).orElseThrow(NoSuchElementException::new);
         updateMaterialValidator.validate(request);
         final Material material = mapper.requestToDomain(request);
-        material.setCreatedAt(original.getCreatedAt());
+        material.setCreatedAt(original.getCreatedAt().truncatedTo(ChronoUnit.SECONDS));
         material.setUpdatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         final Material save = materialRepo.save(material);
         return mapper.domainToResponse(save);

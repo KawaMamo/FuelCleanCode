@@ -2,8 +2,8 @@ package org.example.validators.create;
 
 import org.example.contract.repository.GasStationRepo;
 import org.example.contract.repository.RefineryRepo;
+import org.example.contract.repository.RegionRepo;
 import org.example.contract.request.create.CreateTransLineRequest;
-import org.example.exceptions.DomainValidationException;
 import org.example.exceptions.ValidationErrorDetails;
 import org.example.validators.update.ExceptionThrower;
 
@@ -17,21 +17,27 @@ public class CreateTransLineValidator {
 
     public final GasStationRepo gasStationRepo;
     private final RefineryRepo refineryRepo;
+    private final RegionRepo regionRepo;
 
-    public CreateTransLineValidator(GasStationRepo gasStationRepo, RefineryRepo refineryRepo) {
+    public CreateTransLineValidator(GasStationRepo gasStationRepo, RefineryRepo refineryRepo, RegionRepo regionRepo) {
         this.gasStationRepo = gasStationRepo;
 
         this.refineryRepo = refineryRepo;
+        this.regionRepo = regionRepo;
     }
 
     public void validate(CreateTransLineRequest request){
         Set<ValidationErrorDetails> errorDetails = new HashSet<>();
 
-        if (gasStationRepo.findById(request.getDestinationId()).isEmpty() && refineryRepo.findById(request.getDestinationId()).isEmpty()) {
+        if (gasStationRepo.findById(request.getDestinationId()).isEmpty()
+                && refineryRepo.findById(request.getDestinationId()).isEmpty()
+                && regionRepo.findById(request.getDestinationId()).isEmpty()) {
             errorDetails.add(new ValidationErrorDetails(DESTINATION_FIELD, ELEMENT_NOT_FOUND));
         }
 
-        if (refineryRepo.findById(request.getSourceId()).isEmpty() && gasStationRepo.findById(request.getSourceId()).isEmpty()) {
+        if (refineryRepo.findById(request.getSourceId()).isEmpty()
+                && gasStationRepo.findById(request.getSourceId()).isEmpty()
+                && regionRepo.findById(request.getSourceId()).isEmpty()) {
             errorDetails.add(new ValidationErrorDetails(SOURCE_FIELD, ELEMENT_NOT_FOUND));
         }
 

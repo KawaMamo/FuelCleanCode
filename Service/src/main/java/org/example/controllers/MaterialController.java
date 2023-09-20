@@ -48,7 +48,7 @@ public class MaterialController {
     }
 
     @PostMapping
-    MaterialResponse createMaterial(CreateMaterialRequest request){
+    MaterialResponse createMaterial(@RequestBody CreateMaterialRequest request){
         return createMaterial.execute(request);
     }
 

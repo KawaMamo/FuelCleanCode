@@ -2,6 +2,7 @@ package org.example.validators.update;
 
 import org.example.contract.repository.GasStationRepo;
 import org.example.contract.repository.RefineryRepo;
+import org.example.contract.repository.RegionRepo;
 import org.example.contract.request.update.UpdateTransLineRequest;
 import org.example.exceptions.ValidationErrorDetails;
 
@@ -16,11 +17,13 @@ public class UpdateTransLineValidator {
 
     public final GasStationRepo gasStationRepo;
     private final RefineryRepo refineryRepo;
+    private final RegionRepo regionRepo;
 
-    public UpdateTransLineValidator(GasStationRepo gasStationRepo, RefineryRepo refineryRepo) {
+    public UpdateTransLineValidator(GasStationRepo gasStationRepo, RefineryRepo refineryRepo, RegionRepo regionRepo) {
         this.gasStationRepo = gasStationRepo;
 
         this.refineryRepo = refineryRepo;
+        this.regionRepo = regionRepo;
     }
 
     public void validate(UpdateTransLineRequest request){
@@ -30,11 +33,15 @@ public class UpdateTransLineValidator {
             errorDetails.add(new ValidationErrorDetails(ID_FIELD, NULL_ERROR_MSG));
         }
 
-        if (gasStationRepo.findById(request.getDestinationId()).isEmpty() && refineryRepo.findById(request.getDestinationId()).isEmpty()) {
+        if (gasStationRepo.findById(request.getDestinationId()).isEmpty()
+                && refineryRepo.findById(request.getDestinationId()).isEmpty()
+                && regionRepo.findById(request.getDestinationId()).isEmpty()) {
             errorDetails.add(new ValidationErrorDetails(DESTINATION_FIELD, ELEMENT_NOT_FOUND));
         }
 
-        if (refineryRepo.findById(request.getSourceId()).isEmpty() && gasStationRepo.findById(request.getSourceId()).isEmpty()) {
+        if (refineryRepo.findById(request.getSourceId()).isEmpty()
+                && gasStationRepo.findById(request.getSourceId()).isEmpty()
+                && regionRepo.findById(request.getSourceId()).isEmpty()) {
             errorDetails.add(new ValidationErrorDetails(SOURCE_FIELD, ELEMENT_NOT_FOUND));
         }
 

@@ -3,6 +3,7 @@ package com.example.desktop;
 
 import com.example.desktop.gasStation.GasStations;
 import com.example.desktop.group.Groups;
+import com.example.desktop.material.Materials;
 import com.example.desktop.office.Offices;
 import com.example.desktop.person.Persons;
 import com.example.desktop.priceCategory.PriceCategories;
@@ -183,6 +184,20 @@ public class AdminArea {
         try {
             final Node node = loader.load();
             final Refineries controller = loader.getController();
+            workArea.getChildren().clear();
+            workArea.getChildren().add(node);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    void materials(){
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("material/materials.fxml"));
+        try {
+            final Node node = loader.load();
+            final Materials controller = loader.getController();
             workArea.getChildren().clear();
             workArea.getChildren().add(node);
         } catch (IOException e) {

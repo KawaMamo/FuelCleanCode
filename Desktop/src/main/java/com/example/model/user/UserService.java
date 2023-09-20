@@ -37,8 +37,14 @@ public class UserService {
         return userMapper.toDomain(userResponseList);
     }
 
-    public boolean update(User user, Long id){
-        return true;
+    public boolean update(User user, Long id, String oldPassword){
+        final HashMap<String, String> payloadObj = new HashMap<>();
+        payloadObj.put("id", user.getId().toString());
+        payloadObj.put("oldPassword", oldPassword);
+        payloadObj.put("newPassword", user.getPassword());
+        final String payload = new Gson().toJson(payloadObj);
+        final HttpResponse<String> changePassword = client.parallelPost("api/v1/users/changePassword", payload);
+        return changePassword.statusCode() == 200;
     }
 
     public boolean block(User user, boolean lock){
@@ -46,7 +52,7 @@ public class UserService {
         payloadObj.put("email", user.getEmail());
         payloadObj.put("locked", String.valueOf(lock));
         final String payload = new Gson().toJson(payloadObj);
-        final HttpResponse<String> post = client.post("api/v1/users/block", payload);
+        final HttpResponse<String> post = client.parallelPost("api/v1/users/block", payload);
         if(post.statusCode()!= 200) {
             Notifications.create().text(post.body()).title("Error").showError();
         }else {

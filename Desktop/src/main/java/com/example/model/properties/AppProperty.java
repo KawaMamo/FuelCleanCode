@@ -6,7 +6,6 @@ import java.util.Properties;
 
 public class AppProperty {
     private static final Properties properties = new Properties();
-
     public static Properties getProperties() {
         try {
             properties.load(new FileInputStream("Desktop/src/main/resources/application.properties"));

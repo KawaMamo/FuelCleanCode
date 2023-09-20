@@ -24,6 +24,7 @@ public class RegionAdapter implements RegionRepo {
     public Region save(Region region) {
         final RegionEntity regionEntity = mapper.domainToEntity(region);
         regionEntity.setCreatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
+        regionEntity.setPlaceType("Region");
         final RegionEntity save = repository.save(regionEntity);
         return mapper.entityToDomain(save);
     }

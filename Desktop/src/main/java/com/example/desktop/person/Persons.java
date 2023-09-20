@@ -107,7 +107,7 @@ public class Persons implements TableController {
         nationalIdCol.setCellValueFactory(data-> new SimpleStringProperty(data.getValue().getNationalId()));
 
         TableColumn<Person, String> birthPlaceCol = new TableColumn<>("الميلاد");
-        birthPlaceCol.setCellValueFactory(data-> new SimpleStringProperty(data.getValue().getBirthPlace()));
+        birthPlaceCol.setCellValueFactory(data-> new SimpleStringProperty(data.getValue().getBirthDate().toString()));
 
         TableColumn<Person, String> birthDateCol = new TableColumn<>("مكان الولادة");
         birthDateCol.setCellValueFactory(data-> new SimpleStringProperty(data.getValue().getBirthPlace()));

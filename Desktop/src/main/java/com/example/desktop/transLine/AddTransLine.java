@@ -4,6 +4,7 @@ import com.example.model.TableController;
 import com.example.model.gasStation.GasStationService;
 import com.example.model.modal.Modal;
 import com.example.model.refinery.RefineryService;
+import com.example.model.region.RegionService;
 import com.example.model.transLine.TransLineService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,10 +14,7 @@ import org.controlsfx.control.Notifications;
 import org.controlsfx.control.textfield.TextFields;
 import org.example.contract.request.create.CreateTransLineRequest;
 import org.example.contract.request.update.UpdateTransLineRequest;
-import org.example.model.GasStation;
-import org.example.model.Place;
-import org.example.model.Refinery;
-import org.example.model.TransLine;
+import org.example.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +41,7 @@ public class AddTransLine {
 
     private final GasStationService gasStationService = GasStationService.getInstance();
     private final RefineryService refineryService = RefineryService.getInstance();
+    private final RegionService regionService = RegionService.getInstance();
     private final TransLineService transLineService = TransLineService.getInstance();
 
     private Long selectedSourceId;
@@ -55,12 +54,14 @@ public class AddTransLine {
         List<Place> places = new ArrayList<Place>();
         final List<Refinery> refineries = refineryService.getItems(null, null);
         final List<GasStation> stations = gasStationService.getItems(null, null);
+        final List<Region> regions = regionService.getItems(null, null);
 
         List<String> placeNames = new ArrayList<String>();
-        if(Objects.nonNull(refineries) && Objects.nonNull(stations)) {
+        if(Objects.nonNull(refineries) && Objects.nonNull(stations) && Objects.nonNull(regions)) {
 
             places.addAll(refineries);
             places.addAll(stations);
+            places.addAll(regions);
 
             placeNames.addAll(places.stream().map(Place::getName).toList());
             TextFields.bindAutoCompletion(sourceTF, placeNames);

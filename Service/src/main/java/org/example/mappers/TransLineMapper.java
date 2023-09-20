@@ -1,13 +1,7 @@
 package org.example.mappers;
 
-import org.example.entities.GasStationEntity;
-import org.example.entities.PlaceEntity;
-import org.example.entities.RefineryEntity;
-import org.example.entities.TransLineEntity;
-import org.example.model.GasStation;
-import org.example.model.Place;
-import org.example.model.Refinery;
-import org.example.model.TransLine;
+import org.example.entities.*;
+import org.example.model.*;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
@@ -34,8 +28,15 @@ public interface TransLineMapper {
         if(source instanceof Refinery){
             return refineryToEntity((Refinery) source);
         }
+
+        if(source instanceof Region){
+            return RegionToEntity((Region) source);
+        }
         return null;
     }
+
+    RegionEntity RegionToEntity(Region source);
+
     GasStationEntity stationToEntity(GasStation gasStation);
     RefineryEntity refineryToEntity(Refinery refinery);
 
@@ -48,8 +49,14 @@ public interface TransLineMapper {
         if(source instanceof RefineryEntity){
             return refineryToDomain((RefineryEntity) source);
         }
+        
+        if(source instanceof RegionEntity){
+            return RegionToDomain((RegionEntity) source);
+        }
         return null;
     }
+
+    Region RegionToDomain(RegionEntity source);
 
     GasStation stationToDomain(GasStationEntity gasStation);
     Refinery refineryToDomain(RefineryEntity refinery);

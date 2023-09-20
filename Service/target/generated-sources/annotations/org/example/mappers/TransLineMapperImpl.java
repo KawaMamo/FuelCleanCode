@@ -19,7 +19,7 @@ import org.example.model.TransLine;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-09-15T14:52:18+0300",
+    date = "2023-09-20T13:38:02+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class TransLineMapperImpl implements TransLineMapper {
@@ -62,6 +62,23 @@ public class TransLineMapperImpl implements TransLineMapper {
     }
 
     @Override
+    public RegionEntity RegionToEntity(Region source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        RegionEntity regionEntity = new RegionEntity();
+
+        regionEntity.setId( source.getId() );
+        regionEntity.setPlaceType( source.getPlaceType() );
+        regionEntity.setCreatedAt( source.getCreatedAt() );
+        regionEntity.setUpdatedAt( source.getUpdatedAt() );
+        regionEntity.setName( source.getName() );
+
+        return regionEntity;
+    }
+
+    @Override
     public GasStationEntity stationToEntity(GasStation gasStation) {
         if ( gasStation == null ) {
             return null;
@@ -76,7 +93,7 @@ public class TransLineMapperImpl implements TransLineMapper {
         gasStationEntity.setName( gasStation.getName() );
         gasStationEntity.setPriceCategory( priceCategoryToPriceCategoryEntity( gasStation.getPriceCategory() ) );
         gasStationEntity.setDebtLimit( gasStation.getDebtLimit() );
-        gasStationEntity.setRegion( regionToRegionEntity( gasStation.getRegion() ) );
+        gasStationEntity.setRegion( RegionToEntity( gasStation.getRegion() ) );
         gasStationEntity.setOwner( personToPersonEntity( gasStation.getOwner() ) );
         gasStationEntity.setGroup( groupToGroupEntity( gasStation.getGroup() ) );
 
@@ -101,6 +118,23 @@ public class TransLineMapperImpl implements TransLineMapper {
     }
 
     @Override
+    public Region RegionToDomain(RegionEntity source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        Region region = new Region();
+
+        region.setId( source.getId() );
+        region.setName( source.getName() );
+        region.setPlaceType( source.getPlaceType() );
+        region.setCreatedAt( source.getCreatedAt() );
+        region.setUpdatedAt( source.getUpdatedAt() );
+
+        return region;
+    }
+
+    @Override
     public GasStation stationToDomain(GasStationEntity gasStation) {
         if ( gasStation == null ) {
             return null;
@@ -115,7 +149,7 @@ public class TransLineMapperImpl implements TransLineMapper {
         gasStation1.setUpdatedAt( gasStation.getUpdatedAt() );
         gasStation1.setPriceCategory( priceCategoryEntityToPriceCategory( gasStation.getPriceCategory() ) );
         gasStation1.setDebtLimit( gasStation.getDebtLimit() );
-        gasStation1.setRegion( regionEntityToRegion( gasStation.getRegion() ) );
+        gasStation1.setRegion( RegionToDomain( gasStation.getRegion() ) );
         gasStation1.setOwner( personEntityToPerson( gasStation.getOwner() ) );
         gasStation1.setGroup( groupEntityToGroup( gasStation.getGroup() ) );
 
@@ -197,21 +231,6 @@ public class TransLineMapperImpl implements TransLineMapper {
         return priceCategoryEntity;
     }
 
-    protected RegionEntity regionToRegionEntity(Region region) {
-        if ( region == null ) {
-            return null;
-        }
-
-        RegionEntity regionEntity = new RegionEntity();
-
-        regionEntity.setId( region.getId() );
-        regionEntity.setName( region.getName() );
-        regionEntity.setCreatedAt( region.getCreatedAt() );
-        regionEntity.setUpdatedAt( region.getUpdatedAt() );
-
-        return regionEntity;
-    }
-
     protected PersonEntity personToPersonEntity(Person person) {
         if ( person == null ) {
             return null;
@@ -260,21 +279,6 @@ public class TransLineMapperImpl implements TransLineMapper {
         priceCategory.setUpdatedAt( priceCategoryEntity.getUpdatedAt() );
 
         return priceCategory;
-    }
-
-    protected Region regionEntityToRegion(RegionEntity regionEntity) {
-        if ( regionEntity == null ) {
-            return null;
-        }
-
-        Region region = new Region();
-
-        region.setId( regionEntity.getId() );
-        region.setName( regionEntity.getName() );
-        region.setCreatedAt( regionEntity.getCreatedAt() );
-        region.setUpdatedAt( regionEntity.getUpdatedAt() );
-
-        return region;
     }
 
     protected Person personEntityToPerson(PersonEntity personEntity) {

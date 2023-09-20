@@ -26,7 +26,7 @@ public class ResetPassword {
             if(LogInData.loggedInUser.getPassword().equals(oldPassword.getText())){
                 if(newPassword.getText().equals(repeatPassword.getText())){
                     LogInData.loggedInUser.setPassword(newPassword.getText());
-                    userService.update(LogInData.loggedInUser, LogInData.loggedInUser.getId());
+                    userService.update(LogInData.loggedInUser, LogInData.loggedInUser.getId(), oldPassword.getText());
                     message ="success";
                 }else message = "two passwords do not match";
             }else message = "wrong password";
