@@ -9,6 +9,7 @@ import org.example.contract.request.update.UpdatePriceCategoryRequest;
 import org.example.model.PriceCategory;
 
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
@@ -24,13 +25,16 @@ public class PriceCategoryService implements Service<PriceCategory, CreatePriceC
         String getUrl;
         if(Objects.isNull(page)){
             getUrl = getEndPoint()+"/all";
+            final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+            return List.of(gson.fromJson(stringHttpResponse.body(), PriceCategory[].class));
         }else {
-            getUrl = getEndPoint()+"?page="+page+"&size="+size+"&key=name&value=a&operation=%3E&sort=id,desc";
+            getUrl = getEndPoint()+"?page="+page+"&size="+size+"&key=id&value=0&operation=%3E&sort=id,desc";
+            final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+            final PriceCategoryResponseEntity priceCategoryResponseEntity = gson.fromJson(stringHttpResponse.body(), PriceCategoryResponseEntity.class);
+            if(Objects.nonNull(priceCategoryResponseEntity._embedded))
+                return priceCategoryResponseEntity._embedded.priceCategoryList;
         }
-
-        final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
-        final PriceCategory[] priceCategories = gson.fromJson(stringHttpResponse.body(), PriceCategory[].class);
-        return List.of(priceCategories);
+        return new ArrayList<>();
     }
 
     @Override

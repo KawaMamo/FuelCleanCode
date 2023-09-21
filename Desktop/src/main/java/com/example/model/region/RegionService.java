@@ -7,6 +7,7 @@ import org.example.contract.request.update.UpdateRegionRequest;
 import org.example.model.Region;
 
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -20,13 +21,16 @@ public class RegionService implements Service<Region, CreateRegionRequest, Updat
         String getUrl;
         if(Objects.isNull(page)){
             getUrl = getEndPoint()+"/all";
+            final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+            return List.of(gson.fromJson(stringHttpResponse.body(), Region[].class));
         }else {
-            getUrl = getEndPoint()+"?page="+page+"&size="+size+"&key=name&value=a&operation=%3E&sort=id,desc";
+            getUrl = getEndPoint()+"?page="+page+"&size="+size+"&key=id&value=0&operation=%3E&sort=id,desc";
+            final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+            final RegionResponseEntity regionResponse = gson.fromJson(stringHttpResponse.body(), RegionResponseEntity.class);
+            if(Objects.nonNull(regionResponse._embedded))
+                return regionResponse._embedded.regionList;
         }
-
-        final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
-        final Region[] regions = gson.fromJson(stringHttpResponse.body(), Region[].class);
-        return List.of(regions);
+        return new ArrayList<>();
     }
 
     @Override

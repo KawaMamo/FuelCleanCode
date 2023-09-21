@@ -8,6 +8,7 @@ import org.example.model.GasStation;
 import org.example.model.Refinery;
 
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -21,13 +22,16 @@ public class RefineryService implements Service<Refinery, CreateRefineryRequest,
         String getUrl;
         if(Objects.isNull(page)){
             getUrl = getEndPoint()+"/all";
+            final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+            return List.of(gson.fromJson(stringHttpResponse.body(), Refinery[].class));
         }else {
-            getUrl = getEndPoint()+"?page="+page+"&size="+size+"&key=name&value=a&operation=%3E&sort=id,desc";
+            getUrl = getEndPoint()+"?page="+page+"&size="+size+"&key=id&value=0&operation=%3E&sort=id,desc";
+            final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+            final RefineryResponseEntity refineryResponseEntity = gson.fromJson(stringHttpResponse.body(), RefineryResponseEntity.class);
+            if(Objects.nonNull(refineryResponseEntity._embedded))
+                return refineryResponseEntity._embedded.refineryList;
         }
-
-        final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
-        final Refinery[] refineries = gson.fromJson(stringHttpResponse.body(), Refinery[].class);
-        return List.of(refineries);
+        return new ArrayList<>();
     }
 
     @Override

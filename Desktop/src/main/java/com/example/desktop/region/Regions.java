@@ -13,6 +13,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.model.Region;
 
+import java.util.List;
+import java.util.Objects;
+
 public class Regions implements TableController {
 
     @FXML
@@ -73,12 +76,14 @@ public class Regions implements TableController {
 
     @FXML
     void pageDown() {
-
+        page.setText(String.valueOf(Integer.parseInt(page.getText())-1));
+        loadData();
     }
 
     @FXML
     void pageUp() {
-
+        page.setText(String.valueOf(Integer.parseInt(page.getText())+1));
+        loadData();
     }
 
     @FXML
@@ -100,7 +105,10 @@ public class Regions implements TableController {
 
     @Override
     public void loadData() {
-        regions = FXCollections.observableArrayList(regionService.getItems(null, null));
+        final List<Region> items = regionService.getItems(Integer.parseInt(page.getText()) - 1, 15);
+        if(Objects.nonNull(items))
+            regions = FXCollections.observableArrayList(items);
+        else regions = null;
         tableTbl.setItems(regions);
     }
 }

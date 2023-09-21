@@ -15,6 +15,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.model.GasStation;
 
 import java.text.NumberFormat;
+import java.util.List;
+import java.util.Objects;
 
 public class GasStations implements TableController {
 
@@ -59,20 +61,14 @@ public class GasStations implements TableController {
 
     @FXML
     void pageDown() {
-        int newPage = Integer.parseInt(page.getText())-1;
-        page.setText(String.valueOf(newPage));
-        tableTbl.getItems().clear();
+        page.setText(String.valueOf(Integer.parseInt(page.getText())-1));
         loadData();
-        tableTbl.setItems(gasStations);
     }
 
     @FXML
     void pageUp() {
-        int newPage = Integer.parseInt(page.getText())+1;
-        page.setText(String.valueOf(newPage));
-        tableTbl.getItems().clear();
+        page.setText(String.valueOf(Integer.parseInt(page.getText())+1));
         loadData();
-        tableTbl.setItems(gasStations);
     }
 
     @FXML
@@ -128,7 +124,10 @@ public class GasStations implements TableController {
     }
 
     public void loadData() {
-        gasStations = FXCollections.observableArrayList(gasStationService.getItems(null, null));
+        final List<GasStation> items = gasStationService.getItems(Integer.parseInt(page.getText()) - 1, 15);
+        if(Objects.nonNull(items))
+            gasStations = FXCollections.observableArrayList(items);
+        else gasStations = null;
         tableTbl.setItems(gasStations);
     }
 }

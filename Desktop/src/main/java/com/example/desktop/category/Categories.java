@@ -14,6 +14,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.model.Category;
 
+import java.util.List;
+import java.util.Objects;
+
 public class Categories implements TableController {
 
     private static ObservableList<Category> categories;
@@ -112,7 +115,10 @@ public class Categories implements TableController {
 
     @Override
     public void loadData() {
-        categories = FXCollections.observableArrayList(categoryService.getItems(Integer.parseInt(page.getText())-1, 15));
+        final List<Category> items = categoryService.getItems(Integer.parseInt(page.getText()) - 1, 15);
+        if(Objects.nonNull(items))
+            categories = FXCollections.observableArrayList(items);
+        else categories = null;
         tableTbl.setItems(categories);
     }
 }

@@ -11,6 +11,7 @@ import org.example.mappers.PersonDomainMapper;
 import org.example.model.Person;
 
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -25,12 +26,16 @@ public class PersonService implements Service<Person, CreatePersonRequest, Updat
         String getUrl;
         if(Objects.isNull(page)){
             getUrl = getEndPoint()+"/all";
+            final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+            return List.of(gson.fromJson(stringHttpResponse.body(), Person[].class));
         }else {
             getUrl = getEndPoint()+"?page="+page+"&size="+size+"&key=id&value=0&operation=%3E&test.test=1&sort=id,desc";
+            final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+            final PersonResponse personResponse = gson.fromJson(stringHttpResponse.body(), PersonResponse.class);
+            if(Objects.nonNull(personResponse._embedded))
+                return personResponse._embedded.personList;
         }
-        final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
-        final List<Person> people = Arrays.stream(gson.fromJson(stringHttpResponse.body(), Person[].class)).toList();
-        return people;
+        return new ArrayList<>();
     }
 
     public static PersonService getInstance(){

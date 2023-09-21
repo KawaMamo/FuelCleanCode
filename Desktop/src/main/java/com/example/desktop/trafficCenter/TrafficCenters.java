@@ -14,6 +14,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.model.TrafficCenter;
 
+import java.util.List;
+import java.util.Objects;
+
 public class TrafficCenters implements TableController {
 
     @FXML
@@ -76,12 +79,14 @@ public class TrafficCenters implements TableController {
 
     @FXML
     void pageDown() {
-
+        page.setText(String.valueOf(Integer.parseInt(page.getText())-1));
+        loadData();
     }
 
     @FXML
     void pageUp() {
-
+        page.setText(String.valueOf(Integer.parseInt(page.getText())+1));
+        loadData();
     }
 
     @FXML
@@ -102,7 +107,10 @@ public class TrafficCenters implements TableController {
 
     @Override
     public void loadData() {
-        trafficCenters = FXCollections.observableArrayList(trafficCenterService.getItems(null, null));
+        final List<TrafficCenter> items = trafficCenterService.getItems(Integer.parseInt(page.getText()) - 1, 15);
+        if(Objects.nonNull(items))
+            trafficCenters = FXCollections.observableArrayList(items);
+        else trafficCenters = null;
         tableTbl.setItems(trafficCenters);
     }
 }

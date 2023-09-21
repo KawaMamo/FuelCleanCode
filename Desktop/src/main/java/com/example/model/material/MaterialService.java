@@ -7,6 +7,7 @@ import org.example.contract.request.update.UpdateMaterialRequest;
 import org.example.model.Material;
 
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -22,13 +23,16 @@ public class MaterialService implements Service<Material, CreateMaterialRequest,
         String getUrl;
         if(Objects.isNull(page)){
             getUrl = getEndPoint()+"/all";
+            final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+            return List.of(gson.fromJson(stringHttpResponse.body(), Material[].class));
         }else {
             getUrl = getEndPoint()+"?page="+page+"&size="+size+"&key=name&value=a&operation=%3E&sort=id,desc";
+            final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+            final MaterialResponseEntity materialResponse = gson.fromJson(stringHttpResponse.body(), MaterialResponseEntity.class);
+            if(Objects.nonNull(materialResponse._embedded))
+                return materialResponse._embedded.materialList;
         }
-
-        final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
-        final Material[] materials = gson.fromJson(stringHttpResponse.body(), Material[].class);
-        return List.of(materials);
+        return new ArrayList<>();
     }
 
     @Override

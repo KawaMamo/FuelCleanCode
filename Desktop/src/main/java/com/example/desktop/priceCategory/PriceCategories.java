@@ -13,6 +13,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.model.PriceCategory;
 
+import java.util.List;
+import java.util.Objects;
+
 public class PriceCategories implements TableController {
     @FXML
     private TextField page;
@@ -53,12 +56,14 @@ public class PriceCategories implements TableController {
 
     @FXML
     void pageDown() {
-
+        page.setText(String.valueOf(Integer.parseInt(page.getText())-1));
+        loadData();
     }
 
     @FXML
     void pageUp() {
-
+        page.setText(String.valueOf(Integer.parseInt(page.getText())+1));
+        loadData();
     }
 
     @FXML
@@ -79,7 +84,10 @@ public class PriceCategories implements TableController {
     }
 
     public void loadData() {
-        priceCategories = FXCollections.observableArrayList(priceCategoryService.getItems(null, null));
+        final List<PriceCategory> items = priceCategoryService.getItems(Integer.parseInt(page.getText()) - 1, 15);
+        if(Objects.nonNull(items))
+            priceCategories = FXCollections.observableArrayList(items);
+        else priceCategories = null;
         tableTbl.setItems(priceCategories);
     }
 

@@ -7,6 +7,7 @@ import org.example.contract.request.update.UpdateOfficeRequest;
 import org.example.model.Office;
 
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -24,12 +25,16 @@ public class OfficeService implements Service<Office, CreateOfficeRequest, Updat
         String getUrl;
         if(Objects.isNull(page)){
             getUrl = getEndPoint()+"/all";
+            final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+            return List.of(gson.fromJson(stringHttpResponse.body(), Office[].class));
         }else {
-            getUrl = getEndPoint()+"?page="+page+"&size="+size+"&key=name&value=a&operation=%3E&sort=id,desc";
+            getUrl = getEndPoint()+"?page="+page+"&size="+size+"&key=id&value=0&operation=%3E&sort=id,desc";
+            final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+            final OfficeResponseEntity officeResponseEntity = gson.fromJson(stringHttpResponse.body(), OfficeResponseEntity.class);
+            if(Objects.nonNull(officeResponseEntity._embedded))
+                return officeResponseEntity._embedded.officeList;
         }
-        final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
-        final Office[] offices = gson.fromJson(stringHttpResponse.body(), Office[].class);
-        return List.of(offices);
+        return new ArrayList<>();
     }
 
     @Override

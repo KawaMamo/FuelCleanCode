@@ -111,20 +111,14 @@ public class Vehicles implements TableController {
 
     @FXML
     void pageDown() {
-        int newPage = Integer.parseInt(page.getText())-1;
-        page.setText(String.valueOf(newPage));
-        tableTbl.getItems().clear();
+        page.setText(String.valueOf(Integer.parseInt(page.getText())-1));
         loadData();
-        tableTbl.setItems(vehicles);
     }
 
     @FXML
     void pageUp() {
-        int newPage = Integer.parseInt(page.getText())+1;
-        page.setText(String.valueOf(newPage));
-        tableTbl.getItems().clear();
+        page.setText(String.valueOf(Integer.parseInt(page.getText())+1));
         loadData();
-        tableTbl.setItems(vehicles);
     }
 
     @FXML

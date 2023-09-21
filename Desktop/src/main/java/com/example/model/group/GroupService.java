@@ -8,6 +8,7 @@ import org.example.contract.request.update.UpdateGroupRequest;
 import org.example.model.Group;
 
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
@@ -23,13 +24,16 @@ public class GroupService implements Service<Group, CreateGroupRequest, UpdateGr
         String getUrl;
         if(Objects.isNull(page)){
             getUrl = getEndPoint()+"/all";
+            final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+            return List.of(gson.fromJson(stringHttpResponse.body(), Group[].class));
         }else {
-            getUrl = getEndPoint()+"?page="+page+"&size="+size+"&key=name&value=a&operation=%3E&sort=id,desc";
+            getUrl = getEndPoint()+"?page="+page+"&size="+size+"&key=id&value=0&operation=%3E&sort=id,desc";
+            final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+            final GroupResponseEntity groupResponse = gson.fromJson(stringHttpResponse.body(), GroupResponseEntity.class);
+            if (Objects.nonNull(groupResponse._embedded))
+                return groupResponse._embedded.groupList;
         }
-
-        final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
-        final Group[] groups = gson.fromJson(stringHttpResponse.body(), Group[].class);
-        return List.of(groups);
+        return new ArrayList<>();
     }
 
     @Override

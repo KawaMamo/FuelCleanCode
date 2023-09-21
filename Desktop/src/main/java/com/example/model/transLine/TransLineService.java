@@ -8,6 +8,7 @@ import org.example.contract.request.update.UpdateTransLineRequest;
 import org.example.model.TransLine;
 
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
@@ -24,13 +25,16 @@ public class TransLineService implements Service<TransLine, CreateTransLineReque
         String getUrl;
         if(Objects.isNull(page)){
             getUrl = getEndPoint()+"/all";
+            final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+            return List.of(gson.fromJson(stringHttpResponse.body(), TransLine[].class));
         }else {
-            getUrl = getEndPoint()+"?page="+page+"&size="+size+"&key=source&value=a&operation=%3E&sort=id,desc";
+            getUrl = getEndPoint()+"?page="+page+"&size="+size+"&key=id&value=0&operation=%3E&sort=id,desc";
+            final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+            final TransLineResponseEntity transLineResponse = gson.fromJson(stringHttpResponse.body(), TransLineResponseEntity.class);
+            if(Objects.nonNull(transLineResponse._embedded))
+                return transLineResponse._embedded.transLineList;
         }
-
-        final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
-        final TransLine[] transLines = gson.fromJson(stringHttpResponse.body(), TransLine[].class);
-        return List.of(transLines);
+        return new ArrayList<>();
     }
 
     @Override

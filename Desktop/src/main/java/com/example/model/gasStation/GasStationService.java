@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
+
 public class GasStationService implements Service<GasStation, CreateGasStationRequest, UpdateGasStationRequest> {
     private static final GasStationService INSTANCE = new GasStationService();
 
@@ -20,16 +21,22 @@ public class GasStationService implements Service<GasStation, CreateGasStationRe
     }
     @Override
     public List<GasStation> getItems(Integer page, Integer size) {
-        String getUrl;
+        String getUrl = getEndPoint();
         if(Objects.isNull(page)){
-            getUrl = getEndPoint()+"/all";
+            getUrl += "/all";
+            final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+            final GasStation[] gasStations = gson.fromJson(stringHttpResponse.body(), GasStation[].class);
+            return List.of(gasStations);
         }else {
-            getUrl = getEndPoint()+"?page="+page+"&size="+size+"&key=name&value=a&operation=%3E&sort=id,desc";
+            getUrl += "?page="+page+"&size="+size+"&key=id&value=0&operation=%3E&sort=id,desc";
+            final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+            final GasStationResponseEntity gasStationResponseEntity;
+            gasStationResponseEntity = gson.fromJson(stringHttpResponse.body(), GasStationResponseEntity.class);
+            if(Objects.nonNull(gasStationResponseEntity._embedded)){
+                return gasStationResponseEntity._embedded.gasStationList;
+            }
         }
-
-        final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
-        final GasStation[] gasStations = gson.fromJson(stringHttpResponse.body(), GasStation[].class);
-        return List.of(gasStations);
+        return null;
     }
 
     @Override

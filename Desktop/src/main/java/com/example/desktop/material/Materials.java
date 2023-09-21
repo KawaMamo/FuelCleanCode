@@ -13,6 +13,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import org.example.model.Material;
 
+import java.util.List;
+import java.util.Objects;
+
 public class Materials implements TableController {
 
     @FXML
@@ -65,12 +68,14 @@ public class Materials implements TableController {
 
     @FXML
     void pageDown() {
-
+        page.setText(String.valueOf(Integer.parseInt(page.getText())-1));
+        loadData();
     }
 
     @FXML
     void pageUp() {
-
+        page.setText(String.valueOf(Integer.parseInt(page.getText())+1));
+        loadData();
     }
 
     @FXML
@@ -91,7 +96,10 @@ public class Materials implements TableController {
 
     @Override
     public void loadData() {
-        materials = FXCollections.observableArrayList(materialService.getItems(null, null));
+        final List<Material> items = materialService.getItems(Integer.parseInt(page.getText()) - 1, 15);
+        if(Objects.nonNull(items))
+            materials = FXCollections.observableArrayList(items);
+        else materials = null;
         tableTbl.setItems(materials);
     }
 }

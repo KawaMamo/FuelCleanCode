@@ -14,6 +14,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.model.Refinery;
 import org.example.model.Region;
 
+import java.util.List;
+import java.util.Objects;
+
 public class Refineries implements TableController {
 
     @FXML
@@ -74,12 +77,14 @@ public class Refineries implements TableController {
 
     @FXML
     void pageDown() {
-
+        page.setText(String.valueOf(Integer.parseInt(page.getText())-1));
+        loadData();
     }
 
     @FXML
     void pageUp() {
-
+        page.setText(String.valueOf(Integer.parseInt(page.getText())+1));
+        loadData();
     }
 
     @FXML
@@ -101,7 +106,10 @@ public class Refineries implements TableController {
 
     @Override
     public void loadData() {
-        refineries = FXCollections.observableArrayList(refineryService.getItems(null, null));
+        final List<Refinery> items = refineryService.getItems(Integer.parseInt(page.getText()) - 1, 15);
+        if(Objects.nonNull(items))
+            refineries = FXCollections.observableArrayList(items);
+        else refineries = null;
         tableTbl.setItems(refineries);
     }
 }

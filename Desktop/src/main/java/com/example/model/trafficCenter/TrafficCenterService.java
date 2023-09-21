@@ -7,6 +7,7 @@ import org.example.contract.request.update.UpdateTrafficCenterRequest;
 import org.example.model.TrafficCenter;
 
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -19,13 +20,16 @@ public class TrafficCenterService implements Service<TrafficCenter, CreateTraffi
         String getUrl;
         if(Objects.isNull(page)){
             getUrl = getEndPoint()+"/all";
+            final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+            return List.of(gson.fromJson(stringHttpResponse.body(), TrafficCenter[].class));
         }else {
             getUrl = getEndPoint()+"?page="+page+"&size="+size+"&key=name&value=a&operation=%3E&sort=id,desc";
+            final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+            final TrafficCenterResponse trafficCenterResponse = gson.fromJson(stringHttpResponse.body(), TrafficCenterResponse.class);
+            if(Objects.nonNull(trafficCenterResponse._embedded))
+                return trafficCenterResponse._embedded.trafficCenterList;
         }
-
-        final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
-        final TrafficCenter[] trafficCenters = gson.fromJson(stringHttpResponse.body(), TrafficCenter[].class);
-        return List.of(trafficCenters);
+        return new ArrayList<>();
     }
 
     @Override

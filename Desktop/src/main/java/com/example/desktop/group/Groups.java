@@ -13,6 +13,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.model.Group;
 
+import java.util.List;
+import java.util.Objects;
+
 public class Groups implements TableController {
     @FXML
     private TextField page;
@@ -55,12 +58,14 @@ public class Groups implements TableController {
 
     @FXML
     void pageDown() {
-
+        page.setText(String.valueOf(Integer.parseInt(page.getText())-1));
+        loadData();
     }
 
     @FXML
     void pageUp() {
-
+        page.setText(String.valueOf(Integer.parseInt(page.getText())+1));
+        loadData();
     }
 
     @FXML
@@ -80,7 +85,10 @@ public class Groups implements TableController {
     }
 
     public void loadData() {
-        groups = FXCollections.observableArrayList(groupService.getItems(null, null));
+        final List<Group> items = groupService.getItems(Integer.parseInt(page.getText()) - 1, 15);
+        if(Objects.nonNull(items))
+            groups = FXCollections.observableArrayList(items);
+        else groups = null;
         tableTbl.setItems(groups);
     }
 

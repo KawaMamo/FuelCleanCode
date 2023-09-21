@@ -15,6 +15,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.model.*;
 
+import java.util.List;
+import java.util.Objects;
+
 public class Persons implements TableController {
 
     @FXML
@@ -58,12 +61,14 @@ public class Persons implements TableController {
 
     @FXML
     void pageDown() {
-
+        page.setText(String.valueOf(Integer.parseInt(page.getText())-1));
+        loadData();
     }
 
     @FXML
     void pageUp() {
-
+        page.setText(String.valueOf(Integer.parseInt(page.getText())+1));
+        loadData();
     }
 
     @FXML
@@ -85,7 +90,10 @@ public class Persons implements TableController {
 
     @Override
     public void loadData() {
-        people = FXCollections.observableArrayList(personService.getItems(null, null));
+        final List<Person> items = personService.getItems(Integer.parseInt(page.getText()) - 1, 15);
+        if(Objects.nonNull(items))
+            people = FXCollections.observableArrayList(items);
+        else people = null;
         tableTbl.setItems(people);
     }
 

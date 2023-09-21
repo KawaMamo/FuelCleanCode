@@ -18,6 +18,8 @@ import org.example.model.Refinery;
 import org.example.model.TransLine;
 
 import java.text.NumberFormat;
+import java.util.List;
+import java.util.Objects;
 
 public class TransLines implements TableController {
 
@@ -62,12 +64,14 @@ public class TransLines implements TableController {
 
     @FXML
     void pageDown() {
-
+        page.setText(String.valueOf(Integer.parseInt(page.getText())-1));
+        loadData();
     }
 
     @FXML
     void pageUp() {
-
+        page.setText(String.valueOf(Integer.parseInt(page.getText())+1));
+        loadData();
     }
 
     @FXML
@@ -87,7 +91,10 @@ public class TransLines implements TableController {
     }
 
     public void loadData() {
-        transLines = FXCollections.observableArrayList(transLineService.getItems(null, null));
+        final List<TransLine> items = transLineService.getItems(Integer.parseInt(page.getText()) - 1, 15);
+        if(Objects.nonNull(items))
+            transLines = FXCollections.observableArrayList(items);
+        else transLines = null;
         tableTbl.setItems(transLines);
     }
 

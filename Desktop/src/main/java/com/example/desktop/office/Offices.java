@@ -14,6 +14,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.model.Office;
 
+import java.util.List;
+import java.util.Objects;
+
 public class Offices implements TableController {
 
     @FXML
@@ -56,12 +59,14 @@ public class Offices implements TableController {
 
     @FXML
     void pageDown() {
-
+        page.setText(String.valueOf(Integer.parseInt(page.getText())-1));
+        loadData();
     }
 
     @FXML
     void pageUp() {
-
+        page.setText(String.valueOf(Integer.parseInt(page.getText())+1));
+        loadData();
     }
 
     @FXML
@@ -83,7 +88,10 @@ public class Offices implements TableController {
 
     @Override
     public void loadData() {
-        offices = FXCollections.observableArrayList(officeService.getItems(null, null));
+        final List<Office> items = officeService.getItems(Integer.parseInt(page.getText()) - 1, 15);
+        if(Objects.nonNull(items))
+            offices = FXCollections.observableArrayList(items);
+        else offices = null;
         tableTbl.setItems(offices);
     }
 

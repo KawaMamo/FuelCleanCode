@@ -4,13 +4,9 @@ import com.example.model.Service;
 import com.example.model.category.response.CategoryResponseEntity;
 import org.example.contract.request.create.CreateCategoryRequest;
 import org.example.contract.request.update.UpdateCategoryRequest;
-import org.example.contract.response.CategoryResponse;
 import org.example.model.Category;
-import org.example.model.Group;
 
 import java.net.http.HttpResponse;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
