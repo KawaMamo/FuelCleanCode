@@ -19,7 +19,7 @@ import org.example.model.TransLine;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-09-20T23:42:41+0300",
+    date = "2023-10-08T11:15:49+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class TransLineMapperImpl implements TransLineMapper {
@@ -74,6 +74,7 @@ public class TransLineMapperImpl implements TransLineMapper {
         regionEntity.setCreatedAt( source.getCreatedAt() );
         regionEntity.setUpdatedAt( source.getUpdatedAt() );
         regionEntity.setName( source.getName() );
+        regionEntity.setTranslation( source.getTranslation() );
 
         return regionEntity;
     }
@@ -91,6 +92,7 @@ public class TransLineMapperImpl implements TransLineMapper {
         gasStationEntity.setCreatedAt( gasStation.getCreatedAt() );
         gasStationEntity.setUpdatedAt( gasStation.getUpdatedAt() );
         gasStationEntity.setName( gasStation.getName() );
+        gasStationEntity.setTranslation( gasStation.getTranslation() );
         gasStationEntity.setPriceCategory( priceCategoryToPriceCategoryEntity( gasStation.getPriceCategory() ) );
         gasStationEntity.setDebtLimit( gasStation.getDebtLimit() );
         gasStationEntity.setRegion( RegionToEntity( gasStation.getRegion() ) );
@@ -113,6 +115,7 @@ public class TransLineMapperImpl implements TransLineMapper {
         refineryEntity.setCreatedAt( refinery.getCreatedAt() );
         refineryEntity.setUpdatedAt( refinery.getUpdatedAt() );
         refineryEntity.setName( refinery.getName() );
+        refineryEntity.setTranslation( refinery.getTranslation() );
 
         return refineryEntity;
     }
@@ -127,6 +130,7 @@ public class TransLineMapperImpl implements TransLineMapper {
 
         region.setId( source.getId() );
         region.setName( source.getName() );
+        region.setTranslation( source.getTranslation() );
         region.setPlaceType( source.getPlaceType() );
         region.setCreatedAt( source.getCreatedAt() );
         region.setUpdatedAt( source.getUpdatedAt() );
@@ -144,6 +148,7 @@ public class TransLineMapperImpl implements TransLineMapper {
 
         gasStation1.setId( gasStation.getId() );
         gasStation1.setName( gasStation.getName() );
+        gasStation1.setTranslation( gasStation.getTranslation() );
         gasStation1.setPlaceType( gasStation.getPlaceType() );
         gasStation1.setCreatedAt( gasStation.getCreatedAt() );
         gasStation1.setUpdatedAt( gasStation.getUpdatedAt() );
@@ -166,6 +171,7 @@ public class TransLineMapperImpl implements TransLineMapper {
 
         refinery1.setId( refinery.getId() );
         refinery1.setName( refinery.getName() );
+        refinery1.setTranslation( refinery.getTranslation() );
         refinery1.setPlaceType( refinery.getPlaceType() );
         refinery1.setCreatedAt( refinery.getCreatedAt() );
         refinery1.setUpdatedAt( refinery.getUpdatedAt() );

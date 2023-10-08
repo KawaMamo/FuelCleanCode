@@ -32,6 +32,8 @@ public class AddGasStation {
 
     @FXML
     private TextField nameTF;
+    @FXML
+    private TextField translationTF;
 
     @FXML
     private TextField ownerTF;
@@ -141,6 +143,7 @@ public class AddGasStation {
         if(isEditingForm){
             gasStation = gasStationService.editItem(new UpdateGasStationRequest(GasStations.selectedGasStation.getId(),
                     nameTF.getText(),
+                    translationTF.getText(),
                     selectedPriceCatId,
                     Long.parseLong(debtLimitTF.getText()),
                     selectedRegionId,
@@ -148,6 +151,7 @@ public class AddGasStation {
                     selectedGroupId));
         }else {
             gasStation = gasStationService.addItem(new CreateGasStationRequest(nameTF.getText(),
+                    translationTF.getText(),
                     selectedPriceCatId,
                     Long.parseLong(debtLimitTF.getText()),
                     selectedRegionId,

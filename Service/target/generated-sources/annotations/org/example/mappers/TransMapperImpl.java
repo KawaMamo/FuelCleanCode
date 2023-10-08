@@ -20,7 +20,7 @@ import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-09-20T23:42:40+0300",
+    date = "2023-10-08T11:15:49+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class TransMapperImpl implements TransMapper {
@@ -153,6 +153,7 @@ public class TransMapperImpl implements TransMapper {
         refineryEntity.setCreatedAt( refinery.getCreatedAt() );
         refineryEntity.setUpdatedAt( refinery.getUpdatedAt() );
         refineryEntity.setName( refinery.getName() );
+        refineryEntity.setTranslation( refinery.getTranslation() );
 
         return refineryEntity;
     }
@@ -275,6 +276,7 @@ public class TransMapperImpl implements TransMapper {
 
         refinery.setId( refineryEntity.getId() );
         refinery.setName( refineryEntity.getName() );
+        refinery.setTranslation( refineryEntity.getTranslation() );
         refinery.setPlaceType( refineryEntity.getPlaceType() );
         refinery.setCreatedAt( refineryEntity.getCreatedAt() );
         refinery.setUpdatedAt( refineryEntity.getUpdatedAt() );

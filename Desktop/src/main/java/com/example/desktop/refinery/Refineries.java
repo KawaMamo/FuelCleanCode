@@ -42,6 +42,9 @@ public class Refineries implements TableController {
         TableColumn<Refinery, String> nameColumn = new TableColumn<>("الاسم");
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 
+        TableColumn<Refinery, String> translationColumn = new TableColumn<>("translation");
+        translationColumn.setCellValueFactory(new PropertyValueFactory<>("translation"));
+
         TableColumn<Refinery, String> createdAtCol = new TableColumn<>("تاريخ الإنشاء");
         createdAtCol.setCellValueFactory(
                 new PropertyValueFactory<>("createdAt"));
@@ -49,7 +52,7 @@ public class Refineries implements TableController {
         TableColumn<Refinery, String> updatedAtCol = new TableColumn<>("تاريخ التعديل");
         updatedAtCol.setCellValueFactory(
                 new PropertyValueFactory<>("updatedAt"));
-        tableTbl.getColumns().addAll(idColumn, nameColumn, createdAtCol, updatedAtCol);
+        tableTbl.getColumns().addAll(idColumn, nameColumn, translationColumn, createdAtCol, updatedAtCol);
         tableTbl.setItems(refineries);
     }
 

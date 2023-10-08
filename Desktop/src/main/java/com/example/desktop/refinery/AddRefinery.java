@@ -19,6 +19,8 @@ public class AddRefinery {
     public static Boolean isEditingForm = false;
     @FXML
     private TextField nameTF;
+    @FXML
+    private TextField translationTF;
 
     @FXML
     private Button submitBtn;
@@ -36,9 +38,11 @@ public class AddRefinery {
     void submit() {
         final Refinery refinery;
         if(isEditingForm){
-            refinery = refineryService.editItem(new UpdateRefineryRequest(Refineries.selectedRefinery.getId(), nameTF.getText()));
+            refinery = refineryService.editItem(new UpdateRefineryRequest(Refineries.selectedRefinery.getId(),
+                    nameTF.getText(),
+                    translationTF.getText()));
         }else {
-            refinery = refineryService.addItem(new CreateRefineryRequest(nameTF.getText()));
+            refinery = refineryService.addItem(new CreateRefineryRequest(nameTF.getText(), translationTF.getText()));
         }
         isEditingForm = false;
         notify(refinery);

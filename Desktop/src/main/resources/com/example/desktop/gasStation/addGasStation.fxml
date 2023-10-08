@@ -8,13 +8,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="340.0" prefWidth="338.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.desktop.gasStation.AddGasStation">
+<AnchorPane prefHeight="371.0" prefWidth="338.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.desktop.gasStation.AddGasStation">
    <children>
       <HBox layoutX="31.0" layoutY="65.0" spacing="50.0">
          <children>
             <VBox nodeOrientation="RIGHT_TO_LEFT" spacing="10.0">
                <children>
                   <TextField fx:id="nameTF" />
+                  <TextField fx:id="translationTF" />
                   <TextField fx:id="ownerTF" />
                   <TextField fx:id="priceCatTF" />
                   <TextField fx:id="debtLimitTF" />
@@ -26,6 +27,7 @@
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="18.0">
                <children>
                   <Label text="الاسم" />
+                  <Label text="الترجمة" />
                   <Label style="-fx-border-color: gray;" text="المالك" />
                   <Label style="-fx-border-color: gray;" text="فئة التسعير" />
                   <Label text="الدين الأقصى" />

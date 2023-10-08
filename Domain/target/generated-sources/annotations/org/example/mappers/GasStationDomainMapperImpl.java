@@ -12,7 +12,7 @@ import org.example.model.Region;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-09-20T23:42:32+0300",
+    date = "2023-10-08T11:15:42+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class GasStationDomainMapperImpl implements GasStationDomainMapper {
@@ -30,6 +30,7 @@ public class GasStationDomainMapperImpl implements GasStationDomainMapper {
         gasStation.setOwner( createGasStationRequestToPerson( request ) );
         gasStation.setGroup( createGasStationRequestToGroup( request ) );
         gasStation.setName( request.getName() );
+        gasStation.setTranslation( request.getTranslation() );
         gasStation.setDebtLimit( request.getDebtLimit() );
 
         return gasStation;
@@ -45,6 +46,7 @@ public class GasStationDomainMapperImpl implements GasStationDomainMapper {
 
         gasStationResponse.setId( gasStation.getId() );
         gasStationResponse.setName( gasStation.getName() );
+        gasStationResponse.setTranslation( gasStation.getTranslation() );
         gasStationResponse.setPlaceType( gasStation.getPlaceType() );
         gasStationResponse.setCreatedAt( gasStation.getCreatedAt() );
         gasStationResponse.setUpdatedAt( gasStation.getUpdatedAt() );
@@ -71,6 +73,7 @@ public class GasStationDomainMapperImpl implements GasStationDomainMapper {
         gasStation.setGroup( updateGasStationRequestToGroup( request ) );
         gasStation.setId( request.getId() );
         gasStation.setName( request.getName() );
+        gasStation.setTranslation( request.getTranslation() );
         gasStation.setDebtLimit( request.getDebtLimit() );
 
         return gasStation;

@@ -21,4 +21,6 @@ public abstract class PlaceEntity {
     private LocalDateTime updatedAt;
     @Column(unique = true)
     private String name;
+    @Column(unique = true)
+    private String translation;
 }

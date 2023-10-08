@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 public abstract class Place {
     private Long id;
     private String name;
+    private String translation;
     private String placeType;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

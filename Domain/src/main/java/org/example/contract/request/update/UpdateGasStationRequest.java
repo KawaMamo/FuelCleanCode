@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class UpdateGasStationRequest {
     private Long id;
     private String name;
+    private String translation;
     private Long priceCategoryId;
     private Long debtLimit;
     private Long regionId;

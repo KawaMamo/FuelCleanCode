@@ -8,7 +8,7 @@ import org.example.model.Refinery;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-09-20T23:42:32+0300",
+    date = "2023-10-08T11:15:42+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class RefineryDomainMapperImpl implements RefineryDomainMapper {
@@ -22,6 +22,7 @@ public class RefineryDomainMapperImpl implements RefineryDomainMapper {
         Refinery refinery = new Refinery();
 
         refinery.setName( request.getName() );
+        refinery.setTranslation( request.getTranslation() );
 
         return refinery;
     }
@@ -36,6 +37,7 @@ public class RefineryDomainMapperImpl implements RefineryDomainMapper {
 
         refineryResponse.setId( refinery.getId() );
         refineryResponse.setName( refinery.getName() );
+        refineryResponse.setTranslation( refinery.getTranslation() );
         refineryResponse.setPlaceType( refinery.getPlaceType() );
         refineryResponse.setCreatedAt( refinery.getCreatedAt() );
         refineryResponse.setUpdatedAt( refinery.getUpdatedAt() );
@@ -53,6 +55,7 @@ public class RefineryDomainMapperImpl implements RefineryDomainMapper {
 
         refinery.setId( request.getId() );
         refinery.setName( request.getName() );
+        refinery.setTranslation( request.getTranslation() );
 
         return refinery;
     }

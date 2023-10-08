@@ -16,7 +16,7 @@ import org.example.model.Region;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-09-20T23:42:41+0300",
+    date = "2023-10-08T11:15:49+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class PlaceMapperImpl implements PlaceMapper {
@@ -34,6 +34,7 @@ public class PlaceMapperImpl implements PlaceMapper {
         gasStationEntity.setCreatedAt( gasStation.getCreatedAt() );
         gasStationEntity.setUpdatedAt( gasStation.getUpdatedAt() );
         gasStationEntity.setName( gasStation.getName() );
+        gasStationEntity.setTranslation( gasStation.getTranslation() );
         gasStationEntity.setPriceCategory( priceCategoryToPriceCategoryEntity( gasStation.getPriceCategory() ) );
         gasStationEntity.setDebtLimit( gasStation.getDebtLimit() );
         gasStationEntity.setRegion( regionToRegionEntity( gasStation.getRegion() ) );
@@ -56,6 +57,7 @@ public class PlaceMapperImpl implements PlaceMapper {
         refineryEntity.setCreatedAt( refinery.getCreatedAt() );
         refineryEntity.setUpdatedAt( refinery.getUpdatedAt() );
         refineryEntity.setName( refinery.getName() );
+        refineryEntity.setTranslation( refinery.getTranslation() );
 
         return refineryEntity;
     }
@@ -70,6 +72,7 @@ public class PlaceMapperImpl implements PlaceMapper {
 
         gasStation1.setId( gasStation.getId() );
         gasStation1.setName( gasStation.getName() );
+        gasStation1.setTranslation( gasStation.getTranslation() );
         gasStation1.setPlaceType( gasStation.getPlaceType() );
         gasStation1.setCreatedAt( gasStation.getCreatedAt() );
         gasStation1.setUpdatedAt( gasStation.getUpdatedAt() );
@@ -92,6 +95,7 @@ public class PlaceMapperImpl implements PlaceMapper {
 
         refinery1.setId( refinery.getId() );
         refinery1.setName( refinery.getName() );
+        refinery1.setTranslation( refinery.getTranslation() );
         refinery1.setPlaceType( refinery.getPlaceType() );
         refinery1.setCreatedAt( refinery.getCreatedAt() );
         refinery1.setUpdatedAt( refinery.getUpdatedAt() );
@@ -126,6 +130,7 @@ public class PlaceMapperImpl implements PlaceMapper {
         regionEntity.setCreatedAt( region.getCreatedAt() );
         regionEntity.setUpdatedAt( region.getUpdatedAt() );
         regionEntity.setName( region.getName() );
+        regionEntity.setTranslation( region.getTranslation() );
 
         return regionEntity;
     }
@@ -189,6 +194,7 @@ public class PlaceMapperImpl implements PlaceMapper {
 
         region.setId( regionEntity.getId() );
         region.setName( regionEntity.getName() );
+        region.setTranslation( regionEntity.getTranslation() );
         region.setPlaceType( regionEntity.getPlaceType() );
         region.setCreatedAt( regionEntity.getCreatedAt() );
         region.setUpdatedAt( regionEntity.getUpdatedAt() );

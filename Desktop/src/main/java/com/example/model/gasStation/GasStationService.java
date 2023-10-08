@@ -8,6 +8,7 @@ import org.example.contract.request.update.UpdateGasStationRequest;
 import org.example.model.GasStation;
 
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
@@ -36,12 +37,12 @@ public class GasStationService implements Service<GasStation, CreateGasStationRe
                 return gasStationResponseEntity._embedded.gasStationList;
             }
         }
-        return null;
+        return new ArrayList<>();
     }
 
     @Override
     public GasStation addItem(CreateGasStationRequest itemRequest) {
-        final String payload = getPayload(itemRequest);
+        final String payload = gson.toJson(itemRequest);
         final HttpResponse<String> stringHttpResponse = client.parallelPost(getEndPoint(), payload);
         return gson.fromJson(stringHttpResponse.body(), GasStation.class);
     }

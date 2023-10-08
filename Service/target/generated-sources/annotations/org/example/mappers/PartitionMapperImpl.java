@@ -33,7 +33,7 @@ import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-09-20T23:42:40+0300",
+    date = "2023-10-08T11:15:49+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class PartitionMapperImpl implements PartitionMapper {
@@ -139,6 +139,7 @@ public class PartitionMapperImpl implements PartitionMapper {
 
         region.setId( regionEntity.getId() );
         region.setName( regionEntity.getName() );
+        region.setTranslation( regionEntity.getTranslation() );
         region.setPlaceType( regionEntity.getPlaceType() );
         region.setCreatedAt( regionEntity.getCreatedAt() );
         region.setUpdatedAt( regionEntity.getUpdatedAt() );
@@ -190,6 +191,7 @@ public class PartitionMapperImpl implements PartitionMapper {
 
         gasStation.setId( gasStationEntity.getId() );
         gasStation.setName( gasStationEntity.getName() );
+        gasStation.setTranslation( gasStationEntity.getTranslation() );
         gasStation.setPlaceType( gasStationEntity.getPlaceType() );
         gasStation.setCreatedAt( gasStationEntity.getCreatedAt() );
         gasStation.setUpdatedAt( gasStationEntity.getUpdatedAt() );
@@ -282,6 +284,7 @@ public class PartitionMapperImpl implements PartitionMapper {
 
         refinery.setId( refineryEntity.getId() );
         refinery.setName( refineryEntity.getName() );
+        refinery.setTranslation( refineryEntity.getTranslation() );
         refinery.setPlaceType( refineryEntity.getPlaceType() );
         refinery.setCreatedAt( refineryEntity.getCreatedAt() );
         refinery.setUpdatedAt( refineryEntity.getUpdatedAt() );
@@ -401,6 +404,7 @@ public class PartitionMapperImpl implements PartitionMapper {
         regionEntity.setCreatedAt( region.getCreatedAt() );
         regionEntity.setUpdatedAt( region.getUpdatedAt() );
         regionEntity.setName( region.getName() );
+        regionEntity.setTranslation( region.getTranslation() );
 
         return regionEntity;
     }
@@ -452,6 +456,7 @@ public class PartitionMapperImpl implements PartitionMapper {
         gasStationEntity.setCreatedAt( gasStation.getCreatedAt() );
         gasStationEntity.setUpdatedAt( gasStation.getUpdatedAt() );
         gasStationEntity.setName( gasStation.getName() );
+        gasStationEntity.setTranslation( gasStation.getTranslation() );
         gasStationEntity.setPriceCategory( priceCategoryToPriceCategoryEntity( gasStation.getPriceCategory() ) );
         gasStationEntity.setDebtLimit( gasStation.getDebtLimit() );
         gasStationEntity.setRegion( regionToRegionEntity( gasStation.getRegion() ) );
@@ -544,6 +549,7 @@ public class PartitionMapperImpl implements PartitionMapper {
         refineryEntity.setCreatedAt( refinery.getCreatedAt() );
         refineryEntity.setUpdatedAt( refinery.getUpdatedAt() );
         refineryEntity.setName( refinery.getName() );
+        refineryEntity.setTranslation( refinery.getTranslation() );
 
         return refineryEntity;
     }

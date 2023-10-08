@@ -6,7 +6,7 @@ import org.example.model.Region;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-09-20T23:42:40+0300",
+    date = "2023-10-08T11:15:49+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class RegionMapperImpl implements RegionMapper {
@@ -24,6 +24,7 @@ public class RegionMapperImpl implements RegionMapper {
         regionEntity.setCreatedAt( region.getCreatedAt() );
         regionEntity.setUpdatedAt( region.getUpdatedAt() );
         regionEntity.setName( region.getName() );
+        regionEntity.setTranslation( region.getTranslation() );
 
         return regionEntity;
     }
@@ -38,6 +39,7 @@ public class RegionMapperImpl implements RegionMapper {
 
         region1.setId( region.getId() );
         region1.setName( region.getName() );
+        region1.setTranslation( region.getTranslation() );
         region1.setPlaceType( region.getPlaceType() );
         region1.setCreatedAt( region.getCreatedAt() );
         region1.setUpdatedAt( region.getUpdatedAt() );

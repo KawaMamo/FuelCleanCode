@@ -19,7 +19,7 @@ import org.example.model.TransferMaterials;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-09-20T23:42:40+0300",
+    date = "2023-10-08T11:15:49+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class TransferMaterialsMapperImpl implements TransferMaterialsMapper {
@@ -102,6 +102,7 @@ public class TransferMaterialsMapperImpl implements TransferMaterialsMapper {
 
         region.setId( regionEntity.getId() );
         region.setName( regionEntity.getName() );
+        region.setTranslation( regionEntity.getTranslation() );
         region.setPlaceType( regionEntity.getPlaceType() );
         region.setCreatedAt( regionEntity.getCreatedAt() );
         region.setUpdatedAt( regionEntity.getUpdatedAt() );
@@ -153,6 +154,7 @@ public class TransferMaterialsMapperImpl implements TransferMaterialsMapper {
 
         gasStation.setId( gasStationEntity.getId() );
         gasStation.setName( gasStationEntity.getName() );
+        gasStation.setTranslation( gasStationEntity.getTranslation() );
         gasStation.setPlaceType( gasStationEntity.getPlaceType() );
         gasStation.setCreatedAt( gasStationEntity.getCreatedAt() );
         gasStation.setUpdatedAt( gasStationEntity.getUpdatedAt() );
@@ -237,6 +239,7 @@ public class TransferMaterialsMapperImpl implements TransferMaterialsMapper {
         regionEntity.setCreatedAt( region.getCreatedAt() );
         regionEntity.setUpdatedAt( region.getUpdatedAt() );
         regionEntity.setName( region.getName() );
+        regionEntity.setTranslation( region.getTranslation() );
 
         return regionEntity;
     }
@@ -288,6 +291,7 @@ public class TransferMaterialsMapperImpl implements TransferMaterialsMapper {
         gasStationEntity.setCreatedAt( gasStation.getCreatedAt() );
         gasStationEntity.setUpdatedAt( gasStation.getUpdatedAt() );
         gasStationEntity.setName( gasStation.getName() );
+        gasStationEntity.setTranslation( gasStation.getTranslation() );
         gasStationEntity.setPriceCategory( priceCategoryToPriceCategoryEntity( gasStation.getPriceCategory() ) );
         gasStationEntity.setDebtLimit( gasStation.getDebtLimit() );
         gasStationEntity.setRegion( regionToRegionEntity( gasStation.getRegion() ) );

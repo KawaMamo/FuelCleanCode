@@ -35,7 +35,7 @@ import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-09-20T23:42:41+0300",
+    date = "2023-10-08T11:15:49+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class ForfeitMapperImpl implements ForfeitMapper {
@@ -201,6 +201,7 @@ public class ForfeitMapperImpl implements ForfeitMapper {
 
         region.setId( regionEntity.getId() );
         region.setName( regionEntity.getName() );
+        region.setTranslation( regionEntity.getTranslation() );
         region.setPlaceType( regionEntity.getPlaceType() );
         region.setCreatedAt( regionEntity.getCreatedAt() );
         region.setUpdatedAt( regionEntity.getUpdatedAt() );
@@ -232,6 +233,7 @@ public class ForfeitMapperImpl implements ForfeitMapper {
 
         gasStation.setId( gasStationEntity.getId() );
         gasStation.setName( gasStationEntity.getName() );
+        gasStation.setTranslation( gasStationEntity.getTranslation() );
         gasStation.setPlaceType( gasStationEntity.getPlaceType() );
         gasStation.setCreatedAt( gasStationEntity.getCreatedAt() );
         gasStation.setUpdatedAt( gasStationEntity.getUpdatedAt() );
@@ -274,6 +276,7 @@ public class ForfeitMapperImpl implements ForfeitMapper {
 
         refinery.setId( refineryEntity.getId() );
         refinery.setName( refineryEntity.getName() );
+        refinery.setTranslation( refineryEntity.getTranslation() );
         refinery.setPlaceType( refineryEntity.getPlaceType() );
         refinery.setCreatedAt( refineryEntity.getCreatedAt() );
         refinery.setUpdatedAt( refineryEntity.getUpdatedAt() );
@@ -485,6 +488,7 @@ public class ForfeitMapperImpl implements ForfeitMapper {
         regionEntity.setCreatedAt( region.getCreatedAt() );
         regionEntity.setUpdatedAt( region.getUpdatedAt() );
         regionEntity.setName( region.getName() );
+        regionEntity.setTranslation( region.getTranslation() );
 
         return regionEntity;
     }
@@ -516,6 +520,7 @@ public class ForfeitMapperImpl implements ForfeitMapper {
         gasStationEntity.setCreatedAt( gasStation.getCreatedAt() );
         gasStationEntity.setUpdatedAt( gasStation.getUpdatedAt() );
         gasStationEntity.setName( gasStation.getName() );
+        gasStationEntity.setTranslation( gasStation.getTranslation() );
         gasStationEntity.setPriceCategory( priceCategoryToPriceCategoryEntity( gasStation.getPriceCategory() ) );
         gasStationEntity.setDebtLimit( gasStation.getDebtLimit() );
         gasStationEntity.setRegion( regionToRegionEntity( gasStation.getRegion() ) );
@@ -558,6 +563,7 @@ public class ForfeitMapperImpl implements ForfeitMapper {
         refineryEntity.setCreatedAt( refinery.getCreatedAt() );
         refineryEntity.setUpdatedAt( refinery.getUpdatedAt() );
         refineryEntity.setName( refinery.getName() );
+        refineryEntity.setTranslation( refinery.getTranslation() );
 
         return refineryEntity;
     }

@@ -10,4 +10,5 @@ import org.example.contract.request.Request;
 @NoArgsConstructor
 public class CreateRefineryRequest implements Request {
     private String name;
+    private String translation;
 }
