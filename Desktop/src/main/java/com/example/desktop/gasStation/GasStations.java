@@ -102,7 +102,7 @@ public class GasStations implements TableController {
         TableColumn<GasStation, String> priceCategoryCol = new TableColumn<>("الفئة الافتراضية");
         priceCategoryCol.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getPriceCategory().getName()));
 
-        TableColumn<GasStation, String> materialCol = new TableColumn<>("material");
+        TableColumn<GasStation, String> materialCol = new TableColumn<>("المادة الافتراضية");
         materialCol.setCellValueFactory(data -> {
             if(Objects.nonNull(data.getValue().getMaterial()))
                 return new SimpleStringProperty(data.getValue().getMaterial().getName());

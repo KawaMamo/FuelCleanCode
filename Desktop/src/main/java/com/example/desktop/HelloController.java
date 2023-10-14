@@ -33,7 +33,10 @@ public class HelloController {
         final JWTToken jwtToken = new Gson().fromJson(post.body(), JWTToken.class);
         client.setAuthorization("Bearer "+jwtToken.getToken());
         setUserDetails(jwtToken);
-        HelloApplication.setScene("adminArea");
+        if(LogInData.loggedInUser.getRole().equals("SUPER_ADMIN"))
+            HelloApplication.setScene("adminArea");
+        else if(LogInData.loggedInUser.getRole().equals("TRANS_OFFICE"))
+            HelloApplication.setScene("officeArea");
 
     }
     private void setUserDetails(JWTToken jwtToken) {
