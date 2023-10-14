@@ -16,4 +16,5 @@ public class UpdateGasStationRequest {
     private Long regionId;
     private Long ownerId;
     private Long groupId;
+    private Long materialId;
 }

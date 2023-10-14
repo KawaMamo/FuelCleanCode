@@ -3,12 +3,14 @@ package org.example.mappers;
 import javax.annotation.processing.Generated;
 import org.example.entities.GasStationEntity;
 import org.example.entities.GroupEntity;
+import org.example.entities.MaterialEntity;
 import org.example.entities.PersonEntity;
 import org.example.entities.PriceCategoryEntity;
 import org.example.entities.RefineryEntity;
 import org.example.entities.RegionEntity;
 import org.example.model.GasStation;
 import org.example.model.Group;
+import org.example.model.Material;
 import org.example.model.Person;
 import org.example.model.PriceCategory;
 import org.example.model.Refinery;
@@ -16,7 +18,7 @@ import org.example.model.Region;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-10-08T11:15:49+0300",
+    date = "2023-10-14T21:53:08+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class PlaceMapperImpl implements PlaceMapper {
@@ -40,6 +42,7 @@ public class PlaceMapperImpl implements PlaceMapper {
         gasStationEntity.setRegion( regionToRegionEntity( gasStation.getRegion() ) );
         gasStationEntity.setOwner( personToPersonEntity( gasStation.getOwner() ) );
         gasStationEntity.setGroup( groupToGroupEntity( gasStation.getGroup() ) );
+        gasStationEntity.setMaterial( materialToMaterialEntity( gasStation.getMaterial() ) );
 
         return gasStationEntity;
     }
@@ -81,6 +84,7 @@ public class PlaceMapperImpl implements PlaceMapper {
         gasStation1.setRegion( regionEntityToRegion( gasStation.getRegion() ) );
         gasStation1.setOwner( personEntityToPerson( gasStation.getOwner() ) );
         gasStation1.setGroup( groupEntityToGroup( gasStation.getGroup() ) );
+        gasStation1.setMaterial( materialEntityToMaterial( gasStation.getMaterial() ) );
 
         return gasStation1;
     }
@@ -170,6 +174,21 @@ public class PlaceMapperImpl implements PlaceMapper {
         return groupEntity;
     }
 
+    protected MaterialEntity materialToMaterialEntity(Material material) {
+        if ( material == null ) {
+            return null;
+        }
+
+        MaterialEntity materialEntity = new MaterialEntity();
+
+        materialEntity.setId( material.getId() );
+        materialEntity.setName( material.getName() );
+        materialEntity.setCreatedAt( material.getCreatedAt() );
+        materialEntity.setUpdatedAt( material.getUpdatedAt() );
+
+        return materialEntity;
+    }
+
     protected PriceCategory priceCategoryEntityToPriceCategory(PriceCategoryEntity priceCategoryEntity) {
         if ( priceCategoryEntity == null ) {
             return null;
@@ -235,5 +254,20 @@ public class PlaceMapperImpl implements PlaceMapper {
         group.setUpdatedAt( groupEntity.getUpdatedAt() );
 
         return group;
+    }
+
+    protected Material materialEntityToMaterial(MaterialEntity materialEntity) {
+        if ( materialEntity == null ) {
+            return null;
+        }
+
+        Material material = new Material();
+
+        material.setId( materialEntity.getId() );
+        material.setName( materialEntity.getName() );
+        material.setCreatedAt( materialEntity.getCreatedAt() );
+        material.setUpdatedAt( materialEntity.getUpdatedAt() );
+
+        return material;
     }
 }

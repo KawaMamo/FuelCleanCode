@@ -3,6 +3,7 @@ package com.example.desktop.gasStation;
 import com.example.model.TableController;
 import com.example.model.gasStation.GasStationService;
 import com.example.model.group.GroupService;
+import com.example.model.material.MaterialService;
 import com.example.model.modal.Modal;
 import com.example.model.person.PersonService;
 import com.example.model.priceCategory.PriceCategoryService;
@@ -43,6 +44,8 @@ public class AddGasStation {
 
     @FXML
     private TextField regionTF;
+    @FXML
+    private TextField materialTF;
 
     @FXML
     private Button submitBtn;
@@ -53,10 +56,12 @@ public class AddGasStation {
     private final GroupService groupService = GroupService.getInstance();
     private final PersonService personService = PersonService.getInstance();
     private final RegionService regionService = RegionService.getInstance();
+    private final MaterialService materialService = MaterialService.getInstance();
     private Long selectedOwnerId;
     private Long selectedPriceCatId;
     private Long selectedGroupId;
     private Long selectedRegionId;
+    private Long selectedMaterialId;
     @FXML
     void initialize() {
 
@@ -123,6 +128,23 @@ public class AddGasStation {
             }
         });
 
+        final List<Material> materials = materialService.getItems(null, null);
+        final List<String> materialNames = materials.stream().map(Material::getName).toList();
+        TextFields.bindAutoCompletion(materialTF, materialNames);
+
+        materialTF.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
+                if(materialTF.getText().length()>0){
+                    if(materialNames.contains(materialTF.getText())){
+                        final Material material = materials.get(materialNames.indexOf(materialTF.getText()));
+                        if(Objects.nonNull(material))
+                            selectedMaterialId = material.getId();
+                    }
+                }
+            }
+        });
+
         if(isEditingForm){
             final GasStation gasStation = gasStationService.getItem(GasStations.selectedGasStation.getId());
             nameTF.setText(gasStation.getName());
@@ -131,10 +153,12 @@ public class AddGasStation {
             debtLimitTF.setText(gasStation.getDebtLimit().toString());
             regionTF.setText(gasStation.getRegion().getName());
             groupTF.setText(gasStation.getGroup().getName());
+            materialTF.setText(gasStation.getMaterial().getName());
             selectedOwnerId = gasStation.getOwner().getId();
             selectedPriceCatId = gasStation.getPriceCategory().getId();
             selectedRegionId = gasStation.getRegion().getId();
             selectedGroupId = gasStation.getGroup().getId();
+            selectedMaterialId = gasStation.getMaterial().getId();
         }
     }
     @FXML
@@ -148,7 +172,8 @@ public class AddGasStation {
                     Long.parseLong(debtLimitTF.getText()),
                     selectedRegionId,
                     selectedOwnerId,
-                    selectedGroupId));
+                    selectedGroupId,
+                    selectedMaterialId));
         }else {
             gasStation = gasStationService.addItem(new CreateGasStationRequest(nameTF.getText(),
                     translationTF.getText(),
@@ -156,7 +181,8 @@ public class AddGasStation {
                     Long.parseLong(debtLimitTF.getText()),
                     selectedRegionId,
                     selectedOwnerId,
-                    selectedGroupId));
+                    selectedGroupId,
+                    selectedMaterialId));
         }
         isEditingForm = false;
         notify(gasStation);

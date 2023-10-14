@@ -6,14 +6,15 @@ import org.example.contract.request.update.UpdateGasStationRequest;
 import org.example.contract.response.GasStationResponse;
 import org.example.model.GasStation;
 import org.example.model.Group;
+import org.example.model.Material;
 import org.example.model.Person;
 import org.example.model.PriceCategory;
 import org.example.model.Region;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-10-08T11:15:42+0300",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
+    date = "2023-10-14T21:53:23+0300",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class GasStationDomainMapperImpl implements GasStationDomainMapper {
 
@@ -29,6 +30,7 @@ public class GasStationDomainMapperImpl implements GasStationDomainMapper {
         gasStation.setRegion( createGasStationRequestToRegion( request ) );
         gasStation.setOwner( createGasStationRequestToPerson( request ) );
         gasStation.setGroup( createGasStationRequestToGroup( request ) );
+        gasStation.setMaterial( createGasStationRequestToMaterial( request ) );
         gasStation.setName( request.getName() );
         gasStation.setTranslation( request.getTranslation() );
         gasStation.setDebtLimit( request.getDebtLimit() );
@@ -55,6 +57,7 @@ public class GasStationDomainMapperImpl implements GasStationDomainMapper {
         gasStationResponse.setRegion( gasStation.getRegion() );
         gasStationResponse.setOwner( gasStation.getOwner() );
         gasStationResponse.setGroup( gasStation.getGroup() );
+        gasStationResponse.setMaterial( gasStation.getMaterial() );
 
         return gasStationResponse;
     }
@@ -71,6 +74,7 @@ public class GasStationDomainMapperImpl implements GasStationDomainMapper {
         gasStation.setRegion( updateGasStationRequestToRegion( request ) );
         gasStation.setOwner( updateGasStationRequestToPerson( request ) );
         gasStation.setGroup( updateGasStationRequestToGroup( request ) );
+        gasStation.setMaterial( updateGasStationRequestToMaterial( request ) );
         gasStation.setId( request.getId() );
         gasStation.setName( request.getName() );
         gasStation.setTranslation( request.getTranslation() );
@@ -127,6 +131,18 @@ public class GasStationDomainMapperImpl implements GasStationDomainMapper {
         return group;
     }
 
+    protected Material createGasStationRequestToMaterial(CreateGasStationRequest createGasStationRequest) {
+        if ( createGasStationRequest == null ) {
+            return null;
+        }
+
+        Material material = new Material();
+
+        material.setId( createGasStationRequest.getMaterialId() );
+
+        return material;
+    }
+
     protected PriceCategory updateGasStationRequestToPriceCategory(UpdateGasStationRequest updateGasStationRequest) {
         if ( updateGasStationRequest == null ) {
             return null;
@@ -173,5 +189,17 @@ public class GasStationDomainMapperImpl implements GasStationDomainMapper {
         group.setId( updateGasStationRequest.getGroupId() );
 
         return group;
+    }
+
+    protected Material updateGasStationRequestToMaterial(UpdateGasStationRequest updateGasStationRequest) {
+        if ( updateGasStationRequest == null ) {
+            return null;
+        }
+
+        Material material = new Material();
+
+        material.setId( updateGasStationRequest.getMaterialId() );
+
+        return material;
     }
 }

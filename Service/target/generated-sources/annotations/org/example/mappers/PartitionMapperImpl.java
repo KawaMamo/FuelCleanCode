@@ -33,7 +33,7 @@ import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-10-08T11:15:49+0300",
+    date = "2023-10-14T21:53:09+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class PartitionMapperImpl implements PartitionMapper {
@@ -200,6 +200,7 @@ public class PartitionMapperImpl implements PartitionMapper {
         gasStation.setRegion( regionEntityToRegion( gasStationEntity.getRegion() ) );
         gasStation.setOwner( personEntityToPerson( gasStationEntity.getOwner() ) );
         gasStation.setGroup( groupEntityToGroup( gasStationEntity.getGroup() ) );
+        gasStation.setMaterial( materialEntityToMaterial( gasStationEntity.getMaterial() ) );
 
         return gasStation;
     }
@@ -462,6 +463,7 @@ public class PartitionMapperImpl implements PartitionMapper {
         gasStationEntity.setRegion( regionToRegionEntity( gasStation.getRegion() ) );
         gasStationEntity.setOwner( personToPersonEntity( gasStation.getOwner() ) );
         gasStationEntity.setGroup( groupToGroupEntity( gasStation.getGroup() ) );
+        gasStationEntity.setMaterial( materialToMaterialEntity( gasStation.getMaterial() ) );
 
         return gasStationEntity;
     }

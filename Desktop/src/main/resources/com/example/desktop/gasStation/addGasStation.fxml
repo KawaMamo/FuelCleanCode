@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="371.0" prefWidth="338.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.desktop.gasStation.AddGasStation">
+<AnchorPane prefHeight="413.0" prefWidth="338.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.desktop.gasStation.AddGasStation">
    <children>
       <HBox layoutX="31.0" layoutY="65.0" spacing="50.0">
          <children>
@@ -18,6 +18,7 @@
                   <TextField fx:id="translationTF" />
                   <TextField fx:id="ownerTF" />
                   <TextField fx:id="priceCatTF" />
+                  <TextField fx:id="materialTF" />
                   <TextField fx:id="debtLimitTF" />
                   <TextField fx:id="regionTF" />
                   <TextField fx:id="groupTF" />
@@ -30,6 +31,7 @@
                   <Label text="الترجمة" />
                   <Label style="-fx-border-color: gray;" text="المالك" />
                   <Label style="-fx-border-color: gray;" text="فئة التسعير" />
+                  <Label style="-fx-border-color: gray;" text="المادة الافتراضية" />
                   <Label text="الدين الأقصى" />
                   <Label style="-fx-border-color: gray;" text="المنطقة" />
                   <Label style="-fx-border-color: gray;" text="المجموعة" />

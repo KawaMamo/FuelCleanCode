@@ -18,13 +18,14 @@ public class CreateGasStation {
     private final RegionRepo regionRepo;
     private final PersonRepo personRepo;
     private final GroupRepo groupRepo;
+    private final MaterialRepo materialRepo;
 
     public CreateGasStation(CreateGasStationValidator validator,
                             GasStationDomainMapper mapper,
                             GasStationRepo gasStationRepo, PriceCategoryRepo priceCategoryRepo,
                             RegionRepo regionRepo,
                             PersonRepo personRepo,
-                            GroupRepo groupRepo) {
+                            GroupRepo groupRepo, MaterialRepo materialRepo) {
         this.validator = validator;
         this.mapper = mapper;
         this.gasStationRepo = gasStationRepo;
@@ -32,6 +33,7 @@ public class CreateGasStation {
         this.regionRepo = regionRepo;
         this.personRepo = personRepo;
         this.groupRepo = groupRepo;
+        this.materialRepo = materialRepo;
     }
 
     public GasStationResponse execute(CreateGasStationRequest request){
@@ -43,6 +45,7 @@ public class CreateGasStation {
         groupRepo.findById(save.getGroup().getId()).ifPresent(save::setGroup);
         regionRepo.findById(save.getRegion().getId()).ifPresent(save::setRegion);
         priceCategoryRepo.findById(save.getPriceCategory().getId()).ifPresent(save::setPriceCategory);
+        materialRepo.findById(save.getMaterial().getId()).ifPresent(save::setMaterial);
         return mapper.domainToResponse(save);
     }
 }

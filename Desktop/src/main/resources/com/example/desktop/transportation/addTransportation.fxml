@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="577.0" prefWidth="711.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.desktop.transportation.AddTransportation">
+   <children>
+      <HBox layoutX="371.0" layoutY="51.0" prefHeight="95.0" prefWidth="302.0" spacing="50.0">
+         <children>
+            <VBox nodeOrientation="RIGHT_TO_LEFT" spacing="10.0">
+               <children>
+                  <TextField fx:id="refineyTF" />
+                  <TextField fx:id="translationTF" />
+                  <TextField fx:id="driverTF" editable="false" />
+                  <TextField fx:id="sizeTF" />
+                  <DatePicker />
+                  <Button fx:id="submitBtn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#submit" text="تأكيد" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="18.0">
+               <children>
+                  <Label text="المصدر" />
+                  <Label fx:id="vehicleTF" text="المركبة" />
+                  <Label fx:id="vehicleTF1" text="السائق" />
+                  <Label fx:id="vehicleTF2" text="السعة" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Label layoutX="652.0" layoutY="14.0" text="نقل من">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="287.0" layoutY="14.0" text="نقل إلى">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <HBox layoutX="30.0" layoutY="42.0" prefHeight="95.0" prefWidth="302.0" spacing="50.0">
+         <children>
+            <VBox nodeOrientation="RIGHT_TO_LEFT" spacing="10.0">
+               <children>
+                  <TextField fx:id="refineyTF1" />
+                  <TextField fx:id="translationTF1" />
+                  <TextField fx:id="translationTF11" />
+                  <TextField fx:id="translationTF111" />
+                  <TextField fx:id="translationTF1111" />
+                  <TextField fx:id="translationTF11111" />
+                  <Button fx:id="submitBtn1" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#submit" text="تأكيد" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="18.0">
+               <children>
+                  <Label text="الوجهة" />
+                  <Label fx:id="vehicleTF1" text="الفئة الافتراضية" />
+                  <Label fx:id="vehicleTF1111" text="السعر" />
+                  <Label fx:id="vehicleTF11" text="الكمية" />
+                  <Label fx:id="vehicleTF111" text="المادة" />
+                  <Label fx:id="vehicleTF1112" text="ملاحظات" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox layoutX="365.0" layoutY="288.0" prefHeight="95.0" prefWidth="302.0" spacing="50.0">
+         <children>
+            <VBox nodeOrientation="RIGHT_TO_LEFT" spacing="10.0">
+               <children>
+                  <TextField fx:id="refineyTF2" />
+                  <TextField fx:id="translationTF2" />
+                  <Button fx:id="submitBtn2" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#submit" text="تأكيد" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="18.0">
+               <children>
+                  <Label text="المصدر" />
+                  <Label fx:id="vehicleTF1" text="منطقة الوجهة" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Label layoutX="640.0" layoutY="257.0" text="خط النقل">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TableView layoutX="30.0" layoutY="304.0" prefHeight="217.0" prefWidth="302.0" />
+      <HBox layoutX="365.0" layoutY="428.0" prefHeight="95.0" prefWidth="302.0" spacing="50.0">
+         <children>
+            <VBox nodeOrientation="RIGHT_TO_LEFT" spacing="10.0">
+               <children>
+                  <TextField fx:id="refineyTF21" />
+                  <TextField fx:id="translationTF21" />
+                  <TextField fx:id="translationTF211" />
+                  <Button fx:id="submitBtn21" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#submit" text="تأكيد" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="18.0">
+               <children>
+                  <Label text="السبب" />
+                  <Label fx:id="vehicleTF12" text="المبلغ" />
+                  <Label fx:id="vehicleTF121" text="العملة" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Label layoutX="614.0" layoutY="390.0" text="تغريم السائق">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="submitBtn211" layoutX="30.0" layoutY="535.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#submit" prefHeight="26.0" prefWidth="114.0" text="انهاء" />
+   </children>
+</AnchorPane>

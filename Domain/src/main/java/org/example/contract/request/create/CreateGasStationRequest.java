@@ -15,4 +15,5 @@ public class CreateGasStationRequest {
     private Long regionId;
     private Long ownerId;
     private Long groupId;
+    private Long materialId;
 }

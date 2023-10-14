@@ -222,10 +222,10 @@ public class Beans {
                                       PriceCategoryRepo priceCategoryRepo,
                                       RegionRepo regionRepo,
                                       PersonRepo personRepo,
-                                      GroupRepo groupRepo){
+                                      GroupRepo groupRepo, MaterialRepo materialRepo){
         return new CreateGasStation(createGasStationValidator,
                 gasStationDomainMapper,
-                gasStationRepo, priceCategoryRepo, regionRepo, personRepo, groupRepo);
+                gasStationRepo, priceCategoryRepo, regionRepo, personRepo, groupRepo, materialRepo);
     }
 
     @Bean

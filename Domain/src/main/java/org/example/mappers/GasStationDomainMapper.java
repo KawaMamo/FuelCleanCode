@@ -13,6 +13,7 @@ public interface GasStationDomainMapper {
     @Mapping(source = "regionId", target = "region.id")
     @Mapping(source = "ownerId", target = "owner.id")
     @Mapping(source = "groupId", target = "group.id")
+    @Mapping(source = "materialId", target = "material.id")
     GasStation requestToDomain(CreateGasStationRequest request);
 
     GasStationResponse domainToResponse(GasStation gasStation);
@@ -20,5 +21,6 @@ public interface GasStationDomainMapper {
     @Mapping(source = "regionId", target = "region.id")
     @Mapping(source = "ownerId", target = "owner.id")
     @Mapping(source = "groupId", target = "group.id")
+    @Mapping(source = "materialId", target = "material.id")
     GasStation requestToDomain(UpdateGasStationRequest request);
 }

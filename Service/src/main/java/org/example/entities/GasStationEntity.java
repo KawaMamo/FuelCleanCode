@@ -27,6 +27,8 @@ public class GasStationEntity extends PlaceEntity {
     private PersonEntity owner;
     @OneToOne
     private GroupEntity group;
+    @OneToOne
+    private MaterialEntity material;
 
     @Override
     public final boolean equals(Object object) {

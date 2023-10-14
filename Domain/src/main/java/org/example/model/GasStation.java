@@ -14,4 +14,5 @@ public class GasStation extends Place{
     private Region region;
     private Person owner;
     private Group group;
+    private Material material;
 }
