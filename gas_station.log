@@ -154,3 +154,350 @@
 2023-10-14T22:00:39.555+03:00  INFO 13224 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2023-10-14T22:00:39.557+03:00  INFO 13224 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2023-10-14T22:00:39.565+03:00  INFO 13224 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-10-14T22:00:43.403+03:00  INFO 17636 --- [main] org.example.Main                         : Starting Main using Java 20 with PID 17636 (D:\fuelRefactored\FuelCleanCode\Service\target\classes started by GIGABYTE in D:\fuelRefactored\FuelCleanCode)
+2023-10-14T22:00:43.405+03:00  INFO 17636 --- [main] org.example.Main                         : No active profile set, falling back to 1 default profile: "default"
+2023-10-14T22:00:44.601+03:00  INFO 17636 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-10-14T22:00:44.791+03:00  INFO 17636 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 179 ms. Found 18 JPA repository interfaces.
+2023-10-14T22:00:45.556+03:00  INFO 17636 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9091 (http)
+2023-10-14T22:00:45.566+03:00  INFO 17636 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-10-14T22:00:45.566+03:00  INFO 17636 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.7]
+2023-10-14T22:00:45.687+03:00  INFO 17636 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-10-14T22:00:45.687+03:00  INFO 17636 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2244 ms
+2023-10-14T22:00:46.004+03:00  INFO 17636 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-10-14T22:00:46.051+03:00  INFO 17636 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2023-10-14T22:00:46.331+03:00  INFO 17636 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-10-14T22:00:46.489+03:00  INFO 17636 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1cdd31a4
+2023-10-14T22:00:46.491+03:00  INFO 17636 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-10-14T22:00:46.929+03:00  WARN 17636 --- [main] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.0 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 5.7.0. Check the community dialects project for available legacy versions.
+2023-10-14T22:00:46.933+03:00  INFO 17636 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2023-10-14T22:00:48.433+03:00  INFO 17636 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-10-14T22:00:48.441+03:00  INFO 17636 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-10-14T22:00:49.338+03:00  WARN 17636 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-10-14T22:00:49.897+03:00  INFO 17636 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2023-10-14T22:00:49.987+03:00  INFO 17636 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9091 (http) with context path ''
+2023-10-14T22:00:50.001+03:00  INFO 17636 --- [main] org.example.Main                         : Started Main in 7.015 seconds (process running for 7.597)
+2023-10-14T22:01:53.328+03:00  INFO 17636 --- [http-nio-9091-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-10-14T22:01:53.328+03:00  INFO 17636 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-10-14T22:01:53.329+03:00  INFO 17636 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-10-14T22:01:53.403+03:00  WARN 17636 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-10-14T22:01:53.457+03:00  WARN 17636 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@72b849ff
+2023-10-14T22:01:59.889+03:00  WARN 17636 --- [http-nio-9091-exec-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1062, SQLState: 23000
+2023-10-14T22:01:59.889+03:00 ERROR 17636 --- [http-nio-9091-exec-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : Duplicate entry 'edwed' for key 'UK_sb2y5qcy6pp4flfyqk9vdytxa'
+2023-10-14T22:01:59.900+03:00 ERROR 17636 --- [http-nio-9091-exec-1] org.example.config.AppExceptionHandler   : org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [UK_sb2y5qcy6pp4flfyqk9vdytxa]
+2023-10-14T22:02:18.450+03:00  WARN 17636 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-10-14T22:02:18.462+03:00  WARN 17636 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@330977be
+2023-10-14T22:02:18.473+03:00  WARN 17636 --- [http-nio-9091-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1062, SQLState: 23000
+2023-10-14T22:02:18.473+03:00 ERROR 17636 --- [http-nio-9091-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : Duplicate entry 'edwed' for key 'UK_sb2y5qcy6pp4flfyqk9vdytxa'
+2023-10-14T22:02:18.486+03:00 ERROR 17636 --- [http-nio-9091-exec-2] org.example.config.AppExceptionHandler   : org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [UK_sb2y5qcy6pp4flfyqk9vdytxa]
+2023-10-14T22:02:29.352+03:00  WARN 17636 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-10-14T22:02:29.366+03:00  WARN 17636 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@772b6243
+2023-10-14T22:02:44.790+03:00  WARN 17636 --- [http-nio-9091-exec-3] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1062, SQLState: 23000
+2023-10-14T22:02:44.791+03:00 ERROR 17636 --- [http-nio-9091-exec-3] o.h.engine.jdbc.spi.SqlExceptionHelper   : Duplicate entry 'edwed' for key 'UK_sb2y5qcy6pp4flfyqk9vdytxa'
+2023-10-14T22:03:06.921+03:00  WARN 17636 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=50s292ms737µs).
+2023-10-14T22:03:06.923+03:00 ERROR 17636 --- [http-nio-9091-exec-3] org.example.config.AppExceptionHandler   : org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [UK_sb2y5qcy6pp4flfyqk9vdytxa]
+2023-10-14T22:03:44.030+03:00  WARN 17636 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-10-14T22:03:44.041+03:00  WARN 17636 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@7219fea9
+2023-10-14T22:03:49.564+03:00  WARN 17636 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/person/all
+2023-10-14T22:03:49.576+03:00  WARN 17636 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@2e382027
+2023-10-14T22:03:49.603+03:00  WARN 17636 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-10-14T22:03:49.613+03:00  WARN 17636 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@16ed3a9f
+2023-10-14T22:03:49.626+03:00  WARN 17636 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/group/all
+2023-10-14T22:03:49.636+03:00  WARN 17636 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@4534acbd
+2023-10-14T22:03:49.650+03:00  WARN 17636 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/region/all
+2023-10-14T22:03:49.662+03:00  WARN 17636 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@959ee97
+2023-10-14T22:03:49.676+03:00  WARN 17636 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/material/all
+2023-10-14T22:03:49.685+03:00  WARN 17636 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@2bfb08ce
+2023-10-14T22:04:13.879+03:00  WARN 17636 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-10-14T22:04:13.888+03:00  WARN 17636 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@6a2fe553
+2023-10-14T22:05:01.173+03:00  WARN 17636 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=54s228ms789µs900ns).
+2023-10-14T22:05:03.391+03:00  WARN 17636 --- [http-nio-9091-exec-6] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1062, SQLState: 23000
+2023-10-14T22:05:03.392+03:00 ERROR 17636 --- [http-nio-9091-exec-6] o.h.engine.jdbc.spi.SqlExceptionHelper   : Duplicate entry 'efwefwe' for key 'UK_sb2y5qcy6pp4flfyqk9vdytxa'
+2023-10-14T22:05:37.648+03:00 ERROR 17636 --- [http-nio-9091-exec-6] org.example.config.AppExceptionHandler   : org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [UK_sb2y5qcy6pp4flfyqk9vdytxa]
+2023-10-14T22:05:48.092+03:00  WARN 17636 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-10-14T22:05:48.102+03:00  WARN 17636 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@451a124d
+2023-10-14T22:05:56.329+03:00  WARN 17636 --- [http-nio-9091-exec-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1062, SQLState: 23000
+2023-10-14T22:05:56.329+03:00 ERROR 17636 --- [http-nio-9091-exec-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : Duplicate entry 'njknkj' for key 'UK_hstsgv2s8558lgfkcnrlljwc9'
+2023-10-14T22:05:56.332+03:00 ERROR 17636 --- [http-nio-9091-exec-1] org.example.config.AppExceptionHandler   : org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [UK_hstsgv2s8558lgfkcnrlljwc9]
+2023-10-14T22:06:16.830+03:00  WARN 17636 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-10-14T22:06:16.840+03:00  WARN 17636 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@244ab10b
+2023-10-14T22:06:54.429+03:00  WARN 17636 --- [http-nio-9091-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1062, SQLState: 23000
+2023-10-14T22:06:54.430+03:00 ERROR 17636 --- [http-nio-9091-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : Duplicate entry 'njknkj' for key 'UK_hstsgv2s8558lgfkcnrlljwc9'
+2023-10-14T22:08:17.802+03:00  WARN 17636 --- [http-nio-9091-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1062, SQLState: 23000
+2023-10-14T22:08:17.802+03:00 ERROR 17636 --- [http-nio-9091-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : Duplicate entry 'njknkj' for key 'UK_hstsgv2s8558lgfkcnrlljwc9'
+2023-10-14T22:09:19.361+03:00  WARN 17636 --- [http-nio-9091-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1062, SQLState: 23000
+2023-10-14T22:09:19.362+03:00 ERROR 17636 --- [http-nio-9091-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : Duplicate entry 'njknkj' for key 'UK_hstsgv2s8558lgfkcnrlljwc9'
+2023-10-14T22:09:58.893+03:00  WARN 17636 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m55s41ms411µs).
+2023-10-14T22:09:58.900+03:00  WARN 17636 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-10-14T22:09:58.911+03:00  WARN 17636 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@3dadbacb
+2023-10-14T22:09:58.946+03:00  WARN 17636 --- [http-nio-9091-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1062, SQLState: 23000
+2023-10-14T22:09:58.947+03:00 ERROR 17636 --- [http-nio-9091-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : Duplicate entry 'njknkj' for key 'UK_hstsgv2s8558lgfkcnrlljwc9'
+2023-10-14T22:09:58.966+03:00 ERROR 17636 --- [http-nio-9091-exec-2] org.example.config.AppExceptionHandler   : org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [UK_hstsgv2s8558lgfkcnrlljwc9]
+2023-10-14T22:09:58.967+03:00  WARN 17636 --- [http-nio-9091-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Failure in @ExceptionHandler org.example.config.AppExceptionHandler#handleDataIntegrityViolationException(DataIntegrityViolationException, WebRequest)
+
+org.apache.catalina.connector.ClientAbortException: java.io.IOException: Connection reset by peer
+	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:305) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:267) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.connector.CoyoteOutputStream.flush(CoyoteOutputStream.java:118) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at java.base/sun.nio.cs.StreamEncoder.implFlush(StreamEncoder.java:416) ~[na:na]
+	at java.base/sun.nio.cs.StreamEncoder.lockedFlush(StreamEncoder.java:218) ~[na:na]
+	at java.base/sun.nio.cs.StreamEncoder.flush(StreamEncoder.java:205) ~[na:na]
+	at java.base/java.io.OutputStreamWriter.flush(OutputStreamWriter.java:263) ~[na:na]
+	at org.springframework.util.StreamUtils.copy(StreamUtils.java:138) ~[spring-core-6.0.7.jar:6.0.7]
+	at org.springframework.http.converter.StringHttpMessageConverter.writeInternal(StringHttpMessageConverter.java:126) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.springframework.http.converter.StringHttpMessageConverter.writeInternal(StringHttpMessageConverter.java:44) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.springframework.http.converter.AbstractHttpMessageConverter.write(AbstractHttpMessageConverter.java:226) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:300) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor.handleReturnValue(HttpEntityMethodProcessor.java:245) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.method.support.HandlerMethodReturnValueHandlerComposite.handleReturnValue(HandlerMethodReturnValueHandlerComposite.java:78) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:136) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException(ExceptionHandlerExceptionResolver.java:413) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodExceptionResolver.doResolveException(AbstractHandlerMethodExceptionResolver.java:74) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:141) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:80) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.DispatcherServlet.processHandlerException(DispatcherServlet.java:1341) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1152) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1098) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:563) ~[tomcat-embed-core-10.1.7.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:631) ~[tomcat-embed-core-10.1.7.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.example.security.CustomFilter.doFilter(CustomFilter.java:85) ~[classes/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:109) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:493) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at java.base/java.lang.Thread.run(Thread.java:1623) ~[na:na]
+Caused by: java.io.IOException: Connection reset by peer
+	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:54) ~[na:na]
+	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:137) ~[na:na]
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:102) ~[na:na]
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:58) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:542) ~[na:na]
+	at org.apache.tomcat.util.net.NioChannel.write(NioChannel.java:118) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1381) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:764) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.util.net.SocketWrapperBase.flushBlocking(SocketWrapperBase.java:728) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.util.net.SocketWrapperBase.flush(SocketWrapperBase.java:712) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.flush(Http11OutputBuffer.java:566) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.coyote.http11.filters.IdentityOutputFilter.flush(IdentityOutputFilter.java:117) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.coyote.http11.Http11OutputBuffer.flush(Http11OutputBuffer.java:220) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.coyote.http11.Http11Processor.flush(Http11Processor.java:1245) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.coyote.AbstractProcessor.action(AbstractProcessor.java:399) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.coyote.Response.action(Response.java:208) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:301) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	... 67 common frames omitted
+
+2023-10-14T22:09:58.976+03:00 ERROR 17636 --- [http-nio-9091-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [UK_hstsgv2s8558lgfkcnrlljwc9]] with root cause
+
+java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'njknkj' for key 'UK_hstsgv2s8558lgfkcnrlljwc9'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeUpdate(ProxyPreparedStatement.java:61) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeUpdate(HikariProxyPreparedStatement.java) ~[HikariCP-5.0.1.jar:na]
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:197) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3444) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:4067) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
+	at org.hibernate.action.internal.EntityInsertAction.execute(EntityInsertAction.java:103) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:612) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
+	at org.hibernate.engine.spi.ActionQueue.lambda$executeActions$1(ActionQueue.java:483) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:729) ~[na:na]
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:480) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
+	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:329) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
+	at org.hibernate.event.internal.DefaultFlushEventListener.onFlush(DefaultFlushEventListener.java:39) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:107) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
+	at org.hibernate.internal.SessionImpl.doFlush(SessionImpl.java:1425) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
+	at org.hibernate.internal.SessionImpl.managedFlush(SessionImpl.java:477) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
+	at org.hibernate.internal.SessionImpl.flushBeforeTransactionCompletion(SessionImpl.java:2234) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
+	at org.hibernate.internal.SessionImpl.beforeTransactionCompletion(SessionImpl.java:1930) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
+	at org.hibernate.engine.jdbc.internal.JdbcCoordinatorImpl.beforeTransactionCompletion(JdbcCoordinatorImpl.java:439) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl.beforeCompletionCallback(JdbcResourceLocalTransactionCoordinatorImpl.java:183) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl$TransactionDriverControlImpl.commit(JdbcResourceLocalTransactionCoordinatorImpl.java:281) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
+	at org.hibernate.engine.transaction.internal.TransactionImpl.commit(TransactionImpl.java:101) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
+	at org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:561) ~[spring-orm-6.0.7.jar:6.0.7]
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:743) ~[spring-tx-6.0.7.jar:6.0.7]
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:711) ~[spring-tx-6.0.7.jar:6.0.7]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:660) ~[spring-tx-6.0.7.jar:6.0.7]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:410) ~[spring-tx-6.0.7.jar:6.0.7]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.0.7.jar:6.0.7]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.7.jar:6.0.7]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137) ~[spring-tx-6.0.7.jar:6.0.7]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.7.jar:6.0.7]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:163) ~[spring-data-jpa-3.0.4.jar:3.0.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.7.jar:6.0.7]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.0.7.jar:6.0.7]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.7.jar:6.0.7]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:218) ~[spring-aop-6.0.7.jar:6.0.7]
+	at jdk.proxy2/jdk.proxy2.$Proxy145.save(Unknown Source) ~[na:na]
+	at org.example.adapters.GasStationAdapter.save(GasStationAdapter.java:31) ~[classes/:na]
+	at org.example.useCases.create.CreateGasStation.execute(CreateGasStation.java:43) ~[classes/:na]
+	at org.example.controllers.GasStationController.createGasStation(GasStationController.java:53) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:152) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1081) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:563) ~[tomcat-embed-core-10.1.7.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:631) ~[tomcat-embed-core-10.1.7.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.example.security.CustomFilter.doFilter(CustomFilter.java:85) ~[classes/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:109) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:493) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at java.base/java.lang.Thread.run(Thread.java:1623) ~[na:na]
+
+2023-10-14T22:10:06.956+03:00  WARN 17636 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/person/all
+2023-10-14T22:10:06.966+03:00  WARN 17636 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@3b0f4538
+2023-10-14T22:10:06.984+03:00  WARN 17636 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-10-14T22:10:06.994+03:00  WARN 17636 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@69c1c0b9
+2023-10-14T22:10:07.007+03:00  WARN 17636 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/group/all
+2023-10-14T22:10:07.016+03:00  WARN 17636 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@788eda46
+2023-10-14T22:10:07.027+03:00  WARN 17636 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/region/all
+2023-10-14T22:10:07.036+03:00  WARN 17636 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@35639a90
+2023-10-14T22:10:07.048+03:00  WARN 17636 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/material/all
+2023-10-14T22:10:07.059+03:00  WARN 17636 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@2fd041a0
+2023-10-14T22:10:49.143+03:00  WARN 17636 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-10-14T22:10:49.154+03:00  WARN 17636 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@7018b0b9
+2023-10-14T22:11:27.948+03:00  WARN 17636 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-10-14T22:11:27.957+03:00  WARN 17636 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@43dc28b1
+2023-10-14T22:16:25.055+03:00  WARN 17636 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-10-14T22:16:25.065+03:00  WARN 17636 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@6bd59b82
+2023-10-14T22:21:31.823+03:00  WARN 17636 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-10-14T22:21:31.833+03:00  WARN 17636 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@41983030
+2023-10-14T22:21:58.775+03:00  WARN 17636 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-10-14T22:21:58.784+03:00  WARN 17636 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@1c5d154
+2023-10-14T22:22:50.487+03:00  WARN 17636 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-10-14T22:22:50.496+03:00  WARN 17636 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@2388c73b
+2023-10-14T22:23:57.658+03:00  WARN 17636 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-10-14T22:23:57.669+03:00  WARN 17636 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@78f0d773
+2023-10-14T22:27:11.337+03:00  WARN 17636 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-10-14T22:27:11.346+03:00  WARN 17636 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@653da9dc
+2023-10-14T22:27:28.945+03:00  WARN 17636 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-10-14T22:27:28.957+03:00  WARN 17636 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@2797527
+2023-10-14T22:27:30.693+03:00  WARN 17636 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-10-14T22:27:30.701+03:00  WARN 17636 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@145b7adb
+2023-10-14T22:27:47.368+03:00  WARN 17636 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/person/all
+2023-10-14T22:27:47.376+03:00  WARN 17636 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@3d3a1611
+2023-10-14T22:27:47.394+03:00  WARN 17636 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-10-14T22:27:47.402+03:00  WARN 17636 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@4f9debc5
+2023-10-14T22:27:47.413+03:00  WARN 17636 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/group/all
+2023-10-14T22:27:47.420+03:00  WARN 17636 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@76cb0f2
+2023-10-14T22:27:47.431+03:00  WARN 17636 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/region/all
+2023-10-14T22:27:47.439+03:00  WARN 17636 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@1e9b3de
+2023-10-14T22:27:47.450+03:00  WARN 17636 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/material/all
+2023-10-14T22:27:47.458+03:00  WARN 17636 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@150e0ea6
+2023-10-14T22:27:47.469+03:00  WARN 17636 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-10-14T22:27:47.477+03:00  WARN 17636 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@43021c09
+2023-10-14T22:28:48.426+03:00  WARN 17636 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-10-14T22:28:48.435+03:00  WARN 17636 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@3a0170a6
+2023-10-14T22:28:53.893+03:00  WARN 17636 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/person/all
+2023-10-14T22:28:53.902+03:00  WARN 17636 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@72f708ac
+2023-10-14T22:28:53.921+03:00  WARN 17636 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-10-14T22:28:53.929+03:00  WARN 17636 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@2f1ff68d
+2023-10-14T22:28:53.941+03:00  WARN 17636 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/group/all
+2023-10-14T22:28:53.951+03:00  WARN 17636 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@5f8cdf4a
+2023-10-14T22:28:54.035+03:00  WARN 17636 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/region/all
+2023-10-14T22:28:54.042+03:00  WARN 17636 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@48c63ee4
+2023-10-14T22:28:54.053+03:00  WARN 17636 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/material/all
+2023-10-14T22:28:54.061+03:00  WARN 17636 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@13bcfd20
+2023-10-14T22:28:54.076+03:00  WARN 17636 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-10-14T22:28:54.088+03:00  WARN 17636 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@67a7228b
+2023-10-14T22:29:01.782+03:00  WARN 17636 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-10-14T22:29:01.792+03:00  WARN 17636 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@672eabd9
+2023-10-14T22:29:01.818+03:00  WARN 17636 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-10-14T22:29:01.828+03:00  WARN 17636 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@4f08da03
+2023-10-14T22:29:07.041+03:00  WARN 17636 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/person/all
+2023-10-14T22:29:07.050+03:00  WARN 17636 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@72897987
+2023-10-14T22:29:07.062+03:00  WARN 17636 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/price-category/all
+2023-10-14T22:29:07.071+03:00  WARN 17636 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@53559a3e
+2023-10-14T22:29:07.082+03:00  WARN 17636 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/group/all
+2023-10-14T22:29:07.090+03:00  WARN 17636 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@13275358
+2023-10-14T22:29:07.101+03:00  WARN 17636 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/region/all
+2023-10-14T22:29:07.109+03:00  WARN 17636 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@50a60bca
+2023-10-14T22:29:07.119+03:00  WARN 17636 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/material/all
+2023-10-14T22:29:07.129+03:00  WARN 17636 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@47ec383b
+2023-10-14T22:29:07.139+03:00  WARN 17636 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/gas-station
+2023-10-14T22:29:07.147+03:00  WARN 17636 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@f080502
