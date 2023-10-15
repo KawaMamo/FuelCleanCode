@@ -56,10 +56,16 @@ public class TransController {
 
     @GetMapping
     public PagedModel<TransResponse> getTrans(SearchFilter criteria, Pageable pageable){
+        System.out.println("PagedModel<TransResponse> getTran");
         List<SearchCriteria> searchCriteria = CriteriaArrayToList.getCriteriaList(criteria);
         final FilterSpecifications<TransportationEntity> specifications = new FilterSpecifications<>(searchCriteria);
         final Page<Transportation> map = transRepoJpa.findAll(specifications, pageable).map(transMapper::entityToDomain);
         return pagedResourcesAssembler.toModel(map);
+    }
+
+    @GetMapping("/all")
+    public List<Transportation> getAll(){
+        return transRepoJpa.findAll().stream().map(transMapper::entityToDomain).toList();
     }
 
     @PatchMapping

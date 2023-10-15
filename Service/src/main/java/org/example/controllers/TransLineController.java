@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("app/v1/trans-line")
+@RequestMapping("api/v1/trans-line")
 public class TransLineController {
 
     private final CreateTransLine createTransLine;

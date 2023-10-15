@@ -11,8 +11,8 @@ import org.example.model.Transportation;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-10-14T21:53:03+0300",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
+    date = "2023-10-15T12:19:54+0300",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class PartitionDomainMapperImpl implements PartitionDomainMapper {
 
