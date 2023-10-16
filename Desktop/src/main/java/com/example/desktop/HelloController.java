@@ -31,7 +31,6 @@ public class HelloController {
         final String payload = formPayload();
         HttpResponse<String> post = client.parallelPost("api/v1/auth/authenticate", payload);
         final JWTToken jwtToken = new Gson().fromJson(post.body(), JWTToken.class);
-        System.out.println(jwtToken);
         Client.setAuthorization("Bearer "+jwtToken.getToken());
         setUserDetails(jwtToken);
         if(LogInData.loggedInUser.getRole().equals("SUPER_ADMIN"))

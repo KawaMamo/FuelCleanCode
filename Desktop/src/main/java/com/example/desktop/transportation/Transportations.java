@@ -1,6 +1,7 @@
 package com.example.desktop.transportation;
 
 import com.example.model.TableController;
+import com.example.model.modal.Modal;
 import com.example.model.transportation.TransportationService;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -49,22 +50,26 @@ public class Transportations implements TableController {
         TableColumn<Transportation, String> sizeCol = new TableColumn<>("size");
         sizeCol.setCellValueFactory(data -> new SimpleStringProperty(NumberFormat.getInstance().format(data.getValue().getSize())));
 
-        /*TableColumn<Transportation, String> partitionsCol = new TableColumn<>("partitions");
+        TableColumn<Transportation, String> partitionsCol = new TableColumn<>("partitions");
         partitionsCol.setCellValueFactory(
                 data -> {
                     StringBuilder partitionString = new StringBuilder();
-                    data.getValue().getPartitions().forEach(partition -> partitionString.append(partition.getGasStation().getName()));
-                    return new SimpleStringProperty(partitionString.toString());
+                    if(Objects.nonNull(data.getValue().getPartitions())){
+                        data.getValue().getPartitions().forEach(partition -> partitionString.append(partition.getGasStation().getName()));
+                        return new SimpleStringProperty(partitionString.toString());
+                    }else return new SimpleStringProperty("NA");
                 }
-        );*/
+        );
 
-        tableTbl.getColumns().addAll(idCol, vehicleCol, refineryCol, sizeCol);
+        tableTbl.getColumns().addAll(idCol, vehicleCol, refineryCol, sizeCol, partitionsCol);
         tableTbl.setItems(observableList);
     }
 
     @FXML
     void add() {
-
+        AddTransportation.controller = this;
+        AddTransportation.isEditingForm = false;
+        Modal.start(this.getClass(), "addTransportation.fxml");
     }
 
     @FXML

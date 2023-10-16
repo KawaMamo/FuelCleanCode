@@ -17,18 +17,18 @@
             <VBox nodeOrientation="RIGHT_TO_LEFT" spacing="10.0">
                <children>
                   <TextField fx:id="refineyTF" />
-                  <TextField fx:id="translationTF" />
+                  <TextField fx:id="vehicleTF" />
                   <TextField fx:id="driverTF" editable="false" />
                   <TextField fx:id="sizeTF" />
-                  <DatePicker />
-                  <Button fx:id="submitBtn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#submit" text="تأكيد" />
+                  <DatePicker fx:id="dateDP" />
+                  <Button fx:id="transBtn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addTrans" text="تأكيد" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="18.0">
                <children>
                   <Label text="المصدر" />
-                  <Label fx:id="vehicleTF" text="المركبة" />
-                  <Label fx:id="vehicleTF1" text="السائق" />
+                  <Label text="المركبة" />
+                  <Label text="السائق" />
                   <Label fx:id="vehicleTF2" text="السعة" />
                </children>
             </VBox>
@@ -48,23 +48,23 @@
          <children>
             <VBox nodeOrientation="RIGHT_TO_LEFT" spacing="10.0">
                <children>
-                  <TextField fx:id="refineyTF1" />
-                  <TextField fx:id="translationTF1" />
-                  <TextField fx:id="translationTF11" />
-                  <TextField fx:id="translationTF111" />
-                  <TextField fx:id="translationTF1111" />
-                  <TextField fx:id="translationTF11111" />
-                  <Button fx:id="submitBtn1" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#submit" text="تأكيد" />
+                  <TextField fx:id="stationTF" />
+                  <TextField fx:id="priceCateTF" />
+                  <Label fx:id="priceLbl" />
+                  <TextField fx:id="partAmountTF" />
+                  <TextField fx:id="materialTF" />
+                  <TextField fx:id="notesTF" />
+                  <Button fx:id="deliveryBtn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#submit" text="تأكيد" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="18.0">
                <children>
                   <Label text="الوجهة" />
-                  <Label fx:id="vehicleTF1" text="الفئة الافتراضية" />
-                  <Label fx:id="vehicleTF1111" text="السعر" />
-                  <Label fx:id="vehicleTF11" text="الكمية" />
-                  <Label fx:id="vehicleTF111" text="المادة" />
-                  <Label fx:id="vehicleTF1112" text="ملاحظات" />
+                  <Label text="الفئة الافتراضية" />
+                  <Label text="السعر" />
+                  <Label text="الكمية" />
+                  <Label text="المادة" />
+                  <Label text="ملاحظات" />
                </children>
             </VBox>
          </children>
@@ -73,9 +73,9 @@
          <children>
             <VBox nodeOrientation="RIGHT_TO_LEFT" spacing="10.0">
                <children>
-                  <TextField fx:id="refineyTF2" />
-                  <TextField fx:id="translationTF2" />
-                  <Button fx:id="submitBtn2" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#submit" text="تأكيد" />
+                  <TextField fx:id="sourceTF" />
+                  <TextField fx:id="destinationTF" />
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addLineFee" text="تأكيد" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="18.0">
@@ -91,15 +91,15 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TableView layoutX="30.0" layoutY="304.0" prefHeight="217.0" prefWidth="302.0" />
+      <TableView fx:id="partitionsTbl" layoutX="30.0" layoutY="304.0" prefHeight="217.0" prefWidth="302.0" />
       <HBox layoutX="365.0" layoutY="428.0" prefHeight="95.0" prefWidth="302.0" spacing="50.0">
          <children>
             <VBox nodeOrientation="RIGHT_TO_LEFT" spacing="10.0">
                <children>
-                  <TextField fx:id="refineyTF21" />
-                  <TextField fx:id="translationTF21" />
-                  <TextField fx:id="translationTF211" />
-                  <Button fx:id="submitBtn21" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#submit" text="تأكيد" />
+                  <TextField fx:id="reasonTF" />
+                  <TextField fx:id="amountTF" />
+                  <TextField fx:id="currencyTF" />
+                  <Button fx:id="forfeitBtn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addForfeit" text="تأكيد" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="18.0">
@@ -116,6 +116,6 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Button fx:id="submitBtn211" layoutX="30.0" layoutY="535.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#submit" prefHeight="26.0" prefWidth="114.0" text="انهاء" />
+      <Button fx:id="endBtn" layoutX="30.0" layoutY="535.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#close" prefHeight="26.0" prefWidth="114.0" text="انهاء" />
    </children>
 </AnchorPane>

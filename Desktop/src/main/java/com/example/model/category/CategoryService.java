@@ -38,6 +38,16 @@ public class CategoryService implements Service<Category, CreateCategoryRequest,
         return new ArrayList<>();
     }
 
+    public List<Category> getItems(Integer page, Integer size, String query){
+        String getUrl = getEndPoint()+"?page="+page+"&size="+size+"&"+query;
+        final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+        final CategoryResponseEntity categoryResponseEntity = gson.fromJson(stringHttpResponse.body(),
+                CategoryResponseEntity.class);
+        if(Objects.nonNull(categoryResponseEntity._embedded))
+            return categoryResponseEntity._embedded.categoryList;
+        return new ArrayList<>();
+    }
+
     @Override
     public Category addItem(CreateCategoryRequest itemRequest) {
         final String payload = gson.toJson(itemRequest);

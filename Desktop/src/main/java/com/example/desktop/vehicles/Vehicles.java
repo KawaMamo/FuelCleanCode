@@ -72,7 +72,7 @@ public class Vehicles implements TableController {
     }
 
     public void loadData() {
-        vehicles = FXCollections.observableArrayList(vehicleService.getVehicles(Integer.parseInt(page.getText())-1));
+        vehicles = FXCollections.observableArrayList(vehicleService.getVehicles(Integer.parseInt(page.getText())-1, 15));
         tableTbl.setItems(vehicles);
     }
 

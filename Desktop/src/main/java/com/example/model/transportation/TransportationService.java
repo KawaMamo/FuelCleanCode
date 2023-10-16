@@ -34,7 +34,9 @@ public class TransportationService implements Service<Transportation, CreateTran
 
     @Override
     public Transportation addItem(CreateTransRequest itemRequest) {
-        return null;
+        final String json = gson.toJson(itemRequest);
+        final HttpResponse<String> stringHttpResponse = client.parallelPost(getEndPoint(), json);
+        return gson.fromJson(stringHttpResponse.body(), Transportation.class);
     }
 
     @Override

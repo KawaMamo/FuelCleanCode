@@ -1,7 +1,7 @@
 package com.example.model.vehicle;
 
 import com.example.model.client.Client;
-import com.example.model.properties.AppProperty;
+import com.example.model.refinery.response.RefineryResponseEntity;
 import com.example.model.typeAdapter.AppGson;
 import com.example.model.vehicle.response.VehicleResponse;
 import com.google.gson.*;
@@ -11,7 +11,6 @@ import org.example.model.Vehicle;
 
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -26,12 +25,18 @@ public class VehicleService {
         return instance;
     }
 
-    public List<Vehicle> getVehicles(Integer page){
-        String getUrl = "api/v1/vehicle?page="+page+"&size=10&key=plateNumber&value=1&operation=%3E&test.test=1&sort=id,desc";
-        final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
-        final VehicleResponse vehicleResponse = gson.fromJson(stringHttpResponse.body(), VehicleResponse.class);
-        if(Objects.nonNull(vehicleResponse._embedded)){
-            return vehicleResponse._embedded.vehicleList;
+    public List<Vehicle> getVehicles(Integer page, Integer size){
+        String getUrl;
+        if(Objects.isNull(page)){
+            getUrl = getEndPoint()+"/all";
+            final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+            return List.of(gson.fromJson(stringHttpResponse.body(), Vehicle[].class));
+        }else {
+            getUrl = getEndPoint()+"?page="+page+"&size="+size+"&key=id&value=0&operation=%3E&sort=id,desc";
+            final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+            final VehicleResponse vehicleResponse = gson.fromJson(stringHttpResponse.body(), VehicleResponse.class);
+            if(Objects.nonNull(vehicleResponse._embedded))
+                return vehicleResponse._embedded.vehicleList;
         }
         return new ArrayList<>();
     }
@@ -52,6 +57,10 @@ public class VehicleService {
         final String payload = gson.toJson(vehicle);
         final HttpResponse<String> stringHttpResponse = client.parallelPatch("api/v1/vehicle", payload);
         return gson.fromJson(stringHttpResponse.body(), Vehicle.class);
+    }
+
+    public String getEndPoint() {
+        return "api/v1/vehicle";
     }
 
 }

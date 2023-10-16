@@ -10,6 +10,7 @@ import org.example.model.Transportation;
 import org.example.validators.create.CreateTransValidator;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class CreateTrans {
 
@@ -39,6 +40,6 @@ public class CreateTrans {
     }
 
     public void addSystemValues(Transportation transportation){
-        transportation.setCreatedAt(LocalDateTime.now());
+        transportation.setCreatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
     }
 }
