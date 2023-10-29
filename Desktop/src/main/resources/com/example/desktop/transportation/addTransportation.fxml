@@ -16,7 +16,7 @@
          <children>
             <VBox nodeOrientation="RIGHT_TO_LEFT" spacing="10.0">
                <children>
-                  <TextField fx:id="refineyTF" />
+                  <TextField fx:id="refineryTF" />
                   <TextField fx:id="vehicleTF" />
                   <TextField fx:id="driverTF" editable="false" />
                   <TextField fx:id="sizeTF" />
@@ -69,7 +69,7 @@
             </VBox>
          </children>
       </HBox>
-      <HBox layoutX="365.0" layoutY="288.0" prefHeight="95.0" prefWidth="302.0" spacing="50.0">
+      <HBox layoutX="371.0" layoutY="289.0" prefHeight="95.0" prefWidth="302.0" spacing="50.0">
          <children>
             <VBox nodeOrientation="RIGHT_TO_LEFT" spacing="10.0">
                <children>
@@ -92,30 +92,7 @@
          </font>
       </Label>
       <TableView fx:id="partitionsTbl" layoutX="30.0" layoutY="304.0" prefHeight="217.0" prefWidth="302.0" />
-      <HBox layoutX="365.0" layoutY="428.0" prefHeight="95.0" prefWidth="302.0" spacing="50.0">
-         <children>
-            <VBox nodeOrientation="RIGHT_TO_LEFT" spacing="10.0">
-               <children>
-                  <TextField fx:id="reasonTF" />
-                  <TextField fx:id="amountTF" />
-                  <TextField fx:id="currencyTF" />
-                  <Button fx:id="forfeitBtn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addForfeit" text="تأكيد" />
-               </children>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" spacing="18.0">
-               <children>
-                  <Label text="السبب" />
-                  <Label fx:id="vehicleTF12" text="المبلغ" />
-                  <Label fx:id="vehicleTF121" text="العملة" />
-               </children>
-            </VBox>
-         </children>
-      </HBox>
-      <Label layoutX="614.0" layoutY="390.0" text="تغريم السائق">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
       <Button fx:id="endBtn" layoutX="30.0" layoutY="535.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#close" prefHeight="26.0" prefWidth="114.0" text="انهاء" />
+      <TableView fx:id="transLineTbl" layoutX="371.0" layoutY="409.0" prefHeight="112.0" prefWidth="302.0" />
    </children>
 </AnchorPane>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="251.0" prefWidth="344.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.desktop.transportation.AddForfeit">
+   <children>
+      <HBox layoutX="36.0" layoutY="86.0" prefHeight="95.0" prefWidth="302.0" spacing="50.0">
+         <children>
+            <VBox nodeOrientation="RIGHT_TO_LEFT" spacing="10.0">
+               <children>
+                  <TextField fx:id="reasonTF" />
+                  <TextField fx:id="amountTF" />
+                  <TextField fx:id="currencyTF" />
+                  <Button fx:id="forfeitBtn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="تأكيد" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="18.0">
+               <children>
+                  <Label text="السبب" />
+                  <Label fx:id="vehicleTF12" text="المبلغ" />
+                  <Label fx:id="vehicleTF121" text="العملة" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Label layoutX="150.0" layoutY="36.0" text="تغريم السائق">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

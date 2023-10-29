@@ -11,6 +11,7 @@ import org.example.model.Partition;
 import org.example.validators.create.CreatePartitionValidator;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.NoSuchElementException;
 
 public class CreatePartition {
@@ -37,7 +38,7 @@ public class CreatePartition {
     public PartitionResponse execute(CreatePartitionRequest request){
         validator.validate(request);
         final Partition partition = mapper.requestToDomain(request);
-        partition.setCreatedAt(LocalDateTime.now());
+        partition.setCreatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         final Partition save = partitionRepo.save(partition);
         transRepo.findById(save.getTransportation().getId()).ifPresent(save::setTransportation);
         gasStationRepo.findById(save.getGasStation().getId()).ifPresentOrElse(save::setGasStation, NoSuchElementException::new);

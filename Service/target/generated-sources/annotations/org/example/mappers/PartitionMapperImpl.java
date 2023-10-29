@@ -33,7 +33,7 @@ import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-10-15T13:11:53+0300",
+    date = "2023-10-29T16:02:27+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class PartitionMapperImpl implements PartitionMapper {
@@ -47,6 +47,7 @@ public class PartitionMapperImpl implements PartitionMapper {
         Partition partition1 = new Partition();
 
         partition1.setPrice( partitionEntityToMoney( partition ) );
+        partition1.setTransportation( transportationEntityToTransportation( partition.getTransportationEntity() ) );
         partition1.setId( partition.getId() );
         partition1.setMaterial( materialEntityToMaterial( partition.getMaterial() ) );
         partition1.setAmount( partition.getAmount() );
@@ -55,7 +56,6 @@ public class PartitionMapperImpl implements PartitionMapper {
         partition1.setNotes( partition.getNotes() );
         partition1.setExtraNotes( partition.getExtraNotes() );
         partition1.setDocument( documentEntityToDocument( partition.getDocument() ) );
-        partition1.setTransportation( transportationEntityToTransportation( partition.getTransportation() ) );
         partition1.setCreatedAt( partition.getCreatedAt() );
         partition1.setUpdatedAt( partition.getUpdatedAt() );
 
@@ -72,6 +72,7 @@ public class PartitionMapperImpl implements PartitionMapper {
 
         partitionEntity.setPriceCurrency( partitionPriceCurrency( partition ) );
         partitionEntity.setPriceAmount( partitionPriceAmount( partition ) );
+        partitionEntity.setTransportationEntity( transportationToTransportationEntity( partition.getTransportation() ) );
         partitionEntity.setId( partition.getId() );
         partitionEntity.setMaterial( materialToMaterialEntity( partition.getMaterial() ) );
         partitionEntity.setAmount( partition.getAmount() );
@@ -82,7 +83,6 @@ public class PartitionMapperImpl implements PartitionMapper {
         partitionEntity.setDocument( documentToDocumentEntity( partition.getDocument() ) );
         partitionEntity.setCreatedAt( partition.getCreatedAt() );
         partitionEntity.setUpdatedAt( partition.getUpdatedAt() );
-        partitionEntity.setTransportation( transportationToTransportationEntity( partition.getTransportation() ) );
 
         return partitionEntity;
     }
@@ -98,132 +98,6 @@ public class PartitionMapperImpl implements PartitionMapper {
         money.setAmount( partitionEntity.getPriceAmount() );
 
         return money;
-    }
-
-    protected Material materialEntityToMaterial(MaterialEntity materialEntity) {
-        if ( materialEntity == null ) {
-            return null;
-        }
-
-        Material material = new Material();
-
-        material.setId( materialEntity.getId() );
-        material.setName( materialEntity.getName() );
-        material.setCreatedAt( materialEntity.getCreatedAt() );
-        material.setUpdatedAt( materialEntity.getUpdatedAt() );
-
-        return material;
-    }
-
-    protected PriceCategory priceCategoryEntityToPriceCategory(PriceCategoryEntity priceCategoryEntity) {
-        if ( priceCategoryEntity == null ) {
-            return null;
-        }
-
-        PriceCategory priceCategory = new PriceCategory();
-
-        priceCategory.setId( priceCategoryEntity.getId() );
-        priceCategory.setName( priceCategoryEntity.getName() );
-        priceCategory.setCreatedAt( priceCategoryEntity.getCreatedAt() );
-        priceCategory.setUpdatedAt( priceCategoryEntity.getUpdatedAt() );
-
-        return priceCategory;
-    }
-
-    protected Region regionEntityToRegion(RegionEntity regionEntity) {
-        if ( regionEntity == null ) {
-            return null;
-        }
-
-        Region region = new Region();
-
-        region.setId( regionEntity.getId() );
-        region.setName( regionEntity.getName() );
-        region.setTranslation( regionEntity.getTranslation() );
-        region.setPlaceType( regionEntity.getPlaceType() );
-        region.setCreatedAt( regionEntity.getCreatedAt() );
-        region.setUpdatedAt( regionEntity.getUpdatedAt() );
-
-        return region;
-    }
-
-    protected Person personEntityToPerson(PersonEntity personEntity) {
-        if ( personEntity == null ) {
-            return null;
-        }
-
-        Person person = new Person();
-
-        person.setId( personEntity.getId() );
-        person.setName( personEntity.getName() );
-        person.setFather( personEntity.getFather() );
-        person.setMother( personEntity.getMother() );
-        person.setNationalId( personEntity.getNationalId() );
-        person.setBirthPlace( personEntity.getBirthPlace() );
-        person.setBirthDate( personEntity.getBirthDate() );
-        person.setCreatedAt( personEntity.getCreatedAt() );
-        person.setUpdatedAt( personEntity.getUpdatedAt() );
-
-        return person;
-    }
-
-    protected Group groupEntityToGroup(GroupEntity groupEntity) {
-        if ( groupEntity == null ) {
-            return null;
-        }
-
-        Group group = new Group();
-
-        group.setId( groupEntity.getId() );
-        group.setName( groupEntity.getName() );
-        group.setCreatedAt( groupEntity.getCreatedAt() );
-        group.setUpdatedAt( groupEntity.getUpdatedAt() );
-
-        return group;
-    }
-
-    protected GasStation gasStationEntityToGasStation(GasStationEntity gasStationEntity) {
-        if ( gasStationEntity == null ) {
-            return null;
-        }
-
-        GasStation gasStation = new GasStation();
-
-        gasStation.setId( gasStationEntity.getId() );
-        gasStation.setName( gasStationEntity.getName() );
-        gasStation.setTranslation( gasStationEntity.getTranslation() );
-        gasStation.setPlaceType( gasStationEntity.getPlaceType() );
-        gasStation.setCreatedAt( gasStationEntity.getCreatedAt() );
-        gasStation.setUpdatedAt( gasStationEntity.getUpdatedAt() );
-        gasStation.setPriceCategory( priceCategoryEntityToPriceCategory( gasStationEntity.getPriceCategory() ) );
-        gasStation.setDebtLimit( gasStationEntity.getDebtLimit() );
-        gasStation.setRegion( regionEntityToRegion( gasStationEntity.getRegion() ) );
-        gasStation.setOwner( personEntityToPerson( gasStationEntity.getOwner() ) );
-        gasStation.setGroup( groupEntityToGroup( gasStationEntity.getGroup() ) );
-        gasStation.setMaterial( materialEntityToMaterial( gasStationEntity.getMaterial() ) );
-
-        return gasStation;
-    }
-
-    protected Document documentEntityToDocument(DocumentEntity documentEntity) {
-        if ( documentEntity == null ) {
-            return null;
-        }
-
-        Document document = new Document();
-
-        document.setId( documentEntity.getId() );
-        document.setUrl( documentEntity.getUrl() );
-        document.setType( documentEntity.getType() );
-        document.setResourceId( documentEntity.getResourceId() );
-        byte[] content = documentEntity.getContent();
-        if ( content != null ) {
-            document.setContent( Arrays.copyOf( content, content.length ) );
-        }
-        document.setCreatedAt( documentEntity.getCreatedAt() );
-        document.setUpdatedAt( documentEntity.getUpdatedAt() );
-
-        return document;
     }
 
     protected TrafficCenter trafficCenterEntityToTrafficCenter(TrafficCenterEntity trafficCenterEntity) {
@@ -254,6 +128,26 @@ public class PartitionMapperImpl implements PartitionMapper {
         office.setUpdateAt( officeEntity.getUpdateAt() );
 
         return office;
+    }
+
+    protected Person personEntityToPerson(PersonEntity personEntity) {
+        if ( personEntity == null ) {
+            return null;
+        }
+
+        Person person = new Person();
+
+        person.setId( personEntity.getId() );
+        person.setName( personEntity.getName() );
+        person.setFather( personEntity.getFather() );
+        person.setMother( personEntity.getMother() );
+        person.setNationalId( personEntity.getNationalId() );
+        person.setBirthPlace( personEntity.getBirthPlace() );
+        person.setBirthDate( personEntity.getBirthDate() );
+        person.setCreatedAt( personEntity.getCreatedAt() );
+        person.setUpdatedAt( personEntity.getUpdatedAt() );
+
+        return person;
     }
 
     protected Vehicle vehicleEntityToVehicle(VehicleEntity vehicleEntity) {
@@ -311,6 +205,27 @@ public class PartitionMapperImpl implements PartitionMapper {
         return transportationType1;
     }
 
+    protected Document documentEntityToDocument(DocumentEntity documentEntity) {
+        if ( documentEntity == null ) {
+            return null;
+        }
+
+        Document document = new Document();
+
+        document.setId( documentEntity.getId() );
+        document.setUrl( documentEntity.getUrl() );
+        document.setType( documentEntity.getType() );
+        document.setResourceId( documentEntity.getResourceId() );
+        byte[] content = documentEntity.getContent();
+        if ( content != null ) {
+            document.setContent( Arrays.copyOf( content, content.length ) );
+        }
+        document.setCreatedAt( documentEntity.getCreatedAt() );
+        document.setUpdatedAt( documentEntity.getUpdatedAt() );
+
+        return document;
+    }
+
     protected Transportation transportationEntityToTransportation(TransportationEntity transportationEntity) {
         if ( transportationEntity == null ) {
             return null;
@@ -331,6 +246,91 @@ public class PartitionMapperImpl implements PartitionMapper {
         transportation.setDeletedAt( transportationEntity.getDeletedAt() );
 
         return transportation;
+    }
+
+    protected Material materialEntityToMaterial(MaterialEntity materialEntity) {
+        if ( materialEntity == null ) {
+            return null;
+        }
+
+        Material material = new Material();
+
+        material.setId( materialEntity.getId() );
+        material.setName( materialEntity.getName() );
+        material.setCreatedAt( materialEntity.getCreatedAt() );
+        material.setUpdatedAt( materialEntity.getUpdatedAt() );
+
+        return material;
+    }
+
+    protected PriceCategory priceCategoryEntityToPriceCategory(PriceCategoryEntity priceCategoryEntity) {
+        if ( priceCategoryEntity == null ) {
+            return null;
+        }
+
+        PriceCategory priceCategory = new PriceCategory();
+
+        priceCategory.setId( priceCategoryEntity.getId() );
+        priceCategory.setName( priceCategoryEntity.getName() );
+        priceCategory.setCreatedAt( priceCategoryEntity.getCreatedAt() );
+        priceCategory.setUpdatedAt( priceCategoryEntity.getUpdatedAt() );
+
+        return priceCategory;
+    }
+
+    protected Region regionEntityToRegion(RegionEntity regionEntity) {
+        if ( regionEntity == null ) {
+            return null;
+        }
+
+        Region region = new Region();
+
+        region.setId( regionEntity.getId() );
+        region.setName( regionEntity.getName() );
+        region.setTranslation( regionEntity.getTranslation() );
+        region.setPlaceType( regionEntity.getPlaceType() );
+        region.setCreatedAt( regionEntity.getCreatedAt() );
+        region.setUpdatedAt( regionEntity.getUpdatedAt() );
+
+        return region;
+    }
+
+    protected Group groupEntityToGroup(GroupEntity groupEntity) {
+        if ( groupEntity == null ) {
+            return null;
+        }
+
+        Group group = new Group();
+
+        group.setId( groupEntity.getId() );
+        group.setName( groupEntity.getName() );
+        group.setCreatedAt( groupEntity.getCreatedAt() );
+        group.setUpdatedAt( groupEntity.getUpdatedAt() );
+
+        return group;
+    }
+
+    protected GasStation gasStationEntityToGasStation(GasStationEntity gasStationEntity) {
+        if ( gasStationEntity == null ) {
+            return null;
+        }
+
+        GasStation gasStation = new GasStation();
+
+        gasStation.setId( gasStationEntity.getId() );
+        gasStation.setName( gasStationEntity.getName() );
+        gasStation.setTranslation( gasStationEntity.getTranslation() );
+        gasStation.setPlaceType( gasStationEntity.getPlaceType() );
+        gasStation.setCreatedAt( gasStationEntity.getCreatedAt() );
+        gasStation.setUpdatedAt( gasStationEntity.getUpdatedAt() );
+        gasStation.setPriceCategory( priceCategoryEntityToPriceCategory( gasStationEntity.getPriceCategory() ) );
+        gasStation.setDebtLimit( gasStationEntity.getDebtLimit() );
+        gasStation.setRegion( regionEntityToRegion( gasStationEntity.getRegion() ) );
+        gasStation.setOwner( personEntityToPerson( gasStationEntity.getOwner() ) );
+        gasStation.setGroup( groupEntityToGroup( gasStationEntity.getGroup() ) );
+        gasStation.setMaterial( materialEntityToMaterial( gasStationEntity.getMaterial() ) );
+
+        return gasStation;
     }
 
     private String partitionPriceCurrency(Partition partition) {
@@ -363,132 +363,6 @@ public class PartitionMapperImpl implements PartitionMapper {
         return amount;
     }
 
-    protected MaterialEntity materialToMaterialEntity(Material material) {
-        if ( material == null ) {
-            return null;
-        }
-
-        MaterialEntity materialEntity = new MaterialEntity();
-
-        materialEntity.setId( material.getId() );
-        materialEntity.setName( material.getName() );
-        materialEntity.setCreatedAt( material.getCreatedAt() );
-        materialEntity.setUpdatedAt( material.getUpdatedAt() );
-
-        return materialEntity;
-    }
-
-    protected PriceCategoryEntity priceCategoryToPriceCategoryEntity(PriceCategory priceCategory) {
-        if ( priceCategory == null ) {
-            return null;
-        }
-
-        PriceCategoryEntity priceCategoryEntity = new PriceCategoryEntity();
-
-        priceCategoryEntity.setId( priceCategory.getId() );
-        priceCategoryEntity.setName( priceCategory.getName() );
-        priceCategoryEntity.setCreatedAt( priceCategory.getCreatedAt() );
-        priceCategoryEntity.setUpdatedAt( priceCategory.getUpdatedAt() );
-
-        return priceCategoryEntity;
-    }
-
-    protected RegionEntity regionToRegionEntity(Region region) {
-        if ( region == null ) {
-            return null;
-        }
-
-        RegionEntity regionEntity = new RegionEntity();
-
-        regionEntity.setId( region.getId() );
-        regionEntity.setPlaceType( region.getPlaceType() );
-        regionEntity.setCreatedAt( region.getCreatedAt() );
-        regionEntity.setUpdatedAt( region.getUpdatedAt() );
-        regionEntity.setName( region.getName() );
-        regionEntity.setTranslation( region.getTranslation() );
-
-        return regionEntity;
-    }
-
-    protected PersonEntity personToPersonEntity(Person person) {
-        if ( person == null ) {
-            return null;
-        }
-
-        PersonEntity personEntity = new PersonEntity();
-
-        personEntity.setId( person.getId() );
-        personEntity.setName( person.getName() );
-        personEntity.setFather( person.getFather() );
-        personEntity.setMother( person.getMother() );
-        personEntity.setNationalId( person.getNationalId() );
-        personEntity.setBirthPlace( person.getBirthPlace() );
-        personEntity.setBirthDate( person.getBirthDate() );
-        personEntity.setCreatedAt( person.getCreatedAt() );
-        personEntity.setUpdatedAt( person.getUpdatedAt() );
-
-        return personEntity;
-    }
-
-    protected GroupEntity groupToGroupEntity(Group group) {
-        if ( group == null ) {
-            return null;
-        }
-
-        GroupEntity groupEntity = new GroupEntity();
-
-        groupEntity.setId( group.getId() );
-        groupEntity.setName( group.getName() );
-        groupEntity.setCreatedAt( group.getCreatedAt() );
-        groupEntity.setUpdatedAt( group.getUpdatedAt() );
-
-        return groupEntity;
-    }
-
-    protected GasStationEntity gasStationToGasStationEntity(GasStation gasStation) {
-        if ( gasStation == null ) {
-            return null;
-        }
-
-        GasStationEntity gasStationEntity = new GasStationEntity();
-
-        gasStationEntity.setId( gasStation.getId() );
-        gasStationEntity.setPlaceType( gasStation.getPlaceType() );
-        gasStationEntity.setCreatedAt( gasStation.getCreatedAt() );
-        gasStationEntity.setUpdatedAt( gasStation.getUpdatedAt() );
-        gasStationEntity.setName( gasStation.getName() );
-        gasStationEntity.setTranslation( gasStation.getTranslation() );
-        gasStationEntity.setPriceCategory( priceCategoryToPriceCategoryEntity( gasStation.getPriceCategory() ) );
-        gasStationEntity.setDebtLimit( gasStation.getDebtLimit() );
-        gasStationEntity.setRegion( regionToRegionEntity( gasStation.getRegion() ) );
-        gasStationEntity.setOwner( personToPersonEntity( gasStation.getOwner() ) );
-        gasStationEntity.setGroup( groupToGroupEntity( gasStation.getGroup() ) );
-        gasStationEntity.setMaterial( materialToMaterialEntity( gasStation.getMaterial() ) );
-
-        return gasStationEntity;
-    }
-
-    protected DocumentEntity documentToDocumentEntity(Document document) {
-        if ( document == null ) {
-            return null;
-        }
-
-        DocumentEntity documentEntity = new DocumentEntity();
-
-        documentEntity.setId( document.getId() );
-        documentEntity.setUrl( document.getUrl() );
-        documentEntity.setType( document.getType() );
-        documentEntity.setResourceId( document.getResourceId() );
-        byte[] content = document.getContent();
-        if ( content != null ) {
-            documentEntity.setContent( Arrays.copyOf( content, content.length ) );
-        }
-        documentEntity.setCreatedAt( document.getCreatedAt() );
-        documentEntity.setUpdatedAt( document.getUpdatedAt() );
-
-        return documentEntity;
-    }
-
     protected TrafficCenterEntity trafficCenterToTrafficCenterEntity(TrafficCenter trafficCenter) {
         if ( trafficCenter == null ) {
             return null;
@@ -517,6 +391,26 @@ public class PartitionMapperImpl implements PartitionMapper {
         officeEntity.setUpdateAt( office.getUpdateAt() );
 
         return officeEntity;
+    }
+
+    protected PersonEntity personToPersonEntity(Person person) {
+        if ( person == null ) {
+            return null;
+        }
+
+        PersonEntity personEntity = new PersonEntity();
+
+        personEntity.setId( person.getId() );
+        personEntity.setName( person.getName() );
+        personEntity.setFather( person.getFather() );
+        personEntity.setMother( person.getMother() );
+        personEntity.setNationalId( person.getNationalId() );
+        personEntity.setBirthPlace( person.getBirthPlace() );
+        personEntity.setBirthDate( person.getBirthDate() );
+        personEntity.setCreatedAt( person.getCreatedAt() );
+        personEntity.setUpdatedAt( person.getUpdatedAt() );
+
+        return personEntity;
     }
 
     protected VehicleEntity vehicleToVehicleEntity(Vehicle vehicle) {
@@ -574,6 +468,27 @@ public class PartitionMapperImpl implements PartitionMapper {
         return transportationType1;
     }
 
+    protected DocumentEntity documentToDocumentEntity(Document document) {
+        if ( document == null ) {
+            return null;
+        }
+
+        DocumentEntity documentEntity = new DocumentEntity();
+
+        documentEntity.setId( document.getId() );
+        documentEntity.setUrl( document.getUrl() );
+        documentEntity.setType( document.getType() );
+        documentEntity.setResourceId( document.getResourceId() );
+        byte[] content = document.getContent();
+        if ( content != null ) {
+            documentEntity.setContent( Arrays.copyOf( content, content.length ) );
+        }
+        documentEntity.setCreatedAt( document.getCreatedAt() );
+        documentEntity.setUpdatedAt( document.getUpdatedAt() );
+
+        return documentEntity;
+    }
+
     protected TransportationEntity transportationToTransportationEntity(Transportation transportation) {
         if ( transportation == null ) {
             return null;
@@ -594,5 +509,90 @@ public class PartitionMapperImpl implements PartitionMapper {
         transportationEntity.setDeletedAt( transportation.getDeletedAt() );
 
         return transportationEntity;
+    }
+
+    protected MaterialEntity materialToMaterialEntity(Material material) {
+        if ( material == null ) {
+            return null;
+        }
+
+        MaterialEntity materialEntity = new MaterialEntity();
+
+        materialEntity.setId( material.getId() );
+        materialEntity.setName( material.getName() );
+        materialEntity.setCreatedAt( material.getCreatedAt() );
+        materialEntity.setUpdatedAt( material.getUpdatedAt() );
+
+        return materialEntity;
+    }
+
+    protected PriceCategoryEntity priceCategoryToPriceCategoryEntity(PriceCategory priceCategory) {
+        if ( priceCategory == null ) {
+            return null;
+        }
+
+        PriceCategoryEntity priceCategoryEntity = new PriceCategoryEntity();
+
+        priceCategoryEntity.setId( priceCategory.getId() );
+        priceCategoryEntity.setName( priceCategory.getName() );
+        priceCategoryEntity.setCreatedAt( priceCategory.getCreatedAt() );
+        priceCategoryEntity.setUpdatedAt( priceCategory.getUpdatedAt() );
+
+        return priceCategoryEntity;
+    }
+
+    protected RegionEntity regionToRegionEntity(Region region) {
+        if ( region == null ) {
+            return null;
+        }
+
+        RegionEntity regionEntity = new RegionEntity();
+
+        regionEntity.setId( region.getId() );
+        regionEntity.setPlaceType( region.getPlaceType() );
+        regionEntity.setCreatedAt( region.getCreatedAt() );
+        regionEntity.setUpdatedAt( region.getUpdatedAt() );
+        regionEntity.setName( region.getName() );
+        regionEntity.setTranslation( region.getTranslation() );
+
+        return regionEntity;
+    }
+
+    protected GroupEntity groupToGroupEntity(Group group) {
+        if ( group == null ) {
+            return null;
+        }
+
+        GroupEntity groupEntity = new GroupEntity();
+
+        groupEntity.setId( group.getId() );
+        groupEntity.setName( group.getName() );
+        groupEntity.setCreatedAt( group.getCreatedAt() );
+        groupEntity.setUpdatedAt( group.getUpdatedAt() );
+
+        return groupEntity;
+    }
+
+    protected GasStationEntity gasStationToGasStationEntity(GasStation gasStation) {
+        if ( gasStation == null ) {
+            return null;
+        }
+
+        GasStationEntity gasStationEntity = new GasStationEntity();
+
+        gasStationEntity.setId( gasStation.getId() );
+        gasStationEntity.setPlaceType( gasStation.getPlaceType() );
+        gasStationEntity.setCreatedAt( gasStation.getCreatedAt() );
+        gasStationEntity.setUpdatedAt( gasStation.getUpdatedAt() );
+        gasStationEntity.setName( gasStation.getName() );
+        gasStationEntity.setTranslation( gasStation.getTranslation() );
+        gasStationEntity.setPriceCategory( priceCategoryToPriceCategoryEntity( gasStation.getPriceCategory() ) );
+        gasStationEntity.setDebtLimit( gasStation.getDebtLimit() );
+        gasStationEntity.setRegion( regionToRegionEntity( gasStation.getRegion() ) );
+        gasStationEntity.setOwner( personToPersonEntity( gasStation.getOwner() ) );
+        gasStationEntity.setGroup( groupToGroupEntity( gasStation.getGroup() ) );
+        gasStationEntity.setMaterial( materialToMaterialEntity( gasStation.getMaterial() ) );
+
+        return gasStationEntity;
     }
 }

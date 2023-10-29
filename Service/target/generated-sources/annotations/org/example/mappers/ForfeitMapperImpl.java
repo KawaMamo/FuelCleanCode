@@ -11,11 +11,8 @@ import org.example.entities.OfficeEntity;
 import org.example.entities.PartitionEntity;
 import org.example.entities.PersonEntity;
 import org.example.entities.PriceCategoryEntity;
-import org.example.entities.RefineryEntity;
 import org.example.entities.RegionEntity;
 import org.example.entities.TrafficCenterEntity;
-import org.example.entities.TransportationEntity;
-import org.example.entities.TransportationType;
 import org.example.entities.VehicleEntity;
 import org.example.model.Document;
 import org.example.model.Forfeit;
@@ -27,16 +24,14 @@ import org.example.model.Office;
 import org.example.model.Partition;
 import org.example.model.Person;
 import org.example.model.PriceCategory;
-import org.example.model.Refinery;
 import org.example.model.Region;
 import org.example.model.TrafficCenter;
-import org.example.model.Transportation;
 import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-10-15T13:11:53+0300",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
+    date = "2023-10-29T16:02:08+0300",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class ForfeitMapperImpl implements ForfeitMapper {
 
@@ -268,63 +263,6 @@ public class ForfeitMapperImpl implements ForfeitMapper {
         return document;
     }
 
-    protected Refinery refineryEntityToRefinery(RefineryEntity refineryEntity) {
-        if ( refineryEntity == null ) {
-            return null;
-        }
-
-        Refinery refinery = new Refinery();
-
-        refinery.setId( refineryEntity.getId() );
-        refinery.setName( refineryEntity.getName() );
-        refinery.setTranslation( refineryEntity.getTranslation() );
-        refinery.setPlaceType( refineryEntity.getPlaceType() );
-        refinery.setCreatedAt( refineryEntity.getCreatedAt() );
-        refinery.setUpdatedAt( refineryEntity.getUpdatedAt() );
-
-        return refinery;
-    }
-
-    protected org.example.model.TransportationType transportationTypeToTransportationType(TransportationType transportationType) {
-        if ( transportationType == null ) {
-            return null;
-        }
-
-        org.example.model.TransportationType transportationType1;
-
-        switch ( transportationType ) {
-            case NORMAL: transportationType1 = org.example.model.TransportationType.NORMAL;
-            break;
-            case COMMERCIAL: transportationType1 = org.example.model.TransportationType.COMMERCIAL;
-            break;
-            default: throw new IllegalArgumentException( "Unexpected enum constant: " + transportationType );
-        }
-
-        return transportationType1;
-    }
-
-    protected Transportation transportationEntityToTransportation(TransportationEntity transportationEntity) {
-        if ( transportationEntity == null ) {
-            return null;
-        }
-
-        Transportation transportation = new Transportation();
-
-        transportation.setId( transportationEntity.getId() );
-        transportation.setVehicle( vehicleEntityToVehicle( transportationEntity.getVehicle() ) );
-        transportation.setRefinery( refineryEntityToRefinery( transportationEntity.getRefinery() ) );
-        transportation.setIsDivided( transportationEntity.getIsDivided() );
-        transportation.setIsPriced( transportationEntity.getIsPriced() );
-        transportation.setSize( transportationEntity.getSize() );
-        transportation.setCreatedAt( transportationEntity.getCreatedAt() );
-        transportation.setUpdatedAt( transportationEntity.getUpdatedAt() );
-        transportation.setType( transportationTypeToTransportationType( transportationEntity.getType() ) );
-        transportation.setDocument( documentEntityToDocument( transportationEntity.getDocument() ) );
-        transportation.setDeletedAt( transportationEntity.getDeletedAt() );
-
-        return transportation;
-    }
-
     protected Partition partitionEntityToPartition(PartitionEntity partitionEntity) {
         if ( partitionEntity == null ) {
             return null;
@@ -340,7 +278,6 @@ public class ForfeitMapperImpl implements ForfeitMapper {
         partition.setNotes( partitionEntity.getNotes() );
         partition.setExtraNotes( partitionEntity.getExtraNotes() );
         partition.setDocument( documentEntityToDocument( partitionEntity.getDocument() ) );
-        partition.setTransportation( transportationEntityToTransportation( partitionEntity.getTransportation() ) );
         partition.setCreatedAt( partitionEntity.getCreatedAt() );
         partition.setUpdatedAt( partitionEntity.getUpdatedAt() );
 
@@ -553,63 +490,6 @@ public class ForfeitMapperImpl implements ForfeitMapper {
         return documentEntity;
     }
 
-    protected RefineryEntity refineryToRefineryEntity(Refinery refinery) {
-        if ( refinery == null ) {
-            return null;
-        }
-
-        RefineryEntity refineryEntity = new RefineryEntity();
-
-        refineryEntity.setId( refinery.getId() );
-        refineryEntity.setPlaceType( refinery.getPlaceType() );
-        refineryEntity.setCreatedAt( refinery.getCreatedAt() );
-        refineryEntity.setUpdatedAt( refinery.getUpdatedAt() );
-        refineryEntity.setName( refinery.getName() );
-        refineryEntity.setTranslation( refinery.getTranslation() );
-
-        return refineryEntity;
-    }
-
-    protected TransportationType transportationTypeToTransportationType1(org.example.model.TransportationType transportationType) {
-        if ( transportationType == null ) {
-            return null;
-        }
-
-        TransportationType transportationType1;
-
-        switch ( transportationType ) {
-            case NORMAL: transportationType1 = TransportationType.NORMAL;
-            break;
-            case COMMERCIAL: transportationType1 = TransportationType.COMMERCIAL;
-            break;
-            default: throw new IllegalArgumentException( "Unexpected enum constant: " + transportationType );
-        }
-
-        return transportationType1;
-    }
-
-    protected TransportationEntity transportationToTransportationEntity(Transportation transportation) {
-        if ( transportation == null ) {
-            return null;
-        }
-
-        TransportationEntity transportationEntity = new TransportationEntity();
-
-        transportationEntity.setId( transportation.getId() );
-        transportationEntity.setVehicle( vehicleToVehicleEntity( transportation.getVehicle() ) );
-        transportationEntity.setRefinery( refineryToRefineryEntity( transportation.getRefinery() ) );
-        transportationEntity.setIsDivided( transportation.getIsDivided() );
-        transportationEntity.setIsPriced( transportation.getIsPriced() );
-        transportationEntity.setSize( transportation.getSize() );
-        transportationEntity.setCreatedAt( transportation.getCreatedAt() );
-        transportationEntity.setUpdatedAt( transportation.getUpdatedAt() );
-        transportationEntity.setType( transportationTypeToTransportationType1( transportation.getType() ) );
-        transportationEntity.setDocument( documentToDocumentEntity( transportation.getDocument() ) );
-        transportationEntity.setDeletedAt( transportation.getDeletedAt() );
-
-        return transportationEntity;
-    }
-
     protected PartitionEntity partitionToPartitionEntity(Partition partition) {
         if ( partition == null ) {
             return null;
@@ -627,7 +507,6 @@ public class ForfeitMapperImpl implements ForfeitMapper {
         partitionEntity.setDocument( documentToDocumentEntity( partition.getDocument() ) );
         partitionEntity.setCreatedAt( partition.getCreatedAt() );
         partitionEntity.setUpdatedAt( partition.getUpdatedAt() );
-        partitionEntity.setTransportation( transportationToTransportationEntity( partition.getTransportation() ) );
 
         return partitionEntity;
     }

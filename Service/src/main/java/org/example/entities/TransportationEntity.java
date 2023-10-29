@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -30,5 +32,8 @@ public class TransportationEntity {
     @OneToOne
     private DocumentEntity document;
     private LocalDateTime deletedAt;
+    @OneToMany(mappedBy="transportationEntity")
+    @ToString.Exclude
+    private Set<PartitionEntity> partitionEntities;
 
 }

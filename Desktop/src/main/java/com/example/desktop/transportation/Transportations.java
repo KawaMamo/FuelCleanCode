@@ -55,7 +55,7 @@ public class Transportations implements TableController {
                 data -> {
                     StringBuilder partitionString = new StringBuilder();
                     if(Objects.nonNull(data.getValue().getPartitions())){
-                        data.getValue().getPartitions().forEach(partition -> partitionString.append(partition.getGasStation().getName()));
+                        data.getValue().getPartitions().forEach(partition -> partitionString.append(partition.getGasStation().getName()).append(" "));
                         return new SimpleStringProperty(partitionString.toString());
                     }else return new SimpleStringProperty("NA");
                 }
