@@ -52,6 +52,11 @@ public class RefineryService implements Service<Refinery, CreateRefineryRequest,
     }
 
     @Override
+    public Refinery delete(Long id) {
+        return null;
+    }
+
+    @Override
     public Refinery editItem(UpdateRefineryRequest updateRequest) {
         final String json = gson.toJson(updateRequest);
         final HttpResponse<String> stringHttpResponse = client.parallelPatch(getEndPoint(), json);

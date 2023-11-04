@@ -18,6 +18,7 @@ public interface Service<T, U, V> {
     T addItem(U itemRequest);
     String getEndPoint();
     T getItem(Long id);
+    T delete(Long id);
 
     default HttpResponse<String> getResponse(Long id) {
         String getUrl = getEndPoint()+"?page=0&size=10&key=id&value="+ id +"&operation=%3A";

@@ -11,6 +11,7 @@ import org.example.model.TransLog;
 import org.example.validators.create.CreateTransLogValidator;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class CreateTransLog {
     private final TransLogRepo transLogRepo;
@@ -34,7 +35,7 @@ public class CreateTransLog {
     public TransLogResponse execute(CreateTransLogRequest request){
         validator.validate(request);
         final TransLog transLog = transLogDomainMapper.requestToDomain(request);
-        transLog.setCreatedAt(LocalDateTime.now());
+        transLog.setCreatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         final TransLog save = transLogRepo.save(transLog);
         vehicleRepo.findById(save.getVehicle().getId()).ifPresent(save::setVehicle);
         transLineRepo.findById(save.getTransLine().getId()).ifPresent(save::setTransLine);

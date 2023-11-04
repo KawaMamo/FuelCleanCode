@@ -50,6 +50,11 @@ public class TransportationService implements Service<Transportation, CreateTran
     }
 
     @Override
+    public Transportation delete(Long id) {
+        return null;
+    }
+
+    @Override
     public Transportation editItem(UpdateTransRequest updateRequest) {
         return null;
     }

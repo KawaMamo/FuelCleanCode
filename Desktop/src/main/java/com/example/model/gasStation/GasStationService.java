@@ -58,6 +58,11 @@ public class GasStationService implements Service<GasStation, CreateGasStationRe
     }
 
     @Override
+    public GasStation delete(Long id) {
+        return null;
+    }
+
+    @Override
     public GasStation editItem(UpdateGasStationRequest updateRequest) {
         final String payload = gson.toJson(updateRequest);
         final String body = client.parallelPatch(getEndPoint(), payload).body();

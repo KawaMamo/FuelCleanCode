@@ -55,6 +55,11 @@ public class OfficeService implements Service<Office, CreateOfficeRequest, Updat
     }
 
     @Override
+    public Office delete(Long id) {
+        return null;
+    }
+
+    @Override
     public Office editItem(UpdateOfficeRequest updateRequest) {
         final String json = gson.toJson(updateRequest);
         final HttpResponse<String> stringHttpResponse = client.parallelPatch(getEndPoint(), json);

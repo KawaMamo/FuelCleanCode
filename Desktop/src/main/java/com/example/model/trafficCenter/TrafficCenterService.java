@@ -50,6 +50,11 @@ public class TrafficCenterService implements Service<TrafficCenter, CreateTraffi
     }
 
     @Override
+    public TrafficCenter delete(Long id) {
+        return null;
+    }
+
+    @Override
     public TrafficCenter editItem(UpdateTrafficCenterRequest updateRequest) {
         final String json = gson.toJson(updateRequest);
         final HttpResponse<String> stringHttpResponse = client.parallelPatch(getEndPoint(), json);

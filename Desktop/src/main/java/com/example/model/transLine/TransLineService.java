@@ -37,6 +37,15 @@ public class TransLineService implements Service<TransLine, CreateTransLineReque
         return new ArrayList<>();
     }
 
+    public List<TransLine> getItems(Integer page, Integer size, String query) {
+        String getUrl = getEndPoint()+"?page="+page+"&size="+size+"&"+query;
+        final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+        final TransLineResponseEntity transLineResponse = gson.fromJson(stringHttpResponse.body(), TransLineResponseEntity.class);
+        if(Objects.nonNull(transLineResponse._embedded))
+            return transLineResponse._embedded.transLineList;
+        return new ArrayList<>();
+    }
+
     @Override
     public TransLine addItem(CreateTransLineRequest itemRequest) {
         final String payload = getPayload(itemRequest);
@@ -46,12 +55,17 @@ public class TransLineService implements Service<TransLine, CreateTransLineReque
 
     @Override
     public String getEndPoint() {
-        return "app/v1/trans-line";
+        return "api/v1/trans-line";
     }
 
     @Override
     public TransLine getItem(Long id) {
         return gson.fromJson(getResponse(id).body(), TransLineResponseEntity.class)._embedded.transLineList.get(0);
+    }
+
+    @Override
+    public TransLine delete(Long id) {
+        return null;
     }
 
     @Override

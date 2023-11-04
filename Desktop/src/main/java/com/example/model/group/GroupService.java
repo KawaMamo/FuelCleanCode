@@ -54,6 +54,11 @@ public class GroupService implements Service<Group, CreateGroupRequest, UpdateGr
     }
 
     @Override
+    public Group delete(Long id) {
+        return null;
+    }
+
+    @Override
     public Group editItem(UpdateGroupRequest updateRequest) {
         final String json = gson.toJson(updateRequest);
         final HttpResponse<String> stringHttpResponse = client.parallelPatch(getEndPoint(), json);

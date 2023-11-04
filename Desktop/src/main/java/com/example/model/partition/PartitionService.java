@@ -65,6 +65,11 @@ public class PartitionService implements Service<Partition, CreatePartitionReque
     }
 
     @Override
+    public Partition delete(Long id) {
+        return null;
+    }
+
+    @Override
     public Partition editItem(UpdatePartitionRequest updateRequest) {
         return null;
     }

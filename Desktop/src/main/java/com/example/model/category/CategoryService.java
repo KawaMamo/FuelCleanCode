@@ -66,6 +66,11 @@ public class CategoryService implements Service<Category, CreateCategoryRequest,
     }
 
     @Override
+    public Category delete(Long id) {
+        return null;
+    }
+
+    @Override
     public Category editItem(UpdateCategoryRequest updateRequest) {
         final String payload = gson.toJson(updateRequest);
         final HttpResponse<String> stringHttpResponse = client.parallelPatch(getEndPoint(), payload);

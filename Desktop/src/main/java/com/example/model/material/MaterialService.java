@@ -53,6 +53,11 @@ public class MaterialService implements Service<Material, CreateMaterialRequest,
     }
 
     @Override
+    public Material delete(Long id) {
+        return null;
+    }
+
+    @Override
     public Material editItem(UpdateMaterialRequest updateRequest) {
         final String payload = gson.toJson(updateRequest);
         final HttpResponse<String> stringHttpResponse = client.parallelPatch(getEndPoint(), payload);

@@ -8,6 +8,8 @@ import com.example.model.modal.Modal;
 import com.example.model.partition.PartitionService;
 import com.example.model.priceCategory.PriceCategoryService;
 import com.example.model.refinery.RefineryService;
+import com.example.model.transLine.TransLineService;
+import com.example.model.transLog.TransLogService;
 import com.example.model.transportation.TransportationService;
 import com.example.model.vehicle.VehicleService;
 import javafx.beans.property.SimpleStringProperty;
@@ -20,6 +22,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import org.controlsfx.control.Notifications;
 import org.controlsfx.control.textfield.TextFields;
 import org.example.contract.request.create.CreatePartitionRequest;
+import org.example.contract.request.create.CreateTransLogRequest;
 import org.example.contract.request.create.CreateTransRequest;
 import org.example.model.*;
 
@@ -86,7 +89,9 @@ public class AddTransportation {
     @FXML
     private Button transBtn;
     @FXML
-    private TableView<TransLine> transLineTbl;
+    private TableView<TransLog> transLineTbl;
+    @FXML
+    private TextField lineNotesTF;
 
     Transportation transportation = null;
 
@@ -98,6 +103,8 @@ public class AddTransportation {
     private final PriceCategoryService priceCategoryService = PriceCategoryService.getInstance();
     private final MaterialService materialService = MaterialService.getInstance();
     private final PartitionService partitionService = PartitionService.getINSTANCE();
+    private final TransLineService transLineService = TransLineService.getInstance();
+    private final TransLogService transLogService = TransLogService.getInstance();
 
     private Long selectedRefineryId;
     private Long selectedVehicleId;
@@ -108,11 +115,15 @@ public class AddTransportation {
     private Transportation addedTransport;
     List<Category> categories = null;
 
+    private Partition selectedPartition;
+    private TransLog selectedTransLog;
+
 
     @FXML
     private void initialize(){
 
         setPartitionTbl();
+        setTransLogTable();
         dateDP.setValue(LocalDate.now());
 
         final List<Refinery> items = refineryService.getItems(null, null);
@@ -218,6 +229,19 @@ public class AddTransportation {
             }
         });
 
+        partitionsTbl.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Partition>() {
+            @Override
+            public void changed(ObservableValue<? extends Partition> observableValue, Partition partition, Partition t1) {
+                selectedPartition = t1;
+            }
+        });
+
+        transLineTbl.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TransLog>() {
+            @Override
+            public void changed(ObservableValue<? extends TransLog> observableValue, TransLog transLog, TransLog t1) {
+                selectedTransLog = t1;
+            }
+        });
 
     }
 
@@ -281,11 +305,17 @@ public class AddTransportation {
 
     }
 
-    void loadData(){
+    private void loadData(){
         partitionsTbl.setItems(FXCollections.observableList(partitionService.getItems(
                 0,
                 10,
                 "key=transportationEntity&value="+transportation.getId()+"&operation=%3A&sort=id,desc")));
+    }
+
+    private void loadTransData(){
+        transLineTbl.setItems(FXCollections.observableList(transLogService.getItems(0,
+                10,
+                "key=transportation&value="+transportation.getId()+"&operation=%3A&sort=id,desc")));
     }
 
     @FXML
@@ -294,14 +324,48 @@ public class AddTransportation {
         Modal.close();
     }
 
+
     @FXML
-    void addForfeit() {
+    void addLineFee() {
+        final List<TransLine> transLineList = transLineService.getItems(0,
+                10,
+                "key=source&value=" + selectedRefineryId + "&operation=%3A" +
+                        "&key=destination&value=" + selectedRegionId + "&operation=%3A&sort=id,desc");
+        final TransLine transLine = transLineList.get(0);
+        final CreateTransLogRequest createTransLogRequest = new CreateTransLogRequest(transportation.getVehicle().getId(),
+                transLine.getId(),
+                new Money(transLine.getFee().getCurrency(), transLine.getFee().getAmount()),
+                transportation.getId(),
+                lineNotesTF.getText());
+        final TransLog transLog = transLogService.addItem(createTransLogRequest);
+        loadTransData();
+        Notifications.create().title("Info").text("Added "+transLog.getNotes().toString()).showInformation();
+    }
+
+    private void setTransLogTable(){
+
+        TableColumn<TransLog, String> idColumn = new TableColumn<>("id");
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+
+        TableColumn<TransLog, String> feeColumn = new TableColumn<>("fee");
+        feeColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getFees().getAmount()+" "+data.getValue().getFees().getCurrency()));
+
+        TableColumn<TransLog, String> noteColumn = new TableColumn<>("notes");
+        noteColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getNotes()));
+
+        transLineTbl.getColumns().addAll(idColumn, feeColumn, noteColumn);
+    }
+
+
+    @FXML
+    void deletePartition() {
 
     }
 
     @FXML
-    void addLineFee() {
-
+    void deleteTransLog() {
+        final TransLog transLog = transLogService.delete(selectedTransLog.getId());
+        loadTransData();
     }
 
 
