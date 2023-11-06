@@ -250,6 +250,13 @@ public class AddTransportation {
             }
         });
 
+        if(isEditingForm){
+            final Transportation item = transportationService.getItem(Transportations.selectedTransportation.getId());
+            refineryTF.setText(item.getRefinery().getName());
+            vehicleTF.setText(item.getVehicle().getPlateNumber());
+            partitionsTbl.setItems(FXCollections.observableList(item.getPartitions()));
+        }
+
     }
 
     @FXML

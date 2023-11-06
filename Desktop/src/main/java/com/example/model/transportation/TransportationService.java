@@ -46,7 +46,7 @@ public class TransportationService implements Service<Transportation, CreateTran
 
     @Override
     public Transportation getItem(Long id) {
-        return null;
+        return gson.fromJson(getResponse(id).body(), TransportationResponseEntity.class)._embedded.transportationList.get(0);
     }
 
     @Override

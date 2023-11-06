@@ -79,7 +79,9 @@ public class Transportations implements TableController {
 
     @FXML
     void edit() {
-
+        AddTransportation.controller = this;
+        AddTransportation.isEditingForm = true;
+        Modal.start(this.getClass(), "addTransportation.fxml");
     }
 
     @FXML
