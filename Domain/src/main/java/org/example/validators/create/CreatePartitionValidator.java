@@ -6,10 +6,12 @@ import org.example.contract.repository.TransRepo;
 import org.example.contract.request.create.CreatePartitionRequest;
 import org.example.exceptions.DomainValidationException;
 import org.example.exceptions.ValidationErrorDetails;
+import org.example.model.Partition;
 import org.example.validators.update.ExceptionThrower;
 
 import java.util.HashSet;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 import static org.example.contract.constant.DomainConstant.*;
@@ -27,6 +29,21 @@ public class CreatePartitionValidator {
 
     public void validate(CreatePartitionRequest request){
         Set<ValidationErrorDetails> errorDetails = new HashSet<>();
+
+        transRepo.findById(request.getTransportationId())
+                .ifPresent(transportation -> {
+                    final Optional<Partition> reduce = transportation.getPartitions().stream()
+                            .reduce((partition, partition2) -> {
+                                final Partition partition1 = new Partition();
+                                partition1.setAmount(partition.getAmount() + partition2.getAmount());
+                                return partition1;
+                            });
+                    if(reduce.isPresent()) {
+                        if(reduce.get().getAmount()+request.getAmount() > transportation.getSize()) {
+                            errorDetails.add(new ValidationErrorDetails(AMOUNT_FIELD, ILLEGAL_VALUE));
+                        }
+                    }
+                });
 
         if (Objects.isNull(request.getAmount())) {
             errorDetails.add(new ValidationErrorDetails(AMOUNT_FIELD, NULL_ERROR_MSG));

@@ -99,12 +99,14 @@ public class Transportations implements TableController {
 
     @Override
     public void removeData() {
-
+        observableList.remove(selectedTransportation);
+        loadData();
     }
 
     @Override
     public void addData(Object object) {
-
+        observableList.add((Transportation) object);
+        loadData();
     }
 
     @Override

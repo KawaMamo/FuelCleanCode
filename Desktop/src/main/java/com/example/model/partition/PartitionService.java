@@ -2,7 +2,6 @@ package com.example.model.partition;
 
 import com.example.model.Service;
 import com.example.model.partition.responce.PartitionResponseEntity;
-import com.example.model.transportation.response.TransportationResponseEntity;
 import org.example.contract.request.create.CreatePartitionRequest;
 import org.example.contract.request.update.UpdatePartitionRequest;
 import org.example.model.Partition;
@@ -66,7 +65,7 @@ public class PartitionService implements Service<Partition, CreatePartitionReque
 
     @Override
     public Partition delete(Long id) {
-        return null;
+        return gson.fromJson(client.delete(getEndPoint(), "/"+id).body(), Partition.class);
     }
 
     @Override

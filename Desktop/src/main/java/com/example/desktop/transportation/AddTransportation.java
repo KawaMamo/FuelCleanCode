@@ -243,6 +243,13 @@ public class AddTransportation {
             }
         });
 
+        partitionsTbl.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Partition>() {
+            @Override
+            public void changed(ObservableValue<? extends Partition> observableValue, Partition partition, Partition t1) {
+                selectedPartition = t1;
+            }
+        });
+
     }
 
     @FXML
@@ -359,7 +366,8 @@ public class AddTransportation {
 
     @FXML
     void deletePartition() {
-
+        final Partition delete = partitionService.delete(selectedPartition.getId());
+        loadData();
     }
 
     @FXML

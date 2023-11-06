@@ -33,8 +33,8 @@ import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-10-29T16:02:27+0300",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
+    date = "2023-11-06T16:00:10+0300",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class PartitionMapperImpl implements PartitionMapper {
 
