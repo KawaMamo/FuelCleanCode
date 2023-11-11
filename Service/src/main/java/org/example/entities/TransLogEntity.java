@@ -17,7 +17,8 @@ public class TransLogEntity {
     private TransLineEntity transLine;
     private String feesCurrency;
     private Double feesAmount;
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "transportation_id", nullable = false)
     private TransportationEntity transportation;
     private String notes;
     private LocalDateTime createdAt;

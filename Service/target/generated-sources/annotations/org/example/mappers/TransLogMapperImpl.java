@@ -1,6 +1,9 @@
 package org.example.mappers;
 
 import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 import javax.annotation.processing.Generated;
 import org.example.entities.DocumentEntity;
 import org.example.entities.OfficeEntity;
@@ -22,7 +25,7 @@ import org.mapstruct.factory.Mappers;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-11-06T16:00:10+0300",
+    date = "2023-11-11T13:46:22+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class TransLogMapperImpl implements TransLogMapper {
@@ -59,10 +62,10 @@ public class TransLogMapperImpl implements TransLogMapper {
         TransLog transLog1 = new TransLog();
 
         transLog1.setFees( transLogEntityToMoney( transLog ) );
+        transLog1.setTransportation( TransLogMapper.mapId( transLog.getTransportation() ) );
         transLog1.setId( transLog.getId() );
         transLog1.setVehicle( vehicleEntityToVehicle( transLog.getVehicle() ) );
         transLog1.setTransLine( transLineMapper.entityToDomain( transLog.getTransLine() ) );
-        transLog1.setTransportation( transportationEntityToTransportation( transLog.getTransportation() ) );
         transLog1.setNotes( transLog.getNotes() );
         transLog1.setCreatedAt( transLog.getCreatedAt() );
         transLog1.setUpdatedAt( transLog.getUpdatedAt() );
@@ -209,6 +212,19 @@ public class TransLogMapperImpl implements TransLogMapper {
         return documentEntity;
     }
 
+    protected Set<TransLogEntity> transLogListToTransLogEntitySet(List<TransLog> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        Set<TransLogEntity> set = new LinkedHashSet<TransLogEntity>( Math.max( (int) ( list.size() / .75f ) + 1, 16 ) );
+        for ( TransLog transLog : list ) {
+            set.add( domainToEntity( transLog ) );
+        }
+
+        return set;
+    }
+
     protected TransportationEntity transportationToTransportationEntity(Transportation transportation) {
         if ( transportation == null ) {
             return null;
@@ -227,6 +243,7 @@ public class TransLogMapperImpl implements TransLogMapper {
         transportationEntity.setType( transportationTypeToTransportationType( transportation.getType() ) );
         transportationEntity.setDocument( documentToDocumentEntity( transportation.getDocument() ) );
         transportationEntity.setDeletedAt( transportation.getDeletedAt() );
+        transportationEntity.setTransLogs( transLogListToTransLogEntitySet( transportation.getTransLogs() ) );
 
         return transportationEntity;
     }
@@ -312,66 +329,5 @@ public class TransLogMapperImpl implements TransLogMapper {
         vehicle.setUpdatedAt( vehicleEntity.getUpdatedAt() );
 
         return vehicle;
-    }
-
-    protected org.example.model.TransportationType transportationTypeToTransportationType1(TransportationType transportationType) {
-        if ( transportationType == null ) {
-            return null;
-        }
-
-        org.example.model.TransportationType transportationType1;
-
-        switch ( transportationType ) {
-            case NORMAL: transportationType1 = org.example.model.TransportationType.NORMAL;
-            break;
-            case COMMERCIAL: transportationType1 = org.example.model.TransportationType.COMMERCIAL;
-            break;
-            default: throw new IllegalArgumentException( "Unexpected enum constant: " + transportationType );
-        }
-
-        return transportationType1;
-    }
-
-    protected Document documentEntityToDocument(DocumentEntity documentEntity) {
-        if ( documentEntity == null ) {
-            return null;
-        }
-
-        Document document = new Document();
-
-        document.setId( documentEntity.getId() );
-        document.setUrl( documentEntity.getUrl() );
-        document.setType( documentEntity.getType() );
-        document.setResourceId( documentEntity.getResourceId() );
-        byte[] content = documentEntity.getContent();
-        if ( content != null ) {
-            document.setContent( Arrays.copyOf( content, content.length ) );
-        }
-        document.setCreatedAt( documentEntity.getCreatedAt() );
-        document.setUpdatedAt( documentEntity.getUpdatedAt() );
-
-        return document;
-    }
-
-    protected Transportation transportationEntityToTransportation(TransportationEntity transportationEntity) {
-        if ( transportationEntity == null ) {
-            return null;
-        }
-
-        Transportation transportation = new Transportation();
-
-        transportation.setId( transportationEntity.getId() );
-        transportation.setVehicle( vehicleEntityToVehicle( transportationEntity.getVehicle() ) );
-        transportation.setRefinery( transLineMapper.refineryToDomain( transportationEntity.getRefinery() ) );
-        transportation.setIsDivided( transportationEntity.getIsDivided() );
-        transportation.setIsPriced( transportationEntity.getIsPriced() );
-        transportation.setSize( transportationEntity.getSize() );
-        transportation.setCreatedAt( transportationEntity.getCreatedAt() );
-        transportation.setUpdatedAt( transportationEntity.getUpdatedAt() );
-        transportation.setType( transportationTypeToTransportationType1( transportationEntity.getType() ) );
-        transportation.setDocument( documentEntityToDocument( transportationEntity.getDocument() ) );
-        transportation.setDeletedAt( transportationEntity.getDeletedAt() );
-
-        return transportation;
     }
 }

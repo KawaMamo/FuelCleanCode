@@ -6,8 +6,10 @@ import org.example.model.Person;
 import org.example.model.TrafficCenter;
 import org.mapstruct.Mapper;
 
-@Mapper
+@Mapper(uses = TransLogMapper.class)
 public interface VehicleMapper {
+
+
     VehicleEntity domainToEntity(org.example.model.Vehicle vehicle);
 
     PersonEntity domainToEntity(Person person);

@@ -2,9 +2,11 @@ package org.example.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.example.model.TransLog;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -35,5 +37,9 @@ public class TransportationEntity {
     @OneToMany(mappedBy="transportationEntity")
     @ToString.Exclude
     private Set<PartitionEntity> partitionEntities;
+
+    @OneToMany(mappedBy="transportation")
+    @ToString.Exclude
+    private Set<TransLogEntity> transLogs;
 
 }

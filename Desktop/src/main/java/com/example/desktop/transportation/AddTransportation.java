@@ -16,6 +16,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -246,15 +247,33 @@ public class AddTransportation {
         partitionsTbl.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Partition>() {
             @Override
             public void changed(ObservableValue<? extends Partition> observableValue, Partition partition, Partition t1) {
-                selectedPartition = t1;
+                if(Objects.nonNull(t1)){
+                    selectedPartition = t1;
+                    final GasStation gasStation = t1.getGasStation();
+                    stationTF.setText(gasStation.getName());
+                    notesTF.setText(t1.getNotes());
+                    materialTF.setText(t1.getMaterial().getName());
+                    partAmountTF.setText(t1.getAmount().toString());
+                    priceLbl.setText(t1.getPrice().getAmount()+" "+t1.getPrice().getCurrency());
+                    selectedMaterialId = t1.getMaterial().getId();
+                    selectedRegionId = gasStation.getRegion().getId();
+                    selectedGasStationId = gasStation.getId();
+                    categories = categoryService.getItems(0,
+                            1,
+                            "key=priceCategory&value=" +
+                                    gasStation.getPriceCategory().getId() + "&operation=%3A&key=material&value=" +
+                                    gasStation.getMaterial().getId() + "&operation=%3A&sort=id,desc");
+                }
+
             }
         });
 
         if(isEditingForm){
-            final Transportation item = transportationService.getItem(Transportations.selectedTransportation.getId());
-            refineryTF.setText(item.getRefinery().getName());
-            vehicleTF.setText(item.getVehicle().getPlateNumber());
-            partitionsTbl.setItems(FXCollections.observableList(item.getPartitions()));
+            transportation = transportationService.getItem(Transportations.selectedTransportation.getId());
+            refineryTF.setText(transportation.getRefinery().getName());
+            vehicleTF.setText(transportation.getVehicle().getPlateNumber());
+            loadData();
+            loadTransData();
         }
 
     }
@@ -292,7 +311,7 @@ public class AddTransportation {
                 selectedGasStationId,
                 notesTF.getText(),
                 null,
-                addedTransport.getId());
+                transportation.getId());
         final Partition partition = partitionService.addItem(createPartitionRequest);
         loadData();
         Notifications.create().title("Info").text("Added "+partition.getGasStation().getName()).showInformation();
@@ -320,10 +339,12 @@ public class AddTransportation {
     }
 
     private void loadData(){
-        partitionsTbl.setItems(FXCollections.observableList(partitionService.getItems(
+        final List<Partition> partitions = partitionService.getItems(
                 0,
                 10,
-                "key=transportationEntity&value="+transportation.getId()+"&operation=%3A&sort=id,desc")));
+                "key=transportationEntity&value=" + transportation.getId() + "&operation=%3A&sort=id,desc");
+        final ObservableList<Partition> partitionObservableList = FXCollections.observableList(partitions);
+        partitionsTbl.setItems(partitionObservableList);
     }
 
     private void loadTransData(){

@@ -27,6 +27,10 @@ public class HelloController {
     private final Client client = Client.getInstance(getProperties().getProperty("identity.provider.host")+":"+ getProperties().getProperty("identity.provider.port") +"/");
 
     @FXML
+    void initialize(){
+        submitBtn.setDefaultButton(true);
+    }
+    @FXML
     void submit() {
         final String payload = formPayload();
         HttpResponse<String> post = client.parallelPost("api/v1/auth/authenticate", payload);

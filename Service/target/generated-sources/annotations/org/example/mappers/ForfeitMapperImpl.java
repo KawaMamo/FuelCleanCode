@@ -30,7 +30,7 @@ import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-11-06T16:00:10+0300",
+    date = "2023-11-11T13:46:21+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class ForfeitMapperImpl implements ForfeitMapper {

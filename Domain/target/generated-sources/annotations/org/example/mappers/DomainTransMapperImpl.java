@@ -8,12 +8,13 @@ import org.example.contract.request.update.UpdateTransRequest;
 import org.example.contract.response.TransResponse;
 import org.example.model.Partition;
 import org.example.model.Refinery;
+import org.example.model.TransLog;
 import org.example.model.Transportation;
 import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-11-06T16:00:04+0300",
+    date = "2023-11-11T13:46:16+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class DomainTransMapperImpl implements DomainTransMapper {
@@ -53,6 +54,10 @@ public class DomainTransMapperImpl implements DomainTransMapper {
         List<Partition> list = transportation.getPartitions();
         if ( list != null ) {
             transResponse.setPartitions( new ArrayList<Partition>( list ) );
+        }
+        List<TransLog> list1 = transportation.getTransLogs();
+        if ( list1 != null ) {
+            transResponse.setTransLogs( new ArrayList<TransLog>( list1 ) );
         }
         transResponse.setType( transportation.getType() );
         transResponse.setDocument( transportation.getDocument() );

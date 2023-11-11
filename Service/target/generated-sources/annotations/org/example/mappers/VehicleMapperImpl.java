@@ -1,6 +1,9 @@
 package org.example.mappers;
 
 import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 import javax.annotation.processing.Generated;
 import org.example.entities.BuyOperation;
 import org.example.entities.DocumentEntity;
@@ -8,6 +11,7 @@ import org.example.entities.OfficeEntity;
 import org.example.entities.PersonEntity;
 import org.example.entities.RefineryEntity;
 import org.example.entities.TrafficCenterEntity;
+import org.example.entities.TransLogEntity;
 import org.example.entities.TransportationType;
 import org.example.entities.VehicleEntity;
 import org.example.model.Document;
@@ -15,14 +19,18 @@ import org.example.model.Office;
 import org.example.model.Person;
 import org.example.model.Refinery;
 import org.example.model.TrafficCenter;
+import org.example.model.TransLog;
 import org.example.model.Vehicle;
+import org.mapstruct.factory.Mappers;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-11-06T16:00:10+0300",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
+    date = "2023-11-11T13:46:36+0300",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class VehicleMapperImpl implements VehicleMapper {
+
+    private final TransLogMapper transLogMapper = Mappers.getMapper( TransLogMapper.class );
 
     @Override
     public VehicleEntity domainToEntity(Vehicle vehicle) {
@@ -85,6 +93,7 @@ public class VehicleMapperImpl implements VehicleMapper {
         buyOperation1.setType( transportationTypeToTransportationType( buyOperation.getType() ) );
         buyOperation1.setDocument( documentToDocumentEntity( buyOperation.getDocument() ) );
         buyOperation1.setDeletedAt( buyOperation.getDeletedAt() );
+        buyOperation1.setTransLogs( transLogListToTransLogEntitySet( buyOperation.getTransLogs() ) );
         buyOperation1.setSource( buyOperation.getSource() );
 
         return buyOperation1;
@@ -197,6 +206,19 @@ public class VehicleMapperImpl implements VehicleMapper {
         documentEntity.setUpdatedAt( document.getUpdatedAt() );
 
         return documentEntity;
+    }
+
+    protected Set<TransLogEntity> transLogListToTransLogEntitySet(List<TransLog> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        Set<TransLogEntity> set = new LinkedHashSet<TransLogEntity>( Math.max( (int) ( list.size() / .75f ) + 1, 16 ) );
+        for ( TransLog transLog : list ) {
+            set.add( transLogMapper.domainToEntity( transLog ) );
+        }
+
+        return set;
     }
 
     protected TrafficCenter trafficCenterEntityToTrafficCenter(TrafficCenterEntity trafficCenterEntity) {

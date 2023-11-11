@@ -17,6 +17,7 @@ import org.example.entities.PriceCategoryEntity;
 import org.example.entities.RefineryEntity;
 import org.example.entities.RegionEntity;
 import org.example.entities.TrafficCenterEntity;
+import org.example.entities.TransLogEntity;
 import org.example.entities.TransportationEntity;
 import org.example.entities.TransportationType;
 import org.example.entities.VehicleEntity;
@@ -31,15 +32,19 @@ import org.example.model.PriceCategory;
 import org.example.model.Refinery;
 import org.example.model.Region;
 import org.example.model.TrafficCenter;
+import org.example.model.TransLog;
 import org.example.model.Transportation;
 import org.example.model.Vehicle;
+import org.mapstruct.factory.Mappers;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-11-06T16:00:10+0300",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
+    date = "2023-11-11T13:46:35+0300",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class TransMapperImpl implements TransMapper {
+
+    private final TransLogMapper transLogMapper = Mappers.getMapper( TransLogMapper.class );
 
     @Override
     public TransportationEntity domainToEntity(Transportation transportation) {
@@ -61,6 +66,7 @@ public class TransMapperImpl implements TransMapper {
         transportationEntity.setUpdatedAt( transportation.getUpdatedAt() );
         transportationEntity.setType( transportationTypeToTransportationType( transportation.getType() ) );
         transportationEntity.setDeletedAt( transportation.getDeletedAt() );
+        transportationEntity.setTransLogs( transLogListToTransLogEntitySet( transportation.getTransLogs() ) );
 
         return transportationEntity;
     }
@@ -75,14 +81,15 @@ public class TransMapperImpl implements TransMapper {
 
         transportation.setVehicle( vehicleEntityToVehicle( transportationEntity.getVehicle() ) );
         transportation.setRefinery( refineryEntityToRefinery( transportationEntity.getRefinery() ) );
-        transportation.setDocument( documentEntityToDocument( transportationEntity.getDocument() ) );
-        transportation.setPartitions( partitionEntitySetToPartitionList( transportationEntity.getPartitionEntities() ) );
+        transportation.setDocument( TransMapper.documentEntityToDocument( transportationEntity.getDocument() ) );
+        transportation.setPartitions( TransMapper.partitionEntityToDomain( transportationEntity.getPartitionEntities() ) );
         transportation.setId( transportationEntity.getId() );
         transportation.setIsDivided( transportationEntity.getIsDivided() );
         transportation.setIsPriced( transportationEntity.getIsPriced() );
         transportation.setSize( transportationEntity.getSize() );
         transportation.setCreatedAt( transportationEntity.getCreatedAt() );
         transportation.setUpdatedAt( transportationEntity.getUpdatedAt() );
+        transportation.setTransLogs( transLogEntitySetToTransLogList( transportationEntity.getTransLogs() ) );
         transportation.setType( transportationTypeToTransportationType1( transportationEntity.getType() ) );
         transportation.setDeletedAt( transportationEntity.getDeletedAt() );
 
@@ -334,6 +341,19 @@ public class TransMapperImpl implements TransMapper {
         return transportationType1;
     }
 
+    protected Set<TransLogEntity> transLogListToTransLogEntitySet(List<TransLog> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        Set<TransLogEntity> set = new LinkedHashSet<TransLogEntity>( Math.max( (int) ( list.size() / .75f ) + 1, 16 ) );
+        for ( TransLog transLog : list ) {
+            set.add( transLogMapper.domainToEntity( transLog ) );
+        }
+
+        return set;
+    }
+
     protected TrafficCenter trafficCenterEntityToTrafficCenter(TrafficCenterEntity trafficCenterEntity) {
         if ( trafficCenterEntity == null ) {
             return null;
@@ -364,26 +384,6 @@ public class TransMapperImpl implements TransMapper {
         return office;
     }
 
-    protected Person personEntityToPerson(PersonEntity personEntity) {
-        if ( personEntity == null ) {
-            return null;
-        }
-
-        Person person = new Person();
-
-        person.setId( personEntity.getId() );
-        person.setName( personEntity.getName() );
-        person.setFather( personEntity.getFather() );
-        person.setMother( personEntity.getMother() );
-        person.setNationalId( personEntity.getNationalId() );
-        person.setBirthPlace( personEntity.getBirthPlace() );
-        person.setBirthDate( personEntity.getBirthDate() );
-        person.setCreatedAt( personEntity.getCreatedAt() );
-        person.setUpdatedAt( personEntity.getUpdatedAt() );
-
-        return person;
-    }
-
     protected Vehicle vehicleEntityToVehicle(VehicleEntity vehicleEntity) {
         if ( vehicleEntity == null ) {
             return null;
@@ -397,7 +397,7 @@ public class TransMapperImpl implements TransMapper {
         vehicle.setTrafficCenter( trafficCenterEntityToTrafficCenter( vehicleEntity.getTrafficCenter() ) );
         vehicle.setSize( vehicleEntity.getSize() );
         vehicle.setOffice( officeEntityToOffice( vehicleEntity.getOffice() ) );
-        vehicle.setDriver( personEntityToPerson( vehicleEntity.getDriver() ) );
+        vehicle.setDriver( TransMapper.personEntityToPerson( vehicleEntity.getDriver() ) );
         vehicle.setCreatedAt( vehicleEntity.getCreatedAt() );
         vehicle.setUpdatedAt( vehicleEntity.getUpdatedAt() );
 
@@ -421,141 +421,14 @@ public class TransMapperImpl implements TransMapper {
         return refinery;
     }
 
-    protected Document documentEntityToDocument(DocumentEntity documentEntity) {
-        if ( documentEntity == null ) {
-            return null;
-        }
-
-        Document document = new Document();
-
-        document.setId( documentEntity.getId() );
-        document.setUrl( documentEntity.getUrl() );
-        document.setType( documentEntity.getType() );
-        document.setResourceId( documentEntity.getResourceId() );
-        byte[] content = documentEntity.getContent();
-        if ( content != null ) {
-            document.setContent( Arrays.copyOf( content, content.length ) );
-        }
-        document.setCreatedAt( documentEntity.getCreatedAt() );
-        document.setUpdatedAt( documentEntity.getUpdatedAt() );
-
-        return document;
-    }
-
-    protected Material materialEntityToMaterial(MaterialEntity materialEntity) {
-        if ( materialEntity == null ) {
-            return null;
-        }
-
-        Material material = new Material();
-
-        material.setId( materialEntity.getId() );
-        material.setName( materialEntity.getName() );
-        material.setCreatedAt( materialEntity.getCreatedAt() );
-        material.setUpdatedAt( materialEntity.getUpdatedAt() );
-
-        return material;
-    }
-
-    protected PriceCategory priceCategoryEntityToPriceCategory(PriceCategoryEntity priceCategoryEntity) {
-        if ( priceCategoryEntity == null ) {
-            return null;
-        }
-
-        PriceCategory priceCategory = new PriceCategory();
-
-        priceCategory.setId( priceCategoryEntity.getId() );
-        priceCategory.setName( priceCategoryEntity.getName() );
-        priceCategory.setCreatedAt( priceCategoryEntity.getCreatedAt() );
-        priceCategory.setUpdatedAt( priceCategoryEntity.getUpdatedAt() );
-
-        return priceCategory;
-    }
-
-    protected Region regionEntityToRegion(RegionEntity regionEntity) {
-        if ( regionEntity == null ) {
-            return null;
-        }
-
-        Region region = new Region();
-
-        region.setId( regionEntity.getId() );
-        region.setName( regionEntity.getName() );
-        region.setTranslation( regionEntity.getTranslation() );
-        region.setPlaceType( regionEntity.getPlaceType() );
-        region.setCreatedAt( regionEntity.getCreatedAt() );
-        region.setUpdatedAt( regionEntity.getUpdatedAt() );
-
-        return region;
-    }
-
-    protected Group groupEntityToGroup(GroupEntity groupEntity) {
-        if ( groupEntity == null ) {
-            return null;
-        }
-
-        Group group = new Group();
-
-        group.setId( groupEntity.getId() );
-        group.setName( groupEntity.getName() );
-        group.setCreatedAt( groupEntity.getCreatedAt() );
-        group.setUpdatedAt( groupEntity.getUpdatedAt() );
-
-        return group;
-    }
-
-    protected GasStation gasStationEntityToGasStation(GasStationEntity gasStationEntity) {
-        if ( gasStationEntity == null ) {
-            return null;
-        }
-
-        GasStation gasStation = new GasStation();
-
-        gasStation.setId( gasStationEntity.getId() );
-        gasStation.setName( gasStationEntity.getName() );
-        gasStation.setTranslation( gasStationEntity.getTranslation() );
-        gasStation.setPlaceType( gasStationEntity.getPlaceType() );
-        gasStation.setCreatedAt( gasStationEntity.getCreatedAt() );
-        gasStation.setUpdatedAt( gasStationEntity.getUpdatedAt() );
-        gasStation.setPriceCategory( priceCategoryEntityToPriceCategory( gasStationEntity.getPriceCategory() ) );
-        gasStation.setDebtLimit( gasStationEntity.getDebtLimit() );
-        gasStation.setRegion( regionEntityToRegion( gasStationEntity.getRegion() ) );
-        gasStation.setOwner( personEntityToPerson( gasStationEntity.getOwner() ) );
-        gasStation.setGroup( groupEntityToGroup( gasStationEntity.getGroup() ) );
-        gasStation.setMaterial( materialEntityToMaterial( gasStationEntity.getMaterial() ) );
-
-        return gasStation;
-    }
-
-    protected Partition partitionEntityToPartition(PartitionEntity partitionEntity) {
-        if ( partitionEntity == null ) {
-            return null;
-        }
-
-        Partition partition = new Partition();
-
-        partition.setId( partitionEntity.getId() );
-        partition.setMaterial( materialEntityToMaterial( partitionEntity.getMaterial() ) );
-        partition.setAmount( partitionEntity.getAmount() );
-        partition.setCorrectedAmount( partitionEntity.getCorrectedAmount() );
-        partition.setGasStation( gasStationEntityToGasStation( partitionEntity.getGasStation() ) );
-        partition.setNotes( partitionEntity.getNotes() );
-        partition.setExtraNotes( partitionEntity.getExtraNotes() );
-        partition.setDocument( documentEntityToDocument( partitionEntity.getDocument() ) );
-        partition.setCreatedAt( partitionEntity.getCreatedAt() );
-        partition.setUpdatedAt( partitionEntity.getUpdatedAt() );
-
-        return partition;
-    }
-
-    protected List<Partition> partitionEntitySetToPartitionList(Set<PartitionEntity> set) {
+    protected List<TransLog> transLogEntitySetToTransLogList(Set<TransLogEntity> set) {
         if ( set == null ) {
             return null;
         }
 
-        List<Partition> list = new ArrayList<Partition>( set.size() );
-        for ( PartitionEntity partitionEntity : set ) {
-            list.add( partitionEntityToPartition( partitionEntity ) );
+        List<TransLog> list = new ArrayList<TransLog>( set.size() );
+        for ( TransLogEntity transLogEntity : set ) {
+            list.add( transLogMapper.entityToDomain( transLogEntity ) );
         }
 
         return list;
