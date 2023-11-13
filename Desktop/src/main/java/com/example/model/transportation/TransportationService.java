@@ -51,7 +51,8 @@ public class TransportationService implements Service<Transportation, CreateTran
 
     @Override
     public Transportation delete(Long id) {
-        return null;
+        final HttpResponse<String> stringHttpResponse = client.parallelDelete(getEndPoint(), "/" + id);
+        return gson.fromJson(stringHttpResponse.body(), Transportation.class);
     }
 
     @Override

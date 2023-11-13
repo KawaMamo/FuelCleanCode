@@ -11,6 +11,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.controlsfx.control.Notifications;
 import org.example.model.Transportation;
 
 import java.text.NumberFormat;
@@ -74,7 +75,8 @@ public class Transportations implements TableController {
 
     @FXML
     void delete() {
-
+        final Transportation delete = transportationService.delete(selectedTransportation.getId());
+        Notifications.create().title("Success").text("Successfully deleted "+delete.getId()).showInformation();
     }
 
     @FXML
