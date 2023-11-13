@@ -12,6 +12,7 @@ import com.example.model.transLine.TransLineService;
 import com.example.model.transLog.TransLogService;
 import com.example.model.transportation.TransportationService;
 import com.example.model.vehicle.VehicleService;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -25,6 +26,7 @@ import org.controlsfx.control.textfield.TextFields;
 import org.example.contract.request.create.CreatePartitionRequest;
 import org.example.contract.request.create.CreateTransLogRequest;
 import org.example.contract.request.create.CreateTransRequest;
+import org.example.contract.request.update.UpdateTransRequest;
 import org.example.model.*;
 
 import java.text.NumberFormat;
@@ -272,22 +274,39 @@ public class AddTransportation {
             transportation = transportationService.getItem(Transportations.selectedTransportation.getId());
             refineryTF.setText(transportation.getRefinery().getName());
             vehicleTF.setText(transportation.getVehicle().getPlateNumber());
+            Platform.runLater(()-> vehicleTF.requestFocus());
             loadData();
             loadTransData();
+            transBtn.setText("تعديل");
         }
 
     }
 
     @FXML
     void addTrans() {
-        if(Objects.nonNull(selectedRefineryId) && Objects.nonNull(selectedVehicleId)){
-            transportation = transportationService.addItem(new CreateTransRequest(selectedRefineryId,
-                    selectedVehicleId,
-                    Long.parseLong(sizeTF.getText().replaceAll(",", "")),
-                    TransportationType.NORMAL));
-            notify(transportation);
-            addedTransport = transportation;
+        if(isEditingForm){
+            if(Objects.nonNull(selectedRefineryId) && Objects.nonNull(selectedVehicleId)){
+                transportation = transportationService.editItem(new UpdateTransRequest(transportation.getId(),
+                        selectedRefineryId,
+                        selectedVehicleId,
+                        Long.parseLong(sizeTF.getText().replaceAll(",", "")),
+                        TransportationType.NORMAL));
+                controller.loadData();
+                notify(transportation);
+                addedTransport = transportation;
+            }
+        }else {
+            if(Objects.nonNull(selectedRefineryId) && Objects.nonNull(selectedVehicleId)){
+                transportation = transportationService.addItem(new CreateTransRequest(selectedRefineryId,
+                        selectedVehicleId,
+                        Long.parseLong(sizeTF.getText().replaceAll(",", "")),
+                        TransportationType.NORMAL));
+                controller.addData(transportation);
+                notify(transportation);
+                addedTransport = transportation;
+            }
         }
+
     }
 
     private void notify(Transportation transportation) {
@@ -298,7 +317,7 @@ public class AddTransportation {
         }else {
             message = "something went wrong";
         }
-        controller.addData(transportation);
+
         Notifications.create().title("Info").text(message).showInformation();
     }
 

@@ -595,8 +595,8 @@ public class Beans {
         return new UpdateTrans(validator, mapper, repo);
     }
     @Bean
-    UpdateTransValidator updateTransValidator(RefineryRepo refineryRepo, VehicleRepo vehicleRepo){
-        return new UpdateTransValidator(refineryRepo, vehicleRepo);
+    UpdateTransValidator updateTransValidator(RefineryRepo refineryRepo, VehicleRepo vehicleRepo, TransRepo transRepo){
+        return new UpdateTransValidator(refineryRepo, vehicleRepo, transRepo);
     }
     @Bean
     UpdateTransferMaterial updateTransferMaterial(UpdateTransferMaterialValidator validator,

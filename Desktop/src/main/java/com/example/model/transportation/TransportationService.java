@@ -56,6 +56,8 @@ public class TransportationService implements Service<Transportation, CreateTran
 
     @Override
     public Transportation editItem(UpdateTransRequest updateRequest) {
-        return null;
+        final String json = gson.toJson(updateRequest);
+        final HttpResponse<String> stringHttpResponse = client.parallelPatch(getEndPoint(), json);
+        return gson.fromJson(stringHttpResponse.body(), Transportation.class);
     }
 }

@@ -1,9 +1,11 @@
 package org.example.validators.update;
 
 import org.example.contract.repository.RefineryRepo;
+import org.example.contract.repository.TransRepo;
 import org.example.contract.repository.VehicleRepo;
 import org.example.contract.request.update.UpdateTransRequest;
 import org.example.exceptions.ValidationErrorDetails;
+import org.example.model.Partition;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -16,10 +18,12 @@ public class UpdateTransValidator {
 
     private final RefineryRepo refineryRepo;
     private final VehicleRepo vehicleRepo;
+    private final TransRepo transRepo;
 
-    public UpdateTransValidator(RefineryRepo refineryRepo, VehicleRepo vehicleRepo) {
+    public UpdateTransValidator(RefineryRepo refineryRepo, VehicleRepo vehicleRepo, TransRepo transRepo) {
         this.refineryRepo = refineryRepo;
         this.vehicleRepo = vehicleRepo;
+        this.transRepo = transRepo;
     }
 
     public void validate(UpdateTransRequest request){
@@ -44,6 +48,17 @@ public class UpdateTransValidator {
         if(Objects.isNull(request.getType())){
             errorDetails.add(new ValidationErrorDetails(TYPE_ENUM, ILLEGAL_VALUE));
         }
+
+        transRepo.findById(request.getId()).ifPresent(transportation -> {
+            Long size = 0L;
+            for (Partition partition : transportation.getPartitions()) {
+                size += partition.getAmount();
+            if(size>request.getSize()) {
+                errorDetails.add(new ValidationErrorDetails(SIZE_FIELD, ILLEGAL_VALUE));
+            }
+            }
+        });
+
 
         ExceptionThrower.throwIfNotEmpty(errorDetails);
 
