@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9789121b-73d7-4b39-9277-418dcdf4a56e">
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+    <style name="Style1" isDefault="true" fontName="Arial" pdfEncoding="UTF-8" isBold="false"/>
+    <parameter name="title" class="java.lang.String"/>
+    <parameter name="regionName" class="java.lang.String"/>
+    <parameter name="id" class="java.lang.Long"/>
+    <parameter name="plateNumber" class="java.lang.String"/>
+    <parameter name="driverName" class="java.lang.String"/>
+    <parameter name="amount" class="java.lang.Double"/>
+    <parameter name="material" class="java.lang.String"/>
+    <parameter name="refinery" class="java.lang.String"/>
+    <parameter name="gasStation" class="java.lang.String"/>
+    <parameter name="start" class="java.time.LocalDate"/>
+    <parameter name="end" class="java.time.LocalDate"/>
+    <parameter name="notesField" class="java.lang.String"/>
+    <parameter name="dateField" class="java.time.LocalDate"/>
+    <parameter name="recordCount" class="java.lang.Integer"/>
+    <parameter name="now" class="java.time.LocalDateTime"/>
+    <queryString>
+        <![CDATA[]]>
+    </queryString>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="67" splitType="Stretch">
+            <image>
+                <reportElement x="0" y="8" width="140" height="50" uuid="fbd466e0-62f0-4ae5-8acb-deccd84edc80"/>
+                <imageExpression><![CDATA["D:/sheren/SadLogo.png"]]></imageExpression>
+            </image>
+            <textField isBlankWhenNull="false">
+                <reportElement x="160" y="10" width="250" height="30" uuid="65cc3617-cd54-4877-85c3-8108ca632e39"/>
+                <textElement textAlignment="Center">
+                    <font size="16" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{title}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="40" y="40" width="180" height="18" uuid="0efc4c47-a93b-4b35-b7bc-87a1916f5c09"/>
+                <textFieldExpression><![CDATA[$P{now}]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+    <pageHeader>
+        <band height="21" splitType="Stretch">
+            <textField>
+                <reportElement x="450" y="0" width="100" height="20" uuid="2478cf97-1c8b-41e9-ba16-afce5dc25e43"/>
+                <textElement textAlignment="Center">
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{regionName}]]></textFieldExpression>
+                <patternExpression><![CDATA[$P{regionName}]]></patternExpression>
+            </textField>
+            <textField>
+                <reportElement x="159" y="1" width="236" height="18" uuid="875f14c5-6f76-4561-a168-a0aae0767dda"/>
+                <textElement textAlignment="Center"/>
+                <textFieldExpression><![CDATA[$P{start}+" إلى "+$P{end}]]></textFieldExpression>
+            </textField>
+        </band>
+    </pageHeader>
+    <columnHeader>
+        <band height="38" splitType="Stretch">
+            <textField>
+                <reportElement x="480" y="9" width="50" height="20"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression>"المركبة"</textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="360" y="9" width="70" height="20" />
+                <textElement textAlignment="Right"/>
+                <textFieldExpression>"السائق"</textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="310" y="9" width="50" height="20" uuid="38c3a0cd-e970-4613-8fd3-68e79fa5fcfd"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression>"الكمية"</textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="260" y="9" width="50" height="20" uuid="1671ffbf-1488-4d8e-8aff-03cfd385ea74">
+                    <property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+                </reportElement>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression>"المادة"</textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="200" y="9" width="60" height="20" uuid="5d478c35-81ed-4bda-983f-93dc08f158cc"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression>"المصفاة"</textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="130" y="9" width="70" height="20" uuid="95900b23-d388-47af-bbb7-2345319b9943"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression>"الوجهة"</textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="530" y="9" width="25" height="20" uuid="520545ea-cfc1-452f-b8e1-bcf1c7f55370"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression>"No"</textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="60" y="9" width="70" height="20" uuid="2c13fa60-73ea-42be-b88a-b76383072ece"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression>"ملاحظات"</textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="430" y="9" width="50" height="20" uuid="c6304776-e977-4ca7-8352-39162db141a5"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression>"المعرف"</textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="9" width="60" height="20" uuid="26438f0c-1360-476a-b0db-eecfcd1eed74"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression>"التاريخ"</textFieldExpression>
+            </textField>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="125" splitType="Stretch">
+            <textField>
+                <reportElement x="530" y="2" width="25" height="18" uuid="da941131-c33f-4119-83db-03aa6d1e8fce"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression><![CDATA[$P{recordCount}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="480" y="2" width="50" height="18" uuid="7181ab59-1cd6-4c9a-a019-b3a47d6ac852"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression><![CDATA[$P{plateNumber}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="360" y="2" width="70" height="18" uuid="7e0e04da-e9eb-40fe-b83f-1db307a6375d"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression><![CDATA[$P{driverName}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="310" y="2" width="50" height="18" uuid="d4908b25-1b70-4a33-8856-3031ffa6f795"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression><![CDATA[$P{amount}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="260" y="2" width="50" height="18" uuid="295650f5-0f25-4c3f-8076-3b8fa210bdb0"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression><![CDATA[$P{material}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="200" y="2" width="60" height="18" uuid="ef68d2e3-9aad-4a0f-928b-90e0db4f06ef"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression><![CDATA[$P{refinery}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="130" y="2" width="70" height="18" uuid="560ddc30-c175-4b6d-835e-4db3f7f4654a"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression><![CDATA[$P{gasStation}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="430" y="2" width="50" height="18" uuid="f7693e31-2a2d-4e67-8141-ee6a7eb37691"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression><![CDATA[$P{id}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="60" y="2" width="70" height="18" uuid="f6e53280-6483-4dbd-96cf-42603d490ca9"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression><![CDATA[$P{notesField}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="2" width="60" height="18" uuid="ea78a334-1b90-4fe5-9b3b-a0ccc51c3814"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression><![CDATA[$P{dateField}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <columnFooter>
+        <band height="45" splitType="Stretch"/>
+    </columnFooter>
+    <pageFooter>
+        <band height="54" splitType="Stretch"/>
+    </pageFooter>
+    <summary>
+        <band height="42" splitType="Stretch"/>
+    </summary>
+</jasperReport>

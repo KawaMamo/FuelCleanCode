@@ -1,6 +1,7 @@
 package org.example.config;
 
 import org.example.exceptions.DomainValidationException;
+import org.example.exceptions.ReportException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -53,5 +54,11 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<Object> handleSQLException(SQLException e, WebRequest request){
         logger.error(e.toString());
         return new ResponseEntity<>(e.getClass()+": "+e.getMessage(), new HttpHeaders(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(ReportException.class)
+    public ResponseEntity<Object> handleReportException(ReportException e, WebRequest request){
+        logger.error(e.toString());
+        return new ResponseEntity<>(e.getClass()+": "+e.getMessage(), new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

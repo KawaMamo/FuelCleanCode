@@ -77,6 +77,7 @@ public class Transportations implements TableController {
     void delete() {
         final Transportation delete = transportationService.delete(selectedTransportation.getId());
         Notifications.create().title("Success").text("Successfully deleted "+delete.getId()).showInformation();
+        loadData();
     }
 
     @FXML

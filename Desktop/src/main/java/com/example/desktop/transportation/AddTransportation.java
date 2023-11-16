@@ -97,6 +97,10 @@ public class AddTransportation {
     private TextField lineNotesTF;
 
     Transportation transportation = null;
+    @FXML
+    private ToggleButton normalTB;
+    @FXML
+    private ToggleButton tradeTB;
 
     private final RefineryService refineryService = RefineryService.getInstance();
     private final VehicleService vehicleService = VehicleService.getInstance();
@@ -120,7 +124,8 @@ public class AddTransportation {
 
     private Partition selectedPartition;
     private TransLog selectedTransLog;
-
+    ToggleGroup normalTradeGroup = new ToggleGroup();
+    TransportationType type = TransportationType.NORMAL;
 
     @FXML
     private void initialize(){
@@ -270,6 +275,30 @@ public class AddTransportation {
             }
         });
 
+        normalTB.setToggleGroup(normalTradeGroup);
+        tradeTB.setToggleGroup(normalTradeGroup);
+        normalTB.setSelected(true);
+        setToggleButtonsColor(type);
+
+        normalTB.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
+                if(t1) {
+                    type = TransportationType.NORMAL;
+                    setToggleButtonsColor(type);
+                }
+            }
+        });
+
+        tradeTB.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
+                type = TransportationType.COMMERCIAL;
+                setToggleButtonsColor(type);
+            }
+        });
+
+
         if(isEditingForm){
             transportation = transportationService.getItem(Transportations.selectedTransportation.getId());
             refineryTF.setText(transportation.getRefinery().getName());
@@ -282,6 +311,16 @@ public class AddTransportation {
 
     }
 
+    private void setToggleButtonsColor(TransportationType transportationType){
+        if(transportationType.equals(TransportationType.NORMAL)){
+            normalTB.setStyle("-fx-background-color:orange;");
+            tradeTB.setStyle("-fx-background-color:silver;");
+        }else if(transportationType.equals(TransportationType.COMMERCIAL)){
+            normalTB.setStyle("-fx-background-color:silver;");
+            tradeTB.setStyle("-fx-background-color:orange;");
+        }
+    }
+
     @FXML
     void addTrans() {
         if(isEditingForm){
@@ -290,17 +329,18 @@ public class AddTransportation {
                         selectedRefineryId,
                         selectedVehicleId,
                         Long.parseLong(sizeTF.getText().replaceAll(",", "")),
-                        TransportationType.NORMAL));
+                        type));
                 controller.loadData();
                 notify(transportation);
                 addedTransport = transportation;
             }
+
         }else {
             if(Objects.nonNull(selectedRefineryId) && Objects.nonNull(selectedVehicleId)){
                 transportation = transportationService.addItem(new CreateTransRequest(selectedRefineryId,
                         selectedVehicleId,
                         Long.parseLong(sizeTF.getText().replaceAll(",", "")),
-                        TransportationType.NORMAL));
+                        type));
                 controller.addData(transportation);
                 notify(transportation);
                 addedTransport = transportation;

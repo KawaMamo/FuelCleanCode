@@ -1,5 +1,9 @@
 package org.example.controllers;
 
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.export.JRXlsExporter;
+import net.sf.jasperreports.engine.export.ooxml.JRXlsxExporter;
+import net.sf.jasperreports.export.*;
 import org.example.contract.request.create.CreateTransLogRequest;
 import org.example.contract.request.update.UpdateTransLogRequest;
 import org.example.contract.response.TransLogResponse;
@@ -21,7 +25,13 @@ import org.springframework.hateoas.PagedModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.io.ByteArrayOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
 
 @RestController
 @RequestMapping("api/v1/trans-log")
@@ -65,5 +75,73 @@ public class TransLogController {
     @DeleteMapping("/{id}")
     public TransLogResponse deleteTransLog(@PathVariable Long id){
         return deleteTransLog.execute(id);
+    }
+
+    @GetMapping("/jasper/{id}/{start}/{end}")
+    public byte[] getReports(@PathVariable Long id, @PathVariable LocalDate start, @PathVariable LocalDate end){
+        String jreXmlTemplatePath = "D:\\fuelRefactored\\FuelCleanCode\\Service\\src\\main\\resources\\templates\\regionDesign.jrxml";
+        Map<String, Object> params = new HashMap<>();
+        params.put("id", id);
+        params.put("start", start);
+        params.put("end", end);
+        params.put("title", "تقرير منطقة");
+        params.put("regionName", "منطقة");
+        params.put("plateNumber", "456782");
+        params.put("driverName", "driverName");
+        params.put("amount", 89000D);
+        params.put("material", "material");
+        params.put("refinery", "ref1");
+        params.put("gasStation", "الوجهة");
+        params.put("notesField", "notesField");
+        params.put("dateField", LocalDate.now());
+        params.put("now", LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
+        params.put("recordCount", 1);
+        try {
+            JasperReport regionReport = JasperCompileManager.compileReport(jreXmlTemplatePath);
+            final JasperPrint jasperPrint = JasperFillManager.fillReport(regionReport, params, new JREmptyDataSource());
+            JasperExportManager.exportReportToHtmlFile(jasperPrint,
+                    "D:\\fuelRefactored\\FuelCleanCode\\Service\\src\\main\\resources\\templates\\test.html");
+            return null;
+        } catch (JRException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    @GetMapping("/jasperXls/{id}/{start}/{end}")
+    public byte[] getXlsReport(@PathVariable Long id, @PathVariable LocalDate start, @PathVariable LocalDate end){
+        String jreXmlTemplatePath = "D:\\fuelRefactored\\FuelCleanCode\\Service\\src\\main\\resources\\templates\\regionDesign.jrxml";
+        Map<String, Object> params = new HashMap<>();
+        params.put("id", id);
+        params.put("start", start);
+        params.put("end", end);
+        params.put("title", "تقرير منطقة");
+        params.put("regionName", "منطقة");
+        params.put("plateNumber", "456782");
+        params.put("driverName", "driverName");
+        params.put("amount", 89000D);
+        params.put("material", "material");
+        params.put("refinery", "ref1");
+        params.put("gasStation", "الوجهة");
+        params.put("notesField", "notesField");
+        params.put("dateField", LocalDate.now());
+        params.put("now", LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
+        params.put("recordCount", 1);
+        try {
+            JasperReport regionReport = JasperCompileManager.compileReport(jreXmlTemplatePath);
+            final JasperPrint jasperPrint = JasperFillManager.fillReport(regionReport, params, new JREmptyDataSource());
+
+            JRXlsxExporter exporter = new JRXlsxExporter();
+
+            exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
+            exporter.setExporterOutput(
+                    new SimpleOutputStreamExporterOutput("employeeReport.xlsx"));
+
+            exporter.exportReport();
+
+            return null;
+        } catch (JRException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

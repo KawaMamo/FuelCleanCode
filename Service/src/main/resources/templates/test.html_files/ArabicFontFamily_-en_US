@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: 'ArabicFontFamily_-en_US';
+	src: local('☺'),
+		url('Amiri Regular_-en_US.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'ArabicFontFamily_-en_US';
+	src: local('☺'),
+		url('Amiri Bold-Bold_-en_US.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'ArabicFontFamily_-en_US';
+	src: local('☺'),
+		url('Amiri Italic-Italic_-en_US.ttf') format('truetype');
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'ArabicFontFamily_-en_US';
+	src: local('☺'),
+		url('Amiri Bold Italic-BoldItalic_-en_US.ttf') format('truetype');
+	font-weight: bold;
+	font-style: italic;
+}
+

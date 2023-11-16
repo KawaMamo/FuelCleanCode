@@ -5,17 +5,24 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="577.0" prefWidth="711.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.desktop.transportation.AddTransportation">
+<AnchorPane prefHeight="626.0" prefWidth="711.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.desktop.transportation.AddTransportation">
    <children>
-      <HBox layoutX="371.0" layoutY="51.0" prefHeight="95.0" prefWidth="302.0" spacing="50.0">
+      <HBox layoutX="364.0" layoutY="62.0" prefHeight="95.0" prefWidth="302.0" spacing="50.0">
          <children>
             <VBox nodeOrientation="RIGHT_TO_LEFT" spacing="10.0">
                <children>
+                  <HBox>
+                     <children>
+                        <ToggleButton fx:id="normalTB" mnemonicParsing="false" prefHeight="26.0" prefWidth="81.0" text="عادي" />
+                        <ToggleButton fx:id="tradeTB" mnemonicParsing="false" prefHeight="26.0" prefWidth="81.0" text="تجاري" />
+                     </children>
+                  </HBox>
                   <TextField fx:id="refineryTF" />
                   <TextField fx:id="vehicleTF" />
                   <TextField fx:id="driverTF" editable="false" />
@@ -26,6 +33,7 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="18.0">
                <children>
+                  <Label text="النوع" />
                   <Label text="المصدر" />
                   <Label text="المركبة" />
                   <Label text="السائق" />
@@ -34,17 +42,17 @@
             </VBox>
          </children>
       </HBox>
-      <Label layoutX="652.0" layoutY="14.0" text="نقل من">
+      <Label layoutX="645.0" layoutY="29.0" text="نقل من">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="287.0" layoutY="14.0" text="نقل إلى">
+      <Label layoutX="280.0" layoutY="29.0" text="نقل إلى">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <HBox layoutX="30.0" layoutY="42.0" prefHeight="95.0" prefWidth="302.0" spacing="50.0">
+      <HBox layoutX="23.0" layoutY="64.0" prefHeight="95.0" prefWidth="302.0" spacing="50.0">
          <children>
             <VBox nodeOrientation="RIGHT_TO_LEFT" spacing="10.0">
                <children>
@@ -69,7 +77,7 @@
             </VBox>
          </children>
       </HBox>
-      <HBox layoutX="371.0" layoutY="289.0" prefHeight="95.0" prefWidth="302.0" spacing="50.0">
+      <HBox layoutX="364.0" layoutY="335.0" prefHeight="95.0" prefWidth="302.0" spacing="50.0">
          <children>
             <VBox nodeOrientation="RIGHT_TO_LEFT" spacing="10.0">
                <children>
@@ -88,19 +96,19 @@
             </VBox>
          </children>
       </HBox>
-      <Label layoutX="640.0" layoutY="257.0" text="خط النقل">
+      <Label layoutX="633.0" layoutY="303.0" text="خط النقل">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TableView fx:id="partitionsTbl" layoutX="29.0" layoutY="335.0" prefHeight="196.0" prefWidth="302.0" />
-      <Button fx:id="endBtn" layoutX="32.0" layoutY="539.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#close" prefHeight="26.0" prefWidth="114.0" text="انهاء" />
-      <TableView fx:id="transLineTbl" layoutX="371.0" layoutY="436.0" prefHeight="95.0" prefWidth="274.0" />
-      <Button layoutX="32.0" layoutY="296.0" mnemonicParsing="false" onAction="#deletePartition" style="-fx-background-color: red;" text="حذف">
+      <TableView fx:id="partitionsTbl" layoutX="22.0" layoutY="381.0" prefHeight="196.0" prefWidth="302.0" />
+      <Button fx:id="endBtn" layoutX="25.0" layoutY="585.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#close" prefHeight="26.0" prefWidth="114.0" text="انهاء" />
+      <TableView fx:id="transLineTbl" layoutX="364.0" layoutY="482.0" prefHeight="95.0" prefWidth="274.0" />
+      <Button layoutX="25.0" layoutY="342.0" mnemonicParsing="false" onAction="#deletePartition" style="-fx-background-color: red;" text="حذف">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="653.0" layoutY="436.0" mnemonicParsing="false" onAction="#deleteTransLog" style="-fx-background-color: red;" text="حذف" />
+      <Button layoutX="646.0" layoutY="482.0" mnemonicParsing="false" onAction="#deleteTransLog" style="-fx-background-color: red;" text="حذف" />
    </children>
 </AnchorPane>
