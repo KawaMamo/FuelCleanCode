@@ -1,7 +1,7 @@
 package org.example.controllers;
 
 import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.engine.export.JRXlsExporter;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.export.ooxml.JRXlsxExporter;
 import net.sf.jasperreports.export.*;
 import org.example.contract.request.create.CreateTransLogRequest;
@@ -25,9 +25,7 @@ import org.springframework.hateoas.PagedModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
@@ -79,30 +77,23 @@ public class TransLogController {
 
     @GetMapping("/jasper/{id}/{start}/{end}")
     public byte[] getReports(@PathVariable Long id, @PathVariable LocalDate start, @PathVariable LocalDate end){
+
+        final List<TransLogEntity> logEntityList = transLogRepository.findAll();
         String jreXmlTemplatePath = "D:\\fuelRefactored\\FuelCleanCode\\Service\\src\\main\\resources\\templates\\regionDesign.jrxml";
         Map<String, Object> params = new HashMap<>();
-        params.put("id", id);
-        params.put("start", start);
-        params.put("end", end);
-        params.put("title", "تقرير منطقة");
-        params.put("regionName", "منطقة");
-        params.put("plateNumber", "456782");
-        params.put("driverName", "driverName");
-        params.put("amount", 89000D);
-        params.put("material", "material");
-        params.put("refinery", "ref1");
-        params.put("gasStation", "الوجهة");
-        params.put("notesField", "notesField");
-        params.put("dateField", LocalDate.now());
-        params.put("now", LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
-        params.put("recordCount", 1);
+        params.put("nowLocalDT", LocalDateTime.now());
+
         try {
+            final JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(logEntityList);
             JasperReport regionReport = JasperCompileManager.compileReport(jreXmlTemplatePath);
-            final JasperPrint jasperPrint = JasperFillManager.fillReport(regionReport, params, new JREmptyDataSource());
+            final JasperPrint jasperPrint = JasperFillManager.fillReport(regionReport, params, jrBeanCollectionDataSource);
+
             JasperExportManager.exportReportToHtmlFile(jasperPrint,
                     "D:\\fuelRefactored\\FuelCleanCode\\Service\\src\\main\\resources\\templates\\test.html");
-            return null;
-        } catch (JRException e) {
+            final File file = new File("D:\\fuelRefactored\\FuelCleanCode\\Service\\src\\main\\resources\\templates\\test.html");
+            final FileInputStream fileInputStream = new FileInputStream(file);
+            return fileInputStream.readAllBytes();
+        } catch (JRException | IOException e) {
             throw new RuntimeException(e);
         }
     }
