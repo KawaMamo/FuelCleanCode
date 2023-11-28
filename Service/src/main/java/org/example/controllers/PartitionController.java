@@ -12,6 +12,7 @@ import org.example.contract.response.PartitionResponse;
 import org.example.entities.GasStationEntity;
 import org.example.entities.PartitionEntity;
 import org.example.entities.RegionEntity;
+import org.example.entities.TransportationType;
 import org.example.mappers.PartitionMapper;
 import org.example.model.Partition;
 import org.example.repositories.PartitionRepository;
@@ -36,6 +37,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -86,14 +89,21 @@ public class PartitionController {
         return deletePartition.execute(id);
     }
 
-    @GetMapping("/regionReport/{exportType}/{id}/{start}/{end}")
-    public byte[] getReports(@PathVariable Long id, @PathVariable LocalDate start, @PathVariable LocalDate end, @PathVariable String exportType){
+    @GetMapping("/regionReport/{exportType}/{id}/{start}/{end}/{type}")
+    public byte[] getReports(@PathVariable Long id,
+                             @PathVariable LocalDate start,
+                             @PathVariable LocalDate end,
+                             @PathVariable String exportType,
+                             @PathVariable TransportationType type){
 
-        final List<PartitionEntity> partitionEntities = partitionRepository.getPartitionEntities(id);
+        final List<PartitionEntity> partitionEntities = partitionRepository.getPartitionEntities(id,
+                LocalDateTime.of(start, LocalTime.parse("00:00:00")),
+                LocalDateTime.of(end, LocalTime.parse("23:59:59")),
+                type);
 
         String jreXmlTemplatePath = "D:\\fuelRefactored\\FuelCleanCode\\Service\\src\\main\\resources\\templates\\regionDesign.jrxml";
         Map<String, Object> params = new HashMap<>();
-        params.put("nowLocalDT", LocalDateTime.now());
+        params.put("nowLocalDT", LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
 
         try {
             final JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(partitionEntities);

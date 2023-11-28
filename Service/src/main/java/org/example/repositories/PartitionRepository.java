@@ -1,19 +1,22 @@
 package org.example.repositories;
 
 import org.example.entities.PartitionEntity;
+import org.example.entities.TransportationType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
 public interface PartitionRepository extends JpaRepository<PartitionEntity, Long>,
         PagingAndSortingRepository<PartitionEntity, Long>, JpaSpecificationExecutor<PartitionEntity> {
 
-    @Query("SELECT p FROM PartitionEntity p JOIN p.gasStation g JOIN g.region r WHERE r.id = ?1")
-    List<PartitionEntity> getPartitionEntities(Long id);
+    @Query("SELECT p FROM PartitionEntity p JOIN p.gasStation g JOIN g.region r JOIN p.transportationEntity t WHERE r.id = ?1 AND p.createdAt BETWEEN ?2 AND ?3 AND t.type = ?4")
+    List<PartitionEntity> getPartitionEntities(Long id, LocalDateTime start, LocalDateTime end, TransportationType type);
 
 }

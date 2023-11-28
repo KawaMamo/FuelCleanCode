@@ -8,6 +8,7 @@ import org.example.contract.request.create.CreateTransLogRequest;
 import org.example.contract.request.update.UpdateTransLogRequest;
 import org.example.contract.response.TransLogResponse;
 import org.example.entities.TransLogEntity;
+import org.example.entities.TransportationType;
 import org.example.mappers.TransLogMapper;
 import org.example.model.TransLog;
 import org.example.repositories.TransLogRepository;
@@ -26,9 +27,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.*;
+import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
+import java.time.LocalTime;
 import java.util.*;
 
 @RestController
@@ -75,11 +77,19 @@ public class TransLogController {
         return deleteTransLog.execute(id);
     }
 
-    @GetMapping("/jasper/{id}/{start}/{end}")
-    public byte[] getReports(@PathVariable Long id, @PathVariable LocalDate start, @PathVariable LocalDate end){
+    @GetMapping("/driverReport/{exportType}/{id}/{start}/{end}/{type}")
+    public byte[] getDriverReport(@PathVariable Long id,
+                                  @PathVariable LocalDate start,
+                                  @PathVariable LocalDate end,
+                                  @PathVariable TransportationType type,
+                                  @PathVariable String exportType){
 
-        final List<TransLogEntity> logEntityList = transLogRepository.findAll();
-        String jreXmlTemplatePath = "D:\\fuelRefactored\\FuelCleanCode\\Service\\src\\main\\resources\\templates\\regionDesign.jrxml";
+        final List<TransLogEntity> logEntityList = transLogRepository.getTransLogEntities(id,
+                LocalDateTime.of(start, LocalTime.MIN),
+                LocalDateTime.of(end, LocalTime.MAX),
+                type);
+
+        String jreXmlTemplatePath = "D:\\fuelRefactored\\FuelCleanCode\\Service\\src\\main\\resources\\templates\\driverReport.jrxml";
         Map<String, Object> params = new HashMap<>();
         params.put("nowLocalDT", LocalDateTime.now());
 
@@ -87,51 +97,23 @@ public class TransLogController {
             final JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(logEntityList);
             JasperReport regionReport = JasperCompileManager.compileReport(jreXmlTemplatePath);
             final JasperPrint jasperPrint = JasperFillManager.fillReport(regionReport, params, jrBeanCollectionDataSource);
-
-            JasperExportManager.exportReportToHtmlFile(jasperPrint,
-                    "D:\\fuelRefactored\\FuelCleanCode\\Service\\src\\main\\resources\\templates\\test.html");
-            final File file = new File("D:\\fuelRefactored\\FuelCleanCode\\Service\\src\\main\\resources\\templates\\test.html");
-            final FileInputStream fileInputStream = new FileInputStream(file);
-            return fileInputStream.readAllBytes();
+            File file = null;
+            if(exportType.equals("HTML")){
+                file = new File("D:\\fuelRefactored\\FuelCleanCode\\Service\\src\\main\\resources\\templates\\DriverReport.html");
+                JasperExportManager.exportReportToHtmlFile(jasperPrint,
+                        file.getAbsolutePath());
+            }else if(exportType.equals("XLSX")){
+                file = new File("D:\\fuelRefactored\\FuelCleanCode\\Service\\src\\main\\resources\\templates\\DriverReport.xlsx");
+                JRXlsxExporter exporter = new JRXlsxExporter();
+                exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
+                exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(file.getAbsolutePath()));
+                exporter.exportReport();
+            }
+            assert file != null;
+            try(final FileInputStream fileInputStream = new FileInputStream(file);){
+                return fileInputStream.readAllBytes();
+            }
         } catch (JRException | IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-
-    @GetMapping("/jasperXls/{id}/{start}/{end}")
-    public byte[] getXlsReport(@PathVariable Long id, @PathVariable LocalDate start, @PathVariable LocalDate end){
-        String jreXmlTemplatePath = "D:\\fuelRefactored\\FuelCleanCode\\Service\\src\\main\\resources\\templates\\regionDesign.jrxml";
-        Map<String, Object> params = new HashMap<>();
-        params.put("id", id);
-        params.put("start", start);
-        params.put("end", end);
-        params.put("title", "تقرير منطقة");
-        params.put("regionName", "منطقة");
-        params.put("plateNumber", "456782");
-        params.put("driverName", "driverName");
-        params.put("amount", 89000D);
-        params.put("material", "material");
-        params.put("refinery", "ref1");
-        params.put("gasStation", "الوجهة");
-        params.put("notesField", "notesField");
-        params.put("dateField", LocalDate.now());
-        params.put("now", LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
-        params.put("recordCount", 1);
-        try {
-            JasperReport regionReport = JasperCompileManager.compileReport(jreXmlTemplatePath);
-            final JasperPrint jasperPrint = JasperFillManager.fillReport(regionReport, params, new JREmptyDataSource());
-
-            JRXlsxExporter exporter = new JRXlsxExporter();
-
-            exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
-            exporter.setExporterOutput(
-                    new SimpleOutputStreamExporterOutput("employeeReport.xlsx"));
-
-            exporter.exportReport();
-
-            return null;
-        } catch (JRException e) {
             throw new RuntimeException(e);
         }
     }
