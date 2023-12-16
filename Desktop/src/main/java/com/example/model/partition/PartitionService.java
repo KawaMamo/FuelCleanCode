@@ -7,6 +7,8 @@ import org.example.contract.request.update.UpdatePartitionRequest;
 import org.example.model.Partition;
 
 import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -71,5 +73,11 @@ public class PartitionService implements Service<Partition, CreatePartitionReque
     @Override
     public Partition editItem(UpdatePartitionRequest updateRequest) {
         return null;
+    }
+
+    public byte[] getReport(String exportType, String transType, LocalDate startDate, LocalDate endDate, Long id){
+
+        final HttpResponse<String> stringHttpResponse = client.parallelGet(getEndPoint()+"/regionResponse64" + "/" + exportType + "/" + id + "/" + startDate + "/" + endDate + "/" + transType);
+        return stringHttpResponse.body().getBytes(StandardCharsets.UTF_8);
     }
 }

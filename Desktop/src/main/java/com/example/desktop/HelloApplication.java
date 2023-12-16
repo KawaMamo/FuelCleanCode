@@ -13,7 +13,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 
 public class HelloApplication extends Application {
-    private static Stage primaryStage;
+    public static Stage primaryStage;
     private static final ExceptionHandler exceptionHandler =ExceptionHandler.getInstance();
     @Override
     public void start(Stage stage) throws IOException {

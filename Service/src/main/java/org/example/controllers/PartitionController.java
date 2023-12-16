@@ -28,6 +28,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.PagedModel;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,6 +41,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -125,6 +128,93 @@ public class PartitionController {
             assert file != null;
             try(final FileInputStream fileInputStream = new FileInputStream(file);){
                 return fileInputStream.readAllBytes();
+            }
+        } catch (JRException | IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @GetMapping("/regionResponse/{exportType}/{id}/{start}/{end}/{type}")
+    public ResponseEntity getReportAsResponse(@PathVariable Long id,
+                             @PathVariable LocalDate start,
+                             @PathVariable LocalDate end,
+                             @PathVariable String exportType,
+                             @PathVariable TransportationType type){
+
+        final List<PartitionEntity> partitionEntities = partitionRepository.getPartitionEntities(id,
+                LocalDateTime.of(start, LocalTime.parse("00:00:00")),
+                LocalDateTime.of(end, LocalTime.parse("23:59:59")),
+                type);
+
+        String jreXmlTemplatePath = "D:\\fuelRefactored\\FuelCleanCode\\Service\\src\\main\\resources\\templates\\regionDesign.jrxml";
+        Map<String, Object> params = new HashMap<>();
+        params.put("nowLocalDT", LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
+
+        try {
+            final JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(partitionEntities);
+            JasperReport regionReport = JasperCompileManager.compileReport(jreXmlTemplatePath);
+            final JasperPrint jasperPrint = JasperFillManager.fillReport(regionReport, params, jrBeanCollectionDataSource);
+            File file = null;
+            if(exportType.equals("HTML")){
+                file = new File("D:\\fuelRefactored\\FuelCleanCode\\Service\\src\\main\\resources\\templates\\regionReport.html");
+                JasperExportManager.exportReportToHtmlFile(jasperPrint,
+                        file.getAbsolutePath());
+            }else if(exportType.equals("XLSX")){
+                file = new File("D:\\fuelRefactored\\FuelCleanCode\\Service\\src\\main\\resources\\templates\\regionReport.xlsx");
+                JRXlsxExporter exporter = new JRXlsxExporter();
+                exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
+                exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(file.getAbsolutePath()));
+                exporter.exportReport();
+            }
+
+            assert file != null;
+            try(final FileInputStream fileInputStream = new FileInputStream(file);){
+                final HttpHeaders httpHeaders = new HttpHeaders();
+                httpHeaders.add("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+                return new ResponseEntity<>(fileInputStream.readAllBytes(), httpHeaders, HttpStatus.OK);
+
+            }
+        } catch (JRException | IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @GetMapping("/regionResponse64/{exportType}/{id}/{start}/{end}/{type}")
+    public ResponseEntity getReport64Response(@PathVariable Long id,
+                                              @PathVariable LocalDate start,
+                                              @PathVariable LocalDate end,
+                                              @PathVariable String exportType,
+                                              @PathVariable TransportationType type){
+
+        final List<PartitionEntity> partitionEntities = partitionRepository.getPartitionEntities(id,
+                LocalDateTime.of(start, LocalTime.parse("00:00:00")),
+                LocalDateTime.of(end, LocalTime.parse("23:59:59")),
+                type);
+
+        String jreXmlTemplatePath = "D:\\fuelRefactored\\FuelCleanCode\\Service\\src\\main\\resources\\templates\\regionDesign.jrxml";
+        Map<String, Object> params = new HashMap<>();
+        params.put("nowLocalDT", LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
+
+        try {
+            final JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(partitionEntities);
+            JasperReport regionReport = JasperCompileManager.compileReport(jreXmlTemplatePath);
+            final JasperPrint jasperPrint = JasperFillManager.fillReport(regionReport, params, jrBeanCollectionDataSource);
+            File file = null;
+            if(exportType.equals("HTML")){
+                file = new File("D:\\fuelRefactored\\FuelCleanCode\\Service\\src\\main\\resources\\templates\\regionReport.html");
+                JasperExportManager.exportReportToHtmlFile(jasperPrint,
+                        file.getAbsolutePath());
+            }else if(exportType.equals("XLSX")){
+                file = new File("D:\\fuelRefactored\\FuelCleanCode\\Service\\src\\main\\resources\\templates\\regionReport.xlsx");
+                JRXlsxExporter exporter = new JRXlsxExporter();
+                exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
+                exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(file.getAbsolutePath()));
+                exporter.exportReport();
+            }
+
+            assert file != null;
+            try(final FileInputStream fileInputStream = new FileInputStream(file);){
+                return ResponseEntity.ok(Base64.getEncoder().encodeToString(fileInputStream.readAllBytes()));
             }
         } catch (JRException | IOException e) {
             throw new RuntimeException(e);

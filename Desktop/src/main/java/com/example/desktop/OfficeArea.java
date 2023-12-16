@@ -1,6 +1,6 @@
 package com.example.desktop;
 
-import com.example.desktop.priceCategory.PriceCategories;
+import com.example.desktop.reports.RegionReport;
 import com.example.desktop.transportation.Transportations;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,6 +38,25 @@ public class OfficeArea {
         try {
             final Node node = loader.load();
             final Transportations controller = loader.getController();
+            workArea.getChildren().clear();
+            workArea.getChildren().add(node);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    void driverReport() {
+
+    }
+
+    @FXML
+    void regionReport() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("reports/regionReport.fxml"));
+        try {
+            final Node node = loader.load();
+            final RegionReport controller = loader.getController();
             workArea.getChildren().clear();
             workArea.getChildren().add(node);
         } catch (IOException e) {

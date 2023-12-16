@@ -1,10 +1,8 @@
 package org.example.security;
 
-import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
-import org.springframework.web.server.ServerWebExchange;
 
 import java.util.*;
 
