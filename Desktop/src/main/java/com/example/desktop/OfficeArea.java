@@ -1,5 +1,6 @@
 package com.example.desktop;
 
+import com.example.desktop.reports.DriverReport;
 import com.example.desktop.reports.RegionReport;
 import com.example.desktop.transportation.Transportations;
 import javafx.fxml.FXML;
@@ -47,7 +48,16 @@ public class OfficeArea {
 
     @FXML
     void driverReport() {
-
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("reports/driverReport.fxml"));
+        try {
+            final Node node = loader.load();
+            final DriverReport controller = loader.getController();
+            workArea.getChildren().clear();
+            workArea.getChildren().add(node);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML

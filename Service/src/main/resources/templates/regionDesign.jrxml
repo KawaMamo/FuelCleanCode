@@ -100,7 +100,7 @@
         <band height="58" splitType="Stretch">
             <image>
                 <reportElement x="0" y="2" width="140" height="50" uuid="8b7ddc6b-1ecc-4158-b0b2-fb45872293ce"/>
-                <imageExpression><![CDATA["D:/sheren/SadLogo.png"]]></imageExpression>
+                <imageExpression><![CDATA["icons/SadLogo.png"]]></imageExpression>
             </image>
             <textField>
                 <reportElement x="40" y="34" width="180" height="18" uuid="d99ad6c5-4c63-4aa0-a279-96366db3eb80"/>

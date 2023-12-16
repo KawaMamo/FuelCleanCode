@@ -7,6 +7,8 @@ import org.example.contract.request.update.UpdateTransLogRequest;
 import org.example.model.TransLog;
 
 import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -71,5 +73,11 @@ public class TransLogService implements Service<TransLog, CreateTransLogRequest,
         final String json = gson.toJson(updateRequest);
         final HttpResponse<String> stringHttpResponse = client.parallelPatch(getEndPoint(), json);
         return gson.fromJson(stringHttpResponse.body(), TransLog.class);
+    }
+
+    public byte[] getReport(String exportType, String transType, LocalDate startDate, LocalDate endDate, Long id){
+
+        final HttpResponse<String> stringHttpResponse = client.parallelGet(getEndPoint()+"/driverReport64" + "/" + exportType + "/" + id + "/" + startDate + "/" + endDate + "/" + transType);
+        return stringHttpResponse.body().getBytes(StandardCharsets.UTF_8);
     }
 }

@@ -9,12 +9,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.example.model.Region;
 
 import java.io.*;
-import java.time.LocalDate;
 import java.util.Base64;
 import java.util.List;
 import java.util.Objects;

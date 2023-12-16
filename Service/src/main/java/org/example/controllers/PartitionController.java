@@ -185,7 +185,7 @@ public class PartitionController {
     }
 
     @GetMapping("/regionResponse64/{exportType}/{id}/{start}/{end}/{type}")
-    public ResponseEntity getReport64Response(@PathVariable Long id,
+    public ResponseEntity<String> getReport64Response(@PathVariable Long id,
                                               @PathVariable LocalDate start,
                                               @PathVariable LocalDate end,
                                               @PathVariable String exportType,
