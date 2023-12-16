@@ -80,6 +80,7 @@ public class RegionReport {
 
         try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
             fileOutputStream.write(Base64.getDecoder().decode(bytes));
+            Runtime.getRuntime().exec("rundll32.exe shell32.dll ShellExec_RunDLL " +file.getPath());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

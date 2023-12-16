@@ -23,6 +23,7 @@ import org.example.specifications.SearchFilter;
 import org.example.useCases.create.CreatePartition;
 import org.example.useCases.delete.DeletePartition;
 import org.example.useCases.update.UpdatePartition;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -104,21 +105,23 @@ public class PartitionController {
                 LocalDateTime.of(end, LocalTime.parse("23:59:59")),
                 type);
 
-        String jreXmlTemplatePath = "D:\\fuelRefactored\\FuelCleanCode\\Service\\src\\main\\resources\\templates\\regionDesign.jrxml";
         Map<String, Object> params = new HashMap<>();
         params.put("nowLocalDT", LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
 
         try {
+            final File designFile = new ClassPathResource("templates/regionDesign.jrxml").getFile();
+            final String jreXmlTemplatePath = designFile.getPath();
+
             final JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(partitionEntities);
             JasperReport regionReport = JasperCompileManager.compileReport(jreXmlTemplatePath);
             final JasperPrint jasperPrint = JasperFillManager.fillReport(regionReport, params, jrBeanCollectionDataSource);
             File file = null;
             if(exportType.equals("HTML")){
-                file = new File("D:\\fuelRefactored\\FuelCleanCode\\Service\\src\\main\\resources\\templates\\regionReport.html");
+                file = new ClassPathResource("templates/regionReport.html").getFile();
                 JasperExportManager.exportReportToHtmlFile(jasperPrint,
                         file.getAbsolutePath());
             }else if(exportType.equals("XLSX")){
-                file = new File("D:\\fuelRefactored\\FuelCleanCode\\Service\\src\\main\\resources\\templates\\regionReport.xlsx");
+                file = new ClassPathResource("templates/regionReport.xlsx").getFile();
                 JRXlsxExporter exporter = new JRXlsxExporter();
                 exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
                 exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(file.getAbsolutePath()));
@@ -146,21 +149,23 @@ public class PartitionController {
                 LocalDateTime.of(end, LocalTime.parse("23:59:59")),
                 type);
 
-        String jreXmlTemplatePath = "D:\\fuelRefactored\\FuelCleanCode\\Service\\src\\main\\resources\\templates\\regionDesign.jrxml";
         Map<String, Object> params = new HashMap<>();
         params.put("nowLocalDT", LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
 
         try {
+            final File designFile = new ClassPathResource("templates/regionDesign.jrxml").getFile();
+            final String jreXmlTemplatePath = designFile.getPath();
+
             final JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(partitionEntities);
             JasperReport regionReport = JasperCompileManager.compileReport(jreXmlTemplatePath);
             final JasperPrint jasperPrint = JasperFillManager.fillReport(regionReport, params, jrBeanCollectionDataSource);
             File file = null;
             if(exportType.equals("HTML")){
-                file = new File("D:\\fuelRefactored\\FuelCleanCode\\Service\\src\\main\\resources\\templates\\regionReport.html");
+                file = new ClassPathResource("templates/regionReport.html").getFile();
                 JasperExportManager.exportReportToHtmlFile(jasperPrint,
                         file.getAbsolutePath());
             }else if(exportType.equals("XLSX")){
-                file = new File("D:\\fuelRefactored\\FuelCleanCode\\Service\\src\\main\\resources\\templates\\regionReport.xlsx");
+                file = new ClassPathResource("templates/regionReport.xlsx").getFile();
                 JRXlsxExporter exporter = new JRXlsxExporter();
                 exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
                 exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(file.getAbsolutePath()));
@@ -191,21 +196,23 @@ public class PartitionController {
                 LocalDateTime.of(end, LocalTime.parse("23:59:59")),
                 type);
 
-        String jreXmlTemplatePath = "D:\\fuelRefactored\\FuelCleanCode\\Service\\src\\main\\resources\\templates\\regionDesign.jrxml";
         Map<String, Object> params = new HashMap<>();
         params.put("nowLocalDT", LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
 
         try {
+            final File designFile = new ClassPathResource("templates/regionDesign.jrxml").getFile();
+            final String jreXmlTemplatePath = designFile.getPath();
+
             final JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(partitionEntities);
             JasperReport regionReport = JasperCompileManager.compileReport(jreXmlTemplatePath);
             final JasperPrint jasperPrint = JasperFillManager.fillReport(regionReport, params, jrBeanCollectionDataSource);
             File file = null;
             if(exportType.equals("HTML")){
-                file = new File("D:\\fuelRefactored\\FuelCleanCode\\Service\\src\\main\\resources\\templates\\regionReport.html");
+                file = new ClassPathResource("templates/regionReport.html").getFile();
                 JasperExportManager.exportReportToHtmlFile(jasperPrint,
                         file.getAbsolutePath());
             }else if(exportType.equals("XLSX")){
-                file = new File("D:\\fuelRefactored\\FuelCleanCode\\Service\\src\\main\\resources\\templates\\regionReport.xlsx");
+                file = new ClassPathResource("templates/regionReport.xlsx").getFile();
                 JRXlsxExporter exporter = new JRXlsxExporter();
                 exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
                 exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(file.getAbsolutePath()));
