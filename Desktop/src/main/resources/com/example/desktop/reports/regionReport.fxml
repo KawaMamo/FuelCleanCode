@@ -44,12 +44,6 @@
                <children>
                   <HBox>
                      <children>
-                        <ToggleButton fx:id="htmlTB" mnemonicParsing="false" text="HTML" />
-                        <ToggleButton mnemonicParsing="false" text="XLSX" fx:id="xlsxTB" />
-                     </children>
-                  </HBox>
-                  <HBox>
-                     <children>
                         <ToggleButton fx:id="normalTB" mnemonicParsing="false" text="NORMAL" />
                         <ToggleButton fx:id="commercialTB" mnemonicParsing="false" text="COMM" />
                      </children>

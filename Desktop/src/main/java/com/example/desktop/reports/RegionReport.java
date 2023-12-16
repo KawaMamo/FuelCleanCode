@@ -40,12 +40,8 @@ public class RegionReport {
     private DatePicker startDP;
 
     @FXML
-    private ToggleButton htmlTB;
-    @FXML
-    private ToggleButton xlsxTB;
-
-    @FXML
     private ToggleButton normalTB;
+    final ToggleGroup transTypeGroup = new ToggleGroup();
 
     @FXML
     private void initialize(){
@@ -53,15 +49,10 @@ public class RegionReport {
         setTable();
         tableTbl.getSelectionModel().selectedItemProperty().addListener((observableValue, Region, t1) -> selectedRegion = t1);
 
-        final ToggleGroup exportTypeGroup = new ToggleGroup();
-        xlsxTB.setToggleGroup(exportTypeGroup);
-        htmlTB.setToggleGroup(exportTypeGroup);
-        htmlTB.setSelected(true);
-
-        final ToggleGroup transTypeGroup = new ToggleGroup();
         normalTB.setToggleGroup(transTypeGroup);
         commercialTB.setToggleGroup(transTypeGroup);
         normalTB.setSelected(true);
+        normalTB.setId("normal");
     }
 
     @FXML
@@ -80,10 +71,11 @@ public class RegionReport {
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("HTML files (*.html)", "*.html"));
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("XLSX files (*.xlsx)", "*.xlsx"));
         final File file = fileChooser.showSaveDialog(HelloApplication.primaryStage);
+        String transType = normalTB.isSelected() ? "NORMAL":"COMMERCIAL";
         final byte[] bytes = partitionService.getReport(file.getName().split("\\.")[1].toUpperCase(),
-                "NORMAL",
-                LocalDate.parse("2000-01-01"),
-                LocalDate.parse("2024-01-01"),
+                transType,
+                startDP.getValue(),
+                endDP.getValue(),
                 selectedRegion.getId());
 
         try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
