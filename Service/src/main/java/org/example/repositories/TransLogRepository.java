@@ -15,6 +15,6 @@ import java.util.List;
 public interface TransLogRepository extends JpaRepository<TransLogEntity, Long>,
         PagingAndSortingRepository<TransLogEntity, Long>, JpaSpecificationExecutor<TransLogEntity> {
 
-    @Query("SELECT t FROM TransLogEntity t JOIN t.vehicle v JOIN t.transportation r WHERE v.id = ?1 AND t.createdAt BETWEEN ?2 AND ?3 AND r.type = ?4")
+    @Query("SELECT t FROM TransLogEntity t JOIN t.vehicle v JOIN t.transportation r JOIN t.transLine n WHERE v.id = ?1 AND t.createdAt BETWEEN ?2 AND ?3 AND r.type = ?4")
     List<TransLogEntity> getTransLogEntities(Long vehicleId, LocalDateTime start, LocalDateTime end, TransportationType type);
 }

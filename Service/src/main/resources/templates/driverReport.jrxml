@@ -50,11 +50,35 @@
         <property name="com.jaspersoft.studio.field.label" value="transportation.id"/>
         <property name="com.jaspersoft.studio.field.tree.path" value="trans_log_entity"/>
     </field>
-    <field name="vehicle.id" class="java.lang.Long">
-        <property name="com.jaspersoft.studio.field.name" value="vehicle.id"/>
-        <property name="com.jaspersoft.studio.field.label" value="vehicle.id"/>
+    <field name="transportation.refinery.name" class="java.lang.String">
+        <property name="com.jaspersoft.studio.field.name" value="transportation.refinery.name"/>
+        <property name="com.jaspersoft.studio.field.label" value="transportation.refinery.name"/>
         <property name="com.jaspersoft.studio.field.tree.path" value="trans_log_entity"/>
     </field>
+    <field name="transLine.destination.name" class="java.lang.String">
+        <property name="com.jaspersoft.studio.field.name" value="transLine.destination.name"/>
+        <property name="com.jaspersoft.studio.field.label" value="transLine.destination.name"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="trans_log_entity"/>
+    </field>
+    <field name="transLine.feeAmount" class="java.lang.Double">
+        <property name="com.jaspersoft.studio.field.name" value="transLine.feeAmount"/>
+        <property name="com.jaspersoft.studio.field.label" value="transLine.feeAmount"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="trans_log_entity"/>
+    </field>
+    <field name="transLine.feeCurrency" class="java.lang.String">
+        <property name="com.jaspersoft.studio.field.name" value="transLine.feeCurrency"/>
+        <property name="com.jaspersoft.studio.field.label" value="transLine.feeCurrency"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="trans_log_entity"/>
+    </field>
+    <field name="vehicle.size" class="java.lang.Integer">
+        <property name="com.jaspersoft.studio.field.name" value="vehicle.size"/>
+        <property name="com.jaspersoft.studio.field.label" value="vehicle.size"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="trans_log_entity"/>
+    </field>
+    <variable name="amountSum" class="java.lang.Double" calculation="Sum">
+        <variableExpression><![CDATA[$F{feesAmount}]]></variableExpression>
+        <initialValueExpression><![CDATA[0]]></initialValueExpression>
+    </variable>
     <group name="transportation.id">
         <groupExpression><![CDATA[$F{transportation.id}]]></groupExpression>
     </group>
@@ -142,55 +166,55 @@
     <columnHeader>
         <band height="33" splitType="Stretch">
             <staticText>
-                <reportElement x="530" y="0" width="40" height="28" uuid="018c709f-bacb-43ba-8780-27d736a61d93">
+                <reportElement mode="Opaque" x="530" y="0" width="40" height="28" backcolor="#00BCE4" uuid="018c709f-bacb-43ba-8780-27d736a61d93">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1ccd3784-06bd-424a-9026-8b2b118101de"/>
                 </reportElement>
                 <text><![CDATA[id]]></text>
             </staticText>
             <staticText>
-                <reportElement x="460" y="0" width="70" height="28" uuid="6c24538b-a0e0-4092-8e35-9059003fc303">
+                <reportElement mode="Opaque" x="460" y="0" width="70" height="28" backcolor="#00BCE4" uuid="6c24538b-a0e0-4092-8e35-9059003fc303">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a8700d48-a6d8-4b3b-99f0-6f0254aa7395"/>
                 </reportElement>
                 <text><![CDATA[المعرف]]></text>
             </staticText>
             <staticText>
-                <reportElement x="390" y="0" width="70" height="28" uuid="d40d6fae-6009-4a13-8a0e-54c8d51d37e0">
+                <reportElement mode="Opaque" x="390" y="0" width="70" height="28" backcolor="#00BCE4" uuid="d40d6fae-6009-4a13-8a0e-54c8d51d37e0">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="025c342a-7980-4cf2-ad82-62fe62252d8b"/>
                 </reportElement>
                 <text><![CDATA[المصدر]]></text>
             </staticText>
             <staticText>
-                <reportElement x="309" y="0" width="81" height="28" uuid="886e8c26-4b3f-4b36-a55a-471be93864f2">
+                <reportElement mode="Opaque" x="309" y="0" width="81" height="28" backcolor="#00BCE4" uuid="886e8c26-4b3f-4b36-a55a-471be93864f2">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="025c342a-7980-4cf2-ad82-62fe62252d8b"/>
                 </reportElement>
                 <text><![CDATA[الوجهة]]></text>
             </staticText>
             <staticText>
-                <reportElement x="239" y="0" width="70" height="28" uuid="6560324c-9586-4985-ab6d-a29ff3e8a7ca">
+                <reportElement mode="Opaque" x="239" y="0" width="70" height="28" backcolor="#00BCE4" uuid="6560324c-9586-4985-ab6d-a29ff3e8a7ca">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c8a134d1-31fc-4bbf-ac63-5991fcd1d111"/>
                 </reportElement>
                 <text><![CDATA[قيمة  الأجر]]></text>
             </staticText>
             <staticText>
-                <reportElement x="179" y="0" width="60" height="28" uuid="ef936753-a986-40cc-978c-edc3f786ecaf">
+                <reportElement mode="Opaque" x="179" y="0" width="60" height="28" backcolor="#00BCE4" uuid="ef936753-a986-40cc-978c-edc3f786ecaf">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a47c2703-a990-4630-aad9-fcadcaf19349"/>
                 </reportElement>
                 <text><![CDATA[الإجمالي]]></text>
             </staticText>
             <staticText>
-                <reportElement x="1" y="0" width="70" height="28" uuid="6d5afb82-ac01-4905-a4d5-9640e6527b85">
+                <reportElement mode="Opaque" x="1" y="0" width="70" height="28" backcolor="#00BCE4" uuid="6d5afb82-ac01-4905-a4d5-9640e6527b85">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="19f12742-051d-47aa-8fc2-ba6039f5d783"/>
                 </reportElement>
                 <text><![CDATA[االتاريخ]]></text>
             </staticText>
             <staticText>
-                <reportElement x="71" y="0" width="48" height="28" uuid="6101c69b-7363-4843-bd3a-711f321a1468">
+                <reportElement mode="Opaque" x="71" y="0" width="48" height="28" backcolor="#00BCE4" uuid="6101c69b-7363-4843-bd3a-711f321a1468">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c439e139-9c6f-484f-95a9-fca59d304a16"/>
                 </reportElement>
                 <text><![CDATA[السعة]]></text>
             </staticText>
             <staticText>
-                <reportElement x="119" y="0" width="60" height="28" uuid="8bbbbab3-a41e-4ea2-a4e5-fdf603a0345e">
+                <reportElement mode="Opaque" x="119" y="0" width="60" height="28" backcolor="#00BCE4" uuid="8bbbbab3-a41e-4ea2-a4e5-fdf603a0345e">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c439e139-9c6f-484f-95a9-fca59d304a16"/>
                 </reportElement>
                 <text><![CDATA[ملاحظات]]></text>
@@ -215,25 +239,25 @@
                 <reportElement x="390" y="1" width="70" height="30" uuid="57ad65aa-c73d-4bd8-b532-ba01fa537de7">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="025c342a-7980-4cf2-ad82-62fe62252d8b"/>
                 </reportElement>
-                <textFieldExpression><![CDATA[$F{transportation.id}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{transportation.refinery.name}]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement x="309" y="1" width="81" height="30" uuid="d461b10f-d1ab-4832-9539-6b49dd08a86e">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="025c342a-7980-4cf2-ad82-62fe62252d8b"/>
                 </reportElement>
-                <textFieldExpression><![CDATA[$F{transportation.id}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{transLine.destination.name}]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement x="239" y="1" width="70" height="30" uuid="f471c4c8-de39-433b-87ef-5212cfc24c69">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c8a134d1-31fc-4bbf-ac63-5991fcd1d111"/>
                 </reportElement>
-                <textFieldExpression><![CDATA[$F{feesAmount}+$F{feesCurrency}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{transLine.feeAmount}+$F{transLine.feeCurrency}]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement x="179" y="1" width="60" height="30" uuid="781b0879-3e99-4692-af5b-aefcd90e10e7">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a47c2703-a990-4630-aad9-fcadcaf19349"/>
                 </reportElement>
-                <textFieldExpression><![CDATA[$F{feesCurrency}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{feesAmount}]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement x="1" y="1" width="70" height="30" uuid="0137ffd0-a442-4103-b2ea-055ba70f9870">
@@ -245,7 +269,7 @@
                 <reportElement x="71" y="1" width="48" height="30" uuid="7e6a7f3d-1bfd-467f-8d4f-b355cbb30068">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c439e139-9c6f-484f-95a9-fca59d304a16"/>
                 </reportElement>
-                <textFieldExpression><![CDATA[$F{notes}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{vehicle.size}]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement x="119" y="1" width="60" height="30" uuid="74af0c20-8a55-4886-a651-a2cf755b2bb9">
@@ -256,6 +280,32 @@
         </band>
     </detail>
     <summary>
-        <band height="34" splitType="Stretch"/>
+        <band height="25" splitType="Stretch">
+            <textField>
+                <reportElement mode="Transparent" x="130" y="3" width="220" height="22" backcolor="#3642B3" uuid="1c1da6f1-f466-45ee-a3fe-7c69ce834da7">
+                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
+                </reportElement>
+                <textElement textAlignment="Center">
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{amountSum}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="350" y="3" width="204" height="22" uuid="394d100a-5c05-4b9a-b1b4-2cf34195f5e6"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[الإجمالي]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="0" y="3" width="129" height="22" uuid="694e2add-3ba9-4cd7-a7d7-0bbd41b8c792">
+                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
+                </reportElement>
+                <textElement textAlignment="Center">
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{transLine.feeCurrency}]]></textFieldExpression>
+            </textField>
+        </band>
     </summary>
 </jasperReport>

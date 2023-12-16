@@ -428,7 +428,7 @@ public class AddTransportation {
         final TransLine transLine = transLineList.get(0);
         final CreateTransLogRequest createTransLogRequest = new CreateTransLogRequest(transportation.getVehicle().getId(),
                 transLine.getId(),
-                new Money(transLine.getFee().getCurrency(), transLine.getFee().getAmount()),
+                new Money(transLine.getFee().getCurrency(), transLine.getFee().getAmount()*Double.parseDouble(partAmountTF.getText().replaceAll(",", ""))),
                 transportation.getId(),
                 lineNotesTF.getText());
         final TransLog transLog = transLogService.addItem(createTransLogRequest);

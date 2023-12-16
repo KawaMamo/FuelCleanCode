@@ -41,11 +41,17 @@ public class DriverReport {
     public static Vehicle selectedVehicle;
     private final TransLogService transLogService = TransLogService.getInstance();
 
+    final ToggleGroup transTypeGroup = new ToggleGroup();
     @FXML
     private void initialize(){
         loadData();
         setTable();
         tableTbl.getSelectionModel().selectedItemProperty().addListener((observableValue, vehicle, t1) -> selectedVehicle = t1);
+
+        normalTB.setToggleGroup(transTypeGroup);
+        commercialTB.setToggleGroup(transTypeGroup);
+        normalTB.setSelected(true);
+        normalTB.setId("normal");
     }
 
     @FXML
