@@ -29,6 +29,7 @@ public class GasStations implements TableController {
     private static ObservableList<GasStation> gasStations;
     public static GasStation selectedGasStation;
     private final GasStationService gasStationService = GasStationService.getInstance();
+    private String query = null;
 
     @FXML
     private void initialize(){
@@ -139,5 +140,10 @@ public class GasStations implements TableController {
             gasStations = FXCollections.observableArrayList(items);
         else gasStations = null;
         tableTbl.setItems(gasStations);
+    }
+
+    @Override
+    public void setQuery(String query) {
+        this.query = query;
     }
 }

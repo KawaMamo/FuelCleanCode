@@ -26,6 +26,7 @@ public class Materials implements TableController {
     private static ObservableList<Material> materials;
     private final MaterialService materialService = MaterialService.getInstance();
     public static Material selectedMaterial;
+    private String query = null;
 
     @FXML
     private void initialize(){
@@ -101,5 +102,10 @@ public class Materials implements TableController {
             materials = FXCollections.observableArrayList(items);
         else materials = null;
         tableTbl.setItems(materials);
+    }
+
+    @Override
+    public void setQuery(String query) {
+        this.query = query;
     }
 }

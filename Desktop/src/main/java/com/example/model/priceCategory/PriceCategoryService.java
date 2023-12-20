@@ -37,6 +37,16 @@ public class PriceCategoryService implements Service<PriceCategory, CreatePriceC
         return new ArrayList<>();
     }
 
+    public List<PriceCategory> getItems(Integer page, Integer size, String query) {
+        String getUrl;
+        getUrl = getEndPoint()+"?page="+page+"&size="+size+"&"+query;
+        final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+        final PriceCategoryResponseEntity priceCategoryResponseEntity = gson.fromJson(stringHttpResponse.body(), PriceCategoryResponseEntity.class);
+        if(Objects.nonNull(priceCategoryResponseEntity._embedded))
+            return priceCategoryResponseEntity._embedded.priceCategoryList;
+        return new ArrayList<>();
+    }
+
     @Override
     public PriceCategory addItem(CreatePriceCategoryRequest itemRequest) {
         final String payload = getPayload(itemRequest);

@@ -3,6 +3,7 @@ package com.example.desktop.priceCategory;
 import com.example.model.TableController;
 import com.example.model.modal.Modal;
 import com.example.model.priceCategory.PriceCategoryService;
+import com.example.model.tools.FormType;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -18,7 +19,7 @@ public class AddPriceCategory {
 
     public static TableController controller;
     public static Boolean isEditingForm = false;
-
+    public static FormType formType = FormType.CREATE;
     @FXML
     private TextField nameTF;
 
@@ -29,7 +30,7 @@ public class AddPriceCategory {
 
     @FXML
     private void initialize(){
-        if(isEditingForm){
+        if(formType.equals(FormType.UPDATE)){
             final PriceCategory priceCategory = priceCategoryService.getItem(PriceCategories.selectdPriceCategory.getId());
             nameTF.setText(priceCategory.getName());
         }
@@ -37,11 +38,14 @@ public class AddPriceCategory {
     @FXML
     void submit() {
         final PriceCategory priceCategory;
-        if(isEditingForm){
+        if(formType.equals(FormType.UPDATE)){
             priceCategory = priceCategoryService.editItem(new UpdatePriceCategoryRequest(PriceCategories.selectdPriceCategory.getId(),
                     nameTF.getText()));
-        }else {
+        }else if (formType.equals(FormType.CREATE)){
             priceCategory = priceCategoryService.addItem(new CreatePriceCategoryRequest(nameTF.getText()));
+        }else {
+            priceCategory = new PriceCategory();
+            controller.setQuery("key=name&value="+nameTF.getText()+"&operation=%3A&sort=id,desc");
         }
         isEditingForm = false;
         extracted(priceCategory);

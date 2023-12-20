@@ -32,6 +32,7 @@ public class TransLines implements TableController {
     public static TransLine selectedTransLine;
 
     private final TransLineService transLineService = TransLineService.getInstance();
+    private String query = null;
 
     @FXML
     private void initialize(){
@@ -96,6 +97,11 @@ public class TransLines implements TableController {
             transLines = FXCollections.observableArrayList(items);
         else transLines = null;
         tableTbl.setItems(transLines);
+    }
+
+    @Override
+    public void setQuery(String query) {
+        this.query = query;
     }
 
     private void setTable() {

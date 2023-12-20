@@ -29,6 +29,7 @@ public class Categories implements TableController {
 
     @FXML
     private TableView<Category> tableTbl;
+    private String query = null;
 
     @FXML
     private void initialize(){
@@ -120,5 +121,10 @@ public class Categories implements TableController {
             categories = FXCollections.observableArrayList(items);
         else categories = null;
         tableTbl.setItems(categories);
+    }
+
+    @Override
+    public void setQuery(String query) {
+        this.query = query;
     }
 }

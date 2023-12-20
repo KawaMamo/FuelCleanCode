@@ -28,6 +28,7 @@ public class Transportations implements TableController {
     private static ObservableList<Transportation> observableList;
     public static Transportation selectedTransportation;
     private final TransportationService transportationService = TransportationService.getInstance();
+    private String query = null;
 
     @FXML
     private void initialize(){
@@ -89,12 +90,14 @@ public class Transportations implements TableController {
 
     @FXML
     void pageDown() {
-
+        page.setText(String.valueOf(Integer.parseInt(page.getText())-1));
+        loadData();
     }
 
     @FXML
     void pageUp() {
-
+        page.setText(String.valueOf(Integer.parseInt(page.getText())+1));
+        loadData();
     }
 
     @FXML
@@ -120,5 +123,10 @@ public class Transportations implements TableController {
         if(Objects.nonNull(items))
             observableList = FXCollections.observableList(items);
         tableTbl.setItems(observableList);
+    }
+
+    @Override
+    public void setQuery(String query) {
+        this.query = query;
     }
 }

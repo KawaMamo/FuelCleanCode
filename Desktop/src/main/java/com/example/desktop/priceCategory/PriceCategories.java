@@ -4,6 +4,7 @@ import com.example.desktop.delete.DeleteConfirmation;
 import com.example.model.TableController;
 import com.example.model.modal.Modal;
 import com.example.model.priceCategory.PriceCategoryService;
+import com.example.model.tools.FormType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -25,6 +26,7 @@ public class PriceCategories implements TableController {
     private ObservableList<PriceCategory> priceCategories;
     public static PriceCategory selectdPriceCategory;
     private final PriceCategoryService priceCategoryService = PriceCategoryService.getInstance();
+    private String query = null;
 
     @FXML
     private void initialize(){
@@ -35,7 +37,7 @@ public class PriceCategories implements TableController {
     @FXML
     void add() {
         AddPriceCategory.controller = this;
-        AddPriceCategory.isEditingForm = false;
+        AddPriceCategory.formType = FormType.CREATE;
         Modal.start(this.getClass(), "addPriceCategory.fxml");
     }
 
@@ -50,7 +52,7 @@ public class PriceCategories implements TableController {
     @FXML
     void edit() {
         AddPriceCategory.controller = this;
-        AddPriceCategory.isEditingForm = true;
+        AddPriceCategory.formType = FormType.UPDATE;
         Modal.start(this.getClass(), "addPriceCategory.fxml");
     }
 
@@ -68,7 +70,9 @@ public class PriceCategories implements TableController {
 
     @FXML
     void search() {
-
+        AddPriceCategory.controller = this;
+        AddPriceCategory.formType = FormType.GET;
+        Modal.start(this.getClass(), "addPriceCategory.fxml");
     }
 
     @Override
@@ -84,11 +88,20 @@ public class PriceCategories implements TableController {
     }
 
     public void loadData() {
-        final List<PriceCategory> items = priceCategoryService.getItems(Integer.parseInt(page.getText()) - 1, 15);
+        List<PriceCategory> items = null;
+        if(Objects.isNull(query)){
+            items = priceCategoryService.getItems(Integer.parseInt(page.getText()) - 1, 15);
+        }else {
+            items = priceCategoryService.getItems(Integer.parseInt(page.getText()) - 1, 15, query);
+        }
         if(Objects.nonNull(items))
             priceCategories = FXCollections.observableArrayList(items);
         else priceCategories = null;
         tableTbl.setItems(priceCategories);
+    }
+
+    public void setQuery(String query) {
+        this.query = query;
     }
 
     private void setTable() {

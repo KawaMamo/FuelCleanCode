@@ -27,6 +27,7 @@ public class Refineries implements TableController {
     private static ObservableList<Refinery> refineries;
     public static Refinery selectedRefinery;
     private final RefineryService refineryService = RefineryService.getInstance();
+    private String query = null;
 
     @FXML
     private void initialize(){
@@ -114,5 +115,10 @@ public class Refineries implements TableController {
             refineries = FXCollections.observableArrayList(items);
         else refineries = null;
         tableTbl.setItems(refineries);
+    }
+
+    @Override
+    public void setQuery(String query) {
+        this.query = query;
     }
 }

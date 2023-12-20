@@ -28,6 +28,7 @@ public class TrafficCenters implements TableController {
     private static ObservableList<TrafficCenter> trafficCenters;
     public static TrafficCenter selectedTrafficCenter;
     private final TrafficCenterService trafficCenterService = TrafficCenterService.getInstance();
+    private String query = null;
 
     @FXML
     private void initialize(){
@@ -112,5 +113,10 @@ public class TrafficCenters implements TableController {
             trafficCenters = FXCollections.observableArrayList(items);
         else trafficCenters = null;
         tableTbl.setItems(trafficCenters);
+    }
+
+    @Override
+    public void setQuery(String query) {
+        this.query = query;
     }
 }

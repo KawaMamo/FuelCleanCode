@@ -7,4 +7,5 @@ public interface TableController {
     void removeData();
     void addData(Object object);
     void loadData();
+    void setQuery(String query);
 }

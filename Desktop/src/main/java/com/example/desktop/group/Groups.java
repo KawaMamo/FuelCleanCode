@@ -26,7 +26,7 @@ public class Groups implements TableController {
     public static Group selectedGroup;
     private final GroupService groupService = GroupService.getInstance();
 
-
+    private String query = null;
     @FXML
     private void initialize(){
         loadData();
@@ -90,6 +90,11 @@ public class Groups implements TableController {
             groups = FXCollections.observableArrayList(items);
         else groups = null;
         tableTbl.setItems(groups);
+    }
+
+    @Override
+    public void setQuery(String query) {
+        this.query = query;
     }
 
     private void setTable() {

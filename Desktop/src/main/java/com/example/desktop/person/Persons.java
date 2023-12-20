@@ -29,6 +29,7 @@ public class Persons implements TableController {
     private static ObservableList<Person> people;
     public static Person selectedPerson;
     private final PersonService personService = PersonService.getInstance();
+    private String query = null;
 
     @FXML
     private void initialize(){
@@ -95,6 +96,11 @@ public class Persons implements TableController {
             people = FXCollections.observableArrayList(items);
         else people = null;
         tableTbl.setItems(people);
+    }
+
+    @Override
+    public void setQuery(String query) {
+        this.query = query;
     }
 
     private void setTable() {

@@ -26,6 +26,7 @@ public class Regions implements TableController {
 
     @FXML
     private TableView<Region> tableTbl;
+    private String query = null;
 
     @FXML
     private void initialize(){
@@ -110,5 +111,10 @@ public class Regions implements TableController {
             regions = FXCollections.observableArrayList(items);
         else regions = null;
         tableTbl.setItems(regions);
+    }
+
+    @Override
+    public void setQuery(String query) {
+        this.query = query;
     }
 }

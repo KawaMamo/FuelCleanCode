@@ -23,6 +23,7 @@ public class Vehicles implements TableController {
     private static ObservableList<Vehicle> vehicles;
     private final VehicleService vehicleService = VehicleService.getInstance();
     public static Vehicle selectedVehicle;
+    private String query = null;
     @FXML
     private void initialize(){
         loadData();
@@ -74,6 +75,11 @@ public class Vehicles implements TableController {
     public void loadData() {
         vehicles = FXCollections.observableArrayList(vehicleService.getVehicles(Integer.parseInt(page.getText())-1, 15));
         tableTbl.setItems(vehicles);
+    }
+
+    @Override
+    public void setQuery(String query) {
+        this.query = query;
     }
 
     public void removeData(){

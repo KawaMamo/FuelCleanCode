@@ -28,6 +28,7 @@ public class Offices implements TableController {
     private static ObservableList<Office> offices;
     public static Office slectedOffice;
     private final OfficeService officeService = OfficeService.getInstance();
+    private String query = null;
 
     @FXML
     private void initialize(){
@@ -93,6 +94,11 @@ public class Offices implements TableController {
             offices = FXCollections.observableArrayList(items);
         else offices = null;
         tableTbl.setItems(offices);
+    }
+
+    @Override
+    public void setQuery(String query) {
+        this.query = query;
     }
 
     private void setTable(){
