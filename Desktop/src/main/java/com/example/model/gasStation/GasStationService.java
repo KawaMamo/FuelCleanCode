@@ -40,6 +40,19 @@ public class GasStationService implements Service<GasStation, CreateGasStationRe
         return new ArrayList<>();
     }
 
+    public List<GasStation> getItems(Integer page, Integer size, String query) {
+        String getUrl = getEndPoint();
+        getUrl += "?page="+page+"&size="+size+query;
+        final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+        final GasStationResponseEntity gasStationResponseEntity;
+        gasStationResponseEntity = gson.fromJson(stringHttpResponse.body(), GasStationResponseEntity.class);
+        if(Objects.nonNull(gasStationResponseEntity._embedded)){
+            return gasStationResponseEntity._embedded.gasStationList;
+
+        }
+        return new ArrayList<>();
+    }
+
     @Override
     public GasStation addItem(CreateGasStationRequest itemRequest) {
         final String payload = gson.toJson(itemRequest);

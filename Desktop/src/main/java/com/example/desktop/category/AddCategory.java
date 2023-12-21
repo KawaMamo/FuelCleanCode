@@ -5,6 +5,8 @@ import com.example.model.category.CategoryService;
 import com.example.model.material.MaterialService;
 import com.example.model.modal.Modal;
 import com.example.model.priceCategory.PriceCategoryService;
+import com.example.model.tools.FormType;
+import com.example.model.tools.QueryBuilder;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -26,7 +28,7 @@ import java.util.Objects;
 public class AddCategory {
 
     public static TableController controller;
-    public static Boolean isEditingForm = false;
+    public static FormType formType = FormType.CREATE;
     private final PriceCategoryService priceCategoryService = PriceCategoryService.getInstance();
     private final MaterialService materialService = MaterialService.getInstance();
 
@@ -53,7 +55,7 @@ public class AddCategory {
     private void initialize(){
         currencyCB.getItems().add("USD");
         currencyCB.getItems().add("SP");
-        if(isEditingForm){
+        if(formType.equals(FormType.UPDATE)){
             final Category category = categoryService.getItem(Categories.selectedCategory.getId());
             priceCategoryTF.setText(category.getPriceCategory().getName());
             materialTF.setText(category.getMaterial().getName());
@@ -98,16 +100,28 @@ public class AddCategory {
     @FXML
     void submit() {
         final Category category;
-        if(isEditingForm){
+        if(formType.equals(FormType.UPDATE)){
             category = categoryService.editItem(new UpdateCategoryRequest(Categories.selectedCategory.getId(),
                     selectedPriceCategoryId,
                     selectedMaterialId,
                     new Money(currencyCB.getValue(), Double.parseDouble(amountTF.getText()))));
-        }else {
+        }else if(formType.equals(FormType.CREATE)){
             category = categoryService.addItem(new CreateCategoryRequest(selectedPriceCategoryId, selectedMaterialId, new Money(currencyCB.getValue(),
                     Double.parseDouble(amountTF.getText()))));
+        }else {
+            category = new Category();
+            final QueryBuilder queryBuilder = new QueryBuilder();
+            if(Objects.nonNull(selectedPriceCategoryId))
+                queryBuilder.addQueryParameter("priceCategory", selectedPriceCategoryId.toString(), "%3A");
+            if(Objects.nonNull(selectedMaterialId))
+                queryBuilder.addQueryParameter("material", selectedMaterialId.toString(), "%3A");
+            if(amountTF.getText().length()>0)
+                queryBuilder.addQueryParameter("priceAmount", amountTF.getText(), "%3A");
+            if(Objects.nonNull(currencyCB.getValue()))
+                queryBuilder.addQueryParameter("priceCurrency", currencyCB.getValue());
+            queryBuilder.sort("id", "desc");
+            controller.setQuery(queryBuilder.getQuery());
         }
-        isEditingForm = false;
         notify(category);
     }
 

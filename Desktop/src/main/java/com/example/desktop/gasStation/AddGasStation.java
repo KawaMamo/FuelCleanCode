@@ -8,6 +8,8 @@ import com.example.model.modal.Modal;
 import com.example.model.person.PersonService;
 import com.example.model.priceCategory.PriceCategoryService;
 import com.example.model.region.RegionService;
+import com.example.model.tools.FormType;
+import com.example.model.tools.QueryBuilder;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -24,7 +26,7 @@ import java.util.Objects;
 
 public class AddGasStation {
 
-    public static Boolean isEditingForm = false;
+    public static FormType formType = FormType.CREATE;
     @FXML
     private TextField debtLimitTF;
 
@@ -145,7 +147,7 @@ public class AddGasStation {
             }
         });
 
-        if(isEditingForm){
+        if(formType.equals(FormType.UPDATE)){
             final GasStation gasStation = gasStationService.getItem(GasStations.selectedGasStation.getId());
             nameTF.setText(gasStation.getName());
             ownerTF.setText(gasStation.getOwner().getName());
@@ -164,7 +166,7 @@ public class AddGasStation {
     @FXML
     void submit() {
         final GasStation gasStation;
-        if(isEditingForm){
+        if(formType.equals(FormType.UPDATE)){
             gasStation = gasStationService.editItem(new UpdateGasStationRequest(GasStations.selectedGasStation.getId(),
                     nameTF.getText(),
                     translationTF.getText(),
@@ -174,7 +176,7 @@ public class AddGasStation {
                     selectedOwnerId,
                     selectedGroupId,
                     selectedMaterialId));
-        }else {
+        }else if(formType.equals(FormType.CREATE)){
             gasStation = gasStationService.addItem(new CreateGasStationRequest(nameTF.getText(),
                     translationTF.getText(),
                     selectedPriceCatId,
@@ -183,8 +185,25 @@ public class AddGasStation {
                     selectedOwnerId,
                     selectedGroupId,
                     selectedMaterialId));
+        }else {
+            gasStation = new GasStation();
+            final QueryBuilder queryBuilder = new QueryBuilder();
+            if(nameTF.getText().length()>0)
+                queryBuilder.addQueryParameter("name", nameTF.getText());
+            if(translationTF.getText().length()>0)
+                queryBuilder.addQueryParameter("translation", translationTF.getText());
+            if(Objects.nonNull(selectedPriceCatId))
+                queryBuilder.addQueryParameter("priceCategory", selectedPriceCatId.toString());
+            if(Objects.nonNull(selectedRegionId))
+                queryBuilder.addQueryParameter("region", selectedRegionId.toString());
+            if(Objects.nonNull(selectedOwnerId))
+                queryBuilder.addQueryParameter("owner", selectedOwnerId.toString());
+            if(Objects.nonNull(selectedGroupId))
+                queryBuilder.addQueryParameter("group", selectedGroupId.toString());
+            if(Objects.nonNull(selectedMaterialId))
+                queryBuilder.addQueryParameter("material", selectedMaterialId.toString());
+            controller.setQuery(queryBuilder.getQuery());
         }
-        isEditingForm = false;
         notify(gasStation);
     }
 

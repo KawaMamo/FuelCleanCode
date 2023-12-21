@@ -4,6 +4,7 @@ import com.example.desktop.delete.DeleteConfirmation;
 import com.example.model.TableController;
 import com.example.model.category.CategoryService;
 import com.example.model.modal.Modal;
+import com.example.model.tools.FormType;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -40,7 +41,7 @@ public class Categories implements TableController {
 
     @FXML
     void add() {
-        AddCategory.isEditingForm = false;
+        AddCategory.formType = FormType.CREATE;
         AddCategory.controller = this;
         Modal.start(this.getClass(), "addCategory.fxml");
     }
@@ -55,7 +56,7 @@ public class Categories implements TableController {
 
     @FXML
     void edit() {
-        AddCategory.isEditingForm = true;
+        AddCategory.formType = FormType.UPDATE;
         AddCategory.controller = this;
         Modal.start(this.getClass(), "addCategory.fxml");
     }
@@ -74,7 +75,9 @@ public class Categories implements TableController {
 
     @FXML
     void search() {
-
+        AddCategory.formType = FormType.GET;
+        AddCategory.controller = this;
+        Modal.start(this.getClass(), "addCategory.fxml");
     }
 
 
@@ -116,7 +119,13 @@ public class Categories implements TableController {
 
     @Override
     public void loadData() {
-        final List<Category> items = categoryService.getItems(Integer.parseInt(page.getText()) - 1, 15);
+        List<Category> items;
+        if (Objects.isNull(query)) {
+            items = categoryService.getItems(Integer.parseInt(page.getText()) - 1, 15);
+        }else {
+            items = categoryService.getItems(Integer.parseInt(page.getText()) - 1, 15, query);
+        }
+
         if(Objects.nonNull(items))
             categories = FXCollections.observableArrayList(items);
         else categories = null;

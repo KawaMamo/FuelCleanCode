@@ -3,7 +3,6 @@ package com.example.model.priceCategory;
 import com.example.model.Service;
 import com.example.model.priceCategory.response.PriceCategoryResponseEntity;
 import com.google.gson.Gson;
-import org.example.contract.request.create.CreateGroupRequest;
 import org.example.contract.request.create.CreatePriceCategoryRequest;
 import org.example.contract.request.update.UpdatePriceCategoryRequest;
 import org.example.model.PriceCategory;
@@ -38,8 +37,7 @@ public class PriceCategoryService implements Service<PriceCategory, CreatePriceC
     }
 
     public List<PriceCategory> getItems(Integer page, Integer size, String query) {
-        String getUrl;
-        getUrl = getEndPoint()+"?page="+page+"&size="+size+"&"+query;
+        String getUrl = getEndPoint()+"?page="+page+"&size="+size+""+query;
         final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
         final PriceCategoryResponseEntity priceCategoryResponseEntity = gson.fromJson(stringHttpResponse.body(), PriceCategoryResponseEntity.class);
         if(Objects.nonNull(priceCategoryResponseEntity._embedded))

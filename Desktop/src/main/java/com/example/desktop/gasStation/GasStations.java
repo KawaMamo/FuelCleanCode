@@ -4,6 +4,7 @@ import com.example.desktop.delete.DeleteConfirmation;
 import com.example.model.TableController;
 import com.example.model.gasStation.GasStationService;
 import com.example.model.modal.Modal;
+import com.example.model.tools.FormType;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -41,7 +42,7 @@ public class GasStations implements TableController {
     @FXML
     void add() {
         AddGasStation.controller = this;
-        AddGasStation.isEditingForm = false;
+        AddGasStation.formType = FormType.CREATE;
         Modal.start(GasStations.class, "addGasStation.fxml");
     }
 
@@ -56,7 +57,7 @@ public class GasStations implements TableController {
     @FXML
     void edit() {
         AddGasStation.controller = this;
-        AddGasStation.isEditingForm = true;
+        AddGasStation.formType = FormType.UPDATE;
         Modal.start(GasStations.class, "addGasStation.fxml");
     }
 
@@ -74,7 +75,9 @@ public class GasStations implements TableController {
 
     @FXML
     void search() {
-
+        AddGasStation.controller = this;
+        AddGasStation.formType = FormType.GET;
+        Modal.start(GasStations.class, "addGasStation.fxml");
     }
     @Override
     public void removeData() {
@@ -135,7 +138,12 @@ public class GasStations implements TableController {
     }
 
     public void loadData() {
-        final List<GasStation> items = gasStationService.getItems(Integer.parseInt(page.getText()) - 1, 15);
+        final List<GasStation> items;
+        if(Objects.isNull(query))
+            items = gasStationService.getItems(Integer.parseInt(page.getText()) - 1, 15);
+        else {
+            items = gasStationService.getItems(Integer.parseInt(page.getText()) - 1, 15, query);
+        }
         if(Objects.nonNull(items))
             gasStations = FXCollections.observableArrayList(items);
         else gasStations = null;

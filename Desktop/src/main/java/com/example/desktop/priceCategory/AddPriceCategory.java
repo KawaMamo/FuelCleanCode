@@ -4,13 +4,13 @@ import com.example.model.TableController;
 import com.example.model.modal.Modal;
 import com.example.model.priceCategory.PriceCategoryService;
 import com.example.model.tools.FormType;
+import com.example.model.tools.QueryBuilder;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.controlsfx.control.Notifications;
 import org.example.contract.request.create.CreatePriceCategoryRequest;
 import org.example.contract.request.update.UpdatePriceCategoryRequest;
-import org.example.model.Group;
 import org.example.model.PriceCategory;
 
 import java.util.Objects;
@@ -44,8 +44,11 @@ public class AddPriceCategory {
         }else if (formType.equals(FormType.CREATE)){
             priceCategory = priceCategoryService.addItem(new CreatePriceCategoryRequest(nameTF.getText()));
         }else {
+            final QueryBuilder queryBuilder = new QueryBuilder();
+            queryBuilder.addQueryParameter("name", nameTF.getText(), "%3A");
+            queryBuilder.sort("id", "desc");
             priceCategory = new PriceCategory();
-            controller.setQuery("key=name&value="+nameTF.getText()+"&operation=%3A&sort=id,desc");
+            controller.setQuery(queryBuilder.getQuery());
         }
         isEditingForm = false;
         extracted(priceCategory);
