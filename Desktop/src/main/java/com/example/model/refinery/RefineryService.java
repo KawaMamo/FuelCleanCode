@@ -34,6 +34,16 @@ public class RefineryService implements Service<Refinery, CreateRefineryRequest,
         return new ArrayList<>();
     }
 
+    public List<Refinery> getItems(Integer page, Integer size, String query) {
+        String getUrl = getEndPoint()+"?page="+page+"&size="+size+query;
+        final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+        final RefineryResponseEntity refineryResponseEntity = gson.fromJson(stringHttpResponse.body(), RefineryResponseEntity.class);
+        if(Objects.nonNull(refineryResponseEntity._embedded))
+            return refineryResponseEntity._embedded.refineryList;
+
+        return new ArrayList<>();
+    }
+
     @Override
     public Refinery addItem(CreateRefineryRequest itemRequest) {
         final String payload = gson.toJson(itemRequest);

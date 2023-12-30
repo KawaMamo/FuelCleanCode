@@ -36,6 +36,16 @@ public class GroupService implements Service<Group, CreateGroupRequest, UpdateGr
         return new ArrayList<>();
     }
 
+    public List<Group> getItems(Integer page, Integer size, String query) {
+        String getUrl = getEndPoint()+"?page="+page+"&size="+size+query;
+        final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+        final GroupResponseEntity groupResponse = gson.fromJson(stringHttpResponse.body(), GroupResponseEntity.class);
+        if (Objects.nonNull(groupResponse._embedded))
+            return groupResponse._embedded.groupList;
+
+        return new ArrayList<>();
+    }
+
     @Override
     public Group addItem(CreateGroupRequest itemRequest) {
         final String payload = getPayload(itemRequest);

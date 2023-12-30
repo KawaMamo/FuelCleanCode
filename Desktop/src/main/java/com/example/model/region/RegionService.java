@@ -33,6 +33,15 @@ public class RegionService implements Service<Region, CreateRegionRequest, Updat
         return new ArrayList<>();
     }
 
+    public List<Region> getItems(Integer page, Integer size, String query) {
+        String getUrl = getEndPoint()+"?page="+page+"&size="+size+query;
+        final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+        final RegionResponseEntity regionResponse = gson.fromJson(stringHttpResponse.body(), RegionResponseEntity.class);
+        if(Objects.nonNull(regionResponse._embedded))
+            return regionResponse._embedded.regionList;
+        return new ArrayList<>();
+    }
+
     @Override
     public Region addItem(CreateRegionRequest itemRequest) {
         final String payload = gson.toJson(itemRequest);

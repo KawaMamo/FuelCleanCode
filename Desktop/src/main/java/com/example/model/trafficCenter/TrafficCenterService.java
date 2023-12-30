@@ -32,6 +32,14 @@ public class TrafficCenterService implements Service<TrafficCenter, CreateTraffi
         return new ArrayList<>();
     }
 
+    public List<TrafficCenter> getItems(Integer page, Integer size, String query) {
+        String getUrl = getEndPoint()+"?page="+page+"&size="+size+query;
+        final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+        final TrafficCenterResponse trafficCenterResponse = gson.fromJson(stringHttpResponse.body(), TrafficCenterResponse.class);
+        if(Objects.nonNull(trafficCenterResponse._embedded))
+            return trafficCenterResponse._embedded.trafficCenterList;
+        return new ArrayList<>();
+    }
     @Override
     public TrafficCenter addItem(CreateTrafficCenterRequest itemRequest) {
         final String payload = gson.toJson(itemRequest);

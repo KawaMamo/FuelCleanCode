@@ -18,7 +18,6 @@ import java.util.Objects;
 public class AddPriceCategory {
 
     public static TableController controller;
-    public static Boolean isEditingForm = false;
     public static FormType formType = FormType.CREATE;
     @FXML
     private TextField nameTF;
@@ -50,7 +49,6 @@ public class AddPriceCategory {
             priceCategory = new PriceCategory();
             controller.setQuery(queryBuilder.getQuery());
         }
-        isEditingForm = false;
         extracted(priceCategory);
     }
 

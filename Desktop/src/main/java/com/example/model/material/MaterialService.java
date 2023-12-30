@@ -35,6 +35,15 @@ public class MaterialService implements Service<Material, CreateMaterialRequest,
         return new ArrayList<>();
     }
 
+    public List<Material> getItems(Integer page, Integer size, String query) {
+        String getUrl = getEndPoint()+"?page="+page+"&size="+size+query;
+        final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+        final MaterialResponseEntity materialResponse = gson.fromJson(stringHttpResponse.body(), MaterialResponseEntity.class);
+        if(Objects.nonNull(materialResponse._embedded))
+            return materialResponse._embedded.materialList;
+        return new ArrayList<>();
+    }
+
     @Override
     public Material addItem(CreateMaterialRequest itemRequest) {
         final String payload = gson.toJson(itemRequest);

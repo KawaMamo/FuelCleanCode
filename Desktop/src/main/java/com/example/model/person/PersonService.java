@@ -38,6 +38,15 @@ public class PersonService implements Service<Person, CreatePersonRequest, Updat
         return new ArrayList<>();
     }
 
+    public List<Person> getItems(Integer page, Integer size, String query) {
+        String getUrl = getEndPoint()+"?page="+page+"&size="+size+query;
+        final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+        final PersonResponse personResponse = gson.fromJson(stringHttpResponse.body(), PersonResponse.class);
+        if(Objects.nonNull(personResponse._embedded))
+            return personResponse._embedded.personList;
+        return new ArrayList<>();
+    }
+
     public static PersonService getInstance(){
         return instance;
     }

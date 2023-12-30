@@ -4,6 +4,7 @@ import com.example.desktop.delete.DeleteConfirmation;
 import com.example.model.TableController;
 import com.example.model.group.GroupService;
 import com.example.model.modal.Modal;
+import com.example.model.tools.FormType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -37,7 +38,7 @@ public class Groups implements TableController {
     @FXML
     void add() {
         AddGroup.controller = this;
-        AddGroup.isEditingForm = false;
+        AddGroup.formType = FormType.CREATE;
         Modal.start(this.getClass(), "addGroup.fxml");
     }
 
@@ -52,7 +53,7 @@ public class Groups implements TableController {
     @FXML
     void edit() {
         AddGroup.controller = this;
-        AddGroup.isEditingForm = true;
+        AddGroup.formType = FormType.UPDATE;
         Modal.start(this.getClass(), "addGroup.fxml");
     }
 
@@ -70,7 +71,9 @@ public class Groups implements TableController {
 
     @FXML
     void search() {
-
+        AddGroup.controller = this;
+        AddGroup.formType = FormType.GET;
+        Modal.start(this.getClass(), "addGroup.fxml");
     }
     @Override
     public void removeData() {
@@ -85,7 +88,13 @@ public class Groups implements TableController {
     }
 
     public void loadData() {
-        final List<Group> items = groupService.getItems(Integer.parseInt(page.getText()) - 1, 15);
+        final List<Group> items;
+        if(Objects.isNull(query)){
+            items = groupService.getItems(Integer.parseInt(page.getText()) - 1, 15);
+        }else {
+            items = groupService.getItems(Integer.parseInt(page.getText()) - 1, 15, query);
+        }
+
         if(Objects.nonNull(items))
             groups = FXCollections.observableArrayList(items);
         else groups = null;

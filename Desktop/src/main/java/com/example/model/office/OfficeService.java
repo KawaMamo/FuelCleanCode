@@ -37,6 +37,15 @@ public class OfficeService implements Service<Office, CreateOfficeRequest, Updat
         return new ArrayList<>();
     }
 
+    public List<Office> getItems(Integer page, Integer size, String query) {
+        String getUrl = getEndPoint()+"?page="+page+"&size="+size+query;
+        final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+        final OfficeResponseEntity officeResponseEntity = gson.fromJson(stringHttpResponse.body(), OfficeResponseEntity.class);
+        if(Objects.nonNull(officeResponseEntity._embedded))
+            return officeResponseEntity._embedded.officeList;
+        return new ArrayList<>();
+    }
+
     @Override
     public Office addItem(CreateOfficeRequest itemRequest) {
         final String payload = gson.toJson(itemRequest);

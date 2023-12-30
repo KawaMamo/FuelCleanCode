@@ -4,6 +4,7 @@ import com.example.desktop.delete.DeleteConfirmation;
 import com.example.model.TableController;
 import com.example.model.modal.Modal;
 import com.example.model.refinery.RefineryService;
+import com.example.model.tools.FormType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -60,7 +61,7 @@ public class Refineries implements TableController {
     @FXML
     void add() {
         AddRefinery.controller = this;
-        AddRefinery.isEditingForm = false;
+        AddRefinery.formType = FormType.CREATE;
         Modal.start(this.getClass(), "addRefinery.fxml");
     }
 
@@ -75,7 +76,7 @@ public class Refineries implements TableController {
     @FXML
     void edit() {
         AddRefinery.controller = this;
-        AddRefinery.isEditingForm = true;
+        AddRefinery.formType = FormType.UPDATE;
         Modal.start(this.getClass(), "addRefinery.fxml");
     }
 
@@ -93,7 +94,9 @@ public class Refineries implements TableController {
 
     @FXML
     void search() {
-
+        AddRefinery.controller = this;
+        AddRefinery.formType = FormType.GET;
+        Modal.start(this.getClass(), "addRefinery.fxml");
     }
 
     @Override
@@ -110,7 +113,13 @@ public class Refineries implements TableController {
 
     @Override
     public void loadData() {
-        final List<Refinery> items = refineryService.getItems(Integer.parseInt(page.getText()) - 1, 15);
+        final List<Refinery> items;
+        if(Objects.isNull(query)){
+            items = refineryService.getItems(Integer.parseInt(page.getText()) - 1, 15);
+        }else {
+            items = refineryService.getItems(Integer.parseInt(page.getText()) - 1, 15, query);
+        }
+
         if(Objects.nonNull(items))
             refineries = FXCollections.observableArrayList(items);
         else refineries = null;

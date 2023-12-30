@@ -4,6 +4,7 @@ import com.example.desktop.delete.DeleteConfirmation;
 import com.example.model.TableController;
 import com.example.model.material.MaterialService;
 import com.example.model.modal.Modal;
+import com.example.model.tools.FormType;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -49,6 +50,7 @@ public class Materials implements TableController {
     @FXML
     void add() {
         AddMaterial.controller = this;
+        AddMaterial.formType = FormType.CREATE;
         Modal.start(this.getClass(), "AddMaterial.fxml");
     }
 
@@ -63,7 +65,7 @@ public class Materials implements TableController {
     @FXML
     void edit() {
         AddMaterial.controller = this;
-        AddMaterial.isEditingForm = true;
+        AddMaterial.formType = FormType.UPDATE;
         Modal.start(this.getClass(), "AddMaterial.fxml");
     }
 
@@ -81,7 +83,9 @@ public class Materials implements TableController {
 
     @FXML
     void search() {
-
+        AddMaterial.controller = this;
+        AddMaterial.formType = FormType.GET;
+        Modal.start(this.getClass(), "AddMaterial.fxml");
     }
     @Override
     public void removeData() {
@@ -97,7 +101,13 @@ public class Materials implements TableController {
 
     @Override
     public void loadData() {
-        final List<Material> items = materialService.getItems(Integer.parseInt(page.getText()) - 1, 15);
+        final List<Material> items;
+        if(Objects.isNull(query)){
+            items = materialService.getItems(Integer.parseInt(page.getText()) - 1, 15);
+        }else {
+            items = materialService.getItems(Integer.parseInt(page.getText()) - 1, 15, query);
+        }
+
         if(Objects.nonNull(items))
             materials = FXCollections.observableArrayList(items);
         else materials = null;

@@ -3,6 +3,7 @@ package com.example.desktop.trafficCenter;
 import com.example.desktop.delete.DeleteConfirmation;
 import com.example.model.TableController;
 import com.example.model.modal.Modal;
+import com.example.model.tools.FormType;
 import com.example.model.trafficCenter.TrafficCenterService;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -59,7 +60,7 @@ public class TrafficCenters implements TableController {
     @FXML
     void add() {
         AddTrafficCenter.controller = this;
-        AddTrafficCenter.isEditingForm = false;
+        AddTrafficCenter.formType = FormType.CREATE;
         Modal.start(this.getClass(), "addTrafficCenter.fxml");
     }
 
@@ -74,7 +75,7 @@ public class TrafficCenters implements TableController {
     @FXML
     void edit() {
         AddTrafficCenter.controller = this;
-        AddTrafficCenter.isEditingForm = true;
+        AddTrafficCenter.formType = FormType.UPDATE;
         Modal.start(this.getClass(), "addTrafficCenter.fxml");
     }
 
@@ -92,7 +93,9 @@ public class TrafficCenters implements TableController {
 
     @FXML
     void search() {
-
+        AddTrafficCenter.controller = this;
+        AddTrafficCenter.formType = FormType.GET;
+        Modal.start(this.getClass(), "addTrafficCenter.fxml");
     }
     @Override
     public void removeData() {
@@ -108,7 +111,11 @@ public class TrafficCenters implements TableController {
 
     @Override
     public void loadData() {
-        final List<TrafficCenter> items = trafficCenterService.getItems(Integer.parseInt(page.getText()) - 1, 15);
+        final List<TrafficCenter> items;
+        if(Objects.isNull(query))
+            items = trafficCenterService.getItems(Integer.parseInt(page.getText()) - 1, 15);
+        else items = trafficCenterService.getItems(Integer.parseInt(page.getText()) - 1, 15, query);
+
         if(Objects.nonNull(items))
             trafficCenters = FXCollections.observableArrayList(items);
         else trafficCenters = null;

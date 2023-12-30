@@ -23,6 +23,7 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         stage.setTitle("LogIn!");
         stage.setScene(scene);
+        stage.setX(100);
         stage.show();
     }
 

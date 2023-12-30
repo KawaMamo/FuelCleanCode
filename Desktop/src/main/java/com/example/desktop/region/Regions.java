@@ -4,6 +4,7 @@ import com.example.desktop.delete.DeleteConfirmation;
 import com.example.model.TableController;
 import com.example.model.modal.Modal;
 import com.example.model.region.RegionService;
+import com.example.model.tools.FormType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -56,7 +57,7 @@ public class Regions implements TableController {
     @FXML
     void add() {
         AddRegion.controller = this;
-        AddRegion.isEditingForm = false;
+        AddRegion.formType = FormType.CREATE;
         Modal.start(this.getClass(), "addRegion.fxml");
     }
 
@@ -71,7 +72,7 @@ public class Regions implements TableController {
     @FXML
     void edit() {
         AddRegion.controller = this;
-        AddRegion.isEditingForm = true;
+        AddRegion.formType = FormType.UPDATE;
         Modal.start(this.getClass(), "addRegion.fxml");
     }
 
@@ -89,7 +90,9 @@ public class Regions implements TableController {
 
     @FXML
     void search() {
-
+        AddRegion.controller = this;
+        AddRegion.formType = FormType.GET;
+        Modal.start(this.getClass(), "addRegion.fxml");
     }
 
     @Override
@@ -106,7 +109,12 @@ public class Regions implements TableController {
 
     @Override
     public void loadData() {
-        final List<Region> items = regionService.getItems(Integer.parseInt(page.getText()) - 1, 15);
+        final List<Region> items;
+        if(Objects.isNull(query))
+            items = regionService.getItems(Integer.parseInt(page.getText()) - 1, 15);
+        else
+            items = regionService.getItems(Integer.parseInt(page.getText()) - 1, 15, query);
+
         if(Objects.nonNull(items))
             regions = FXCollections.observableArrayList(items);
         else regions = null;

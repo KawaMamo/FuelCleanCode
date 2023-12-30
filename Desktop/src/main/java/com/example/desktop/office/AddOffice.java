@@ -3,6 +3,8 @@ package com.example.desktop.office;
 import com.example.model.TableController;
 import com.example.model.modal.Modal;
 import com.example.model.office.OfficeService;
+import com.example.model.tools.FormType;
+import com.example.model.tools.QueryBuilder;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -15,7 +17,7 @@ import java.util.Objects;
 
 public class AddOffice {
 
-    public static Boolean isEditingForm = false;
+    public static FormType formType = FormType.CREATE;
     @FXML
     private TextField nameTF;
 
@@ -27,7 +29,7 @@ public class AddOffice {
 
     @FXML
     private void initialize(){
-        if(isEditingForm){
+        if(formType.equals(FormType.UPDATE)){
             final Office office = officeService.getItem(Offices.slectedOffice.getId());
             nameTF.setText(office.getName());
         }
@@ -35,12 +37,17 @@ public class AddOffice {
     @FXML
     void submit() {
         final Office office;
-        if(isEditingForm){
+        if(formType.equals(FormType.UPDATE)){
             office = officeService.editItem(new UpdateOfficeRequest(Offices.slectedOffice.getId(), nameTF.getText()));
-        }else {
+        }else if(formType.equals(FormType.CREATE)){
             office = officeService.addItem(new CreateOfficeRequest(nameTF.getText()));
+        }else {
+            office = new Office();
+            QueryBuilder queryBuilder = new QueryBuilder();
+            queryBuilder.addQueryParameter("name", nameTF.getText());
+            queryBuilder.sort();
+            controller.setQuery(queryBuilder.getQuery());
         }
-        isEditingForm = false;
         notify(office);
     }
 

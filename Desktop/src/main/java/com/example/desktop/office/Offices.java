@@ -4,6 +4,7 @@ import com.example.desktop.delete.DeleteConfirmation;
 import com.example.model.TableController;
 import com.example.model.modal.Modal;
 import com.example.model.office.OfficeService;
+import com.example.model.tools.FormType;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -39,7 +40,7 @@ public class Offices implements TableController {
     @FXML
     void add() {
         AddOffice.controller = this;
-        AddOffice.isEditingForm = false;
+        AddOffice.formType = FormType.CREATE;
         Modal.start(this.getClass(), "addOffice.fxml");
     }
 
@@ -54,7 +55,7 @@ public class Offices implements TableController {
     @FXML
     void edit() {
         AddOffice.controller = this;
-        AddOffice.isEditingForm = true;
+        AddOffice.formType = FormType.UPDATE;
         Modal.start(this.getClass(), "addOffice.fxml");
     }
 
@@ -72,7 +73,9 @@ public class Offices implements TableController {
 
     @FXML
     void search() {
-
+        AddOffice.controller = this;
+        AddOffice.formType = FormType.GET;
+        Modal.start(this.getClass(), "addOffice.fxml");
     }
 
     @Override
@@ -89,7 +92,13 @@ public class Offices implements TableController {
 
     @Override
     public void loadData() {
-        final List<Office> items = officeService.getItems(Integer.parseInt(page.getText()) - 1, 15);
+        final List<Office> items;
+        if(Objects.isNull(query)){
+            items = officeService.getItems(Integer.parseInt(page.getText()) - 1, 15);
+        }else {
+            items = officeService.getItems(Integer.parseInt(page.getText()) - 1, 15, query);
+        }
+
         if(Objects.nonNull(items))
             offices = FXCollections.observableArrayList(items);
         else offices = null;

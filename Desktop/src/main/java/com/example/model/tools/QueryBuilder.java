@@ -22,4 +22,8 @@ public class QueryBuilder {
         query = query.concat("&sort="+column+","+order+"");
     }
 
+    public void sort(){
+        sort("id", "DESC");
+    }
+
 }

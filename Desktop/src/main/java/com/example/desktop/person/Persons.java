@@ -5,6 +5,7 @@ import com.example.desktop.transLine.TransLines;
 import com.example.model.TableController;
 import com.example.model.modal.Modal;
 import com.example.model.person.PersonService;
+import com.example.model.tools.FormType;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -41,7 +42,7 @@ public class Persons implements TableController {
     @FXML
     void add() {
         AddPerson.controller = this;
-        AddPerson.isEditingForm = false;
+        AddPerson.formType = FormType.CREATE;
         Modal.start(this.getClass(), "addPerson.fxml");
     }
 
@@ -56,7 +57,7 @@ public class Persons implements TableController {
     @FXML
     void edit() {
         AddPerson.controller = this;
-        AddPerson.isEditingForm = true;
+        AddPerson.formType = FormType.UPDATE;
         Modal.start(this.getClass(), "addPerson.fxml");
     }
 
@@ -74,7 +75,9 @@ public class Persons implements TableController {
 
     @FXML
     void search() {
-
+        AddPerson.controller = this;
+        AddPerson.formType = FormType.GET;
+        Modal.start(this.getClass(), "addPerson.fxml");
     }
 
     @Override
@@ -91,7 +94,13 @@ public class Persons implements TableController {
 
     @Override
     public void loadData() {
-        final List<Person> items = personService.getItems(Integer.parseInt(page.getText()) - 1, 15);
+        final List<Person> items;
+        if(Objects.isNull(query)){
+            items = personService.getItems(Integer.parseInt(page.getText()) - 1, 15);
+        }else {
+            items = personService.getItems(Integer.parseInt(page.getText()) - 1, 15, query);
+        }
+
         if(Objects.nonNull(items))
             people = FXCollections.observableArrayList(items);
         else people = null;

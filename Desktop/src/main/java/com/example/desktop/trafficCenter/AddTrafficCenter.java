@@ -2,6 +2,8 @@ package com.example.desktop.trafficCenter;
 
 import com.example.model.TableController;
 import com.example.model.modal.Modal;
+import com.example.model.tools.FormType;
+import com.example.model.tools.QueryBuilder;
 import com.example.model.trafficCenter.TrafficCenterService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -15,7 +17,7 @@ import java.util.Objects;
 
 public class AddTrafficCenter {
 
-    public static Boolean isEditingForm = false;
+    public static FormType formType = FormType.CREATE;
     @FXML
     private TextField nameTF;
 
@@ -27,7 +29,7 @@ public class AddTrafficCenter {
 
     @FXML
     private void initialize(){
-        if(isEditingForm){
+        if(formType.equals(FormType.UPDATE)){
             final TrafficCenter trafficCenter = service.getItem(TrafficCenters.selectedTrafficCenter.getId());
             nameTF.setText(trafficCenter.getName());
         }
@@ -35,12 +37,18 @@ public class AddTrafficCenter {
     @FXML
     void submit() {
         final TrafficCenter trafficCenter;
-        if(isEditingForm){
+        if(formType.equals(FormType.UPDATE)){
             trafficCenter = service.editItem(new UpdateTrafficCenterRequest(TrafficCenters.selectedTrafficCenter.getId(), nameTF.getText()));
-        }else {
+        }else if(formType.equals(FormType.CREATE)){
             trafficCenter = service.addItem(new CreateTrafficCenterRequest(nameTF.getText()));
+        }else {
+            trafficCenter = new TrafficCenter();
+            final QueryBuilder queryBuilder = new QueryBuilder();
+            queryBuilder.addQueryParameter("name", nameTF.getText());
+            queryBuilder.sort();
+            controller.setQuery(queryBuilder.getQuery());
         }
-        isEditingForm = false;
+
         notify(trafficCenter);
     }
 
