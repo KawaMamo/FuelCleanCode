@@ -23,7 +23,7 @@ import org.mapstruct.factory.Mappers;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-12-03T20:41:30+0300",
+    date = "2024-01-24T22:41:12+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class PartitionMapperImpl implements PartitionMapper {

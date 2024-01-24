@@ -5,10 +5,11 @@ import org.example.contract.request.create.CreateRefineryRequest;
 import org.example.contract.request.update.UpdateRefineryRequest;
 import org.example.contract.response.RefineryResponse;
 import org.example.model.Refinery;
+import org.example.model.Region;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-12-03T20:41:19+0300",
+    date = "2024-01-24T22:41:02+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class RefineryDomainMapperImpl implements RefineryDomainMapper {
@@ -21,6 +22,7 @@ public class RefineryDomainMapperImpl implements RefineryDomainMapper {
 
         Refinery refinery = new Refinery();
 
+        refinery.setRegion( createRefineryRequestToRegion( request ) );
         refinery.setName( request.getName() );
         refinery.setTranslation( request.getTranslation() );
 
@@ -41,6 +43,7 @@ public class RefineryDomainMapperImpl implements RefineryDomainMapper {
         refineryResponse.setPlaceType( refinery.getPlaceType() );
         refineryResponse.setCreatedAt( refinery.getCreatedAt() );
         refineryResponse.setUpdatedAt( refinery.getUpdatedAt() );
+        refineryResponse.setRegion( refinery.getRegion() );
 
         return refineryResponse;
     }
@@ -53,10 +56,35 @@ public class RefineryDomainMapperImpl implements RefineryDomainMapper {
 
         Refinery refinery = new Refinery();
 
+        refinery.setRegion( updateRefineryRequestToRegion( request ) );
         refinery.setId( request.getId() );
         refinery.setName( request.getName() );
         refinery.setTranslation( request.getTranslation() );
 
         return refinery;
+    }
+
+    protected Region createRefineryRequestToRegion(CreateRefineryRequest createRefineryRequest) {
+        if ( createRefineryRequest == null ) {
+            return null;
+        }
+
+        Region region = new Region();
+
+        region.setId( createRefineryRequest.getRegionId() );
+
+        return region;
+    }
+
+    protected Region updateRefineryRequestToRegion(UpdateRefineryRequest updateRefineryRequest) {
+        if ( updateRefineryRequest == null ) {
+            return null;
+        }
+
+        Region region = new Region();
+
+        region.setId( updateRefineryRequest.getRegionId() );
+
+        return region;
     }
 }

@@ -38,7 +38,7 @@ public class TransLineService implements Service<TransLine, CreateTransLineReque
     }
 
     public List<TransLine> getItems(Integer page, Integer size, String query) {
-        String getUrl = getEndPoint()+"?page="+page+"&size="+size+"&"+query;
+        String getUrl = getEndPoint()+"?page="+page+"&size="+size+query;
         final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
         final TransLineResponseEntity transLineResponse = gson.fromJson(stringHttpResponse.body(), TransLineResponseEntity.class);
         if(Objects.nonNull(transLineResponse._embedded))

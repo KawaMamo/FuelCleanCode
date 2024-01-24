@@ -10,6 +10,7 @@ import org.example.entities.DocumentEntity;
 import org.example.entities.OfficeEntity;
 import org.example.entities.PersonEntity;
 import org.example.entities.RefineryEntity;
+import org.example.entities.RegionEntity;
 import org.example.entities.TrafficCenterEntity;
 import org.example.entities.TransLogEntity;
 import org.example.entities.TransportationType;
@@ -18,6 +19,7 @@ import org.example.model.Document;
 import org.example.model.Office;
 import org.example.model.Person;
 import org.example.model.Refinery;
+import org.example.model.Region;
 import org.example.model.TrafficCenter;
 import org.example.model.TransLog;
 import org.example.model.Vehicle;
@@ -25,7 +27,7 @@ import org.mapstruct.factory.Mappers;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-12-03T20:41:30+0300",
+    date = "2024-01-24T22:41:12+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class VehicleMapperImpl implements VehicleMapper {
@@ -152,6 +154,23 @@ public class VehicleMapperImpl implements VehicleMapper {
         return trafficCenterEntity;
     }
 
+    protected RegionEntity regionToRegionEntity(Region region) {
+        if ( region == null ) {
+            return null;
+        }
+
+        RegionEntity regionEntity = new RegionEntity();
+
+        regionEntity.setId( region.getId() );
+        regionEntity.setPlaceType( region.getPlaceType() );
+        regionEntity.setCreatedAt( region.getCreatedAt() );
+        regionEntity.setUpdatedAt( region.getUpdatedAt() );
+        regionEntity.setName( region.getName() );
+        regionEntity.setTranslation( region.getTranslation() );
+
+        return regionEntity;
+    }
+
     protected RefineryEntity refineryToRefineryEntity(Refinery refinery) {
         if ( refinery == null ) {
             return null;
@@ -165,6 +184,7 @@ public class VehicleMapperImpl implements VehicleMapper {
         refineryEntity.setUpdatedAt( refinery.getUpdatedAt() );
         refineryEntity.setName( refinery.getName() );
         refineryEntity.setTranslation( refinery.getTranslation() );
+        refineryEntity.setRegion( regionToRegionEntity( refinery.getRegion() ) );
 
         return refineryEntity;
     }

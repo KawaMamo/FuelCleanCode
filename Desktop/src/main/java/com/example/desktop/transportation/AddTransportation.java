@@ -8,6 +8,8 @@ import com.example.model.modal.Modal;
 import com.example.model.partition.PartitionService;
 import com.example.model.priceCategory.PriceCategoryService;
 import com.example.model.refinery.RefineryService;
+import com.example.model.tools.FormType;
+import com.example.model.tools.QueryBuilder;
 import com.example.model.transLine.TransLineService;
 import com.example.model.transLog.TransLogService;
 import com.example.model.transportation.TransportationService;
@@ -37,7 +39,7 @@ import java.util.Objects;
 public class AddTransportation {
 
     public static TableController controller;
-    public static Boolean isEditingForm = false;
+    public static FormType formType = FormType.CREATE;
 
 
     @FXML
@@ -168,7 +170,7 @@ public class AddTransportation {
                 if(vehicleTF.getText().length()>0){
                     final Vehicle vehicle = vehicles.get(vehiclesNames.indexOf(vehicleTF.getText()));
                     driverTF.setText(vehicle.getDriver().getName());
-                    sizeTF.setText(NumberFormat.getInstance().format(vehicle.getSize()));
+                    sizeTF.setText(vehicle.getSize().toString());
                     selectedVehicleId = vehicle.getId();
                 }
             }
@@ -299,7 +301,7 @@ public class AddTransportation {
         });
 
 
-        if(isEditingForm){
+        if(formType.equals(FormType.UPDATE)){
             transportation = transportationService.getItem(Transportations.selectedTransportation.getId());
             refineryTF.setText(transportation.getRefinery().getName());
             vehicleTF.setText(transportation.getVehicle().getPlateNumber());
@@ -323,7 +325,7 @@ public class AddTransportation {
 
     @FXML
     void addTrans() {
-        if(isEditingForm){
+        if(formType.equals(FormType.UPDATE)){
             if(Objects.nonNull(selectedRefineryId) && Objects.nonNull(selectedVehicleId)){
                 transportation = transportationService.editItem(new UpdateTransRequest(transportation.getId(),
                         selectedRefineryId,
@@ -335,7 +337,7 @@ public class AddTransportation {
                 addedTransport = transportation;
             }
 
-        }else {
+        }else if(formType.equals(FormType.CREATE)){
             if(Objects.nonNull(selectedRefineryId) && Objects.nonNull(selectedVehicleId)){
                 transportation = transportationService.addItem(new CreateTransRequest(selectedRefineryId,
                         selectedVehicleId,
@@ -345,6 +347,8 @@ public class AddTransportation {
                 notify(transportation);
                 addedTransport = transportation;
             }
+        }else {
+
         }
 
     }
@@ -423,7 +427,7 @@ public class AddTransportation {
     void addLineFee() {
         final List<TransLine> transLineList = transLineService.getItems(0,
                 10,
-                "key=source&value=" + selectedRefineryId + "&operation=%3A" +
+                "&key=source&value=" + selectedRefineryId + "&operation=%3A" +
                         "&key=destination&value=" + selectedRegionId + "&operation=%3A&sort=id,desc");
         final TransLine transLine = transLineList.get(0);
         final CreateTransLogRequest createTransLogRequest = new CreateTransLogRequest(transportation.getVehicle().getId(),

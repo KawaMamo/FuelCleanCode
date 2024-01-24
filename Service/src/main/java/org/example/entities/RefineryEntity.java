@@ -1,6 +1,7 @@
 package org.example.entities;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToOne;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
@@ -15,6 +16,8 @@ import java.util.Objects;
 public class RefineryEntity extends PlaceEntity {
 
 
+    @OneToOne
+    private RegionEntity region;
     @Override
     public final boolean equals(Object object) {
         if (this == object) return true;

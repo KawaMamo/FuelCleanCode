@@ -58,10 +58,10 @@ public class Beans {
     }
 
     @Bean
-    public CreateRefinery createRefinery(RefineryRepository repository, RefineryDomainMapper refineryDomainMapper){
+    public CreateRefinery createRefinery(RefineryRepository repository, RefineryDomainMapper refineryDomainMapper, RegionRepo regionRepo){
         return new CreateRefinery(new CreateRefineryValidator(),
                 refineryDomainMapper,
-                new RefineryAdapter(repository, new RefineryMapperImpl()));
+                new RefineryAdapter(repository, new RefineryMapperImpl()), regionRepo);
     }
 
     @Bean

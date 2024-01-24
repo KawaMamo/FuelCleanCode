@@ -32,6 +32,16 @@ public class TransportationService implements Service<Transportation, CreateTran
         return new ArrayList<>();
     }
 
+    public List<Transportation> getItems(Integer page, Integer size, String query) {
+        String getUrl = getEndPoint()+"?page="+page+"&size="+size+"&key=id&value=0&operation=%3E&sort=id,desc";
+        final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+        final TransportationResponseEntity transportationResponseEntity = gson.fromJson(stringHttpResponse.body(), TransportationResponseEntity.class);
+        if(Objects.nonNull(transportationResponseEntity._embedded))
+            return transportationResponseEntity._embedded.transportationList;
+
+        return new ArrayList<>();
+    }
+
     @Override
     public Transportation addItem(CreateTransRequest itemRequest) {
         final String json = gson.toJson(itemRequest);

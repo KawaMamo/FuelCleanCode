@@ -11,4 +11,5 @@ import org.example.contract.request.Request;
 public class CreateRefineryRequest implements Request {
     private String name;
     private String translation;
+    private Long regionId;
 }

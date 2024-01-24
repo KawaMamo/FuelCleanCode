@@ -3,6 +3,7 @@ package com.example.desktop.transLine;
 import com.example.desktop.delete.DeleteConfirmation;
 import com.example.model.TableController;
 import com.example.model.modal.Modal;
+import com.example.model.tools.FormType;
 import com.example.model.transLine.TransLineService;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -44,7 +45,7 @@ public class TransLines implements TableController {
     @FXML
     void add() {
         AddTransLine.controller = this;
-        AddTransLine.isEditingForm = false;
+        AddTransLine.formType = FormType.CREATE;
         Modal.start(this.getClass(), "addTransLine.fxml");
     }
 
@@ -59,7 +60,7 @@ public class TransLines implements TableController {
     @FXML
     void edit() {
         AddTransLine.controller = this;
-        AddTransLine.isEditingForm = true;
+        AddTransLine.formType = FormType.UPDATE;
         Modal.start(this.getClass(), "addTransLine.fxml");
     }
 
@@ -77,7 +78,9 @@ public class TransLines implements TableController {
 
     @FXML
     void search() {
-
+        AddTransLine.controller = this;
+        AddTransLine.formType = FormType.GET;
+        Modal.start(this.getClass(), "addTransLine.fxml");
     }
     @Override
     public void removeData() {
@@ -92,7 +95,12 @@ public class TransLines implements TableController {
     }
 
     public void loadData() {
-        final List<TransLine> items = transLineService.getItems(Integer.parseInt(page.getText()) - 1, 15);
+        final List<TransLine> items;
+        if(Objects.isNull(query))
+            items = transLineService.getItems(Integer.parseInt(page.getText()) - 1, 15);
+        else {
+            items = transLineService.getItems(Integer.parseInt(page.getText()) - 1, 15, query);
+        }
         if(Objects.nonNull(items))
             transLines = FXCollections.observableArrayList(items);
         else transLines = null;

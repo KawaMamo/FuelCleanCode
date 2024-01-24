@@ -2,11 +2,13 @@ package org.example.mappers;
 
 import javax.annotation.processing.Generated;
 import org.example.entities.RefineryEntity;
+import org.example.entities.RegionEntity;
 import org.example.model.Refinery;
+import org.example.model.Region;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-12-03T20:41:30+0300",
+    date = "2024-01-24T22:41:12+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class RefineryMapperImpl implements RefineryMapper {
@@ -25,6 +27,7 @@ public class RefineryMapperImpl implements RefineryMapper {
         refineryEntity.setUpdatedAt( refinery.getUpdatedAt() );
         refineryEntity.setName( refinery.getName() );
         refineryEntity.setTranslation( refinery.getTranslation() );
+        refineryEntity.setRegion( regionToRegionEntity( refinery.getRegion() ) );
 
         return refineryEntity;
     }
@@ -43,7 +46,42 @@ public class RefineryMapperImpl implements RefineryMapper {
         refinery.setPlaceType( refineryEntity.getPlaceType() );
         refinery.setCreatedAt( refineryEntity.getCreatedAt() );
         refinery.setUpdatedAt( refineryEntity.getUpdatedAt() );
+        refinery.setRegion( regionEntityToRegion( refineryEntity.getRegion() ) );
 
         return refinery;
+    }
+
+    protected RegionEntity regionToRegionEntity(Region region) {
+        if ( region == null ) {
+            return null;
+        }
+
+        RegionEntity regionEntity = new RegionEntity();
+
+        regionEntity.setId( region.getId() );
+        regionEntity.setPlaceType( region.getPlaceType() );
+        regionEntity.setCreatedAt( region.getCreatedAt() );
+        regionEntity.setUpdatedAt( region.getUpdatedAt() );
+        regionEntity.setName( region.getName() );
+        regionEntity.setTranslation( region.getTranslation() );
+
+        return regionEntity;
+    }
+
+    protected Region regionEntityToRegion(RegionEntity regionEntity) {
+        if ( regionEntity == null ) {
+            return null;
+        }
+
+        Region region = new Region();
+
+        region.setId( regionEntity.getId() );
+        region.setName( regionEntity.getName() );
+        region.setTranslation( regionEntity.getTranslation() );
+        region.setPlaceType( regionEntity.getPlaceType() );
+        region.setCreatedAt( regionEntity.getCreatedAt() );
+        region.setUpdatedAt( regionEntity.getUpdatedAt() );
+
+        return region;
     }
 }

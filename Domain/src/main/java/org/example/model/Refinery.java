@@ -8,5 +8,5 @@ import java.time.LocalDateTime;
 @Data
 public class Refinery extends Place{
 
-
+    private Region region;
 }

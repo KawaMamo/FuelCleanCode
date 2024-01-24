@@ -11,4 +11,5 @@ public class UpdateRefineryRequest {
     private Long id;
     private String name;
     private String translation;
+    private Long regionId;
 }

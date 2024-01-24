@@ -2,6 +2,7 @@ package com.example.desktop.transportation;
 
 import com.example.model.TableController;
 import com.example.model.modal.Modal;
+import com.example.model.tools.FormType;
 import com.example.model.transportation.TransportationService;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -70,7 +71,7 @@ public class Transportations implements TableController {
     @FXML
     void add() {
         AddTransportation.controller = this;
-        AddTransportation.isEditingForm = false;
+        AddTransportation.formType = FormType.CREATE;
         Modal.start(this.getClass(), "addTransportation.fxml");
     }
 
@@ -84,7 +85,7 @@ public class Transportations implements TableController {
     @FXML
     void edit() {
         AddTransportation.controller = this;
-        AddTransportation.isEditingForm = true;
+        AddTransportation.formType = FormType.UPDATE;
         Modal.start(this.getClass(), "addTransportation.fxml");
     }
 
@@ -119,7 +120,11 @@ public class Transportations implements TableController {
 
     @Override
     public void loadData() {
-        final List<Transportation> items = transportationService.getItems(Integer.parseInt(page.getText()) - 1, 15);
+        final List<Transportation> items;
+        if(Objects.isNull(query))
+            items = transportationService.getItems(Integer.parseInt(page.getText()) - 1, 15);
+        else items = transportationService.getItems(Integer.parseInt(page.getText()) - 1, 15, query);
+
         if(Objects.nonNull(items))
             observableList = FXCollections.observableList(items);
         tableTbl.setItems(observableList);

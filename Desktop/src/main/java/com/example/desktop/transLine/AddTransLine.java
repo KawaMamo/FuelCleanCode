@@ -5,6 +5,8 @@ import com.example.model.gasStation.GasStationService;
 import com.example.model.modal.Modal;
 import com.example.model.refinery.RefineryService;
 import com.example.model.region.RegionService;
+import com.example.model.tools.FormType;
+import com.example.model.tools.QueryBuilder;
 import com.example.model.transLine.TransLineService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -22,7 +24,7 @@ import java.util.Objects;
 
 public class AddTransLine {
     public static TableController controller;
-    public static Boolean isEditingForm = false;
+    public static FormType formType = FormType.CREATE;
 
     @FXML
     private TextField amountTF;
@@ -87,7 +89,7 @@ public class AddTransLine {
             }
         });
 
-        if(isEditingForm){
+        if(formType.equals(FormType.UPDATE)){
             final TransLine transLine = transLineService.getItem(TransLines.selectedTransLine.getId());
             sourceTF.setText(transLine.getSource().getName());
             destinationTF.setText(transLine.getDestination().getName());
@@ -101,20 +103,28 @@ public class AddTransLine {
     @FXML
     void submit() {
         final TransLine transLine;
-        if(isEditingForm){
+        if(formType.equals(FormType.UPDATE)){
             transLine = transLineService.editItem(new UpdateTransLineRequest(TransLines.selectedTransLine.getId(),
                     selectedSourceId,
                     selectedDestinationId,
                     currencyCB.getValue(),
                     Double.parseDouble(amountTF.getText())));
-        }else {
+        }else if(formType.equals(FormType.CREATE)){
             transLine = transLineService.addItem(new CreateTransLineRequest(selectedSourceId,
                     selectedDestinationId,
                     currencyCB.getValue(),
                     Double.parseDouble(amountTF.getText())));
+        }else {
+            transLine = new TransLine();
+            QueryBuilder queryBuilder = new QueryBuilder();
+            if(Objects.nonNull(selectedSourceId))
+                queryBuilder.addQueryParameter("source", selectedSourceId.toString());
+            if(Objects.nonNull(selectedDestinationId))
+                queryBuilder.addQueryParameter("destination", selectedDestinationId.toString());
+            queryBuilder.sort();
+            controller.setQuery(queryBuilder.getQuery());
         }
 
-        isEditingForm = false;
         notify(transLine);
     }
 

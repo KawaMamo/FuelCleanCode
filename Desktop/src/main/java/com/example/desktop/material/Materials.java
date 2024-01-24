@@ -51,7 +51,7 @@ public class Materials implements TableController {
     void add() {
         AddMaterial.controller = this;
         AddMaterial.formType = FormType.CREATE;
-        Modal.start(this.getClass(), "AddMaterial.fxml");
+        Modal.start(this.getClass(), "addMaterial.fxml");
     }
 
     @FXML
@@ -66,7 +66,7 @@ public class Materials implements TableController {
     void edit() {
         AddMaterial.controller = this;
         AddMaterial.formType = FormType.UPDATE;
-        Modal.start(this.getClass(), "AddMaterial.fxml");
+        Modal.start(this.getClass(), "addMaterial.fxml");
     }
 
     @FXML
@@ -85,7 +85,7 @@ public class Materials implements TableController {
     void search() {
         AddMaterial.controller = this;
         AddMaterial.formType = FormType.GET;
-        Modal.start(this.getClass(), "AddMaterial.fxml");
+        Modal.start(this.getClass(), "addMaterial.fxml");
     }
     @Override
     public void removeData() {
