@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="212.0" prefWidth="338.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.desktop.refinery.AddRefinery">
+<AnchorPane prefHeight="263.0" prefWidth="338.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.desktop.refinery.AddRefinery">
    <children>
       <HBox layoutX="31.0" layoutY="65.0" prefHeight="95.0" prefWidth="302.0" spacing="50.0">
          <children>
@@ -16,6 +16,7 @@
                <children>
                   <TextField fx:id="nameTF" />
                   <TextField fx:id="translationTF" />
+                  <TextField fx:id="regionTF" />
                   <Button fx:id="submitBtn" mnemonicParsing="false" onAction="#submit" prefHeight="26.0" prefWidth="150.0" text="تأكيد" />
                </children>
             </VBox>
@@ -23,6 +24,7 @@
                <children>
                   <Label text="الاسم" />
                   <Label text="الترجمة" />
+                  <Label text="المنطقة" />
                </children>
             </VBox>
          </children>

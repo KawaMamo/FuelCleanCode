@@ -39,7 +39,7 @@ import org.mapstruct.factory.Mappers;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-01-24T22:41:11+0300",
+    date = "2024-01-26T16:17:53+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class TransMapperImpl implements TransMapper {
@@ -166,23 +166,6 @@ public class TransMapperImpl implements TransMapper {
         return vehicleEntity;
     }
 
-    protected RegionEntity regionToRegionEntity(Region region) {
-        if ( region == null ) {
-            return null;
-        }
-
-        RegionEntity regionEntity = new RegionEntity();
-
-        regionEntity.setId( region.getId() );
-        regionEntity.setPlaceType( region.getPlaceType() );
-        regionEntity.setCreatedAt( region.getCreatedAt() );
-        regionEntity.setUpdatedAt( region.getUpdatedAt() );
-        regionEntity.setName( region.getName() );
-        regionEntity.setTranslation( region.getTranslation() );
-
-        return regionEntity;
-    }
-
     protected RefineryEntity refineryToRefineryEntity(Refinery refinery) {
         if ( refinery == null ) {
             return null;
@@ -196,7 +179,6 @@ public class TransMapperImpl implements TransMapper {
         refineryEntity.setUpdatedAt( refinery.getUpdatedAt() );
         refineryEntity.setName( refinery.getName() );
         refineryEntity.setTranslation( refinery.getTranslation() );
-        refineryEntity.setRegion( regionToRegionEntity( refinery.getRegion() ) );
 
         return refineryEntity;
     }
@@ -250,6 +232,23 @@ public class TransMapperImpl implements TransMapper {
         priceCategoryEntity.setUpdatedAt( priceCategory.getUpdatedAt() );
 
         return priceCategoryEntity;
+    }
+
+    protected RegionEntity regionToRegionEntity(Region region) {
+        if ( region == null ) {
+            return null;
+        }
+
+        RegionEntity regionEntity = new RegionEntity();
+
+        regionEntity.setId( region.getId() );
+        regionEntity.setPlaceType( region.getPlaceType() );
+        regionEntity.setCreatedAt( region.getCreatedAt() );
+        regionEntity.setUpdatedAt( region.getUpdatedAt() );
+        regionEntity.setName( region.getName() );
+        regionEntity.setTranslation( region.getTranslation() );
+
+        return regionEntity;
     }
 
     protected GroupEntity groupToGroupEntity(Group group) {
@@ -418,7 +417,6 @@ public class TransMapperImpl implements TransMapper {
         refinery.setPlaceType( refineryEntity.getPlaceType() );
         refinery.setCreatedAt( refineryEntity.getCreatedAt() );
         refinery.setUpdatedAt( refineryEntity.getUpdatedAt() );
-        refinery.setRegion( TransMapper.regionEntityToRegion( refineryEntity.getRegion() ) );
 
         return refinery;
     }

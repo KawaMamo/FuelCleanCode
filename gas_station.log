@@ -1,366 +1,357 @@
-2024-01-24T22:41:17.084+03:00  INFO 17784 --- [main] org.example.Main                         : Starting Main using Java 20 with PID 17784 (D:\fuelRefactored\FuelCleanCode\Service\target\classes started by GIGABYTE in D:\fuelRefactored\FuelCleanCode)
-2024-01-24T22:41:17.099+03:00  INFO 17784 --- [main] org.example.Main                         : No active profile set, falling back to 1 default profile: "default"
-2024-01-24T22:41:19.169+03:00  INFO 17784 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-01-24T22:41:19.330+03:00  INFO 17784 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 153 ms. Found 18 JPA repository interfaces.
-2024-01-24T22:41:20.189+03:00  INFO 17784 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9091 (http)
-2024-01-24T22:41:20.197+03:00  INFO 17784 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-01-24T22:41:20.197+03:00  INFO 17784 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.7]
-2024-01-24T22:41:20.428+03:00  INFO 17784 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-01-24T22:41:20.429+03:00  INFO 17784 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3287 ms
-2024-01-24T22:41:20.728+03:00  INFO 17784 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-01-24T22:41:20.774+03:00  INFO 17784 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
-2024-01-24T22:41:21.147+03:00  INFO 17784 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-01-24T22:41:24.958+03:00 ERROR 17784 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
+2024-01-26T00:13:31.149+03:00  INFO 26336 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-26T00:13:31.172+03:00  INFO 26336 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-01-26T00:13:31.176+03:00  INFO 26336 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-01-26T12:08:12.997+03:00  INFO 24812 --- [main] org.example.Main                         : Starting Main using Java 20 with PID 24812 (D:\fuelRefactored\FuelCleanCode\Service\target\classes started by GIGABYTE in D:\fuelRefactored\FuelCleanCode)
+2024-01-26T12:08:13.000+03:00  INFO 24812 --- [main] org.example.Main                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-26T12:08:14.166+03:00  INFO 24812 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-26T12:08:14.325+03:00  INFO 24812 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 150 ms. Found 18 JPA repository interfaces.
+2024-01-26T12:08:15.081+03:00  INFO 24812 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9091 (http)
+2024-01-26T12:08:15.091+03:00  INFO 24812 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-26T12:08:15.092+03:00  INFO 24812 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.7]
+2024-01-26T12:08:15.260+03:00  INFO 24812 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-26T12:08:15.260+03:00  INFO 24812 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2210 ms
+2024-01-26T12:08:15.586+03:00  INFO 24812 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-26T12:08:15.636+03:00  INFO 24812 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2024-01-26T12:08:15.900+03:00  INFO 24812 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-01-26T12:08:16.078+03:00  INFO 24812 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@65262308
+2024-01-26T12:08:16.080+03:00  INFO 24812 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-01-26T12:08:16.116+03:00  WARN 24812 --- [main] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.0 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 5.7.0. Check the community dialects project for available legacy versions.
+2024-01-26T12:08:16.122+03:00  INFO 24812 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2024-01-26T12:08:17.783+03:00  INFO 24812 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-01-26T12:08:17.790+03:00  INFO 24812 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-26T12:08:18.303+03:00  WARN 24812 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.PartitionRepository
+2024-01-26T12:08:19.088+03:00  WARN 24812 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.TransLogRepository
+2024-01-26T12:08:19.263+03:00  WARN 24812 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-26T12:08:19.926+03:00  INFO 24812 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-01-26T12:08:20.005+03:00  INFO 24812 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9091 (http) with context path ''
+2024-01-26T12:08:20.019+03:00  INFO 24812 --- [main] org.example.Main                         : Started Main in 7.494 seconds (process running for 11.286)
+2024-01-26T12:09:35.005+03:00  INFO 24812 --- [http-nio-9091-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-01-26T12:09:35.005+03:00  INFO 24812 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-01-26T12:09:35.007+03:00  INFO 24812 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-01-26T12:09:35.093+03:00  WARN 24812 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/vehicle
+2024-01-26T12:09:35.157+03:00  WARN 24812 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/vehicle headers org.apache.tomcat.util.http.ValuesEnumerator@1014d868
+2024-01-26T12:09:38.229+03:00  WARN 24812 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/gas-station
+2024-01-26T12:09:38.245+03:00  WARN 24812 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@1d63cdb4
+2024-01-26T12:09:43.321+03:00  WARN 24812 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/gas-station
+2024-01-26T12:09:43.337+03:00  WARN 24812 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@193ff482
+2024-01-26T12:09:44.862+03:00  WARN 24812 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/gas-station
+2024-01-26T12:09:44.879+03:00  WARN 24812 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@170c5b50
+2024-01-26T12:09:54.728+03:00  WARN 24812 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/category
+2024-01-26T12:09:54.742+03:00  WARN 24812 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@5b1b3e12
+2024-01-26T12:09:56.225+03:00  WARN 24812 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/material
+2024-01-26T12:09:56.239+03:00  WARN 24812 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/material headers org.apache.tomcat.util.http.ValuesEnumerator@7cc4f22a
+2024-01-26T12:09:57.175+03:00  WARN 24812 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/refinery
+2024-01-26T12:09:57.189+03:00  WARN 24812 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/refinery headers org.apache.tomcat.util.http.ValuesEnumerator@7424bb8
+2024-01-26T12:09:58.704+03:00  WARN 24812 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/region
+2024-01-26T12:09:58.716+03:00  WARN 24812 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/region headers org.apache.tomcat.util.http.ValuesEnumerator@574d8a6c
+2024-01-26T12:09:59.762+03:00  WARN 24812 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/traffic-center
+2024-01-26T12:09:59.774+03:00  WARN 24812 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/traffic-center headers org.apache.tomcat.util.http.ValuesEnumerator@7aa60b97
+2024-01-26T12:10:01.531+03:00  WARN 24812 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/person
+2024-01-26T12:10:01.546+03:00  WARN 24812 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/person headers org.apache.tomcat.util.http.ValuesEnumerator@488df3c9
+2024-01-26T12:10:05.837+03:00  WARN 24812 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/refinery
+2024-01-26T12:10:05.850+03:00  WARN 24812 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/refinery headers org.apache.tomcat.util.http.ValuesEnumerator@70315e3d
+2024-01-26T12:10:13.229+03:00  WARN 24812 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans-line
+2024-01-26T12:10:13.241+03:00  WARN 24812 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans-line headers org.apache.tomcat.util.http.ValuesEnumerator@391114e
+2024-01-26T12:10:18.002+03:00  WARN 24812 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/refinery/all
+2024-01-26T12:10:18.015+03:00  WARN 24812 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/refinery/all headers org.apache.tomcat.util.http.ValuesEnumerator@3146029b
+2024-01-26T12:10:18.057+03:00  WARN 24812 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2024-01-26T12:10:18.071+03:00  WARN 24812 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@5939bdba
+2024-01-26T12:10:18.103+03:00  WARN 24812 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/region/all
+2024-01-26T12:10:18.116+03:00  WARN 24812 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@29659963
+2024-01-26T12:10:38.892+03:00  WARN 24812 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/trans-line
+2024-01-26T12:10:38.902+03:00  WARN 24812 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/trans-line headers org.apache.tomcat.util.http.ValuesEnumerator@3e285e13
+2024-01-26T12:10:38.977+03:00  WARN 24812 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/trans-line
+2024-01-26T12:10:38.987+03:00  WARN 24812 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/trans-line headers org.apache.tomcat.util.http.ValuesEnumerator@497d338b
+2024-01-26T12:10:53.419+03:00  WARN 24812 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/trans
+2024-01-26T12:10:53.431+03:00  WARN 24812 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@6f6d235f
+2024-01-26T12:10:58.248+03:00  WARN 24812 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/trans
+2024-01-26T12:10:58.263+03:00  WARN 24812 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@2627973b
+2024-01-26T12:11:01.484+03:00  WARN 24812 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans
+2024-01-26T12:11:01.495+03:00  WARN 24812 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@6ba12520
+2024-01-26T12:11:03.247+03:00  WARN 24812 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans
+2024-01-26T12:11:03.258+03:00  WARN 24812 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@569a1e9a
+2024-01-26T12:11:04.462+03:00  WARN 24812 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans
+2024-01-26T12:11:04.478+03:00  WARN 24812 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@7dbc6c4a
+2024-01-26T12:11:05.859+03:00  WARN 24812 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans
+2024-01-26T12:11:05.870+03:00  WARN 24812 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@541242ef
+2024-01-26T12:11:09.211+03:00  WARN 24812 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/refinery/all
+2024-01-26T12:11:09.221+03:00  WARN 24812 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/refinery/all headers org.apache.tomcat.util.http.ValuesEnumerator@14372f70
+2024-01-26T12:11:09.239+03:00  WARN 24812 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/vehicle/all
+2024-01-26T12:11:09.250+03:00  WARN 24812 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/vehicle/all headers org.apache.tomcat.util.http.ValuesEnumerator@10415ddb
+2024-01-26T12:11:09.266+03:00  WARN 24812 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/material/all
+2024-01-26T12:11:09.277+03:00  WARN 24812 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@62907c75
+2024-01-26T12:11:09.288+03:00  WARN 24812 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/price-category/all
+2024-01-26T12:11:09.298+03:00  WARN 24812 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@6845e91e
+2024-01-26T12:11:09.310+03:00  WARN 24812 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2024-01-26T12:11:09.321+03:00  WARN 24812 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@4483a791
+2024-01-26T12:11:27.211+03:00  WARN 24812 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/trans
+2024-01-26T12:11:27.221+03:00  WARN 24812 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@4b2e9961
+2024-01-26T12:11:27.273+03:00  WARN 24812 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans
+2024-01-26T12:11:27.283+03:00  WARN 24812 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@5828a479
+2024-01-26T12:11:38.606+03:00  WARN 24812 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/category
+2024-01-26T12:11:38.617+03:00  WARN 24812 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@7e64c365
+2024-01-26T12:11:49.512+03:00  WARN 24812 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/category
+2024-01-26T12:11:49.524+03:00  WARN 24812 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@2c4d6e5e
+2024-01-26T12:12:02.143+03:00  WARN 24812 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/category
+2024-01-26T12:12:02.153+03:00  WARN 24812 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@5923c362
+2024-01-26T12:12:07.725+03:00  WARN 24812 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/category
+2024-01-26T12:12:07.738+03:00  WARN 24812 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@180d0452
+2024-01-26T12:12:09.381+03:00  WARN 24812 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/category
+2024-01-26T12:12:09.390+03:00  WARN 24812 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@1a6a2bae
+2024-01-26T12:12:11.667+03:00  WARN 24812 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/category
+2024-01-26T12:12:11.676+03:00  WARN 24812 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@6bfb1dbc
+2024-01-26T12:12:15.908+03:00  WARN 24812 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/category
+2024-01-26T12:12:15.918+03:00  WARN 24812 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@35553db0
+2024-01-26T12:12:18.979+03:00  WARN 24812 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/category
+2024-01-26T12:12:18.989+03:00  WARN 24812 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@6c81e4c1
+2024-01-26T12:17:33.246+03:00  WARN 24812 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/gas-station
+2024-01-26T12:17:33.257+03:00  WARN 24812 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@68fe5400
+2024-01-26T12:17:41.163+03:00  WARN 24812 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/person/all
+2024-01-26T12:17:41.172+03:00  WARN 24812 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/person/all headers org.apache.tomcat.util.http.ValuesEnumerator@14a3848d
+2024-01-26T12:17:41.193+03:00  WARN 24812 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/price-category/all
+2024-01-26T12:17:41.204+03:00  WARN 24812 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@2c5b8ae9
+2024-01-26T12:17:41.217+03:00  WARN 24812 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/group/all
+2024-01-26T12:17:41.230+03:00  WARN 24812 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/group/all headers org.apache.tomcat.util.http.ValuesEnumerator@5575c3fa
+2024-01-26T12:17:41.243+03:00  WARN 24812 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/region/all
+2024-01-26T12:17:41.256+03:00  WARN 24812 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@6b0b0508
+2024-01-26T12:17:41.267+03:00  WARN 24812 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/material/all
+2024-01-26T12:17:41.275+03:00  WARN 24812 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@701a5962
+2024-01-26T12:17:41.285+03:00  WARN 24812 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station
+2024-01-26T12:17:41.294+03:00  WARN 24812 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@4680a831
+2024-01-26T12:18:02.668+03:00  WARN 24812 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station
+2024-01-26T12:18:02.677+03:00  WARN 24812 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@857298a
+2024-01-26T12:18:02.722+03:00  WARN 24812 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/gas-station
+2024-01-26T12:18:02.731+03:00  WARN 24812 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@28abf7c9
+2024-01-26T12:18:05.434+03:00  WARN 24812 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/category
+2024-01-26T12:18:05.443+03:00  WARN 24812 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@3754546a
+2024-01-26T12:18:09.425+03:00  WARN 24812 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/material/all
+2024-01-26T12:18:09.435+03:00  WARN 24812 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@59dfcdb1
+2024-01-26T12:18:09.446+03:00  WARN 24812 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/price-category/all
+2024-01-26T12:18:09.456+03:00  WARN 24812 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@5d5f6284
+2024-01-26T12:18:23.523+03:00  WARN 24812 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/category
+2024-01-26T12:18:23.542+03:00  WARN 24812 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@48423f7f
+2024-01-26T12:18:23.573+03:00  WARN 24812 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/category
+2024-01-26T12:18:23.583+03:00  WARN 24812 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@4b8a676
+2024-01-26T12:18:29.288+03:00  WARN 24812 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/refinery
+2024-01-26T12:18:29.299+03:00  WARN 24812 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/refinery headers org.apache.tomcat.util.http.ValuesEnumerator@3e023c14
+2024-01-26T12:18:37.596+03:00  WARN 24812 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/gas-station
+2024-01-26T12:18:37.606+03:00  WARN 24812 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@50435bdd
+2024-01-26T12:18:42.391+03:00  WARN 24812 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/refinery
+2024-01-26T12:18:42.401+03:00  WARN 24812 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/refinery headers org.apache.tomcat.util.http.ValuesEnumerator@dfa92a9
+2024-01-26T12:18:53.845+03:00  WARN 24812 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/refinery
+2024-01-26T12:18:53.854+03:00  WARN 24812 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/refinery headers org.apache.tomcat.util.http.ValuesEnumerator@52772438
+2024-01-26T12:18:53.871+03:00  WARN 24812 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/region/all
+2024-01-26T12:18:53.882+03:00  WARN 24812 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@7e659739
+2024-01-26T12:19:02.941+03:00  WARN 24812 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/refinery
+2024-01-26T12:19:02.953+03:00  WARN 24812 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/refinery headers org.apache.tomcat.util.http.ValuesEnumerator@539d62fc
+2024-01-26T12:19:02.983+03:00  WARN 24812 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/refinery
+2024-01-26T12:19:02.991+03:00  WARN 24812 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/refinery headers org.apache.tomcat.util.http.ValuesEnumerator@10682ce8
+2024-01-26T12:19:19.032+03:00  WARN 24812 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans-line
+2024-01-26T12:19:19.040+03:00  WARN 24812 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans-line headers org.apache.tomcat.util.http.ValuesEnumerator@7028e7e6
+2024-01-26T12:19:56.332+03:00  WARN 24812 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans
+2024-01-26T12:19:56.341+03:00  WARN 24812 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@5e376b65
+2024-01-26T12:20:51.658+03:00  WARN 24812 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/trans
+2024-01-26T12:20:51.667+03:00  WARN 24812 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@610a68b3
+2024-01-26T12:20:53.402+03:00  WARN 24812 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/refinery/all
+2024-01-26T12:20:53.413+03:00  WARN 24812 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/refinery/all headers org.apache.tomcat.util.http.ValuesEnumerator@562ddbd
+2024-01-26T12:20:53.432+03:00  WARN 24812 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/vehicle/all
+2024-01-26T12:20:53.443+03:00  WARN 24812 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/vehicle/all headers org.apache.tomcat.util.http.ValuesEnumerator@5eb9f2b1
+2024-01-26T12:20:53.457+03:00  WARN 24812 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/material/all
+2024-01-26T12:20:53.467+03:00  WARN 24812 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@6294d3f
+2024-01-26T12:20:53.479+03:00  WARN 24812 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/price-category/all
+2024-01-26T12:20:53.488+03:00  WARN 24812 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@31ddfe20
+2024-01-26T12:20:53.509+03:00  WARN 24812 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2024-01-26T12:20:53.518+03:00  WARN 24812 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@2e796f05
+2024-01-26T12:21:04.610+03:00  WARN 24812 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans
+2024-01-26T12:21:04.619+03:00  WARN 24812 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@24986af4
+2024-01-26T12:21:04.648+03:00  WARN 24812 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans
+2024-01-26T12:21:04.656+03:00  WARN 24812 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@2111affb
+2024-01-26T12:21:13.566+03:00  WARN 24812 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/category
+2024-01-26T12:21:13.575+03:00  WARN 24812 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@2100f135
+2024-01-26T12:21:13.593+03:00  WARN 24812 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/category
+2024-01-26T12:21:13.602+03:00  WARN 24812 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@756b20e9
+2024-01-26T12:21:17.761+03:00  WARN 24812 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/category
+2024-01-26T12:21:17.770+03:00  WARN 24812 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@4d2d8bf1
+2024-01-26T12:21:21.727+03:00  WARN 24812 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/partition
+2024-01-26T12:21:21.735+03:00  WARN 24812 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/partition headers org.apache.tomcat.util.http.ValuesEnumerator@768e23a5
+2024-01-26T12:21:21.776+03:00  WARN 24812 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/partition
+2024-01-26T12:21:21.784+03:00  WARN 24812 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/partition headers org.apache.tomcat.util.http.ValuesEnumerator@3583af71
+2024-01-26T12:21:35.905+03:00  WARN 24812 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/trans-line
+2024-01-26T12:21:35.914+03:00  WARN 24812 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/trans-line headers org.apache.tomcat.util.http.ValuesEnumerator@7a68d0d2
+2024-01-26T12:21:35.928+03:00  WARN 24812 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans-log
+2024-01-26T12:21:35.936+03:00  WARN 24812 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans-log headers org.apache.tomcat.util.http.ValuesEnumerator@49884f17
+2024-01-26T12:21:35.984+03:00  WARN 24812 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans-log
+2024-01-26T12:21:35.992+03:00  WARN 24812 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans-log headers org.apache.tomcat.util.http.ValuesEnumerator@515cae1f
+2024-01-26T12:22:26.162+03:00  WARN 24812 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/category
+2024-01-26T12:22:26.171+03:00  WARN 24812 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@d583446
+2024-01-26T12:46:19.192+03:00  WARN 24812 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m2s541ms575µs500ns).
+2024-01-26T13:13:56.510+03:00  WARN 24812 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m6s925ms416µs200ns).
+2024-01-26T14:31:31.927+03:00  WARN 24812 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h12m5s353ms35µs900ns).
+2024-01-26T15:36:27.986+03:00  WARN 24812 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=58m55s993ms818µs300ns).
+2024-01-26T16:07:37.353+03:00  INFO 24812 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-26T16:07:37.362+03:00  INFO 24812 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-01-26T16:07:37.366+03:00  INFO 24812 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-01-26T16:17:58.579+03:00  INFO 13420 --- [main] org.example.Main                         : Starting Main using Java 20 with PID 13420 (D:\fuelRefactored\FuelCleanCode\Service\target\classes started by GIGABYTE in D:\fuelRefactored\FuelCleanCode)
+2024-01-26T16:17:58.582+03:00  INFO 13420 --- [main] org.example.Main                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-26T16:18:00.499+03:00  INFO 13420 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-26T16:18:00.678+03:00  INFO 13420 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 171 ms. Found 18 JPA repository interfaces.
+2024-01-26T16:18:01.562+03:00  INFO 13420 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9091 (http)
+2024-01-26T16:18:01.572+03:00  INFO 13420 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-26T16:18:01.573+03:00  INFO 13420 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.7]
+2024-01-26T16:18:01.710+03:00  INFO 13420 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-26T16:18:01.711+03:00  INFO 13420 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3077 ms
+2024-01-26T16:18:02.097+03:00  INFO 13420 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-26T16:18:02.157+03:00  INFO 13420 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2024-01-26T16:18:02.469+03:00  INFO 13420 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-01-26T16:18:02.669+03:00  INFO 13420 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7a78d380
+2024-01-26T16:18:02.672+03:00  INFO 13420 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-01-26T16:18:02.719+03:00  WARN 13420 --- [main] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.0 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 5.7.0. Check the community dialects project for available legacy versions.
+2024-01-26T16:18:02.725+03:00  INFO 13420 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2024-01-26T16:18:04.451+03:00  INFO 13420 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-01-26T16:18:04.458+03:00  INFO 13420 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-26T16:18:05.048+03:00  WARN 13420 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.PartitionRepository
+2024-01-26T16:18:05.765+03:00  WARN 13420 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.TransLogRepository
+2024-01-26T16:18:05.940+03:00  WARN 13420 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-26T16:18:06.694+03:00  INFO 13420 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-01-26T16:18:06.790+03:00  INFO 13420 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9091 (http) with context path ''
+2024-01-26T16:18:06.805+03:00  INFO 13420 --- [main] org.example.Main                         : Started Main in 8.641 seconds (process running for 10.756)
+2024-01-26T16:18:47.387+03:00  INFO 13420 --- [http-nio-9091-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-01-26T16:18:47.387+03:00  INFO 13420 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-01-26T16:18:47.389+03:00  INFO 13420 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-01-26T16:18:47.472+03:00  WARN 13420 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/region
+2024-01-26T16:18:47.531+03:00  WARN 13420 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/region headers org.apache.tomcat.util.http.ValuesEnumerator@6fb87d5a
+2024-01-26T16:19:19.336+03:00  WARN 13420 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/region
+2024-01-26T16:19:19.394+03:00  WARN 13420 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/region headers org.apache.tomcat.util.http.ValuesEnumerator@58d045ab
+2024-01-26T16:19:19.550+03:00  WARN 13420 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/region
+2024-01-26T16:19:19.570+03:00  WARN 13420 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/region headers org.apache.tomcat.util.http.ValuesEnumerator@596cab19
+2024-01-26T16:19:29.441+03:00  WARN 13420 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/region
+2024-01-26T16:19:29.466+03:00  WARN 13420 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/region headers org.apache.tomcat.util.http.ValuesEnumerator@67a3fca
+2024-01-26T16:20:32.868+03:00  WARN 13420 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/region
+2024-01-26T16:20:32.888+03:00  WARN 13420 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/region headers org.apache.tomcat.util.http.ValuesEnumerator@569416b
+2024-01-26T16:20:47.868+03:00  WARN 13420 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/region
+2024-01-26T16:20:47.884+03:00  WARN 13420 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/region headers org.apache.tomcat.util.http.ValuesEnumerator@79742d5
+2024-01-26T16:20:59.872+03:00  WARN 13420 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/region
+2024-01-26T16:20:59.922+03:00  WARN 13420 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/region headers org.apache.tomcat.util.http.ValuesEnumerator@7207601c
+2024-01-26T16:21:00.045+03:00  WARN 13420 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/region
+2024-01-26T16:21:00.094+03:00  WARN 13420 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/region headers org.apache.tomcat.util.http.ValuesEnumerator@7503771b
+2024-01-26T16:21:06.422+03:00  WARN 13420 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/region
+2024-01-26T16:21:06.469+03:00  WARN 13420 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/region headers org.apache.tomcat.util.http.ValuesEnumerator@6833a589
+2024-01-26T16:21:11.387+03:00  WARN 13420 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/region
+2024-01-26T16:21:11.437+03:00  WARN 13420 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/region headers org.apache.tomcat.util.http.ValuesEnumerator@1a0bf583
+2024-01-26T16:21:11.501+03:00  WARN 13420 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/region
+2024-01-26T16:21:11.528+03:00  WARN 13420 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/region headers org.apache.tomcat.util.http.ValuesEnumerator@330871f4
+2024-01-26T16:21:15.249+03:00  WARN 13420 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/region
+2024-01-26T16:21:15.295+03:00  WARN 13420 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/region headers org.apache.tomcat.util.http.ValuesEnumerator@17a1a5a6
+2024-01-26T16:21:19.250+03:00  WARN 13420 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/region
+2024-01-26T16:21:19.297+03:00  WARN 13420 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/region headers org.apache.tomcat.util.http.ValuesEnumerator@6be6f75d
+2024-01-26T16:21:19.361+03:00  WARN 13420 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/region
+2024-01-26T16:21:19.405+03:00  WARN 13420 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/region headers org.apache.tomcat.util.http.ValuesEnumerator@4e9d553d
+2024-01-26T16:21:35.869+03:00  WARN 13420 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/region
+2024-01-26T16:21:35.914+03:00  WARN 13420 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/region headers org.apache.tomcat.util.http.ValuesEnumerator@460dba23
+2024-01-26T16:21:41.657+03:00  WARN 13420 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/region
+2024-01-26T16:21:41.702+03:00  WARN 13420 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/region headers org.apache.tomcat.util.http.ValuesEnumerator@7715671f
+2024-01-26T16:21:50.847+03:00  WARN 13420 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/region
+2024-01-26T16:21:50.857+03:00  WARN 13420 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/region headers org.apache.tomcat.util.http.ValuesEnumerator@41c1e9a4
+2024-01-26T16:21:50.860+03:00 ERROR 13420 --- [http-nio-9091-exec-9] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0] with root cause
 
-com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0
+	at org.example.specifications.CriteriaArrayToList.getCriteriaList(CriteriaArrayToList.java:11) ~[classes/:na]
+	at org.example.controllers.RegionController.listRegion(RegionController.java:56) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:152) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1081) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:537) ~[tomcat-embed-core-10.1.7.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:631) ~[tomcat-embed-core-10.1.7.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.example.security.CustomFilter.doFilter(CustomFilter.java:84) ~[classes/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:109) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:493) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at java.base/java.lang.Thread.run(Thread.java:1623) ~[na:na]
 
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:824) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:444) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[HikariCP-5.0.1.jar:na]
-	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359) ~[HikariCP-5.0.1.jar:na]
-	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201) ~[HikariCP-5.0.1.jar:na]
-	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470) ~[HikariCP-5.0.1.jar:na]
-	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561) ~[HikariCP-5.0.1.jar:na]
-	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100) ~[HikariCP-5.0.1.jar:na]
-	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112) ~[HikariCP-5.0.1.jar:na]
-	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:284) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:177) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:36) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:119) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:255) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:230) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:207) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.boot.model.relational.Database.<init>(Database.java:44) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:218) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:191) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:138) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1348) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1419) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:66) ~[spring-orm-6.0.7.jar:6.0.7]
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:376) ~[spring-orm-6.0.7.jar:6.0.7]
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.0.7.jar:6.0.7]
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.0.7.jar:6.0.7]
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:352) ~[spring-orm-6.0.7.jar:6.0.7]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1816) ~[spring-beans-6.0.7.jar:6.0.7]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1766) ~[spring-beans-6.0.7.jar:6.0.7]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598) ~[spring-beans-6.0.7.jar:6.0.7]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520) ~[spring-beans-6.0.7.jar:6.0.7]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.0.7.jar:6.0.7]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.0.7.jar:6.0.7]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.0.7.jar:6.0.7]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.0.7.jar:6.0.7]
-	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1132) ~[spring-context-6.0.7.jar:6.0.7]
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:907) ~[spring-context-6.0.7.jar:6.0.7]
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:584) ~[spring-context-6.0.7.jar:6.0.7]
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.0.5.jar:3.0.5]
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:732) ~[spring-boot-3.0.5.jar:3.0.5]
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:434) ~[spring-boot-3.0.5.jar:3.0.5]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:310) ~[spring-boot-3.0.5.jar:3.0.5]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1304) ~[spring-boot-3.0.5.jar:3.0.5]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1293) ~[spring-boot-3.0.5.jar:3.0.5]
-	at org.example.Main.main(Main.java:9) ~[classes/:na]
-Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67) ~[na:na]
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500) ~[na:na]
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:484) ~[na:na]
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.NativeSession.connect(NativeSession.java:120) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:944) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:814) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	... 47 common frames omitted
-Caused by: java.net.UnknownHostException: No such host is known (fuelDB)
-	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method) ~[na:na]
-	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Inet6AddressImpl.java:52) ~[na:na]
-	at java.base/java.net.InetAddress$PlatformResolver.lookupByName(InetAddress.java:1060) ~[na:na]
-	at java.base/java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1674) ~[na:na]
-	at java.base/java.net.InetAddress$NameServiceAddresses.get(InetAddress.java:1004) ~[na:na]
-	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1664) ~[na:na]
-	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1529) ~[na:na]
-	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:130) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	... 50 common frames omitted
-
-2024-01-24T22:41:24.961+03:00  WARN 17784 --- [main] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata
-
-com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:824) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:444) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[HikariCP-5.0.1.jar:na]
-	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359) ~[HikariCP-5.0.1.jar:na]
-	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201) ~[HikariCP-5.0.1.jar:na]
-	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470) ~[HikariCP-5.0.1.jar:na]
-	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561) ~[HikariCP-5.0.1.jar:na]
-	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100) ~[HikariCP-5.0.1.jar:na]
-	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112) ~[HikariCP-5.0.1.jar:na]
-	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:284) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:177) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:36) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:119) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:255) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:230) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:207) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.boot.model.relational.Database.<init>(Database.java:44) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:218) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:191) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:138) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1348) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1419) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:66) ~[spring-orm-6.0.7.jar:6.0.7]
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:376) ~[spring-orm-6.0.7.jar:6.0.7]
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.0.7.jar:6.0.7]
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.0.7.jar:6.0.7]
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:352) ~[spring-orm-6.0.7.jar:6.0.7]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1816) ~[spring-beans-6.0.7.jar:6.0.7]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1766) ~[spring-beans-6.0.7.jar:6.0.7]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598) ~[spring-beans-6.0.7.jar:6.0.7]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520) ~[spring-beans-6.0.7.jar:6.0.7]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.0.7.jar:6.0.7]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.0.7.jar:6.0.7]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.0.7.jar:6.0.7]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.0.7.jar:6.0.7]
-	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1132) ~[spring-context-6.0.7.jar:6.0.7]
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:907) ~[spring-context-6.0.7.jar:6.0.7]
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:584) ~[spring-context-6.0.7.jar:6.0.7]
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.0.5.jar:3.0.5]
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:732) ~[spring-boot-3.0.5.jar:3.0.5]
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:434) ~[spring-boot-3.0.5.jar:3.0.5]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:310) ~[spring-boot-3.0.5.jar:3.0.5]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1304) ~[spring-boot-3.0.5.jar:3.0.5]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1293) ~[spring-boot-3.0.5.jar:3.0.5]
-	at org.example.Main.main(Main.java:9) ~[classes/:na]
-Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67) ~[na:na]
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500) ~[na:na]
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:484) ~[na:na]
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.NativeSession.connect(NativeSession.java:120) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:944) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:814) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	... 47 common frames omitted
-Caused by: java.net.UnknownHostException: No such host is known (fuelDB)
-	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method) ~[na:na]
-	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Inet6AddressImpl.java:52) ~[na:na]
-	at java.base/java.net.InetAddress$PlatformResolver.lookupByName(InetAddress.java:1060) ~[na:na]
-	at java.base/java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1674) ~[na:na]
-	at java.base/java.net.InetAddress$NameServiceAddresses.get(InetAddress.java:1004) ~[na:na]
-	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1664) ~[na:na]
-	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1529) ~[na:na]
-	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:130) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	... 50 common frames omitted
-
-2024-01-24T22:41:24.974+03:00  WARN 17784 --- [main] org.hibernate.dialect.Dialect            : HHH000511: The 5.0.0 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 5.7.0. Check the community dialects project for available legacy versions.
-2024-01-24T22:41:24.976+03:00  INFO 17784 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
-2024-01-24T22:41:26.170+03:00  INFO 17784 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-01-24T22:41:27.173+03:00 ERROR 17784 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
-
-com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:824) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:444) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[HikariCP-5.0.1.jar:na]
-	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359) ~[HikariCP-5.0.1.jar:na]
-	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201) ~[HikariCP-5.0.1.jar:na]
-	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470) ~[HikariCP-5.0.1.jar:na]
-	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561) ~[HikariCP-5.0.1.jar:na]
-	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100) ~[HikariCP-5.0.1.jar:na]
-	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112) ~[HikariCP-5.0.1.jar:na]
-	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:284) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:41) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.tool.schema.internal.exec.ImprovedExtractionContextImpl.getJdbcConnection(ImprovedExtractionContextImpl.java:63) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.tool.schema.internal.exec.ImprovedExtractionContextImpl.getJdbcDatabaseMetaData(ImprovedExtractionContextImpl.java:70) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.tool.schema.extract.internal.InformationExtractorJdbcDatabaseMetaDataImpl.processTableResultSet(InformationExtractorJdbcDatabaseMetaDataImpl.java:64) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.tool.schema.extract.internal.AbstractInformationExtractorImpl.getTables(AbstractInformationExtractorImpl.java:564) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl.getTablesInformation(DatabaseInformationImpl.java:122) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:71) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:225) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:126) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:284) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:143) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at java.base/java.util.HashMap.forEach(HashMap.java:1429) ~[na:na]
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:140) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:336) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:415) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1423) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:66) ~[spring-orm-6.0.7.jar:6.0.7]
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:376) ~[spring-orm-6.0.7.jar:6.0.7]
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.0.7.jar:6.0.7]
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.0.7.jar:6.0.7]
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:352) ~[spring-orm-6.0.7.jar:6.0.7]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1816) ~[spring-beans-6.0.7.jar:6.0.7]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1766) ~[spring-beans-6.0.7.jar:6.0.7]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598) ~[spring-beans-6.0.7.jar:6.0.7]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520) ~[spring-beans-6.0.7.jar:6.0.7]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.0.7.jar:6.0.7]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.0.7.jar:6.0.7]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.0.7.jar:6.0.7]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.0.7.jar:6.0.7]
-	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1132) ~[spring-context-6.0.7.jar:6.0.7]
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:907) ~[spring-context-6.0.7.jar:6.0.7]
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:584) ~[spring-context-6.0.7.jar:6.0.7]
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.0.5.jar:3.0.5]
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:732) ~[spring-boot-3.0.5.jar:3.0.5]
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:434) ~[spring-boot-3.0.5.jar:3.0.5]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:310) ~[spring-boot-3.0.5.jar:3.0.5]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1304) ~[spring-boot-3.0.5.jar:3.0.5]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1293) ~[spring-boot-3.0.5.jar:3.0.5]
-	at org.example.Main.main(Main.java:9) ~[classes/:na]
-Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67) ~[na:na]
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500) ~[na:na]
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:484) ~[na:na]
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.NativeSession.connect(NativeSession.java:120) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:944) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:814) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	... 51 common frames omitted
-Caused by: java.net.UnknownHostException: fuelDB
-	at java.base/java.net.InetAddress$CachedAddresses.get(InetAddress.java:953) ~[na:na]
-	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1664) ~[na:na]
-	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1529) ~[na:na]
-	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:130) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	... 54 common frames omitted
-
-2024-01-24T22:41:27.178+03:00  WARN 17784 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 08S01
-2024-01-24T22:41:27.178+03:00 ERROR 17784 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-2024-01-24T22:41:27.180+03:00 ERROR 17784 --- [main] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
-2024-01-24T22:41:27.180+03:00  WARN 17784 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
-2024-01-24T22:41:27.183+03:00  INFO 17784 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2024-01-24T22:41:27.198+03:00  INFO 17784 --- [main] .s.b.a.l.ConditionEvaluationReportLogger : 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2024-01-24T22:41:27.213+03:00 ERROR 17784 --- [main] o.s.boot.SpringApplication               : Application run failed
-
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1770) ~[spring-beans-6.0.7.jar:6.0.7]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598) ~[spring-beans-6.0.7.jar:6.0.7]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520) ~[spring-beans-6.0.7.jar:6.0.7]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.0.7.jar:6.0.7]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.0.7.jar:6.0.7]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.0.7.jar:6.0.7]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.0.7.jar:6.0.7]
-	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1132) ~[spring-context-6.0.7.jar:6.0.7]
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:907) ~[spring-context-6.0.7.jar:6.0.7]
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:584) ~[spring-context-6.0.7.jar:6.0.7]
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.0.5.jar:3.0.5]
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:732) ~[spring-boot-3.0.5.jar:3.0.5]
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:434) ~[spring-boot-3.0.5.jar:3.0.5]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:310) ~[spring-boot-3.0.5.jar:3.0.5]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1304) ~[spring-boot-3.0.5.jar:3.0.5]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1293) ~[spring-boot-3.0.5.jar:3.0.5]
-	at org.example.Main.main(Main.java:9) ~[classes/:na]
-Caused by: jakarta.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:421) ~[spring-orm-6.0.7.jar:6.0.7]
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.0.7.jar:6.0.7]
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:352) ~[spring-orm-6.0.7.jar:6.0.7]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1816) ~[spring-beans-6.0.7.jar:6.0.7]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1766) ~[spring-beans-6.0.7.jar:6.0.7]
-	... 16 common frames omitted
-Caused by: org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
-	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:98) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:56) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:109) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:95) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:68) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.tool.schema.internal.exec.ImprovedExtractionContextImpl.getJdbcConnection(ImprovedExtractionContextImpl.java:63) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.tool.schema.internal.exec.ImprovedExtractionContextImpl.getJdbcDatabaseMetaData(ImprovedExtractionContextImpl.java:70) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.tool.schema.extract.internal.InformationExtractorJdbcDatabaseMetaDataImpl.processTableResultSet(InformationExtractorJdbcDatabaseMetaDataImpl.java:64) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.tool.schema.extract.internal.AbstractInformationExtractorImpl.getTables(AbstractInformationExtractorImpl.java:564) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl.getTablesInformation(DatabaseInformationImpl.java:122) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:71) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:225) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:126) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:284) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:143) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at java.base/java.util.HashMap.forEach(HashMap.java:1429) ~[na:na]
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:140) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:336) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:415) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1423) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:66) ~[spring-orm-6.0.7.jar:6.0.7]
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:376) ~[spring-orm-6.0.7.jar:6.0.7]
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.0.7.jar:6.0.7]
-	... 20 common frames omitted
-Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:824) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:444) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[HikariCP-5.0.1.jar:na]
-	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359) ~[HikariCP-5.0.1.jar:na]
-	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201) ~[HikariCP-5.0.1.jar:na]
-	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470) ~[HikariCP-5.0.1.jar:na]
-	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561) ~[HikariCP-5.0.1.jar:na]
-	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100) ~[HikariCP-5.0.1.jar:na]
-	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112) ~[HikariCP-5.0.1.jar:na]
-	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:284) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:41) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
-	... 38 common frames omitted
-Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67) ~[na:na]
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500) ~[na:na]
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:484) ~[na:na]
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.NativeSession.connect(NativeSession.java:120) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:944) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:814) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	... 51 common frames omitted
-Caused by: java.net.UnknownHostException: fuelDB
-	at java.base/java.net.InetAddress$CachedAddresses.get(InetAddress.java:953) ~[na:na]
-	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1664) ~[na:na]
-	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1529) ~[na:na]
-	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:130) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63) ~[mysql-connector-j-8.0.32.jar:8.0.32]
-	... 54 common frames omitted
-
+2024-01-26T16:23:57.433+03:00  WARN 13420 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/region
+2024-01-26T16:23:57.447+03:00  WARN 13420 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/region headers org.apache.tomcat.util.http.ValuesEnumerator@603b090f
+2024-01-26T16:24:06.893+03:00  WARN 13420 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/region
+2024-01-26T16:24:06.937+03:00  WARN 13420 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/region headers org.apache.tomcat.util.http.ValuesEnumerator@386d88a7
+2024-01-26T16:24:10.260+03:00  WARN 13420 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/region
+2024-01-26T16:24:10.305+03:00  WARN 13420 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/region headers org.apache.tomcat.util.http.ValuesEnumerator@323cb856
+2024-01-26T16:24:19.454+03:00  WARN 13420 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/region
+2024-01-26T16:24:19.496+03:00  WARN 13420 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/region headers org.apache.tomcat.util.http.ValuesEnumerator@7376e88a
+2024-01-26T16:25:16.512+03:00  WARN 13420 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/refinery
+2024-01-26T16:25:16.556+03:00  WARN 13420 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/refinery headers org.apache.tomcat.util.http.ValuesEnumerator@16330063
+2024-01-26T16:25:21.626+03:00  WARN 13420 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/region/all
+2024-01-26T16:25:21.637+03:00  WARN 13420 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@20367ff0
+2024-01-26T16:25:27.116+03:00  WARN 13420 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station
+2024-01-26T16:25:27.159+03:00  WARN 13420 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station headers org.apache.tomcat.util.http.ValuesEnumerator@e4163d0
+2024-01-26T16:26:06.868+03:00  INFO 13420 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-26T16:26:06.872+03:00  INFO 13420 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-01-26T16:26:06.887+03:00  INFO 13420 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-01-26T16:26:53.285+03:00  INFO 18824 --- [main] org.example.Main                         : Starting Main using Java 20 with PID 18824 (D:\fuelRefactored\FuelCleanCode\Service\target\classes started by GIGABYTE in D:\fuelRefactored\FuelCleanCode)
+2024-01-26T16:26:53.287+03:00  INFO 18824 --- [main] org.example.Main                         : No active profile set, falling back to 1 default profile: "default"
+2024-01-26T16:26:54.577+03:00  INFO 18824 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-26T16:26:54.762+03:00  INFO 18824 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 176 ms. Found 18 JPA repository interfaces.
+2024-01-26T16:26:55.586+03:00  INFO 18824 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9091 (http)
+2024-01-26T16:26:55.598+03:00  INFO 18824 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-26T16:26:55.599+03:00  INFO 18824 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.7]
+2024-01-26T16:26:55.714+03:00  INFO 18824 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-26T16:26:55.714+03:00  INFO 18824 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2373 ms
+2024-01-26T16:26:56.063+03:00  INFO 18824 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-26T16:26:56.112+03:00  INFO 18824 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2024-01-26T16:26:56.430+03:00  INFO 18824 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-01-26T16:26:56.604+03:00  INFO 18824 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@38848217
+2024-01-26T16:26:56.606+03:00  INFO 18824 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-01-26T16:26:56.652+03:00  WARN 18824 --- [main] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.0 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 5.7.0. Check the community dialects project for available legacy versions.
+2024-01-26T16:26:56.659+03:00  INFO 18824 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2024-01-26T16:26:58.342+03:00  INFO 18824 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-01-26T16:26:58.350+03:00  INFO 18824 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-26T16:26:58.900+03:00  WARN 18824 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.PartitionRepository
+2024-01-26T16:26:59.530+03:00  WARN 18824 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.TransLogRepository
+2024-01-26T16:26:59.688+03:00  WARN 18824 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-26T16:27:00.403+03:00  INFO 18824 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-01-26T16:27:00.497+03:00  INFO 18824 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9091 (http) with context path ''
+2024-01-26T16:27:00.516+03:00  INFO 18824 --- [main] org.example.Main                         : Started Main in 7.731 seconds (process running for 8.285)
+2024-01-26T17:23:30.383+03:00  WARN 18824 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=26m7s888ms281µs).

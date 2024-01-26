@@ -5,6 +5,7 @@ import com.example.model.TableController;
 import com.example.model.modal.Modal;
 import com.example.model.refinery.RefineryService;
 import com.example.model.tools.FormType;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.model.Refinery;
 import org.example.model.Region;
+import org.example.model.Transportation;
 
 import java.util.List;
 import java.util.Objects;
@@ -54,7 +56,11 @@ public class Refineries implements TableController {
         TableColumn<Refinery, String> updatedAtCol = new TableColumn<>("تاريخ التعديل");
         updatedAtCol.setCellValueFactory(
                 new PropertyValueFactory<>("updatedAt"));
-        tableTbl.getColumns().addAll(idColumn, nameColumn, translationColumn, createdAtCol, updatedAtCol);
+
+        TableColumn<Refinery, String> regionCol = new TableColumn<>("region");
+        regionCol.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getRegion().getName()));
+
+        tableTbl.getColumns().addAll(idColumn, nameColumn, translationColumn, createdAtCol, regionCol, updatedAtCol);
         tableTbl.setItems(refineries);
     }
 

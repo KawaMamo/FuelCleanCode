@@ -8,7 +8,7 @@ import org.example.model.Region;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-01-24T22:41:02+0300",
+    date = "2024-01-26T16:17:41+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class RegionDomainMapperImpl implements RegionDomainMapper {
@@ -22,6 +22,7 @@ public class RegionDomainMapperImpl implements RegionDomainMapper {
         Region region = new Region();
 
         region.setName( request.getName() );
+        region.setTranslation( request.getTranslation() );
 
         return region;
     }
@@ -54,6 +55,7 @@ public class RegionDomainMapperImpl implements RegionDomainMapper {
 
         region.setId( request.getId() );
         region.setName( request.getName() );
+        region.setTranslation( request.getTranslation() );
 
         return region;
     }

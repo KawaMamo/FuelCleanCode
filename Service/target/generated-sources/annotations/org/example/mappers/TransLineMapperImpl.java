@@ -21,7 +21,7 @@ import org.example.model.TransLine;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-01-24T22:41:12+0300",
+    date = "2024-01-26T16:17:53+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class TransLineMapperImpl implements TransLineMapper {
@@ -119,7 +119,6 @@ public class TransLineMapperImpl implements TransLineMapper {
         refineryEntity.setUpdatedAt( refinery.getUpdatedAt() );
         refineryEntity.setName( refinery.getName() );
         refineryEntity.setTranslation( refinery.getTranslation() );
-        refineryEntity.setRegion( RegionToEntity( refinery.getRegion() ) );
 
         return refineryEntity;
     }
@@ -180,7 +179,6 @@ public class TransLineMapperImpl implements TransLineMapper {
         refinery1.setPlaceType( refinery.getPlaceType() );
         refinery1.setCreatedAt( refinery.getCreatedAt() );
         refinery1.setUpdatedAt( refinery.getUpdatedAt() );
-        refinery1.setRegion( RegionToDomain( refinery.getRegion() ) );
 
         return refinery1;
     }

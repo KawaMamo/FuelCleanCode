@@ -116,6 +116,7 @@ public class AddTransportation {
     private final TransLogService transLogService = TransLogService.getInstance();
 
     private Long selectedRefineryId;
+    private Long selectedRefineryRegionId;
     private Long selectedVehicleId;
     private Long selectedGasStationId;
     private Long selectedRegionId;
@@ -159,7 +160,8 @@ public class AddTransportation {
                 if(refineryTF.getText().length()>0){
                     final Refinery refinery = items.get(refineryNames.indexOf(refineryTF.getText()));
                     selectedRefineryId = refinery.getId();
-                    sourceTF.setText(refinery.getName());
+                    selectedRefineryRegionId = refinery.getRegion().getId();
+                    sourceTF.setText(refinery.getRegion().getName());
                 }
             }
         });
@@ -427,12 +429,13 @@ public class AddTransportation {
     void addLineFee() {
         final List<TransLine> transLineList = transLineService.getItems(0,
                 10,
-                "&key=source&value=" + selectedRefineryId + "&operation=%3A" +
+                "&key=source&value=" + selectedRefineryRegionId + "&operation=%3A" +
                         "&key=destination&value=" + selectedRegionId + "&operation=%3A&sort=id,desc");
         final TransLine transLine = transLineList.get(0);
         final CreateTransLogRequest createTransLogRequest = new CreateTransLogRequest(transportation.getVehicle().getId(),
                 transLine.getId(),
-                new Money(transLine.getFee().getCurrency(), transLine.getFee().getAmount()*Double.parseDouble(partAmountTF.getText().replaceAll(",", ""))),
+                new Money(transLine.getFee().getCurrency(),
+                        transLine.getFee().getAmount()*Double.parseDouble(partAmountTF.getText().replaceAll(",", ""))),
                 transportation.getId(),
                 lineNotesTF.getText());
         final TransLog transLog = transLogService.addItem(createTransLogRequest);

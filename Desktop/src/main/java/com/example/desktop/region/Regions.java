@@ -50,7 +50,10 @@ public class Regions implements TableController {
         TableColumn<Region, String> updatedAtCol = new TableColumn<>("تاريخ التعديل");
         updatedAtCol.setCellValueFactory(
                 new PropertyValueFactory<>("updatedAt"));
-        tableTbl.getColumns().addAll(idColumn, nameColumn, createdAtCol, updatedAtCol);
+        TableColumn<Region, String> translationColumn = new TableColumn<>("translation");
+        translationColumn.setCellValueFactory(new PropertyValueFactory<>("translation"));
+
+        tableTbl.getColumns().addAll(idColumn, nameColumn, translationColumn, createdAtCol, updatedAtCol);
         tableTbl.setItems(regions);
     }
 

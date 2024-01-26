@@ -8,7 +8,7 @@ import org.example.model.Region;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-01-24T22:41:12+0300",
+    date = "2024-01-26T16:17:53+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class RefineryMapperImpl implements RefineryMapper {
@@ -21,13 +21,13 @@ public class RefineryMapperImpl implements RefineryMapper {
 
         RefineryEntity refineryEntity = new RefineryEntity();
 
+        refineryEntity.setRegionEntity( regionToRegionEntity( refinery.getRegion() ) );
         refineryEntity.setId( refinery.getId() );
         refineryEntity.setPlaceType( refinery.getPlaceType() );
         refineryEntity.setCreatedAt( refinery.getCreatedAt() );
         refineryEntity.setUpdatedAt( refinery.getUpdatedAt() );
         refineryEntity.setName( refinery.getName() );
         refineryEntity.setTranslation( refinery.getTranslation() );
-        refineryEntity.setRegion( regionToRegionEntity( refinery.getRegion() ) );
 
         return refineryEntity;
     }
@@ -40,13 +40,13 @@ public class RefineryMapperImpl implements RefineryMapper {
 
         Refinery refinery = new Refinery();
 
+        refinery.setRegion( regionEntityToRegion( refineryEntity.getRegionEntity() ) );
         refinery.setId( refineryEntity.getId() );
         refinery.setName( refineryEntity.getName() );
         refinery.setTranslation( refineryEntity.getTranslation() );
         refinery.setPlaceType( refineryEntity.getPlaceType() );
         refinery.setCreatedAt( refineryEntity.getCreatedAt() );
         refinery.setUpdatedAt( refineryEntity.getUpdatedAt() );
-        refinery.setRegion( regionEntityToRegion( refineryEntity.getRegion() ) );
 
         return refinery;
     }

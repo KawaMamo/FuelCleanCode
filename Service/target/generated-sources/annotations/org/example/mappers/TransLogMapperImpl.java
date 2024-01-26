@@ -25,7 +25,7 @@ import org.mapstruct.factory.Mappers;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-01-24T22:41:12+0300",
+    date = "2024-01-26T16:17:52+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class TransLogMapperImpl implements TransLogMapper {

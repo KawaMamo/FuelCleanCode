@@ -9,4 +9,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CreateRegionRequest {
     private String name;
+    private String translation;
 }

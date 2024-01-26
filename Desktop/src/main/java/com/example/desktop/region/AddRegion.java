@@ -23,6 +23,8 @@ public class AddRegion {
 
     @FXML
     private TextField nameTF;
+    @FXML
+    private TextField translationTF;
 
     @FXML
     private Button submitBtn;
@@ -34,19 +36,23 @@ public class AddRegion {
         if(formType.equals(FormType.UPDATE)){
             final Region region = regionService.getItem(Regions.selectedRegion.getId());
             nameTF.setText(region.getName());
+            translationTF.setText(region.getTranslation());
         }
     }
     @FXML
     void submit() {
         final Region region;
         if(formType.equals(FormType.UPDATE)){
-            region = regionService.editItem(new UpdateRegionRequest(Regions.selectedRegion.getId(), nameTF.getText()));
+            region = regionService.editItem(new UpdateRegionRequest(Regions.selectedRegion.getId(), nameTF.getText(), translationTF.getText()));
         }else if(formType.equals(FormType.CREATE)){
-            region = regionService.addItem(new CreateRegionRequest(nameTF.getText()));
+            region = regionService.addItem(new CreateRegionRequest(nameTF.getText(), translationTF.getText()));
         }else {
             region = new Region();
             final QueryBuilder queryBuilder = new QueryBuilder();
-            queryBuilder.addQueryParameter("name", nameTF.getText());
+            if(nameTF.getText().length()>0)
+                queryBuilder.addQueryParameter("name", nameTF.getText());
+            if(translationTF.getText().length()>0)
+                queryBuilder.addQueryParameter("translation", translationTF.getText());
             queryBuilder.sort();
             controller.setQuery(queryBuilder.getQuery());
         }

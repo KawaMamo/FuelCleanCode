@@ -17,7 +17,7 @@ public class RefineryEntity extends PlaceEntity {
 
 
     @OneToOne
-    private RegionEntity region;
+    private RegionEntity regionEntity;
     @Override
     public final boolean equals(Object object) {
         if (this == object) return true;

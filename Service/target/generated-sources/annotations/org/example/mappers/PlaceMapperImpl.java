@@ -18,7 +18,7 @@ import org.example.model.Region;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-01-24T22:41:12+0300",
+    date = "2024-01-26T16:17:53+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class PlaceMapperImpl implements PlaceMapper {
@@ -61,7 +61,6 @@ public class PlaceMapperImpl implements PlaceMapper {
         refineryEntity.setUpdatedAt( refinery.getUpdatedAt() );
         refineryEntity.setName( refinery.getName() );
         refineryEntity.setTranslation( refinery.getTranslation() );
-        refineryEntity.setRegion( regionToRegionEntity( refinery.getRegion() ) );
 
         return refineryEntity;
     }
@@ -104,7 +103,6 @@ public class PlaceMapperImpl implements PlaceMapper {
         refinery1.setPlaceType( refinery.getPlaceType() );
         refinery1.setCreatedAt( refinery.getCreatedAt() );
         refinery1.setUpdatedAt( refinery.getUpdatedAt() );
-        refinery1.setRegion( regionEntityToRegion( refinery.getRegion() ) );
 
         return refinery1;
     }

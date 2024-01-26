@@ -1,6 +1,7 @@
 package com.example.desktop.user;
 
 import com.example.desktop.HelloApplication;
+import com.example.model.client.Client;
 import com.example.model.modal.Modal;
 import com.example.model.user.LogInData;
 import javafx.fxml.FXML;
@@ -18,6 +19,7 @@ public class UserSection {
 
     @FXML
     private void logout(){
+        Client.setAuthorization(null);
         HelloApplication.setScene("hello-view");
     }
 
