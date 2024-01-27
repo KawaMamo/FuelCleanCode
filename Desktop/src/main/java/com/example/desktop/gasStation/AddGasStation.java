@@ -161,6 +161,7 @@ public class AddGasStation {
             selectedRegionId = gasStation.getRegion().getId();
             selectedGroupId = gasStation.getGroup().getId();
             selectedMaterialId = gasStation.getMaterial().getId();
+            translationTF.setText(gasStation.getTranslation());
         }
     }
     @FXML

@@ -33,6 +33,8 @@ import org.example.model.*;
 
 import java.text.NumberFormat;
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -62,7 +64,7 @@ public class AddTransportation {
 
 
     @FXML
-    private TextField materialTF;
+    private ChoiceBox<String> materialTF;
 
     @FXML
     private TextField notesTF;
@@ -138,7 +140,7 @@ public class AddTransportation {
         dateDP.setValue(LocalDate.now());
 
         final List<Refinery> items = refineryService.getItems(null, null);
-        final List<String> refineryNames = items.stream().map(Place::getName).toList();
+        final List<String> refineryNames = items.stream().map(Place::getTranslation).toList();
         TextFields.bindAutoCompletion(refineryTF, refineryNames);
 
 
@@ -148,7 +150,7 @@ public class AddTransportation {
 
         final List<Material> materials = materialService.getItems(null, null);
         final List<String> materialNames = materials.stream().map(Material::getName).toList();
-        TextFields.bindAutoCompletion(materialTF, materialNames);
+        materialTF.setItems(FXCollections.observableList(materialNames));
 
         final List<PriceCategory> priceCategories = priceCategoryService.getItems(null, null);
         final List<String> priceCatNames = priceCategories.stream().map(PriceCategory::getName).toList();
@@ -179,7 +181,7 @@ public class AddTransportation {
         });
 
         final List<GasStation> gasStations = gasStationService.getItems(null, null);
-        final List<String> stationList = gasStations.stream().map(GasStation::getName).toList();
+        final List<String> stationList = gasStations.stream().map(GasStation::getTranslation).toList();
         TextFields.bindAutoCompletion(stationTF, stationList);
 
         stationTF.focusedProperty().addListener(new ChangeListener<Boolean>() {
@@ -191,7 +193,7 @@ public class AddTransportation {
                     destinationTF.setText(gasStation.getRegion().getName());
                     selectedRegionId = gasStation.getRegion().getId();
                     priceCateTF.setText(gasStation.getPriceCategory().getName());
-                    materialTF.setText(gasStation.getMaterial().getName());
+                    materialTF.setValue(gasStation.getMaterial().getName());
                     selectedMaterialId = gasStation.getMaterial().getId();
                     partAmountTF.setText(sizeTF.getText());
                     categories = categoryService.getItems(0,
@@ -226,8 +228,8 @@ public class AddTransportation {
         materialTF.focusedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
-                if(materialTF.getText().length()>0){
-                    final Material material = materials.get(materialNames.indexOf(materialTF.getText()));
+                if(materialTF.getValue().length()>0){
+                    final Material material = materials.get(materialNames.indexOf(materialTF.getValue()));
                     if(Objects.nonNull(material)) {
                         selectedMaterialId = material.getId();
                         categories = categoryService.getItems(0,
@@ -263,7 +265,7 @@ public class AddTransportation {
                     final GasStation gasStation = t1.getGasStation();
                     stationTF.setText(gasStation.getName());
                     notesTF.setText(t1.getNotes());
-                    materialTF.setText(t1.getMaterial().getName());
+                    materialTF.setValue(t1.getMaterial().getName());
                     partAmountTF.setText(t1.getAmount().toString());
                     priceLbl.setText(t1.getPrice().getAmount()+" "+t1.getPrice().getCurrency());
                     selectedMaterialId = t1.getMaterial().getId();
