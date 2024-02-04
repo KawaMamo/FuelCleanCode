@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4_1" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="52f9eba1-679d-4b04-ac5c-ba13ef85d628">
+    <property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+    <property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="479"/>
+    <property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="521"/>
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.jrdax"/>
+    <property name="com.jaspersoft.studio.unit." value="pixel"/>
+    <property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+    <property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+    <property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+    <property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+    <property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+    <property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+    <property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+    <property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+    <parameter name="nowLocalDT" class="java.time.LocalDateTime"/>
+    <parameter name="transportationId" class="java.lang.String"/>
+    <parameter name="vehicleNumber" class="java.lang.String"/>
+    <parameter name="driverName" class="java.lang.String"/>
+    <parameter name="gasStation" class="java.lang.String"/>
+    <parameter name="amount" class="java.lang.String"/>
+    <parameter name="material" class="java.lang.String"/>
+    <parameter name="transportationDate" class="java.lang.String"/>
+    <parameter name="category" class="java.lang.String"/>
+    <parameter name="user" class="java.lang.String"/>
+    <parameter name="refinery" class="java.lang.String"/>
+    <queryString language="SQL">
+        <![CDATA[select * from partition_entity;]]>
+    </queryString>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="74" splitType="Stretch">
+            <image>
+                <reportElement x="0" y="2" width="140" height="50" uuid="8b7ddc6b-1ecc-4158-b0b2-fb45872293ce"/>
+                <imageExpression><![CDATA["icons/SadLogo.png"]]></imageExpression>
+            </image>
+            <textField>
+                <reportElement x="40" y="34" width="180" height="18" uuid="d99ad6c5-4c63-4aa0-a279-96366db3eb80"/>
+                <textFieldExpression><![CDATA[$P{nowLocalDT}]]></textFieldExpression>
+            </textField>
+            <image>
+                <reportElement x="588" y="-16" width="190" height="90" uuid="a918a6ed-3aef-4fcb-9539-5d94973efa32"/>
+                <imageExpression><![CDATA["icons/wave.png"]]></imageExpression>
+            </image>
+            <textField>
+                <reportElement mode="Transparent" x="339" y="27" width="100" height="20" forecolor="#050505" backcolor="#FFFFFF" uuid="409210ae-39c2-40ac-a1d6-7d61e0e62c78"/>
+                <textElement textAlignment="Center">
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["بوليصة شحن"]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+    <pageHeader>
+        <band height="28" splitType="Stretch"/>
+    </pageHeader>
+    <columnHeader>
+        <band height="27" splitType="Stretch">
+            <textField>
+                <reportElement mode="Opaque" x="0" y="2" width="779" height="20" backcolor="#E0DDDA" uuid="8e892fa6-a3ec-4552-ae22-58d01988aece"/>
+                <textElement textAlignment="Center">
+                    <font size="13" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{transportationId}+"  رقم "]]></textFieldExpression>
+            </textField>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="245" splitType="Stretch">
+            <property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
+            <property name="com.jaspersoft.studio.unit.height" value="px"/>
+            <textField>
+                <reportElement x="658" y="10" width="100" height="30" uuid="fc12d99f-40b8-4809-ba01-707a494a392a"/>
+                <textElement textAlignment="Right">
+                    <font size="16"/>
+                </textElement>
+                <textFieldExpression><![CDATA["يرجى شحن الناقلة رقم"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="388" y="10" width="243" height="30" uuid="444eaa6f-d91a-4768-b119-57bf03289dde"/>
+                <textElement textAlignment="Right">
+                    <font size="16" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{vehicleNumber}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="263" y="10" width="100" height="30" uuid="d790e731-e2ef-4f01-b88d-17b448c155b4"/>
+                <textElement textAlignment="Right">
+                    <font size="16"/>
+                </textElement>
+                <textFieldExpression><![CDATA["سائقها"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="22" y="10" width="210" height="30" uuid="c13d95dd-c02b-4ced-8e39-ea3905b82f43"/>
+                <textElement textAlignment="Right">
+                    <font size="16" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{driverName}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement mode="Opaque" x="658" y="58" width="100" height="30" backcolor="#E0DDDA" uuid="7a6081d0-d1c2-4749-8d3e-fe1e04f5832a">
+                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
+                </reportElement>
+                <textElement textAlignment="Right">
+                    <font size="16"/>
+                </textElement>
+                <textFieldExpression><![CDATA["المواد متجهة إلى"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement mode="Opaque" x="388" y="58" width="243" height="30" backcolor="#E0DDDA" uuid="4ff5537d-faf4-4457-b4cc-d3b140392b9e">
+                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
+                </reportElement>
+                <textElement textAlignment="Right">
+                    <font size="16" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{gasStation}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement mode="Opaque" x="658" y="154" width="100" height="30" backcolor="#E0DDDA" uuid="988ae507-31b7-44bd-9508-1f52377e50cd">
+                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
+                </reportElement>
+                <textElement textAlignment="Right">
+                    <font size="16"/>
+                </textElement>
+                <textFieldExpression><![CDATA["الكمية"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement mode="Opaque" x="388" y="154" width="243" height="30" backcolor="#E0DDDA" uuid="34245c01-e092-4976-a1db-fae5c4830fc1">
+                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
+                </reportElement>
+                <textElement textAlignment="Right">
+                    <font size="16" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{amount}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="658" y="106" width="100" height="30" uuid="b901ed00-a50c-43e9-8650-5f340fde40c1">
+                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
+                </reportElement>
+                <textElement textAlignment="Right">
+                    <font size="16"/>
+                </textElement>
+                <textFieldExpression><![CDATA["المادة"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="388" y="106" width="243" height="30" uuid="118f7dc0-03dc-4b03-a886-dcf0e9ec2a1e">
+                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
+                </reportElement>
+                <textElement textAlignment="Right">
+                    <font size="16" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{material}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="263" y="107" width="100" height="30" uuid="5beed439-f027-4228-9011-c1dcb555a6b8">
+                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
+                </reportElement>
+                <textElement textAlignment="Right">
+                    <font size="16"/>
+                </textElement>
+                <textFieldExpression><![CDATA["بتاريخ"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="25" y="107" width="210" height="30" uuid="b4df1852-795d-4b50-8f05-2ab6463a6c2b">
+                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
+                </reportElement>
+                <textElement textAlignment="Right">
+                    <font size="16" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{transportationDate}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement mode="Opaque" x="263" y="60" width="100" height="30" backcolor="#E0DDDA" uuid="6ced1461-41e6-470e-8d6b-75ac9ac6d688">
+                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
+                </reportElement>
+                <textElement textAlignment="Right">
+                    <font size="16"/>
+                </textElement>
+                <textFieldExpression><![CDATA["من مصفاة"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement mode="Opaque" x="22" y="60" width="208" height="30" backcolor="#E0DDDA" uuid="4bbeb8f6-0a53-4b62-a544-24d812672154">
+                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
+                </reportElement>
+                <textElement textAlignment="Right">
+                    <font size="16" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{refinery}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement mode="Opaque" x="263" y="164" width="100" height="30" backcolor="#E0DDDA" uuid="04c88d57-0923-4ed3-8b20-872f254e908c">
+                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
+                </reportElement>
+                <textElement textAlignment="Right">
+                    <font size="16"/>
+                </textElement>
+                <textFieldExpression><![CDATA["الفئة"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement mode="Opaque" x="25" y="164" width="210" height="30" backcolor="#E0DDDA" uuid="179ccd70-e36f-45dd-822c-e86333c5c7df">
+                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
+                </reportElement>
+                <textElement textAlignment="Right">
+                    <font size="16" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{category}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="658" y="205" width="100" height="30" uuid="976a740b-2fc2-4ba2-b5c9-bf1c9b98b2f9">
+                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
+                </reportElement>
+                <textElement textAlignment="Right">
+                    <font size="16"/>
+                </textElement>
+                <textFieldExpression><![CDATA["منظم الإيصال"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="388" y="205" width="243" height="30" uuid="e7181b21-c714-49ac-ade0-a74ad7076f63">
+                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
+                </reportElement>
+                <textElement textAlignment="Right">
+                    <font size="16" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{user}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <columnFooter>
+        <band height="29" splitType="Stretch"/>
+    </columnFooter>
+</jasperReport>

@@ -38,6 +38,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -220,6 +221,42 @@ public class PartitionController {
             }
 
             assert file != null;
+            try(final FileInputStream fileInputStream = new FileInputStream(file);){
+                return ResponseEntity.ok(Base64.getEncoder().encodeToString(fileInputStream.readAllBytes()));
+            }
+        } catch (JRException | IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @GetMapping("/partitionPrint/{id}/{username}")
+    public ResponseEntity<String> getPartitionPrint(@PathVariable Long id, @PathVariable String username){
+
+        final PartitionEntity partition = partitionRepository.getReferenceById(id);
+
+        Map<String, Object> params = new HashMap<>();
+        params.put("nowLocalDT", LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
+        params.put("transportationId", partition.getTransportationEntity().getId().toString());
+        params.put("vehicleNumber", partition.getTransportationEntity().getVehicle().getPlateNumber());
+        params.put("driverName", partition.getTransportationEntity().getVehicle().getDriver().getName());
+        params.put("gasStation", partition.getGasStation().getTranslation());
+        params.put("amount", NumberFormat.getInstance().format(partition.getAmount()));
+        params.put("material", partition.getMaterial().getName());
+        params.put("transportationDate", partition.getTransportationEntity().getCreatedAt().toString());
+        params.put("category", partition.getNotes());
+        params.put("user", username);
+        params.put("refinery", partition.getTransportationEntity().getRefinery().getTranslation());
+
+        try {
+            final File designFile = new ClassPathResource("templates/transTicket.jrxml").getFile();
+            final String jreXmlTemplatePath = designFile.getPath();
+
+            JasperReport regionReport = JasperCompileManager.compileReport(jreXmlTemplatePath);
+            final JasperPrint jasperPrint = JasperFillManager.fillReport(regionReport, params, new JREmptyDataSource());
+            File file = new ClassPathResource("templates/transTicket.html").getFile();
+            JasperExportManager.exportReportToHtmlFile(jasperPrint,
+                        file.getAbsolutePath());
+
             try(final FileInputStream fileInputStream = new FileInputStream(file);){
                 return ResponseEntity.ok(Base64.getEncoder().encodeToString(fileInputStream.readAllBytes()));
             }

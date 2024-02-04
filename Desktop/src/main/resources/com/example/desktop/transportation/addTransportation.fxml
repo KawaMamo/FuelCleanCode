@@ -111,5 +111,6 @@
          </font>
       </Button>
       <Button layoutX="646.0" layoutY="482.0" mnemonicParsing="false" onAction="#deleteTransLog" style="-fx-background-color: red;" text="حذف" />
+      <Button layoutX="75.0" layoutY="342.0" mnemonicParsing="false" onAction="#printPartition" text="Print" />
    </children>
 </AnchorPane>

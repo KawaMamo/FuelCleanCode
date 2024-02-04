@@ -1,5 +1,7 @@
 package com.example.desktop.transportation;
 
+import com.example.desktop.HelloApplication;
+import com.example.desktop.MyDocumentLocator;
 import com.example.model.TableController;
 import com.example.model.category.CategoryService;
 import com.example.model.gasStation.GasStationService;
@@ -13,6 +15,7 @@ import com.example.model.tools.QueryBuilder;
 import com.example.model.transLine.TransLineService;
 import com.example.model.transLog.TransLogService;
 import com.example.model.transportation.TransportationService;
+import com.example.model.user.LogInData;
 import com.example.model.vehicle.VehicleService;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
@@ -23,6 +26,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.FileChooser;
 import org.controlsfx.control.Notifications;
 import org.controlsfx.control.textfield.TextFields;
 import org.example.contract.request.create.CreatePartitionRequest;
@@ -31,12 +35,14 @@ import org.example.contract.request.create.CreateTransRequest;
 import org.example.contract.request.update.UpdateTransRequest;
 import org.example.model.*;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.FileSystem;
 import java.text.NumberFormat;
 import java.time.LocalDate;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class AddTransportation {
 
@@ -470,6 +476,24 @@ public class AddTransportation {
     void deleteTransLog() {
         final TransLog transLog = transLogService.delete(selectedTransLog.getId());
         loadTransData();
+    }
+
+    @FXML
+    void printPartition(){
+        final FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("HTML files (*.html)", "*.html"));
+        fileChooser.setInitialFileName("print.html");
+        fileChooser.setInitialDirectory(new File(MyDocumentLocator.locate()));
+
+        final File file = fileChooser.showSaveDialog(HelloApplication.primaryStage);
+        final byte[] bytes = partitionService.getPrint(selectedPartition.getId(), LogInData.loggedInUser.getEmail());
+
+        try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
+            fileOutputStream.write(Base64.getDecoder().decode(bytes));
+            Runtime.getRuntime().exec("rundll32.exe shell32.dll ShellExec_RunDLL " +file.getPath());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
