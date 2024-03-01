@@ -1,5 +1,6 @@
 package org.example.entities;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToOne;
 import lombok.Getter;
@@ -20,10 +21,9 @@ public class GasStationEntity extends PlaceEntity {
 
     @OneToOne
     private PriceCategoryEntity priceCategory;
-    private Long debtLimit;
     @OneToOne
     private RegionEntity region;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private PersonEntity owner;
     @OneToOne
     private GroupEntity group;

@@ -21,7 +21,7 @@ import org.example.model.TransLine;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-01-30T21:43:59+0300",
+    date = "2024-03-01T16:21:25+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class TransLineMapperImpl implements TransLineMapper {
@@ -96,7 +96,6 @@ public class TransLineMapperImpl implements TransLineMapper {
         gasStationEntity.setName( gasStation.getName() );
         gasStationEntity.setTranslation( gasStation.getTranslation() );
         gasStationEntity.setPriceCategory( priceCategoryToPriceCategoryEntity( gasStation.getPriceCategory() ) );
-        gasStationEntity.setDebtLimit( gasStation.getDebtLimit() );
         gasStationEntity.setRegion( RegionToEntity( gasStation.getRegion() ) );
         gasStationEntity.setOwner( personToPersonEntity( gasStation.getOwner() ) );
         gasStationEntity.setGroup( groupToGroupEntity( gasStation.getGroup() ) );
@@ -156,7 +155,6 @@ public class TransLineMapperImpl implements TransLineMapper {
         gasStation1.setCreatedAt( gasStation.getCreatedAt() );
         gasStation1.setUpdatedAt( gasStation.getUpdatedAt() );
         gasStation1.setPriceCategory( priceCategoryEntityToPriceCategory( gasStation.getPriceCategory() ) );
-        gasStation1.setDebtLimit( gasStation.getDebtLimit() );
         gasStation1.setRegion( RegionToDomain( gasStation.getRegion() ) );
         gasStation1.setOwner( personEntityToPerson( gasStation.getOwner() ) );
         gasStation1.setGroup( groupEntityToGroup( gasStation.getGroup() ) );

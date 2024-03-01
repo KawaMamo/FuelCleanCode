@@ -19,7 +19,6 @@
                   <TextField fx:id="ownerTF" />
                   <TextField fx:id="priceCatTF" />
                   <TextField fx:id="materialTF" />
-                  <TextField fx:id="debtLimitTF" />
                   <TextField fx:id="regionTF" />
                   <TextField fx:id="groupTF" />
                   <Button fx:id="submitBtn" mnemonicParsing="false" onAction="#submit" prefHeight="26.0" prefWidth="150.0" text="تأكيد" />
@@ -32,7 +31,6 @@
                   <Label style="-fx-border-color: gray;" text="المالك" />
                   <Label style="-fx-border-color: gray;" text="فئة التسعير" />
                   <Label style="-fx-border-color: gray;" text="المادة الافتراضية" />
-                  <Label text="الدين الأقصى" />
                   <Label style="-fx-border-color: gray;" text="المنطقة" />
                   <Label style="-fx-border-color: gray;" text="المجموعة" />
                </children>

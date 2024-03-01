@@ -116,9 +116,6 @@ public class GasStations implements TableController {
         TableColumn<GasStation,String> ownerCol = new TableColumn<>("المالك");
         ownerCol.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getOwner().getName()));
 
-        TableColumn<GasStation,String> debtLimitCol = new TableColumn<>("الدين المسموح");
-        debtLimitCol.setCellValueFactory(data -> new SimpleStringProperty(NumberFormat.getInstance().format(data.getValue().getDebtLimit())));
-
         TableColumn<GasStation,String> regionCol = new TableColumn<>("المنطقة");
         regionCol.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getRegion().getName()));
 
@@ -133,7 +130,7 @@ public class GasStations implements TableController {
         updatedAtCol.setCellValueFactory(
                 new PropertyValueFactory<>("updatedAt"));
 
-        tableTbl.getColumns().addAll(idCol, nameCol, translationCol, priceCategoryCol, materialCol, ownerCol, debtLimitCol, regionCol, groupCol, createdAtCol, updatedAtCol);
+        tableTbl.getColumns().addAll(idCol, nameCol, translationCol, priceCategoryCol, materialCol, ownerCol, regionCol, groupCol, createdAtCol, updatedAtCol);
         tableTbl.setItems(gasStations);
     }
 

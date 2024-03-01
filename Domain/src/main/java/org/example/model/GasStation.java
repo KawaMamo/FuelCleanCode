@@ -10,7 +10,6 @@ public class GasStation extends Place{
 
 
     private PriceCategory priceCategory;
-    private Long debtLimit;
     private Region region;
     private Person owner;
     private Group group;

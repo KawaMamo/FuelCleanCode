@@ -27,8 +27,6 @@ import java.util.Objects;
 public class AddGasStation {
 
     public static FormType formType = FormType.CREATE;
-    @FXML
-    private TextField debtLimitTF;
 
     @FXML
     private TextField groupTF;
@@ -152,7 +150,6 @@ public class AddGasStation {
             nameTF.setText(gasStation.getName());
             ownerTF.setText(gasStation.getOwner().getName());
             priceCatTF.setText(gasStation.getPriceCategory().getName());
-            debtLimitTF.setText(gasStation.getDebtLimit().toString());
             regionTF.setText(gasStation.getRegion().getName());
             groupTF.setText(gasStation.getGroup().getName());
             materialTF.setText(gasStation.getMaterial().getName());
@@ -172,7 +169,6 @@ public class AddGasStation {
                     nameTF.getText(),
                     translationTF.getText(),
                     selectedPriceCatId,
-                    Long.parseLong(debtLimitTF.getText()),
                     selectedRegionId,
                     selectedOwnerId,
                     selectedGroupId,
@@ -181,7 +177,6 @@ public class AddGasStation {
             gasStation = gasStationService.addItem(new CreateGasStationRequest(nameTF.getText(),
                     translationTF.getText(),
                     selectedPriceCatId,
-                    Long.parseLong(debtLimitTF.getText()),
                     selectedRegionId,
                     selectedOwnerId,
                     selectedGroupId,

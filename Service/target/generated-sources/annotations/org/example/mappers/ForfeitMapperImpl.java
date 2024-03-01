@@ -30,7 +30,7 @@ import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-01-30T21:43:59+0300",
+    date = "2024-03-01T16:21:24+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class ForfeitMapperImpl implements ForfeitMapper {
@@ -233,7 +233,6 @@ public class ForfeitMapperImpl implements ForfeitMapper {
         gasStation.setCreatedAt( gasStationEntity.getCreatedAt() );
         gasStation.setUpdatedAt( gasStationEntity.getUpdatedAt() );
         gasStation.setPriceCategory( priceCategoryEntityToPriceCategory( gasStationEntity.getPriceCategory() ) );
-        gasStation.setDebtLimit( gasStationEntity.getDebtLimit() );
         gasStation.setRegion( regionEntityToRegion( gasStationEntity.getRegion() ) );
         gasStation.setOwner( personEntityToPerson( gasStationEntity.getOwner() ) );
         gasStation.setGroup( groupEntityToGroup( gasStationEntity.getGroup() ) );
@@ -460,7 +459,6 @@ public class ForfeitMapperImpl implements ForfeitMapper {
         gasStationEntity.setName( gasStation.getName() );
         gasStationEntity.setTranslation( gasStation.getTranslation() );
         gasStationEntity.setPriceCategory( priceCategoryToPriceCategoryEntity( gasStation.getPriceCategory() ) );
-        gasStationEntity.setDebtLimit( gasStation.getDebtLimit() );
         gasStationEntity.setRegion( regionToRegionEntity( gasStation.getRegion() ) );
         gasStationEntity.setOwner( personToPersonEntity( gasStation.getOwner() ) );
         gasStationEntity.setGroup( groupToGroupEntity( gasStation.getGroup() ) );

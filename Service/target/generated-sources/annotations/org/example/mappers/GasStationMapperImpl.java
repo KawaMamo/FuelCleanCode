@@ -16,7 +16,7 @@ import org.example.model.Region;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-01-30T21:43:59+0300",
+    date = "2024-03-01T16:21:25+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class GasStationMapperImpl implements GasStationMapper {
@@ -36,7 +36,6 @@ public class GasStationMapperImpl implements GasStationMapper {
         gasStationEntity.setName( gasStation.getName() );
         gasStationEntity.setTranslation( gasStation.getTranslation() );
         gasStationEntity.setPriceCategory( priceCategoryToPriceCategoryEntity( gasStation.getPriceCategory() ) );
-        gasStationEntity.setDebtLimit( gasStation.getDebtLimit() );
         gasStationEntity.setRegion( regionToRegionEntity( gasStation.getRegion() ) );
         gasStationEntity.setOwner( personToPersonEntity( gasStation.getOwner() ) );
         gasStationEntity.setGroup( groupToGroupEntity( gasStation.getGroup() ) );
@@ -60,7 +59,6 @@ public class GasStationMapperImpl implements GasStationMapper {
         gasStation1.setCreatedAt( gasStation.getCreatedAt() );
         gasStation1.setUpdatedAt( gasStation.getUpdatedAt() );
         gasStation1.setPriceCategory( priceCategoryEntityToPriceCategory( gasStation.getPriceCategory() ) );
-        gasStation1.setDebtLimit( gasStation.getDebtLimit() );
         gasStation1.setRegion( regionEntityToRegion( gasStation.getRegion() ) );
         gasStation1.setOwner( personEntityToPerson( gasStation.getOwner() ) );
         gasStation1.setGroup( groupEntityToGroup( gasStation.getGroup() ) );

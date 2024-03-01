@@ -100,7 +100,6 @@ public interface TransMapper {
         gasStation.setCreatedAt( gasStationEntity.getCreatedAt() );
         gasStation.setUpdatedAt( gasStationEntity.getUpdatedAt() );
         gasStation.setPriceCategory( priceCategoryEntityToPriceCategory( gasStationEntity.getPriceCategory() ) );
-        gasStation.setDebtLimit( gasStationEntity.getDebtLimit() );
         gasStation.setRegion( regionEntityToRegion( gasStationEntity.getRegion() ) );
         gasStation.setOwner( personEntityToPerson( gasStationEntity.getOwner() ) );
         gasStation.setGroup( groupEntityToGroup( gasStationEntity.getGroup() ) );

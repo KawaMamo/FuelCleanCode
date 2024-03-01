@@ -42,10 +42,6 @@ public class UpdateGasStationValidator {
             errorDetails.add(new ValidationErrorDetails(NAME_FIELD, NULL_ERROR_MSG));
         }
 
-        if(Objects.isNull(request.getDebtLimit())){
-            errorDetails.add(new ValidationErrorDetails(DEBT_LIMIT, NULL_ERROR_MSG));
-        }
-
         if(Objects.isNull(request.getPriceCategoryId()) || priceCategoryRepo.findById(request.getPriceCategoryId()).isEmpty()){
             errorDetails.add(new ValidationErrorDetails(PRICE_CATEGORY_FIELD, ELEMENT_NOT_FOUND));
         }

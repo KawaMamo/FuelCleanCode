@@ -87,7 +87,6 @@ public class GasStationService implements Service<GasStation, CreateGasStationRe
         final HashMap<String, String> payloadObj = new HashMap<>();
         payloadObj.put("name", request.getName());
         payloadObj.put("priceCategoryId", String.valueOf(request.getPriceCategoryId()));
-        payloadObj.put("debtLimit", String.valueOf(request.getDebtLimit()));
         payloadObj.put("regionId", request.getRegionId().toString());
         payloadObj.put("ownerId", request.getOwnerId().toString());
         payloadObj.put("groupId", request.getGroupId().toString());

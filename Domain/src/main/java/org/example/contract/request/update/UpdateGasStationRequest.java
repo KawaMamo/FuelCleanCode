@@ -12,7 +12,6 @@ public class UpdateGasStationRequest {
     private String name;
     private String translation;
     private Long priceCategoryId;
-    private Long debtLimit;
     private Long regionId;
     private Long ownerId;
     private Long groupId;
