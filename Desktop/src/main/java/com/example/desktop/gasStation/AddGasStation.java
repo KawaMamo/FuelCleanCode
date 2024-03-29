@@ -148,12 +148,15 @@ public class AddGasStation {
         if(formType.equals(FormType.UPDATE)){
             final GasStation gasStation = gasStationService.getItem(GasStations.selectedGasStation.getId());
             nameTF.setText(gasStation.getName());
-            ownerTF.setText(gasStation.getOwner().getName());
+            if(Objects.nonNull(gasStation.getOwner())) {
+                ownerTF.setText(gasStation.getOwner().getName());
+                selectedOwnerId = gasStation.getOwner().getId();
+            }
             priceCatTF.setText(gasStation.getPriceCategory().getName());
             regionTF.setText(gasStation.getRegion().getName());
             groupTF.setText(gasStation.getGroup().getName());
             materialTF.setText(gasStation.getMaterial().getName());
-            selectedOwnerId = gasStation.getOwner().getId();
+
             selectedPriceCatId = gasStation.getPriceCategory().getId();
             selectedRegionId = gasStation.getRegion().getId();
             selectedGroupId = gasStation.getGroup().getId();

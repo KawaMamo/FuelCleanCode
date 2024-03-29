@@ -51,7 +51,7 @@ public class Persons implements TableController {
         DeleteConfirmation.controller = this;
         DeleteConfirmation.selected = selectedPerson.getId();
         DeleteConfirmation.deleteUrl = personService.getEndPoint();
-        Modal.start(TransLines.class, "/com/example/desktop/delete/deleteConfirmation.fxml");
+        Modal.start(this.getClass(), "/com/example/desktop/delete/deleteConfirmation.fxml");
     }
 
     @FXML
@@ -118,22 +118,64 @@ public class Persons implements TableController {
                 new PropertyValueFactory<>("id"));
 
         TableColumn<Person, String> nameCol = new TableColumn<>("الاسم");
-        nameCol.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getName()));
+        nameCol.setCellValueFactory(data -> {
+            if(Objects.nonNull(data)){
+                return new SimpleStringProperty(data.getValue().getName());
+            }else {
+                return new SimpleStringProperty();
+            }
+
+        });
 
         TableColumn<Person, String> fatherCol = new TableColumn<>("الأب");
-        fatherCol.setCellValueFactory(data-> new SimpleStringProperty(data.getValue().getFather()));
+        fatherCol.setCellValueFactory(data-> {
+            if(Objects.nonNull(data)){
+                return new SimpleStringProperty(data.getValue().getFather());
+            }else {
+                return new SimpleStringProperty();
+            }
+
+        });
 
         TableColumn<Person, String> motherCol = new TableColumn<>("الأم");
-        motherCol.setCellValueFactory(data-> new SimpleStringProperty(data.getValue().getMother()));
+        motherCol.setCellValueFactory(data-> {
+            if(Objects.nonNull(data)){
+                return new SimpleStringProperty(data.getValue().getMother());
+            }else {
+                return new SimpleStringProperty();
+            }
+
+        });
 
         TableColumn<Person, String> nationalIdCol = new TableColumn<>("الرقم الوطني");
-        nationalIdCol.setCellValueFactory(data-> new SimpleStringProperty(data.getValue().getNationalId()));
+        nationalIdCol.setCellValueFactory(data-> {
+            if(Objects.nonNull(data)){
+                return new SimpleStringProperty(data.getValue().getNationalId());
+            }else {
+                return new SimpleStringProperty();
+            }
 
-        TableColumn<Person, String> birthPlaceCol = new TableColumn<>("الميلاد");
-        birthPlaceCol.setCellValueFactory(data-> new SimpleStringProperty(data.getValue().getBirthDate().toString()));
+        });
+
+        /*TableColumn<Person, String> birthPlaceCol = new TableColumn<>("الميلاد");
+        birthPlaceCol.setCellValueFactory(data-> {
+            if(Objects.nonNull(data)){
+                return new SimpleStringProperty(data.getValue().getBirthDate().toString());
+            }else {
+                return new SimpleStringProperty();
+            }
+
+        });
 
         TableColumn<Person, String> birthDateCol = new TableColumn<>("مكان الولادة");
-        birthDateCol.setCellValueFactory(data-> new SimpleStringProperty(data.getValue().getBirthPlace()));
+        birthDateCol.setCellValueFactory(data-> {
+            if(Objects.nonNull(data)){
+                return new SimpleStringProperty(data.getValue().getBirthPlace());
+            }else {
+                return new SimpleStringProperty();
+            }
+
+        });*/
 
         TableColumn<Person, String> createdAtCol = new TableColumn<>("تاريخ الإنشاء");
         createdAtCol.setCellValueFactory(
@@ -147,9 +189,9 @@ public class Persons implements TableController {
                 nameCol,
                 fatherCol,
                 motherCol,
-                nationalIdCol,
+                nationalIdCol/*,
                 birthDateCol,
-                birthPlaceCol,
+                birthPlaceCol*/,
                 createdAtCol,
                 updatedAtCol);
         tableTbl.setItems(people);

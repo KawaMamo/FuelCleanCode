@@ -24,7 +24,6 @@ import org.example.useCases.create.CreatePartition;
 import org.example.useCases.delete.DeletePartition;
 import org.example.useCases.update.UpdatePartition;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
@@ -110,19 +109,17 @@ public class PartitionController {
         params.put("nowLocalDT", LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
 
         try {
-            final File designFile = new ClassPathResource("templates/regionDesign.jrxml").getFile();
-            final String jreXmlTemplatePath = designFile.getPath();
 
             final JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(partitionEntities);
-            JasperReport regionReport = JasperCompileManager.compileReport(jreXmlTemplatePath);
+            JasperReport regionReport = JasperCompileManager.compileReport(new ClassPathResource("templates/regionDesign.jrxml").getInputStream());
             final JasperPrint jasperPrint = JasperFillManager.fillReport(regionReport, params, jrBeanCollectionDataSource);
             File file = null;
             if(exportType.equals("HTML")){
-                file = new ClassPathResource("templates/regionReport.html").getFile();
+                file = new File("templates/regionReport.html");
                 JasperExportManager.exportReportToHtmlFile(jasperPrint,
                         file.getAbsolutePath());
             }else if(exportType.equals("XLSX")){
-                file = new ClassPathResource("templates/regionReport.xlsx").getFile();
+                file = new File("regionReport.xlsx");
                 JRXlsxExporter exporter = new JRXlsxExporter();
                 exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
                 exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(file.getAbsolutePath()));
@@ -154,19 +151,16 @@ public class PartitionController {
         params.put("nowLocalDT", LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
 
         try {
-            final File designFile = new ClassPathResource("templates/regionDesign.jrxml").getFile();
-            final String jreXmlTemplatePath = designFile.getPath();
-
             final JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(partitionEntities);
-            JasperReport regionReport = JasperCompileManager.compileReport(jreXmlTemplatePath);
+            JasperReport regionReport = JasperCompileManager.compileReport(new ClassPathResource("templates/regionDesign.jrxml").getInputStream());
             final JasperPrint jasperPrint = JasperFillManager.fillReport(regionReport, params, jrBeanCollectionDataSource);
             File file = null;
             if(exportType.equals("HTML")){
-                file = new ClassPathResource("templates/regionReport.html").getFile();
+                file = new File("regionReport.html");
                 JasperExportManager.exportReportToHtmlFile(jasperPrint,
                         file.getAbsolutePath());
             }else if(exportType.equals("XLSX")){
-                file = new ClassPathResource("templates/regionReport.xlsx").getFile();
+                file = new File("regionReport.xlsx");
                 JRXlsxExporter exporter = new JRXlsxExporter();
                 exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
                 exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(file.getAbsolutePath()));
@@ -201,19 +195,16 @@ public class PartitionController {
         params.put("nowLocalDT", LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
 
         try {
-            final File designFile = new ClassPathResource("templates/regionDesign.jrxml").getFile();
-            final String jreXmlTemplatePath = designFile.getPath();
-
             final JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(partitionEntities);
-            JasperReport regionReport = JasperCompileManager.compileReport(jreXmlTemplatePath);
+            JasperReport regionReport = JasperCompileManager.compileReport(new ClassPathResource("templates/regionDesign.jrxml").getInputStream());
             final JasperPrint jasperPrint = JasperFillManager.fillReport(regionReport, params, jrBeanCollectionDataSource);
             File file = null;
             if(exportType.equals("HTML")){
-                file = new ClassPathResource("templates/regionReport.html").getFile();
+                file = new File("regionReport.html");
                 JasperExportManager.exportReportToHtmlFile(jasperPrint,
                         file.getAbsolutePath());
             }else if(exportType.equals("XLSX")){
-                file = new ClassPathResource("templates/regionReport.xlsx").getFile();
+                file = new File("regionReport.xlsx");
                 JRXlsxExporter exporter = new JRXlsxExporter();
                 exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
                 exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(file.getAbsolutePath()));
@@ -248,12 +239,9 @@ public class PartitionController {
         params.put("refinery", partition.getTransportationEntity().getRefinery().getTranslation());
 
         try {
-            final File designFile = new ClassPathResource("templates/transTicket.jrxml").getFile();
-            final String jreXmlTemplatePath = designFile.getPath();
-
-            JasperReport regionReport = JasperCompileManager.compileReport(jreXmlTemplatePath);
+            JasperReport regionReport = JasperCompileManager.compileReport(new ClassPathResource("templates/transTicket.jrxml").getInputStream());
             final JasperPrint jasperPrint = JasperFillManager.fillReport(regionReport, params, new JREmptyDataSource());
-            File file = new ClassPathResource("templates/transTicket.html").getFile();
+            File file = new File("transTicket.html");
             JasperExportManager.exportReportToHtmlFile(jasperPrint,
                         file.getAbsolutePath());
 

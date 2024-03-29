@@ -41,6 +41,16 @@ public class VehicleService {
         return new ArrayList<>();
     }
 
+    public List<Vehicle> getVehicles(Integer page, Integer size, String query){
+
+        String getUrl = getEndPoint()+"?page="+page+"&size="+size+query;
+        final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
+        final VehicleResponse vehicleResponse = gson.fromJson(stringHttpResponse.body(), VehicleResponse.class);
+        if(Objects.nonNull(vehicleResponse._embedded))
+            return vehicleResponse._embedded.vehicleList;
+        return new ArrayList<>();
+    }
+
     public Vehicle getVehicle(Long id){
         String getUrl = "api/v1/vehicle?page=0&size=10&key=id&value="+id+"&operation=%3A";
         final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);

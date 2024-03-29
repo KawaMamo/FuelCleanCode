@@ -114,7 +114,11 @@ public class GasStations implements TableController {
         });
 
         TableColumn<GasStation,String> ownerCol = new TableColumn<>("المالك");
-        ownerCol.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getOwner().getName()));
+        ownerCol.setCellValueFactory(data -> {
+            if(Objects.nonNull(data.getValue().getOwner()))
+                return new SimpleStringProperty(data.getValue().getOwner().getName());
+            else return null;
+        });
 
         TableColumn<GasStation,String> regionCol = new TableColumn<>("المنطقة");
         regionCol.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getRegion().getName()));

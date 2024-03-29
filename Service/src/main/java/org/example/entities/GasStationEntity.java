@@ -2,11 +2,14 @@ package org.example.entities;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 import org.hibernate.proxy.HibernateProxy;
 
 import java.time.LocalDateTime;
@@ -23,7 +26,7 @@ public class GasStationEntity extends PlaceEntity {
     private PriceCategoryEntity priceCategory;
     @OneToOne
     private RegionEntity region;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     private PersonEntity owner;
     @OneToOne
     private GroupEntity group;

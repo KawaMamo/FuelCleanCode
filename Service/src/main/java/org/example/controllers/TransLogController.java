@@ -139,19 +139,17 @@ public class TransLogController {
         params.put("vehicleSize", NumberFormat.getInstance().format(logEntityList.get(0).getVehicle().getSize()));
 
         try {
-            final File designFile = new ClassPathResource("templates/driverReport.jrxml").getFile();
-            final String jreXmlTemplatePath = designFile.getPath();
 
             final JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(logEntityList);
-            JasperReport regionReport = JasperCompileManager.compileReport(jreXmlTemplatePath);
+            JasperReport regionReport = JasperCompileManager.compileReport(new ClassPathResource("templates/driverReport.jrxml").getInputStream());
             final JasperPrint jasperPrint = JasperFillManager.fillReport(regionReport, params, jrBeanCollectionDataSource);
             File file = null;
             if(exportType.equals("HTML")){
-                file = new ClassPathResource("templates/DriverReport.html").getFile();
+                file = new File("DriverReport.html");
                 JasperExportManager.exportReportToHtmlFile(jasperPrint,
                         file.getAbsolutePath());
             }else if(exportType.equals("XLSX")){
-                file = new ClassPathResource("templates/DriverReport.xlsx").getFile();
+                file = new File("DriverReport.xlsx");
                 JRXlsxExporter exporter = new JRXlsxExporter();
                 exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
                 exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(file.getAbsolutePath()));

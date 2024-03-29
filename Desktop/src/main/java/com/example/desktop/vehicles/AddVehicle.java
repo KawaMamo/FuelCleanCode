@@ -4,6 +4,8 @@ import com.example.model.TableController;
 import com.example.model.modal.Modal;
 import com.example.model.office.OfficeService;
 import com.example.model.person.PersonService;
+import com.example.model.tools.FormType;
+import com.example.model.tools.QueryBuilder;
 import com.example.model.trafficCenter.TrafficCenterService;
 import com.example.model.vehicle.VehicleService;
 import javafx.fxml.FXML;
@@ -23,7 +25,7 @@ import java.util.Objects;
 
 public class AddVehicle {
     public static TableController controller;
-    public static Boolean isEditingForm = false;
+    public static FormType formType = FormType.CREATE;
     @FXML
     private TextField driverTF;
 
@@ -101,7 +103,7 @@ public class AddVehicle {
             }
         });
 
-        if(isEditingForm){
+        if(formType.equals(FormType.UPDATE)){
             final Vehicle vehicle = vehicleService.getVehicle(Vehicles.selectedVehicle.getId());
             driverTF.setText(vehicle.getDriver().getName());
             officeTF.setText(vehicle.getOffice().getName());
@@ -119,7 +121,7 @@ public class AddVehicle {
     void submit() {
 
         final Vehicle vehicle;
-        if(isEditingForm){
+        if(formType.equals(FormType.UPDATE)){
             vehicle = vehicleService.editVehicle(new UpdateVehicleRequest(Vehicles.selectedVehicle.getId(),
                     Long.parseLong(turnTF.getText()),
                     plateNumberTF.getText(),
@@ -128,7 +130,7 @@ public class AddVehicle {
                     selectedOfficeId,
                     selectedDriverId));
             controller.loadData();
-        }else {
+        }else if(formType.equals(FormType.CREATE)){
             vehicle = vehicleService.addVehicle(new CreateVehicleRequest(
                     Long.parseLong(turnTF.getText()),
                     plateNumberTF.getText(),
@@ -137,8 +139,27 @@ public class AddVehicle {
                     selectedOfficeId,
                     selectedDriverId));
             controller.addData(vehicle);
+        }else {
+            vehicle = new Vehicle();
+            QueryBuilder queryBuilder = new QueryBuilder();
+            if(plateNumberTF.getText().length()>0){
+                queryBuilder.addQueryParameter("plateNumber", plateNumberTF.getText());
+            }
+            if(Objects.nonNull(selectedDriverId)) {
+                queryBuilder.addQueryParameter("driver", String.valueOf(selectedDriverId));
+            }
+            if(Objects.nonNull(selectedOfficeId)) {
+                queryBuilder.addQueryParameter("office", String.valueOf(selectedOfficeId));
+            }
+            if(Objects.nonNull(selectedTrafficCenterId)) {
+                queryBuilder.addQueryParameter("trafficCenter", String.valueOf(selectedTrafficCenterId));
+            }
+            if(turnTF.getText().length()>0) {
+                queryBuilder.addQueryParameter("turn", turnTF.getText());
+            }
+            queryBuilder.sort();
+            controller.setQuery(queryBuilder.getQuery());
         }
-        isEditingForm = false;
         notifyUser(vehicle);
     }
 
@@ -149,6 +170,7 @@ public class AddVehicle {
         }else {
             message = "something went wrong";
         }
+        controller.addData(vehicle);
         Notifications.create().title("Info").text(message).showInformation();
         Modal.close();
     }

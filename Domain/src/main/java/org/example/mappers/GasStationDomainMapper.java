@@ -6,6 +6,7 @@ import org.example.contract.response.GasStationResponse;
 import org.example.model.GasStation;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
 @Mapper
 public interface GasStationDomainMapper {

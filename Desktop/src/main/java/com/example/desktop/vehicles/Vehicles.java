@@ -3,6 +3,7 @@ package com.example.desktop.vehicles;
 import com.example.desktop.delete.DeleteConfirmation;
 import com.example.model.TableController;
 import com.example.model.modal.Modal;
+import com.example.model.tools.FormType;
 import com.example.model.vehicle.VehicleService;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -13,6 +14,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.model.Vehicle;
+
+import java.util.List;
+import java.util.Objects;
 
 public class Vehicles implements TableController {
 
@@ -73,7 +77,13 @@ public class Vehicles implements TableController {
     }
 
     public void loadData() {
-        vehicles = FXCollections.observableArrayList(vehicleService.getVehicles(Integer.parseInt(page.getText())-1, 15));
+        final List<Vehicle> vehicleList;
+        if(Objects.isNull(query))
+            vehicleList = vehicleService.getVehicles(Integer.parseInt(page.getText()) - 1, 15);
+        else
+            vehicleList = vehicleService.getVehicles(Integer.parseInt(page.getText()) - 1, 15, query);
+        if(Objects.nonNull(vehicleList))
+            vehicles = FXCollections.observableArrayList(vehicleList);
         tableTbl.setItems(vehicles);
     }
 
@@ -96,7 +106,7 @@ public class Vehicles implements TableController {
     @FXML
     void add() {
         AddVehicle.controller = this;
-        AddVehicle.isEditingForm = false;
+        AddVehicle.formType = FormType.CREATE;
         Modal.start(Vehicles.class, "addVehicle.fxml");
     }
 
@@ -111,7 +121,7 @@ public class Vehicles implements TableController {
     @FXML
     void edit() {
         AddVehicle.controller = this;
-        AddVehicle.isEditingForm = true;
+        AddVehicle.formType = FormType.UPDATE;
         Modal.start(Vehicles.class, "addVehicle.fxml");
     }
 
@@ -129,7 +139,9 @@ public class Vehicles implements TableController {
 
     @FXML
     void search(){
-
+        AddVehicle.controller = this;
+        AddVehicle.formType = FormType.GET;
+        Modal.start(Vehicles.class, "addVehicle.fxml");
     }
 
 

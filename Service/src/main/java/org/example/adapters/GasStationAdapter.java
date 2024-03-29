@@ -11,6 +11,7 @@ import org.example.repositories.GasStationRepository;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 import java.util.Optional;
 
 public class GasStationAdapter implements GasStationRepo {
@@ -28,6 +29,9 @@ public class GasStationAdapter implements GasStationRepo {
         final GasStationEntity gasStationEntity = mapper.domainToEntity(gasStation);
         gasStationEntity.setCreatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         gasStationEntity.setPlaceType("GasStation");
+        if(Objects.isNull(gasStationEntity.getOwner().getId())){
+            gasStationEntity.setOwner(null);
+        }
         final GasStationEntity save = gasStationRepository.save(gasStationEntity);
         return mapper.entityToDomain(save);
     }
