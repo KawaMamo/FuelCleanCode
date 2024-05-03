@@ -28,6 +28,7 @@
                   <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#transportations" prefHeight="30.0" text="نقل المواد" HBox.hgrow="ALWAYS" />
                   <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#regionReport" prefHeight="30.0" text="تقرير منطقة" HBox.hgrow="ALWAYS" />
                   <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#driverReport" prefHeight="30.0" text="تقرير سائق" HBox.hgrow="ALWAYS" />
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#refineryReport" prefHeight="30.0" text="تقرير مصفاة" />
                   <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#vehicles" prefHeight="30.0" text="المركبات" />
                   <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#persons" prefHeight="30.0" text="الأشخاص" />
                   <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#trafficCenters" prefHeight="30.0" text="م. المرور" />
