@@ -1,6 +1,11 @@
 package com.example.desktop.reports;
 
 import com.example.desktop.HelloApplication;
+import com.example.desktop.vehicles.AddVehicle;
+import com.example.desktop.vehicles.Vehicles;
+import com.example.model.TableController;
+import com.example.model.modal.Modal;
+import com.example.model.tools.FormType;
 import com.example.model.transLog.TransLogService;
 import com.example.model.vehicle.VehicleService;
 import javafx.beans.property.SimpleStringProperty;
@@ -16,8 +21,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Base64;
+import java.util.List;
+import java.util.Objects;
 
-public class DriverReport {
+public class DriverReport implements TableController {
 
     @FXML
     private ToggleButton commercialTB;
@@ -33,6 +40,7 @@ public class DriverReport {
 
     @FXML
     private DatePicker startDP;
+    private String query = null;
 
     @FXML
     private TableView<Vehicle> tableTbl;
@@ -56,12 +64,21 @@ public class DriverReport {
 
     @FXML
     void pageDown() {
-
+        page.setText(String.valueOf(Integer.parseInt(page.getText())-1));
+        loadData();
     }
 
     @FXML
     void pageUp() {
+        page.setText(String.valueOf(Integer.parseInt(page.getText())+1));
+        loadData();
+    }
 
+    @FXML
+    void search(){
+        AddVehicle.controller = this;
+        AddVehicle.formType = FormType.GET;
+        Modal.start(Vehicles.class, "addVehicle.fxml");
     }
 
     @FXML
@@ -126,8 +143,31 @@ public class DriverReport {
         tableTbl.setItems(vehicles);
     }
 
+    @Override
+    public void removeData() {
+        vehicles.remove(selectedVehicle);
+        loadData();
+    }
+
+    @Override
+    public void addData(Object object) {
+        vehicles.add((Vehicle) object);
+        loadData();
+    }
+
     public void loadData() {
-        vehicles = FXCollections.observableArrayList(vehicleService.getVehicles(Integer.parseInt(page.getText())-1, 15));
+        final List<Vehicle> vehicleList;
+        if(Objects.isNull(query))
+            vehicleList = vehicleService.getVehicles(Integer.parseInt(page.getText()) - 1, 15);
+        else
+            vehicleList = vehicleService.getVehicles(Integer.parseInt(page.getText()) - 1, 15, query);
+        if(Objects.nonNull(vehicleList))
+            vehicles = FXCollections.observableArrayList(vehicleList);
         tableTbl.setItems(vehicles);
+    }
+
+    @Override
+    public void setQuery(String query) {
+        this.query = query;
     }
 }
