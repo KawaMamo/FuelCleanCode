@@ -7,6 +7,7 @@ import com.example.model.TableController;
 import com.example.model.modal.Modal;
 import com.example.model.refinery.RefineryService;
 import com.example.model.tools.FormType;
+import com.example.model.transLog.TransLogService;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -33,13 +34,16 @@ public class RefineryReport implements TableController {
     private static ObservableList<Refinery> refineries;
     public static Refinery selectedRefinery;
     private final RefineryService refineryService = RefineryService.getInstance();
+    private final TransLogService transLogService = TransLogService.getInstance();
     private String query = null;
-
     @FXML
-    private ToggleButton commercialTB;
-
+    private DatePicker startDP;
+    @FXML
+    private DatePicker endDP;
     @FXML
     private ToggleButton normalTB;
+    @FXML
+    private ToggleButton commercialTB;
     final ToggleGroup transTypeGroup = new ToggleGroup();
 
     @FXML
@@ -153,8 +157,11 @@ public class RefineryReport implements TableController {
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("XLSX files (*.xlsx)", "*.xlsx"));
         final File file = fileChooser.showSaveDialog(HelloApplication.primaryStage);
         String transType = normalTB.isSelected() ? "NORMAL":"COMMERCIAL";
-        final byte[] bytes = null;
-        // TODO bytes
+        final byte[] bytes = transLogService.getRefineryReport(file.getName().split("\\.")[1].toUpperCase(),
+                transType,
+                startDP.getValue(),
+                endDP.getValue(),
+                selectedRefinery.getId());
 
         try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
             fileOutputStream.write(Base64.getDecoder().decode(bytes));

@@ -163,4 +163,50 @@ public class TransLogController {
             throw new RuntimeException(e);
         }
     }
+
+
+    @GetMapping("/RefineryReport/{exportType}/{id}/{start}/{end}/{type}")
+    public ResponseEntity<String> getRefineryReport(@PathVariable Long id,
+                                                    @PathVariable LocalDate start,
+                                                    @PathVariable LocalDate end,
+                                                    @PathVariable TransportationType type,
+                                                    @PathVariable String exportType){
+
+        final List<TransLogEntity> logEntityList = transLogRepository.getTransLogEntities(id,
+                LocalDateTime.of(start, LocalTime.MIN),
+                LocalDateTime.of(end, LocalTime.MAX),
+                type);
+
+        Map<String, Object> params = new HashMap<>();
+        params.put("nowLocalDT", LocalDateTime.now());
+        params.put("driverName", logEntityList.get(0).getVehicle().getDriver().getName());
+        params.put("vehicleNumber", logEntityList.get(0).getVehicle().getPlateNumber());
+        params.put("officeName", logEntityList.get(0).getVehicle().getOffice().getName());
+        params.put("vehicleSize", NumberFormat.getInstance().format(logEntityList.get(0).getVehicle().getSize()));
+
+        try {
+
+            final JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(logEntityList);
+            JasperReport regionReport = JasperCompileManager.compileReport(new ClassPathResource("templates/driverReport.jrxml").getInputStream());
+            final JasperPrint jasperPrint = JasperFillManager.fillReport(regionReport, params, jrBeanCollectionDataSource);
+            File file = null;
+            if(exportType.equals("HTML")){
+                file = new File("DriverReport.html");
+                JasperExportManager.exportReportToHtmlFile(jasperPrint,
+                        file.getAbsolutePath());
+            }else if(exportType.equals("XLSX")){
+                file = new File("DriverReport.xlsx");
+                JRXlsxExporter exporter = new JRXlsxExporter();
+                exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
+                exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(file.getAbsolutePath()));
+                exporter.exportReport();
+            }
+            assert file != null;
+            try(final FileInputStream fileInputStream = new FileInputStream(file);){
+                return ResponseEntity.ok(Base64.getEncoder().encodeToString(fileInputStream.readAllBytes()));
+            }
+        } catch (JRException | IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
