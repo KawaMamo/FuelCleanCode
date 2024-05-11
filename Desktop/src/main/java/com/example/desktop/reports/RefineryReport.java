@@ -5,9 +5,11 @@ import com.example.desktop.delete.DeleteConfirmation;
 import com.example.desktop.refinery.AddRefinery;
 import com.example.model.TableController;
 import com.example.model.modal.Modal;
+import com.example.model.partition.PartitionService;
 import com.example.model.refinery.RefineryService;
 import com.example.model.tools.FormType;
 import com.example.model.transLog.TransLogService;
+import com.example.model.transportation.TransportationService;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -35,6 +37,8 @@ public class RefineryReport implements TableController {
     public static Refinery selectedRefinery;
     private final RefineryService refineryService = RefineryService.getInstance();
     private final TransLogService transLogService = TransLogService.getInstance();
+    private final TransportationService transportationService = TransportationService.getInstance();
+    private final PartitionService partitionService = PartitionService.getINSTANCE();
     private String query = null;
     @FXML
     private DatePicker startDP;
@@ -157,7 +161,7 @@ public class RefineryReport implements TableController {
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("XLSX files (*.xlsx)", "*.xlsx"));
         final File file = fileChooser.showSaveDialog(HelloApplication.primaryStage);
         String transType = normalTB.isSelected() ? "NORMAL":"COMMERCIAL";
-        final byte[] bytes = transLogService.getRefineryReport(file.getName().split("\\.")[1].toUpperCase(),
+        final byte[] bytes = partitionService.getRefineryReport(file.getName().split("\\.")[1].toUpperCase(),
                 transType,
                 startDP.getValue(),
                 endDP.getValue(),

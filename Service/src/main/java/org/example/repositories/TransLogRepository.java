@@ -17,4 +17,7 @@ public interface TransLogRepository extends JpaRepository<TransLogEntity, Long>,
 
     @Query("SELECT t FROM TransLogEntity t JOIN t.vehicle v JOIN t.transportation r JOIN t.transLine n WHERE v.id = ?1 AND t.createdAt BETWEEN ?2 AND ?3 AND r.type = ?4")
     List<TransLogEntity> getTransLogEntities(Long vehicleId, LocalDateTime start, LocalDateTime end, TransportationType type);
+
+    @Query("SELECT t FROM TransLogEntity t JOIN t.vehicle v JOIN t.transportation r JOIN t.transLine n WHERE r.refinery.id = ?1 AND t.createdAt BETWEEN ?2 AND ?3 AND r.type = ?4")
+    List<TransLogEntity> getTransLogEntitiesByRefinery(Long refineryId, LocalDateTime start, LocalDateTime end, TransportationType type);
 }

@@ -231,6 +231,13 @@ public class AddTransportation {
             }
         });
 
+        priceCateTF.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                notesTF.setText(t1);
+            }
+        });
+
         materialTF.focusedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {

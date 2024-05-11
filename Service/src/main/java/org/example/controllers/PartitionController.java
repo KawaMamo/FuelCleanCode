@@ -9,10 +9,7 @@ import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
 import org.example.contract.request.create.CreatePartitionRequest;
 import org.example.contract.request.update.UpdatePartitionRequest;
 import org.example.contract.response.PartitionResponse;
-import org.example.entities.GasStationEntity;
-import org.example.entities.PartitionEntity;
-import org.example.entities.RegionEntity;
-import org.example.entities.TransportationType;
+import org.example.entities.*;
 import org.example.mappers.PartitionMapper;
 import org.example.model.Partition;
 import org.example.repositories.PartitionRepository;
@@ -237,6 +234,7 @@ public class PartitionController {
         params.put("category", partition.getNotes());
         params.put("user", username);
         params.put("refinery", partition.getTransportationEntity().getRefinery().getTranslation());
+        params.put("imgParameter", null);
 
         try {
             JasperReport regionReport = JasperCompileManager.compileReport(new ClassPathResource("templates/transTicket.jrxml").getInputStream());
@@ -245,6 +243,48 @@ public class PartitionController {
             JasperExportManager.exportReportToHtmlFile(jasperPrint,
                         file.getAbsolutePath());
 
+            try(final FileInputStream fileInputStream = new FileInputStream(file);){
+                return ResponseEntity.ok(Base64.getEncoder().encodeToString(fileInputStream.readAllBytes()));
+            }
+        } catch (JRException | IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @GetMapping("/RefineryReport/{exportType}/{id}/{start}/{end}/{type}")
+    public ResponseEntity<String> getRefineryReport(@PathVariable Long id,
+                                                    @PathVariable LocalDate start,
+                                                    @PathVariable LocalDate end,
+                                                    @PathVariable TransportationType type,
+                                                    @PathVariable String exportType){
+
+        final List<PartitionEntity> logEntityList = partitionRepository.getPartitionEntitiesByRefinery(id,
+                LocalDateTime.of(start, LocalTime.MIN),
+                LocalDateTime.of(end, LocalTime.MAX),
+                type);
+
+        Map<String, Object> params = new HashMap<>();
+        params.put("nowLocalDT", LocalDateTime.now());
+        params.put("refineryName", logEntityList.get(0).getTransportationEntity().getRefinery().getTranslation());
+
+        try {
+
+            final JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(logEntityList);
+            JasperReport regionReport = JasperCompileManager.compileReport(new ClassPathResource("templates/refineryReport.jrxml").getInputStream());
+            final JasperPrint jasperPrint = JasperFillManager.fillReport(regionReport, params, jrBeanCollectionDataSource);
+            File file = null;
+            if(exportType.equals("HTML")){
+                file = new File("DriverReport.html");
+                JasperExportManager.exportReportToHtmlFile(jasperPrint,
+                        file.getAbsolutePath());
+            }else if(exportType.equals("XLSX")){
+                file = new File("DriverReport.xlsx");
+                JRXlsxExporter exporter = new JRXlsxExporter();
+                exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
+                exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(file.getAbsolutePath()));
+                exporter.exportReport();
+            }
+            assert file != null;
             try(final FileInputStream fileInputStream = new FileInputStream(file);){
                 return ResponseEntity.ok(Base64.getEncoder().encodeToString(fileInputStream.readAllBytes()));
             }

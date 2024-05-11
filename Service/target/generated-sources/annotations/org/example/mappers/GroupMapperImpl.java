@@ -6,7 +6,7 @@ import org.example.model.Group;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-04-28T18:23:12+0300",
+    date = "2024-05-11T17:20:00+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class GroupMapperImpl implements GroupMapper {

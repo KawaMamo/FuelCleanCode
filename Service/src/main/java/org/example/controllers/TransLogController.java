@@ -137,6 +137,8 @@ public class TransLogController {
         params.put("vehicleNumber", logEntityList.get(0).getVehicle().getPlateNumber());
         params.put("officeName", logEntityList.get(0).getVehicle().getOffice().getName());
         params.put("vehicleSize", NumberFormat.getInstance().format(logEntityList.get(0).getVehicle().getSize()));
+        params.put("notes", logEntityList.get(0).getNotes());
+        params.put("imgParameter", "test/test.png");
 
         try {
 
@@ -172,22 +174,19 @@ public class TransLogController {
                                                     @PathVariable TransportationType type,
                                                     @PathVariable String exportType){
 
-        final List<TransLogEntity> logEntityList = transLogRepository.getTransLogEntities(id,
+        final List<TransLogEntity> logEntityList = transLogRepository.getTransLogEntitiesByRefinery(id,
                 LocalDateTime.of(start, LocalTime.MIN),
                 LocalDateTime.of(end, LocalTime.MAX),
                 type);
 
         Map<String, Object> params = new HashMap<>();
         params.put("nowLocalDT", LocalDateTime.now());
-        params.put("driverName", logEntityList.get(0).getVehicle().getDriver().getName());
-        params.put("vehicleNumber", logEntityList.get(0).getVehicle().getPlateNumber());
-        params.put("officeName", logEntityList.get(0).getVehicle().getOffice().getName());
-        params.put("vehicleSize", NumberFormat.getInstance().format(logEntityList.get(0).getVehicle().getSize()));
+        params.put("refineryName", logEntityList.get(0).getTransportation().getRefinery().getTranslation());
 
         try {
 
             final JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(logEntityList);
-            JasperReport regionReport = JasperCompileManager.compileReport(new ClassPathResource("templates/driverReport.jrxml").getInputStream());
+            JasperReport regionReport = JasperCompileManager.compileReport(new ClassPathResource("templates/refineryReport.jrxml").getInputStream());
             final JasperPrint jasperPrint = JasperFillManager.fillReport(regionReport, params, jrBeanCollectionDataSource);
             File file = null;
             if(exportType.equals("HTML")){
