@@ -799,3 +799,129 @@ Caused by: java.net.ConnectException: Connection refused: no further information
 	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63) ~[mysql-connector-j-8.0.32.jar:8.0.32]
 	... 54 common frames omitted
 
+2024-06-03T18:34:02.126+03:00  INFO 20200 --- [main] org.example.Main                         : Starting Main using Java 20 with PID 20200 (D:\fuelRefactored\FuelCleanCode\Service\target\classes started by GIGABYTE in D:\fuelRefactored\FuelCleanCode)
+2024-06-03T18:34:02.129+03:00  INFO 20200 --- [main] org.example.Main                         : No active profile set, falling back to 1 default profile: "default"
+2024-06-03T18:34:03.294+03:00  INFO 20200 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-03T18:34:03.485+03:00  INFO 20200 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 181 ms. Found 18 JPA repository interfaces.
+2024-06-03T18:34:04.240+03:00  INFO 20200 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9091 (http)
+2024-06-03T18:34:04.249+03:00  INFO 20200 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-03T18:34:04.250+03:00  INFO 20200 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.7]
+2024-06-03T18:34:04.370+03:00  INFO 20200 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-03T18:34:04.370+03:00  INFO 20200 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2201 ms
+2024-06-03T18:34:04.689+03:00  INFO 20200 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-03T18:34:04.738+03:00  INFO 20200 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2024-06-03T18:34:05.025+03:00  INFO 20200 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-03T18:34:05.206+03:00  INFO 20200 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1607d391
+2024-06-03T18:34:05.208+03:00  INFO 20200 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-03T18:34:05.252+03:00  WARN 20200 --- [main] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.0 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 5.7.0. Check the community dialects project for available legacy versions.
+2024-06-03T18:34:05.258+03:00  INFO 20200 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2024-06-03T18:34:07.061+03:00  INFO 20200 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-06-03T18:34:07.074+03:00  INFO 20200 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-03T18:34:07.586+03:00  WARN 20200 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.PartitionRepository
+2024-06-03T18:34:08.070+03:00  WARN 20200 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.TransRepoJpa
+2024-06-03T18:34:08.265+03:00  WARN 20200 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.TransLogRepository
+2024-06-03T18:34:08.438+03:00  WARN 20200 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-03T18:34:09.083+03:00  INFO 20200 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-06-03T18:34:09.185+03:00  INFO 20200 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9091 (http) with context path ''
+2024-06-03T18:34:09.200+03:00  INFO 20200 --- [main] org.example.Main                         : Started Main in 7.516 seconds (process running for 8.068)
+2024-06-03T18:34:57.860+03:00  INFO 20200 --- [http-nio-9091-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-03T18:34:57.860+03:00  INFO 20200 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-03T18:34:57.862+03:00  INFO 20200 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-06-03T18:34:57.936+03:00  WARN 20200 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T18:34:57.995+03:00  WARN 20200 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@22ea5040
+2024-06-03T18:36:19.244+03:00  WARN 20200 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T18:36:19.261+03:00  WARN 20200 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@6af21e7b
+2024-06-03T18:37:21.265+03:00  WARN 20200 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T18:37:21.329+03:00  WARN 20200 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@703b29d3
+2024-06-03T18:37:29.834+03:00  WARN 20200 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/region
+2024-06-03T18:37:29.859+03:00  WARN 20200 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/region headers org.apache.tomcat.util.http.ValuesEnumerator@2d284a3
+2024-06-03T18:37:31.270+03:00  WARN 20200 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T18:37:31.293+03:00  WARN 20200 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@65b6c9cb
+2024-06-03T18:38:56.155+03:00  WARN 20200 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T18:38:56.209+03:00  WARN 20200 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@2f3dc4f
+2024-06-03T18:39:08.183+03:00  WARN 20200 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T18:39:08.235+03:00  WARN 20200 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@412c56fc
+2024-06-03T18:40:39.160+03:00  WARN 20200 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T18:40:39.213+03:00  WARN 20200 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@487d3d6d
+2024-06-03T18:43:39.285+03:00  WARN 20200 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T18:43:39.300+03:00  WARN 20200 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@1dd0ff2
+2024-06-03T18:52:51.549+03:00  WARN 20200 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T18:52:51.565+03:00  WARN 20200 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@21d79a70
+2024-06-03T18:54:54.790+03:00  WARN 20200 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T18:54:54.807+03:00  WARN 20200 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@4a9fc3c0
+2024-06-03T18:57:53.471+03:00  WARN 20200 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T18:57:53.487+03:00  WARN 20200 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@4c511d9e
+2024-06-03T18:58:29.946+03:00  WARN 20200 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T18:58:29.959+03:00  WARN 20200 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@6af4664b
+2024-06-03T19:10:28.960+03:00  WARN 20200 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T19:10:28.975+03:00  WARN 20200 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@5d4c658c
+2024-06-03T19:11:38.408+03:00  WARN 20200 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T19:11:38.421+03:00  WARN 20200 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@7a06b96b
+2024-06-03T19:19:57.336+03:00  WARN 20200 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T19:19:57.347+03:00  WARN 20200 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@6a754e24
+2024-06-03T19:21:02.368+03:00  WARN 20200 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T19:21:02.381+03:00  WARN 20200 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@2a98d441
+2024-06-03T19:21:05.248+03:00  WARN 20200 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T19:21:05.261+03:00  WARN 20200 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@9602e11
+2024-06-03T19:23:34.906+03:00  WARN 20200 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/trans/1/document
+2024-06-03T19:23:34.929+03:00  WARN 20200 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/trans/1/document headers org.apache.tomcat.util.http.ValuesEnumerator@2b27c1f8
+2024-06-03T19:23:35.003+03:00  WARN 20200 --- [http-nio-9091-exec-4] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.controllers.TransController
+2024-06-03T19:23:42.954+03:00  WARN 20200 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T19:23:42.966+03:00  WARN 20200 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@7888fb5f
+2024-06-03T20:01:52.987+03:00  WARN 20200 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T20:01:52.999+03:00  WARN 20200 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@58b01ad1
+2024-06-03T20:02:26.286+03:00  WARN 20200 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T20:02:26.296+03:00  WARN 20200 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@7a3648c0
+2024-06-03T20:03:38.404+03:00  WARN 20200 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T20:03:38.414+03:00  WARN 20200 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@2f8dd229
+2024-06-03T20:10:00.733+03:00  WARN 20200 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T20:10:00.745+03:00  WARN 20200 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@5300aaa9
+2024-06-03T20:28:15.370+03:00  WARN 20200 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T20:28:15.383+03:00  WARN 20200 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@3745cde4
+2024-06-03T20:28:58.149+03:00  WARN 20200 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T20:28:58.161+03:00  WARN 20200 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@1eb031ef
+2024-06-03T20:33:21.083+03:00  WARN 20200 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T20:33:21.097+03:00  WARN 20200 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@2f26e0b7
+2024-06-03T20:56:07.716+03:00  WARN 20200 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T20:56:07.727+03:00  WARN 20200 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@69e29324
+2024-06-03T20:56:39.915+03:00  WARN 20200 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T20:56:39.925+03:00  WARN 20200 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@77f42306
+2024-06-03T20:57:35.124+03:00  WARN 20200 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/trans/1/document
+2024-06-03T20:57:35.156+03:00  WARN 20200 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/trans/1/document headers org.apache.tomcat.util.http.ValuesEnumerator@505d9bb8
+2024-06-03T20:57:40.796+03:00  WARN 20200 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T20:57:40.821+03:00  WARN 20200 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@e6f46e1
+2024-06-03T21:53:32.826+03:00  WARN 20200 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T21:53:32.846+03:00  WARN 20200 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@6389e6f5
+2024-06-03T21:56:04.688+03:00  WARN 20200 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T21:56:04.703+03:00  WARN 20200 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@508c32c4
+2024-06-03T21:56:21.401+03:00  WARN 20200 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/trans/1document
+2024-06-03T21:56:21.426+03:00  WARN 20200 --- [http-nio-9091-exec-4] o.s.web.servlet.PageNotFound             : Request method 'POST' is not supported
+2024-06-03T21:56:21.426+03:00  WARN 20200 --- [http-nio-9091-exec-4] org.example.config.AppExceptionHandler   : Response already committed. Ignoring: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' is not supported
+2024-06-03T22:00:12.785+03:00  WARN 20200 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T22:00:12.798+03:00  WARN 20200 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@7e419b71
+2024-06-03T22:00:13.575+03:00  WARN 20200 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T22:00:13.590+03:00  WARN 20200 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@390a6fb2
+2024-06-03T22:00:38.151+03:00  WARN 20200 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/trans/1document
+2024-06-03T22:00:38.156+03:00  WARN 20200 --- [http-nio-9091-exec-8] o.s.web.servlet.PageNotFound             : Request method 'POST' is not supported
+2024-06-03T22:00:38.156+03:00  WARN 20200 --- [http-nio-9091-exec-8] org.example.config.AppExceptionHandler   : Response already committed. Ignoring: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' is not supported
+2024-06-03T22:00:38.169+03:00  WARN 20200 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T22:00:38.184+03:00  WARN 20200 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@1c269f28
+2024-06-03T22:00:44.948+03:00  WARN 20200 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T22:00:44.961+03:00  WARN 20200 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@25525c75
+2024-06-03T22:01:50.705+03:00  WARN 20200 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T22:01:50.717+03:00  WARN 20200 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@764d478d
+2024-06-03T22:02:04.836+03:00  WARN 20200 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans/1document
+2024-06-03T22:02:04.847+03:00  WARN 20200 --- [http-nio-9091-exec-3] o.s.web.servlet.PageNotFound             : Request method 'POST' is not supported
+2024-06-03T22:02:04.847+03:00  WARN 20200 --- [http-nio-9091-exec-3] org.example.config.AppExceptionHandler   : Response already committed. Ignoring: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' is not supported
+2024-06-03T22:02:08.804+03:00  WARN 20200 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T22:02:08.815+03:00  WARN 20200 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@7c4312fb
+2024-06-03T22:03:02.683+03:00  WARN 20200 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T22:03:02.696+03:00  WARN 20200 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@64122140
+2024-06-03T22:04:02.326+03:00  WARN 20200 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/trans/1document
+2024-06-03T22:04:02.333+03:00  WARN 20200 --- [http-nio-9091-exec-8] o.s.web.servlet.PageNotFound             : Request method 'POST' is not supported
+2024-06-03T22:04:02.333+03:00  WARN 20200 --- [http-nio-9091-exec-8] org.example.config.AppExceptionHandler   : Response already committed. Ignoring: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' is not supported
+2024-06-03T22:04:18.357+03:00  WARN 20200 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T22:04:18.369+03:00  WARN 20200 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@4160a24c
+2024-06-03T22:04:35.254+03:00  WARN 20200 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans/1/document
+2024-06-03T22:04:40.736+03:00  WARN 20200 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans
+2024-06-03T22:04:40.746+03:00  WARN 20200 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@2d849c72

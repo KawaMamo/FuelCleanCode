@@ -46,9 +46,10 @@ public class TransScan implements TableController {
     private void initialize(){
         loadData();
         setTable();
+        setDocumentTable();
         tableTbl.getSelectionModel().selectedItemProperty().addListener((observableValue, Transportation, t1) -> {
             selectedTransportation = t1;
-            setDocumentTable(selectedTransportation.getId());
+            loadDocuments();
         });
 
         fileTBL.getSelectionModel().selectedItemProperty().addListener((observableValue, document, t1) -> selectedDocument = t1);
@@ -107,11 +108,16 @@ public class TransScan implements TableController {
         tableTbl.setItems(observableList);
     }
 
-    private void setDocumentTable(Long id){
+    private void setDocumentTable(){
         TableColumn<Document, Long> urlCol = new TableColumn<>("Name");
         urlCol.setCellValueFactory(new PropertyValueFactory<>("url"));
 
         fileTBL.getColumns().add(urlCol);
+
+        fileTBL.setItems(documentObservableList);
+    }
+
+    private void loadDocuments(){
         final List<Document> documents = new ArrayList<>();
 
         for (Transportation transportation : observableList) {
@@ -155,12 +161,9 @@ public class TransScan implements TableController {
         fileChooser.getExtensionFilters()
                 .addAll(extFilterPNG, extFilterpng);
         File file = fileChooser.showOpenDialog(null);
-
-        final Transportation transportation = transportationService.uploadImage(selectedTransportation.getId(), file.getPath(), "{\n" +
-                    "  \"fileName\": \"instagram2\",\n" +
-                    "  \"type\": \"png\"\n" +
-                    "}");
-
+        String request = "{\"fileName\": \""+file.getName()+"\",\n \"type\": \"png\"\n}";
+        final Transportation transportation = transportationService.uploadImage(selectedTransportation.getId(), file.getPath(), request);
+        loadDocuments();
     }
 
     @FXML
