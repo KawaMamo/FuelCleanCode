@@ -1,13 +1,23 @@
 package com.example.model.client;
 
 import lombok.Data;
+import org.apache.http.HttpEntity;
+import org.apache.http.entity.ContentType;
+import org.apache.http.entity.mime.FormBodyPart;
+import org.apache.http.entity.mime.MultipartEntityBuilder;
+import org.apache.http.entity.mime.content.ContentBody;
+import org.apache.http.entity.mime.content.StringBody;
 import org.controlsfx.control.Notifications;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.channels.Channels;
+import java.nio.channels.Pipe;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Base64;
@@ -43,6 +53,29 @@ public class Client {
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public HttpResponse<String> postMultiPart(String endPoint, String payload, String fileUrl) throws IOException, InterruptedException {
+
+        final HttpEntity multipartEntityBuilder = MultipartEntityBuilder
+                .create()
+                .addBinaryBody("document", new File(fileUrl))
+                .addPart("request", new StringBody(payload, ContentType.MULTIPART_FORM_DATA))
+                .build();
+        Pipe pipe = Pipe.open();
+        new Thread(() -> {
+            try (OutputStream outputStream = Channels.newOutputStream(pipe.sink())) {
+                multipartEntityBuilder.writeTo(outputStream);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }).start();
+        final HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url + endPoint))
+                .header("Content-Type", multipartEntityBuilder.getContentType().getValue())
+                .POST(HttpRequest.BodyPublishers.ofInputStream(
+                        () -> Channels.newInputStream(pipe.source()))).build();
+        return httpClient.send(request, HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8));
     }
 
     public HttpResponse<String> patch(String endPoint, String payload) {

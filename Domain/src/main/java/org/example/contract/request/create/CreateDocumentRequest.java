@@ -6,5 +6,5 @@ import lombok.Data;
 public class CreateDocumentRequest {
     private String type;
     private String fileName;
-    private byte[] content;
+    private String content;
 }

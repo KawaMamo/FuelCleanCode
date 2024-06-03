@@ -1,8 +1,11 @@
 package com.example.desktop.transportation;
 
 import com.example.model.TableController;
+import com.example.model.client.Client;
 import com.example.model.transportation.TransportationService;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -11,20 +14,21 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
+import org.example.model.Document;
 import org.example.model.Transportation;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.text.NumberFormat;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.Objects;
 
 public class TransScan implements TableController {
 
     @FXML
-    private TableView<?> fileTBL;
+    private TableView<Document> fileTBL;
 
     @FXML
     private TextField page;
@@ -32,7 +36,9 @@ public class TransScan implements TableController {
     @FXML
     private TableView<Transportation> tableTbl;
     private static ObservableList<Transportation> observableList;
+    public static ObservableList<Document> documentObservableList;
     public static Transportation selectedTransportation;
+    public static Document selectedDocument;
     private final TransportationService transportationService = TransportationService.getInstance();
     private String query = null;
 
@@ -40,7 +46,13 @@ public class TransScan implements TableController {
     private void initialize(){
         loadData();
         setTable();
-        tableTbl.getSelectionModel().selectedItemProperty().addListener((observableValue, Transportation, t1) -> selectedTransportation = t1);
+        tableTbl.getSelectionModel().selectedItemProperty().addListener((observableValue, Transportation, t1) -> {
+            selectedTransportation = t1;
+            setDocumentTable(selectedTransportation.getId());
+        });
+
+        fileTBL.getSelectionModel().selectedItemProperty().addListener((observableValue, document, t1) -> selectedDocument = t1);
+
     }
 
     @Override
@@ -95,6 +107,21 @@ public class TransScan implements TableController {
         tableTbl.setItems(observableList);
     }
 
+    private void setDocumentTable(Long id){
+        TableColumn<Document, Long> urlCol = new TableColumn<>("Name");
+        urlCol.setCellValueFactory(new PropertyValueFactory<>("url"));
+
+        fileTBL.getColumns().add(urlCol);
+        final List<Document> documents = new ArrayList<>();
+
+        for (Transportation transportation : observableList) {
+            if(Objects.equals(transportation.getId(), selectedTransportation.getId()) && Objects.nonNull(transportation.getDocument()))
+                documents.addAll(transportation.getDocument());
+        }
+        documentObservableList = FXCollections.observableList(documents);
+        fileTBL.setItems(documentObservableList);
+    }
+
     @Override
     public void setQuery(String query) {
 
@@ -121,28 +148,34 @@ public class TransScan implements TableController {
     void upload() {
         FileChooser fileChooser = new FileChooser();
 
-        //Set extension filter
         FileChooser.ExtensionFilter extFilterPNG
                 = new FileChooser.ExtensionFilter("PNG files (*.PNG)", "*.PNG");
         FileChooser.ExtensionFilter extFilterpng
                 = new FileChooser.ExtensionFilter("png files (*.png)", "*.png");
         fileChooser.getExtensionFilters()
                 .addAll(extFilterPNG, extFilterpng);
-        //Show open file dialog
         File file = fileChooser.showOpenDialog(null);
 
-        try (FileInputStream fin = new FileInputStream(file)) {
-            final byte[] bytes = fin.readAllBytes();
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
+        final Transportation transportation = transportationService.uploadImage(selectedTransportation.getId(), file.getPath(), "{\n" +
+                    "  \"fileName\": \"instagram2\",\n" +
+                    "  \"type\": \"png\"\n" +
+                    "}");
 
     }
 
     @FXML
     void preview() {
+        final byte[] bytes = selectedDocument.getContent().getBytes(StandardCharsets.UTF_8);
+        final File file = new File("testFile.png");
+        try (final FileOutputStream fileOutputStream = new FileOutputStream(file)) {
+            final Base64.Decoder decoder = Base64.getDecoder();
+            fileOutputStream.write(decoder.decode(bytes));
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler "+file.getPath());
+            System.out.println(file.getAbsolutePath());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
 
     }
 }

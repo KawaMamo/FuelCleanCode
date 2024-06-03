@@ -6,6 +6,7 @@ import org.example.contract.request.create.CreateTransRequest;
 import org.example.contract.request.update.UpdateTransRequest;
 import org.example.model.Transportation;
 
+import java.io.IOException;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
@@ -78,5 +79,15 @@ public class TransportationService implements Service<Transportation, CreateTran
 
         final HttpResponse<String> stringHttpResponse = client.parallelGet(getEndPoint()+"/RefineryReport" + "/" + exportType + "/" + id + "/" + startDate + "/" + endDate + "/" + transType);
         return stringHttpResponse.body().getBytes(StandardCharsets.UTF_8);
+    }
+
+    public Transportation uploadImage(Long id, String fileUrl, String request){
+        final HttpResponse<String> stringHttpResponse;
+        try {
+            stringHttpResponse = client.postMultiPart(getEndPoint() + "/" + id + "/document", request, fileUrl);
+        } catch (IOException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        return gson.fromJson(stringHttpResponse.body(), Transportation.class);
     }
 }
