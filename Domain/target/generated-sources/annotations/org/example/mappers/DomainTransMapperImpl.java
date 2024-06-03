@@ -6,6 +6,7 @@ import javax.annotation.processing.Generated;
 import org.example.contract.request.create.CreateTransRequest;
 import org.example.contract.request.update.UpdateTransRequest;
 import org.example.contract.response.TransResponse;
+import org.example.model.Document;
 import org.example.model.Partition;
 import org.example.model.Refinery;
 import org.example.model.TransLog;
@@ -14,7 +15,7 @@ import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-04-27T21:23:37+0300",
+    date = "2024-06-03T10:56:09+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class DomainTransMapperImpl implements DomainTransMapper {
@@ -60,7 +61,10 @@ public class DomainTransMapperImpl implements DomainTransMapper {
             transResponse.setTransLogs( new ArrayList<TransLog>( list1 ) );
         }
         transResponse.setType( transportation.getType() );
-        transResponse.setDocument( transportation.getDocument() );
+        List<Document> list2 = transportation.getDocument();
+        if ( list2 != null ) {
+            transResponse.setDocument( new ArrayList<Document>( list2 ) );
+        }
         transResponse.setDeletedAt( transportation.getDeletedAt() );
 
         return transResponse;

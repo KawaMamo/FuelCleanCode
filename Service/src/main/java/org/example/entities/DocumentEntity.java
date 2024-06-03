@@ -15,6 +15,8 @@ public class DocumentEntity {
     private String url;
     private String type;
     private Long resourceId;
+    @Lob
+    @Column(name = "content", columnDefinition = "LONGBLOB")
     private byte[] content;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

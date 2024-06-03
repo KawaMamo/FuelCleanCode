@@ -1,5 +1,6 @@
 package org.example.mappers;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -25,7 +26,7 @@ import org.mapstruct.factory.Mappers;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-05-11T17:20:00+0300",
+    date = "2024-06-03T10:56:16+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class TransLogMapperImpl implements TransLogMapper {
@@ -212,6 +213,19 @@ public class TransLogMapperImpl implements TransLogMapper {
         return documentEntity;
     }
 
+    protected List<DocumentEntity> documentListToDocumentEntityList(List<Document> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        List<DocumentEntity> list1 = new ArrayList<DocumentEntity>( list.size() );
+        for ( Document document : list ) {
+            list1.add( documentToDocumentEntity( document ) );
+        }
+
+        return list1;
+    }
+
     protected Set<TransLogEntity> transLogListToTransLogEntitySet(List<TransLog> list) {
         if ( list == null ) {
             return null;
@@ -241,7 +255,7 @@ public class TransLogMapperImpl implements TransLogMapper {
         transportationEntity.setCreatedAt( transportation.getCreatedAt() );
         transportationEntity.setUpdatedAt( transportation.getUpdatedAt() );
         transportationEntity.setType( transportationTypeToTransportationType( transportation.getType() ) );
-        transportationEntity.setDocument( documentToDocumentEntity( transportation.getDocument() ) );
+        transportationEntity.setDocument( documentListToDocumentEntityList( transportation.getDocument() ) );
         transportationEntity.setDeletedAt( transportation.getDeletedAt() );
         transportationEntity.setTransLogs( transLogListToTransLogEntitySet( transportation.getTransLogs() ) );
 

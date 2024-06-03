@@ -34,6 +34,7 @@ public class AddUser {
         role.getItems().add("TRANS_OFFICE");
         role.getItems().add("ACCOUNTANT");
         role.getItems().add("FINANCIAL");
+        role.getItems().add("SCANNER");
         submitBtn.setDefaultButton(true);
 
     }

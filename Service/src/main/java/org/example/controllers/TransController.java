@@ -1,10 +1,13 @@
 package org.example.controllers;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.export.ooxml.JRXlsxExporter;
 import net.sf.jasperreports.export.SimpleExporterInput;
 import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
+import org.example.contract.request.create.CreateDocumentRequest;
 import org.example.contract.request.create.CreateTransRequest;
 import org.example.contract.request.update.UpdateTransRequest;
 import org.example.contract.response.TransResponse;
@@ -23,6 +26,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.PagedModel;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -131,6 +135,22 @@ public class TransController {
                 return ResponseEntity.ok(Base64.getEncoder().encodeToString(fileInputStream.readAllBytes()));
             }
         } catch (JRException | IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.MULTIPART_FORM_DATA_VALUE, path = "/{id}/document")
+    public ResponseEntity<TransResponse> addDocument(@PathVariable Long id,
+                                                     @RequestPart String request,
+                                                     @RequestPart("document") byte[] document){
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            final CreateDocumentRequest createDocumentRequest = mapper.readValue(request, CreateDocumentRequest.class);
+            createDocumentRequest.setContent(document);
+            final TransResponse transResponse = updateTrans.addDocument(id, createDocumentRequest);
+            return ResponseEntity.ok(transResponse);
+        } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
     }

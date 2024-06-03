@@ -31,8 +31,8 @@ public class TransportationEntity {
     private LocalDateTime updatedAt;
     @Enumerated
     private TransportationType type;
-    @OneToOne
-    private DocumentEntity document;
+    @OneToMany
+    private List<DocumentEntity> document;
     private LocalDateTime deletedAt;
     @OneToMany(mappedBy="transportationEntity")
     @ToString.Exclude

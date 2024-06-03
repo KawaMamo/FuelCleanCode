@@ -1,5 +1,6 @@
 package org.example.mappers;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -25,7 +26,7 @@ import org.mapstruct.factory.Mappers;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-05-11T17:20:00+0300",
+    date = "2024-06-03T10:56:15+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class VehicleMapperImpl implements VehicleMapper {
@@ -91,7 +92,7 @@ public class VehicleMapperImpl implements VehicleMapper {
         buyOperation1.setCreatedAt( buyOperation.getCreatedAt() );
         buyOperation1.setUpdatedAt( buyOperation.getUpdatedAt() );
         buyOperation1.setType( transportationTypeToTransportationType( buyOperation.getType() ) );
-        buyOperation1.setDocument( documentToDocumentEntity( buyOperation.getDocument() ) );
+        buyOperation1.setDocument( documentListToDocumentEntityList( buyOperation.getDocument() ) );
         buyOperation1.setDeletedAt( buyOperation.getDeletedAt() );
         buyOperation1.setTransLogs( transLogListToTransLogEntitySet( buyOperation.getTransLogs() ) );
         buyOperation1.setSource( buyOperation.getSource() );
@@ -206,6 +207,19 @@ public class VehicleMapperImpl implements VehicleMapper {
         documentEntity.setUpdatedAt( document.getUpdatedAt() );
 
         return documentEntity;
+    }
+
+    protected List<DocumentEntity> documentListToDocumentEntityList(List<Document> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        List<DocumentEntity> list1 = new ArrayList<DocumentEntity>( list.size() );
+        for ( Document document : list ) {
+            list1.add( documentToDocumentEntity( document ) );
+        }
+
+        return list1;
     }
 
     protected Set<TransLogEntity> transLogListToTransLogEntitySet(List<TransLog> list) {

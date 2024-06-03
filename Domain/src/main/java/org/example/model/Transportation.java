@@ -18,7 +18,7 @@ public class Transportation {
     private List<Partition> partitions;
     private List<TransLog> transLogs;
     private TransportationType type;
-    private Document document;
+    private List<Document> document;
     private LocalDateTime deletedAt;
 
 }

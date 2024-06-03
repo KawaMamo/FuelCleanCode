@@ -41,6 +41,10 @@ public class HelloController {
             HelloApplication.setScene("adminArea");
         else if(LogInData.loggedInUser.getRole().equals("TRANS_OFFICE"))
             HelloApplication.setScene("officeArea");
+        else if(LogInData.loggedInUser.getRole().equals("ACCOUNTANT"))
+            HelloApplication.setScene("accountantArea");
+        else if(LogInData.loggedInUser.getRole().equals("SCANNER"))
+            HelloApplication.setScene("scannerArea");
 
     }
     private void setUserDetails(JWTToken jwtToken) {

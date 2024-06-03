@@ -8,7 +8,7 @@ import org.example.model.Material;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-04-27T21:23:37+0300",
+    date = "2024-06-03T10:56:09+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class MaterialDomainMapperImpl implements MaterialDomainMapper {

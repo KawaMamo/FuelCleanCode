@@ -39,7 +39,7 @@ import org.mapstruct.factory.Mappers;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-05-11T17:20:00+0300",
+    date = "2024-06-03T10:56:16+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class TransMapperImpl implements TransMapper {
@@ -56,7 +56,7 @@ public class TransMapperImpl implements TransMapper {
 
         transportationEntity.setVehicle( vehicleToVehicleEntity( transportation.getVehicle() ) );
         transportationEntity.setRefinery( refineryToRefineryEntity( transportation.getRefinery() ) );
-        transportationEntity.setDocument( documentToDocumentEntity( transportation.getDocument() ) );
+        transportationEntity.setDocument( documentListToDocumentEntityList( transportation.getDocument() ) );
         transportationEntity.setPartitionEntities( partitionListToPartitionEntitySet( transportation.getPartitions() ) );
         transportationEntity.setId( transportation.getId() );
         transportationEntity.setIsDivided( transportation.getIsDivided() );
@@ -81,7 +81,7 @@ public class TransMapperImpl implements TransMapper {
 
         transportation.setVehicle( vehicleEntityToVehicle( transportationEntity.getVehicle() ) );
         transportation.setRefinery( refineryEntityToRefinery( transportationEntity.getRefinery() ) );
-        transportation.setDocument( TransMapper.documentEntityToDocument( transportationEntity.getDocument() ) );
+        transportation.setDocument( documentEntityListToDocumentList( transportationEntity.getDocument() ) );
         transportation.setPartitions( TransMapper.partitionEntityToDomain( transportationEntity.getPartitionEntities() ) );
         transportation.setId( transportationEntity.getId() );
         transportation.setIsDivided( transportationEntity.getIsDivided() );
@@ -202,6 +202,19 @@ public class TransMapperImpl implements TransMapper {
         documentEntity.setUpdatedAt( document.getUpdatedAt() );
 
         return documentEntity;
+    }
+
+    protected List<DocumentEntity> documentListToDocumentEntityList(List<Document> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        List<DocumentEntity> list1 = new ArrayList<DocumentEntity>( list.size() );
+        for ( Document document : list ) {
+            list1.add( documentToDocumentEntity( document ) );
+        }
+
+        return list1;
     }
 
     protected MaterialEntity materialToMaterialEntity(Material material) {
@@ -418,6 +431,19 @@ public class TransMapperImpl implements TransMapper {
         refinery.setUpdatedAt( refineryEntity.getUpdatedAt() );
 
         return refinery;
+    }
+
+    protected List<Document> documentEntityListToDocumentList(List<DocumentEntity> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        List<Document> list1 = new ArrayList<Document>( list.size() );
+        for ( DocumentEntity documentEntity : list ) {
+            list1.add( TransMapper.documentEntityToDocument( documentEntity ) );
+        }
+
+        return list1;
     }
 
     protected List<TransLog> transLogEntitySetToTransLogList(Set<TransLogEntity> set) {
