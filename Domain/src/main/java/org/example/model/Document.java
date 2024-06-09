@@ -10,7 +10,7 @@ public class Document {
     private String url;
     private String type;
     private Long resourceId;
-    private String content;
+    private byte[] content;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }

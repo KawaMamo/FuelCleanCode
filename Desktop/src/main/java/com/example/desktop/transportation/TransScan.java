@@ -168,11 +168,13 @@ public class TransScan implements TableController {
 
     @FXML
     void preview() {
-        final byte[] bytes = selectedDocument.getContent().getBytes(StandardCharsets.UTF_8);
+        final byte[] bytes = selectedDocument.getContent();
         final File file = new File("testFile.png");
         try (final FileOutputStream fileOutputStream = new FileOutputStream(file)) {
+            final String s = new String(bytes);
+            final String substring = s.substring(1, s.length()-1);
             final Base64.Decoder decoder = Base64.getDecoder();
-            fileOutputStream.write(decoder.decode(bytes));
+            fileOutputStream.write(decoder.decode(substring));
             Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler "+file.getPath());
             System.out.println(file.getAbsolutePath());
         } catch (IOException e) {

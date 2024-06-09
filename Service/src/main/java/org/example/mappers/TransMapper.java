@@ -26,9 +26,6 @@ public interface TransMapper {
 
 
 
-
-
-
     @Named("partitionEntityToDomain")
     static List<Partition> partitionEntityToDomain(Set<PartitionEntity> partitionEntities){
         List<Partition> partitions = new ArrayList<>();
@@ -121,7 +118,7 @@ public interface TransMapper {
         document.setResourceId( documentEntity.getResourceId() );
         byte[] content = documentEntity.getContent();
         if ( content != null ) {
-            document.setContent( Arrays.copyOf( content, content.length ) );
+            document.setContent(Arrays.copyOf(content, content.length));
         }
         document.setCreatedAt( documentEntity.getCreatedAt() );
         document.setUpdatedAt( documentEntity.getUpdatedAt() );
