@@ -1,11 +1,10 @@
 package com.example.desktop.transportation;
 
 import com.example.model.TableController;
-import com.example.model.client.Client;
+import com.example.model.modal.Modal;
+import com.example.model.tools.FormType;
 import com.example.model.transportation.TransportationService;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -18,7 +17,6 @@ import org.example.model.Document;
 import org.example.model.Transportation;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Base64;
@@ -58,12 +56,14 @@ public class TransScan implements TableController {
 
     @Override
     public void removeData() {
-
+        observableList.remove(selectedTransportation);
+        loadData();
     }
 
     @Override
     public void addData(Object object) {
-
+        observableList.add((Transportation) object);
+        loadData();
     }
 
     @Override
@@ -130,7 +130,7 @@ public class TransScan implements TableController {
 
     @Override
     public void setQuery(String query) {
-
+        this.query = query;
     }
 
     @FXML
@@ -147,7 +147,9 @@ public class TransScan implements TableController {
 
     @FXML
     void search() {
-
+        AddTransportation.controller = this;
+        AddTransportation.formType = FormType.GET;
+        Modal.start(this.getClass(), "addTransportation.fxml");
     }
 
     @FXML

@@ -112,6 +112,12 @@ public class AddTransportation {
     @FXML
     private ToggleButton tradeTB;
 
+    @FXML
+    private CheckBox addDateToSearch;
+
+    @FXML
+    private TextField idTF;
+
     private final RefineryService refineryService = RefineryService.getInstance();
     private final VehicleService vehicleService = VehicleService.getInstance();
     private final TransportationService transportationService = TransportationService.getInstance();
@@ -326,7 +332,11 @@ public class AddTransportation {
             loadData();
             loadTransData();
             transBtn.setText("تعديل");
-        }
+            idTF.setDisable(true);
+        }else if(formType.equals(FormType.CREATE))
+            idTF.setDisable(true);
+        else if(formType.equals(FormType.GET))
+            transBtn.setText("Search");
 
     }
 
@@ -350,7 +360,6 @@ public class AddTransportation {
                         Long.parseLong(sizeTF.getText().replaceAll(",", "")),
                         type));
                 controller.loadData();
-                notify(transportation);
                 addedTransport = transportation;
             }
 
@@ -361,12 +370,23 @@ public class AddTransportation {
                         Long.parseLong(sizeTF.getText().replaceAll(",", "")),
                         type));
                 controller.addData(transportation);
-                notify(transportation);
                 addedTransport = transportation;
             }
         }else {
-
+            transportation = new Transportation();
+            QueryBuilder queryBuilder = new QueryBuilder();
+            if(Objects.nonNull(selectedVehicleId))
+                queryBuilder.addQueryParameter("vehicle", selectedVehicleId.toString());
+            if(Objects.nonNull(selectedRefineryId))
+                queryBuilder.addQueryParameter("refinery", selectedRefineryId.toString());
+            if(addDateToSearch.isSelected())
+                queryBuilder.addQueryParameter("createdAt", dateDP.getValue().toString());
+            if(idTF.getText().length() > 0)
+                queryBuilder.addQueryParameter("id", idTF.getText());
+            queryBuilder.sort();
+            controller.setQuery(queryBuilder.getQuery());
         }
+        notify(transportation);
 
     }
 
@@ -378,8 +398,9 @@ public class AddTransportation {
         }else {
             message = "something went wrong";
         }
-
+        controller.addData(transportation);
         Notifications.create().title("Info").text(message).showInformation();
+        Modal.close();
     }
 
     @FXML

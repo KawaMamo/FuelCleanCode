@@ -36,7 +36,7 @@ public class TransportationService implements Service<Transportation, CreateTran
     }
 
     public List<Transportation> getItems(Integer page, Integer size, String query) {
-        String getUrl = getEndPoint()+"?page="+page+"&size="+size+"&key=id&value=0&operation=%3E&sort=id,desc";
+        String getUrl = getEndPoint()+"?page="+page+"&size="+size+query;
         final HttpResponse<String> stringHttpResponse = client.parallelGet(getUrl);
         final TransportationResponseEntity transportationResponseEntity = gson.fromJson(stringHttpResponse.body(), TransportationResponseEntity.class);
         if(Objects.nonNull(transportationResponseEntity._embedded))

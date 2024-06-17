@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="626.0" prefWidth="711.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.desktop.transportation.AddTransportation">
+<AnchorPane prefHeight="674.0" prefWidth="711.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.desktop.transportation.AddTransportation">
    <children>
       <HBox layoutX="364.0" layoutY="62.0" prefHeight="95.0" prefWidth="302.0" spacing="50.0">
          <children>
@@ -29,6 +30,7 @@
                   <TextField fx:id="driverTF" editable="false" />
                   <TextField fx:id="sizeTF" />
                   <DatePicker fx:id="dateDP" />
+                  <TextField fx:id="idTF" promptText="id" />
                   <Button fx:id="transBtn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addTrans" text="تأكيد" />
                </children>
             </VBox>
@@ -78,7 +80,7 @@
             </VBox>
          </children>
       </HBox>
-      <HBox layoutX="364.0" layoutY="335.0" prefHeight="95.0" prefWidth="302.0" spacing="50.0">
+      <HBox layoutX="364.0" layoutY="368.0" prefHeight="95.0" prefWidth="302.0" spacing="50.0">
          <children>
             <VBox nodeOrientation="RIGHT_TO_LEFT" spacing="10.0">
                <children>
@@ -97,20 +99,21 @@
             </VBox>
          </children>
       </HBox>
-      <Label layoutX="633.0" layoutY="303.0" text="خط النقل">
+      <Label layoutX="633.0" layoutY="340.0" text="خط النقل">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TableView fx:id="partitionsTbl" layoutX="22.0" layoutY="381.0" prefHeight="196.0" prefWidth="302.0" />
-      <Button fx:id="endBtn" layoutX="25.0" layoutY="585.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#close" prefHeight="26.0" prefWidth="114.0" text="انهاء" />
-      <TableView fx:id="transLineTbl" layoutX="364.0" layoutY="482.0" prefHeight="95.0" prefWidth="274.0" />
+      <TableView fx:id="partitionsTbl" layoutX="22.0" layoutY="381.0" prefHeight="232.0" prefWidth="302.0" />
+      <Button fx:id="endBtn" layoutX="25.0" layoutY="629.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#close" prefHeight="26.0" prefWidth="114.0" text="انهاء" />
+      <TableView fx:id="transLineTbl" layoutX="364.0" layoutY="515.0" prefHeight="95.0" prefWidth="274.0" />
       <Button layoutX="25.0" layoutY="342.0" mnemonicParsing="false" onAction="#deletePartition" style="-fx-background-color: red;" text="حذف">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="646.0" layoutY="482.0" mnemonicParsing="false" onAction="#deleteTransLog" style="-fx-background-color: red;" text="حذف" />
+      <Button layoutX="646.0" layoutY="515.0" mnemonicParsing="false" onAction="#deleteTransLog" style="-fx-background-color: red;" text="حذف" />
       <Button layoutX="75.0" layoutY="342.0" mnemonicParsing="false" onAction="#printPartition" text="Print" />
+      <CheckBox fx:id="addDateToSearch" layoutX="313.0" layoutY="245.0" mnemonicParsing="false" text="بحث" />
    </children>
 </AnchorPane>

@@ -64,7 +64,10 @@ public class Transportations implements TableController {
                 }
         );
 
-        tableTbl.getColumns().addAll(idCol, vehicleCol, refineryCol, sizeCol, partitionsCol);
+        TableColumn<Transportation,String> dateCol = new TableColumn<>("date");
+        dateCol.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getCreatedAt().toString()));
+
+        tableTbl.getColumns().addAll(idCol, vehicleCol, refineryCol, sizeCol, partitionsCol, dateCol);
         tableTbl.setItems(observableList);
     }
 
@@ -103,7 +106,9 @@ public class Transportations implements TableController {
 
     @FXML
     void search() {
-
+        AddTransportation.controller = this;
+        AddTransportation.formType = FormType.GET;
+        Modal.start(this.getClass(), "addTransportation.fxml");
     }
 
     @Override
