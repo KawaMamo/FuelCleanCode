@@ -8,8 +8,8 @@ import org.example.model.Person;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-06-08T20:01:18+0300",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
+    date = "2024-10-14T13:50:27+0300",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class PersonDomainMapperImpl implements PersonDomainMapper {
 

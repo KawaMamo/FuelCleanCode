@@ -178,7 +178,6 @@ public class TransScan implements TableController {
             final Base64.Decoder decoder = Base64.getDecoder();
             fileOutputStream.write(decoder.decode(substring));
             Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler "+file.getPath());
-            System.out.println(file.getAbsolutePath());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
