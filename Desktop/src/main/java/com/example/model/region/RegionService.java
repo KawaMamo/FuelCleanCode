@@ -61,7 +61,8 @@ public class RegionService implements Service<Region, CreateRegionRequest, Updat
 
     @Override
     public Region delete(Long id) {
-        return null;
+        final HttpResponse<String> stringHttpResponse = client.parallelDelete(getEndPoint(), "/" + id);
+        return gson.fromJson(stringHttpResponse.body(), Region.class);
     }
 
     @Override

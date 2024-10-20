@@ -35,6 +35,7 @@ public class CreateCategoryValidator {
         priceCategoryRepo.findById(request.getPriceCategoryId()).ifPresentOrElse( (s)->{},
                 ()-> errorDetails.add(new ValidationErrorDetails(PRICE_CATEGORY_FIELD, ELEMENT_NOT_FOUND)));
 
+
         throwIfNotEmpty(errorDetails);
     }
 

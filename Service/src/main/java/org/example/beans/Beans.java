@@ -455,6 +455,62 @@ public class Beans {
     }
 
     @Bean
+    CreateReturnedMaterial createReturnedMaterial(CreateReturnedMaterialValidator validator,
+                                                  ReturnedMaterialDomainMapper mapper,
+                                                  ReturnedMaterialRepo returnedMaterialRepo,
+                                                  BuyerRepo buyerRepo,
+                                                  MaterialRepo materialRepo,
+                                                  GasStationRepo gasStationRepo){
+        return new CreateReturnedMaterial(validator, mapper, returnedMaterialRepo, buyerRepo, materialRepo, gasStationRepo);
+    }
+
+    @Bean
+    CreateReturnedMaterialValidator createReturnedMaterialValidator(BuyerRepo buyerRepo,
+                                                                    MaterialRepo materialRepo,
+                                                                    GasStationRepo gasStationRepo){
+        return new CreateReturnedMaterialValidator(gasStationRepo, materialRepo, buyerRepo);
+
+    }
+
+    @Bean
+    BuyerRepo buyerRepo(BuyerRepository buyerRepository, BuyerMapper mapper){
+        return new BuyerAdapter(buyerRepository, mapper);
+    }
+
+    @Bean
+    BuyerMapper buyerMapper(){
+        return new BuyerMapperImpl();
+    }
+
+    @Bean
+    ReturnedMaterialMapper returnedMaterialMapper(){return new ReturnedMaterialMapperImpl();}
+
+    @Bean
+    UpdateReturnedMaterial updateReturnedMaterial(UpdateReturnedMaterialValidator validator,
+                                                  ReturnedMaterialDomainMapper mapper,
+                                                  ReturnedMaterialRepo repo){
+        return new UpdateReturnedMaterial(validator, mapper, repo);
+    }
+
+    @Bean
+    UpdateReturnedMaterialValidator updateReturnedMaterialValidator(GasStationRepo gasStationRepo,
+                                                                    MaterialRepo materialRepo,
+                                                                    ReturnedMaterialRepo returnedMaterialRepo,
+                                                                    BuyerRepo buyerRepo){
+        return new UpdateReturnedMaterialValidator(gasStationRepo, materialRepo, buyerRepo, returnedMaterialRepo);
+    }
+
+    @Bean
+    DeleteReturnedMaterial deleteReturnedMaterial(ReturnedMaterialRepo repo, ReturnedMaterialDomainMapper mapper){
+        return new DeleteReturnedMaterial(repo, mapper);
+    }
+
+    @Bean
+    ReturnedMaterialDomainMapper returnedMaterialDomainMapper(){return new ReturnedMaterialDomainMapperImpl();}
+    @Bean
+    ReturnedMaterialRepo returnedMaterialRepo(ReturnedMaterialRepository repository,
+                                              ReturnedMaterialMapper mapper){return new ReturnedMaterialAdapter(repository, mapper);}
+    @Bean
     CreateDocumentValidator createDocumentValidator(){
         return new CreateDocumentValidator();
     }

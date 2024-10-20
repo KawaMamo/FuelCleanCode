@@ -4,7 +4,6 @@ import com.example.model.Service;
 import com.example.model.refinery.response.RefineryResponseEntity;
 import org.example.contract.request.create.CreateRefineryRequest;
 import org.example.contract.request.update.UpdateRefineryRequest;
-import org.example.model.GasStation;
 import org.example.model.Refinery;
 
 import java.net.http.HttpResponse;

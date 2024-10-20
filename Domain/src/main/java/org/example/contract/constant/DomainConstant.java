@@ -41,4 +41,5 @@ public interface DomainConstant {
     String NOTES_FIELD = "Error in Notes";
     String TRANS_FIELD = "Transportation";
     String ID_FIELD = "id";
+    String STATUS_FIELD = "Error in Status";
 }
