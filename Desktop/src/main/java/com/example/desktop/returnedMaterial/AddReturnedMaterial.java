@@ -2,11 +2,14 @@ package com.example.desktop.returnedMaterial;
 
 import com.example.model.TableController;
 import com.example.model.buyer.BuyerService;
+import com.example.model.category.CategoryService;
 import com.example.model.gasStation.GasStationService;
 import com.example.model.material.MaterialService;
 import com.example.model.modal.Modal;
+import com.example.model.priceCategory.PriceCategoryService;
 import com.example.model.returnedMaterial.ReturnedMaterialService;
 import com.example.model.tools.FormType;
+import com.example.model.tools.QueryBuilder;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -15,6 +18,8 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import org.controlsfx.control.Notifications;
 import org.controlsfx.control.textfield.TextFields;
+import org.example.contract.request.create.CreateReturnedMaterialRequest;
+import org.example.contract.request.update.UpdateReturnedMaterialRequest;
 import org.example.model.*;
 
 import java.util.List;
@@ -53,18 +58,26 @@ public class AddReturnedMaterial {
 
     @FXML
     private Button submitBtn;
+    @FXML
+    private TextField categoryTF;
     private Long selectedStationId;
     private Long selectedMaterialId;
     private Long selectedBuyerId;
+    private ReturnedMaterial item;
+    private final PriceCategoryService priceCategoryService = PriceCategoryService.getInstance();
+    private final CategoryService categoryService = CategoryService.getInstance();
+    private Money price;
 
     @FXML
     private void initialize(){
         currencyCB.getItems().add("USD");
         currencyCB.getItems().add("SP");
+        priceTF.setDisable(true);
         if(formType.equals(FormType.UPDATE)){
-            final ReturnedMaterial item = returnedMaterialService.getItem(ReturnedMaterials.selectedReturnedMaterial.getId());
+            item = returnedMaterialService.getItem(ReturnedMaterials.selectedReturnedMaterial.getId());
             stationTF.setText(item.getGasStation().getName());
             materialTF.setText(item.getMaterial().getName());
+            amountTF.setText(item.getAmount().toString());
             priceTF.setText(item.getPrice().getAmount()+" "+item.getPrice().getCurrency());
             centerPriceTF.setText(item.getCenterPrice().getAmount().toString());
             currencyCB.setValue(item.getCenterPrice().getCurrency());
@@ -121,11 +134,71 @@ public class AddReturnedMaterial {
                 }
             }
         });
+
+        final List<PriceCategory> priceCategories = priceCategoryService.getItems(null, null);
+        final List<String> priceCatNames = priceCategories.stream().map(PriceCategory::getName).toList();
+        TextFields.bindAutoCompletion(categoryTF, priceCatNames);
+
+        categoryTF.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
+                if(categoryTF.getText().length()>0){
+                    if(priceCatNames.contains(categoryTF.getText())){
+                        final PriceCategory priceCategory = priceCategories.get(priceCatNames.indexOf(categoryTF.getText()));
+                        final List<Category> items = categoryService.getItems(0,
+                                1,
+                                "key=priceCategory&value=" +
+                                        priceCategory.getId() + "&operation=%3A&key=material&value=" +
+                                        selectedMaterialId + "&operation=%3A&sort=id,desc");
+                        price = new Money(items.get(0).getPrice().getCurrency(), items.get(0).getPrice().getAmount());
+                        priceTF.setText(items.get(0).getPrice().getAmount()+" "+items.get(0).getPrice().getCurrency());
+                    }
+                }
+            }
+        });
     }
 
     @FXML
     void submit() {
+        final ReturnedMaterial returnedMaterial;
+        if(formType.equals(FormType.UPDATE)){
+            returnedMaterial = returnedMaterialService.editItem(new UpdateReturnedMaterialRequest(ReturnedMaterials.selectedReturnedMaterial.getId(),
+                    selectedStationId,
+                    selectedMaterialId,
+                    Long.parseLong(amountTF.getText()),
+                    new Money(item.getPrice().getCurrency(), item.getPrice().getAmount()),
+                    new Money(currencyCB.getValue(), Double.parseDouble(centerPriceTF.getText())),
+                    item.getStatus(),
+                    selectedBuyerId,
+                    item.getInvoiceNo())
+            );
+        } else if (formType.equals(FormType.CREATE)) {
+            if(Objects.nonNull(selectedStationId) && Objects.nonNull(selectedMaterialId) && Objects.nonNull(selectedBuyerId)){
+                returnedMaterial = returnedMaterialService.addItem(new CreateReturnedMaterialRequest(selectedStationId,
+                        selectedMaterialId,
+                        Long.parseLong(amountTF.getText()),
+                        price,
+                        new Money(currencyCB.getValue(), Double.parseDouble(centerPriceTF.getText())),
+                        "UNPAID",
+                        selectedBuyerId,
+                        "0"));
+            }else returnedMaterial = new ReturnedMaterial();
+        }else {
+            returnedMaterial = new ReturnedMaterial();
+            final QueryBuilder queryBuilder = new QueryBuilder();
+            if(Objects.nonNull(selectedStationId))
+                queryBuilder.addQueryParameter("gasStation", selectedStationId.toString());
+            if(Objects.nonNull(selectedMaterialId))
+                queryBuilder.addQueryParameter("material", selectedMaterialId.toString());
+            if(Objects.nonNull(selectedBuyerId))
+                queryBuilder.addQueryParameter("buyer", selectedBuyerId.toString());
+            if(amountTF.getText().length()>0)
+                queryBuilder.addQueryParameter("amount", amountTF.getText());
 
+            queryBuilder.sort();
+            controller.setQuery(queryBuilder.getQuery());
+        }
+        notify(returnedMaterial);
     }
 
     private static void notify(ReturnedMaterial returnedMaterial) {

@@ -481,6 +481,31 @@ public class Beans {
     BuyerMapper buyerMapper(){
         return new BuyerMapperImpl();
     }
+    @Bean
+    UpdateBuyerValidator updateBuyerValidator(){return new UpdateBuyerValidator();}
+
+    @Bean
+    CreateBuyer createBuyer(CreateBuyerValidator validator, BuyerDomainMapper mapper, BuyerRepo repo){
+        return new CreateBuyer(validator,mapper, repo);
+    }
+    @Bean
+    UpdateBuyer updateBuyer(UpdateBuyerValidator validator, BuyerDomainMapper mapper, BuyerRepo repo){
+        return new UpdateBuyer(validator, mapper, repo);
+    }
+
+    @Bean
+    BuyerDomainMapper buyerDomainMapper(){
+        return new BuyerDomainMapperImpl();
+    }
+
+    @Bean
+    CreateBuyerValidator createBuyerValidator(){
+        return new CreateBuyerValidator();
+    }
+    @Bean
+    DeleteBuyer deleteBuyer(BuyerDomainMapper mapper, BuyerRepo repo){
+        return new DeleteBuyer(repo, mapper);
+    }
 
     @Bean
     ReturnedMaterialMapper returnedMaterialMapper(){return new ReturnedMaterialMapperImpl();}
