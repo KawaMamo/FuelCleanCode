@@ -8,8 +8,8 @@ import org.example.model.Buyer;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-10-21T12:54:24+0300",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
+    date = "2024-10-23T18:27:59+0300",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class BuyerDomainMapperImpl implements BuyerDomainMapper {
 

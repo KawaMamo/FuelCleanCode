@@ -29,7 +29,7 @@ public class BuyerService implements Service<Buyer, CreateBuyerRequest, UpdateBu
             final BuyerResponseEntity buyerResponseEntity = gson.fromJson(stringHttpResponse.body(),
                     BuyerResponseEntity.class);
             if(Objects.nonNull(buyerResponseEntity._embedded))
-                return buyerResponseEntity._embedded.buyerArrayList;
+                return buyerResponseEntity._embedded.buyerList;
         }
         return new ArrayList<>();
     }
@@ -40,7 +40,7 @@ public class BuyerService implements Service<Buyer, CreateBuyerRequest, UpdateBu
         final BuyerResponseEntity buyerResponseEntity = gson.fromJson(stringHttpResponse.body(),
                 BuyerResponseEntity.class);
         if(Objects.nonNull(buyerResponseEntity._embedded))
-            return buyerResponseEntity._embedded.buyerArrayList;
+            return buyerResponseEntity._embedded.buyerList;
         return new ArrayList<>();
     }
 
@@ -58,7 +58,7 @@ public class BuyerService implements Service<Buyer, CreateBuyerRequest, UpdateBu
 
     @Override
     public Buyer getItem(Long id) {
-        return gson.fromJson(getResponse(id).body(), BuyerResponseEntity.class)._embedded.buyerArrayList.get(0);
+        return gson.fromJson(getResponse(id).body(), BuyerResponseEntity.class)._embedded.buyerList.get(0);
     }
 
     @Override

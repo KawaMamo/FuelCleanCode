@@ -17,7 +17,7 @@
       <font>
          <Font name="System Bold" size="18.0" />
       </font></Label>
-   <TextField fx:id="usernameTF" prefHeight="33.0" text="admin" />
+   <TextField fx:id="usernameTF" prefHeight="33.0" text="accountant" />
    <PasswordField fx:id="passwordTF" prefHeight="33.0" text="password" />
     <Button fx:id="submitBtn" onAction="#submit" text="Submit" />
 </VBox>

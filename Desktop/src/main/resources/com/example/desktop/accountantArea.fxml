@@ -32,6 +32,7 @@
                   <Button mnemonicParsing="false" onAction="#forfeits" prefHeight="30.0" text="Forfeits" />
                   <Button mnemonicParsing="false" onAction="#refineries" prefHeight="30.0" text="Refineries" />
                   <Button mnemonicParsing="false" onAction="#driverReport" prefHeight="30.0" text="Driver Report" />
+                  <Button mnemonicParsing="false" onAction="#buyers" prefHeight="30.0" text="Buyers" />
                </children>
                <padding>
                   <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
