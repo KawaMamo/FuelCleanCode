@@ -42,4 +42,6 @@ public interface DomainConstant {
     String TRANS_FIELD = "Transportation";
     String ID_FIELD = "id";
     String STATUS_FIELD = "Error in Status";
+    String BILL_NUMBER_FIELD = "Error in bill number field";
+    String SELLER_FIELD = "Error in seller";
 }

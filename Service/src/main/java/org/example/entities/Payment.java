@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
-@Data
 @Entity
+@Data
 public abstract class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

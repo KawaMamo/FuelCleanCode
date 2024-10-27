@@ -6,7 +6,6 @@ import org.example.model.Buyer;
 import org.example.repositories.BuyerRepository;
 
 import java.util.Optional;
-
 public class BuyerAdapter implements BuyerRepo {
 
     private final BuyerRepository repository;

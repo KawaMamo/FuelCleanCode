@@ -1,10 +1,13 @@
 package org.example.entities;
 
 import jakarta.persistence.Entity;
-import lombok.Data;
+import lombok.*;
 
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @Entity
-@Data
 public class PaidToParent extends Payment {
 
 }

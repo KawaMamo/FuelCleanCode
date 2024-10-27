@@ -9,5 +9,6 @@ public abstract class Payment {
     private Money amount;
     private Long billNumber;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
     private String notes;
 }
