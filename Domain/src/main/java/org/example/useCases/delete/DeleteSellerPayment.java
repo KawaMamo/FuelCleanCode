@@ -8,8 +8,8 @@ import org.example.model.SellerPayment;
 import java.util.NoSuchElementException;
 
 public class DeleteSellerPayment {
-    public final SellerPaymentRepo repo;
-    public final SellerPaymentDomainMapper mapper;
+    private final SellerPaymentRepo repo;
+    private final SellerPaymentDomainMapper mapper;
 
     public DeleteSellerPayment(SellerPaymentRepo repo, SellerPaymentDomainMapper mapper) {
         this.repo = repo;

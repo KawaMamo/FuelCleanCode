@@ -8,8 +8,8 @@ import org.example.model.PaidToParent;
 import java.util.NoSuchElementException;
 
 public class DeletePaidToParent {
-    public final PaidToParentRepo repo;
-    public final PaidToParentDomainMapper mapper;
+    private final PaidToParentRepo repo;
+    private final PaidToParentDomainMapper mapper;
 
     public DeletePaidToParent(PaidToParentRepo repo, PaidToParentDomainMapper mapper) {
         this.repo = repo;

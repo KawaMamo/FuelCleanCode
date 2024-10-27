@@ -2,6 +2,7 @@ package org.example.beans;
 
 import org.example.adapters.*;
 import org.example.contract.repository.*;
+import org.example.contract.request.update.UpdateOfficePaymentRequest;
 import org.example.mappers.*;
 import org.example.repositories.*;
 import org.example.security.EndPoints;
@@ -810,4 +811,159 @@ public class Beans {
         return new EndPoints();
     }
 
+    @Bean
+    CreateClientPaymentValidator createClientPaymentValidator(GasStationRepo gasStationRepo){
+        return new CreateClientPaymentValidator(gasStationRepo);
+    }
+
+    @Bean
+    ClientPaymentDomainMapper createClientPaymentDomainMapper(){
+        return new ClientPaymentDomainMapperImpl();
+    }
+    @Bean
+    CreateClientPayment createClientPayment(CreateClientPaymentValidator createClientPaymentValidator,
+                                            ClientPaymentDomainMapper createClientPaymentDomainMapper,
+                                            ClientPaymentRepo clientPaymentRepo){
+        return new CreateClientPayment(createClientPaymentValidator, createClientPaymentDomainMapper, clientPaymentRepo);
+    }
+
+    @Bean
+    ClientPaymentRepo clientPaymentRepo(ClientPaymentRepository clientPaymentRepository, ClientPaymentMapper clientPaymentMapper){
+        return new ClientPaymentAdapter(clientPaymentRepository, clientPaymentMapper);
+    }
+
+    @Bean
+    ClientPaymentMapper clientPaymentMapper(){
+        return new ClientPaymentMapperImpl();
+    }
+
+    @Bean
+    UpdateClientPaymentValidator updateClientPaymentValidator(GasStationRepo gasStationRepo){
+        return new UpdateClientPaymentValidator(gasStationRepo);
+    }
+
+    @Bean
+    UpdateClientPayment updateClientPayment(ClientPaymentRepo clientPaymentRepo, ClientPaymentDomainMapper mapper, UpdateClientPaymentValidator updateClientPaymentValidator){
+        return new UpdateClientPayment(clientPaymentRepo, mapper, updateClientPaymentValidator);
+    }
+
+    @Bean
+    DeleteClientPayment deleteClientPayment(ClientPaymentRepo repo, ClientPaymentDomainMapper mapper){
+        return new DeleteClientPayment(repo, mapper);
+    }
+
+    @Bean
+    CreateOfficePaymentValidator createOfficePaymentValidator(OfficePaymentRepo officePaymentRepo){
+        return new CreateOfficePaymentValidator(officePaymentRepo);
+    }
+
+    @Bean
+    OfficePaymentRepo officePaymentRepo(OfficePaymentRepository officePaymentRepository, OfficePaymentMapper officePaymentMapper){
+        return new OfficePaymentAdapter(officePaymentRepository, officePaymentMapper);
+    }
+
+    @Bean
+    OfficePaymentMapper officePaymentMapper(){
+        return new OfficePaymentMapperImpl();
+    }
+
+    @Bean
+    CreateOfficePayment createOfficePayment(CreateOfficePaymentValidator validator, OfficePaymentRepo repo, OfficePaymentDomainMapper mapper){
+        return new CreateOfficePayment(validator, repo, mapper);
+    }
+
+    @Bean
+    OfficePaymentDomainMapper officePaymentDomainMapper(){return new OfficePaymentDomainMapperImpl();}
+
+    @Bean
+    UpdateOfficePayment updateOfficePayment(OfficePaymentRepo repo, UpdateOfficePaymentValidator validator, OfficePaymentDomainMapper mapper){
+        return new UpdateOfficePayment(repo, validator, mapper);
+    }
+
+    @Bean
+    UpdateOfficePaymentValidator updateOfficePaymentValidator(OfficePaymentRepo repo){
+        return new UpdateOfficePaymentValidator(repo);
+    }
+
+    @Bean
+    DeleteOfficePayment deleteOfficePayment(OfficePaymentDomainMapper mapper, OfficePaymentRepo repo){
+        return new DeleteOfficePayment(mapper, repo);
+    }
+
+    @Bean
+    CreatePaidToParent createPaidToParent(CreatePaidToParentValidator validator, PaidToParentDomainMapper mapper, PaidToParentRepo repo){
+        return new CreatePaidToParent(validator, mapper, repo);
+    }
+
+    @Bean
+    CreatePaidToParentValidator createPaidToParentValidator(){
+        return new CreatePaidToParentValidator();
+    }
+
+    @Bean
+    PaidToParentRepo paidToParentRepo(PaidToParentRepository repository, PaidToParentMapper mapper){
+        return new PaidToParentAdapter(repository, mapper);
+    }
+
+    @Bean
+    PaidToParentMapper paidToParentMapper(){return new PaidToParentMapperImpl();}
+    @Bean
+    PaidToParentDomainMapper paidToParentDomainMapper(){return new PaidToParentDomainMapperImpl();}
+    @Bean
+    UpdatePaidToParent updatePaidToParent(UpdatePaidToParentValidator validator, PaidToParentDomainMapper mapper, PaidToParentRepo repo){
+        return new UpdatePaidToParent(validator, mapper, repo);
+    }
+
+    @Bean
+    UpdatePaidToParentValidator updatePaidToParentValidator(){
+        return new UpdatePaidToParentValidator();
+    }
+
+    @Bean
+    DeletePaidToParent deletePaidToParent(PaidToParentRepo repo, PaidToParentDomainMapper mapper){
+        return new DeletePaidToParent(repo, mapper);
+    }
+
+    @Bean
+    CreateSellerPayment createSellerPayment(CreateSellerPaymentValidator validator, SellerPaymentRepo repo, SellerPaymentDomainMapper mapper){
+        return new CreateSellerPayment(validator, repo, mapper);
+    }
+
+    @Bean
+    CreateSellerPaymentValidator createSellerPaymentValidator(SellerRepo sellerRepo){
+        return new CreateSellerPaymentValidator(sellerRepo);
+    }
+
+    @Bean
+    SellerRepo sellerRepo(){ return new SellerAdapter();}
+
+    @Bean
+    SellerPaymentRepo sellerPaymentRepo(SellerPaymentRepository repository, SellerPaymentMapper mapper){
+        return new SellerPaymentAdapter(repository, mapper);
+    }
+
+    @Bean
+    SellerPaymentMapper sellerPaymentMapper(){
+        return new SellerPaymentMapperImpl();
+    }
+
+    @Bean
+    SellerPaymentDomainMapper sellerPaymentDomainMapper(){
+        return new SellerPaymentDomainMapperImpl();
+    }
+
+    @Bean
+    UpdateSellerPayment updateSellerPayment(UpdateSellerPaymentValidator validator, SellerPaymentRepo repo, SellerPaymentDomainMapper mapper){
+        return new UpdateSellerPayment(validator, repo, mapper);
+    }
+
+    @Bean
+    UpdateSellerPaymentValidator updateSellerPaymentValidator(SellerRepo sellerRepo){
+        return new UpdateSellerPaymentValidator(sellerRepo);
+    }
+
+    @Bean
+    DeleteSellerPayment deleteSellerPayment(SellerPaymentRepo repo, SellerPaymentDomainMapper mapper){
+        return new DeleteSellerPayment(repo, mapper);
+    }
 }
