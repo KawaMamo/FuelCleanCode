@@ -15,5 +15,6 @@ public abstract class Payment {
     private Double priceAmount;
     private Long billNumber;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
     private String notes;
 }

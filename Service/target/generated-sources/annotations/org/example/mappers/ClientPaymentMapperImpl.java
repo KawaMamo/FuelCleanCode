@@ -11,13 +11,14 @@ import org.example.model.ClientPayment;
 import org.example.model.GasStation;
 import org.example.model.Group;
 import org.example.model.Material;
+import org.example.model.Money;
 import org.example.model.Person;
 import org.example.model.PriceCategory;
 import org.example.model.Region;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-10-27T22:43:30+0300",
+    date = "2024-10-29T20:14:20+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class ClientPaymentMapperImpl implements ClientPaymentMapper {
@@ -30,9 +31,12 @@ public class ClientPaymentMapperImpl implements ClientPaymentMapper {
 
         org.example.entities.ClientPayment clientPayment1 = new org.example.entities.ClientPayment();
 
+        clientPayment1.setPriceAmount( clientPaymentAmountAmount( clientPayment ) );
+        clientPayment1.setPriceCurrency( clientPaymentAmountCurrency( clientPayment ) );
         clientPayment1.setId( clientPayment.getId() );
         clientPayment1.setBillNumber( clientPayment.getBillNumber() );
         clientPayment1.setCreatedAt( clientPayment.getCreatedAt() );
+        clientPayment1.setUpdatedAt( clientPayment.getUpdatedAt() );
         clientPayment1.setNotes( clientPayment.getNotes() );
         clientPayment1.setGasStation( gasStationToGasStationEntity( clientPayment.getGasStation() ) );
 
@@ -47,13 +51,45 @@ public class ClientPaymentMapperImpl implements ClientPaymentMapper {
 
         ClientPayment clientPayment1 = new ClientPayment();
 
+        clientPayment1.setAmount( clientPaymentToMoney( clientPayment ) );
         clientPayment1.setId( clientPayment.getId() );
         clientPayment1.setBillNumber( clientPayment.getBillNumber() );
         clientPayment1.setCreatedAt( clientPayment.getCreatedAt() );
+        clientPayment1.setUpdatedAt( clientPayment.getUpdatedAt() );
         clientPayment1.setNotes( clientPayment.getNotes() );
         clientPayment1.setGasStation( gasStationEntityToGasStation( clientPayment.getGasStation() ) );
 
         return clientPayment1;
+    }
+
+    private Double clientPaymentAmountAmount(ClientPayment clientPayment) {
+        if ( clientPayment == null ) {
+            return null;
+        }
+        Money amount = clientPayment.getAmount();
+        if ( amount == null ) {
+            return null;
+        }
+        Double amount1 = amount.getAmount();
+        if ( amount1 == null ) {
+            return null;
+        }
+        return amount1;
+    }
+
+    private String clientPaymentAmountCurrency(ClientPayment clientPayment) {
+        if ( clientPayment == null ) {
+            return null;
+        }
+        Money amount = clientPayment.getAmount();
+        if ( amount == null ) {
+            return null;
+        }
+        String currency = amount.getCurrency();
+        if ( currency == null ) {
+            return null;
+        }
+        return currency;
     }
 
     protected PriceCategoryEntity priceCategoryToPriceCategoryEntity(PriceCategory priceCategory) {
@@ -158,6 +194,19 @@ public class ClientPaymentMapperImpl implements ClientPaymentMapper {
         gasStationEntity.setMaterial( materialToMaterialEntity( gasStation.getMaterial() ) );
 
         return gasStationEntity;
+    }
+
+    protected Money clientPaymentToMoney(org.example.entities.ClientPayment clientPayment) {
+        if ( clientPayment == null ) {
+            return null;
+        }
+
+        Money money = new Money();
+
+        money.setAmount( clientPayment.getPriceAmount() );
+        money.setCurrency( clientPayment.getPriceCurrency() );
+
+        return money;
     }
 
     protected PriceCategory priceCategoryEntityToPriceCategory(PriceCategoryEntity priceCategoryEntity) {

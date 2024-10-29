@@ -1,6 +1,7 @@
 package com.example.desktop;
 
 import com.example.desktop.buyer.Buyers;
+import com.example.desktop.clientPayment.ClientPayments;
 import com.example.desktop.reports.DriverReport;
 import com.example.desktop.reports.RefineryReport;
 import com.example.desktop.returnedMaterial.ReturnedMaterials;
@@ -101,6 +102,20 @@ public class AccountantArea {
         try {
             final Node node = loader.load();
             final Buyers controller = loader.getController();
+            workArea.getChildren().clear();
+            workArea.getChildren().add(node);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    void clientPayment(){
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("clientPayment/clientPayments.fxml"));
+        try {
+            final Node node = loader.load();
+            final ClientPayments controller = loader.getController();
             workArea.getChildren().clear();
             workArea.getChildren().add(node);
         } catch (IOException e) {

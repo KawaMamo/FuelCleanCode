@@ -2,11 +2,12 @@ package org.example.mappers;
 
 import javax.annotation.processing.Generated;
 import org.example.entities.SellerPayment;
+import org.example.model.Money;
 import org.example.model.Seller;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-10-27T22:43:30+0300",
+    date = "2024-10-29T20:14:20+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class SellerPaymentMapperImpl implements SellerPaymentMapper {
@@ -19,9 +20,12 @@ public class SellerPaymentMapperImpl implements SellerPaymentMapper {
 
         SellerPayment sellerPayment1 = new SellerPayment();
 
+        sellerPayment1.setPriceAmount( sellerPaymentAmountAmount( sellerPayment ) );
+        sellerPayment1.setPriceCurrency( sellerPaymentAmountCurrency( sellerPayment ) );
         sellerPayment1.setId( sellerPayment.getId() );
         sellerPayment1.setBillNumber( sellerPayment.getBillNumber() );
         sellerPayment1.setCreatedAt( sellerPayment.getCreatedAt() );
+        sellerPayment1.setUpdatedAt( sellerPayment.getUpdatedAt() );
         sellerPayment1.setNotes( sellerPayment.getNotes() );
         sellerPayment1.setSeller( sellerToSeller( sellerPayment.getSeller() ) );
 
@@ -36,13 +40,45 @@ public class SellerPaymentMapperImpl implements SellerPaymentMapper {
 
         org.example.model.SellerPayment sellerPayment1 = new org.example.model.SellerPayment();
 
+        sellerPayment1.setAmount( sellerPaymentToMoney( sellerPayment ) );
         sellerPayment1.setId( sellerPayment.getId() );
         sellerPayment1.setBillNumber( sellerPayment.getBillNumber() );
         sellerPayment1.setCreatedAt( sellerPayment.getCreatedAt() );
+        sellerPayment1.setUpdatedAt( sellerPayment.getUpdatedAt() );
         sellerPayment1.setNotes( sellerPayment.getNotes() );
         sellerPayment1.setSeller( sellerToSeller1( sellerPayment.getSeller() ) );
 
         return sellerPayment1;
+    }
+
+    private Double sellerPaymentAmountAmount(org.example.model.SellerPayment sellerPayment) {
+        if ( sellerPayment == null ) {
+            return null;
+        }
+        Money amount = sellerPayment.getAmount();
+        if ( amount == null ) {
+            return null;
+        }
+        Double amount1 = amount.getAmount();
+        if ( amount1 == null ) {
+            return null;
+        }
+        return amount1;
+    }
+
+    private String sellerPaymentAmountCurrency(org.example.model.SellerPayment sellerPayment) {
+        if ( sellerPayment == null ) {
+            return null;
+        }
+        Money amount = sellerPayment.getAmount();
+        if ( amount == null ) {
+            return null;
+        }
+        String currency = amount.getCurrency();
+        if ( currency == null ) {
+            return null;
+        }
+        return currency;
     }
 
     protected org.example.entities.Seller sellerToSeller(Seller seller) {
@@ -56,6 +92,19 @@ public class SellerPaymentMapperImpl implements SellerPaymentMapper {
         seller1.setName( seller.getName() );
 
         return seller1;
+    }
+
+    protected Money sellerPaymentToMoney(SellerPayment sellerPayment) {
+        if ( sellerPayment == null ) {
+            return null;
+        }
+
+        Money money = new Money();
+
+        money.setAmount( sellerPayment.getPriceAmount() );
+        money.setCurrency( sellerPayment.getPriceCurrency() );
+
+        return money;
     }
 
     protected Seller sellerToSeller1(org.example.entities.Seller seller) {

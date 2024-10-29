@@ -5,10 +5,11 @@ import org.example.contract.request.create.CreateClientPaymentRequest;
 import org.example.contract.request.update.UpdateClientPaymentRequest;
 import org.example.contract.response.ClientPaymentResponse;
 import org.example.model.ClientPayment;
+import org.example.model.GasStation;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-10-27T22:43:22+0300",
+    date = "2024-10-29T20:14:13+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class ClientPaymentDomainMapperImpl implements ClientPaymentDomainMapper {
@@ -21,6 +22,7 @@ public class ClientPaymentDomainMapperImpl implements ClientPaymentDomainMapper 
 
         ClientPayment clientPayment = new ClientPayment();
 
+        clientPayment.setGasStation( createClientPaymentRequestToGasStation( request ) );
         clientPayment.setAmount( request.getAmount() );
         clientPayment.setBillNumber( request.getBillNumber() );
         clientPayment.setNotes( request.getNotes() );
@@ -36,6 +38,7 @@ public class ClientPaymentDomainMapperImpl implements ClientPaymentDomainMapper 
 
         ClientPayment clientPayment = new ClientPayment();
 
+        clientPayment.setGasStation( updateClientPaymentRequestToGasStation( request ) );
         clientPayment.setId( request.getId() );
         clientPayment.setAmount( request.getAmount() );
         clientPayment.setBillNumber( request.getBillNumber() );
@@ -61,5 +64,29 @@ public class ClientPaymentDomainMapperImpl implements ClientPaymentDomainMapper 
         clientPaymentResponse.setGasStation( domain.getGasStation() );
 
         return clientPaymentResponse;
+    }
+
+    protected GasStation createClientPaymentRequestToGasStation(CreateClientPaymentRequest createClientPaymentRequest) {
+        if ( createClientPaymentRequest == null ) {
+            return null;
+        }
+
+        GasStation gasStation = new GasStation();
+
+        gasStation.setId( createClientPaymentRequest.getGasStationId() );
+
+        return gasStation;
+    }
+
+    protected GasStation updateClientPaymentRequestToGasStation(UpdateClientPaymentRequest updateClientPaymentRequest) {
+        if ( updateClientPaymentRequest == null ) {
+            return null;
+        }
+
+        GasStation gasStation = new GasStation();
+
+        gasStation.setId( updateClientPaymentRequest.getGasStationId() );
+
+        return gasStation;
     }
 }
