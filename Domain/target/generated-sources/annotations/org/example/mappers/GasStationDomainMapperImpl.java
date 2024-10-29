@@ -13,7 +13,7 @@ import org.example.model.Region;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-10-29T20:14:14+0300",
+    date = "2024-10-29T20:43:02+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class GasStationDomainMapperImpl implements GasStationDomainMapper {

@@ -400,7 +400,7 @@ public class AddTransportation {
         }
         controller.addData(transportation);
         Notifications.create().title("Info").text(message).showInformation();
-        Modal.close();
+        //Modal.close();
     }
 
     @FXML
