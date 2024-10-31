@@ -57,7 +57,11 @@ public class Buyers implements TableController {
         createdAtColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getCreatedAt().toString()));
 
         TableColumn<Buyer, String> updatedAtColumn = new TableColumn<>("تاريخ التعديل");
-        updatedAtColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getUpdatedAt().toString()));
+        updatedAtColumn.setCellValueFactory(data -> {
+            if(Objects.nonNull(data.getValue().getUpdatedAt()))
+                return new SimpleStringProperty(data.getValue().getUpdatedAt().toString());
+            else return new SimpleStringProperty("");
+        });
 
         tableTbl.getColumns().addAll(idColumn, nameColumn, organizationColumn, createdAtColumn, updatedAtColumn);
         tableTbl.setItems(buyerObservableList);

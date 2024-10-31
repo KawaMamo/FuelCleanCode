@@ -4,6 +4,7 @@ import com.example.desktop.delete.DeleteConfirmation;
 import com.example.model.TableController;
 import com.example.model.modal.Modal;
 import com.example.model.sellerPayment.SellerPaymentService;
+import com.example.model.tools.FormType;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -82,7 +83,9 @@ public class SellerPayments implements TableController {
 
     @FXML
     void add() {
-
+        AddSellerPayment.controller = this;
+        AddSellerPayment.formType = FormType.CREATE;
+        Modal.start(this.getClass(),"addSellerPayment.fxml");
     }
 
     @FXML
@@ -95,7 +98,9 @@ public class SellerPayments implements TableController {
 
     @FXML
     void edit() {
-
+        AddSellerPayment.controller = this;
+        AddSellerPayment.formType = FormType.UPDATE;
+        Modal.start(this.getClass(),"addSellerPayment.fxml");
     }
 
     @FXML
@@ -112,7 +117,9 @@ public class SellerPayments implements TableController {
 
     @FXML
     void search() {
-
+        AddSellerPayment.controller = this;
+        AddSellerPayment.formType = FormType.GET;
+        Modal.start(this.getClass(),"addSellerPayment.fxml");
     }
 
     @Override

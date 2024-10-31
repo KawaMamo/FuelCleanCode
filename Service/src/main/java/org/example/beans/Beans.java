@@ -2,7 +2,6 @@ package org.example.beans;
 
 import org.example.adapters.*;
 import org.example.contract.repository.*;
-import org.example.contract.request.update.UpdateOfficePaymentRequest;
 import org.example.mappers.*;
 import org.example.repositories.*;
 import org.example.security.EndPoints;
@@ -935,7 +934,7 @@ public class Beans {
     }
 
     @Bean
-    SellerRepo sellerRepo(){ return new SellerAdapter();}
+    SellerRepo sellerRepo(SellerRepository repository, SellerMapper mapper){ return new SellerAdapter(repository, mapper);}
 
     @Bean
     SellerPaymentRepo sellerPaymentRepo(SellerPaymentRepository repository, SellerPaymentMapper mapper){
@@ -965,5 +964,42 @@ public class Beans {
     @Bean
     DeleteSellerPayment deleteSellerPayment(SellerPaymentRepo repo, SellerPaymentDomainMapper mapper){
         return new DeleteSellerPayment(repo, mapper);
+    }
+
+    @Bean
+    SellerMapper sellerMapper(){
+        return new SellerMapperImpl();
+    }
+
+    @Bean
+    CreateSeller createSeller(CreateSellerValidator validator, SellerRepo repo, SellerDomainMapper mapper){
+        return new CreateSeller(validator,
+            repo,
+            mapper);
+    }
+
+    @Bean
+    CreateSellerValidator createSellerValidator(){
+        return new CreateSellerValidator();
+    }
+
+    @Bean
+    SellerDomainMapper sellerDomainMapper(){
+        return new SellerDomainMapperImpl();
+    }
+
+    @Bean
+    UpdateSeller updateSeller(UpdateSellerValidator validator, SellerDomainMapper mapper, SellerRepo repo){
+        return new UpdateSeller(validator, mapper, repo);
+    }
+
+    @Bean
+    DeleteSeller deleteSeller(SellerRepo repo, SellerDomainMapper mapper){
+        return new DeleteSeller(repo, mapper);
+    }
+
+    @Bean
+    UpdateSellerValidator updateSellerValidator(){
+        return new UpdateSellerValidator();
     }
 }

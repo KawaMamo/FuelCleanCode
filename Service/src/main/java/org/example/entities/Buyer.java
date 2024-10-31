@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @ToString
@@ -18,4 +20,6 @@ public class Buyer {
     private Long id;
     private String name;
     private String organization;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }

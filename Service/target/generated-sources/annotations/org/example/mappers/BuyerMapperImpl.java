@@ -5,7 +5,7 @@ import org.example.model.Buyer;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-10-31T16:24:08+0300",
+    date = "2024-10-31T23:55:24+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class BuyerMapperImpl implements BuyerMapper {
@@ -21,6 +21,8 @@ public class BuyerMapperImpl implements BuyerMapper {
         buyer.setId( domain.getId() );
         buyer.setName( domain.getName() );
         buyer.setOrganization( domain.getOrganization() );
+        buyer.setCreatedAt( domain.getCreatedAt() );
+        buyer.setUpdatedAt( domain.getUpdatedAt() );
 
         return buyer;
     }
@@ -36,6 +38,8 @@ public class BuyerMapperImpl implements BuyerMapper {
         buyer.setId( entity.getId() );
         buyer.setName( entity.getName() );
         buyer.setOrganization( entity.getOrganization() );
+        buyer.setCreatedAt( entity.getCreatedAt() );
+        buyer.setUpdatedAt( entity.getUpdatedAt() );
 
         return buyer;
     }

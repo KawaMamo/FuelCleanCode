@@ -5,6 +5,8 @@ import org.example.mappers.BuyerMapper;
 import org.example.model.Buyer;
 import org.example.repositories.BuyerRepository;
 
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 public class BuyerAdapter implements BuyerRepo {
 
@@ -19,6 +21,7 @@ public class BuyerAdapter implements BuyerRepo {
     @Override
     public Buyer save(Buyer buyer) {
         final org.example.entities.Buyer entity = mapper.domainToEntity(buyer);
+        entity.setCreatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         final org.example.entities.Buyer save = repository.save(entity);
         return mapper.entityToDomain(save);
     }
