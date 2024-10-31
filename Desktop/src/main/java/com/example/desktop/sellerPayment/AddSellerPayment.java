@@ -1,9 +1,9 @@
-package com.example.desktop.officePayment;
+package com.example.desktop.sellerPayment;
 
 import com.example.model.TableController;
 import com.example.model.modal.Modal;
-import com.example.model.office.OfficeService;
-import com.example.model.officePayment.OfficePaymentService;
+import com.example.model.seller.SellerService;
+import com.example.model.sellerPayment.SellerPaymentService;
 import com.example.model.tools.FormType;
 import com.example.model.tools.QueryBuilder;
 import javafx.beans.value.ChangeListener;
@@ -14,16 +14,14 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import org.controlsfx.control.Notifications;
 import org.controlsfx.control.textfield.TextFields;
-import org.example.contract.request.create.CreateOfficePaymentRequest;
-import org.example.contract.request.update.UpdateOfficePaymentRequest;
-import org.example.model.Money;
-import org.example.model.Office;
-import org.example.model.OfficePayment;
+import org.example.contract.request.create.CreateSellerPaymentRequest;
+import org.example.contract.request.update.UpdateSellerPaymentRequest;
+import org.example.model.*;
 
 import java.util.List;
 import java.util.Objects;
 
-public class AddOfficePayment {
+public class AddSellerPayment {
 
     @FXML
     private TextField amountTF;
@@ -35,46 +33,45 @@ public class AddOfficePayment {
     private ChoiceBox<String> currencyCB;
 
     @FXML
-    private TextField officeTF;
+    private TextField notesTF;
 
     @FXML
-    private TextField notesTF;
+    private TextField sellerTF;
 
     @FXML
     private Button submitBtn;
 
     public static TableController controller;
     public static FormType formType = FormType.CREATE;
-    private final OfficePaymentService officePaymentService = OfficePaymentService.getInstance();
-    private Long selectedOfficeId;
-
-    private final OfficeService officeService = OfficeService.getInstance();
+    private final SellerPaymentService service = SellerPaymentService.getInstance();
+    private Long selectedSellerId;
+    private final SellerService sellerService = SellerService.getInstance();
 
     @FXML
     private void initialize(){
 
         currencyCB.getItems().addAll("USD", "SP");
         if(formType.equals(FormType.UPDATE)){
-            final OfficePayment item = officePaymentService.getItem(OfficePayments.selectedOfficePayment.getId());
-            officeTF.setText(item.getOffice().getName());
+            final SellerPayment item = service.getItem(SellerPayments.selectedSellerPayment.getId());
+            sellerTF.setText(item.getSeller().getName());
             if(Objects.nonNull(item.getBillNumber()))
                 billNumberTF.setText(item.getBillNumber().toString());
             amountTF.setText(item.getAmount().getAmount().toString());
             currencyCB.setValue(item.getAmount().getCurrency());
             notesTF.setText(item.getNotes());
-            selectedOfficeId = item.getOffice().getId();
+            selectedSellerId = item.getSeller().getId();
         }
-        final List<Office> officeList = officeService.getItems(null, null);
-        final List<String> officeNames = officeList.stream().map(Office::getName).toList();
-        TextFields.bindAutoCompletion(officeTF, officeNames);
+        final List<Seller> sellerList = sellerService.getItems(null, null);
+        final List<String> sellerNames = sellerList.stream().map(Seller::getName).toList();
+        TextFields.bindAutoCompletion(sellerTF, sellerNames);
 
-        officeTF.focusedProperty().addListener(new ChangeListener<Boolean>() {
+        sellerTF.focusedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
-                if(officeTF.getText().length()>0){
-                    if(officeNames.contains(officeTF.getText())){
-                        final Office office = officeList.get(officeNames.indexOf(officeTF.getText()));
-                        selectedOfficeId=office.getId();
+                if(sellerTF.getText().length()>0){
+                    if(sellerNames.contains(sellerTF.getText())){
+                        final Seller seller = sellerList.get(sellerNames.indexOf(sellerTF.getText()));
+                        selectedSellerId=seller.getId();
                     }
                 }
             }
@@ -83,24 +80,24 @@ public class AddOfficePayment {
 
     @FXML
     void submit() {
-        final OfficePayment officePayment;
+        final SellerPayment sellerPayment;
         if(formType.equals(FormType.UPDATE)){
-            officePayment = officePaymentService.editItem(new UpdateOfficePaymentRequest(OfficePayments.selectedOfficePayment.getId(),
+            sellerPayment = service.editItem(new UpdateSellerPaymentRequest(SellerPayments.selectedSellerPayment.getId(),
                     new Money(currencyCB.getValue(), Double.parseDouble(amountTF.getText())),
                     Long.parseLong(billNumberTF.getText()),
                     notesTF.getText(),
-                    selectedOfficeId));
+                    selectedSellerId));
         }else if(formType.equals(FormType.CREATE)){
-            officePayment = officePaymentService.addItem(new CreateOfficePaymentRequest(new Money(currencyCB.getValue(),
+            sellerPayment = service.addItem(new CreateSellerPaymentRequest(new Money(currencyCB.getValue(),
                     Double.parseDouble(amountTF.getText())),
                     Long.parseLong(billNumberTF.getText()),
                     notesTF.getText(),
-                    selectedOfficeId));
+                    selectedSellerId));
         }else {
-            officePayment = new OfficePayment();
+            sellerPayment = new SellerPayment();
             final QueryBuilder queryBuilder = new QueryBuilder();
-            if(Objects.nonNull(selectedOfficeId))
-                queryBuilder.addQueryParameter("office", selectedOfficeId.toString());
+            if(Objects.nonNull(selectedSellerId))
+                queryBuilder.addQueryParameter("seller", selectedSellerId.toString());
             if(billNumberTF.getText().length()>1)
                 queryBuilder.addQueryParameter("billNumber", billNumberTF.getText());
             if(amountTF.getText().length()>0)
@@ -113,17 +110,17 @@ public class AddOfficePayment {
             queryBuilder.sort("id", "desc");
             controller.setQuery(queryBuilder.getQuery());
         }
-        notify(officePayment);
+        notify(sellerPayment);
     }
 
-    private static void notify(OfficePayment officePayment) {
+    private void notify(SellerPayment sellerPayment) {
         String message;
-        if(Objects.nonNull(officePayment.getId())){
-            message = "officePayment added";
+        if(Objects.nonNull(sellerPayment.getId())){
+            message = "sellerPayment added";
         }else {
             message = "something went wrong";
         }
-        controller.addData(officePayment);
+        controller.addData(sellerPayment);
         Notifications.create().title("Info").text(message).showInformation();
         Modal.close();
     }

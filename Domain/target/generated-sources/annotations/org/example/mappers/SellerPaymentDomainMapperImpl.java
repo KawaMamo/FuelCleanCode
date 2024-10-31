@@ -9,8 +9,8 @@ import org.example.model.SellerPayment;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-10-31T16:24:01+0300",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
+    date = "2024-10-31T18:10:46+0300",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class SellerPaymentDomainMapperImpl implements SellerPaymentDomainMapper {
 
@@ -25,7 +25,6 @@ public class SellerPaymentDomainMapperImpl implements SellerPaymentDomainMapper 
         sellerPayment.setSeller( createSellerPaymentRequestToSeller( request ) );
         sellerPayment.setAmount( request.getAmount() );
         sellerPayment.setBillNumber( request.getBillNumber() );
-        sellerPayment.setCreatedAt( request.getCreatedAt() );
         sellerPayment.setNotes( request.getNotes() );
 
         return sellerPayment;
@@ -43,7 +42,6 @@ public class SellerPaymentDomainMapperImpl implements SellerPaymentDomainMapper 
         sellerPayment.setId( request.getId() );
         sellerPayment.setAmount( request.getAmount() );
         sellerPayment.setBillNumber( request.getBillNumber() );
-        sellerPayment.setCreatedAt( request.getCreatedAt() );
         sellerPayment.setNotes( request.getNotes() );
 
         return sellerPayment;

@@ -616,3 +616,68 @@ Caused by: java.net.ConnectException: Connection refused: no further information
 2024-10-31T16:22:09.902+03:00  INFO 22644 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-10-31T16:22:09.904+03:00  INFO 22644 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-10-31T16:22:09.910+03:00  INFO 22644 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-10-31T16:24:45.141+03:00  INFO 13084 --- [main] org.example.Main                         : Starting Main using Java 20 with PID 13084 (D:\fuelRefactored\FuelCleanCode\Service\target\classes started by GIGABYTE in D:\fuelRefactored\FuelCleanCode)
+2024-10-31T16:24:45.430+03:00  INFO 13084 --- [main] org.example.Main                         : No active profile set, falling back to 1 default profile: "default"
+2024-10-31T16:24:47.069+03:00  INFO 13084 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-31T16:24:47.277+03:00  INFO 13084 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 199 ms. Found 24 JPA repository interfaces.
+2024-10-31T16:24:48.029+03:00  INFO 13084 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9091 (http)
+2024-10-31T16:24:48.041+03:00  INFO 13084 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-10-31T16:24:48.041+03:00  INFO 13084 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.7]
+2024-10-31T16:24:48.165+03:00  INFO 13084 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-10-31T16:24:48.165+03:00  INFO 13084 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2692 ms
+2024-10-31T16:24:48.497+03:00  INFO 13084 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-31T16:24:48.544+03:00  INFO 13084 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2024-10-31T16:24:48.810+03:00  INFO 13084 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-10-31T16:24:48.976+03:00  INFO 13084 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6f4adaab
+2024-10-31T16:24:48.978+03:00  INFO 13084 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-10-31T16:24:49.010+03:00  WARN 13084 --- [main] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.0 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 5.7.0. Check the community dialects project for available legacy versions.
+2024-10-31T16:24:49.014+03:00  INFO 13084 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2024-10-31T16:24:50.560+03:00  INFO 13084 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-10-31T16:24:50.567+03:00  INFO 13084 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-31T16:24:51.117+03:00  WARN 13084 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.PartitionRepository
+2024-10-31T16:24:51.604+03:00  WARN 13084 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.TransRepoJpa
+2024-10-31T16:24:51.833+03:00  WARN 13084 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.TransLogRepository
+2024-10-31T16:24:51.983+03:00  WARN 13084 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-31T16:24:52.591+03:00  INFO 13084 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-10-31T16:24:52.673+03:00  INFO 13084 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9091 (http) with context path ''
+2024-10-31T16:24:52.688+03:00  INFO 13084 --- [main] org.example.Main                         : Started Main in 7.992 seconds (process running for 8.522)
+2024-10-31T16:25:14.588+03:00  INFO 13084 --- [http-nio-9091-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-10-31T16:25:14.588+03:00  INFO 13084 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-10-31T16:25:14.590+03:00  INFO 13084 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-10-31T16:25:14.669+03:00  WARN 13084 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/office-payment
+2024-10-31T16:25:14.726+03:00  WARN 13084 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/office-payment headers org.apache.tomcat.util.http.ValuesEnumerator@574cdcb1
+2024-10-31T16:25:19.144+03:00  WARN 13084 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/office-payment
+2024-10-31T16:25:19.160+03:00  WARN 13084 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/office-payment headers org.apache.tomcat.util.http.ValuesEnumerator@72d32082
+2024-10-31T16:25:19.179+03:00  WARN 13084 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/office/all
+2024-10-31T16:25:19.194+03:00  WARN 13084 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/office/all headers org.apache.tomcat.util.http.ValuesEnumerator@fa01109
+2024-10-31T16:25:30.031+03:00  WARN 13084 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/office-payment
+2024-10-31T16:25:30.043+03:00  WARN 13084 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/office-payment headers org.apache.tomcat.util.http.ValuesEnumerator@6c6b7022
+2024-10-31T16:25:34.219+03:00  WARN 13084 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/office-payment
+2024-10-31T16:25:34.234+03:00  WARN 13084 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/office-payment headers org.apache.tomcat.util.http.ValuesEnumerator@5c29a867
+2024-10-31T16:25:38.869+03:00  WARN 13084 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/office-payment
+2024-10-31T16:25:38.882+03:00  WARN 13084 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/office-payment headers org.apache.tomcat.util.http.ValuesEnumerator@315c5ac2
+2024-10-31T16:25:38.896+03:00  WARN 13084 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/office/all
+2024-10-31T16:25:38.909+03:00  WARN 13084 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/office/all headers org.apache.tomcat.util.http.ValuesEnumerator@198651a8
+2024-10-31T16:25:46.829+03:00  WARN 13084 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/office-payment
+2024-10-31T16:25:46.849+03:00  WARN 13084 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/office-payment headers org.apache.tomcat.util.http.ValuesEnumerator@2ec9b194
+2024-10-31T16:25:46.877+03:00  WARN 13084 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/office-payment
+2024-10-31T16:25:46.890+03:00  WARN 13084 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/office-payment headers org.apache.tomcat.util.http.ValuesEnumerator@62f14c9b
+2024-10-31T16:25:54.194+03:00  WARN 13084 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/office/all
+2024-10-31T16:25:54.208+03:00  WARN 13084 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/office/all headers org.apache.tomcat.util.http.ValuesEnumerator@65e421bc
+2024-10-31T16:26:00.128+03:00  WARN 13084 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/office-payment
+2024-10-31T16:26:00.140+03:00  WARN 13084 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/office-payment headers org.apache.tomcat.util.http.ValuesEnumerator@2f2ad1a
+2024-10-31T16:26:01.952+03:00  WARN 13084 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/office/all
+2024-10-31T16:26:01.964+03:00  WARN 13084 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/office/all headers org.apache.tomcat.util.http.ValuesEnumerator@543e0e01
+2024-10-31T16:26:08.318+03:00  WARN 13084 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/office-payment
+2024-10-31T16:26:08.331+03:00  WARN 13084 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/office-payment headers org.apache.tomcat.util.http.ValuesEnumerator@6c0e0102
+2024-10-31T16:26:11.499+03:00  WARN 13084 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/office-payment
+2024-10-31T16:26:11.511+03:00  WARN 13084 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/office-payment headers org.apache.tomcat.util.http.ValuesEnumerator@268871a9
+2024-10-31T16:26:19.262+03:00  WARN 13084 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/office-payment/5
+2024-10-31T16:26:19.274+03:00  WARN 13084 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/office-payment/ headers org.apache.tomcat.util.http.ValuesEnumerator@550c2fa7
+2024-10-31T16:26:19.276+03:00  WARN 13084 --- [http-nio-9091-exec-6] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.controllers.OfficePaymentController
+2024-10-31T16:26:19.319+03:00  WARN 13084 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/office-payment
+2024-10-31T16:26:19.330+03:00  WARN 13084 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/office-payment headers org.apache.tomcat.util.http.ValuesEnumerator@1e3421ff
+2024-10-31T16:26:33.011+03:00  WARN 13084 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/office-payment
+2024-10-31T16:26:33.024+03:00  WARN 13084 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/office-payment headers org.apache.tomcat.util.http.ValuesEnumerator@29a6ddb7
+2024-10-31T16:26:34.167+03:00  WARN 13084 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/client-payment
+2024-10-31T16:26:34.178+03:00  WARN 13084 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/client-payment headers org.apache.tomcat.util.http.ValuesEnumerator@40edb89d

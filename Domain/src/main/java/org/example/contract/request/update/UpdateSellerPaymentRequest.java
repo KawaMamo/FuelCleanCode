@@ -13,7 +13,6 @@ public class UpdateSellerPaymentRequest {
     private Long id;
     private Money amount;
     private Long billNumber;
-    private LocalDateTime createdAt;
     private String notes;
     private Long sellerId;
 }

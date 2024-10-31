@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
 public class CreateSellerPaymentRequest {
     private Money amount;
     private Long billNumber;
-    private LocalDateTime createdAt;
     private String notes;
     private Long sellerId;
 }

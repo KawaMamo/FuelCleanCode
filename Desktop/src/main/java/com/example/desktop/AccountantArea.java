@@ -6,6 +6,7 @@ import com.example.desktop.officePayment.OfficePayments;
 import com.example.desktop.reports.DriverReport;
 import com.example.desktop.reports.RefineryReport;
 import com.example.desktop.returnedMaterial.ReturnedMaterials;
+import com.example.desktop.sellerPayment.SellerPayments;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -131,6 +132,20 @@ public class AccountantArea {
         try {
             final Node node = loader.load();
             final OfficePayments controller = loader.getController();
+            workArea.getChildren().clear();
+            workArea.getChildren().add(node);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    void sellerPayment(){
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("sellerPayment/sellerPayments.fxml"));
+        try {
+            final Node node = loader.load();
+            final SellerPayments controller = loader.getController();
             workArea.getChildren().clear();
             workArea.getChildren().add(node);
         } catch (IOException e) {
