@@ -48,25 +48,25 @@ public class TransferMaterialsTblCont implements TableController {
         TableColumn<TransferMaterials, String> idColumn = new TableColumn<>("id");
         idColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getId().toString()));
 
-        TableColumn<TransferMaterials, String> sourceColumn = new TableColumn<>("source");
+        TableColumn<TransferMaterials, String> sourceColumn = new TableColumn<>("المصدر");
         sourceColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getSource().getName()));
 
-        TableColumn<TransferMaterials, String> destinationColumn = new TableColumn<>("Destination");
+        TableColumn<TransferMaterials, String> destinationColumn = new TableColumn<>("الوجهة");
         destinationColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getDestination().getName()));
 
-        TableColumn<TransferMaterials, String> materialColumn = new TableColumn<>("Material");
+        TableColumn<TransferMaterials, String> materialColumn = new TableColumn<>("المادة");
         materialColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getMaterial().getName()));
 
-        TableColumn<TransferMaterials, String> amountColumn = new TableColumn<>("Amount");
+        TableColumn<TransferMaterials, String> amountColumn = new TableColumn<>("الكمية");
         amountColumn.setCellValueFactory(data -> new SimpleStringProperty(NumberFormat.getInstance().format(data.getValue().getAmount())));
 
-        TableColumn<TransferMaterials, String> priceColumn = new TableColumn<>("Price");
+        TableColumn<TransferMaterials, String> priceColumn = new TableColumn<>("السعر");
         priceColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getPrice().getAmount()+" "+data.getValue().getPrice().getCurrency()));
 
-        TableColumn<TransferMaterials, String> createdAtColumn = new TableColumn<>("CreatedAt");
+        TableColumn<TransferMaterials, String> createdAtColumn = new TableColumn<>("ت الإنشاء");
         createdAtColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getCreatedAt().toString()));
 
-        TableColumn<TransferMaterials, String> updatedAtColumn = new TableColumn<>("updatedAt");
+        TableColumn<TransferMaterials, String> updatedAtColumn = new TableColumn<>("ت التعديل");
         updatedAtColumn.setCellValueFactory(data -> {
             if(Objects.nonNull(data.getValue().getUpdatedAt()))
                 return new SimpleStringProperty(data.getValue().getUpdatedAt().toString());

@@ -4,11 +4,12 @@ import javax.annotation.processing.Generated;
 import org.example.contract.request.create.CreateSellerPaymentRequest;
 import org.example.contract.request.update.UpdateSellerPaymentRequest;
 import org.example.contract.response.SellerPaymentResponse;
+import org.example.model.Seller;
 import org.example.model.SellerPayment;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-10-29T20:43:02+0300",
+    date = "2024-10-31T16:24:01+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class SellerPaymentDomainMapperImpl implements SellerPaymentDomainMapper {
@@ -21,6 +22,7 @@ public class SellerPaymentDomainMapperImpl implements SellerPaymentDomainMapper 
 
         SellerPayment sellerPayment = new SellerPayment();
 
+        sellerPayment.setSeller( createSellerPaymentRequestToSeller( request ) );
         sellerPayment.setAmount( request.getAmount() );
         sellerPayment.setBillNumber( request.getBillNumber() );
         sellerPayment.setCreatedAt( request.getCreatedAt() );
@@ -37,6 +39,7 @@ public class SellerPaymentDomainMapperImpl implements SellerPaymentDomainMapper 
 
         SellerPayment sellerPayment = new SellerPayment();
 
+        sellerPayment.setSeller( updateSellerPaymentRequestToSeller( request ) );
         sellerPayment.setId( request.getId() );
         sellerPayment.setAmount( request.getAmount() );
         sellerPayment.setBillNumber( request.getBillNumber() );
@@ -63,5 +66,29 @@ public class SellerPaymentDomainMapperImpl implements SellerPaymentDomainMapper 
         sellerPaymentResponse.setSeller( domain.getSeller() );
 
         return sellerPaymentResponse;
+    }
+
+    protected Seller createSellerPaymentRequestToSeller(CreateSellerPaymentRequest createSellerPaymentRequest) {
+        if ( createSellerPaymentRequest == null ) {
+            return null;
+        }
+
+        Seller seller = new Seller();
+
+        seller.setId( createSellerPaymentRequest.getSellerId() );
+
+        return seller;
+    }
+
+    protected Seller updateSellerPaymentRequestToSeller(UpdateSellerPaymentRequest updateSellerPaymentRequest) {
+        if ( updateSellerPaymentRequest == null ) {
+            return null;
+        }
+
+        Seller seller = new Seller();
+
+        seller.setId( updateSellerPaymentRequest.getSellerId() );
+
+        return seller;
     }
 }

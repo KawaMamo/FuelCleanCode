@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/payment-controller")
+@RequestMapping("api/v1/office-payment")
 public class OfficePaymentController {
     private final PagedResourcesAssembler pagedResourcesAssembler;
     private final CreateOfficePayment createOfficePayment;

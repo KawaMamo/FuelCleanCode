@@ -40,28 +40,28 @@ public class ReturnedMaterials implements TableController {
         TableColumn<ReturnedMaterial, String> idColumn = new TableColumn<>("id");
         idColumn.setCellValueFactory(date -> new SimpleStringProperty(date.getValue().getId().toString()));
 
-        TableColumn<ReturnedMaterial, String> gasStationColumn = new TableColumn<>("gasStation");
+        TableColumn<ReturnedMaterial, String> gasStationColumn = new TableColumn<>("الكازية");
         gasStationColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getGasStation().getName()));
 
-        TableColumn<ReturnedMaterial, String> materialColumn = new TableColumn<>("material");
+        TableColumn<ReturnedMaterial, String> materialColumn = new TableColumn<>("المادة");
         materialColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getMaterial().getName()));
 
-        TableColumn<ReturnedMaterial, String> amountColumn = new TableColumn<>("amount");
+        TableColumn<ReturnedMaterial, String> amountColumn = new TableColumn<>("الكمية");
         amountColumn.setCellValueFactory(data -> new SimpleStringProperty(NumberFormat.getInstance().format(data.getValue().getAmount())));
 
-        TableColumn<ReturnedMaterial, String> priceColumn = new TableColumn<>("price");
+        TableColumn<ReturnedMaterial, String> priceColumn = new TableColumn<>("السعر");
         priceColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getPrice().getAmount() + " " +data.getValue().getPrice().getCurrency()));
 
-        TableColumn<ReturnedMaterial, String> centerPriceColumn = new TableColumn<>("centerPrice");
+        TableColumn<ReturnedMaterial, String> centerPriceColumn = new TableColumn<>("سعر المركز");
         centerPriceColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getCenterPrice().getAmount()+" "+data.getValue().getCenterPrice().getCurrency()));
 
-        TableColumn<ReturnedMaterial, String> statusColumn = new TableColumn<>("status");
+        TableColumn<ReturnedMaterial, String> statusColumn = new TableColumn<>("الحالة");
         statusColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getStatus()));
 
-        TableColumn<ReturnedMaterial, String> buyerColumn = new TableColumn<>("buyer");
+        TableColumn<ReturnedMaterial, String> buyerColumn = new TableColumn<>("المشتري");
         buyerColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getBuyer().getName()+" "+data.getValue().getBuyer().getOrganization()));
 
-        TableColumn<ReturnedMaterial, String> invoiceNoColumn = new TableColumn<>("invoiceNo");
+        TableColumn<ReturnedMaterial, String> invoiceNoColumn = new TableColumn<>("رقم الايصال");
         invoiceNoColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getInvoiceNo()));
 
         tableTbl.getColumns().addAll(idColumn, gasStationColumn, materialColumn, amountColumn, priceColumn, centerPriceColumn, statusColumn, buyerColumn, invoiceNoColumn);

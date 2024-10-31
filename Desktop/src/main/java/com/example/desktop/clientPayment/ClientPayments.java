@@ -48,27 +48,27 @@ public class ClientPayments implements TableController {
         TableColumn<ClientPayment, String> idColumn = new TableColumn<>("id");
         idColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getId().toString()));
 
-        TableColumn<ClientPayment, String> amountColumn = new TableColumn<>("amount");
+        TableColumn<ClientPayment, String> amountColumn = new TableColumn<>("المبلغ");
         amountColumn.setCellValueFactory(data -> new SimpleStringProperty(
                 data.getValue().getAmount().getAmount()+" " + data.getValue().getAmount().getCurrency()));
 
-        TableColumn<ClientPayment, String> billNumberColumn = new TableColumn<>("bill number");
+        TableColumn<ClientPayment, String> billNumberColumn = new TableColumn<>("رقم الايصال");
         billNumberColumn.setCellValueFactory(data -> {
             if(Objects.nonNull(data.getValue().getBillNumber()))
                 return new SimpleStringProperty(data.getValue().getBillNumber().toString());
             else return new SimpleStringProperty("");
         });
 
-        TableColumn<ClientPayment, String> notesColumn = new TableColumn<>("notes");
+        TableColumn<ClientPayment, String> notesColumn = new TableColumn<>("ملاحظات");
         notesColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getNotes()));
 
-        TableColumn<ClientPayment, String> gasStationColumn = new TableColumn<>("gasStation");
+        TableColumn<ClientPayment, String> gasStationColumn = new TableColumn<>("الكازية");
         gasStationColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getGasStation().getName()));
 
-        TableColumn<ClientPayment, String> createdAtColumn = new TableColumn<>("createdAt");
+        TableColumn<ClientPayment, String> createdAtColumn = new TableColumn<>("الإنشاء");
         createdAtColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getCreatedAt().toString()));
 
-        TableColumn<ClientPayment, String> updatedAtColumn = new TableColumn<>("updatedAt");
+        TableColumn<ClientPayment, String> updatedAtColumn = new TableColumn<>("التعديل");
         updatedAtColumn.setCellValueFactory(data ->
                 {
                     if(Objects.nonNull(data.getValue().getUpdatedAt()))

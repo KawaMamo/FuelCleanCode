@@ -853,8 +853,8 @@ public class Beans {
     }
 
     @Bean
-    CreateOfficePaymentValidator createOfficePaymentValidator(OfficePaymentRepo officePaymentRepo){
-        return new CreateOfficePaymentValidator(officePaymentRepo);
+    CreateOfficePaymentValidator createOfficePaymentValidator(OfficeRepo officeRepo){
+        return new CreateOfficePaymentValidator(officeRepo);
     }
 
     @Bean
@@ -881,7 +881,7 @@ public class Beans {
     }
 
     @Bean
-    UpdateOfficePaymentValidator updateOfficePaymentValidator(OfficePaymentRepo repo){
+    UpdateOfficePaymentValidator updateOfficePaymentValidator(OfficeRepo repo){
         return new UpdateOfficePaymentValidator(repo);
     }
 

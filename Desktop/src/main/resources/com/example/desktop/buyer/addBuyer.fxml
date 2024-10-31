@@ -21,13 +21,13 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="18.0">
                <children>
-                  <Label text="name" />
-                  <Label text="organization" />
+                  <Label text="الاسم" />
+                  <Label text="المؤسسة" />
                </children>
             </VBox>
          </children>
       </HBox>
-      <Label layoutX="126.0" layoutY="22.0" text="Add Buyer">
+      <Label layoutX="126.0" layoutY="22.0" text="إضافة مشتري">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>

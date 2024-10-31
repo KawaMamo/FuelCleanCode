@@ -30,16 +30,16 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="18.0">
                <children>
-                  <Label text="source" />
-                  <Label text="destination" />
-                  <Label text="material" />
-                  <Label text="price" />
-                  <Label text="amount" />
+                  <Label text="المصدر" />
+                  <Label text="الوجهة" />
+                  <Label text="المادة" />
+                  <Label text="السعر" />
+                  <Label text="الكمية" />
                </children>
             </VBox>
          </children>
       </HBox>
-      <Label layoutX="126.0" layoutY="22.0" text="Add Transfer">
+      <Label layoutX="126.0" layoutY="22.0" text="إضافة عملية نقل">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>

@@ -6,7 +6,7 @@ import org.example.model.PriceCategory;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-10-29T20:43:08+0300",
+    date = "2024-10-31T16:24:07+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class PriceCategoryMapperImpl implements PriceCategoryMapper {

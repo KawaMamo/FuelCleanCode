@@ -47,19 +47,19 @@ public class Buyers implements TableController {
         TableColumn<Buyer, String> idColumn = new TableColumn<>("id");
         idColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getId().toString()));
 
-        TableColumn<Buyer, String> nameColumn = new TableColumn<>("Name");
+        TableColumn<Buyer, String> nameColumn = new TableColumn<>("الاسم");
         nameColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getName()));
 
-        TableColumn<Buyer, String> organizationColumn = new TableColumn<>("Organization");
+        TableColumn<Buyer, String> organizationColumn = new TableColumn<>("المؤسسة");
         organizationColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getOrganization()));
 
-        TableColumn<Buyer, String> createdAtColumn = new TableColumn<>("CreatedAt");
+        TableColumn<Buyer, String> createdAtColumn = new TableColumn<>("تاريخ الإضافة");
         createdAtColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getCreatedAt().toString()));
 
-        TableColumn<Buyer, String> updatedAtColumn = new TableColumn<>("UpdatedAt");
+        TableColumn<Buyer, String> updatedAtColumn = new TableColumn<>("تاريخ التعديل");
         updatedAtColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getUpdatedAt().toString()));
 
-        tableTbl.getColumns().addAll(idColumn, nameColumn, organizationColumn);
+        tableTbl.getColumns().addAll(idColumn, nameColumn, organizationColumn, createdAtColumn, updatedAtColumn);
         tableTbl.setItems(buyerObservableList);
     }
 

@@ -25,7 +25,7 @@
       <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <Label text="Buyers Management" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <Label text="إدارة عملاء البيع من المركز" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>

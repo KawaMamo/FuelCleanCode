@@ -25,15 +25,16 @@
             <HBox fx:id="horizontalBar" nodeOrientation="RIGHT_TO_LEFT" prefHeight="100.0" prefWidth="150.0" />
             <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" spacing="3.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Button mnemonicParsing="false" onAction="#returnedMaterials" prefHeight="30.0" text="Sell from Center" HBox.hgrow="ALWAYS" />
+                  <Button mnemonicParsing="false" onAction="#returnedMaterials" prefHeight="30.0" style="-fx-background-color: orange;" text="البيع من المركز" HBox.hgrow="ALWAYS" />
                   <Button mnemonicParsing="false" onAction="#clientReport" prefHeight="30.0" text="Client Report" />
                   <Button mnemonicParsing="false" onAction="#officeReport" prefHeight="30.0" text="Office Report" />
                   <Button mnemonicParsing="false" onAction="#groupReport" prefHeight="30.0" text="Group Report" />
                   <Button mnemonicParsing="false" onAction="#forfeits" prefHeight="30.0" text="Forfeits" />
                   <Button mnemonicParsing="false" onAction="#refineries" prefHeight="30.0" text="Refineries" />
                   <Button mnemonicParsing="false" onAction="#driverReport" prefHeight="30.0" text="Driver Report" />
-                  <Button mnemonicParsing="false" onAction="#buyers" prefHeight="30.0" text="Buyers" />
-                  <Button mnemonicParsing="false" onAction="#clientPayment" prefHeight="30.0" text="ClientPayment" />
+                  <Button mnemonicParsing="false" onAction="#buyers" prefHeight="30.0" style="-fx-background-color: orange;" text="المشترين" />
+                  <Button mnemonicParsing="false" onAction="#clientPayment" prefHeight="30.0" style="-fx-background-color: orange;" text="دفعات العملاء" />
+                  <Button mnemonicParsing="false" onAction="#officePayment" prefHeight="30.0" style="-fx-background-color: orange;" text="دفعات مكاتب النقل" />
                </children>
                <padding>
                   <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />

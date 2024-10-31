@@ -1,8 +1,10 @@
 package org.example.validators.update;
 
 import org.example.contract.repository.OfficePaymentRepo;
+import org.example.contract.repository.OfficeRepo;
 import org.example.contract.request.update.UpdateOfficePaymentRequest;
 import org.example.exceptions.ValidationErrorDetails;
+import org.example.model.Office;
 import org.example.model.OfficePayment;
 
 import java.util.HashSet;
@@ -14,10 +16,10 @@ import static org.example.contract.constant.DomainConstant.*;
 import static org.example.contract.constant.DomainConstant.ELEMENT_NOT_FOUND;
 
 public class UpdateOfficePaymentValidator {
-    private final OfficePaymentRepo officePaymentRepo;
+    private final OfficeRepo officePaymentRepo;
 
-    public UpdateOfficePaymentValidator(OfficePaymentRepo officePaymentRepo) {
-        this.officePaymentRepo = officePaymentRepo;
+    public UpdateOfficePaymentValidator(OfficeRepo officeRepo) {
+        this.officePaymentRepo = officeRepo;
     }
 
     public void validate(UpdateOfficePaymentRequest request){
@@ -41,7 +43,7 @@ public class UpdateOfficePaymentValidator {
         if(Objects.isNull(request.getOfficeId())) {
             errorDetails.add(new ValidationErrorDetails(OFFICE_FIELD, NULL_ERROR_MSG));
         }else {
-            final Optional<OfficePayment> byId = officePaymentRepo.findById(request.getOfficeId());
+            final Optional<Office> byId = officePaymentRepo.findById(request.getOfficeId());
             if(byId.isEmpty()){
                 errorDetails.add(new ValidationErrorDetails(OFFICE_FIELD, ELEMENT_NOT_FOUND));
             }

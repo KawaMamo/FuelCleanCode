@@ -4,11 +4,12 @@ import javax.annotation.processing.Generated;
 import org.example.contract.request.create.CreateOfficePaymentRequest;
 import org.example.contract.request.update.UpdateOfficePaymentRequest;
 import org.example.contract.response.OfficePaymentResponse;
+import org.example.model.Office;
 import org.example.model.OfficePayment;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-10-29T20:43:02+0300",
+    date = "2024-10-31T16:24:01+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class OfficePaymentDomainMapperImpl implements OfficePaymentDomainMapper {
@@ -21,6 +22,7 @@ public class OfficePaymentDomainMapperImpl implements OfficePaymentDomainMapper 
 
         OfficePayment officePayment = new OfficePayment();
 
+        officePayment.setOffice( createOfficePaymentRequestToOffice( request ) );
         officePayment.setAmount( request.getAmount() );
         officePayment.setBillNumber( request.getBillNumber() );
         officePayment.setNotes( request.getNotes() );
@@ -36,6 +38,7 @@ public class OfficePaymentDomainMapperImpl implements OfficePaymentDomainMapper 
 
         OfficePayment officePayment = new OfficePayment();
 
+        officePayment.setOffice( updateOfficePaymentRequestToOffice( request ) );
         officePayment.setId( request.getId() );
         officePayment.setAmount( request.getAmount() );
         officePayment.setBillNumber( request.getBillNumber() );
@@ -61,5 +64,29 @@ public class OfficePaymentDomainMapperImpl implements OfficePaymentDomainMapper 
         officePaymentResponse.setOffice( officePayment.getOffice() );
 
         return officePaymentResponse;
+    }
+
+    protected Office createOfficePaymentRequestToOffice(CreateOfficePaymentRequest createOfficePaymentRequest) {
+        if ( createOfficePaymentRequest == null ) {
+            return null;
+        }
+
+        Office office = new Office();
+
+        office.setId( createOfficePaymentRequest.getOfficeId() );
+
+        return office;
+    }
+
+    protected Office updateOfficePaymentRequestToOffice(UpdateOfficePaymentRequest updateOfficePaymentRequest) {
+        if ( updateOfficePaymentRequest == null ) {
+            return null;
+        }
+
+        Office office = new Office();
+
+        office.setId( updateOfficePaymentRequest.getOfficeId() );
+
+        return office;
     }
 }
