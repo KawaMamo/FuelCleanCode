@@ -426,7 +426,8 @@ public class AddTransportation {
         }
         controller.addData(transportation);
         Notifications.create().title("Info").text(message).showInformation();
-        //Modal.close();
+        if(formType.equals(FormType.GET))
+            Modal.close();
     }
 
     @FXML
@@ -569,11 +570,16 @@ public class AddTransportation {
 
     @FXML
     void addForfeit(){
-        final Forfeit forfeit = forfeitService.addItem(new CreateForfeitRequest(selectedVehicleId,
-                selectedPartition.getId(),
-                new Money(forfeitCurrencyCB.getValue(), Double.valueOf(forfeitAmountTF.getText())),
-                forfeitReasonTF.getText()));
-        forfeitTbl.getItems().add(forfeit);
+        if(Objects.isNull(selectedPartition)){
+            Notifications.create().text("يرجى تحديد وجهة").showError();
+        }else {
+            final Forfeit forfeit = forfeitService.addItem(new CreateForfeitRequest(selectedVehicleId,
+                    selectedPartition.getId(),
+                    new Money(forfeitCurrencyCB.getValue(), Double.valueOf(forfeitAmountTF.getText())),
+                    forfeitReasonTF.getText()));
+            forfeitTbl.getItems().add(forfeit);
+        }
+
     }
 
     @FXML

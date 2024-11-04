@@ -10,14 +10,13 @@ import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Arrays;
 
 public class HelloApplication extends Application {
     public static Stage primaryStage;
     private static final ExceptionHandler exceptionHandler =ExceptionHandler.getInstance();
     @Override
     public void start(Stage stage) throws IOException {
-        //Thread.setDefaultUncaughtExceptionHandler(HelloApplication::showError);
+        Thread.setDefaultUncaughtExceptionHandler(HelloApplication::showError);
         primaryStage = stage;
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);

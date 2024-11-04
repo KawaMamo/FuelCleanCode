@@ -3,9 +3,7 @@ package com.example.model.client;
 import lombok.Data;
 import org.apache.http.HttpEntity;
 import org.apache.http.entity.ContentType;
-import org.apache.http.entity.mime.FormBodyPart;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
-import org.apache.http.entity.mime.content.ContentBody;
 import org.apache.http.entity.mime.content.StringBody;
 import org.controlsfx.control.Notifications;
 
@@ -19,8 +17,6 @@ import java.net.http.HttpResponse;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.Base64;
 import java.util.Objects;
 import java.util.concurrent.Callable;
 
@@ -49,7 +45,9 @@ public class Client {
         addAuthorizationToken(builder);
         final HttpRequest request = builder.build();
         try {
-            return httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            final HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            if(response.statusCode() != 200) {throw new RuntimeException(response.body());}
+            return response;
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -75,7 +73,11 @@ public class Client {
                 .header("Content-Type", multipartEntityBuilder.getContentType().getValue())
                 .POST(HttpRequest.BodyPublishers.ofInputStream(
                         () -> Channels.newInputStream(pipe.source()))).build();
-        return httpClient.send(request, HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8));
+        final HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8));
+        if(response.statusCode() != 200) {
+            throw new RuntimeException(response.body());
+        }
+        return response;
     }
 
     public HttpResponse<String> patch(String endPoint, String payload) {
@@ -86,7 +88,11 @@ public class Client {
         addAuthorizationToken(builder);
         final HttpRequest request = builder.build();
         try {
-            return httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            final HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            if(response.statusCode() != 200) {
+                throw new RuntimeException(response.body());
+            }
+            return response;
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -100,7 +106,11 @@ public class Client {
         addAuthorizationToken(builder);
         final HttpRequest request = builder.build();
         try {
-            return httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            final HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            if(response.statusCode() != 200){
+                throw new RuntimeException(response.body());
+            }
+            return response;
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }

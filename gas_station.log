@@ -335,3 +335,488 @@
 2024-11-05T01:43:14.505+03:00  INFO 10748 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-11-05T01:43:14.507+03:00  INFO 10748 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-11-05T01:43:14.513+03:00  INFO 10748 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-11-05T01:48:27.048+03:00  INFO 10856 --- [main] org.example.Main                         : Starting Main using Java 20 with PID 10856 (D:\fuelRefactored\FuelCleanCode\Service\target\classes started by GIGABYTE in D:\fuelRefactored\FuelCleanCode)
+2024-11-05T01:48:27.050+03:00  INFO 10856 --- [main] org.example.Main                         : No active profile set, falling back to 1 default profile: "default"
+2024-11-05T01:48:28.193+03:00  INFO 10856 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-05T01:48:28.413+03:00  INFO 10856 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 211 ms. Found 25 JPA repository interfaces.
+2024-11-05T01:48:29.150+03:00  INFO 10856 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9091 (http)
+2024-11-05T01:48:29.160+03:00  INFO 10856 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-11-05T01:48:29.160+03:00  INFO 10856 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.7]
+2024-11-05T01:48:29.273+03:00  INFO 10856 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-11-05T01:48:29.273+03:00  INFO 10856 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2186 ms
+2024-11-05T01:48:29.626+03:00  INFO 10856 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-05T01:48:29.672+03:00  INFO 10856 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2024-11-05T01:48:29.964+03:00  INFO 10856 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-05T01:48:30.119+03:00  INFO 10856 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@ab2009f
+2024-11-05T01:48:30.121+03:00  INFO 10856 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-05T01:48:30.153+03:00  WARN 10856 --- [main] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.0 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 5.7.0. Check the community dialects project for available legacy versions.
+2024-11-05T01:48:30.158+03:00  INFO 10856 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2024-11-05T01:48:31.662+03:00  INFO 10856 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-11-05T01:48:31.670+03:00  INFO 10856 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-05T01:48:32.198+03:00  WARN 10856 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.PartitionRepository
+2024-11-05T01:48:32.652+03:00  WARN 10856 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.TransRepoJpa
+2024-11-05T01:48:32.910+03:00  WARN 10856 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.TransLogRepository
+2024-11-05T01:48:33.048+03:00  WARN 10856 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-05T01:48:33.649+03:00  INFO 10856 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-11-05T01:48:33.730+03:00  INFO 10856 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9091 (http) with context path ''
+2024-11-05T01:48:33.744+03:00  INFO 10856 --- [main] org.example.Main                         : Started Main in 7.117 seconds (process running for 7.607)
+2024-11-05T01:48:54.377+03:00  INFO 10856 --- [http-nio-9091-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-05T01:48:54.378+03:00  INFO 10856 --- [http-nio-9091-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-11-05T01:48:54.379+03:00  INFO 10856 --- [http-nio-9091-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-11-05T01:48:54.448+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans
+2024-11-05T01:48:54.508+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@50349092
+2024-11-05T01:48:58.757+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/region
+2024-11-05T01:48:58.772+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/region headers org.apache.tomcat.util.http.ValuesEnumerator@2442319e
+2024-11-05T01:48:59.749+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans
+2024-11-05T01:48:59.761+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@252cf5b
+2024-11-05T01:49:01.268+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/refinery/all
+2024-11-05T01:49:01.280+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/refinery/all headers org.apache.tomcat.util.http.ValuesEnumerator@3a56c144
+2024-11-05T01:49:01.333+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/vehicle/all
+2024-11-05T01:49:01.347+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/vehicle/all headers org.apache.tomcat.util.http.ValuesEnumerator@3281f717
+2024-11-05T01:49:01.624+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/material/all
+2024-11-05T01:49:01.636+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@18d4d786
+2024-11-05T01:49:01.649+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/price-category/all
+2024-11-05T01:49:01.662+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@503b1cd6
+2024-11-05T01:49:01.676+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2024-11-05T01:49:01.688+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@6d416f2
+2024-11-05T01:49:01.731+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/trans
+2024-11-05T01:49:01.743+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@3329ba0d
+2024-11-05T01:49:01.767+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/partition
+2024-11-05T01:49:01.781+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/partition headers org.apache.tomcat.util.http.ValuesEnumerator@10d34b85
+2024-11-05T01:49:01.809+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans-log
+2024-11-05T01:49:01.821+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans-log headers org.apache.tomcat.util.http.ValuesEnumerator@5bf94c36
+2024-11-05T01:49:01.841+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/forfeit
+2024-11-05T01:49:01.857+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/forfeit headers org.apache.tomcat.util.http.ValuesEnumerator@79317553
+2024-11-05T01:49:14.075+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans
+2024-11-05T01:49:14.085+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@5d3d024f
+2024-11-05T01:49:15.421+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/refinery/all
+2024-11-05T01:49:15.431+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/refinery/all headers org.apache.tomcat.util.http.ValuesEnumerator@3444b353
+2024-11-05T01:49:15.453+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/vehicle/all
+2024-11-05T01:49:15.464+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/vehicle/all headers org.apache.tomcat.util.http.ValuesEnumerator@a117824
+2024-11-05T01:49:15.607+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/material/all
+2024-11-05T01:49:15.619+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@27178828
+2024-11-05T01:49:15.629+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/price-category/all
+2024-11-05T01:49:15.639+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@61a36479
+2024-11-05T01:49:15.650+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2024-11-05T01:49:15.660+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@4cd80643
+2024-11-05T01:49:15.691+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/trans
+2024-11-05T01:49:15.703+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@6ac8e185
+2024-11-05T01:49:15.721+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/partition
+2024-11-05T01:49:15.733+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/partition headers org.apache.tomcat.util.http.ValuesEnumerator@737c480b
+2024-11-05T01:49:15.750+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans-log
+2024-11-05T01:49:15.762+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans-log headers org.apache.tomcat.util.http.ValuesEnumerator@791647d
+2024-11-05T01:49:15.772+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/forfeit
+2024-11-05T01:49:15.783+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/forfeit headers org.apache.tomcat.util.http.ValuesEnumerator@5bc73501
+2024-11-05T01:49:26.172+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/refinery/all
+2024-11-05T01:49:26.182+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/refinery/all headers org.apache.tomcat.util.http.ValuesEnumerator@27ffd391
+2024-11-05T01:49:26.198+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/vehicle/all
+2024-11-05T01:49:26.207+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/vehicle/all headers org.apache.tomcat.util.http.ValuesEnumerator@696fa3ec
+2024-11-05T01:49:26.307+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/material/all
+2024-11-05T01:49:26.319+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@6e26c907
+2024-11-05T01:49:26.330+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/price-category/all
+2024-11-05T01:49:26.342+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@1ec23cd6
+2024-11-05T01:49:26.353+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2024-11-05T01:49:26.363+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@28e932dc
+2024-11-05T01:49:35.556+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/refinery/all
+2024-11-05T01:49:35.567+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/refinery/all headers org.apache.tomcat.util.http.ValuesEnumerator@380f444d
+2024-11-05T01:49:35.585+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/vehicle/all
+2024-11-05T01:49:35.596+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/vehicle/all headers org.apache.tomcat.util.http.ValuesEnumerator@2bea56cc
+2024-11-05T01:49:35.700+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/material/all
+2024-11-05T01:49:35.712+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@894f395
+2024-11-05T01:49:35.722+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/price-category/all
+2024-11-05T01:49:35.733+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@11f32677
+2024-11-05T01:49:35.744+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2024-11-05T01:49:35.756+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@73d42e00
+2024-11-05T01:49:38.179+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans
+2024-11-05T01:49:38.189+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@6ade2a9a
+2024-11-05T01:52:21.236+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/trans
+2024-11-05T01:52:21.246+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@eb973f6
+2024-11-05T01:52:28.730+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/refinery/all
+2024-11-05T01:52:28.738+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/refinery/all headers org.apache.tomcat.util.http.ValuesEnumerator@79e373e7
+2024-11-05T01:52:28.768+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/vehicle/all
+2024-11-05T01:52:28.778+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/vehicle/all headers org.apache.tomcat.util.http.ValuesEnumerator@28c3b498
+2024-11-05T01:52:28.930+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/material/all
+2024-11-05T01:52:28.943+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@2bfba92
+2024-11-05T01:52:28.953+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/price-category/all
+2024-11-05T01:52:28.962+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@71d748bf
+2024-11-05T01:52:28.975+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2024-11-05T01:52:28.983+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@6fc8de5e
+2024-11-05T01:55:12.214+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans
+2024-11-05T01:55:12.223+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@5a401916
+2024-11-05T01:55:14.294+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/refinery/all
+2024-11-05T01:55:14.304+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/refinery/all headers org.apache.tomcat.util.http.ValuesEnumerator@34663926
+2024-11-05T01:55:14.330+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/vehicle/all
+2024-11-05T01:55:14.340+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/vehicle/all headers org.apache.tomcat.util.http.ValuesEnumerator@69052d5f
+2024-11-05T01:55:14.464+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/material/all
+2024-11-05T01:55:14.474+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@2a88eaea
+2024-11-05T01:55:14.484+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/price-category/all
+2024-11-05T01:55:14.495+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@46403821
+2024-11-05T01:55:14.513+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2024-11-05T01:55:14.522+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@677309a3
+2024-11-05T01:55:34.824+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/trans-line
+2024-11-05T01:55:34.835+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/trans-line headers org.apache.tomcat.util.http.ValuesEnumerator@51d2b34
+2024-11-05T01:55:36.957+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/refinery/all
+2024-11-05T01:55:36.966+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/refinery/all headers org.apache.tomcat.util.http.ValuesEnumerator@62d3e54e
+2024-11-05T01:55:36.981+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2024-11-05T01:55:36.989+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@12785146
+2024-11-05T01:55:37.012+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/region/all
+2024-11-05T01:55:37.020+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@67e1a2bd
+2024-11-05T01:56:01.257+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans-line
+2024-11-05T01:56:01.266+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans-line headers org.apache.tomcat.util.http.ValuesEnumerator@565af98a
+2024-11-05T01:56:01.350+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans-line
+2024-11-05T01:56:01.358+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans-line headers org.apache.tomcat.util.http.ValuesEnumerator@4ff6b617
+2024-11-05T01:56:03.501+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/refinery/all
+2024-11-05T01:56:03.510+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/refinery/all headers org.apache.tomcat.util.http.ValuesEnumerator@473ed466
+2024-11-05T01:56:03.528+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2024-11-05T01:56:03.537+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@77ae2def
+2024-11-05T01:56:03.563+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/region/all
+2024-11-05T01:56:03.585+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@175dbcd7
+2024-11-05T01:56:16.429+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/trans
+2024-11-05T01:56:16.438+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@3a333cac
+2024-11-05T01:56:21.863+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/refinery/all
+2024-11-05T01:56:21.873+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/refinery/all headers org.apache.tomcat.util.http.ValuesEnumerator@5c6c677d
+2024-11-05T01:56:21.891+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/vehicle/all
+2024-11-05T01:56:21.899+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/vehicle/all headers org.apache.tomcat.util.http.ValuesEnumerator@ed8dbe5
+2024-11-05T01:56:21.998+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/material/all
+2024-11-05T01:56:22.008+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@686e7d04
+2024-11-05T01:56:22.019+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/price-category/all
+2024-11-05T01:56:22.029+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@301cc41
+2024-11-05T01:56:22.040+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2024-11-05T01:56:22.051+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@3062357
+2024-11-05T01:56:35.144+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans
+2024-11-05T01:56:35.152+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@512098e8
+2024-11-05T01:56:35.191+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/trans
+2024-11-05T01:56:35.199+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@edb2471
+2024-11-05T01:56:35.226+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/trans
+2024-11-05T01:56:35.234+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@775fac40
+2024-11-05T01:56:59.596+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/trans
+2024-11-05T01:56:59.606+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@1903f79a
+2024-11-05T01:57:01.283+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/refinery/all
+2024-11-05T01:57:01.291+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/refinery/all headers org.apache.tomcat.util.http.ValuesEnumerator@313781f9
+2024-11-05T01:57:01.314+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/vehicle/all
+2024-11-05T01:57:01.322+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/vehicle/all headers org.apache.tomcat.util.http.ValuesEnumerator@77ae6d62
+2024-11-05T01:57:01.443+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/material/all
+2024-11-05T01:57:01.450+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@362e6a9e
+2024-11-05T01:57:01.459+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/price-category/all
+2024-11-05T01:57:01.467+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@47166007
+2024-11-05T01:57:01.480+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2024-11-05T01:57:01.487+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@75515bd3
+2024-11-05T01:57:11.356+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans
+2024-11-05T01:57:11.364+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@12e3c678
+2024-11-05T01:57:11.388+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/trans
+2024-11-05T01:57:11.396+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@2297c45
+2024-11-05T01:57:11.423+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/trans
+2024-11-05T01:57:11.431+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@60d31de6
+2024-11-05T01:57:24.445+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/category
+2024-11-05T01:57:24.453+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@443b258c
+2024-11-05T01:57:24.468+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/category
+2024-11-05T01:57:24.475+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@138078ea
+2024-11-05T01:57:28.673+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/category
+2024-11-05T01:57:28.680+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@1f2e8003
+2024-11-05T01:57:32.061+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/trans-line
+2024-11-05T01:57:32.069+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/trans-line headers org.apache.tomcat.util.http.ValuesEnumerator@1cdda6e6
+2024-11-05T01:57:32.085+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans-log
+2024-11-05T01:57:32.092+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans-log headers org.apache.tomcat.util.http.ValuesEnumerator@3e01cdd3
+2024-11-05T01:57:32.132+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans-log
+2024-11-05T01:57:32.140+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans-log headers org.apache.tomcat.util.http.ValuesEnumerator@526dd74f
+2024-11-05T01:57:49.818+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/category
+2024-11-05T01:57:49.824+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@21a07f7d
+2024-11-05T01:57:55.785+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/category
+2024-11-05T01:57:55.791+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@2598590e
+2024-11-05T01:57:55.802+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/category
+2024-11-05T01:57:55.808+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@4743f70c
+2024-11-05T01:57:57.933+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/category
+2024-11-05T01:57:57.941+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@87aa71e
+2024-11-05T01:57:57.952+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/category
+2024-11-05T01:57:57.960+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@16aee884
+2024-11-05T01:58:01.567+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/category
+2024-11-05T01:58:01.574+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@dc35ae6
+2024-11-05T01:58:01.588+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/category
+2024-11-05T01:58:01.596+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@730b9df6
+2024-11-05T01:58:13.070+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/category
+2024-11-05T01:58:13.078+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@ce7d9d5
+2024-11-05T01:58:13.166+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/partition
+2024-11-05T01:58:13.173+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/partition headers org.apache.tomcat.util.http.ValuesEnumerator@549a29b3
+2024-11-05T01:58:13.229+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/partition
+2024-11-05T01:58:13.236+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/partition headers org.apache.tomcat.util.http.ValuesEnumerator@a7a6ffc
+2024-11-05T01:58:16.603+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/category
+2024-11-05T01:58:16.610+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@783f1ff
+2024-11-05T01:58:24.549+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans
+2024-11-05T01:58:24.556+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@564d59c3
+2024-11-05T01:58:27.740+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/refinery/all
+2024-11-05T01:58:27.748+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/refinery/all headers org.apache.tomcat.util.http.ValuesEnumerator@5636d2ea
+2024-11-05T01:58:27.763+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/vehicle/all
+2024-11-05T01:58:27.770+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/vehicle/all headers org.apache.tomcat.util.http.ValuesEnumerator@2d761173
+2024-11-05T01:58:27.861+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/material/all
+2024-11-05T01:58:27.871+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@14888441
+2024-11-05T01:58:27.880+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/price-category/all
+2024-11-05T01:58:27.887+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@567c2303
+2024-11-05T01:58:27.898+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2024-11-05T01:58:27.906+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@4b11da27
+2024-11-05T01:58:27.927+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/trans
+2024-11-05T01:58:27.935+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@eb1bbcc
+2024-11-05T01:58:27.948+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/partition
+2024-11-05T01:58:27.955+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/partition headers org.apache.tomcat.util.http.ValuesEnumerator@583f6969
+2024-11-05T01:58:27.968+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans-log
+2024-11-05T01:58:27.975+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans-log headers org.apache.tomcat.util.http.ValuesEnumerator@2f190588
+2024-11-05T01:58:27.987+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/forfeit
+2024-11-05T01:58:27.994+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/forfeit headers org.apache.tomcat.util.http.ValuesEnumerator@7d2caf9
+2024-11-05T01:58:30.877+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/category
+2024-11-05T01:58:30.883+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@115a7953
+2024-11-05T01:58:34.289+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/partition/9
+2024-11-05T01:58:34.296+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/partition/ headers org.apache.tomcat.util.http.ValuesEnumerator@7ff99fff
+2024-11-05T01:58:34.298+03:00  WARN 10856 --- [http-nio-9091-exec-4] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.controllers.PartitionController
+2024-11-05T01:58:34.335+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/partition
+2024-11-05T01:58:34.342+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/partition headers org.apache.tomcat.util.http.ValuesEnumerator@297053c9
+2024-11-05T01:58:54.287+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/category
+2024-11-05T01:58:54.294+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@fb9f835
+2024-11-05T01:58:56.700+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/partition
+2024-11-05T01:58:56.706+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/partition headers org.apache.tomcat.util.http.ValuesEnumerator@646d89a2
+2024-11-05T01:58:56.752+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/partition
+2024-11-05T01:58:56.762+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/partition headers org.apache.tomcat.util.http.ValuesEnumerator@22d70eaa
+2024-11-05T01:59:29.044+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/category
+2024-11-05T01:59:29.053+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@7b450609
+2024-11-05T01:59:31.070+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/forfeit
+2024-11-05T01:59:31.077+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/forfeit headers org.apache.tomcat.util.http.ValuesEnumerator@a1c4db3
+2024-11-05T02:02:08.635+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans
+2024-11-05T02:02:08.645+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@52625918
+2024-11-05T02:02:12.355+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/refinery/all
+2024-11-05T02:02:12.365+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/refinery/all headers org.apache.tomcat.util.http.ValuesEnumerator@110eda4c
+2024-11-05T02:02:12.392+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/vehicle/all
+2024-11-05T02:02:12.401+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/vehicle/all headers org.apache.tomcat.util.http.ValuesEnumerator@5377cc1c
+2024-11-05T02:02:12.536+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/material/all
+2024-11-05T02:02:12.545+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@7c66d1c
+2024-11-05T02:02:12.556+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/price-category/all
+2024-11-05T02:02:12.563+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@59f5ce1b
+2024-11-05T02:02:12.575+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2024-11-05T02:02:12.582+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@5ac16a1
+2024-11-05T02:02:12.612+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/trans
+2024-11-05T02:02:12.619+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@42f20696
+2024-11-05T02:02:12.635+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/partition
+2024-11-05T02:02:12.643+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/partition headers org.apache.tomcat.util.http.ValuesEnumerator@633a4fe1
+2024-11-05T02:02:12.657+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans-log
+2024-11-05T02:02:12.665+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans-log headers org.apache.tomcat.util.http.ValuesEnumerator@43776a37
+2024-11-05T02:02:12.677+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/forfeit
+2024-11-05T02:02:12.683+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/forfeit headers org.apache.tomcat.util.http.ValuesEnumerator@12e8b0c1
+2024-11-05T02:02:17.678+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/category
+2024-11-05T02:02:17.685+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@778001c1
+2024-11-05T02:02:23.411+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/forfeit
+2024-11-05T02:02:23.422+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/forfeit headers org.apache.tomcat.util.http.ValuesEnumerator@523a9022
+2024-11-05T02:02:32.398+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/refinery/all
+2024-11-05T02:02:32.407+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/refinery/all headers org.apache.tomcat.util.http.ValuesEnumerator@d0401a7
+2024-11-05T02:02:32.421+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/vehicle/all
+2024-11-05T02:02:32.427+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/vehicle/all headers org.apache.tomcat.util.http.ValuesEnumerator@6efa5f22
+2024-11-05T02:02:32.514+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/material/all
+2024-11-05T02:02:32.523+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@17a60d47
+2024-11-05T02:02:32.532+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/price-category/all
+2024-11-05T02:02:32.541+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@16bc1620
+2024-11-05T02:02:32.551+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2024-11-05T02:02:32.560+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@4c71a21a
+2024-11-05T02:02:32.584+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans
+2024-11-05T02:02:32.592+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@d2594d7
+2024-11-05T02:02:32.608+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/partition
+2024-11-05T02:02:32.616+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/partition headers org.apache.tomcat.util.http.ValuesEnumerator@65b07ff3
+2024-11-05T02:02:32.631+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans-log
+2024-11-05T02:02:32.639+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans-log headers org.apache.tomcat.util.http.ValuesEnumerator@6bcf9d20
+2024-11-05T02:02:32.651+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/forfeit
+2024-11-05T02:02:32.659+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/forfeit headers org.apache.tomcat.util.http.ValuesEnumerator@1c7b97a6
+2024-11-05T02:02:36.434+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/forfeit/8
+2024-11-05T02:02:36.442+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/forfeit/ headers org.apache.tomcat.util.http.ValuesEnumerator@1f4ab678
+2024-11-05T02:02:36.443+03:00  WARN 10856 --- [http-nio-9091-exec-4] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.controllers.ForfeitController
+2024-11-05T02:02:39.818+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/category
+2024-11-05T02:02:39.825+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@5f325508
+2024-11-05T02:02:40.922+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/partition/10
+2024-11-05T02:02:40.928+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/partition/ headers org.apache.tomcat.util.http.ValuesEnumerator@db8a497
+2024-11-05T02:02:40.946+03:00  WARN 10856 --- [http-nio-9091-exec-6] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1451, SQLState: 23000
+2024-11-05T02:02:40.946+03:00 ERROR 10856 --- [http-nio-9091-exec-6] o.h.engine.jdbc.spi.SqlExceptionHelper   : Cannot delete or update a parent row: a foreign key constraint fails (`fueldb`.`forfeit_entity`, CONSTRAINT `FK5ryte4x5rudtilngrr899vff6` FOREIGN KEY (`partition_id`) REFERENCES `partition_entity` (`id`))
+2024-11-05T02:02:40.954+03:00 ERROR 10856 --- [http-nio-9091-exec-6] org.example.config.AppExceptionHandler   : org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [null]
+2024-11-05T02:03:37.115+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/trans
+2024-11-05T02:03:37.123+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@6256f685
+2024-11-05T02:03:39.460+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/refinery/all
+2024-11-05T02:03:39.467+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/refinery/all headers org.apache.tomcat.util.http.ValuesEnumerator@f6bbecc
+2024-11-05T02:03:39.492+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/vehicle/all
+2024-11-05T02:03:39.500+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/vehicle/all headers org.apache.tomcat.util.http.ValuesEnumerator@1524c22d
+2024-11-05T02:03:39.633+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/material/all
+2024-11-05T02:03:39.641+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@3f9b92b7
+2024-11-05T02:03:39.650+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/price-category/all
+2024-11-05T02:03:39.658+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@5a88e84d
+2024-11-05T02:03:39.670+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2024-11-05T02:03:39.677+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@43482c52
+2024-11-05T02:03:39.711+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans
+2024-11-05T02:03:39.719+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@71ca508e
+2024-11-05T02:03:39.736+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/partition
+2024-11-05T02:03:39.744+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/partition headers org.apache.tomcat.util.http.ValuesEnumerator@1d8f2f0
+2024-11-05T02:03:39.766+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/trans-log
+2024-11-05T02:03:39.774+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/trans-log headers org.apache.tomcat.util.http.ValuesEnumerator@74bfc2b
+2024-11-05T02:03:39.788+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/forfeit
+2024-11-05T02:03:39.796+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/forfeit headers org.apache.tomcat.util.http.ValuesEnumerator@407f9ec0
+2024-11-05T02:03:41.480+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/category
+2024-11-05T02:03:41.486+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@74007e33
+2024-11-05T02:03:42.500+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/partition/10
+2024-11-05T02:03:42.506+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/partition/ headers org.apache.tomcat.util.http.ValuesEnumerator@7adcc7f7
+2024-11-05T02:03:42.514+03:00  WARN 10856 --- [http-nio-9091-exec-8] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1451, SQLState: 23000
+2024-11-05T02:03:42.514+03:00 ERROR 10856 --- [http-nio-9091-exec-8] o.h.engine.jdbc.spi.SqlExceptionHelper   : Cannot delete or update a parent row: a foreign key constraint fails (`fueldb`.`forfeit_entity`, CONSTRAINT `FK5ryte4x5rudtilngrr899vff6` FOREIGN KEY (`partition_id`) REFERENCES `partition_entity` (`id`))
+2024-11-05T02:03:42.516+03:00 ERROR 10856 --- [http-nio-9091-exec-8] org.example.config.AppExceptionHandler   : org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [null]
+2024-11-05T02:04:23.724+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/trans
+2024-11-05T02:04:23.731+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@5cabae7
+2024-11-05T02:04:28.124+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/refinery/all
+2024-11-05T02:04:28.135+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/refinery/all headers org.apache.tomcat.util.http.ValuesEnumerator@1fdff95c
+2024-11-05T02:04:28.157+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/vehicle/all
+2024-11-05T02:04:28.164+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/vehicle/all headers org.apache.tomcat.util.http.ValuesEnumerator@5fa9caa6
+2024-11-05T02:04:28.293+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/material/all
+2024-11-05T02:04:28.301+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@584fe37f
+2024-11-05T02:04:28.311+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/price-category/all
+2024-11-05T02:04:28.318+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@14ce3ff1
+2024-11-05T02:04:28.328+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2024-11-05T02:04:28.336+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@dc1d8f1
+2024-11-05T02:04:28.360+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/trans
+2024-11-05T02:04:28.367+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@5bd6111d
+2024-11-05T02:04:28.385+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/partition
+2024-11-05T02:04:28.392+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/partition headers org.apache.tomcat.util.http.ValuesEnumerator@5a095fa3
+2024-11-05T02:04:28.408+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/trans-log
+2024-11-05T02:04:28.416+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/trans-log headers org.apache.tomcat.util.http.ValuesEnumerator@3b53c9b6
+2024-11-05T02:04:28.429+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/forfeit
+2024-11-05T02:04:28.437+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/forfeit headers org.apache.tomcat.util.http.ValuesEnumerator@413dc7ef
+2024-11-05T02:04:29.428+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/category
+2024-11-05T02:04:29.434+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@5971b515
+2024-11-05T02:04:30.256+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/partition/10
+2024-11-05T02:04:30.263+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/partition/ headers org.apache.tomcat.util.http.ValuesEnumerator@34db3dd4
+2024-11-05T02:04:30.285+03:00  WARN 10856 --- [http-nio-9091-exec-10] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1451, SQLState: 23000
+2024-11-05T02:04:30.285+03:00 ERROR 10856 --- [http-nio-9091-exec-10] o.h.engine.jdbc.spi.SqlExceptionHelper   : Cannot delete or update a parent row: a foreign key constraint fails (`fueldb`.`forfeit_entity`, CONSTRAINT `FK5ryte4x5rudtilngrr899vff6` FOREIGN KEY (`partition_id`) REFERENCES `partition_entity` (`id`))
+2024-11-05T02:04:30.288+03:00 ERROR 10856 --- [http-nio-9091-exec-10] org.example.config.AppExceptionHandler   : org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [null]
+2024-11-05T02:05:17.129+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/partition/10
+2024-11-05T02:05:17.136+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/partition/ headers org.apache.tomcat.util.http.ValuesEnumerator@7772120c
+2024-11-05T02:05:17.160+03:00  WARN 10856 --- [http-nio-9091-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1451, SQLState: 23000
+2024-11-05T02:05:17.160+03:00 ERROR 10856 --- [http-nio-9091-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : Cannot delete or update a parent row: a foreign key constraint fails (`fueldb`.`forfeit_entity`, CONSTRAINT `FK5ryte4x5rudtilngrr899vff6` FOREIGN KEY (`partition_id`) REFERENCES `partition_entity` (`id`))
+2024-11-05T02:05:17.163+03:00 ERROR 10856 --- [http-nio-9091-exec-2] org.example.config.AppExceptionHandler   : org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [null]
+2024-11-05T02:07:17.892+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/partition/10
+2024-11-05T02:07:17.901+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/partition/ headers org.apache.tomcat.util.http.ValuesEnumerator@4c261706
+2024-11-05T02:07:17.918+03:00  WARN 10856 --- [http-nio-9091-exec-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1451, SQLState: 23000
+2024-11-05T02:07:17.918+03:00 ERROR 10856 --- [http-nio-9091-exec-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : Cannot delete or update a parent row: a foreign key constraint fails (`fueldb`.`forfeit_entity`, CONSTRAINT `FK5ryte4x5rudtilngrr899vff6` FOREIGN KEY (`partition_id`) REFERENCES `partition_entity` (`id`))
+2024-11-05T02:07:17.921+03:00 ERROR 10856 --- [http-nio-9091-exec-1] org.example.config.AppExceptionHandler   : org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [null]
+2024-11-05T02:07:24.257+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/partition/10
+2024-11-05T02:07:24.264+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/partition/ headers org.apache.tomcat.util.http.ValuesEnumerator@652e7ba5
+2024-11-05T02:07:24.284+03:00  WARN 10856 --- [http-nio-9091-exec-3] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1451, SQLState: 23000
+2024-11-05T02:07:24.284+03:00 ERROR 10856 --- [http-nio-9091-exec-3] o.h.engine.jdbc.spi.SqlExceptionHelper   : Cannot delete or update a parent row: a foreign key constraint fails (`fueldb`.`forfeit_entity`, CONSTRAINT `FK5ryte4x5rudtilngrr899vff6` FOREIGN KEY (`partition_id`) REFERENCES `partition_entity` (`id`))
+2024-11-05T02:07:24.287+03:00 ERROR 10856 --- [http-nio-9091-exec-3] org.example.config.AppExceptionHandler   : org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [null]
+2024-11-05T02:07:58.181+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/partition/10
+2024-11-05T02:07:58.187+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/partition/ headers org.apache.tomcat.util.http.ValuesEnumerator@13cc1466
+2024-11-05T02:07:58.195+03:00  WARN 10856 --- [http-nio-9091-exec-4] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1451, SQLState: 23000
+2024-11-05T02:07:58.195+03:00 ERROR 10856 --- [http-nio-9091-exec-4] o.h.engine.jdbc.spi.SqlExceptionHelper   : Cannot delete or update a parent row: a foreign key constraint fails (`fueldb`.`forfeit_entity`, CONSTRAINT `FK5ryte4x5rudtilngrr899vff6` FOREIGN KEY (`partition_id`) REFERENCES `partition_entity` (`id`))
+2024-11-05T02:07:58.197+03:00 ERROR 10856 --- [http-nio-9091-exec-4] org.example.config.AppExceptionHandler   : org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [null]
+2024-11-05T02:09:26.498+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/partition/10
+2024-11-05T02:09:26.512+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/partition/ headers org.apache.tomcat.util.http.ValuesEnumerator@4971fd7a
+2024-11-05T02:09:26.539+03:00  WARN 10856 --- [http-nio-9091-exec-5] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1451, SQLState: 23000
+2024-11-05T02:09:26.539+03:00 ERROR 10856 --- [http-nio-9091-exec-5] o.h.engine.jdbc.spi.SqlExceptionHelper   : Cannot delete or update a parent row: a foreign key constraint fails (`fueldb`.`forfeit_entity`, CONSTRAINT `FK5ryte4x5rudtilngrr899vff6` FOREIGN KEY (`partition_id`) REFERENCES `partition_entity` (`id`))
+2024-11-05T02:09:26.542+03:00 ERROR 10856 --- [http-nio-9091-exec-5] org.example.config.AppExceptionHandler   : org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [null]
+2024-11-05T02:09:38.267+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/trans
+2024-11-05T02:09:38.275+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@5464c747
+2024-11-05T02:09:40.524+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/refinery/all
+2024-11-05T02:09:40.531+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/refinery/all headers org.apache.tomcat.util.http.ValuesEnumerator@5c629693
+2024-11-05T02:09:40.553+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/vehicle/all
+2024-11-05T02:09:40.559+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/vehicle/all headers org.apache.tomcat.util.http.ValuesEnumerator@6aef6a8c
+2024-11-05T02:09:40.689+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/material/all
+2024-11-05T02:09:40.698+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@6db4c26
+2024-11-05T02:09:40.709+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/price-category/all
+2024-11-05T02:09:40.717+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@24a54023
+2024-11-05T02:09:40.731+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2024-11-05T02:09:40.738+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@17293ac0
+2024-11-05T02:09:40.766+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans
+2024-11-05T02:09:40.773+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@52e3121
+2024-11-05T02:09:40.788+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/partition
+2024-11-05T02:09:40.795+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/partition headers org.apache.tomcat.util.http.ValuesEnumerator@2215fc65
+2024-11-05T02:09:40.808+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/trans-log
+2024-11-05T02:09:40.815+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/trans-log headers org.apache.tomcat.util.http.ValuesEnumerator@291224fd
+2024-11-05T02:09:40.828+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/forfeit
+2024-11-05T02:09:40.835+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/forfeit headers org.apache.tomcat.util.http.ValuesEnumerator@1db43eae
+2024-11-05T02:09:42.074+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/category
+2024-11-05T02:09:42.084+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@2508b91c
+2024-11-05T02:09:42.884+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/partition/10
+2024-11-05T02:09:42.891+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/partition/ headers org.apache.tomcat.util.http.ValuesEnumerator@364c882b
+2024-11-05T02:09:42.909+03:00  WARN 10856 --- [http-nio-9091-exec-7] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1451, SQLState: 23000
+2024-11-05T02:09:42.909+03:00 ERROR 10856 --- [http-nio-9091-exec-7] o.h.engine.jdbc.spi.SqlExceptionHelper   : Cannot delete or update a parent row: a foreign key constraint fails (`fueldb`.`forfeit_entity`, CONSTRAINT `FK5ryte4x5rudtilngrr899vff6` FOREIGN KEY (`partition_id`) REFERENCES `partition_entity` (`id`))
+2024-11-05T02:09:42.913+03:00 ERROR 10856 --- [http-nio-9091-exec-7] org.example.config.AppExceptionHandler   : org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [null]
+2024-11-05T02:09:50.256+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/partition/10
+2024-11-05T02:09:50.264+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/partition/ headers org.apache.tomcat.util.http.ValuesEnumerator@720e3de7
+2024-11-05T02:09:50.284+03:00  WARN 10856 --- [http-nio-9091-exec-8] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1451, SQLState: 23000
+2024-11-05T02:09:50.284+03:00 ERROR 10856 --- [http-nio-9091-exec-8] o.h.engine.jdbc.spi.SqlExceptionHelper   : Cannot delete or update a parent row: a foreign key constraint fails (`fueldb`.`forfeit_entity`, CONSTRAINT `FK5ryte4x5rudtilngrr899vff6` FOREIGN KEY (`partition_id`) REFERENCES `partition_entity` (`id`))
+2024-11-05T02:09:50.289+03:00 ERROR 10856 --- [http-nio-9091-exec-8] org.example.config.AppExceptionHandler   : org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [null]
+2024-11-05T02:10:03.522+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/refinery/all
+2024-11-05T02:10:03.529+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/refinery/all headers org.apache.tomcat.util.http.ValuesEnumerator@75083734
+2024-11-05T02:10:03.544+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/vehicle/all
+2024-11-05T02:10:03.551+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/vehicle/all headers org.apache.tomcat.util.http.ValuesEnumerator@64e281ce
+2024-11-05T02:10:03.633+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/material/all
+2024-11-05T02:10:03.645+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@51d4425a
+2024-11-05T02:10:03.655+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/price-category/all
+2024-11-05T02:10:03.664+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@78495548
+2024-11-05T02:10:03.672+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2024-11-05T02:10:03.680+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@74a099b8
+2024-11-05T02:10:03.704+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/trans
+2024-11-05T02:10:03.713+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@5d857653
+2024-11-05T02:10:03.729+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/partition
+2024-11-05T02:10:03.737+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/partition headers org.apache.tomcat.util.http.ValuesEnumerator@432752e6
+2024-11-05T02:10:03.751+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/trans-log
+2024-11-05T02:10:03.759+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/trans-log headers org.apache.tomcat.util.http.ValuesEnumerator@7288ba41
+2024-11-05T02:10:03.776+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/forfeit
+2024-11-05T02:10:03.784+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/forfeit headers org.apache.tomcat.util.http.ValuesEnumerator@ad50ae0
+2024-11-05T02:10:04.896+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/category
+2024-11-05T02:10:04.903+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@160fd871
+2024-11-05T02:10:05.893+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/partition/10
+2024-11-05T02:10:05.898+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/partition/ headers org.apache.tomcat.util.http.ValuesEnumerator@4438ceb7
+2024-11-05T02:10:05.917+03:00  WARN 10856 --- [http-nio-9091-exec-9] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1451, SQLState: 23000
+2024-11-05T02:10:05.917+03:00 ERROR 10856 --- [http-nio-9091-exec-9] o.h.engine.jdbc.spi.SqlExceptionHelper   : Cannot delete or update a parent row: a foreign key constraint fails (`fueldb`.`forfeit_entity`, CONSTRAINT `FK5ryte4x5rudtilngrr899vff6` FOREIGN KEY (`partition_id`) REFERENCES `partition_entity` (`id`))
+2024-11-05T02:10:05.921+03:00 ERROR 10856 --- [http-nio-9091-exec-9] org.example.config.AppExceptionHandler   : org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [null]
+2024-11-05T02:11:38.757+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans
+2024-11-05T02:11:38.763+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@3c65a5f4
+2024-11-05T02:11:40.903+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/refinery/all
+2024-11-05T02:11:40.910+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/refinery/all headers org.apache.tomcat.util.http.ValuesEnumerator@68085085
+2024-11-05T02:11:40.932+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/vehicle/all
+2024-11-05T02:11:40.939+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/vehicle/all headers org.apache.tomcat.util.http.ValuesEnumerator@40cc0c56
+2024-11-05T02:11:41.072+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/material/all
+2024-11-05T02:11:41.078+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@72030c7f
+2024-11-05T02:11:41.086+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/price-category/all
+2024-11-05T02:11:41.092+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@737b9061
+2024-11-05T02:11:41.102+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2024-11-05T02:11:41.107+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@66b5c9dc
+2024-11-05T02:11:41.130+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/trans
+2024-11-05T02:11:41.137+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@f5bea02
+2024-11-05T02:11:41.151+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/partition
+2024-11-05T02:11:41.158+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/partition headers org.apache.tomcat.util.http.ValuesEnumerator@241bc259
+2024-11-05T02:11:41.173+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/trans-log
+2024-11-05T02:11:41.180+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/trans-log headers org.apache.tomcat.util.http.ValuesEnumerator@25af7f79
+2024-11-05T02:11:41.192+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/forfeit
+2024-11-05T02:11:41.198+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/forfeit headers org.apache.tomcat.util.http.ValuesEnumerator@1606beb0
+2024-11-05T02:11:42.797+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/category
+2024-11-05T02:11:42.803+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@34494161
+2024-11-05T02:11:43.887+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/partition/10
+2024-11-05T02:11:43.893+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/partition/ headers org.apache.tomcat.util.http.ValuesEnumerator@2428fabb
+2024-11-05T02:11:43.901+03:00  WARN 10856 --- [http-nio-9091-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1451, SQLState: 23000
+2024-11-05T02:11:43.901+03:00 ERROR 10856 --- [http-nio-9091-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : Cannot delete or update a parent row: a foreign key constraint fails (`fueldb`.`forfeit_entity`, CONSTRAINT `FK5ryte4x5rudtilngrr899vff6` FOREIGN KEY (`partition_id`) REFERENCES `partition_entity` (`id`))
+2024-11-05T02:11:43.903+03:00 ERROR 10856 --- [http-nio-9091-exec-2] org.example.config.AppExceptionHandler   : org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [null]
+2024-11-05T02:13:16.785+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans
+2024-11-05T02:13:16.792+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@64398354
+2024-11-05T02:13:19.614+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/refinery/all
+2024-11-05T02:13:19.620+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/refinery/all headers org.apache.tomcat.util.http.ValuesEnumerator@75b97023
+2024-11-05T02:13:19.642+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/vehicle/all
+2024-11-05T02:13:19.648+03:00  WARN 10856 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/vehicle/all headers org.apache.tomcat.util.http.ValuesEnumerator@2f1fb1ab
+2024-11-05T02:13:19.766+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/material/all
+2024-11-05T02:13:19.774+03:00  WARN 10856 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@3c4352d7
+2024-11-05T02:13:19.782+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/price-category/all
+2024-11-05T02:13:19.789+03:00  WARN 10856 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@415e5a7e
+2024-11-05T02:13:19.800+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2024-11-05T02:13:19.808+03:00  WARN 10856 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@58cd016a
+2024-11-05T02:13:19.841+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/trans
+2024-11-05T02:13:19.848+03:00  WARN 10856 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@1b7f7ed
+2024-11-05T02:13:19.864+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/partition
+2024-11-05T02:13:19.871+03:00  WARN 10856 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/partition headers org.apache.tomcat.util.http.ValuesEnumerator@4e44bcbe
+2024-11-05T02:13:19.887+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans-log
+2024-11-05T02:13:19.894+03:00  WARN 10856 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans-log headers org.apache.tomcat.util.http.ValuesEnumerator@5513f27d
+2024-11-05T02:13:19.906+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/forfeit
+2024-11-05T02:13:19.913+03:00  WARN 10856 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/forfeit headers org.apache.tomcat.util.http.ValuesEnumerator@2a2133c0
+2024-11-05T02:13:23.117+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/category
+2024-11-05T02:13:23.123+03:00  WARN 10856 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@27ab646e
+2024-11-05T02:13:24.406+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/partition/10
+2024-11-05T02:13:24.411+03:00  WARN 10856 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/partition/ headers org.apache.tomcat.util.http.ValuesEnumerator@1fb9a7b2
+2024-11-05T02:13:24.428+03:00  WARN 10856 --- [http-nio-9091-exec-3] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1451, SQLState: 23000
+2024-11-05T02:13:24.429+03:00 ERROR 10856 --- [http-nio-9091-exec-3] o.h.engine.jdbc.spi.SqlExceptionHelper   : Cannot delete or update a parent row: a foreign key constraint fails (`fueldb`.`forfeit_entity`, CONSTRAINT `FK5ryte4x5rudtilngrr899vff6` FOREIGN KEY (`partition_id`) REFERENCES `partition_entity` (`id`))
+2024-11-05T02:13:24.433+03:00 ERROR 10856 --- [http-nio-9091-exec-3] org.example.config.AppExceptionHandler   : org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [null]
