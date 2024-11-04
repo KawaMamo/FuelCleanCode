@@ -8,7 +8,7 @@ import org.example.model.PaidToParent;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-10-31T23:55:17+0300",
+    date = "2024-11-03T15:44:51+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class PaidToParentDomainMapperImpl implements PaidToParentDomainMapper {
@@ -23,7 +23,6 @@ public class PaidToParentDomainMapperImpl implements PaidToParentDomainMapper {
 
         paidToParent.setAmount( request.getAmount() );
         paidToParent.setBillNumber( request.getBillNumber() );
-        paidToParent.setCreatedAt( request.getCreatedAt() );
         paidToParent.setNotes( request.getNotes() );
 
         return paidToParent;
@@ -40,7 +39,6 @@ public class PaidToParentDomainMapperImpl implements PaidToParentDomainMapper {
         paidToParent.setId( request.getId() );
         paidToParent.setAmount( request.getAmount() );
         paidToParent.setBillNumber( request.getBillNumber() );
-        paidToParent.setCreatedAt( request.getCreatedAt() );
         paidToParent.setNotes( request.getNotes() );
 
         return paidToParent;

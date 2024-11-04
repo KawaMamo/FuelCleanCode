@@ -10,6 +10,7 @@ import org.example.model.Forfeit;
 import org.example.validators.create.CreateForfeitValidator;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class CreateForfeit {
     private final ForfeitRepo forfeitRepo;
@@ -32,7 +33,7 @@ public class CreateForfeit {
     public ForfeitResponse execute(CreateForfeitRequest request){
         validator.validate(request);
         final Forfeit forfeit = mapper.requestToDomain(request);
-        forfeit.setCreatedAt(LocalDateTime.now());
+        forfeit.setCreatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         final Forfeit save = forfeitRepo.save(forfeit);
         vehicleRepo.findById(save.getVehicles().getId()).ifPresent(save::setVehicles);
         partitionRepo.findById(save.getPartition().getId()).ifPresent(save::setPartition);

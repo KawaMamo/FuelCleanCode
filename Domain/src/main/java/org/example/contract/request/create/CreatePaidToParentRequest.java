@@ -12,6 +12,5 @@ import java.time.LocalDateTime;
 public class CreatePaidToParentRequest {
     private Money amount;
     private Long billNumber;
-    private LocalDateTime createdAt;
     private String notes;
 }

@@ -19,7 +19,7 @@ import org.example.model.Region;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-10-31T23:55:23+0300",
+    date = "2024-11-03T15:45:24+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class ReturnedMaterialMapperImpl implements ReturnedMaterialMapper {
@@ -43,6 +43,8 @@ public class ReturnedMaterialMapperImpl implements ReturnedMaterialMapper {
         returnedMaterial1.setStatus( returnedMaterial.getStatus() );
         returnedMaterial1.setBuyer( buyerToBuyer( returnedMaterial.getBuyer() ) );
         returnedMaterial1.setInvoiceNo( returnedMaterial.getInvoiceNo() );
+        returnedMaterial1.setCreatedAt( returnedMaterial.getCreatedAt() );
+        returnedMaterial1.setUpdatedAt( returnedMaterial.getUpdatedAt() );
 
         return returnedMaterial1;
     }
@@ -64,6 +66,8 @@ public class ReturnedMaterialMapperImpl implements ReturnedMaterialMapper {
         returnedMaterial.setStatus( entity.getStatus() );
         returnedMaterial.setBuyer( buyerToBuyer1( entity.getBuyer() ) );
         returnedMaterial.setInvoiceNo( entity.getInvoiceNo() );
+        returnedMaterial.setCreatedAt( entity.getCreatedAt() );
+        returnedMaterial.setUpdatedAt( entity.getUpdatedAt() );
 
         return returnedMaterial;
     }

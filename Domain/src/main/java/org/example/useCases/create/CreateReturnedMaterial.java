@@ -11,6 +11,7 @@ import org.example.model.ReturnedMaterial;
 import org.example.validators.create.CreateReturnedMaterialValidator;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class CreateReturnedMaterial {
     private final CreateReturnedMaterialValidator validator;
@@ -37,7 +38,7 @@ public class CreateReturnedMaterial {
     public ReturnedMaterialResponse execute(CreateReturnedMaterialRequest request){
         validator.validate(request);
         final ReturnedMaterial returnedMaterial = mapper.toDomain(request);
-        returnedMaterial.setCreatedAt(LocalDateTime.now());
+        returnedMaterial.setCreatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         final ReturnedMaterial save = returnedMaterialRepo.save(returnedMaterial);
         buyerRepo.findById(request.getBuyerId()).ifPresent(save::setBuyer);
         materialRepo.findById(request.getMaterialId()).ifPresent(save::setMaterial);

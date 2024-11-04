@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @ToString
@@ -29,4 +31,6 @@ public class ReturnedMaterial {
     @OneToOne
     private Buyer buyer;
     private String invoiceNo;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }

@@ -13,6 +13,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.controlsfx.control.Notifications;
+import org.example.model.Forfeit;
+import org.example.model.Partition;
 import org.example.model.Transportation;
 
 import java.text.NumberFormat;
@@ -28,6 +30,8 @@ public class Transportations implements TableController {
     private TableView<Transportation> tableTbl;
     private static ObservableList<Transportation> observableList;
     public static Transportation selectedTransportation;
+    public static Forfeit selectedForfeit;
+    public static Partition selectedPartition;
     private final TransportationService transportationService = TransportationService.getInstance();
     private String query = null;
 

@@ -2,8 +2,10 @@ package com.example.desktop.transportation;
 
 import com.example.desktop.HelloApplication;
 import com.example.desktop.MyDocumentLocator;
+import com.example.desktop.delete.DeleteConfirmation;
 import com.example.model.TableController;
 import com.example.model.category.CategoryService;
+import com.example.model.forfeit.ForfeitService;
 import com.example.model.gasStation.GasStationService;
 import com.example.model.material.MaterialService;
 import com.example.model.modal.Modal;
@@ -16,6 +18,7 @@ import com.example.model.transLine.TransLineService;
 import com.example.model.transLog.TransLogService;
 import com.example.model.transportation.TransportationService;
 import com.example.model.user.LogInData;
+import com.example.model.user.User;
 import com.example.model.vehicle.VehicleService;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
@@ -29,6 +32,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 import org.controlsfx.control.Notifications;
 import org.controlsfx.control.textfield.TextFields;
+import org.example.contract.request.create.CreateForfeitRequest;
 import org.example.contract.request.create.CreatePartitionRequest;
 import org.example.contract.request.create.CreateTransLogRequest;
 import org.example.contract.request.create.CreateTransRequest;
@@ -38,9 +42,6 @@ import org.example.model.*;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.FileSystem;
-import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -117,6 +118,14 @@ public class AddTransportation {
 
     @FXML
     private TextField idTF;
+    @FXML
+    private TableView<Forfeit> forfeitTbl;
+    @FXML
+    private TextField forfeitReasonTF;
+    @FXML
+    private TextField forfeitAmountTF;
+    @FXML
+    private ChoiceBox<String> forfeitCurrencyCB;
 
     private final RefineryService refineryService = RefineryService.getInstance();
     private final VehicleService vehicleService = VehicleService.getInstance();
@@ -128,10 +137,11 @@ public class AddTransportation {
     private final PartitionService partitionService = PartitionService.getINSTANCE();
     private final TransLineService transLineService = TransLineService.getInstance();
     private final TransLogService transLogService = TransLogService.getInstance();
+    private final ForfeitService forfeitService = ForfeitService.getInstance();
 
     private Long selectedRefineryId;
     private Long selectedRefineryRegionId;
-    private Long selectedVehicleId;
+    public static Long selectedVehicleId;
     private Long selectedGasStationId;
     private Long selectedRegionId;
     private Long selectedPriceCatId;
@@ -139,17 +149,21 @@ public class AddTransportation {
     private Transportation addedTransport;
     List<Category> categories = null;
 
-    private Partition selectedPartition;
+    public static Partition selectedPartition;
     private TransLog selectedTransLog;
     ToggleGroup normalTradeGroup = new ToggleGroup();
     TransportationType type = TransportationType.NORMAL;
+    private Forfeit selectedForfeit;
 
     @FXML
     private void initialize(){
 
         setPartitionTbl();
         setTransLogTable();
+        setForfeitTbl();
         dateDP.setValue(LocalDate.now());
+
+        forfeitCurrencyCB.getItems().addAll("USD", "SP");
 
         final List<Refinery> items = refineryService.getItems(null, null);
         final List<String> refineryNames = items.stream().map(Place::getTranslation).toList();
@@ -323,6 +337,13 @@ public class AddTransportation {
             }
         });
 
+        forfeitTbl.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Forfeit>() {
+            @Override
+            public void changed(ObservableValue<? extends Forfeit> observableValue, Forfeit forfeit, Forfeit t1) {
+                selectedForfeit = t1;
+            }
+        });
+
 
         if(formType.equals(FormType.UPDATE)){
             transportation = transportationService.getItem(Transportations.selectedTransportation.getId());
@@ -333,6 +354,11 @@ public class AddTransportation {
             loadTransData();
             transBtn.setText("تعديل");
             idTF.setDisable(true);
+            for (Partition partition : transportation.getPartitions()) {
+                final List<Forfeit> forfeitList = forfeitService.getItems(0, 10, "key=partition&value="+partition.getId()+"&operation=%3A&sort=id,desc");
+                forfeitTbl.getItems().addAll(forfeitList);
+            }
+
         }else if(formType.equals(FormType.CREATE))
             idTF.setDisable(true);
         else if(formType.equals(FormType.GET))
@@ -420,22 +446,39 @@ public class AddTransportation {
 
     private void setPartitionTbl() {
 
-        TableColumn<Partition, String> destinationColumn = new TableColumn<>("Gas Station");
+        TableColumn<Partition, String> destinationColumn = new TableColumn<>("الوجهة");
         destinationColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getGasStation().getName()));
 
-        TableColumn<Partition, String> materialColumn = new TableColumn<>("material");
+        TableColumn<Partition, String> materialColumn = new TableColumn<>("المادة");
         materialColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getMaterial().getName()));
 
-        TableColumn<Partition, String> amountColumn = new TableColumn<>("amount");
+        TableColumn<Partition, String> amountColumn = new TableColumn<>("الكمية");
         amountColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getAmount().toString()));
 
-        TableColumn<Partition, String> priceColumn = new TableColumn<>("price");
+        TableColumn<Partition, String> priceColumn = new TableColumn<>("السعر");
         priceColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getPrice().getAmount()+" "+data.getValue().getPrice().getCurrency()));
 
-        TableColumn<Partition, String> notesColumn = new TableColumn<>("notes");
+        TableColumn<Partition, String> notesColumn = new TableColumn<>("ملاحطات");
         notesColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getNotes()));
 
         partitionsTbl.getColumns().addAll(destinationColumn, materialColumn, amountColumn, priceColumn, notesColumn);
+
+    }
+
+    void setForfeitTbl(){
+        TableColumn<Forfeit, String> idColumn = new TableColumn<>("id");
+        idColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getId().toString()));
+
+        TableColumn<Forfeit, String> partitionColumn = new TableColumn<>("الوجهة");
+        partitionColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getPartition().getGasStation().getName()));
+
+        TableColumn<Forfeit, String> amountColumn = new TableColumn<>("القيمة");
+        amountColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getPrice().getAmount()+" "+data.getValue().getPrice().getCurrency()));
+
+        TableColumn<Forfeit, String> reasonColumn = new TableColumn<>("السبب");
+        reasonColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getReason()));
+
+        forfeitTbl.getColumns().addAll(idColumn, partitionColumn, amountColumn, reasonColumn);
 
     }
 
@@ -522,6 +565,21 @@ public class AddTransportation {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @FXML
+    void addForfeit(){
+        final Forfeit forfeit = forfeitService.addItem(new CreateForfeitRequest(selectedVehicleId,
+                selectedPartition.getId(),
+                new Money(forfeitCurrencyCB.getValue(), Double.valueOf(forfeitAmountTF.getText())),
+                forfeitReasonTF.getText()));
+        forfeitTbl.getItems().add(forfeit);
+    }
+
+    @FXML
+    void deleteForfeit(){
+        forfeitService.delete(selectedForfeit.getId());
+        forfeitTbl.getItems().remove(selectedForfeit);
     }
 
 

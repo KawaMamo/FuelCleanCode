@@ -12,6 +12,11 @@ import java.util.List;
 import java.util.Objects;
 
 public class PaidToParentService implements Service<PaidToParent, CreatePaidToParentRequest, UpdatePaidToParentRequest> {
+    private final static PaidToParentService INSTANCE = new PaidToParentService();
+    public static PaidToParentService getInstance() {
+        return INSTANCE;
+    }
+
     @Override
     public List<PaidToParent> getItems(Integer page, Integer size) {
         String getUrl;

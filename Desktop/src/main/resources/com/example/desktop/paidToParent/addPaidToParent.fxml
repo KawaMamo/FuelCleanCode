@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="224.0" prefWidth="354.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.desktop.paidToParent.AddPaidToParent">
+   <children>
+      <HBox layoutX="31.0" layoutY="65.0" prefHeight="95.0" prefWidth="302.0" spacing="50.0">
+         <children>
+            <VBox nodeOrientation="RIGHT_TO_LEFT" spacing="10.0">
+               <children>
+                  <TextField fx:id="billNumberTF" />
+                  <HBox>
+                     <children>
+                        <TextField fx:id="amountTF" />
+                        <ChoiceBox fx:id="currencyCB" prefHeight="26.0" prefWidth="67.0" />
+                     </children>
+                  </HBox>
+                  <TextField fx:id="notesTF" />
+                  <Button fx:id="submitBtn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#submit" text="تأكيد" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="18.0">
+               <children>
+                  <Label text="billNumber" />
+                  <Label text="amount" />
+                  <Label text="notes" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Label layoutX="141.0" layoutY="21.0" text="دفعة للمالية">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
