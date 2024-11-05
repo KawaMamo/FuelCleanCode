@@ -4,6 +4,7 @@ import com.example.desktop.buyer.Buyers;
 import com.example.desktop.clientPayment.ClientPayments;
 import com.example.desktop.officePayment.OfficePayments;
 import com.example.desktop.reports.DriverReport;
+import com.example.desktop.reports.OfficeReport;
 import com.example.desktop.reports.RefineryReport;
 import com.example.desktop.returnedMaterial.ReturnedMaterials;
 import com.example.desktop.seller.Sellers;
@@ -57,7 +58,16 @@ public class AccountantArea {
 
     @FXML
     void officeReport(){
-
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("reports/officeReport.fxml"));
+        try {
+            final Node node = loader.load();
+            final OfficeReport controller = loader.getController();
+            workArea.getChildren().clear();
+            workArea.getChildren().add(node);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML

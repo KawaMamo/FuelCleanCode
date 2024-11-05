@@ -7,6 +7,8 @@ import org.example.contract.request.update.UpdateOfficeRequest;
 import org.example.model.Office;
 
 import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -74,4 +76,6 @@ public class OfficeService implements Service<Office, CreateOfficeRequest, Updat
         final HttpResponse<String> stringHttpResponse = client.parallelPatch(getEndPoint(), json);
         return gson.fromJson(stringHttpResponse.body(), Office.class);
     }
+
+
 }

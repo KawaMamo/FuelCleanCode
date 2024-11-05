@@ -4,6 +4,7 @@ import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.export.ooxml.JRXlsxExporter;
 import net.sf.jasperreports.export.*;
+import org.example.auxiliary.TransLogAggregated;
 import org.example.contract.request.create.CreateTransLogRequest;
 import org.example.contract.request.update.UpdateTransLogRequest;
 import org.example.contract.response.TransLogResponse;
@@ -195,6 +196,54 @@ public class TransLogController {
                         file.getAbsolutePath());
             }else if(exportType.equals("XLSX")){
                 file = new File("DriverReport.xlsx");
+                JRXlsxExporter exporter = new JRXlsxExporter();
+                exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
+                exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(file.getAbsolutePath()));
+                exporter.exportReport();
+            }
+            assert file != null;
+            try(final FileInputStream fileInputStream = new FileInputStream(file);){
+                return ResponseEntity.ok(Base64.getEncoder().encodeToString(fileInputStream.readAllBytes()));
+            }
+        } catch (JRException | IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @GetMapping("/officeReport/{exportType}/{id}/{start}/{end}/{type}")
+    public ResponseEntity<String> getOfficeReport(@PathVariable Long id,
+                                                    @PathVariable LocalDate start,
+                                                    @PathVariable LocalDate end,
+                                                    @PathVariable TransportationType type,
+                                                    @PathVariable String exportType){
+
+        final List<Object[]> transObj = transLogRepository.getTransObj(id,
+                LocalDateTime.of(start, LocalTime.MIN),
+                LocalDateTime.of(end, LocalTime.MAX),
+                type);
+        List<TransLogAggregated> transLogAggregatedList = new ArrayList<>();
+        for (Object[] objects : transObj) {
+            transLogAggregatedList.add(new TransLogAggregated((TransLogEntity) objects[0], (Double) objects[1], (Long) objects[2]));
+        }
+
+
+        Map<String, Object> params = new HashMap<>();
+        params.put("nowLocalDT", LocalDateTime.now());
+        params.put("startDate", start);
+        params.put("endDate", end);
+        params.put("officeName", transLogAggregatedList.get(0).transLogEntity.getVehicle().getOffice().getName());
+        try {
+
+            final JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(transLogAggregatedList);
+            JasperReport regionReport = JasperCompileManager.compileReport(new ClassPathResource("templates/officeReport.jrxml").getInputStream());
+            final JasperPrint jasperPrint = JasperFillManager.fillReport(regionReport, params, jrBeanCollectionDataSource);
+            File file = null;
+            if(exportType.equals("HTML")){
+                file = new File("OfficeReport.html");
+                JasperExportManager.exportReportToHtmlFile(jasperPrint,
+                        file.getAbsolutePath());
+            }else if(exportType.equals("XLSX")){
+                file = new File("OfficeReport.xlsx");
                 JRXlsxExporter exporter = new JRXlsxExporter();
                 exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
                 exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(file.getAbsolutePath()));

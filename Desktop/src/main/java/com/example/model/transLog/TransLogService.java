@@ -86,4 +86,9 @@ public class TransLogService implements Service<TransLog, CreateTransLogRequest,
         final HttpResponse<String> stringHttpResponse = client.parallelGet(getEndPoint()+"/RefineryReport" + "/" + exportType + "/" + id + "/" + startDate + "/" + endDate + "/" + transType);
         return stringHttpResponse.body().getBytes(StandardCharsets.UTF_8);
     }
+
+    public byte[] getOfficeReport(String exportType, String transType, LocalDate startDate, LocalDate endDate, Long id) {
+        final HttpResponse<String> stringHttpResponse = client.parallelGet(getEndPoint()+"/officeReport" + "/" + exportType + "/" + id + "/" + startDate + "/" + endDate + "/" + transType);
+        return stringHttpResponse.body().getBytes(StandardCharsets.UTF_8);
+    }
 }

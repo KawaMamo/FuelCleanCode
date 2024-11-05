@@ -178,7 +178,11 @@ public class Client {
         addAuthorizationToken(builder);
         final HttpRequest request = builder.build();
         try {
-            return httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            final HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            if(response.statusCode() != 200) {
+                throw new RuntimeException(response.body());
+            }
+            return response;
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
