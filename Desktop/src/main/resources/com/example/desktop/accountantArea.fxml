@@ -27,11 +27,11 @@
                <children>
                   <Button mnemonicParsing="false" onAction="#returnedMaterials" prefHeight="30.0" style="-fx-background-color: orange;" text="البيع من المركز" HBox.hgrow="ALWAYS" />
                   <Button mnemonicParsing="false" onAction="#clientReport" prefHeight="30.0" text="Client Report" />
-                  <Button mnemonicParsing="false" onAction="#officeReport" prefHeight="30.0" text="Office Report" />
+                  <Button mnemonicParsing="false" onAction="#officeReport" prefHeight="30.0" text="تقرير مكتب" />
                   <Button mnemonicParsing="false" onAction="#groupReport" prefHeight="30.0" text="Group Report" />
                   <Button mnemonicParsing="false" onAction="#forfeits" prefHeight="30.0" text="Forfeits" />
-                  <Button mnemonicParsing="false" onAction="#refineries" prefHeight="30.0" text="Refineries" />
-                  <Button mnemonicParsing="false" onAction="#driverReport" prefHeight="30.0" text="Driver Report" />
+                  <Button mnemonicParsing="false" onAction="#refineries" prefHeight="30.0" text="تقرير مصفاة" />
+                  <Button mnemonicParsing="false" onAction="#driverReport" prefHeight="30.0" text="تقرير سائق" />
                   <Button mnemonicParsing="false" onAction="#buyers" prefHeight="30.0" style="-fx-background-color: orange;" text="المشترين" />
                   <Button mnemonicParsing="false" onAction="#clientPayment" prefHeight="30.0" style="-fx-background-color: orange;" text="دفعات العملاء" />
                   <Button mnemonicParsing="false" onAction="#officePayment" prefHeight="30.0" style="-fx-background-color: orange;" text="دفعات مكاتب النقل" />

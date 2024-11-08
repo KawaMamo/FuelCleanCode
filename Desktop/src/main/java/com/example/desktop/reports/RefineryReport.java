@@ -17,9 +17,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
+import org.controlsfx.control.Notifications;
 import org.example.model.Refinery;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Base64;
@@ -156,22 +158,52 @@ public class RefineryReport implements TableController {
 
     @FXML
     void report() {
-        final FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("HTML files (*.html)", "*.html"));
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("XLSX files (*.xlsx)", "*.xlsx"));
-        final File file = fileChooser.showSaveDialog(HelloApplication.primaryStage);
-        String transType = normalTB.isSelected() ? "NORMAL":"COMMERCIAL";
-        final byte[] bytes = partitionService.getRefineryReport(file.getName().split("\\.")[1].toUpperCase(),
-                transType,
-                startDP.getValue(),
-                endDP.getValue(),
-                selectedRefinery.getId());
+        if(Objects.isNull(selectedRefinery) || Objects.isNull(startDP.getValue()) || Objects.isNull(endDP.getValue())){
+            Notifications.create().text("يرجى اختيار عنصر وتحديد تاريخي البدء ةالانتهاء").title("choose something").showInformation();
+        }else {
+            final FileChooser fileChooser = new FileChooser();
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("HTML files (*.html)", "*.html"));
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("XLSX files (*.xlsx)", "*.xlsx"));
+            final File file = fileChooser.showSaveDialog(HelloApplication.primaryStage);
+            String transType = normalTB.isSelected() ? "NORMAL":"COMMERCIAL";
+            final byte[] bytes = partitionService.getRefineryReport(file.getName().split("\\.")[1].toUpperCase(),
+                    transType,
+                    startDP.getValue(),
+                    endDP.getValue(),
+                    selectedRefinery.getId());
 
-        try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
-            fileOutputStream.write(Base64.getDecoder().decode(bytes));
-            Runtime.getRuntime().exec("rundll32.exe shell32.dll ShellExec_RunDLL " +file.getPath());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
+                fileOutputStream.write(Base64.getDecoder().decode(bytes));
+                if(!List.of(Objects.requireNonNull(file.getParentFile().list())).contains("DriverReport.html_files")){
+                    final File waveFile = new File("Desktop/src/main/resources/icon/wave.png");
+                    final File logoFile = new File("Desktop/src/main/resources/icon/sadLogo.png");
+                    final FileInputStream waveInputStream = new FileInputStream(waveFile);
+                    final FileInputStream logoInputStream = new FileInputStream(logoFile);
+                    final File outputFile = new File(file.getParentFile() + "/DriverReport.html_files/img_0_0_2.png");
+                    final File logOutput = new File(file.getParentFile() + "/DriverReport.html_files/img_0_0_0.png");
+                    outputFile.getParentFile().mkdir();
+                    outputFile.createNewFile();
+                    logOutput.createNewFile();
+                    final FileOutputStream waveOutputStream = new FileOutputStream(outputFile);
+                    final FileOutputStream logoOutPutStream = new FileOutputStream(logOutput);
+                    int info = 0;
+                    while( (info = waveInputStream.read()) != -1) {
+                        waveOutputStream.write(info);
+                    }
+                    int info2 = 0;
+                    while ((info2 = logoInputStream.read()) != -1){
+                        logoOutPutStream.write(info2);
+                    }
+                    waveOutputStream.close();
+                    waveInputStream.close();
+                    logoInputStream.close();
+                    logoOutPutStream.close();
+                }
+                Runtime.getRuntime().exec("rundll32.exe shell32.dll ShellExec_RunDLL " +file.getPath());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
+
     }
 }
