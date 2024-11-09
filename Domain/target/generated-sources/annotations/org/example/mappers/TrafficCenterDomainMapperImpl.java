@@ -8,7 +8,7 @@ import org.example.model.TrafficCenter;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-11-03T15:44:51+0300",
+    date = "2024-11-08T21:15:34+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class TrafficCenterDomainMapperImpl implements TrafficCenterDomainMapper {

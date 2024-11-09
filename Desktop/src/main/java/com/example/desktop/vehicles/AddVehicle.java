@@ -10,6 +10,7 @@ import com.example.model.trafficCenter.TrafficCenterService;
 import com.example.model.vehicle.VehicleService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import org.controlsfx.control.Notifications;
 import org.controlsfx.control.textfield.TextFields;
@@ -46,6 +47,8 @@ public class AddVehicle {
 
     @FXML
     private TextField trafficCenterTF;
+    @FXML
+    private Label titleLbl;
     VehicleService vehicleService = VehicleService.getInstance();
     PersonService personService = PersonService.getInstance();
     TrafficCenterService trafficCenterService = TrafficCenterService.getInstance();
@@ -113,6 +116,11 @@ public class AddVehicle {
             selectedDriverId = vehicle.getDriver().getId();
             selectedOfficeId = vehicle.getOffice().getId();
             selectedTrafficCenterId = vehicle.getTrafficCenter().getId();
+        }
+
+        if(formType.equals(FormType.GET)){
+            submitBtn.setText("بحث");
+            titleLbl.setText("معلومات المركبة");
         }
 
     }

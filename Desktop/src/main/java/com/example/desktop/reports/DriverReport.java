@@ -18,10 +18,7 @@ import javafx.stage.FileChooser;
 import org.controlsfx.control.Notifications;
 import org.example.model.Vehicle;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.Base64;
 import java.util.List;
 import java.util.Objects;
@@ -102,10 +99,10 @@ public class DriverReport implements TableController {
             try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
                 fileOutputStream.write(Base64.getDecoder().decode(bytes));
                 if(!List.of(Objects.requireNonNull(file.getParentFile().list())).contains("DriverReport.html_files")){
-                    final File waveFile = new File("Desktop/src/main/resources/icon/wave.png");
-                    final File logoFile = new File("Desktop/src/main/resources/icon/sadLogo.png");
-                    final FileInputStream waveInputStream = new FileInputStream(waveFile);
-                    final FileInputStream logoInputStream = new FileInputStream(logoFile);
+
+                    final InputStream resourceAsStream = DriverReport.class.getClassLoader().getResourceAsStream("wave.png");
+                    final InputStream logoStream = DriverReport.class.getClassLoader().getResourceAsStream("SadLogo.png");
+
                     final File outputFile = new File(file.getParentFile() + "/DriverReport.html_files/img_0_0_2.png");
                     final File logOutput = new File(file.getParentFile() + "/DriverReport.html_files/img_0_0_0.png");
                     outputFile.getParentFile().mkdir();
@@ -114,16 +111,16 @@ public class DriverReport implements TableController {
                     final FileOutputStream waveOutputStream = new FileOutputStream(outputFile);
                     final FileOutputStream logoOutPutStream = new FileOutputStream(logOutput);
                     int info = 0;
-                    while( (info = waveInputStream.read()) != -1) {
+                    while( (info = resourceAsStream.read()) != -1) {
                         waveOutputStream.write(info);
                     }
                     int info2 = 0;
-                    while ((info2 = logoInputStream.read()) != -1){
+                    while ((info2 = logoStream.read()) != -1){
                         logoOutPutStream.write(info2);
                     }
                     waveOutputStream.close();
-                    waveInputStream.close();
-                    logoInputStream.close();
+                    resourceAsStream.close();
+                    logoStream.close();
                     logoOutPutStream.close();
                 }
                 Runtime.getRuntime().exec("rundll32.exe shell32.dll ShellExec_RunDLL " +file.getPath());
