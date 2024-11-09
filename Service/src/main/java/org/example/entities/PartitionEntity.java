@@ -32,6 +32,9 @@ public class PartitionEntity {
     private DocumentEntity document;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+
+    @OneToOne(mappedBy = "partition")
+    private ForfeitEntity forfeit;
     @ManyToOne
     @JoinColumn(name = "transportation_id", nullable = false)
     private TransportationEntity transportationEntity;

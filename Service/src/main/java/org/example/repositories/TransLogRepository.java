@@ -29,10 +29,11 @@ public interface TransLogRepository extends JpaRepository<TransLogEntity, Long>,
             "GROUP BY t.vehicle, t.feesCurrency")
     List<TransLogEntity> getTransLog(Long OfficeId, LocalDateTime start, LocalDateTime end, TransportationType type);
 
-    @Query("SELECT t, SUM(t.feesAmount) AS sum, COUNT(t.id) AS count FROM TransLogEntity t " +
+    @Query("SELECT t, SUM(t.feesAmount) AS sum, COUNT(t.id) AS count, SUM(f.priceAmount) AS forfeitSum, f.priceCurrency AS forfeitCurrency " +
+            " FROM TransLogEntity t " +
             "JOIN t.vehicle v " +
-            "JOIN t.transportation r " +
+            "JOIN t.transportation r LEFT JOIN r.partitionEntities p JOIN p.forfeit f " +
             "WHERE v.office.id = ?1 AND t.createdAt BETWEEN ?2 AND ?3 AND r.type = ?4 " +
-            "GROUP BY t.vehicle, t.feesCurrency")
+            "GROUP BY t.vehicle, t.feesCurrency, f.priceCurrency")
     List<Object[]> getTransObj(Long OfficeId, LocalDateTime start, LocalDateTime end, TransportationType type);
 }

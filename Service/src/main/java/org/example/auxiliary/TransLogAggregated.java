@@ -11,4 +11,6 @@ public class TransLogAggregated {
     public TransLogEntity transLogEntity;
     public Double sum;
     public Long count;
+    public Double forfeitSum;
+    public String forfeitCurrency;
 }

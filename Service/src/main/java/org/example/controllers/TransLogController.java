@@ -223,7 +223,11 @@ public class TransLogController {
                 type);
         List<TransLogAggregated> transLogAggregatedList = new ArrayList<>();
         for (Object[] objects : transObj) {
-            transLogAggregatedList.add(new TransLogAggregated((TransLogEntity) objects[0], (Double) objects[1], (Long) objects[2]));
+            transLogAggregatedList.add(new TransLogAggregated((TransLogEntity) objects[0],
+                    (Double) objects[1],
+                    (Long) objects[2],
+                    (Double)objects[3],
+                    (String) objects[4]));
         }
 
 
@@ -231,7 +235,9 @@ public class TransLogController {
         params.put("nowLocalDT", LocalDateTime.now());
         params.put("startDate", start);
         params.put("endDate", end);
-        params.put("officeName", transLogAggregatedList.get(0).transLogEntity.getVehicle().getOffice().getName());
+        if(transLogAggregatedList.size()>0)
+            params.put("officeName", transLogAggregatedList.get(0).transLogEntity.getVehicle().getOffice().getName());
+        else throw new NoSuchElementException("No data for your search, Try to Change start and end date");
         try {
 
             final JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(transLogAggregatedList);

@@ -19,14 +19,15 @@
     <queryString language="SQL">
         <![CDATA[select * from transLogAggregatedList;]]>
     </queryString>
-
     <field name="transLogEntity.transportation.vehicle.plateNumber" class="java.lang.String"/>
     <field name="transLogEntity.transportation.vehicle.driver.name" class="java.lang.String"/>
     <field name="transLogEntity.transportation.vehicle.turn" class="java.lang.Long"/>
     <field name="transLogEntity.feesCurrency" class="java.lang.String"/>
-    <field name="count" class="java.lang.Long"/>
+    <field name="transLogEntity.feesAmount" class="java.lang.Double"/>
     <field name="sum" class="java.lang.Double"/>
-
+    <field name="count" class="java.lang.Long"/>
+    <field name="forfeitSum" class="java.lang.Double"/>
+    <field name="forfeitCurrency" class="java.lang.String"/>
     <background>
         <band splitType="Stretch"/>
     </background>
@@ -94,7 +95,7 @@
     <columnHeader>
         <band height="33" splitType="Stretch">
             <staticText>
-                <reportElement mode="Opaque" x="680" y="0" width="46" height="28" backcolor="#00BCE4" uuid="018c709f-bacb-43ba-8780-27d736a61d93">
+                <reportElement mode="Opaque" x="678" y="0" width="46" height="28" backcolor="#00BCE4" uuid="018c709f-bacb-43ba-8780-27d736a61d93">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1ccd3784-06bd-424a-9026-8b2b118101de"/>
                 </reportElement>
                 <textElement textAlignment="Center">
@@ -103,25 +104,16 @@
                 <text><![CDATA[الدور]]></text>
             </staticText>
             <staticText>
-                <reportElement mode="Opaque" x="335" y="0" width="70" height="28" backcolor="#00BCE4" uuid="6c24538b-a0e0-4092-8e35-9059003fc303">
+                <reportElement mode="Opaque" x="350" y="0" width="55" height="28" backcolor="#00BCE4" uuid="6c24538b-a0e0-4092-8e35-9059003fc303">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a8700d48-a6d8-4b3b-99f0-6f0254aa7395"/>
                 </reportElement>
                 <textElement textAlignment="Center">
-                    <font size="16"/>
+                    <font size="12"/>
                 </textElement>
                 <text><![CDATA[عدد السفرات]]></text>
             </staticText>
             <staticText>
-                <reportElement mode="Opaque" x="6" y="0" width="124" height="28" backcolor="#00BCE4" uuid="886e8c26-4b3f-4b36-a55a-471be93864f2">
-                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="025c342a-7980-4cf2-ad82-62fe62252d8b"/>
-                </reportElement>
-                <textElement textAlignment="Center">
-                    <font size="19"/>
-                </textElement>
-                <text><![CDATA[العملة]]></text>
-            </staticText>
-            <staticText>
-                <reportElement mode="Opaque" x="564" y="0" width="114" height="28" backcolor="#00BCE4" uuid="6560324c-9586-4985-ab6d-a29ff3e8a7ca">
+                <reportElement mode="Opaque" x="563" y="0" width="115" height="28" backcolor="#00BCE4" uuid="6560324c-9586-4985-ab6d-a29ff3e8a7ca">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c8a134d1-31fc-4bbf-ac63-5991fcd1d111"/>
                 </reportElement>
                 <textElement textAlignment="Center">
@@ -130,7 +122,7 @@
                 <text><![CDATA[رقم المركبة]]></text>
             </staticText>
             <staticText>
-                <reportElement mode="Opaque" x="406" y="1" width="156" height="28" backcolor="#00BCE4" uuid="ef936753-a986-40cc-978c-edc3f786ecaf">
+                <reportElement mode="Opaque" x="405" y="0" width="158" height="28" backcolor="#00BCE4" uuid="ef936753-a986-40cc-978c-edc3f786ecaf">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a47c2703-a990-4630-aad9-fcadcaf19349"/>
                 </reportElement>
                 <textElement textAlignment="Center">
@@ -139,7 +131,7 @@
                 <text><![CDATA[السائق]]></text>
             </staticText>
             <staticText>
-                <reportElement mode="Opaque" x="131" y="0" width="202" height="28" backcolor="#00BCE4" uuid="6101c69b-7363-4843-bd3a-711f321a1468">
+                <reportElement mode="Opaque" x="158" y="0" width="192" height="28" backcolor="#00BCE4" uuid="6101c69b-7363-4843-bd3a-711f321a1468">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c439e139-9c6f-484f-95a9-fca59d304a16"/>
                 </reportElement>
                 <textElement textAlignment="Center">
@@ -147,12 +139,21 @@
                 </textElement>
                 <text><![CDATA[المبلغ]]></text>
             </staticText>
+            <staticText>
+                <reportElement mode="Opaque" x="0" y="0" width="158" height="28" backcolor="#00BCE4" uuid="ba10672a-00b9-4c3b-a374-77899c73bba6">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="025c342a-7980-4cf2-ad82-62fe62252d8b"/>
+                </reportElement>
+                <textElement textAlignment="Center">
+                    <font size="19"/>
+                </textElement>
+                <text><![CDATA[الغرامة]]></text>
+            </staticText>
         </band>
     </columnHeader>
     <detail>
         <band height="36" splitType="Stretch">
             <textField>
-                <reportElement x="680" y="1" width="46" height="30" uuid="e38df709-cff3-4960-94c4-8cbbd8201292">
+                <reportElement x="678" y="-5" width="46" height="30" uuid="e38df709-cff3-4960-94c4-8cbbd8201292">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1ccd3784-06bd-424a-9026-8b2b118101de"/>
                 </reportElement>
                 <textElement textAlignment="Center">
@@ -161,7 +162,7 @@
                 <textFieldExpression><![CDATA[$F{transLogEntity.transportation.vehicle.turn}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement x="335" y="1" width="70" height="30" uuid="971a6241-1b15-4425-8565-60af31852720">
+                <reportElement x="350" y="-5" width="55" height="30" uuid="971a6241-1b15-4425-8565-60af31852720">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a8700d48-a6d8-4b3b-99f0-6f0254aa7395"/>
                 </reportElement>
                 <textElement textAlignment="Center">
@@ -170,16 +171,7 @@
                 <textFieldExpression><![CDATA[$F{count}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement x="6" y="1" width="124" height="30" uuid="d461b10f-d1ab-4832-9539-6b49dd08a86e">
-                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="025c342a-7980-4cf2-ad82-62fe62252d8b"/>
-                </reportElement>
-                <textElement textAlignment="Center">
-                    <font size="18"/>
-                </textElement>
-                <textFieldExpression><![CDATA[$F{transLogEntity.feesCurrency}]]></textFieldExpression>
-            </textField>
-            <textField>
-                <reportElement x="564" y="1" width="114" height="30" uuid="f471c4c8-de39-433b-87ef-5212cfc24c69">
+                <reportElement x="563" y="-5" width="115" height="30" uuid="f471c4c8-de39-433b-87ef-5212cfc24c69">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c8a134d1-31fc-4bbf-ac63-5991fcd1d111"/>
                 </reportElement>
                 <textElement textAlignment="Center">
@@ -188,7 +180,7 @@
                 <textFieldExpression><![CDATA[$F{transLogEntity.transportation.vehicle.plateNumber}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement x="406" y="1" width="156" height="30" uuid="781b0879-3e99-4692-af5b-aefcd90e10e7">
+                <reportElement x="405" y="-5" width="158" height="30" uuid="781b0879-3e99-4692-af5b-aefcd90e10e7">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a47c2703-a990-4630-aad9-fcadcaf19349"/>
                 </reportElement>
                 <textElement textAlignment="Center">
@@ -197,13 +189,22 @@
                 <textFieldExpression><![CDATA[$F{transLogEntity.transportation.vehicle.driver.name}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement x="131" y="1" width="202" height="30" uuid="7e6a7f3d-1bfd-467f-8d4f-b355cbb30068">
+                <reportElement x="157" y="-5" width="193" height="30" uuid="7e6a7f3d-1bfd-467f-8d4f-b355cbb30068">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c439e139-9c6f-484f-95a9-fca59d304a16"/>
                 </reportElement>
                 <textElement textAlignment="Center">
                     <font size="18"/>
                 </textElement>
-                <textFieldExpression><![CDATA[$F{sum}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{sum}+" "+$F{transLogEntity.feesCurrency}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="-5" width="157" height="30" uuid="a81c4f03-a929-4aec-bd76-da41732553b7">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="025c342a-7980-4cf2-ad82-62fe62252d8b"/>
+                </reportElement>
+                <textElement textAlignment="Center">
+                    <font size="16"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{forfeitSum}+" "+$F{forfeitCurrency}]]></textFieldExpression>
             </textField>
         </band>
     </detail>
