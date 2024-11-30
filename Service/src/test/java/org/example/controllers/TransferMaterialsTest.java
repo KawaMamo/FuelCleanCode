@@ -44,13 +44,13 @@ public class TransferMaterialsTest {
     private MaterialController materialController;
     @Autowired
     private PartitionController partitionController;
-    @Test
+    /*@Test
     @Disabled
     void contextLoads() {
-        final CreateTransferMaterialRequest request = new CreateTransferMaterialRequest(5l, 6l, 1l, 2500L, new Money("USD", 100d));
+        *//*final CreateTransferMaterialRequest request = new CreateTransferMaterialRequest(5l, 6l, 1l, 2500L, new Money("USD", 100d));
         final TransferMaterialResponse transferMaterial = transferMaterialController.createTransferMaterial(request);
-        assertNotNull(transferMaterial);
-    }
+        assertNotNull(transferMaterial);*//*
+    }*/
 
     /*@Test
     void createRegion(){

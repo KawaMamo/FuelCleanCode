@@ -19,9 +19,9 @@
     <queryString language="SQL">
         <![CDATA[select * from transLogAggregatedList;]]>
     </queryString>
-    <field name="transLogEntity.transportation.vehicle.plateNumber" class="java.lang.String"/>
-    <field name="transLogEntity.transportation.vehicle.driver.name" class="java.lang.String"/>
-    <field name="transLogEntity.transportation.vehicle.turn" class="java.lang.Long"/>
+    <field name="transLogEntity.vehicle.plateNumber" class="java.lang.String"/>
+    <field name="transLogEntity.vehicle.driver.name" class="java.lang.String"/>
+    <field name="transLogEntity.vehicle.turn" class="java.lang.Long"/>
     <field name="transLogEntity.feesCurrency" class="java.lang.String"/>
     <field name="transLogEntity.feesAmount" class="java.lang.Double"/>
     <field name="sum" class="java.lang.Double"/>
@@ -159,7 +159,7 @@
                 <textElement textAlignment="Center">
                     <font size="15"/>
                 </textElement>
-                <textFieldExpression><![CDATA[$F{transLogEntity.transportation.vehicle.turn}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{transLogEntity.vehicle.turn}]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement x="350" y="-5" width="55" height="30" uuid="971a6241-1b15-4425-8565-60af31852720">
@@ -177,7 +177,7 @@
                 <textElement textAlignment="Center">
                     <font size="18"/>
                 </textElement>
-                <textFieldExpression><![CDATA[$F{transLogEntity.transportation.vehicle.plateNumber}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{transLogEntity.vehicle.plateNumber}]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement x="405" y="-5" width="158" height="30" uuid="781b0879-3e99-4692-af5b-aefcd90e10e7">
@@ -186,7 +186,7 @@
                 <textElement textAlignment="Center">
                     <font size="18"/>
                 </textElement>
-                <textFieldExpression><![CDATA[$F{transLogEntity.transportation.vehicle.driver.name}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{transLogEntity.vehicle.driver.name}]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement x="157" y="-5" width="193" height="30" uuid="7e6a7f3d-1bfd-467f-8d4f-b355cbb30068">

@@ -16,7 +16,7 @@ public class HelloApplication extends Application {
     private static final ExceptionHandler exceptionHandler =ExceptionHandler.getInstance();
     @Override
     public void start(Stage stage) throws IOException {
-        Thread.setDefaultUncaughtExceptionHandler(HelloApplication::showError);
+        //Thread.setDefaultUncaughtExceptionHandler(HelloApplication::showError);
         primaryStage = stage;
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);

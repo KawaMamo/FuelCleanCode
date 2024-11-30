@@ -69,6 +69,7 @@ public class AddTransferMaterial {
     private TextField vehicleTF;
     private GasStation selectedSource;
     private TransLine selectedTransLine;
+    TransportationType type = TransportationType.NORMAL;
 
     @FXML
     private void initialize(){
@@ -180,7 +181,7 @@ public class AddTransferMaterial {
                     selectedDestinationId,
                     selectedMaterialId,
                     Long.parseLong(amountTF.getText()),
-                    new Money(currencyCB.getValue(), Double.parseDouble(priceTF.getText()))));
+                    new Money(currencyCB.getValue(), Double.parseDouble(priceTF.getText())), type));
             final CreateTransLogRequest createTransLogRequest = new CreateTransLogRequest(selectedVehicleId, selectedTransLine.getId(), selectedTransLine.getFee(), transferMaterials.getId(), " ");
             final TransLog transLog = transLogService.addItem(createTransLogRequest);
         }else {

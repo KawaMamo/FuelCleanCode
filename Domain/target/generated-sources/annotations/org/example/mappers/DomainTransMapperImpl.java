@@ -15,7 +15,7 @@ import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-11-30T19:14:23+0300",
+    date = "2024-12-01T02:13:56+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class DomainTransMapperImpl implements DomainTransMapper {
@@ -30,8 +30,8 @@ public class DomainTransMapperImpl implements DomainTransMapper {
 
         transportation.setRefinery( createTransRequestToRefinery( createTransRequest ) );
         transportation.setVehicle( createTransRequestToVehicle( createTransRequest ) );
-        transportation.setSize( createTransRequest.getSize() );
         transportation.setType( createTransRequest.getType() );
+        transportation.setSize( createTransRequest.getSize() );
 
         return transportation;
     }
@@ -45,6 +45,7 @@ public class DomainTransMapperImpl implements DomainTransMapper {
         TransResponse transResponse = new TransResponse();
 
         transResponse.setId( transportation.getId() );
+        transResponse.setType( transportation.getType() );
         transResponse.setRefinery( transportation.getRefinery() );
         transResponse.setIsDivided( transportation.getIsDivided() );
         transResponse.setIsPriced( transportation.getIsPriced() );
@@ -59,7 +60,6 @@ public class DomainTransMapperImpl implements DomainTransMapper {
         if ( list1 != null ) {
             transResponse.setTransLogs( new ArrayList<TransLog>( list1 ) );
         }
-        transResponse.setType( transportation.getType() );
         List<Document> list2 = transportation.getDocument();
         if ( list2 != null ) {
             transResponse.setDocument( new ArrayList<Document>( list2 ) );
@@ -81,8 +81,8 @@ public class DomainTransMapperImpl implements DomainTransMapper {
         transportation.setRefinery( updateTransRequestToRefinery( request ) );
         transportation.setVehicle( updateTransRequestToVehicle( request ) );
         transportation.setId( request.getId() );
-        transportation.setSize( request.getSize() );
         transportation.setType( request.getType() );
+        transportation.setSize( request.getSize() );
 
         return transportation;
     }

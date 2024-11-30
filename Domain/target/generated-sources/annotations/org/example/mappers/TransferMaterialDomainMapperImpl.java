@@ -10,7 +10,7 @@ import org.example.model.TransferMaterials;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-11-30T19:14:24+0300",
+    date = "2024-12-01T02:13:57+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class TransferMaterialDomainMapperImpl implements TransferMaterialDomainMapper {
@@ -26,6 +26,7 @@ public class TransferMaterialDomainMapperImpl implements TransferMaterialDomainM
         transferMaterials.setSource( createTransferMaterialRequestToGasStation( request ) );
         transferMaterials.setDestination( createTransferMaterialRequestToGasStation1( request ) );
         transferMaterials.setMaterial( createTransferMaterialRequestToMaterial( request ) );
+        transferMaterials.setType( request.getType() );
         transferMaterials.setAmount( request.getAmount() );
         transferMaterials.setPrice( request.getPrice() );
 

@@ -10,7 +10,7 @@ import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-11-30T19:14:24+0300",
+    date = "2024-12-01T02:13:56+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class TransLogDomainMapperImpl implements TransLogDomainMapper {

@@ -16,7 +16,6 @@ public class Transportation extends TransportationReason{
     private LocalDateTime updatedAt;
     private List<Partition> partitions;
     private List<TransLog> transLogs;
-    private TransportationType type;
     private List<Document> document;
     private LocalDateTime deletedAt;
     private Vehicle vehicle;

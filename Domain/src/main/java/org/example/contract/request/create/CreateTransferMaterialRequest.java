@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.example.model.Money;
+import org.example.model.TransportationType;
 
 @Data
 @AllArgsConstructor
@@ -14,4 +15,5 @@ public class CreateTransferMaterialRequest {
     private Long materialId;
     private Long amount;
     private Money price;
+    private TransportationType type;
 }

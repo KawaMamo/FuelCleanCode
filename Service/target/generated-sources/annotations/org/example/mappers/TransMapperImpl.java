@@ -39,7 +39,7 @@ import org.mapstruct.factory.Mappers;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-11-30T19:14:30+0300",
+    date = "2024-12-01T02:14:32+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class TransMapperImpl implements TransMapper {
@@ -84,13 +84,13 @@ public class TransMapperImpl implements TransMapper {
         transportation.setDocument( documentEntityListToDocumentList( transportationEntity.getDocument() ) );
         transportation.setPartitions( TransMapper.partitionEntityToDomain( transportationEntity.getPartitionEntities() ) );
         transportation.setId( transportationEntity.getId() );
+        transportation.setType( transportationTypeToTransportationType1( transportationEntity.getType() ) );
         transportation.setIsDivided( transportationEntity.getIsDivided() );
         transportation.setIsPriced( transportationEntity.getIsPriced() );
         transportation.setSize( transportationEntity.getSize() );
         transportation.setCreatedAt( transportationEntity.getCreatedAt() );
         transportation.setUpdatedAt( transportationEntity.getUpdatedAt() );
         transportation.setTransLogs( transLogEntitySetToTransLogList( transportationEntity.getTransLogs() ) );
-        transportation.setType( transportationTypeToTransportationType1( transportationEntity.getType() ) );
         transportation.setDeletedAt( transportationEntity.getDeletedAt() );
 
         return transportation;
@@ -446,19 +446,6 @@ public class TransMapperImpl implements TransMapper {
         return list1;
     }
 
-    protected List<TransLog> transLogEntitySetToTransLogList(Set<TransLogEntity> set) {
-        if ( set == null ) {
-            return null;
-        }
-
-        List<TransLog> list = new ArrayList<TransLog>( set.size() );
-        for ( TransLogEntity transLogEntity : set ) {
-            list.add( transLogMapper.entityToDomain( transLogEntity ) );
-        }
-
-        return list;
-    }
-
     protected org.example.model.TransportationType transportationTypeToTransportationType1(TransportationType transportationType) {
         if ( transportationType == null ) {
             return null;
@@ -475,5 +462,18 @@ public class TransMapperImpl implements TransMapper {
         }
 
         return transportationType1;
+    }
+
+    protected List<TransLog> transLogEntitySetToTransLogList(Set<TransLogEntity> set) {
+        if ( set == null ) {
+            return null;
+        }
+
+        List<TransLog> list = new ArrayList<TransLog>( set.size() );
+        for ( TransLogEntity transLogEntity : set ) {
+            list.add( transLogMapper.entityToDomain( transLogEntity ) );
+        }
+
+        return list;
     }
 }
