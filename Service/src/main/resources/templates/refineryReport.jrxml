@@ -216,12 +216,12 @@
                 </textElement>
                 <textFieldExpression><![CDATA[$F{transportationEntity.vehicle.driver.name}]]></textFieldExpression>
             </textField>
-            <textField>
+            <textField textAdjust="ScaleFont">
                 <reportElement x="1" y="1" width="88" height="30" uuid="0137ffd0-a442-4103-b2ea-055ba70f9870">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="19f12742-051d-47aa-8fc2-ba6039f5d783"/>
                 </reportElement>
                 <textElement>
-                    <font size="18"/>
+                    <font size="16"/>
                 </textElement>
                 <textFieldExpression><![CDATA[$F{createdAt}]]></textFieldExpression>
             </textField>

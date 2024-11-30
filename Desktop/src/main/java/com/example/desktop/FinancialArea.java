@@ -1,7 +1,10 @@
 package com.example.desktop;
 
+import com.example.desktop.clientPayment.ClientPayments;
+import com.example.desktop.officePayment.OfficePayments;
 import com.example.desktop.paidToParent.PaidToParents;
 import com.example.desktop.returnedMaterial.ReturnedMaterials;
+import com.example.desktop.sellerPayment.SellerPayments;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -33,12 +36,30 @@ public class FinancialArea {
 
     @FXML
     void clientPayment() {
-
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("clientPayment/clientPayments.fxml"));
+        try {
+            final Node node = loader.load();
+            final ClientPayments controller = loader.getController();
+            workArea.getChildren().clear();
+            workArea.getChildren().add(node);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
     void officePayment() {
-
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("officePayment/officePayments.fxml"));
+        try {
+            final Node node = loader.load();
+            final OfficePayments controller = loader.getController();
+            workArea.getChildren().clear();
+            workArea.getChildren().add(node);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
@@ -71,6 +92,15 @@ public class FinancialArea {
 
     @FXML
     void sellerPayment() {
-
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("sellerPayment/sellerPayments.fxml"));
+        try {
+            final Node node = loader.load();
+            final SellerPayments controller = loader.getController();
+            workArea.getChildren().clear();
+            workArea.getChildren().add(node);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
