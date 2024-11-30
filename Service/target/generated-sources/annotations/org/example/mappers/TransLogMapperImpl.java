@@ -1,32 +1,22 @@
 package org.example.mappers;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
 import javax.annotation.processing.Generated;
-import org.example.entities.DocumentEntity;
 import org.example.entities.OfficeEntity;
 import org.example.entities.PersonEntity;
 import org.example.entities.TrafficCenterEntity;
 import org.example.entities.TransLogEntity;
-import org.example.entities.TransportationEntity;
-import org.example.entities.TransportationType;
 import org.example.entities.VehicleEntity;
-import org.example.model.Document;
 import org.example.model.Money;
 import org.example.model.Office;
 import org.example.model.Person;
 import org.example.model.TrafficCenter;
 import org.example.model.TransLog;
-import org.example.model.Transportation;
 import org.example.model.Vehicle;
 import org.mapstruct.factory.Mappers;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-11-09T18:23:31+0300",
+    date = "2024-11-30T19:14:31+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class TransLogMapperImpl implements TransLogMapper {
@@ -43,10 +33,10 @@ public class TransLogMapperImpl implements TransLogMapper {
 
         transLogEntity.setFeesCurrency( transLogFeesCurrency( transLog ) );
         transLogEntity.setFeesAmount( transLogFeesAmount( transLog ) );
+        transLogEntity.setTransportation( TransLogMapper.transDomainToEntity( transLog.getTransportation() ) );
         transLogEntity.setId( transLog.getId() );
         transLogEntity.setVehicle( vehicleToVehicleEntity( transLog.getVehicle() ) );
         transLogEntity.setTransLine( transLineMapper.domainToEntity( transLog.getTransLine() ) );
-        transLogEntity.setTransportation( transportationToTransportationEntity( transLog.getTransportation() ) );
         transLogEntity.setNotes( transLog.getNotes() );
         transLogEntity.setCreatedAt( transLog.getCreatedAt() );
         transLogEntity.setUpdatedAt( transLog.getUpdatedAt() );
@@ -63,7 +53,7 @@ public class TransLogMapperImpl implements TransLogMapper {
         TransLog transLog1 = new TransLog();
 
         transLog1.setFees( transLogEntityToMoney( transLog ) );
-        transLog1.setTransportation( TransLogMapper.mapId( transLog.getTransportation() ) );
+        transLog1.setTransportation( TransLogMapper.transEntityToDomain( transLog.getTransportation() ) );
         transLog1.setId( transLog.getId() );
         transLog1.setVehicle( vehicleEntityToVehicle( transLog.getVehicle() ) );
         transLog1.setTransLine( transLineMapper.entityToDomain( transLog.getTransLine() ) );
@@ -172,94 +162,6 @@ public class TransLogMapperImpl implements TransLogMapper {
         vehicleEntity.setUpdatedAt( vehicle.getUpdatedAt() );
 
         return vehicleEntity;
-    }
-
-    protected TransportationType transportationTypeToTransportationType(org.example.model.TransportationType transportationType) {
-        if ( transportationType == null ) {
-            return null;
-        }
-
-        TransportationType transportationType1;
-
-        switch ( transportationType ) {
-            case NORMAL: transportationType1 = TransportationType.NORMAL;
-            break;
-            case COMMERCIAL: transportationType1 = TransportationType.COMMERCIAL;
-            break;
-            default: throw new IllegalArgumentException( "Unexpected enum constant: " + transportationType );
-        }
-
-        return transportationType1;
-    }
-
-    protected DocumentEntity documentToDocumentEntity(Document document) {
-        if ( document == null ) {
-            return null;
-        }
-
-        DocumentEntity documentEntity = new DocumentEntity();
-
-        documentEntity.setId( document.getId() );
-        documentEntity.setUrl( document.getUrl() );
-        documentEntity.setType( document.getType() );
-        documentEntity.setResourceId( document.getResourceId() );
-        byte[] content = document.getContent();
-        if ( content != null ) {
-            documentEntity.setContent( Arrays.copyOf( content, content.length ) );
-        }
-        documentEntity.setCreatedAt( document.getCreatedAt() );
-        documentEntity.setUpdatedAt( document.getUpdatedAt() );
-
-        return documentEntity;
-    }
-
-    protected List<DocumentEntity> documentListToDocumentEntityList(List<Document> list) {
-        if ( list == null ) {
-            return null;
-        }
-
-        List<DocumentEntity> list1 = new ArrayList<DocumentEntity>( list.size() );
-        for ( Document document : list ) {
-            list1.add( documentToDocumentEntity( document ) );
-        }
-
-        return list1;
-    }
-
-    protected Set<TransLogEntity> transLogListToTransLogEntitySet(List<TransLog> list) {
-        if ( list == null ) {
-            return null;
-        }
-
-        Set<TransLogEntity> set = new LinkedHashSet<TransLogEntity>( Math.max( (int) ( list.size() / .75f ) + 1, 16 ) );
-        for ( TransLog transLog : list ) {
-            set.add( domainToEntity( transLog ) );
-        }
-
-        return set;
-    }
-
-    protected TransportationEntity transportationToTransportationEntity(Transportation transportation) {
-        if ( transportation == null ) {
-            return null;
-        }
-
-        TransportationEntity transportationEntity = new TransportationEntity();
-
-        transportationEntity.setId( transportation.getId() );
-        transportationEntity.setVehicle( vehicleToVehicleEntity( transportation.getVehicle() ) );
-        transportationEntity.setRefinery( transLineMapper.refineryToEntity( transportation.getRefinery() ) );
-        transportationEntity.setIsDivided( transportation.getIsDivided() );
-        transportationEntity.setIsPriced( transportation.getIsPriced() );
-        transportationEntity.setSize( transportation.getSize() );
-        transportationEntity.setCreatedAt( transportation.getCreatedAt() );
-        transportationEntity.setUpdatedAt( transportation.getUpdatedAt() );
-        transportationEntity.setType( transportationTypeToTransportationType( transportation.getType() ) );
-        transportationEntity.setDocument( documentListToDocumentEntityList( transportation.getDocument() ) );
-        transportationEntity.setDeletedAt( transportation.getDeletedAt() );
-        transportationEntity.setTransLogs( transLogListToTransLogEntitySet( transportation.getTransLogs() ) );
-
-        return transportationEntity;
     }
 
     protected Money transLogEntityToMoney(TransLogEntity transLogEntity) {

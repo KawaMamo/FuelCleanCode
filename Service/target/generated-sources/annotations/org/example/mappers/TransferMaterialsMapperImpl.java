@@ -8,6 +8,7 @@ import org.example.entities.PersonEntity;
 import org.example.entities.PriceCategoryEntity;
 import org.example.entities.RegionEntity;
 import org.example.entities.TransferMaterialsEntity;
+import org.example.entities.TransportationType;
 import org.example.model.GasStation;
 import org.example.model.Group;
 import org.example.model.Material;
@@ -19,7 +20,7 @@ import org.example.model.TransferMaterials;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-11-09T18:23:31+0300",
+    date = "2024-11-30T19:14:31+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class TransferMaterialsMapperImpl implements TransferMaterialsMapper {
@@ -34,6 +35,7 @@ public class TransferMaterialsMapperImpl implements TransferMaterialsMapper {
 
         transferMaterials1.setPrice( transferMaterialsEntityToMoney( transferMaterials ) );
         transferMaterials1.setId( transferMaterials.getId() );
+        transferMaterials1.setType( transportationTypeToTransportationType( transferMaterials.getType() ) );
         transferMaterials1.setSource( gasStationEntityToGasStation( transferMaterials.getSource() ) );
         transferMaterials1.setDestination( gasStationEntityToGasStation( transferMaterials.getDestination() ) );
         transferMaterials1.setMaterial( materialEntityToMaterial( transferMaterials.getMaterial() ) );
@@ -55,6 +57,7 @@ public class TransferMaterialsMapperImpl implements TransferMaterialsMapper {
         transferMaterialsEntity.setPriceCurrency( transferMaterialsPriceCurrency( transferMaterials ) );
         transferMaterialsEntity.setPriceAmount( transferMaterialsPriceAmount( transferMaterials ) );
         transferMaterialsEntity.setId( transferMaterials.getId() );
+        transferMaterialsEntity.setType( transportationTypeToTransportationType1( transferMaterials.getType() ) );
         transferMaterialsEntity.setSource( gasStationToGasStationEntity( transferMaterials.getSource() ) );
         transferMaterialsEntity.setDestination( gasStationToGasStationEntity( transferMaterials.getDestination() ) );
         transferMaterialsEntity.setMaterial( materialToMaterialEntity( transferMaterials.getMaterial() ) );
@@ -76,6 +79,24 @@ public class TransferMaterialsMapperImpl implements TransferMaterialsMapper {
         money.setAmount( transferMaterialsEntity.getPriceAmount() );
 
         return money;
+    }
+
+    protected org.example.model.TransportationType transportationTypeToTransportationType(TransportationType transportationType) {
+        if ( transportationType == null ) {
+            return null;
+        }
+
+        org.example.model.TransportationType transportationType1;
+
+        switch ( transportationType ) {
+            case NORMAL: transportationType1 = org.example.model.TransportationType.NORMAL;
+            break;
+            case COMMERCIAL: transportationType1 = org.example.model.TransportationType.COMMERCIAL;
+            break;
+            default: throw new IllegalArgumentException( "Unexpected enum constant: " + transportationType );
+        }
+
+        return transportationType1;
     }
 
     protected PriceCategory priceCategoryEntityToPriceCategory(PriceCategoryEntity priceCategoryEntity) {
@@ -210,6 +231,24 @@ public class TransferMaterialsMapperImpl implements TransferMaterialsMapper {
             return null;
         }
         return amount;
+    }
+
+    protected TransportationType transportationTypeToTransportationType1(org.example.model.TransportationType transportationType) {
+        if ( transportationType == null ) {
+            return null;
+        }
+
+        TransportationType transportationType1;
+
+        switch ( transportationType ) {
+            case NORMAL: transportationType1 = TransportationType.NORMAL;
+            break;
+            case COMMERCIAL: transportationType1 = TransportationType.COMMERCIAL;
+            break;
+            default: throw new IllegalArgumentException( "Unexpected enum constant: " + transportationType );
+        }
+
+        return transportationType1;
     }
 
     protected PriceCategoryEntity priceCategoryToPriceCategoryEntity(PriceCategory priceCategory) {

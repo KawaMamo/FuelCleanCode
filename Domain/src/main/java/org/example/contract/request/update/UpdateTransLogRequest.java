@@ -14,4 +14,5 @@ public class UpdateTransLogRequest {
     private Money fees;
     private Long transportationId;
     private String notes;
+    private Long transferMaterialsId;
 }

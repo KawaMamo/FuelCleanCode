@@ -39,7 +39,7 @@ import org.mapstruct.factory.Mappers;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-11-09T18:23:31+0300",
+    date = "2024-11-30T19:14:30+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class TransMapperImpl implements TransMapper {
@@ -59,12 +59,12 @@ public class TransMapperImpl implements TransMapper {
         transportationEntity.setDocument( documentListToDocumentEntityList( transportation.getDocument() ) );
         transportationEntity.setPartitionEntities( partitionListToPartitionEntitySet( transportation.getPartitions() ) );
         transportationEntity.setId( transportation.getId() );
+        transportationEntity.setType( transportationTypeToTransportationType( transportation.getType() ) );
         transportationEntity.setIsDivided( transportation.getIsDivided() );
         transportationEntity.setIsPriced( transportation.getIsPriced() );
         transportationEntity.setSize( transportation.getSize() );
         transportationEntity.setCreatedAt( transportation.getCreatedAt() );
         transportationEntity.setUpdatedAt( transportation.getUpdatedAt() );
-        transportationEntity.setType( transportationTypeToTransportationType( transportation.getType() ) );
         transportationEntity.setDeletedAt( transportation.getDeletedAt() );
         transportationEntity.setTransLogs( transLogListToTransLogEntitySet( transportation.getTransLogs() ) );
 

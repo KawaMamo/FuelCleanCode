@@ -12,6 +12,6 @@ public class CreateTransLogRequest {
     private Long vehicleId;
     private Long transLineId;
     private Money fees;
-    private Long transportationId;
+    private Long transportationReasonId;
     private String notes;
 }

@@ -50,9 +50,9 @@
         <property name="com.jaspersoft.studio.field.label" value="transportation.id"/>
         <property name="com.jaspersoft.studio.field.tree.path" value="trans_log_entity"/>
     </field>
-    <field name="transportation.refinery.name" class="java.lang.String">
-        <property name="com.jaspersoft.studio.field.name" value="transportation.refinery.name"/>
-        <property name="com.jaspersoft.studio.field.label" value="transportation.refinery.name"/>
+    <field name="transLine.source.name" class="java.lang.String">
+        <property name="com.jaspersoft.studio.field.name" value="transLine.source.name"/>
+        <property name="com.jaspersoft.studio.field.label" value="transLine.source.name"/>
         <property name="com.jaspersoft.studio.field.tree.path" value="trans_log_entity"/>
     </field>
     <field name="transLine.destination.name" class="java.lang.String">
@@ -239,7 +239,7 @@
                 <reportElement x="390" y="1" width="70" height="30" uuid="57ad65aa-c73d-4bd8-b532-ba01fa537de7">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="025c342a-7980-4cf2-ad82-62fe62252d8b"/>
                 </reportElement>
-                <textFieldExpression><![CDATA[$F{transportation.refinery.name}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{transLine.source.name}]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement x="309" y="1" width="81" height="30" uuid="d461b10f-d1ab-4832-9539-6b49dd08a86e">

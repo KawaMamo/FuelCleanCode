@@ -31,17 +31,22 @@ public class CreateTransLogValidator {
     public void validate(CreateTransLogRequest request){
         Set<ValidationErrorDetails> errorDetails = new HashSet<>();
 
+
         if(Objects.isNull(transLineRepo.findById(request.getTransLineId()))){
             errorDetails.add(new ValidationErrorDetails(TRANS_LINE_FIELD, ELEMENT_NOT_FOUND));
         }
 
+
+
         if (Objects.isNull(vehicleRepo.findById(request.getVehicleId()))) {
             errorDetails.add(new ValidationErrorDetails(VEHICLE_FIELD, ELEMENT_NOT_FOUND));
         }
+        /*if(Objects.nonNull(request.getTransportationId())){
+            if(Objects.isNull(transRepo.findById(request.getTransportationId()))){
+                errorDetails.add(new ValidationErrorDetails(TRANS_LINE_FIELD, ELEMENT_NOT_FOUND));
+            }
+        }*/
 
-        if(Objects.isNull(transRepo.findById(request.getTransportationId()))){
-            errorDetails.add(new ValidationErrorDetails(TRANS_LINE_FIELD, ELEMENT_NOT_FOUND));
-        }
 
         if(Objects.isNull(request.getFees())){
             errorDetails.add(new ValidationErrorDetails(FEE_FIELD, NULL_ERROR_MSG));

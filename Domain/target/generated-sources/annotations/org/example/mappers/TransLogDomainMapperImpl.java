@@ -1,33 +1,32 @@
 package org.example.mappers;
 
 import javax.annotation.processing.Generated;
-import org.example.contract.request.create.CreateTransLogRequest;
+import org.example.contract.request.create.FatCreateTransLogRequest;
 import org.example.contract.request.update.UpdateTransLogRequest;
 import org.example.contract.response.TransLogResponse;
 import org.example.model.TransLine;
 import org.example.model.TransLog;
-import org.example.model.Transportation;
 import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-11-09T18:23:23+0300",
+    date = "2024-11-30T19:14:24+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class TransLogDomainMapperImpl implements TransLogDomainMapper {
 
     @Override
-    public TransLog requestToDomain(CreateTransLogRequest request) {
+    public TransLog requestToDomain(FatCreateTransLogRequest request) {
         if ( request == null ) {
             return null;
         }
 
         TransLog transLog = new TransLog();
 
-        transLog.setVehicle( createTransLogRequestToVehicle( request ) );
-        transLog.setTransLine( createTransLogRequestToTransLine( request ) );
-        transLog.setTransportation( createTransLogRequestToTransportation( request ) );
+        transLog.setVehicle( fatCreateTransLogRequestToVehicle( request ) );
+        transLog.setTransLine( fatCreateTransLogRequestToTransLine( request ) );
         transLog.setFees( request.getFees() );
+        transLog.setTransportation( request.getTransportation() );
         transLog.setNotes( request.getNotes() );
 
         return transLog;
@@ -63,7 +62,6 @@ public class TransLogDomainMapperImpl implements TransLogDomainMapper {
 
         transLog.setVehicle( updateTransLogRequestToVehicle( request ) );
         transLog.setTransLine( updateTransLogRequestToTransLine( request ) );
-        transLog.setTransportation( updateTransLogRequestToTransportation( request ) );
         transLog.setId( request.getId() );
         transLog.setFees( request.getFees() );
         transLog.setNotes( request.getNotes() );
@@ -71,40 +69,28 @@ public class TransLogDomainMapperImpl implements TransLogDomainMapper {
         return transLog;
     }
 
-    protected Vehicle createTransLogRequestToVehicle(CreateTransLogRequest createTransLogRequest) {
-        if ( createTransLogRequest == null ) {
+    protected Vehicle fatCreateTransLogRequestToVehicle(FatCreateTransLogRequest fatCreateTransLogRequest) {
+        if ( fatCreateTransLogRequest == null ) {
             return null;
         }
 
         Vehicle vehicle = new Vehicle();
 
-        vehicle.setId( createTransLogRequest.getVehicleId() );
+        vehicle.setId( fatCreateTransLogRequest.getVehicleId() );
 
         return vehicle;
     }
 
-    protected TransLine createTransLogRequestToTransLine(CreateTransLogRequest createTransLogRequest) {
-        if ( createTransLogRequest == null ) {
+    protected TransLine fatCreateTransLogRequestToTransLine(FatCreateTransLogRequest fatCreateTransLogRequest) {
+        if ( fatCreateTransLogRequest == null ) {
             return null;
         }
 
         TransLine transLine = new TransLine();
 
-        transLine.setId( createTransLogRequest.getTransLineId() );
+        transLine.setId( fatCreateTransLogRequest.getTransLineId() );
 
         return transLine;
-    }
-
-    protected Transportation createTransLogRequestToTransportation(CreateTransLogRequest createTransLogRequest) {
-        if ( createTransLogRequest == null ) {
-            return null;
-        }
-
-        Transportation transportation = new Transportation();
-
-        transportation.setId( createTransLogRequest.getTransportationId() );
-
-        return transportation;
     }
 
     protected Vehicle updateTransLogRequestToVehicle(UpdateTransLogRequest updateTransLogRequest) {
@@ -129,17 +115,5 @@ public class TransLogDomainMapperImpl implements TransLogDomainMapper {
         transLine.setId( updateTransLogRequest.getTransLineId() );
 
         return transLine;
-    }
-
-    protected Transportation updateTransLogRequestToTransportation(UpdateTransLogRequest updateTransLogRequest) {
-        if ( updateTransLogRequest == null ) {
-            return null;
-        }
-
-        Transportation transportation = new Transportation();
-
-        transportation.setId( updateTransLogRequest.getTransportationId() );
-
-        return transportation;
     }
 }

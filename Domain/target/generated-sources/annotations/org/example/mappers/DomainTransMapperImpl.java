@@ -15,7 +15,7 @@ import org.example.model.Vehicle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-11-09T18:23:24+0300",
+    date = "2024-11-30T19:14:23+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class DomainTransMapperImpl implements DomainTransMapper {
@@ -45,7 +45,6 @@ public class DomainTransMapperImpl implements DomainTransMapper {
         TransResponse transResponse = new TransResponse();
 
         transResponse.setId( transportation.getId() );
-        transResponse.setVehicle( transportation.getVehicle() );
         transResponse.setRefinery( transportation.getRefinery() );
         transResponse.setIsDivided( transportation.getIsDivided() );
         transResponse.setIsPriced( transportation.getIsPriced() );
@@ -66,6 +65,7 @@ public class DomainTransMapperImpl implements DomainTransMapper {
             transResponse.setDocument( new ArrayList<Document>( list2 ) );
         }
         transResponse.setDeletedAt( transportation.getDeletedAt() );
+        transResponse.setVehicle( transportation.getVehicle() );
 
         return transResponse;
     }

@@ -357,17 +357,24 @@ public class Beans {
     CreateTransLog createTransLog(TransLogRepo transLogRepo,
                                   TransLineRepo transLineRepo,
                                   VehicleRepo vehicleRepo,
-                                  TransRepo transRepo, TransLogDomainMapper transLogDomainMapper){
+                                  TransRepo transRepo,
+                                  TransLogDomainMapper transLogDomainMapper,
+                                  TransferMaterialRepo transferMaterialRepo, TransportationTypeDetector transportationTypeDetector){
         return new CreateTransLog(transLogRepo,
                 transLogDomainMapper,
                 new CreateTransLogValidator(transLineRepo,
                         vehicleRepo,
-                        transRepo), vehicleRepo, transLineRepo, transRepo);
+                        transRepo), vehicleRepo, transLineRepo, transRepo, transferMaterialRepo, transportationTypeDetector);
     }
 
     @Bean
     TransLogRepo transLogRepo(TransLogRepository transLogRepository, TransLogMapper transLogMapper){
         return new TransLogAdapter(transLogRepository, transLogMapper);
+    }
+
+    @Bean
+    TransportationTypeDetector transportationTypeDetector(TransRepo transRepo, TransferMaterialRepo transferMaterialRepo){
+        return new TransportationTypeDetector(transRepo, transferMaterialRepo);
     }
 
     @Bean

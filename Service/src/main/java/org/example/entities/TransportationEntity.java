@@ -2,10 +2,8 @@ package org.example.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.example.model.TransLog;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -14,12 +12,8 @@ import java.util.Set;
 @ToString
 @RequiredArgsConstructor
 @Entity
-public class TransportationEntity {
+public class TransportationEntity extends TransportationReasonEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
     @OneToOne
     private VehicleEntity vehicle;
     @OneToOne
@@ -29,8 +23,6 @@ public class TransportationEntity {
     private Long size;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    @Enumerated
-    private TransportationType type;
     @OneToMany
     private List<DocumentEntity> document;
     private LocalDateTime deletedAt;

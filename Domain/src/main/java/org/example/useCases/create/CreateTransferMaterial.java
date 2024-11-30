@@ -1,16 +1,18 @@
 package org.example.useCases.create;
 
-import org.example.contract.repository.GasStationRepo;
-import org.example.contract.repository.MaterialRepo;
-import org.example.contract.repository.TransferMaterialRepo;
+import org.example.contract.repository.*;
 import org.example.contract.request.create.CreateTransferMaterialRequest;
 import org.example.contract.response.TransferMaterialResponse;
 import org.example.mappers.TransferMaterialDomainMapper;
+import org.example.model.TransLine;
+import org.example.model.TransLog;
 import org.example.model.TransferMaterials;
 import org.example.validators.create.CreateTransferMaterialValidator;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 public class CreateTransferMaterial {
     private final CreateTransferMaterialValidator validator;
@@ -21,7 +23,8 @@ public class CreateTransferMaterial {
 
     public CreateTransferMaterial(CreateTransferMaterialValidator validator,
                                   TransferMaterialDomainMapper mapper,
-                                  TransferMaterialRepo transferMaterialRepo, GasStationRepo gasStationRepo, MaterialRepo materialRepo) {
+                                  TransferMaterialRepo transferMaterialRepo, GasStationRepo gasStationRepo,
+                                  MaterialRepo materialRepo) {
         this.validator = validator;
         this.mapper = mapper;
         this.transferMaterialRepo = transferMaterialRepo;

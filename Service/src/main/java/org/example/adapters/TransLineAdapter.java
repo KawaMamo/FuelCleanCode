@@ -3,6 +3,7 @@ package org.example.adapters;
 import org.example.contract.repository.TransLineRepo;
 import org.example.entities.TransLineEntity;
 import org.example.mappers.TransLineMapper;
+import org.example.model.GasStation;
 import org.example.model.TransLine;
 import org.example.repositories.TransLineRepository;
 
@@ -36,5 +37,11 @@ public class TransLineAdapter implements TransLineRepo {
     @Override
     public void delete(TransLine transLine) {
         transLineRepository.delete(transLineMapper.domainToEntity(transLine));
+    }
+
+    @Override
+    public Optional<TransLine> findBySourceAndDestination(GasStation source, GasStation destination) {
+        final TransLineEntity transLineEntity = transLineRepository.findBySourceAndDestination(source, destination).orElseThrow();
+        return Optional.of(transLineMapper.entityToDomain(transLineEntity));
     }
 }

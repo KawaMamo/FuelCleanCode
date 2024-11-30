@@ -58,7 +58,7 @@ public class CreateVehicleValidator {
         }
 
         if(personRepo.findById(request.getDriver_id()).isEmpty()){
-            validationErrorDetails.add(new ValidationErrorDetails(OFFICE_FIELD, ELEMENT_NOT_FOUND));
+            validationErrorDetails.add(new ValidationErrorDetails(PERSON_FIELD, ELEMENT_NOT_FOUND));
         }
 
         ExceptionThrower.throwIfNotEmpty(validationErrorDetails);

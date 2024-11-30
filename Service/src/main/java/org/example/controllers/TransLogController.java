@@ -9,9 +9,11 @@ import org.example.contract.request.create.CreateTransLogRequest;
 import org.example.contract.request.update.UpdateTransLogRequest;
 import org.example.contract.response.TransLogResponse;
 import org.example.entities.TransLogEntity;
+import org.example.entities.TransportationEntity;
 import org.example.entities.TransportationType;
 import org.example.mappers.TransLogMapper;
 import org.example.model.TransLog;
+import org.example.model.Transportation;
 import org.example.repositories.TransLogRepository;
 import org.example.specifications.CriteriaArrayToList;
 import org.example.specifications.FilterSpecifications;
@@ -182,7 +184,7 @@ public class TransLogController {
 
         Map<String, Object> params = new HashMap<>();
         params.put("nowLocalDT", LocalDateTime.now());
-        params.put("refineryName", logEntityList.get(0).getTransportation().getRefinery().getTranslation());
+        params.put("refineryName", ((TransportationEntity)logEntityList.get(0).getTransportation()).getRefinery().getTranslation());
 
         try {
 

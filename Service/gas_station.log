@@ -1,0 +1,115 @@
+2024-11-30T00:02:31.795+03:00  INFO 2068 --- [main] o.e.controllers.TransferMaterialsTest    : Starting TransferMaterialsTest using Java 20 with PID 2068 (started by GIGABYTE in D:\fuelRefactored\FuelCleanCode\Service)
+2024-11-30T00:02:31.809+03:00  INFO 2068 --- [main] o.e.controllers.TransferMaterialsTest    : The following 1 profile is active: "local"
+2024-11-30T00:02:32.967+03:00  INFO 2068 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-30T00:02:33.155+03:00  INFO 2068 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 180 ms. Found 25 JPA repository interfaces.
+2024-11-30T00:02:33.759+03:00  INFO 2068 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-30T00:02:33.818+03:00  INFO 2068 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2024-11-30T00:02:34.148+03:00  INFO 2068 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-30T00:02:34.302+03:00  INFO 2068 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1d806de6
+2024-11-30T00:02:34.304+03:00  INFO 2068 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-30T00:02:34.332+03:00  WARN 2068 --- [main] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.0 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 5.7.0. Check the community dialects project for available legacy versions.
+2024-11-30T00:02:34.336+03:00  INFO 2068 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2024-11-30T00:02:35.859+03:00  INFO 2068 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-11-30T00:02:35.866+03:00  INFO 2068 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-30T00:02:36.533+03:00  WARN 2068 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.PartitionRepository
+2024-11-30T00:02:37.063+03:00  WARN 2068 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.TransRepoJpa
+2024-11-30T00:02:37.309+03:00  WARN 2068 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.TransLineRepository
+2024-11-30T00:02:37.354+03:00  WARN 2068 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.TransLogRepository
+2024-11-30T00:02:37.648+03:00  WARN 2068 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-30T00:02:38.349+03:00  INFO 2068 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-11-30T00:02:38.422+03:00  INFO 2068 --- [main] o.e.controllers.TransferMaterialsTest    : Started TransferMaterialsTest in 6.921 seconds (process running for 8.115)
+2024-11-30T00:02:38.542+03:00  INFO 2068 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-30T00:02:38.544+03:00  INFO 2068 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-11-30T00:02:38.553+03:00  INFO 2068 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-11-30T00:03:08.821+03:00  INFO 2400 --- [main] o.e.controllers.TransferMaterialsTest    : Starting TransferMaterialsTest using Java 19.0.2 with PID 2400 (started by GIGABYTE in D:\fuelRefactored\FuelCleanCode\Service)
+2024-11-30T00:03:08.823+03:00  INFO 2400 --- [main] o.e.controllers.TransferMaterialsTest    : The following 1 profile is active: "local"
+2024-11-30T00:03:09.837+03:00  INFO 2400 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-30T00:03:10.023+03:00  INFO 2400 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 179 ms. Found 25 JPA repository interfaces.
+2024-11-30T00:03:10.596+03:00  INFO 2400 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-30T00:03:10.651+03:00  INFO 2400 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2024-11-30T00:03:10.972+03:00  INFO 2400 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-30T00:03:11.138+03:00  INFO 2400 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@118a4d5
+2024-11-30T00:03:11.140+03:00  INFO 2400 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-30T00:03:11.172+03:00  WARN 2400 --- [main] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.0 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 5.7.0. Check the community dialects project for available legacy versions.
+2024-11-30T00:03:11.178+03:00  INFO 2400 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2024-11-30T00:03:12.642+03:00  INFO 2400 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-11-30T00:03:12.648+03:00  INFO 2400 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-30T00:03:13.303+03:00  WARN 2400 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.PartitionRepository
+2024-11-30T00:03:13.738+03:00  WARN 2400 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.TransRepoJpa
+2024-11-30T00:03:13.942+03:00  WARN 2400 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.TransLineRepository
+2024-11-30T00:03:13.989+03:00  WARN 2400 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.TransLogRepository
+2024-11-30T00:03:14.256+03:00  WARN 2400 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-30T00:03:14.857+03:00  INFO 2400 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-11-30T00:03:14.919+03:00  INFO 2400 --- [main] o.e.controllers.TransferMaterialsTest    : Started TransferMaterialsTest in 6.338 seconds (process running for 7.178)
+2024-11-30T00:03:15.087+03:00  INFO 2400 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-30T00:03:15.089+03:00  INFO 2400 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-11-30T00:03:15.099+03:00  INFO 2400 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-11-30T00:26:32.695+03:00  INFO 23336 --- [main] o.e.controllers.TransferMaterialsTest    : Starting TransferMaterialsTest using Java 19.0.2 with PID 23336 (started by GIGABYTE in D:\fuelRefactored\FuelCleanCode\Service)
+2024-11-30T00:26:32.696+03:00  INFO 23336 --- [main] o.e.controllers.TransferMaterialsTest    : The following 1 profile is active: "local"
+2024-11-30T00:26:33.676+03:00  INFO 23336 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-30T00:26:33.852+03:00  INFO 23336 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 169 ms. Found 25 JPA repository interfaces.
+2024-11-30T00:26:34.397+03:00  INFO 23336 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-30T00:26:34.439+03:00  INFO 23336 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2024-11-30T00:26:34.739+03:00  INFO 23336 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-30T00:26:34.871+03:00  INFO 23336 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@21698e5a
+2024-11-30T00:26:34.934+03:00  INFO 23336 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-30T00:26:34.999+03:00  WARN 23336 --- [main] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.0 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 5.7.0. Check the community dialects project for available legacy versions.
+2024-11-30T00:26:35.007+03:00  INFO 23336 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2024-11-30T00:26:36.386+03:00  INFO 23336 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-11-30T00:26:36.393+03:00  INFO 23336 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-30T00:26:36.976+03:00  WARN 23336 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.PartitionRepository
+2024-11-30T00:26:37.408+03:00  WARN 23336 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.TransRepoJpa
+2024-11-30T00:26:37.613+03:00  WARN 23336 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.TransLineRepository
+2024-11-30T00:26:37.753+03:00  WARN 23336 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.TransLogRepository
+2024-11-30T00:26:38.030+03:00  WARN 23336 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-30T00:26:38.595+03:00  INFO 23336 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-11-30T00:26:38.658+03:00  INFO 23336 --- [main] o.e.controllers.TransferMaterialsTest    : Started TransferMaterialsTest in 6.185 seconds (process running for 6.956)
+2024-11-30T00:26:38.796+03:00  INFO 23336 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-30T00:26:38.798+03:00  INFO 23336 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-11-30T00:26:38.814+03:00  INFO 23336 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-11-30T02:57:17.860+03:00  INFO 3928 --- [main] o.e.controllers.TransferMaterialsTest    : Starting TransferMaterialsTest using Java 19.0.2 with PID 3928 (started by GIGABYTE in D:\fuelRefactored\FuelCleanCode\Service)
+2024-11-30T02:57:17.861+03:00  INFO 3928 --- [main] o.e.controllers.TransferMaterialsTest    : The following 1 profile is active: "local"
+2024-11-30T02:57:18.888+03:00  INFO 3928 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-30T02:57:19.067+03:00  INFO 3928 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 170 ms. Found 25 JPA repository interfaces.
+2024-11-30T02:57:19.621+03:00  INFO 3928 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-30T02:57:19.722+03:00  INFO 3928 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2024-11-30T02:57:20.038+03:00  INFO 3928 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-30T02:57:20.188+03:00  INFO 3928 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@21698e5a
+2024-11-30T02:57:20.191+03:00  INFO 3928 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-30T02:57:20.220+03:00  WARN 3928 --- [main] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.0 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 5.7.0. Check the community dialects project for available legacy versions.
+2024-11-30T02:57:20.223+03:00  INFO 3928 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2024-11-30T02:57:21.660+03:00  INFO 3928 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-11-30T02:57:21.667+03:00  INFO 3928 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-30T02:57:22.231+03:00  WARN 3928 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.PartitionRepository
+2024-11-30T02:57:22.678+03:00  WARN 3928 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.TransRepoJpa
+2024-11-30T02:57:22.884+03:00  WARN 3928 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.TransLineRepository
+2024-11-30T02:57:22.927+03:00  WARN 3928 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.TransLogRepository
+2024-11-30T02:57:23.195+03:00  WARN 3928 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-30T02:57:23.736+03:00  INFO 3928 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-11-30T02:57:23.791+03:00  INFO 3928 --- [main] o.e.controllers.TransferMaterialsTest    : Started TransferMaterialsTest in 6.169 seconds (process running for 6.969)
+2024-11-30T02:57:23.917+03:00  INFO 3928 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-30T02:57:23.920+03:00  INFO 3928 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-11-30T02:57:23.930+03:00  INFO 3928 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-11-30T19:14:35.400+03:00  INFO 16900 --- [main] o.e.controllers.TransferMaterialsTest    : Starting TransferMaterialsTest using Java 19.0.2 with PID 16900 (started by GIGABYTE in D:\fuelRefactored\FuelCleanCode\Service)
+2024-11-30T19:14:35.606+03:00  INFO 16900 --- [main] o.e.controllers.TransferMaterialsTest    : The following 1 profile is active: "local"
+2024-11-30T19:14:36.647+03:00  INFO 16900 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-30T19:14:36.870+03:00  INFO 16900 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 211 ms. Found 25 JPA repository interfaces.
+2024-11-30T19:14:37.708+03:00  INFO 16900 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-30T19:14:37.772+03:00  INFO 16900 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2024-11-30T19:14:38.105+03:00  INFO 16900 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-30T19:14:38.247+03:00  INFO 16900 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3dc2f14
+2024-11-30T19:14:38.249+03:00  INFO 16900 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-30T19:14:38.274+03:00  WARN 16900 --- [main] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.0 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 5.7.0. Check the community dialects project for available legacy versions.
+2024-11-30T19:14:38.280+03:00  INFO 16900 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2024-11-30T19:14:39.691+03:00  INFO 16900 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-11-30T19:14:39.699+03:00  INFO 16900 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-30T19:14:40.328+03:00  WARN 16900 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.PartitionRepository
+2024-11-30T19:14:40.840+03:00  WARN 16900 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.TransRepoJpa
+2024-11-30T19:14:41.047+03:00  WARN 16900 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.TransLineRepository
+2024-11-30T19:14:41.091+03:00  WARN 16900 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.TransLogRepository
+2024-11-30T19:14:41.361+03:00  WARN 16900 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-30T19:14:41.972+03:00  INFO 16900 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-11-30T19:14:42.049+03:00  INFO 16900 --- [main] o.e.controllers.TransferMaterialsTest    : Started TransferMaterialsTest in 6.9 seconds (process running for 7.769)
+2024-11-30T19:14:42.610+03:00  INFO 16900 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-30T19:14:42.613+03:00  INFO 16900 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-11-30T19:14:42.625+03:00  INFO 16900 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

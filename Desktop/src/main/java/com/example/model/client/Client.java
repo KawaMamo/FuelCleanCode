@@ -20,6 +20,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 import java.util.concurrent.Callable;
 
+import static org.apache.xmlbeans.impl.schema.SchemaTypeLoaderImpl.build;
+
 @Data
 public class Client {
     private static Client instance;
@@ -68,11 +70,15 @@ public class Client {
                 e.printStackTrace();
             }
         }).start();
-        final HttpRequest request = HttpRequest.newBuilder()
+
+        final HttpRequest.Builder builder = HttpRequest.newBuilder()
                 .uri(URI.create(url + endPoint))
                 .header("Content-Type", multipartEntityBuilder.getContentType().getValue())
                 .POST(HttpRequest.BodyPublishers.ofInputStream(
-                        () -> Channels.newInputStream(pipe.source()))).build();
+                        () -> Channels.newInputStream(pipe.source())));
+        addAuthorizationToken(builder);
+        final HttpRequest request = builder.build();
+
         final HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8));
         if(response.statusCode() != 200) {
             throw new RuntimeException(response.body());

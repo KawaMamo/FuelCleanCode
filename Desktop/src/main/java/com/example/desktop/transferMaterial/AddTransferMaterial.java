@@ -6,15 +6,20 @@ import com.example.model.material.MaterialService;
 import com.example.model.modal.Modal;
 import com.example.model.tools.FormType;
 import com.example.model.tools.QueryBuilder;
+import com.example.model.transLine.TransLineService;
+import com.example.model.transLog.TransLogService;
 import com.example.model.transferMaterial.TransferMaterialsService;
+import com.example.model.vehicle.VehicleService;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import org.controlsfx.control.Notifications;
 import org.controlsfx.control.textfield.TextFields;
+import org.example.contract.request.create.CreateTransLogRequest;
 import org.example.contract.request.create.CreateTransferMaterialRequest;
 import org.example.contract.request.update.UpdateTransferMaterialRequest;
 import org.example.model.*;
@@ -29,9 +34,13 @@ public class AddTransferMaterial {
     private final TransferMaterialsService transferMaterialsService = TransferMaterialsService.getInstance();
     private final GasStationService gasStationService = GasStationService.getInstance();
     private final MaterialService materialService = MaterialService.getInstance();
+    private final VehicleService vehicleService = VehicleService.getInstance();
+    private final TransLineService transLineService = TransLineService.getInstance();
+    private final TransLogService transLogService = TransLogService.getInstance();
     private Long selectedSourceId;
     private Long selectedDestinationId;
     private Long selectedMaterialId;
+    public static Long selectedVehicleId;
     @FXML
     private TextField amountTF;
 
@@ -52,9 +61,18 @@ public class AddTransferMaterial {
 
     @FXML
     private Button submitBtn;
+    @FXML
+    private Label infoLabel;
+    @FXML
+    private TextField driverTF;
+    @FXML
+    private TextField vehicleTF;
+    private GasStation selectedSource;
+    private TransLine selectedTransLine;
 
     @FXML
     private void initialize(){
+        submitBtn.setDisable(true);
         currencyCB.getItems().add("USD");
         currencyCB.getItems().add("SP");
         if(formType.equals(FormType.UPDATE)){
@@ -85,6 +103,7 @@ public class AddTransferMaterial {
                     if(gasStationNames.contains(sourceTF.getText())){
                         final GasStation gasStation = gasStations.get(gasStationNames.indexOf(sourceTF.getText()));
                         if(Objects.nonNull(gasStation)){
+                            selectedSource = gasStation;
                             selectedSourceId = gasStation.getId();
                         }
                     }
@@ -100,6 +119,16 @@ public class AddTransferMaterial {
                         final GasStation gasStation = gasStations.get(gasStationNames.indexOf(destinationTF.getText()));
                         if(Objects.nonNull(gasStation)){
                             selectedDestinationId = gasStation.getId();
+                            final List<TransLine> transLineList = transLineService.getItems(0,
+                                    1,
+                                    "&key=source&value=" + selectedSource.getRegion().getId() + "&operation=%3A" +
+                                            "&key=destination&value=" + gasStation.getRegion().getId() + "&operation=%3A&sort=id,desc");
+                            if(Objects.nonNull(transLineList.get(0))){
+                                selectedTransLine = transLineList.get(0);
+                                submitBtn.setDisable(false);
+                            }else {
+                                infoLabel.setText("No transportation line found");
+                            }
                         }
                     }
                 }
@@ -116,6 +145,21 @@ public class AddTransferMaterial {
                             selectedMaterialId = material.getId();
                         }
                     }
+                }
+            }
+        });
+
+        final List<Vehicle> vehicles = vehicleService.getVehicles(null, null);
+        final List<String> vehiclesNames = vehicles.stream().map(Vehicle::getPlateNumber).toList();
+        TextFields.bindAutoCompletion(vehicleTF, vehiclesNames);
+
+        vehicleTF.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
+                if(vehicleTF.getText().length()>0){
+                    final Vehicle vehicle = vehicles.get(vehiclesNames.indexOf(vehicleTF.getText()));
+                    driverTF.setText(vehicle.getDriver().getName());
+                    selectedVehicleId = vehicle.getId();
                 }
             }
         });
@@ -137,6 +181,8 @@ public class AddTransferMaterial {
                     selectedMaterialId,
                     Long.parseLong(amountTF.getText()),
                     new Money(currencyCB.getValue(), Double.parseDouble(priceTF.getText()))));
+            final CreateTransLogRequest createTransLogRequest = new CreateTransLogRequest(selectedVehicleId, selectedTransLine.getId(), selectedTransLine.getFee(), transferMaterials.getId(), " ");
+            final TransLog transLog = transLogService.addItem(createTransLogRequest);
         }else {
             transferMaterials = new TransferMaterials();
             final QueryBuilder queryBuilder = new QueryBuilder();

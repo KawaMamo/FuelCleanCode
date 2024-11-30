@@ -28,7 +28,7 @@ public class PartitionEntity {
     private GasStationEntity gasStation;
     private String notes;
     private String extraNotes;
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     private DocumentEntity document;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

@@ -5,6 +5,7 @@ import com.google.gson.*;
 import org.apache.xmlbeans.impl.piccolo.xml.DocumentEntity;
 import org.example.model.Document;
 import org.example.model.Place;
+import org.example.model.TransportationReason;
 
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
@@ -22,6 +23,7 @@ public class AppGson {
                     .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeTypeAdapter())
                     .registerTypeAdapter(LocalDate.class, new LocalDateTypeAdapter())
                     .registerTypeAdapter(Place.class, new PlaceTypeAdapter())
+                    .registerTypeAdapter(TransportationReason.class, new TransportationTypeAdapter())
                     .registerTypeHierarchyAdapter(Document.class, new ByteArrayToBase64TypeAdapter())
                     .setPrettyPrinting()
                     .create();

@@ -6,11 +6,8 @@ import lombok.Data;
 import java.time.LocalDateTime;
 @Data
 @Entity
-public class TransferMaterialsEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+public class TransferMaterialsEntity extends TransportationReasonEntity {
+
     @OneToOne
     private GasStationEntity source;
     @OneToOne

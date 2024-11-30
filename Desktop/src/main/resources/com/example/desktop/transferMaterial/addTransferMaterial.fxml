@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="311.0" prefWidth="354.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.desktop.transferMaterial.AddTransferMaterial">
+<AnchorPane prefHeight="392.0" prefWidth="354.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.desktop.transferMaterial.AddTransferMaterial">
    <children>
       <HBox layoutX="31.0" layoutY="65.0" prefHeight="95.0" prefWidth="302.0" spacing="50.0">
          <children>
@@ -25,6 +25,8 @@
                      </children>
                   </HBox>
                   <TextField fx:id="amountTF" />
+                  <TextField fx:id="vehicleTF" />
+                  <TextField fx:id="driverTF" editable="false" />
                   <Button fx:id="submitBtn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#submit" text="تأكيد" />
                </children>
             </VBox>
@@ -35,6 +37,8 @@
                   <Label text="المادة" />
                   <Label text="السعر" />
                   <Label text="الكمية" />
+                  <Label text="المركبة" />
+                  <Label text="السائق" />
                </children>
             </VBox>
          </children>
@@ -44,5 +48,6 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
+      <Label fx:id="infoLabel" layoutX="288.0" layoutY="353.0" text="info" />
    </children>
 </AnchorPane>

@@ -5,10 +5,9 @@ import lombok.Data;
 import java.time.LocalDateTime;
 import java.util.List;
 @Data
-public class Transportation {
+public class Transportation extends TransportationReason{
 
-    private Long id;
-    private Vehicle vehicle;
+
     private Refinery refinery;
     private Boolean isDivided;
     private Boolean isPriced;
@@ -20,5 +19,6 @@ public class Transportation {
     private TransportationType type;
     private List<Document> document;
     private LocalDateTime deletedAt;
+    private Vehicle vehicle;
 
 }
