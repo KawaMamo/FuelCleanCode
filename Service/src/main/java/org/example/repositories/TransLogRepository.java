@@ -30,4 +30,11 @@ public interface TransLogRepository extends JpaRepository<TransLogEntity, Long>,
             "WHERE v.office.id = ?1 AND t.createdAt BETWEEN ?2 AND ?3 AND r.type = ?4 " +
             "GROUP BY t.vehicle, t.feesCurrency")
     List<Object[]> getTransObj(Long OfficeId, LocalDateTime start, LocalDateTime end, TransportationType type);
+
+    @Query("SELECT t FROM TransLogEntity t " +
+            "JOIN t.vehicle v " +
+            "JOIN t.transportation r " +
+            "JOIN t.transLine n " +
+            "WHERE r.id = ?1")
+    List<TransLogEntity> getTransLogEntitiesByTransportation(Long transportationId);
 }

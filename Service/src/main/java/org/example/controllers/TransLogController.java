@@ -9,6 +9,7 @@ import org.example.contract.request.create.CreateTransLogRequest;
 import org.example.contract.request.update.UpdateTransLogRequest;
 import org.example.contract.response.TransLogResponse;
 import org.example.entities.TransLogEntity;
+import org.example.entities.TransferMaterialsEntity;
 import org.example.entities.TransportationEntity;
 import org.example.entities.TransportationType;
 import org.example.mappers.TransLogMapper;
@@ -31,10 +32,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.*;
+import java.security.Principal;
 import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 @RestController
@@ -258,6 +261,38 @@ public class TransLogController {
                 exporter.exportReport();
             }
             assert file != null;
+            try(final FileInputStream fileInputStream = new FileInputStream(file);){
+                return ResponseEntity.ok(Base64.getEncoder().encodeToString(fileInputStream.readAllBytes()));
+            }
+        } catch (JRException | IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @GetMapping("/transferMaterialsPrint/{id}/{username}")
+    public ResponseEntity<String> print(@PathVariable Long id, @PathVariable String username){
+        final TransLogEntity transLog = transLogRepository.getTransLogEntitiesByTransportation(id).get(0);
+
+        Map<String, Object> params = new HashMap<>();
+        params.put("nowLocalDT", LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
+        params.put("transportationId", transLog.getTransportation().getId().toString());
+        params.put("vehicleNumber", transLog.getVehicle().getPlateNumber());
+        params.put("driverName", transLog.getVehicle().getDriver().getName());
+        params.put("gasStation", ((TransferMaterialsEntity)transLog.getTransportation()).getDestination().getTranslation());
+        params.put("amount", NumberFormat.getInstance().format(((TransferMaterialsEntity)transLog.getTransportation()).getAmount()));
+        params.put("material", ((TransferMaterialsEntity)transLog.getTransportation()).getMaterial().getName());
+        params.put("transportationDate", transLog.getCreatedAt().toString());
+        params.put("category", transLog.getNotes());
+        params.put("user", username);
+        params.put("refinery", ((TransferMaterialsEntity)transLog.getTransportation()).getSource().getTranslation());
+        params.put("imgParameter", null);
+
+        try {
+            JasperReport regionReport = JasperCompileManager.compileReport(new ClassPathResource("templates/transTicket.jrxml").getInputStream());
+            final JasperPrint jasperPrint = JasperFillManager.fillReport(regionReport, params, new JREmptyDataSource());
+            File file = new File("transTicket.html");
+            JasperExportManager.exportReportToHtmlFile(jasperPrint,
+                    file.getAbsolutePath());
+
             try(final FileInputStream fileInputStream = new FileInputStream(file);){
                 return ResponseEntity.ok(Base64.getEncoder().encodeToString(fileInputStream.readAllBytes()));
             }

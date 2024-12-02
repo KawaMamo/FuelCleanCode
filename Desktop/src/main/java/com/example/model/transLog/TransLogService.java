@@ -91,4 +91,9 @@ public class TransLogService implements Service<TransLog, CreateTransLogRequest,
         final HttpResponse<String> stringHttpResponse = client.parallelGet(getEndPoint()+"/officeReport" + "/" + exportType + "/" + id + "/" + startDate + "/" + endDate + "/" + transType);
         return stringHttpResponse.body().getBytes(StandardCharsets.UTF_8);
     }
+
+    public byte[] getPrint(Long id, String username){
+        final HttpResponse<String> stringHttpResponse = client.parallelGet(getEndPoint()+"/transferMaterialsPrint/" + id + "/" + username);
+        return stringHttpResponse.body().getBytes(StandardCharsets.UTF_8);
+    }
 }

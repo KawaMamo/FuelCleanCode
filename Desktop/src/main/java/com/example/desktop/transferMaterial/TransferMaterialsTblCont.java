@@ -1,10 +1,15 @@
 package com.example.desktop.transferMaterial;
 
+import com.example.desktop.HelloApplication;
+import com.example.desktop.MyDocumentLocator;
 import com.example.desktop.delete.DeleteConfirmation;
+import com.example.desktop.reports.DriverReport;
 import com.example.model.TableController;
 import com.example.model.modal.Modal;
 import com.example.model.tools.FormType;
+import com.example.model.transLog.TransLogService;
 import com.example.model.transferMaterial.TransferMaterialsService;
+import com.example.model.user.LogInData;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -14,15 +19,22 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 import org.example.model.TransferMaterials;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.NumberFormat;
+import java.util.Base64;
 import java.util.List;
 import java.util.Objects;
 
 public class TransferMaterialsTblCont implements TableController {
     private static ObservableList<TransferMaterials> transferMaterialsObservableList;
     private final TransferMaterialsService transferMaterialsService = TransferMaterialsService.getInstance();
+    private final TransLogService transLogService = TransLogService.getInstance();
     private String query = null;
     public static TransferMaterials selectedTransferMaterials;
 
@@ -115,6 +127,48 @@ public class TransferMaterialsTblCont implements TableController {
         AddTransferMaterial.formType = FormType.GET;
         AddTransferMaterial.controller = this;
         Modal.start(this.getClass(), "addTransferMaterial.fxml");
+    }
+
+    @FXML
+    void print(){
+        final FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("HTML files (*.html)", "*.html"));
+        fileChooser.setInitialFileName("print.html");
+        fileChooser.setInitialDirectory(new File(MyDocumentLocator.locate()));
+
+        final File file = fileChooser.showSaveDialog(HelloApplication.primaryStage);
+        final byte[] bytes = transLogService.getPrint(selectedTransferMaterials.getId(), LogInData.loggedInUser.getEmail());
+
+        try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
+            fileOutputStream.write(Base64.getDecoder().decode(bytes));
+            if(!List.of(Objects.requireNonNull(file.getParentFile().list())).contains("transTicket.html_files")){
+                final InputStream resourceAsStream = DriverReport.class.getClassLoader().getResourceAsStream("wave.png");
+                final InputStream logoStream = DriverReport.class.getClassLoader().getResourceAsStream("SadLogo.png");
+
+                final File outputFile = new File(file.getParentFile() + "/transTicket.html_files/img_0_0_2.png");
+                final File logOutput = new File(file.getParentFile() + "/transTicket.html_files/img_0_0_0.png");
+                outputFile.getParentFile().mkdir();
+                outputFile.createNewFile();
+                logOutput.createNewFile();
+                final FileOutputStream waveOutputStream = new FileOutputStream(outputFile);
+                final FileOutputStream logoOutPutStream = new FileOutputStream(logOutput);
+                int info = 0;
+                while( (info = resourceAsStream.read()) != -1) {
+                    waveOutputStream.write(info);
+                }
+                int info2 = 0;
+                while ((info2 = logoStream.read()) != -1){
+                    logoOutPutStream.write(info2);
+                }
+                waveOutputStream.close();
+                resourceAsStream.close();
+                logoStream.close();
+                logoOutPutStream.close();
+            }
+            Runtime.getRuntime().exec("rundll32.exe shell32.dll ShellExec_RunDLL " +file.getPath());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

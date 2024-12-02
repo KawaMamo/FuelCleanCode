@@ -1,5 +1,6 @@
 package com.example.desktop.transferMaterial;
 
+import com.example.desktop.delete.DeleteConfirmation;
 import com.example.model.TableController;
 import com.example.model.gasStation.GasStationService;
 import com.example.model.material.MaterialService;
@@ -27,7 +28,7 @@ import org.example.model.*;
 import java.util.List;
 import java.util.Objects;
 
-public class AddTransferMaterial {
+public class AddTransferMaterial implements TableController{
 
     public static TableController controller;
     public static FormType formType = FormType.CREATE;
@@ -67,8 +68,11 @@ public class AddTransferMaterial {
     private TextField driverTF;
     @FXML
     private TextField vehicleTF;
+    @FXML
+    private Button deleteTransLogBtn;
     private GasStation selectedSource;
     private TransLine selectedTransLine;
+    private TransLog selectedTransLog;
     TransportationType type = TransportationType.NORMAL;
 
     @FXML
@@ -86,6 +90,13 @@ public class AddTransferMaterial {
             selectedSourceId = item.getSource().getId();
             selectedDestinationId = item.getDestination().getId();
             selectedMaterialId = item.getMaterial().getId();
+            amountTF.setText(item.getAmount().toString());
+            selectedTransLog = transLogService.getItems(0,
+                    10,
+                    "key=transportation&value=" + item.getId() + "&operation=%3A&sort=id,desc").get(0);
+            vehicleTF.setText(selectedTransLog.getVehicle().getPlateNumber());
+            driverTF.setText(selectedTransLog.getVehicle().getDriver().getName());
+            deleteTransLogBtn.setDisable(false);
         }
 
         final List<GasStation> gasStations = gasStationService.getItems(null, null);
@@ -207,6 +218,14 @@ public class AddTransferMaterial {
         notify(transferMaterials);
     }
 
+    @FXML
+    void deleteTransLog(){
+        DeleteConfirmation.deleteUrl = transLogService.getEndPoint();
+        DeleteConfirmation.selected = selectedTransLog.getId();
+        DeleteConfirmation.controller = this;
+        Modal.start(this.getClass(), "/com/example/desktop/delete/deleteConfirmation.fxml");
+    }
+
     private static void notify(TransferMaterials transferMaterials){
         String message;
         if(Objects.nonNull(transferMaterials.getId())){
@@ -219,4 +238,24 @@ public class AddTransferMaterial {
         Modal.close();
     }
 
+    @Override
+    public void removeData() {
+        driverTF.setText("");
+        vehicleTF.setText("");
+    }
+
+    @Override
+    public void addData(Object object) {
+
+    }
+
+    @Override
+    public void loadData() {
+
+    }
+
+    @Override
+    public void setQuery(String query) {
+
+    }
 }

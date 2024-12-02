@@ -179,7 +179,7 @@
                 <textElement textAlignment="Right">
                     <font size="16"/>
                 </textElement>
-                <textFieldExpression><![CDATA["من مصفاة"]]></textFieldExpression>
+                <textFieldExpression><![CDATA["من "]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement mode="Opaque" x="20" y="47" width="213" height="30" backcolor="#E0DDDA" uuid="4bbeb8f6-0a53-4b62-a544-24d812672154">
