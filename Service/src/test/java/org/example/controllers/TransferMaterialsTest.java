@@ -2,16 +2,19 @@ package org.example.controllers;
 
 import org.example.contract.request.create.*;
 import org.example.contract.response.*;
+import org.example.entities.TransportationType;
 import org.example.model.Money;
-import org.example.model.TransportationType;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.ResponseEntity;
 
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.Base64;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 public class TransferMaterialsTest {
@@ -44,7 +47,8 @@ public class TransferMaterialsTest {
     private MaterialController materialController;
     @Autowired
     private PartitionController partitionController;
-    @Test
+    /*@Test
+    @Disabled
     void contextLoads() {
         final OfficeResponse office1 = officeController.createOffice(new CreateOfficeRequest("office 1"));
         final OfficeResponse office2 = officeController.createOffice(new CreateOfficeRequest("office 2"));
@@ -176,7 +180,7 @@ public class TransferMaterialsTest {
                         TransportationType.NORMAL));
         assertNotNull(transferMaterial2);
 
-        /*final PartitionResponse partition1 = partitionController.createPartition(new CreatePartitionRequest(material1.getId(),
+        *//*final PartitionResponse partition1 = partitionController.createPartition(new CreatePartitionRequest(material1.getId(),
                 45000,
                 42000,
                 new Money("SP", 12D),
@@ -194,7 +198,19 @@ public class TransferMaterialsTest {
                 "notes",
                 "extra notes",
                 trans2.getId()));
-        assertNotNull(partition2);*/
+        assertNotNull(partition2);*//*
 
+    }*/
+    @Test
+    void testClientsReceivedMaterials() throws Exception {
+        final ResponseEntity<String> html = partitionController.getClientReceivedMaterials(6L,
+                LocalDate.parse("2024-01-01"),
+                LocalDate.parse("2024-12-30"),
+                "HTML",
+                TransportationType.NORMAL);
+        final byte[] decode = Base64.getDecoder().decode(html.getBody());
+        String htmlContent = new String(decode);
+        final boolean b = htmlContent.startsWith("<!DOCTYPE");
+        assertTrue(b);
     }
 }

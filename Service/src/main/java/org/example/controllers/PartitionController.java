@@ -292,4 +292,47 @@ public class PartitionController {
             throw new RuntimeException(e);
         }
     }
+
+    @GetMapping("/clientReceived/{exportType}/{id}/{start}/{end}/{type}")
+    public ResponseEntity<String> getClientReceivedMaterials(@PathVariable Long id,
+                                                      @PathVariable LocalDate start,
+                                                      @PathVariable LocalDate end,
+                                                      @PathVariable String exportType,
+                                                      @PathVariable TransportationType type){
+
+        final List<PartitionEntity> partitionEntities = partitionRepository.getPartitionsForClient(id,
+                LocalDateTime.of(start, LocalTime.parse("00:00:00")),
+                LocalDateTime.of(end, LocalTime.parse("23:59:59")),
+                type);
+
+        Map<String, Object> params = new HashMap<>();
+        params.put("nowLocalDT", LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
+        params.put("dateSpan", LocalDate.from(start)+"-"+LocalDate.from(end));
+        params.put("clientName", partitionEntities.get(0).getGasStation().getName());
+
+        try {
+            final JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(partitionEntities);
+            JasperReport regionReport = JasperCompileManager.compileReport(new ClassPathResource("templates/clientPartitions.jrxml").getInputStream());
+            final JasperPrint jasperPrint = JasperFillManager.fillReport(regionReport, params, jrBeanCollectionDataSource);
+            File file = null;
+            if(exportType.equals("HTML")){
+                file = new File("regionReport.html");
+                JasperExportManager.exportReportToHtmlFile(jasperPrint,
+                        file.getAbsolutePath());
+            }else if(exportType.equals("XLSX")){
+                file = new File("regionReport.xlsx");
+                JRXlsxExporter exporter = new JRXlsxExporter();
+                exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
+                exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(file.getAbsolutePath()));
+                exporter.exportReport();
+            }
+
+            assert file != null;
+            try(final FileInputStream fileInputStream = new FileInputStream(file);){
+                return ResponseEntity.ok(Base64.getEncoder().encodeToString(fileInputStream.readAllBytes()));
+            }
+        } catch (JRException | IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
