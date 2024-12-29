@@ -13,9 +13,9 @@ import java.util.List;
 public interface TransferMaterialRepository extends JpaRepository<TransferMaterialsEntity, Long>,
         PagingAndSortingRepository<TransferMaterialsEntity, Long>, JpaSpecificationExecutor<TransferMaterialsEntity> {
 
-    @Query("SELECT SUM(t.amount*t.priceAmount), t.priceCurrency, t.material.name FROM TransferMaterialsEntity t JOIN t.source s WHERE s.id = ?1 GROUP BY t.priceCurrency, t.material")
+    @Query("SELECT t.priceCurrency, SUM(t.amount*t.priceAmount) FROM TransferMaterialsEntity t JOIN t.source s WHERE s.id = ?1 GROUP BY t.priceCurrency")
     List<String[]> getTransferMaterialsFrom(Long gasStationId);
 
-    @Query("SELECT SUM(t.amount*t.priceAmount), t.priceCurrency, t.material.name FROM TransferMaterialsEntity t JOIN t.destination s WHERE s.id = ?1 GROUP BY t.priceCurrency, t.material")
+    @Query("SELECT t.priceCurrency, SUM(t.amount*t.priceAmount) FROM TransferMaterialsEntity t JOIN t.destination s WHERE s.id = ?1 GROUP BY t.priceCurrency")
     List<String[]> getTransferMaterialsTo(Long gasStationId);
 }

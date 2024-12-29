@@ -11,6 +11,6 @@ import java.util.List;
 @Repository
 public interface ReturnedMaterialRepository extends JpaRepository<ReturnedMaterial, Long>,
         PagingAndSortingRepository<ReturnedMaterial, Long>, JpaSpecificationExecutor<ReturnedMaterial> {
-    @Query("SELECT SUM(r.amount*r.priceAmount), r.priceCurrency, r.material.name FROM ReturnedMaterial r JOIN r.gasStation g WHERE g.id = ?1 GROUP BY r.priceCurrency, r.material")
+    @Query("SELECT r.priceCurrency, SUM(r.amount*r.priceAmount) FROM ReturnedMaterial r JOIN r.gasStation g WHERE g.id = ?1 GROUP BY r.priceCurrency")
     List<String[]> getReturnedMaterials(Long gasStationId);
 }

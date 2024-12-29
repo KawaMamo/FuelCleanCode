@@ -84,3 +84,339 @@
 2024-12-30T01:05:32.478+03:00  INFO 8748 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-12-30T01:05:32.480+03:00  INFO 8748 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-12-30T01:05:32.487+03:00  INFO 8748 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-12-30T01:05:35.106+03:00  INFO 21688 --- [main] org.example.Main                         : Starting Main using Java 20 with PID 21688 (D:\fuelRefactored\FuelCleanCode\Service\target\classes started by GIGABYTE in D:\fuelRefactored\FuelCleanCode)
+2024-12-30T01:05:35.109+03:00  INFO 21688 --- [main] org.example.Main                         : The following 1 profile is active: "local"
+2024-12-30T01:05:36.356+03:00  INFO 21688 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-30T01:05:36.557+03:00  INFO 21688 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 193 ms. Found 25 JPA repository interfaces.
+2024-12-30T01:05:37.356+03:00  INFO 21688 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9091 (http)
+2024-12-30T01:05:37.368+03:00  INFO 21688 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-30T01:05:37.368+03:00  INFO 21688 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.7]
+2024-12-30T01:05:37.484+03:00  INFO 21688 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-30T01:05:37.484+03:00  INFO 21688 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2337 ms
+2024-12-30T01:05:37.817+03:00  INFO 21688 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-30T01:05:37.865+03:00  INFO 21688 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2024-12-30T01:05:38.151+03:00  INFO 21688 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-30T01:05:38.319+03:00  INFO 21688 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6bdedbbd
+2024-12-30T01:05:38.321+03:00  INFO 21688 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-30T01:05:38.355+03:00  WARN 21688 --- [main] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.0 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 5.7.0. Check the community dialects project for available legacy versions.
+2024-12-30T01:05:38.361+03:00  INFO 21688 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2024-12-30T01:05:40.076+03:00  INFO 21688 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-12-30T01:05:40.085+03:00  INFO 21688 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-30T01:05:40.517+03:00  WARN 21688 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.ClientPaymentRepository
+2024-12-30T01:05:40.943+03:00  WARN 21688 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.PartitionRepository
+2024-12-30T01:05:41.233+03:00  WARN 21688 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.TransRepoJpa
+2024-12-30T01:05:41.332+03:00  WARN 21688 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.ReturnedMaterialRepository
+2024-12-30T01:05:41.439+03:00  WARN 21688 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.TransferMaterialRepository
+2024-12-30T01:05:41.481+03:00  WARN 21688 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.TransLineRepository
+2024-12-30T01:05:41.534+03:00  WARN 21688 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.TransLogRepository
+2024-12-30T01:05:41.702+03:00  WARN 21688 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-30T01:05:42.331+03:00  INFO 21688 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-12-30T01:05:42.419+03:00  INFO 21688 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9091 (http) with context path ''
+2024-12-30T01:05:42.435+03:00  INFO 21688 --- [main] org.example.Main                         : Started Main in 7.773 seconds (process running for 8.316)
+2024-12-30T01:05:55.098+03:00  INFO 21688 --- [http-nio-9091-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-30T01:05:55.098+03:00  INFO 21688 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-30T01:05:55.100+03:00  INFO 21688 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-12-30T01:05:55.166+03:00  WARN 21688 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2024-12-30T01:05:55.235+03:00  WARN 21688 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@6c5a49fc
+2024-12-30T01:06:08.087+03:00  WARN 21688 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/client-payment/totalPayments
+2024-12-30T01:06:08.102+03:00  WARN 21688 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/client-payment/totalPayments headers org.apache.tomcat.util.http.ValuesEnumerator@200df969
+2024-12-30T01:06:08.105+03:00  WARN 21688 --- [http-nio-9091-exec-2] o.s.web.servlet.PageNotFound             : Request method 'GET' is not supported
+2024-12-30T01:09:55.181+03:00  WARN 21688 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m46s715ms786µs800ns).
+2024-12-30T01:09:55.191+03:00  WARN 21688 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2024-12-30T01:09:55.193+03:00  WARN 21688 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/client-payment/totalPayments
+2024-12-30T01:09:55.211+03:00  WARN 21688 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/client-payment/totalPayments headers org.apache.tomcat.util.http.ValuesEnumerator@417a13fd
+2024-12-30T01:09:55.211+03:00  WARN 21688 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@6eec993e
+2024-12-30T01:09:55.213+03:00  WARN 21688 --- [http-nio-9091-exec-4] o.s.web.servlet.PageNotFound             : Request method 'GET' is not supported
+2024-12-30T01:09:55.215+03:00  WARN 21688 --- [http-nio-9091-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Failure in @ExceptionHandler org.example.config.AppExceptionHandler#handleException(Exception, WebRequest)
+
+org.apache.catalina.connector.ClientAbortException: java.io.IOException: Connection reset by peer
+	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:305) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:267) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.connector.CoyoteOutputStream.flush(CoyoteOutputStream.java:118) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at java.base/java.io.FilterOutputStream.flush(FilterOutputStream.java:154) ~[na:na]
+	at com.fasterxml.jackson.core.json.UTF8JsonGenerator.flush(UTF8JsonGenerator.java:1200) ~[jackson-core-2.14.2.jar:2.14.2]
+	at com.fasterxml.jackson.databind.ObjectWriter.writeValue(ObjectWriter.java:1063) ~[jackson-databind-2.14.2.jar:2.14.2]
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.writeInternal(AbstractJackson2HttpMessageConverter.java:483) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.springframework.http.converter.AbstractGenericHttpMessageConverter.write(AbstractGenericHttpMessageConverter.java:103) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:297) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor.handleReturnValue(HttpEntityMethodProcessor.java:245) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.method.support.HandlerMethodReturnValueHandlerComposite.handleReturnValue(HandlerMethodReturnValueHandlerComposite.java:78) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:136) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException(ExceptionHandlerExceptionResolver.java:413) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodExceptionResolver.doResolveException(AbstractHandlerMethodExceptionResolver.java:74) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:141) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:80) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.DispatcherServlet.processHandlerException(DispatcherServlet.java:1341) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1152) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1098) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:537) ~[tomcat-embed-core-10.1.7.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.0.7.jar:6.0.7]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:631) ~[tomcat-embed-core-10.1.7.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.example.security.CustomFilter.doFilter(CustomFilter.java:84) ~[classes/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:109) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.7.jar:6.0.7]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:493) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at java.base/java.lang.Thread.run(Thread.java:1623) ~[na:na]
+Caused by: java.io.IOException: Connection reset by peer
+	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:54) ~[na:na]
+	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:137) ~[na:na]
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:102) ~[na:na]
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:58) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:542) ~[na:na]
+	at org.apache.tomcat.util.net.NioChannel.write(NioChannel.java:118) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1381) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:764) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.util.net.SocketWrapperBase.flushBlocking(SocketWrapperBase.java:728) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.tomcat.util.net.SocketWrapperBase.flush(SocketWrapperBase.java:712) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.flush(Http11OutputBuffer.java:566) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.coyote.http11.filters.ChunkedOutputFilter.flush(ChunkedOutputFilter.java:157) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.coyote.http11.Http11OutputBuffer.flush(Http11OutputBuffer.java:220) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.coyote.http11.Http11Processor.flush(Http11Processor.java:1245) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.coyote.AbstractProcessor.action(AbstractProcessor.java:399) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.coyote.Response.action(Response.java:208) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:301) ~[tomcat-embed-core-10.1.7.jar:10.1.7]
+	... 64 common frames omitted
+
+2024-12-30T01:09:55.223+03:00  WARN 21688 --- [http-nio-9091-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Ignoring exception, response committed. : org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported
+2024-12-30T01:09:55.225+03:00  WARN 21688 --- [http-nio-9091-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2024-12-30T01:10:15.852+03:00  WARN 21688 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/office-payment
+2024-12-30T01:10:15.869+03:00  WARN 21688 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/office-payment headers org.apache.tomcat.util.http.ValuesEnumerator@5bde63c0
+2024-12-30T01:10:19.221+03:00  WARN 21688 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2024-12-30T01:10:19.403+03:00  WARN 21688 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@7002a5c3
+2024-12-30T01:10:27.949+03:00  WARN 21688 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/client-payment/totalPayments/6
+2024-12-30T01:10:27.967+03:00  WARN 21688 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/client-payment/totalPayments/ headers org.apache.tomcat.util.http.ValuesEnumerator@3a9b43e9
+2024-12-30T01:10:27.971+03:00  WARN 21688 --- [http-nio-9091-exec-8] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.controllers.ClientPaymentController
+2024-12-30T01:27:35.951+03:00  WARN 21688 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2024-12-30T01:27:35.964+03:00  WARN 21688 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@2343c893
+2024-12-30T01:27:40.618+03:00  WARN 21688 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/client-payment/totalPayments/6
+2024-12-30T01:27:40.632+03:00  WARN 21688 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/client-payment/totalPayments/ headers org.apache.tomcat.util.http.ValuesEnumerator@4d0dd3a3
+2024-12-30T01:28:02.192+03:00  WARN 21688 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/client-payment/totalPayments/6
+2024-12-30T01:28:02.208+03:00  WARN 21688 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/client-payment/totalPayments/ headers org.apache.tomcat.util.http.ValuesEnumerator@1176074e
+2024-12-30T01:30:47.562+03:00  WARN 21688 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2024-12-30T01:30:47.574+03:00  WARN 21688 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@71b98984
+2024-12-30T01:30:51.406+03:00  WARN 21688 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/client-payment/totalPayments/6
+2024-12-30T01:30:51.419+03:00  WARN 21688 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/client-payment/totalPayments/ headers org.apache.tomcat.util.http.ValuesEnumerator@17c6be65
+2024-12-30T01:35:01.319+03:00  WARN 21688 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2024-12-30T01:35:01.331+03:00  WARN 21688 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@21e5e1b0
+2024-12-30T01:35:05.764+03:00  WARN 21688 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/client-payment/totalPayments/6
+2024-12-30T01:35:05.775+03:00  WARN 21688 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/client-payment/totalPayments/ headers org.apache.tomcat.util.http.ValuesEnumerator@787c56d7
+2024-12-30T01:37:35.189+03:00  WARN 21688 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2024-12-30T01:37:35.205+03:00  WARN 21688 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@460122da
+2024-12-30T01:37:41.858+03:00  WARN 21688 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/client-payment/totalPayments/6
+2024-12-30T01:37:41.868+03:00  WARN 21688 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/client-payment/totalPayments/ headers org.apache.tomcat.util.http.ValuesEnumerator@45ea4fdd
+2024-12-30T01:38:26.809+03:00  WARN 21688 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/client-payment/totalPayments/6
+2024-12-30T01:38:26.821+03:00  WARN 21688 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/client-payment/totalPayments/ headers org.apache.tomcat.util.http.ValuesEnumerator@6de3c75c
+2024-12-30T01:51:10.829+03:00  WARN 21688 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2024-12-30T01:51:10.841+03:00  WARN 21688 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@aba1f55
+2024-12-30T01:51:15.075+03:00  WARN 21688 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/client-payment/totalPayments/6
+2024-12-30T01:51:15.086+03:00  WARN 21688 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/client-payment/totalPayments/ headers org.apache.tomcat.util.http.ValuesEnumerator@739cb207
+2024-12-30T01:51:15.101+03:00  WARN 21688 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/partition/totalReceivedMaterials/6
+2024-12-30T01:51:15.115+03:00  WARN 21688 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/partition/totalReceivedMaterials/ headers org.apache.tomcat.util.http.ValuesEnumerator@4c962195
+2024-12-30T01:51:15.117+03:00  WARN 21688 --- [http-nio-9091-exec-7] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.controllers.PartitionController
+2024-12-30T01:51:33.758+03:00  INFO 21688 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-30T01:51:33.759+03:00  INFO 21688 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-12-30T01:51:33.761+03:00  INFO 21688 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-12-30T01:51:37.465+03:00  INFO 19552 --- [main] org.example.Main                         : Starting Main using Java 20 with PID 19552 (D:\fuelRefactored\FuelCleanCode\Service\target\classes started by GIGABYTE in D:\fuelRefactored\FuelCleanCode)
+2024-12-30T01:51:37.469+03:00  INFO 19552 --- [main] org.example.Main                         : The following 1 profile is active: "local"
+2024-12-30T01:51:38.851+03:00  INFO 19552 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-30T01:51:39.076+03:00  INFO 19552 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 215 ms. Found 25 JPA repository interfaces.
+2024-12-30T01:51:39.914+03:00  INFO 19552 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9091 (http)
+2024-12-30T01:51:39.925+03:00  INFO 19552 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-30T01:51:39.925+03:00  INFO 19552 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.7]
+2024-12-30T01:51:40.056+03:00  INFO 19552 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-30T01:51:40.056+03:00  INFO 19552 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2535 ms
+2024-12-30T01:51:40.420+03:00  INFO 19552 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-30T01:51:40.467+03:00  INFO 19552 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2024-12-30T01:51:40.780+03:00  INFO 19552 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-30T01:51:40.949+03:00  INFO 19552 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1b98355f
+2024-12-30T01:51:40.951+03:00  INFO 19552 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-30T01:51:40.992+03:00  WARN 19552 --- [main] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.0 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 5.7.0. Check the community dialects project for available legacy versions.
+2024-12-30T01:51:41.000+03:00  INFO 19552 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2024-12-30T01:51:42.980+03:00  INFO 19552 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-12-30T01:51:42.991+03:00  INFO 19552 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-30T01:51:43.512+03:00  WARN 19552 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.ClientPaymentRepository
+2024-12-30T01:51:44.007+03:00  WARN 19552 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.PartitionRepository
+2024-12-30T01:51:44.284+03:00  WARN 19552 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.TransRepoJpa
+2024-12-30T01:51:44.395+03:00  WARN 19552 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.ReturnedMaterialRepository
+2024-12-30T01:51:44.546+03:00  WARN 19552 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.TransferMaterialRepository
+2024-12-30T01:51:44.591+03:00  WARN 19552 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.TransLineRepository
+2024-12-30T01:51:44.668+03:00  WARN 19552 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.repositories.TransLogRepository
+2024-12-30T01:51:44.875+03:00  WARN 19552 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-30T01:51:45.599+03:00  INFO 19552 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-12-30T01:51:45.709+03:00  INFO 19552 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9091 (http) with context path ''
+2024-12-30T01:51:45.727+03:00  INFO 19552 --- [main] org.example.Main                         : Started Main in 8.744 seconds (process running for 9.415)
+2024-12-30T01:51:52.711+03:00  INFO 19552 --- [http-nio-9091-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-30T01:51:52.711+03:00  INFO 19552 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-30T01:51:52.713+03:00  INFO 19552 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-12-30T01:51:52.801+03:00  WARN 19552 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/client-payment/totalPayments/6
+2024-12-30T01:51:52.867+03:00  WARN 19552 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/client-payment/totalPayments/ headers org.apache.tomcat.util.http.ValuesEnumerator@9b702d
+2024-12-30T01:51:52.888+03:00  WARN 19552 --- [http-nio-9091-exec-1] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.controllers.ClientPaymentController
+2024-12-30T01:51:53.013+03:00  WARN 19552 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/partition/totalReceivedMaterials/6
+2024-12-30T01:51:53.032+03:00  WARN 19552 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/partition/totalReceivedMaterials/ headers org.apache.tomcat.util.http.ValuesEnumerator@44b8e88c
+2024-12-30T01:51:53.035+03:00  WARN 19552 --- [http-nio-9091-exec-2] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.controllers.PartitionController
+2024-12-30T01:51:58.896+03:00  WARN 19552 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/client-payment/totalPayments/6
+2024-12-30T01:51:58.908+03:00  WARN 19552 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/client-payment/totalPayments/ headers org.apache.tomcat.util.http.ValuesEnumerator@22d003cf
+2024-12-30T01:51:58.923+03:00  WARN 19552 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/partition/totalReceivedMaterials/6
+2024-12-30T01:51:58.936+03:00  WARN 19552 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/partition/totalReceivedMaterials/ headers org.apache.tomcat.util.http.ValuesEnumerator@20de141e
+2024-12-30T01:52:19.408+03:00  WARN 19552 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/trans
+2024-12-30T01:52:19.422+03:00  WARN 19552 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@55bf1c1c
+2024-12-30T01:52:25.048+03:00  WARN 19552 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/refinery/all
+2024-12-30T01:52:25.065+03:00  WARN 19552 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/refinery/all headers org.apache.tomcat.util.http.ValuesEnumerator@1afaaaa5
+2024-12-30T01:52:25.094+03:00  WARN 19552 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/vehicle/all
+2024-12-30T01:52:25.108+03:00  WARN 19552 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/vehicle/all headers org.apache.tomcat.util.http.ValuesEnumerator@200df969
+2024-12-30T01:52:25.129+03:00  WARN 19552 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/material/all
+2024-12-30T01:52:25.140+03:00  WARN 19552 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@79d90eba
+2024-12-30T01:52:25.153+03:00  WARN 19552 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/price-category/all
+2024-12-30T01:52:25.164+03:00  WARN 19552 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@6de3c75c
+2024-12-30T01:52:25.193+03:00  WARN 19552 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2024-12-30T01:52:25.207+03:00  WARN 19552 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@666f7d34
+2024-12-30T01:52:47.598+03:00  WARN 19552 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans
+2024-12-30T01:52:47.613+03:00  WARN 19552 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@749fc6c8
+2024-12-30T01:52:47.700+03:00  WARN 19552 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans
+2024-12-30T01:52:47.713+03:00  WARN 19552 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@5bfce680
+2024-12-30T01:52:47.743+03:00  WARN 19552 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans
+2024-12-30T01:52:47.755+03:00  WARN 19552 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@1f6be5
+2024-12-30T01:52:52.987+03:00  WARN 19552 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/category
+2024-12-30T01:52:53.001+03:00  WARN 19552 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@1af3ac92
+2024-12-30T01:52:53.028+03:00  WARN 19552 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/category
+2024-12-30T01:52:53.040+03:00  WARN 19552 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@707fcee0
+2024-12-30T01:53:10.536+03:00  WARN 19552 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/category
+2024-12-30T01:53:10.547+03:00  WARN 19552 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@1f0f351
+2024-12-30T01:53:10.562+03:00  WARN 19552 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/category
+2024-12-30T01:53:10.573+03:00  WARN 19552 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@6f79a1ca
+2024-12-30T01:53:13.630+03:00  WARN 19552 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/category
+2024-12-30T01:53:13.639+03:00  WARN 19552 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@22617b8a
+2024-12-30T01:53:18.385+03:00  WARN 19552 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/category
+2024-12-30T01:53:18.396+03:00  WARN 19552 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@21ffe393
+2024-12-30T01:53:27.286+03:00  WARN 19552 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/category
+2024-12-30T01:53:27.297+03:00  WARN 19552 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@74496b59
+2024-12-30T01:53:34.917+03:00  WARN 19552 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/category
+2024-12-30T01:53:34.931+03:00  WARN 19552 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@649fa372
+2024-12-30T01:53:37.361+03:00  WARN 19552 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/category
+2024-12-30T01:53:37.371+03:00  WARN 19552 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@7d9d150
+2024-12-30T01:53:37.386+03:00  WARN 19552 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/category
+2024-12-30T01:53:37.395+03:00  WARN 19552 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@cdfe260
+2024-12-30T01:53:43.127+03:00  WARN 19552 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/category
+2024-12-30T01:53:43.148+03:00  WARN 19552 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@6218fb1d
+2024-12-30T01:53:52.734+03:00  WARN 19552 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/category
+2024-12-30T01:53:52.745+03:00  WARN 19552 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@2f766ecd
+2024-12-30T01:54:00.916+03:00  WARN 19552 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/material/all
+2024-12-30T01:54:00.925+03:00  WARN 19552 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@287f2ebd
+2024-12-30T01:54:00.937+03:00  WARN 19552 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/price-category/all
+2024-12-30T01:54:00.948+03:00  WARN 19552 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@63220742
+2024-12-30T01:54:23.196+03:00  WARN 19552 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/category
+2024-12-30T01:54:23.206+03:00  WARN 19552 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@66943e29
+2024-12-30T01:54:23.222+03:00  WARN 19552 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/material/all
+2024-12-30T01:54:23.232+03:00  WARN 19552 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@7f997df4
+2024-12-30T01:54:23.243+03:00  WARN 19552 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/price-category/all
+2024-12-30T01:54:23.251+03:00  WARN 19552 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@3a4fe81c
+2024-12-30T01:54:27.566+03:00  WARN 19552 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/category
+2024-12-30T01:54:27.575+03:00  WARN 19552 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@77919b4d
+2024-12-30T01:54:27.578+03:00  INFO 19552 --- [http-nio-9091-exec-2] o.e.controllers.CategoryController       : UpdateCategoryRequest(id=4, priceCategoryId=1, materialId=2, price=Money(currency=USD, amount=500.0))
+2024-12-30T01:54:27.622+03:00  WARN 19552 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/category
+2024-12-30T01:54:27.633+03:00  WARN 19552 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@1f0109e6
+2024-12-30T01:54:36.408+03:00  WARN 19552 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/trans
+2024-12-30T01:54:36.419+03:00  WARN 19552 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@4f1fe3e3
+2024-12-30T01:54:39.976+03:00  WARN 19552 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/refinery/all
+2024-12-30T01:54:39.987+03:00  WARN 19552 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/refinery/all headers org.apache.tomcat.util.http.ValuesEnumerator@2e36e536
+2024-12-30T01:54:40.002+03:00  WARN 19552 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/vehicle/all
+2024-12-30T01:54:40.014+03:00  WARN 19552 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/vehicle/all headers org.apache.tomcat.util.http.ValuesEnumerator@4ea819a2
+2024-12-30T01:54:40.025+03:00  WARN 19552 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/material/all
+2024-12-30T01:54:40.036+03:00  WARN 19552 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@4accd329
+2024-12-30T01:54:40.046+03:00  WARN 19552 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/price-category/all
+2024-12-30T01:54:40.056+03:00  WARN 19552 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@5debf42e
+2024-12-30T01:54:40.065+03:00  WARN 19552 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2024-12-30T01:54:40.075+03:00  WARN 19552 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@56c08708
+2024-12-30T01:54:40.090+03:00  WARN 19552 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans
+2024-12-30T01:54:40.099+03:00  WARN 19552 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@789d77ad
+2024-12-30T01:54:40.116+03:00  WARN 19552 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/partition
+2024-12-30T01:54:40.124+03:00  WARN 19552 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/partition headers org.apache.tomcat.util.http.ValuesEnumerator@2e026993
+2024-12-30T01:54:40.139+03:00  WARN 19552 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans-log
+2024-12-30T01:54:40.149+03:00  WARN 19552 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans-log headers org.apache.tomcat.util.http.ValuesEnumerator@130d39ab
+2024-12-30T01:54:56.894+03:00  WARN 19552 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/category
+2024-12-30T01:54:56.908+03:00  WARN 19552 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@7dd9fd83
+2024-12-30T01:54:56.923+03:00  WARN 19552 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/category
+2024-12-30T01:54:56.933+03:00  WARN 19552 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@50b69a20
+2024-12-30T01:55:04.366+03:00  WARN 19552 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/category
+2024-12-30T01:55:04.383+03:00  WARN 19552 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@5b06a369
+2024-12-30T01:55:09.002+03:00  WARN 19552 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/partition
+2024-12-30T01:55:09.012+03:00  WARN 19552 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/partition headers org.apache.tomcat.util.http.ValuesEnumerator@41f7f2b8
+2024-12-30T01:55:09.069+03:00  WARN 19552 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/partition
+2024-12-30T01:55:09.080+03:00  WARN 19552 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/partition headers org.apache.tomcat.util.http.ValuesEnumerator@32abc5be
+2024-12-30T01:55:13.160+03:00  WARN 19552 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/trans-line
+2024-12-30T01:55:13.169+03:00  WARN 19552 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/trans-line headers org.apache.tomcat.util.http.ValuesEnumerator@5bd702cf
+2024-12-30T01:55:13.185+03:00  WARN 19552 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans-log
+2024-12-30T01:55:13.195+03:00  WARN 19552 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans-log headers org.apache.tomcat.util.http.ValuesEnumerator@4afba698
+2024-12-30T01:55:13.230+03:00  WARN 19552 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans-log
+2024-12-30T01:55:13.240+03:00  WARN 19552 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans-log headers org.apache.tomcat.util.http.ValuesEnumerator@26c8dd3
+2024-12-30T01:55:17.242+03:00  WARN 19552 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/category
+2024-12-30T01:55:17.252+03:00  WARN 19552 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@ee68d41
+2024-12-30T01:55:19.841+03:00  WARN 19552 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans
+2024-12-30T01:55:19.849+03:00  WARN 19552 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@103eb869
+2024-12-30T01:55:27.207+03:00  WARN 19552 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2024-12-30T01:55:27.218+03:00  WARN 19552 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@4fae9d35
+2024-12-30T01:55:31.097+03:00  WARN 19552 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/client-payment/totalPayments/6
+2024-12-30T01:55:31.108+03:00  WARN 19552 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/client-payment/totalPayments/ headers org.apache.tomcat.util.http.ValuesEnumerator@29275daf
+2024-12-30T01:55:31.116+03:00  WARN 19552 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/partition/totalReceivedMaterials/6
+2024-12-30T01:55:31.125+03:00  WARN 19552 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/partition/totalReceivedMaterials/ headers org.apache.tomcat.util.http.ValuesEnumerator@36dc19d6
+2024-12-30T02:00:00.815+03:00  WARN 19552 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2024-12-30T02:00:00.825+03:00  WARN 19552 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@2d333a1b
+2024-12-30T02:00:05.656+03:00  WARN 19552 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/client-payment/totalPayments/6
+2024-12-30T02:00:05.664+03:00  WARN 19552 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/client-payment/totalPayments/ headers org.apache.tomcat.util.http.ValuesEnumerator@1f9a3c9e
+2024-12-30T02:00:05.676+03:00  WARN 19552 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/partition/totalReceivedMaterials/6
+2024-12-30T02:00:05.686+03:00  WARN 19552 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/partition/totalReceivedMaterials/ headers org.apache.tomcat.util.http.ValuesEnumerator@87f369d
+2024-12-30T02:00:05.695+03:00  WARN 19552 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/returned-material/totalReturnedMaterials/6
+2024-12-30T02:00:05.704+03:00  WARN 19552 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/returned-material/totalReturnedMaterials/ headers org.apache.tomcat.util.http.ValuesEnumerator@4e04f56e
+2024-12-30T02:00:05.705+03:00  WARN 19552 --- [http-nio-9091-exec-1] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.controllers.ReturnedMaterialController
+2024-12-30T02:15:20.270+03:00  WARN 19552 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2024-12-30T02:15:20.281+03:00  WARN 19552 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@2a116627
+2024-12-30T02:15:30.929+03:00  WARN 19552 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/client-payment/totalPayments/6
+2024-12-30T02:15:30.939+03:00  WARN 19552 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/client-payment/totalPayments/ headers org.apache.tomcat.util.http.ValuesEnumerator@365a402b
+2024-12-30T02:15:30.951+03:00  WARN 19552 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/partition/totalReceivedMaterials/6
+2024-12-30T02:15:30.959+03:00  WARN 19552 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/partition/totalReceivedMaterials/ headers org.apache.tomcat.util.http.ValuesEnumerator@35081d48
+2024-12-30T02:15:30.968+03:00  WARN 19552 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/returned-material/totalReturnedMaterials/6
+2024-12-30T02:15:30.978+03:00  WARN 19552 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/returned-material/totalReturnedMaterials/ headers org.apache.tomcat.util.http.ValuesEnumerator@76ec000b
+2024-12-30T02:15:30.987+03:00  WARN 19552 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/transfer-materials/totalTransfersTo/6
+2024-12-30T02:15:30.997+03:00  WARN 19552 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/transfer-materials/totalTransfersTo/ headers org.apache.tomcat.util.http.ValuesEnumerator@1fb65055
+2024-12-30T02:16:55.475+03:00  INFO 19552 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-30T02:16:55.477+03:00  INFO 19552 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-12-30T02:16:55.483+03:00  INFO 19552 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

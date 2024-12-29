@@ -25,7 +25,7 @@ public interface PartitionRepository extends JpaRepository<PartitionEntity, Long
     @Query("SELECT p FROM PartitionEntity p JOIN p.gasStation g JOIN p.transportationEntity t WHERE g.id = ?1 AND p.createdAt BETWEEN ?2 AND ?3 AND t.type = ?4")
     List<PartitionEntity> getPartitionsForClient(Long id, LocalDateTime start, LocalDateTime end, TransportationType type);
 
-    @Query("SELECT SUM(p.amount*p.priceAmount), p.material.name, p.priceCurrency FROM PartitionEntity p JOIN p.gasStation g WHERE g.id = ?1 GROUP BY p.priceCurrency, p.material")
+    @Query("SELECT p.priceCurrency, SUM(p.amount*p.priceAmount) FROM PartitionEntity p JOIN p.gasStation g WHERE g.id = ?1 GROUP BY p.priceCurrency")
     List<String[]> getTotalMaterialsForClient(Long clientId);
 
 }

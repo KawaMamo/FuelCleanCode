@@ -4,6 +4,7 @@ import com.example.model.Service;
 import com.example.model.partition.responce.PartitionResponseEntity;
 import org.example.contract.request.create.CreatePartitionRequest;
 import org.example.contract.request.update.UpdatePartitionRequest;
+import org.example.model.Money;
 import org.example.model.Partition;
 
 import java.net.http.HttpResponse;
@@ -91,5 +92,15 @@ public class PartitionService implements Service<Partition, CreatePartitionReque
 
         final HttpResponse<String> stringHttpResponse = client.parallelGet(getEndPoint()+"/RefineryReport" + "/" + exportType + "/" + id + "/" + startDate + "/" + endDate + "/" + transType);
         return stringHttpResponse.body().getBytes(StandardCharsets.UTF_8);
+    }
+
+    public List<Money> getTotalReceivedMaterials(Long gasStationId) {
+        final HttpResponse<String> stringHttpResponse = client.parallelGet(getEndPoint() + "/totalReceivedMaterials/" + gasStationId);
+        List<Money> list = new ArrayList<Money>();
+        for (Object object : gson.fromJson(stringHttpResponse.body(), List.class)) {
+            final ArrayList<String> strings = (ArrayList<String>) object;
+            list.add(new Money(strings.get(0), Double.valueOf(strings.get(1))));
+        }
+        return list;
     }
 }

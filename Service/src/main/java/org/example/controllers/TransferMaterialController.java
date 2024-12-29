@@ -70,8 +70,13 @@ public class TransferMaterialController {
         return deleteTransferMaterial.execute(id);
     }
 
-    @GetMapping("/totalTransfers/{clientId}")
-    public List<String[]> getTotalTransfers(@PathVariable Long clientId){
+    @GetMapping("/totalTransfersTo/{clientId}")
+    public List<String[]> getTotalTransfersTo(@PathVariable Long clientId){
         return transferMaterialRepository.getTransferMaterialsTo(clientId);
+    }
+
+    @GetMapping("/totalTransfersFrom/{clientId}")
+    public List<String[]> getTotalTransfersFrom(@PathVariable Long clientId){
+        return transferMaterialRepository.getTransferMaterialsFrom(clientId);
     }
 }

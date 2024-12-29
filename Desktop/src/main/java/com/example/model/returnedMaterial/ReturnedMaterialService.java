@@ -4,6 +4,7 @@ import com.example.model.Service;
 import com.example.model.returnedMaterial.response.ReturnedMaterialResponseEntity;
 import org.example.contract.request.create.CreateReturnedMaterialRequest;
 import org.example.contract.request.update.UpdateReturnedMaterialRequest;
+import org.example.model.Money;
 import org.example.model.ReturnedMaterial;
 
 import java.net.http.HttpResponse;
@@ -69,5 +70,15 @@ public class ReturnedMaterialService implements Service<ReturnedMaterial, Create
         final String json = gson.toJson(updateRequest);
         final HttpResponse<String> stringHttpResponse = client.parallelPatch(getEndPoint(), json);
         return gson.fromJson(stringHttpResponse.body(), ReturnedMaterial.class);
+    }
+
+    public List<Money> getTotalReturnedMaterials(Long gasStationId) {
+        List<Money> list = new ArrayList<Money>();
+        final HttpResponse<String> stringHttpResponse = client.parallelGet(getEndPoint() + "/totalReturnedMaterials/" + gasStationId);
+        for (Object object : gson.fromJson(stringHttpResponse.body(), List.class)) {
+            final ArrayList<String> strings = (ArrayList<String>) object;
+            list.add(new Money(strings.get(0), Double.valueOf(strings.get(1))));
+        }
+        return list;
     }
 }

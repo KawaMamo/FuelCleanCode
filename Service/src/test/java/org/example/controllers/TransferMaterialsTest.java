@@ -239,6 +239,6 @@ public class TransferMaterialsTest {
 
     @Test
     void testTransferToClient(){
-        transferMaterialController.getTotalTransfers(6L);
+        transferMaterialController.getTotalTransfersTo(6L);
     }
 }

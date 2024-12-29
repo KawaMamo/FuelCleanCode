@@ -4,6 +4,7 @@ import com.example.model.Service;
 import com.example.model.transferMaterial.response.TransferMaterialsResponseEntity;
 import org.example.contract.request.create.CreateTransferMaterialRequest;
 import org.example.contract.request.update.UpdateTransferMaterialRequest;
+import org.example.model.Money;
 import org.example.model.TransferMaterials;
 
 import java.net.http.HttpResponse;
@@ -74,5 +75,25 @@ public class TransferMaterialsService implements Service<TransferMaterials, Crea
         final String payload = gson.toJson(updateRequest);
         final HttpResponse<String> stringHttpResponse = client.parallelPatch(getEndPoint(), payload);
         return gson.fromJson(stringHttpResponse.body(), TransferMaterials.class);
+    }
+
+    public List<Money> getTotalTransfersTo(Long gasStationId) {
+        List<Money> list = new ArrayList<Money>();
+        final HttpResponse<String> stringHttpResponse = client.parallelGet(getEndPoint() + "/totalTransfersTo/" + gasStationId);
+        for (Object object : gson.fromJson(stringHttpResponse.body(), List.class)) {
+            final ArrayList<String> strings = (ArrayList<String>) object;
+            list.add(new Money(strings.get(0), Double.valueOf(strings.get(1))));
+        }
+        return list;
+    }
+
+    public List<Money> getTotalTransfersFrom(Long gasStationId) {
+        List<Money> list = new ArrayList<Money>();
+        final HttpResponse<String> stringHttpResponse = client.parallelGet(getEndPoint() + "/totalTransfersFrom/" + gasStationId);
+        for (Object object : gson.fromJson(stringHttpResponse.body(), List.class)) {
+            final ArrayList<String> strings = (ArrayList<String>) object;
+            list.add(new Money(strings.get(0), Double.valueOf(strings.get(1))));
+        }
+        return list;
     }
 }
