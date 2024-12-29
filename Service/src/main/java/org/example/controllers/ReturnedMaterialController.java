@@ -70,4 +70,9 @@ public class ReturnedMaterialController {
     public ReturnedMaterialResponse delete(@PathVariable Long id){
         return deleteReturnedMaterial.execute(id);
     }
+
+    @GetMapping("/totalReturnedMaterials/{gasStationId}")
+    public List<String[]> getTotalReturnedMaterials(@PathVariable Long gasStationId){
+        return returnedMaterialRepository.getReturnedMaterials(gasStationId);
+    }
 }

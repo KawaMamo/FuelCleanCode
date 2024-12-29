@@ -335,4 +335,9 @@ public class PartitionController {
             throw new RuntimeException(e);
         }
     }
+
+    @GetMapping("/totalReceivedMaterials/{clientId}")
+    public List<String[]> getTotalReceivedMaterials(@PathVariable Long clientId){
+        return partitionRepository.getTotalMaterialsForClient(clientId);
+    }
 }

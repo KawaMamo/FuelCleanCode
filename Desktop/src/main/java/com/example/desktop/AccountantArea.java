@@ -2,6 +2,7 @@ package com.example.desktop;
 
 import com.example.desktop.buyer.Buyers;
 import com.example.desktop.clientPayment.ClientPayments;
+import com.example.desktop.gasStation.GasStationDetails;
 import com.example.desktop.officePayment.OfficePayments;
 import com.example.desktop.reports.DriverReport;
 import com.example.desktop.reports.OfficeReport;
@@ -53,7 +54,16 @@ public class AccountantArea {
 
     @FXML
     void clientReport(){
-
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("gasStation/gasStationDetails.fxml"));
+        try {
+            final Node node = loader.load();
+            final GasStationDetails controller = loader.getController();
+            workArea.getChildren().clear();
+            workArea.getChildren().add(node);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML

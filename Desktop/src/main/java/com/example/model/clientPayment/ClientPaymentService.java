@@ -5,6 +5,7 @@ import com.example.model.clientPayment.response.ClientPaymentResponseEntity;
 import org.example.contract.request.create.CreateClientPaymentRequest;
 import org.example.contract.request.update.UpdateClientPaymentRequest;
 import org.example.model.ClientPayment;
+import org.example.model.Money;
 
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
@@ -72,5 +73,15 @@ public class ClientPaymentService implements Service<ClientPayment, CreateClient
         final String payload = gson.toJson(updateRequest);
         final HttpResponse<String> stringHttpResponse = client.parallelPatch(getEndPoint(), payload);
         return gson.fromJson(stringHttpResponse.body(), ClientPayment.class);
+    }
+
+    public List<Money> getTotalPaymentsForClient(Long clientId) {
+        List<Money> list = new ArrayList<Money>();
+        final HttpResponse<String> stringHttpResponse = client.parallelGet(getEndPoint() + "/totalPayments/" + clientId);
+        for (Object object : gson.fromJson(stringHttpResponse.body(), List.class)) {
+            final ArrayList<String> strings = (ArrayList<String>) object;
+            list.add(new Money(strings.get(0), Double.valueOf(strings.get(1))));
+        }
+        return list;
     }
 }

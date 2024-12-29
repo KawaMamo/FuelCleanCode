@@ -13,6 +13,8 @@ import org.springframework.http.ResponseEntity;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Base64;
+import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -47,6 +49,11 @@ public class TransferMaterialsTest {
     private MaterialController materialController;
     @Autowired
     private PartitionController partitionController;
+    @Autowired
+    private ClientPaymentController clientPaymentController;
+    @Autowired
+    private ReturnedMaterialController returnedMaterialController;
+
     /*@Test
     @Disabled
     void contextLoads() {
@@ -212,5 +219,26 @@ public class TransferMaterialsTest {
         String htmlContent = new String(decode);
         final boolean b = htmlContent.startsWith("<!DOCTYPE");
         assertTrue(b);
+    }
+
+    @Test
+    void testClientsPayments() throws Exception {
+        final List<String[]> totalPayments = clientPaymentController.getTotalPayments(6L);
+        assertNotNull(totalPayments);
+    }
+
+    @Test
+    void testPartitionsSumForClient() throws Exception {
+        partitionController.getTotalReceivedMaterials(6L);
+    }
+
+    @Test
+    void testReturnedMaterialsSum() throws Exception {
+        returnedMaterialController.getTotalReturnedMaterials(6L);
+    }
+
+    @Test
+    void testTransferToClient(){
+        transferMaterialController.getTotalTransfers(6L);
     }
 }

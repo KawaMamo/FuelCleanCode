@@ -5,6 +5,7 @@ import org.example.contract.request.update.UpdateClientPaymentRequest;
 import org.example.contract.response.ClientPaymentResponse;
 import org.example.entities.ClientPayment;
 import org.example.mappers.ClientPaymentMapper;
+import org.example.model.Money;
 import org.example.repositories.ClientPaymentRepository;
 import org.example.specifications.CriteriaArrayToList;
 import org.example.specifications.FilterSpecifications;
@@ -21,6 +22,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("api/v1/client-payment")
@@ -71,5 +73,10 @@ public class ClientPaymentController {
     @GetMapping("/all")
     public List<org.example.model.ClientPayment> getAll(){
         return repository.findAll().stream().map(mapper::entityToDomain).toList();
+    }
+
+    @GetMapping("/totalPayments/{gasStationId}")
+    public List<String[]> getTotalPayments(@PathVariable Long gasStationId){
+        return repository.getTotalPayments(gasStationId);
     }
 }

@@ -69,4 +69,9 @@ public class TransferMaterialController {
     public TransferMaterialResponse delete(@PathVariable Long id){
         return deleteTransferMaterial.execute(id);
     }
+
+    @GetMapping("/totalTransfers/{clientId}")
+    public List<String[]> getTotalTransfers(@PathVariable Long clientId){
+        return transferMaterialRepository.getTransferMaterialsTo(clientId);
+    }
 }
