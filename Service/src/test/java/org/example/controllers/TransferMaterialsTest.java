@@ -1,20 +1,14 @@
 package org.example.controllers;
 
-import org.example.contract.request.create.*;
-import org.example.contract.response.*;
 import org.example.entities.TransportationType;
-import org.example.model.Money;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -240,5 +234,27 @@ public class TransferMaterialsTest {
     @Test
     void testTransferToClient(){
         transferMaterialController.getTotalTransfersTo(6L);
+    }
+
+    @Test
+    void testPaymentsReport(){
+        final ResponseEntity<String> html = clientPaymentController.getClientPayments(6L, LocalDate.parse("2024-01-01"),
+                LocalDate.parse("2024-12-30"),
+                "HTML");
+        final byte[] decode = Base64.getDecoder().decode(html.getBody());
+        String htmlContent = new String(decode);
+        final boolean b = htmlContent.startsWith("<!DOCTYPE");
+        assertTrue(b);
+    }
+
+    @Test
+    void testReturnedMaterialsReport() throws Exception {
+        final ResponseEntity<String> html = returnedMaterialController.getReturnedMaterialsReport(6L, LocalDate.parse("2024-01-01"),
+                LocalDate.parse("2024-12-30"),
+                "HTML");
+        final byte[] decode = Base64.getDecoder().decode(html.getBody());
+        String htmlContent = new String(decode);
+        final boolean b = htmlContent.startsWith("<!DOCTYPE");
+        assertTrue(b);
     }
 }

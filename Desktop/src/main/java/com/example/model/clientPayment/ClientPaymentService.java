@@ -8,6 +8,8 @@ import org.example.model.ClientPayment;
 import org.example.model.Money;
 
 import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -83,5 +85,10 @@ public class ClientPaymentService implements Service<ClientPayment, CreateClient
             list.add(new Money(strings.get(0), Double.valueOf(strings.get(1))));
         }
         return list;
+    }
+
+    public byte[] getPaymentsReport(String exportType, LocalDate startDate, LocalDate endDate, Long id) {
+        final HttpResponse<String> stringHttpResponse = client.parallelGet(getEndPoint()+"/clientsPayments" + "/" + exportType + "/" + id + "/" + startDate + "/" + endDate);
+        return stringHttpResponse.body().getBytes(StandardCharsets.UTF_8);
     }
 }

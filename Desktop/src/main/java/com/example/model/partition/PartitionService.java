@@ -103,4 +103,10 @@ public class PartitionService implements Service<Partition, CreatePartitionReque
         }
         return list;
     }
+
+    public byte[] getReceivedMaterialsReport(String exportType, String transType, LocalDate startDate, LocalDate endDate, Long id){
+
+        final HttpResponse<String> stringHttpResponse = client.parallelGet(getEndPoint()+"/clientReceived" + "/" + exportType + "/" + id + "/" + startDate + "/" + endDate + "/" + transType);
+        return stringHttpResponse.body().getBytes(StandardCharsets.UTF_8);
+    }
 }

@@ -6,7 +6,7 @@ import org.example.model.Money;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-12-02T23:27:23+0300",
+    date = "2025-01-20T02:14:34+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class PaidToParentMapperImpl implements PaidToParentMapper {
