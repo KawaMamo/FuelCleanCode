@@ -64,22 +64,22 @@
                               <Font size="14.0" />
                            </font>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="payments">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="الدفعات">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Received">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="المواد المستلمة">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="returnedMaterials">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="المباع من المركز">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Transferred">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="النقل بين الكازيات">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -151,10 +151,10 @@
                               <Font size="22.0" />
                            </font>
                         </Text>
-                        <Button mnemonicParsing="false" onAction="#paymentsDetails" text="details" />
-                        <Button mnemonicParsing="false" onAction="#receivedDetails" text="details" />
-                        <Button mnemonicParsing="false" onAction="#returnedDetails" text="details" />
-                        <Button mnemonicParsing="false" onAction="#transferredDetails" text="details" />
+                        <Button mnemonicParsing="false" onAction="#paymentsDetails" text="تقرير" />
+                        <Button mnemonicParsing="false" onAction="#receivedDetails" text="تقرير" />
+                        <Button mnemonicParsing="false" onAction="#returnedDetails" text="تقرير" />
+                        <Button mnemonicParsing="false" onAction="#transferredDetails" text="تقرير" />
                      </children>
                   </VBox>
                </children>

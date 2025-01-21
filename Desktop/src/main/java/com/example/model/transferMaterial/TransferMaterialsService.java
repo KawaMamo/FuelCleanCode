@@ -9,6 +9,7 @@ import org.example.model.TransferMaterials;
 
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -95,5 +96,11 @@ public class TransferMaterialsService implements Service<TransferMaterials, Crea
             list.add(new Money(strings.get(0), Double.valueOf(strings.get(1))));
         }
         return list;
+    }
+
+    public byte[] getTransferReport(String exportType, String transType, LocalDate startDate, LocalDate endDate, Long id){
+
+        final HttpResponse<String> stringHttpResponse = client.parallelGet(getEndPoint()+"/transferReport" + "/" + exportType + "/" + id + "/" + startDate + "/" + endDate + "/" + transType);
+        return stringHttpResponse.body().getBytes(StandardCharsets.UTF_8);
     }
 }

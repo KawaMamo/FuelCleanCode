@@ -257,4 +257,16 @@ public class TransferMaterialsTest {
         final boolean b = htmlContent.startsWith("<!DOCTYPE");
         assertTrue(b);
     }
+
+    @Test
+    void testTransferReport() throws Exception {
+        final ResponseEntity<String> html = transferMaterialController.getTransferReport(6L, LocalDate.parse("2024-01-01"),
+                LocalDate.parse("2024-12-30"),
+                "HTML",
+                TransportationType.NORMAL);
+        final byte[] decode = Base64.getDecoder().decode(html.getBody());
+        String htmlContent = new String(decode);
+        final boolean b = htmlContent.startsWith("<!DOCTYPE");
+        assertTrue(b);
+    }
 }

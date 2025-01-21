@@ -86,11 +86,6 @@ public class AccountantArea {
     }
 
     @FXML
-    void forfeits(){
-
-    }
-
-    @FXML
     void refineries(){
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("reports/refineryReport.fxml"));

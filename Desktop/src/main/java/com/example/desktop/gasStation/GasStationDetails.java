@@ -301,7 +301,52 @@ public class GasStationDetails {
 
     @FXML
     void transferredDetails() {
+        if(Objects.isNull(selectedGasStation) || Objects.isNull(startDP.getValue()) || Objects.isNull(endDP.getValue())){
+            Notifications.create().text("يرجى اختيار عنصر وتحديد تاريخي البدء ةالانتهاء").title("choose something").showInformation();
+        }else {
+            final FileChooser fileChooser = new FileChooser();
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("HTML files (*.html)", "*.html"));
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("XLSX files (*.xlsx)", "*.xlsx"));
+            final File file = fileChooser.showSaveDialog(HelloApplication.primaryStage);
+            String transType = normalTB.isSelected() ? "NORMAL":"COMMERCIAL";
+            final byte[] bytes = transferMaterialsService.getTransferReport(file.getName().split("\\.")[1].toUpperCase(),
+                    transType,
+                    startDP.getValue(),
+                    endDP.getValue(),
+                    selectedGasStation.getId());
 
+            try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
+                fileOutputStream.write(Base64.getDecoder().decode(bytes));
+                if(!List.of(Objects.requireNonNull(file.getParentFile().list())).contains("DriverReport.html_files")){
+
+                    final InputStream resourceAsStream = DriverReport.class.getClassLoader().getResourceAsStream("wave.png");
+                    final InputStream logoStream = DriverReport.class.getClassLoader().getResourceAsStream("SadLogo.png");
+
+                    final File outputFile = new File(file.getParentFile() + "/DriverReport.html_files/img_0_0_2.png");
+                    final File logOutput = new File(file.getParentFile() + "/DriverReport.html_files/img_0_0_0.png");
+                    outputFile.getParentFile().mkdir();
+                    outputFile.createNewFile();
+                    logOutput.createNewFile();
+                    final FileOutputStream waveOutputStream = new FileOutputStream(outputFile);
+                    final FileOutputStream logoOutPutStream = new FileOutputStream(logOutput);
+                    int info = 0;
+                    while( (info = resourceAsStream.read()) != -1) {
+                        waveOutputStream.write(info);
+                    }
+                    int info2 = 0;
+                    while ((info2 = logoStream.read()) != -1){
+                        logoOutPutStream.write(info2);
+                    }
+                    waveOutputStream.close();
+                    resourceAsStream.close();
+                    logoStream.close();
+                    logoOutPutStream.close();
+                }
+                Runtime.getRuntime().exec("rundll32.exe shell32.dll ShellExec_RunDLL " +file.getPath());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     @FXML
