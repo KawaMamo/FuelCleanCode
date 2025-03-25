@@ -32,17 +32,17 @@
         <band splitType="Stretch"/>
     </background>
     <title>
-        <band height="123" splitType="Stretch">
+        <band height="170" splitType="Stretch">
             <image>
-                <reportElement x="4" y="5" width="229" height="85" uuid="8b7ddc6b-1ecc-4158-b0b2-fb45872293ce"/>
+                <reportElement x="4" y="42" width="229" height="85" uuid="8b7ddc6b-1ecc-4158-b0b2-fb45872293ce"/>
                 <imageExpression><![CDATA["icons/SadLogo.png"]]></imageExpression>
             </image>
             <textField>
-                <reportElement x="92" y="70" width="180" height="18" uuid="d99ad6c5-4c63-4aa0-a279-96366db3eb80"/>
+                <reportElement x="92" y="107" width="180" height="18" uuid="d99ad6c5-4c63-4aa0-a279-96366db3eb80"/>
                 <textFieldExpression><![CDATA[$P{nowLocalDT}]]></textFieldExpression>
             </textField>
             <image>
-                <reportElement stretchType="RelativeToTallestObject" x="470" y="2" width="260" height="117" uuid="a918a6ed-3aef-4fcb-9539-5d94973efa32"/>
+                <reportElement stretchType="RelativeToTallestObject" x="401" y="2" width="350" height="168" uuid="a918a6ed-3aef-4fcb-9539-5d94973efa32"/>
                 <imageExpression><![CDATA["icons/wave.png"]]></imageExpression>
             </image>
         </band>
