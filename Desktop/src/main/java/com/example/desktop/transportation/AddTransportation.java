@@ -559,7 +559,7 @@ public class AddTransportation {
         final File file = fileChooser.showSaveDialog(HelloApplication.primaryStage);
         final List<byte[]> bytes = partitionService.getPrintWithImage(selectedPartition.getId(), LogInData.loggedInUser.getEmail());
 
-        final File barcodeFile = new File(file.getParentFile() + "/transTicket.html_files/img_0_0_23.svg");
+        final File barcodeFile = new File(file.getParentFile() + "/"+new String(bytes.get(2)));
 
         try (FileOutputStream fileOutputStream = new FileOutputStream(file); FileOutputStream barcodeOS = new FileOutputStream(barcodeFile)) {
             fileOutputStream.write(Base64.getDecoder().decode(bytes.get(0)));

@@ -6,6 +6,9 @@ import net.sf.jasperreports.engine.export.JRPdfExporter;
 import net.sf.jasperreports.engine.export.ooxml.JRXlsxExporter;
 import net.sf.jasperreports.export.SimpleExporterInput;
 import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
+import net.sf.jasperreports.renderers.BatikRenderer;
+import org.apache.batik.bridge.UserAgent;
+import org.apache.batik.bridge.UserAgentAdapter;
 import org.example.contract.request.create.CreatePartitionRequest;
 import org.example.contract.request.update.UpdatePartitionRequest;
 import org.example.contract.response.PartitionResponse;
@@ -31,10 +34,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -235,19 +235,30 @@ public class PartitionController {
 
         final String secretKey = "Hwx4OOnFmEl6zZCRKm";
         String encryptedString = AES.encrypt(partition.getId().toString(), secretKey) ;
+
+
+
         params.put("imgParameter", encryptedString);
 
         try {
+
             JasperReport regionReport = JasperCompileManager.compileReport(new ClassPathResource("templates/transTicket.jrxml").getInputStream());
             final JasperPrint jasperPrint = JasperFillManager.fillReport(regionReport, params, new JREmptyDataSource());
             File file = new File("transTicket.html");
             JasperExportManager.exportReportToHtmlFile(jasperPrint,
                         file.getAbsolutePath());
 
-            try(final FileInputStream fileInputStream = new FileInputStream(file);FileInputStream barcodeImgIS = new FileInputStream(new File("transTicket.html_files/img_0_0_23.svg"))){
+            File folder = new File("transTicket.html_files");
+            File[] images = folder.listFiles(File::isFile);
+            File newestFile = Arrays.stream(images)
+                    .max(Comparator.comparingLong(File::lastModified)) // Find the newest file
+                    .orElse(new File("transTicket.html_files/img_0_0_22.svg"));
+
+            try(final FileInputStream fileInputStream = new FileInputStream(file);FileInputStream barcodeImgIS = new FileInputStream(new File(newestFile.getPath()))){
                 List<String> files = new ArrayList<>();
                 files.add(Base64.getEncoder().encodeToString(fileInputStream.readAllBytes()));
                 files.add(Base64.getEncoder().encodeToString(barcodeImgIS.readAllBytes()));
+                files.add(newestFile.getPath());
                 return ResponseEntity.ok(files);
             }
         } catch (JRException | IOException e) {
