@@ -82,10 +82,22 @@ public class PartitionService implements Service<Partition, CreatePartitionReque
         return stringHttpResponse.body().getBytes(StandardCharsets.UTF_8);
     }
 
-    public byte[] getPrint(Long id, String username){
+    /*public byte[] getPrint(Long id, String username){
 
         final HttpResponse<String> stringHttpResponse = client.parallelGet(getEndPoint()+"/partitionPrint/" + id + "/" + username);
         return stringHttpResponse.body().getBytes(StandardCharsets.UTF_8);
+    }*/
+
+    public List<byte[]> getPrintWithImage(Long id, String username){
+
+        final HttpResponse<String> stringHttpResponse = client.parallelGet(getEndPoint()+"/partitionPrint/" + id + "/" + username);
+        List<byte[]> bytes = new ArrayList<byte[]>();
+        final List<String> list = gson.fromJson(stringHttpResponse.body(), List.class);
+        final byte[] htmlFileData = list.get(0).getBytes(StandardCharsets.UTF_8);
+        final byte[] barcodeImgData = list.get(1).getBytes(StandardCharsets.UTF_8);
+        bytes.add(htmlFileData);
+        bytes.add(barcodeImgData);
+        return bytes;
     }
 
     public byte[] getRefineryReport(String exportType, String transType, LocalDate startDate, LocalDate endDate, Long id){

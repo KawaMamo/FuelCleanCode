@@ -1,11 +1,18 @@
 package org.example.controllers;
 
+import org.example.contract.response.OfficeResponse;
 import org.example.entities.TransportationType;
+import org.example.specifications.SearchFilter;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.hateoas.PagedModel;
 import org.springframework.http.ResponseEntity;
 
+import java.security.Principal;
 import java.time.LocalDate;
 import java.util.Base64;
 import java.util.List;
@@ -47,6 +54,9 @@ public class TransferMaterialsTest {
     private ClientPaymentController clientPaymentController;
     @Autowired
     private ReturnedMaterialController returnedMaterialController;
+
+    @Autowired
+    private ForfeitController forfeitController;
 
     /*@Test
     @Disabled
@@ -202,7 +212,7 @@ public class TransferMaterialsTest {
         assertNotNull(partition2);*//*
 
     }*/
-    @Test
+    /*@Test
     void testClientsReceivedMaterials() throws Exception {
         final ResponseEntity<String> html = partitionController.getClientReceivedMaterials(6L,
                 LocalDate.parse("2024-01-01"),
@@ -268,5 +278,23 @@ public class TransferMaterialsTest {
         String htmlContent = new String(decode);
         final boolean b = htmlContent.startsWith("<!DOCTYPE");
         assertTrue(b);
-    }
+    }*/
+
+    /*@Test
+    void testForfeitReport() throws Exception {
+        final ResponseEntity<String> html = forfeitController.getForfeitReport(3L,
+                LocalDate.parse("2024-01-01"),
+                LocalDate.parse("2024-12-30"),
+                "HTML");
+        final byte[] decode = Base64.getDecoder().decode(html.getBody());
+        String htmlContent = new String(decode);
+        final boolean b = htmlContent.startsWith("<!DOCTYPE");
+        assertTrue(b);
+    }*/
+
+    /*@Test
+    void testPrinciple() throws Exception {
+        final SearchFilter searchFilter = new SearchFilter(new String[]{"id"}, new String[]{"0"}, new String[]{">"}, null);
+
+    }*/
 }

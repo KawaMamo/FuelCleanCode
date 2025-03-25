@@ -78,6 +78,9 @@ public class CustomFilter implements Filter {
                     throw new RuntimeException("Unauthorized");
                 }
                 logger.atWarn().log(path+" headers "+request.getHeaders("AUTHORIZATION").toString());
+                final Long userId = tokenService.getUserId(jwtToken);
+                UserData.UserId = userId;
+                UserData.roles = roles;
             }
 
         }

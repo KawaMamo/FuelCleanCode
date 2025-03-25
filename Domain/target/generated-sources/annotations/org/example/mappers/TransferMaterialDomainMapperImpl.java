@@ -10,7 +10,7 @@ import org.example.model.TransferMaterials;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-01-20T02:14:28+0300",
+    date = "2025-02-15T16:48:34+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class TransferMaterialDomainMapperImpl implements TransferMaterialDomainMapper {

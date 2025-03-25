@@ -7,6 +7,8 @@ import org.example.contract.request.update.UpdateForfeitRequest;
 import org.example.model.Forfeit;
 
 import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -72,5 +74,10 @@ public class ForfeitService implements Service<Forfeit, CreateForfeitRequest, Up
         final String payload = gson.toJson(updateRequest);
         final HttpResponse<String> stringHttpResponse = client.parallelPatch(getEndPoint(), payload);
         return gson.fromJson(stringHttpResponse.body(), Forfeit.class);
+    }
+
+    public byte[] getForfeitReport(String exportType, LocalDate startDate, LocalDate endDate, Long id) {
+        final HttpResponse<String> stringHttpResponse = client.parallelGet(getEndPoint()+"/forfeitReport" + "/" + exportType + "/" + id + "/" + startDate + "/" + endDate);
+        return stringHttpResponse.body().getBytes(StandardCharsets.UTF_8);
     }
 }

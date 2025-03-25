@@ -17,6 +17,7 @@ import org.example.entities.TransportationType;
 import org.example.mappers.TransMapper;
 import org.example.model.Transportation;
 import org.example.repositories.TransRepoJpa;
+import org.example.security.UserData;
 import org.example.specifications.*;
 import org.example.useCases.create.CreateTrans;
 import org.example.useCases.delete.DeleteTrans;
@@ -36,10 +37,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.Base64;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 @RequestMapping("api/v1/trans")
@@ -78,6 +76,13 @@ public class TransController {
     @GetMapping
     public PagedModel<TransResponse> getTrans(SearchFilter criteria, Pageable pageable){
         List<SearchCriteria> searchCriteria = CriteriaArrayToList.getCriteriaList(criteria);
+        final SearchCriteria userIdCriteria = new SearchCriteria("UserId", UserData.UserId, ":", null);
+        for (LinkedHashMap<String, String> role : UserData.roles) {
+            if(role.get("authority").equals("TRANS_OFFICE")){
+                searchCriteria.add(userIdCriteria);
+            }
+        }
+
         final FilterSpecifications<TransportationEntity> specifications = new FilterSpecifications<>(searchCriteria);
         final Page<Transportation> map = transRepoJpa.findAll(specifications, pageable).map(transMapper::entityToDomain);
         return pagedResourcesAssembler.toModel(map);

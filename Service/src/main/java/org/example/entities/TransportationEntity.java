@@ -33,5 +33,6 @@ public class TransportationEntity extends TransportationReasonEntity {
     @OneToMany(mappedBy="transportation")
     @ToString.Exclude
     private Set<TransLogEntity> transLogs;
+    private Long UserId;
 
 }

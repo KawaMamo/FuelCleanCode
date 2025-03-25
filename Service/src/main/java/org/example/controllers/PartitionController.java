@@ -13,6 +13,7 @@ import org.example.entities.*;
 import org.example.mappers.PartitionMapper;
 import org.example.model.Partition;
 import org.example.repositories.PartitionRepository;
+import org.example.security.AES;
 import org.example.specifications.CriteriaArrayToList;
 import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
@@ -39,10 +40,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
-import java.util.Base64;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 @RequestMapping("api/v1/partition")
@@ -218,13 +216,13 @@ public class PartitionController {
     }
 
     @GetMapping("/partitionPrint/{id}/{username}")
-    public ResponseEntity<String> getPartitionPrint(@PathVariable Long id, @PathVariable String username){
+    public ResponseEntity<List<String>> getPartitionPrint(@PathVariable Long id, @PathVariable String username){
 
         final PartitionEntity partition = partitionRepository.getReferenceById(id);
 
         Map<String, Object> params = new HashMap<>();
         params.put("nowLocalDT", LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
-        params.put("transportationId", partition.getTransportationEntity().getId().toString());
+        params.put("transportationId", partition.getId()+"-"+partition.getTransportationEntity().getId());
         params.put("vehicleNumber", partition.getTransportationEntity().getVehicle().getPlateNumber());
         params.put("driverName", partition.getTransportationEntity().getVehicle().getDriver().getName());
         params.put("gasStation", partition.getGasStation().getTranslation());
@@ -234,7 +232,10 @@ public class PartitionController {
         params.put("category", partition.getNotes());
         params.put("user", username);
         params.put("refinery", partition.getTransportationEntity().getRefinery().getTranslation());
-        params.put("imgParameter", null);
+
+        final String secretKey = "Hwx4OOnFmEl6zZCRKm";
+        String encryptedString = AES.encrypt(partition.getId().toString(), secretKey) ;
+        params.put("imgParameter", encryptedString);
 
         try {
             JasperReport regionReport = JasperCompileManager.compileReport(new ClassPathResource("templates/transTicket.jrxml").getInputStream());
@@ -243,8 +244,11 @@ public class PartitionController {
             JasperExportManager.exportReportToHtmlFile(jasperPrint,
                         file.getAbsolutePath());
 
-            try(final FileInputStream fileInputStream = new FileInputStream(file);){
-                return ResponseEntity.ok(Base64.getEncoder().encodeToString(fileInputStream.readAllBytes()));
+            try(final FileInputStream fileInputStream = new FileInputStream(file);FileInputStream barcodeImgIS = new FileInputStream(new File("transTicket.html_files/img_0_0_23.svg"))){
+                List<String> files = new ArrayList<>();
+                files.add(Base64.getEncoder().encodeToString(fileInputStream.readAllBytes()));
+                files.add(Base64.getEncoder().encodeToString(barcodeImgIS.readAllBytes()));
+                return ResponseEntity.ok(files);
             }
         } catch (JRException | IOException e) {
             throw new RuntimeException(e);

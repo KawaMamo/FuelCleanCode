@@ -21,6 +21,7 @@ import org.springframework.hateoas.PagedModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -52,7 +53,7 @@ public class OfficeController {
     }
 
     @GetMapping
-    public PagedModel<OfficeResponse> listOffices(SearchFilter filter, Pageable pageable){
+    public PagedModel<OfficeResponse> listOffices(SearchFilter filter, Pageable pageable) {
         final List<SearchCriteria> criteriaList = CriteriaArrayToList.getCriteriaList(filter);
         final FilterSpecifications<OfficeEntity> specifications = new FilterSpecifications<>(criteriaList);
         final Page<Office> page = officeRepository.findAll(specifications, pageable).map(officeMapper::entityToDomain);

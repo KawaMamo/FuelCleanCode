@@ -557,10 +557,13 @@ public class AddTransportation {
         fileChooser.setInitialDirectory(new File(MyDocumentLocator.locate()));
 
         final File file = fileChooser.showSaveDialog(HelloApplication.primaryStage);
-        final byte[] bytes = partitionService.getPrint(selectedPartition.getId(), LogInData.loggedInUser.getEmail());
+        final List<byte[]> bytes = partitionService.getPrintWithImage(selectedPartition.getId(), LogInData.loggedInUser.getEmail());
 
-        try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
-            fileOutputStream.write(Base64.getDecoder().decode(bytes));
+        final File barcodeFile = new File(file.getParentFile() + "/transTicket.html_files/img_0_0_23.svg");
+
+        try (FileOutputStream fileOutputStream = new FileOutputStream(file); FileOutputStream barcodeOS = new FileOutputStream(barcodeFile)) {
+            fileOutputStream.write(Base64.getDecoder().decode(bytes.get(0)));
+            barcodeOS.write(Base64.getDecoder().decode(bytes.get(1)));
             if(!List.of(Objects.requireNonNull(file.getParentFile().list())).contains("transTicket.html_files")){
                 final InputStream resourceAsStream = DriverReport.class.getClassLoader().getResourceAsStream("wave.png");
                 final InputStream logoStream = DriverReport.class.getClassLoader().getResourceAsStream("SadLogo.png");

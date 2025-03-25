@@ -72,4 +72,10 @@ public class TokenService {
     public ArrayList<LinkedHashMap<String, String>> getRoles(String jwtToken){
         return (ArrayList<LinkedHashMap<String, String>>) extractClaims(jwtToken).get("Roles");
     }
+
+    public Long getUserId(String jwtToken){
+        final Object userId = extractClaims(jwtToken).get("UserId");
+        return Long.parseLong(userId.toString());
+    }
+
 }

@@ -2,6 +2,7 @@ package com.example.desktop.reports;
 
 import com.example.desktop.HelloApplication;
 import com.example.model.TableController;
+import com.example.model.forfeit.ForfeitService;
 import com.example.model.office.OfficeService;
 import com.example.model.transLog.TransLogService;
 import javafx.beans.property.SimpleStringProperty;
@@ -43,6 +44,7 @@ public class OfficeReport implements TableController {
     public static Office slectedOffice;
     private final OfficeService officeService = OfficeService.getInstance();
     private final TransLogService transLogService = TransLogService.getInstance();
+    private final ForfeitService forfeitService = ForfeitService.getInstance();
     private String query = null;
     final ToggleGroup transTypeGroup = new ToggleGroup();
 
@@ -136,6 +138,54 @@ public class OfficeReport implements TableController {
             }
         }
 
+    }
+
+    @FXML
+    void forfeitReport(){
+        if(Objects.isNull(slectedOffice) || Objects.isNull(startDP.getValue()) || Objects.isNull(endDP.getValue())){
+            Notifications.create().text("يرجى اختيار عنصر وتحديد تاريخي البدء والانتهاء").title("choose something").showInformation();
+        }else {
+            final FileChooser fileChooser = new FileChooser();
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("HTML files (*.html)", "*.html"));
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("XLSX files (*.xlsx)", "*.xlsx"));
+            final File file = fileChooser.showSaveDialog(HelloApplication.primaryStage);
+            String transType = normalTB.isSelected() ? "NORMAL":"COMMERCIAL";
+            final byte[] bytes = forfeitService.getForfeitReport(file.getName().split("\\.")[1].toUpperCase(),
+                    startDP.getValue(),
+                    endDP.getValue(),
+                    slectedOffice.getId());
+            try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
+                fileOutputStream.write(Base64.getDecoder().decode(bytes));
+                if(!List.of(Objects.requireNonNull(file.getParentFile().list())).contains("forfeitReport.html_files")){
+
+                    final InputStream resourceAsStream = DriverReport.class.getClassLoader().getResourceAsStream("wave.png");
+                    final InputStream logoStream = DriverReport.class.getClassLoader().getResourceAsStream("SadLogo.png");
+
+                    final File outputFile = new File(file.getParentFile() + "/forfeitReport.html_files/img_0_0_2.png");
+                    final File logOutput = new File(file.getParentFile() + "/forfeitReport.html_files/img_0_0_0.png");
+                    outputFile.getParentFile().mkdir();
+                    outputFile.createNewFile();
+                    logOutput.createNewFile();
+                    final FileOutputStream waveOutputStream = new FileOutputStream(outputFile);
+                    final FileOutputStream logoOutPutStream = new FileOutputStream(logOutput);
+                    int info = 0;
+                    while( (info = resourceAsStream.read()) != -1) {
+                        waveOutputStream.write(info);
+                    }
+                    int info2 = 0;
+                    while ((info2 = logoStream.read()) != -1){
+                        logoOutPutStream.write(info2);
+                    }
+                    waveOutputStream.close();
+                    resourceAsStream.close();
+                    logoStream.close();
+                    logoOutPutStream.close();
+                }
+                Runtime.getRuntime().exec("rundll32.exe shell32.dll ShellExec_RunDLL " +file.getPath());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     @Override
