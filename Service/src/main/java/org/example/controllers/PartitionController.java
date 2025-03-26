@@ -17,6 +17,7 @@ import org.example.mappers.PartitionMapper;
 import org.example.model.Partition;
 import org.example.repositories.PartitionRepository;
 import org.example.security.AES;
+import org.example.security.UserData;
 import org.example.specifications.CriteriaArrayToList;
 import org.example.specifications.FilterSpecifications;
 import org.example.specifications.SearchCriteria;
@@ -232,9 +233,18 @@ public class PartitionController {
         params.put("category", partition.getNotes());
         params.put("user", username);
         params.put("refinery", partition.getTransportationEntity().getRefinery().getTranslation());
-
+        // String plainText = id+"-"+refinery+"-"+client.replace("-", " ")+"-"+vehicle+"-"+driver+"-"+
+        // amount+"-"+material+"-"+dateS.replace("-", " ")+"-"+Controller.userName;
         final String secretKey = "Hwx4OOnFmEl6zZCRKm";
-        String encryptedString = AES.encrypt(partition.getId().toString(), secretKey) ;
+        String encryptedString = AES.encrypt(partition.getId()+
+                "-"+partition.getTransportationEntity().getRefinery().getName()+
+                "-"+partition.getGasStation().getTranslation().replace("-", " ")+
+                "-"+partition.getTransportationEntity().getVehicle().getPlateNumber()+
+                "-"+partition.getTransportationEntity().getVehicle().getDriver().getName()+
+                "-"+partition.getAmount()+
+                "-"+partition.getMaterial().getName()+
+                "-"+LocalDateTime.now().toString().replace("-", " ")+
+                "-"+ UserData.UserId, secretKey) ;
 
 
 
