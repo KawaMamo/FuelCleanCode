@@ -246,8 +246,6 @@ public class PartitionController {
                 "-"+LocalDateTime.now().toString().replace("-", " ")+
                 "-"+ UserData.UserId, secretKey) ;
 
-
-
         params.put("imgParameter", encryptedString);
 
         try {
