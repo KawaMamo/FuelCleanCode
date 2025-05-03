@@ -41,6 +41,7 @@
             <Button mnemonicParsing="false" onAction="#edit" text="تعديل" />
             <Button mnemonicParsing="false" onAction="#delete" text="حذف" />
             <Button mnemonicParsing="false" onAction="#search" text="بحث" />
+            <Button fx:id="filterByPricedBtn" mnemonicParsing="false" onAction="#filterByPriced" text="المسعر/غير المسعر" />
             <Separator maxWidth="1.7976931348623157E308" opacity="0.0" HBox.hgrow="ALWAYS" />
             <Button mnemonicParsing="false" onAction="#pageUp" text="+" />
             <TextField fx:id="page" alignment="CENTER" prefHeight="26.0" prefWidth="34.0" text="1" />

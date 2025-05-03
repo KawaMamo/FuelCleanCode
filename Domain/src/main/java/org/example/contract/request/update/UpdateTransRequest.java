@@ -15,6 +15,7 @@ import java.util.List;
 public class UpdateTransRequest {
     private Long id;
     private Long refinery_id;
+    private Boolean isPriced;
     private Long vehicle_id;
     private Long size;
     private TransportationType type;

@@ -227,7 +227,7 @@
                 </textElement>
                 <textFieldExpression><![CDATA[$F{transportationEntity.vehicle.plateNumber}]]></textFieldExpression>
             </textField>
-            <textField>
+            <textField textAdjust="ScaleFont">
                 <reportElement x="440" y="1" width="100" height="30" uuid="781b0879-3e99-4692-af5b-aefcd90e10e7">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a47c2703-a990-4630-aad9-fcadcaf19349"/>
                 </reportElement>

@@ -73,7 +73,9 @@ public class PartitionService implements Service<Partition, CreatePartitionReque
 
     @Override
     public Partition editItem(UpdatePartitionRequest updateRequest) {
-        return null;
+        final String json = gson.toJson(updateRequest);
+        final HttpResponse<String> stringHttpResponse = client.parallelPatch(getEndPoint(), json);
+        return gson.fromJson(stringHttpResponse.body(), Partition.class);
     }
 
     public byte[] getReport(String exportType, String transType, LocalDate startDate, LocalDate endDate, Long id){

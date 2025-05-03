@@ -8,6 +8,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -25,6 +26,8 @@ public class Transportations implements TableController {
 
     @FXML
     private TextField page;
+    @FXML
+    private Button filterByPricedBtn;
 
     @FXML
     private TableView<Transportation> tableTbl;
@@ -34,6 +37,7 @@ public class Transportations implements TableController {
     public static Partition selectedPartition;
     private final TransportationService transportationService = TransportationService.getInstance();
     private String query = null;
+    private int alternator = 0;
 
     @FXML
     private void initialize(){
@@ -113,6 +117,15 @@ public class Transportations implements TableController {
         AddTransportation.controller = this;
         AddTransportation.formType = FormType.GET;
         Modal.start(this.getClass(), "addTransportation.fxml");
+    }
+
+    @FXML
+    void filterByPriced(){
+        String btnText = alternator%2==0?"غير مسعر":"مسعر";
+        setQuery("&key=isPriced&value="+alternator%2+"&operation=%3A&sort=id,desc");
+        alternator++;
+        loadData();
+        filterByPricedBtn.setText(btnText);
     }
 
     @Override

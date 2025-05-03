@@ -10,6 +10,7 @@ import com.example.desktop.reports.RefineryReport;
 import com.example.desktop.returnedMaterial.ReturnedMaterials;
 import com.example.desktop.seller.Sellers;
 import com.example.desktop.sellerPayment.SellerPayments;
+import com.example.desktop.transportation.Transportations;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -51,6 +52,21 @@ public class AccountantArea {
             throw new RuntimeException(e);
         }
     }
+
+    @FXML
+    void pricing() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("transportation/transportations.fxml"));
+        try {
+            final Node node = loader.load();
+            final Transportations controller = loader.getController();
+            workArea.getChildren().clear();
+            workArea.getChildren().add(node);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     @FXML
     void clientReport(){

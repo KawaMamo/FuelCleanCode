@@ -37,6 +37,7 @@ import org.example.contract.request.create.CreateForfeitRequest;
 import org.example.contract.request.create.CreatePartitionRequest;
 import org.example.contract.request.create.CreateTransLogRequest;
 import org.example.contract.request.create.CreateTransRequest;
+import org.example.contract.request.update.UpdatePartitionRequest;
 import org.example.contract.request.update.UpdateTransRequest;
 import org.example.model.*;
 
@@ -48,7 +49,6 @@ public class AddTransportation {
 
     public static TableController controller;
     public static FormType formType = FormType.CREATE;
-
 
     @FXML
     private TextField vehicleTF;
@@ -362,7 +362,10 @@ public class AddTransportation {
             idTF.setDisable(true);
         else if(formType.equals(FormType.GET))
             transBtn.setText("Search");
-
+        selectedPartition = null;
+        if(LogInData.loggedInUser.getRole().equals("ACCOUNTANT")){
+            deliveryBtn.setText("تسعير");
+        }
     }
 
     private void setToggleButtonsColor(TransportationType transportationType){
@@ -381,6 +384,7 @@ public class AddTransportation {
             if(Objects.nonNull(selectedRefineryId) && Objects.nonNull(selectedVehicleId)){
                 transportation = transportationService.editItem(new UpdateTransRequest(transportation.getId(),
                         selectedRefineryId,
+                        false,
                         selectedVehicleId,
                         Long.parseLong(sizeTF.getText().replaceAll(",", "")),
                         type));
@@ -431,17 +435,44 @@ public class AddTransportation {
 
     @FXML
     void submit() {
-        final CreatePartitionRequest createPartitionRequest = new CreatePartitionRequest(selectedMaterialId,
-                Integer.parseInt(partAmountTF.getText().replaceAll(",", "")),
-                null,
-                new Money(categories.get(0).getPrice().getCurrency(), categories.get(0).getPrice().getAmount()),
-                selectedGasStationId,
-                notesTF.getText(),
-                null,
-                transportation.getId());
-        final Partition partition = partitionService.addItem(createPartitionRequest);
-        loadData();
-        Notifications.create().title("Info").text("Added "+partition.getGasStation().getName()).showInformation();
+        if(LogInData.loggedInUser.getRole().equals("ACCOUNTANT")){
+            if(Objects.isNull(selectedPartition)){
+                Notifications.create().text("يرجى اختيار وجهة من الجدول في الأسفل").showInformation();
+            }else {
+                final UpdatePartitionRequest updatePartitionRequest = new UpdatePartitionRequest(selectedPartition.getId(),
+                        selectedMaterialId,
+                        Integer.valueOf(partAmountTF.getText().replaceAll(",", "")),
+                        null,
+                        new Money(categories.get(0).getPrice().getCurrency(), categories.get(0).getPrice().getAmount()),
+                        selectedGasStationId,
+                        notesTF.getText(),
+                        null,
+                        transportation.getId());
+                final Partition partition = partitionService.editItem(updatePartitionRequest);
+                transportationService.editItem(new UpdateTransRequest(transportation.getId(),
+                        transportation.getRefinery().getId(),
+                        true,
+                        transportation.getVehicle().getId(),
+                        transportation.getSize(),
+                        transportation.getType()));
+                loadData();
+                Notifications.create().title("Info").text("Updated "+partition.getGasStation().getName()).showInformation();
+            }
+
+        }else {
+            final CreatePartitionRequest createPartitionRequest = new CreatePartitionRequest(selectedMaterialId,
+                    Integer.parseInt(partAmountTF.getText().replaceAll(",", "")),
+                    null,
+                    new Money(categories.get(0).getPrice().getCurrency(), categories.get(0).getPrice().getAmount()),
+                    selectedGasStationId,
+                    notesTF.getText(),
+                    null,
+                    transportation.getId());
+            final Partition partition = partitionService.addItem(createPartitionRequest);
+            loadData();
+            Notifications.create().title("Info").text("Added "+partition.getGasStation().getName()).showInformation();
+        }
+
     }
 
     private void setPartitionTbl() {
