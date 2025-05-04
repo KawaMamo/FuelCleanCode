@@ -16,5 +16,6 @@ public class CreateTransRequest implements Request {
     private Long vehicle_id;
     private Long size;
     private TransportationType type;
+    private Boolean isPriced;
 
 }

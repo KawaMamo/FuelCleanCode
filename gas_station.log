@@ -1,92 +1,83 @@
-2025-05-04T01:13:34.983+03:00  WARN 7508 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T01:13:35.002+03:00  WARN 7508 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@542ae45b
-2025-05-04T01:13:52.853+03:00  WARN 7508 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T01:13:52.864+03:00  WARN 7508 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@2e436c65
-2025-05-04T01:13:54.826+03:00  WARN 7508 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T01:13:54.837+03:00  WARN 7508 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@4a939cf4
-2025-05-04T01:13:55.947+03:00  WARN 7508 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T01:13:55.965+03:00  WARN 7508 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@758f08b2
-2025-05-04T01:13:56.334+03:00  WARN 7508 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T01:13:56.348+03:00  WARN 7508 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@55062cf0
-2025-05-04T01:13:56.565+03:00  WARN 7508 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T01:13:56.586+03:00  WARN 7508 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@5aee608b
-2025-05-04T01:13:57.248+03:00  WARN 7508 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T01:13:57.265+03:00  WARN 7508 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@24c0534f
-2025-05-04T01:14:12.056+03:00  WARN 7508 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T01:14:12.069+03:00  WARN 7508 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@476d0d76
-2025-05-04T01:14:27.369+03:00  WARN 7508 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T01:14:27.379+03:00  WARN 7508 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@6f3dea58
-2025-05-04T01:50:19.238+03:00  WARN 7508 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T01:50:19.249+03:00  WARN 7508 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@79ed2ca1
-2025-05-04T01:50:29.385+03:00  WARN 7508 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T01:50:29.400+03:00  WARN 7508 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@73a7639
-2025-05-04T01:52:04.953+03:00  WARN 7508 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m50s678ms686µs).
-2025-05-04T01:52:15.102+03:00  WARN 7508 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T01:52:15.112+03:00  WARN 7508 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@493b8cf0
-2025-05-04T01:52:17.245+03:00  WARN 7508 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T01:52:17.255+03:00  WARN 7508 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@4c2d6470
-2025-05-04T01:52:19.629+03:00  WARN 7508 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T01:52:19.640+03:00  WARN 7508 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@39c26ffc
-2025-05-04T01:52:47.307+03:00  WARN 7508 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T01:52:47.322+03:00  WARN 7508 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@1f438e21
-2025-05-04T01:52:48.896+03:00  WARN 7508 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T01:52:48.908+03:00  WARN 7508 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@69c1da7e
-2025-05-04T01:52:49.923+03:00  WARN 7508 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T01:52:49.933+03:00  WARN 7508 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@2cd44727
-2025-05-04T01:54:00.223+03:00  WARN 7508 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T01:54:00.237+03:00  WARN 7508 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@3f003207
-2025-05-04T01:54:10.177+03:00  WARN 7508 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T01:54:10.189+03:00  WARN 7508 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@77e46a5f
-2025-05-04T01:54:41.843+03:00  WARN 7508 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T01:54:41.855+03:00  WARN 7508 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@1b044051
-2025-05-04T01:54:49.330+03:00  WARN 7508 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T01:54:49.344+03:00  WARN 7508 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@18f6de13
-2025-05-04T01:55:20.315+03:00  WARN 7508 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T01:55:20.327+03:00  WARN 7508 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@9869d12
-2025-05-04T01:56:26.527+03:00  WARN 7508 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T01:56:26.535+03:00  WARN 7508 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@69825a18
-2025-05-04T01:56:35.379+03:00  WARN 7508 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T01:56:35.392+03:00  WARN 7508 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@6f82fb90
-2025-05-04T01:56:44.575+03:00  WARN 7508 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T01:56:44.587+03:00  WARN 7508 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@10e2839b
-2025-05-04T01:57:31.162+03:00  WARN 7508 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T01:57:31.172+03:00  WARN 7508 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@6046d5c8
-2025-05-04T01:57:32.620+03:00  WARN 7508 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T01:57:32.628+03:00  WARN 7508 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@5922b6b5
-2025-05-04T01:57:33.420+03:00  WARN 7508 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T01:57:33.431+03:00  WARN 7508 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@3daa0c02
-2025-05-04T02:02:09.751+03:00  WARN 7508 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T02:02:09.764+03:00  WARN 7508 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@57e78f8b
-2025-05-04T02:02:11.433+03:00  WARN 7508 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T02:02:11.446+03:00  WARN 7508 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@68dbb885
-2025-05-04T02:02:12.213+03:00  WARN 7508 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T02:02:12.224+03:00  WARN 7508 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@27427d03
-2025-05-04T02:02:12.864+03:00  WARN 7508 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T02:02:12.873+03:00  WARN 7508 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@78027bb5
-2025-05-04T02:02:13.448+03:00  WARN 7508 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T02:02:13.457+03:00  WARN 7508 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@5436edc4
-2025-05-04T02:06:40.565+03:00  WARN 7508 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T02:06:40.575+03:00  WARN 7508 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@638d7408
-2025-05-04T02:06:41.839+03:00  WARN 7508 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T02:06:41.847+03:00  WARN 7508 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@49716505
-2025-05-04T02:06:42.918+03:00  WARN 7508 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T02:06:42.935+03:00  WARN 7508 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@2867c202
-2025-05-04T02:07:20.550+03:00  WARN 7508 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T02:07:20.559+03:00  WARN 7508 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@1b6a34c9
-2025-05-04T02:07:21.834+03:00  WARN 7508 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T02:07:21.843+03:00  WARN 7508 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@7e3c0d19
-2025-05-04T02:07:24.315+03:00  WARN 7508 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T02:07:24.324+03:00  WARN 7508 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@69bbcd6d
-2025-05-04T02:08:23.255+03:00  WARN 7508 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T02:08:23.264+03:00  WARN 7508 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@780c24b1
-2025-05-04T02:08:24.849+03:00  WARN 7508 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T02:08:24.857+03:00  WARN 7508 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@18b3c9b6
-2025-05-04T02:08:26.786+03:00  WARN 7508 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T02:08:26.796+03:00  WARN 7508 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@41f4ba50
-2025-05-04T02:08:28.108+03:00  WARN 7508 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T02:08:28.121+03:00  WARN 7508 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@5d925274
-2025-05-04T02:08:29.179+03:00  WARN 7508 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/trans
-2025-05-04T02:08:29.186+03:00  WARN 7508 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@55e0e93b
-2025-05-04T02:34:24.857+03:00  INFO 7508 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-05-04T02:34:24.859+03:00  INFO 7508 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-05-04T02:34:24.864+03:00  INFO 7508 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-05-05T00:02:00.024+03:00  WARN 25468 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans
+2025-05-05T00:02:00.042+03:00  WARN 25468 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@73637724
+2025-05-05T00:02:01.157+03:00  WARN 25468 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/refinery/all
+2025-05-05T00:02:01.167+03:00  WARN 25468 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/refinery/all headers org.apache.tomcat.util.http.ValuesEnumerator@46bc26d9
+2025-05-05T00:02:01.201+03:00  WARN 25468 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/vehicle/all
+2025-05-05T00:02:01.212+03:00  WARN 25468 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/vehicle/all headers org.apache.tomcat.util.http.ValuesEnumerator@7c3aa464
+2025-05-05T00:02:01.228+03:00  WARN 25468 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/material/all
+2025-05-05T00:02:01.237+03:00  WARN 25468 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@423a4e9c
+2025-05-05T00:02:01.252+03:00  WARN 25468 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/price-category/all
+2025-05-05T00:02:01.261+03:00  WARN 25468 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@6ea447c3
+2025-05-05T00:02:01.278+03:00  WARN 25468 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2025-05-05T00:02:01.287+03:00  WARN 25468 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@497b7ed8
+2025-05-05T00:02:01.304+03:00  WARN 25468 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/refinery/all
+2025-05-05T00:02:01.312+03:00  WARN 25468 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/refinery/all headers org.apache.tomcat.util.http.ValuesEnumerator@5775aad0
+2025-05-05T00:02:01.329+03:00  WARN 25468 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2025-05-05T00:02:01.337+03:00  WARN 25468 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@48384b0e
+2025-05-05T00:02:01.352+03:00  WARN 25468 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/region/all
+2025-05-05T00:02:01.359+03:00  WARN 25468 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@292a63f4
+2025-05-05T00:02:12.157+03:00  WARN 25468 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans
+2025-05-05T00:02:12.164+03:00  WARN 25468 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@23082363
+2025-05-05T00:02:12.217+03:00  WARN 25468 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans
+2025-05-05T00:02:12.225+03:00  WARN 25468 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@11689c98
+2025-05-05T00:02:12.259+03:00  WARN 25468 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans
+2025-05-05T00:02:12.268+03:00  WARN 25468 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@34c4c5c7
+2025-05-05T00:02:44.408+03:00  WARN 25468 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/category
+2025-05-05T00:02:44.420+03:00  WARN 25468 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@49263874
+2025-05-05T00:03:03.250+03:00  WARN 25468 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/category
+2025-05-05T00:03:03.257+03:00  WARN 25468 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@29d32b09
+2025-05-05T00:03:06.872+03:00  WARN 25468 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/category
+2025-05-05T00:03:06.890+03:00  WARN 25468 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@72729fb8
+2025-05-05T00:03:09.074+03:00  WARN 25468 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/category
+2025-05-05T00:03:09.089+03:00  WARN 25468 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@2a407764
+2025-05-05T00:03:09.117+03:00  WARN 25468 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/category
+2025-05-05T00:03:09.123+03:00  WARN 25468 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@79d27d3c
+2025-05-05T00:03:12.223+03:00  WARN 25468 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/trans-line
+2025-05-05T00:03:12.230+03:00  WARN 25468 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/trans-line headers org.apache.tomcat.util.http.ValuesEnumerator@4a053081
+2025-05-05T00:03:12.249+03:00  WARN 25468 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans-log
+2025-05-05T00:03:12.255+03:00  WARN 25468 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans-log headers org.apache.tomcat.util.http.ValuesEnumerator@6c2b222f
+2025-05-05T00:03:12.282+03:00  WARN 25468 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans-log
+2025-05-05T00:03:12.288+03:00  WARN 25468 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans-log headers org.apache.tomcat.util.http.ValuesEnumerator@35e95112
+2025-05-05T00:03:13.934+03:00  WARN 25468 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/partition
+2025-05-05T00:03:13.943+03:00  WARN 25468 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/partition headers org.apache.tomcat.util.http.ValuesEnumerator@430ecc63
+2025-05-05T00:03:13.992+03:00  WARN 25468 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/partition
+2025-05-05T00:03:14.002+03:00  WARN 25468 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/partition headers org.apache.tomcat.util.http.ValuesEnumerator@36076ae1
+2025-05-05T00:03:26.494+03:00  WARN 25468 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/trans
+2025-05-05T00:03:26.504+03:00  WARN 25468 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@3b774800
+2025-05-05T00:03:28.761+03:00  WARN 25468 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/refinery/all
+2025-05-05T00:03:28.770+03:00  WARN 25468 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/refinery/all headers org.apache.tomcat.util.http.ValuesEnumerator@1eadcbad
+2025-05-05T00:03:28.785+03:00  WARN 25468 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/vehicle/all
+2025-05-05T00:03:28.793+03:00  WARN 25468 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/vehicle/all headers org.apache.tomcat.util.http.ValuesEnumerator@60fa89e1
+2025-05-05T00:03:28.810+03:00  WARN 25468 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/material/all
+2025-05-05T00:03:28.818+03:00  WARN 25468 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/material/all headers org.apache.tomcat.util.http.ValuesEnumerator@d7f21ae
+2025-05-05T00:03:28.831+03:00  WARN 25468 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/price-category/all
+2025-05-05T00:03:28.839+03:00  WARN 25468 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/price-category/all headers org.apache.tomcat.util.http.ValuesEnumerator@2a046b06
+2025-05-05T00:03:28.854+03:00  WARN 25468 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2025-05-05T00:03:28.865+03:00  WARN 25468 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@1009f4f6
+2025-05-05T00:03:28.883+03:00  WARN 25468 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/refinery/all
+2025-05-05T00:03:28.892+03:00  WARN 25468 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/refinery/all headers org.apache.tomcat.util.http.ValuesEnumerator@1c232b79
+2025-05-05T00:03:28.911+03:00  WARN 25468 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2025-05-05T00:03:28.921+03:00  WARN 25468 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@1274e1
+2025-05-05T00:03:28.938+03:00  WARN 25468 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/region/all
+2025-05-05T00:03:28.947+03:00  WARN 25468 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/region/all headers org.apache.tomcat.util.http.ValuesEnumerator@2ca67f0
+2025-05-05T00:03:28.961+03:00  WARN 25468 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans
+2025-05-05T00:03:28.972+03:00  WARN 25468 --- [http-nio-9091-exec-3] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@1b486f93
+2025-05-05T00:03:28.992+03:00  WARN 25468 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/partition
+2025-05-05T00:03:29.000+03:00  WARN 25468 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/partition headers org.apache.tomcat.util.http.ValuesEnumerator@2e5ebf1d
+2025-05-05T00:03:29.025+03:00  WARN 25468 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/trans-log
+2025-05-05T00:03:29.033+03:00  WARN 25468 --- [http-nio-9091-exec-5] org.example.security.CustomFilter        : /api/v1/trans-log headers org.apache.tomcat.util.http.ValuesEnumerator@425871ae
+2025-05-05T00:03:29.056+03:00  WARN 25468 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/forfeit
+2025-05-05T00:03:29.065+03:00  WARN 25468 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/forfeit headers org.apache.tomcat.util.http.ValuesEnumerator@52bc84f6
+2025-05-05T00:03:32.353+03:00  WARN 25468 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/trans-log/6
+2025-05-05T00:03:32.361+03:00  WARN 25468 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/trans-log/ headers org.apache.tomcat.util.http.ValuesEnumerator@7d76062d
+2025-05-05T00:03:32.367+03:00  WARN 25468 --- [http-nio-9091-exec-7] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.controllers.TransLogController
+2025-05-05T00:03:32.403+03:00  WARN 25468 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/trans-log
+2025-05-05T00:03:32.413+03:00  WARN 25468 --- [http-nio-9091-exec-8] org.example.security.CustomFilter        : /api/v1/trans-log headers org.apache.tomcat.util.http.ValuesEnumerator@3304da03
+2025-05-05T00:03:48.033+03:00  WARN 25468 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/category
+2025-05-05T00:03:48.041+03:00  WARN 25468 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/category headers org.apache.tomcat.util.http.ValuesEnumerator@74786d25
+2025-05-05T00:03:51.291+03:00  WARN 25468 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans-line
+2025-05-05T00:03:51.299+03:00  WARN 25468 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/trans-line headers org.apache.tomcat.util.http.ValuesEnumerator@278ab703
+2025-05-05T00:03:51.314+03:00  WARN 25468 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans-log
+2025-05-05T00:03:51.323+03:00  WARN 25468 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans-log headers org.apache.tomcat.util.http.ValuesEnumerator@61780568
+2025-05-05T00:03:51.359+03:00  WARN 25468 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans-log
+2025-05-05T00:03:51.366+03:00  WARN 25468 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/trans-log headers org.apache.tomcat.util.http.ValuesEnumerator@2b73e03c

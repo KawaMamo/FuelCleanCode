@@ -41,7 +41,6 @@ public class TransportationService implements Service<Transportation, CreateTran
         final TransportationResponseEntity transportationResponseEntity = gson.fromJson(stringHttpResponse.body(), TransportationResponseEntity.class);
         if(Objects.nonNull(transportationResponseEntity._embedded))
             return transportationResponseEntity._embedded.transportationList;
-
         return new ArrayList<>();
     }
 

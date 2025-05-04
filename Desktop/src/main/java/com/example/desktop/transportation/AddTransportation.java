@@ -13,6 +13,7 @@ import com.example.model.modal.Modal;
 import com.example.model.partition.PartitionService;
 import com.example.model.priceCategory.PriceCategoryService;
 import com.example.model.refinery.RefineryService;
+import com.example.model.region.RegionService;
 import com.example.model.tools.FormType;
 import com.example.model.tools.QueryBuilder;
 import com.example.model.transLine.TransLineService;
@@ -137,6 +138,7 @@ public class AddTransportation {
     private final TransLineService transLineService = TransLineService.getInstance();
     private final TransLogService transLogService = TransLogService.getInstance();
     private final ForfeitService forfeitService = ForfeitService.getInstance();
+    private final RegionService regionService = RegionService.getInstance();
 
     private Long selectedRefineryId;
     private Long selectedRefineryRegionId;
@@ -208,6 +210,42 @@ public class AddTransportation {
         final List<GasStation> gasStations = gasStationService.getItems(null, null);
         final List<String> stationList = gasStations.stream().map(GasStation::getTranslation).toList();
         TextFields.bindAutoCompletion(stationTF, stationList);
+
+        List<Place> places = new ArrayList<Place>();
+        final List<Refinery> refineries = refineryService.getItems(null, null);
+        final List<GasStation> stations = gasStationService.getItems(null, null);
+        final List<Region> regions = regionService.getItems(null, null);
+
+        List<String> placeNames = new ArrayList<String>();
+        if(Objects.nonNull(refineries) && Objects.nonNull(stations) && Objects.nonNull(regions)) {
+
+            places.addAll(refineries);
+            places.addAll(stations);
+            places.addAll(regions);
+
+            placeNames.addAll(places.stream().map(Place::getName).toList());
+            TextFields.bindAutoCompletion(sourceTF, placeNames);
+            TextFields.bindAutoCompletion(destinationTF, placeNames);
+        }
+
+        sourceTF.focusedProperty().addListener((observableValue, aBoolean, t1) -> {
+            if(sourceTF.getText().length()>0){
+                if(placeNames.contains(sourceTF.getText())){
+                    final Place place = places.get(placeNames.indexOf(sourceTF.getText()));
+                    selectedRefineryRegionId = place.getId();
+                }
+
+            }
+        });
+
+        destinationTF.focusedProperty().addListener((observableValue, aBoolean, t1) -> {
+            if(destinationTF.getText().length()>0){
+                if(placeNames.contains(destinationTF.getText())){
+                    final Place place = places.get(placeNames.indexOf(destinationTF.getText()));
+                    selectedRegionId = place.getId();
+                }
+            }
+        });
 
         stationTF.focusedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
@@ -397,7 +435,8 @@ public class AddTransportation {
                 transportation = transportationService.addItem(new CreateTransRequest(selectedRefineryId,
                         selectedVehicleId,
                         Long.parseLong(sizeTF.getText().replaceAll(",", "")),
-                        type));
+                        type,
+                        false));
                 controller.addData(transportation);
                 addedTransport = transportation;
             }
@@ -537,20 +576,25 @@ public class AddTransportation {
 
     @FXML
     void addLineFee() {
-        final List<TransLine> transLineList = transLineService.getItems(0,
-                10,
-                "&key=source&value=" + selectedRefineryRegionId + "&operation=%3A" +
-                        "&key=destination&value=" + selectedRegionId + "&operation=%3A&sort=id,desc");
-        final TransLine transLine = transLineList.get(0);
-        final CreateTransLogRequest createTransLogRequest = new CreateTransLogRequest(transportation.getVehicle().getId(),
-                transLine.getId(),
-                new Money(transLine.getFee().getCurrency(),
-                        transLine.getFee().getAmount()*Double.parseDouble(partAmountTF.getText().replaceAll(",", ""))),
-                transportation.getId(),
-                lineNotesTF.getText());
-        final TransLog transLog = transLogService.addItem(createTransLogRequest);
-        loadTransData();
-        Notifications.create().title("Info").text("Added "+transLog.getNotes().toString()).showInformation();
+        if(partAmountTF.getText().replaceAll(",", "").length() == 0){
+            Notifications.create().title("Please choose a destination").showInformation();
+        }else {
+            final List<TransLine> transLineList = transLineService.getItems(0,
+                    10,
+                    "&key=source&value=" + selectedRefineryRegionId + "&operation=%3A" +
+                            "&key=destination&value=" + selectedRegionId + "&operation=%3A&sort=id,desc");
+            final TransLine transLine = transLineList.get(0);
+            final CreateTransLogRequest createTransLogRequest = new CreateTransLogRequest(transportation.getVehicle().getId(),
+                    transLine.getId(),
+                    new Money(transLine.getFee().getCurrency(),
+                            transLine.getFee().getAmount()*Double.parseDouble(partAmountTF.getText().replaceAll(",", ""))),
+                    transportation.getId(),
+                    lineNotesTF.getText());
+            final TransLog transLog = transLogService.addItem(createTransLogRequest);
+            loadTransData();
+            Notifications.create().title("Info").text("Added "+transLog.getNotes().toString()).showInformation();
+        }
+
     }
 
     private void setTransLogTable(){
