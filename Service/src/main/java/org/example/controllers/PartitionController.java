@@ -226,7 +226,8 @@ public class PartitionController {
         params.put("transportationId", partition.getId()+"-"+partition.getTransportationEntity().getId());
         params.put("vehicleNumber", partition.getTransportationEntity().getVehicle().getPlateNumber());
         params.put("driverName", partition.getTransportationEntity().getVehicle().getDriver().getName());
-        params.put("gasStation", partition.getGasStation().getTranslation());
+        params.put("gasStation", partition.getGasStation().getTranslation()+" - "+
+                partition.getTransportationEntity().getTransLogs().stream().toList().get(0).getNotes());
         params.put("amount", NumberFormat.getInstance().format(partition.getAmount()));
         params.put("material", partition.getMaterial().getName());
         params.put("transportationDate", partition.getTransportationEntity().getCreatedAt().toString());

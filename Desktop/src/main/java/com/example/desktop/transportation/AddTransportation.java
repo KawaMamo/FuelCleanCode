@@ -577,7 +577,7 @@ public class AddTransportation {
     @FXML
     void addLineFee() {
         if(partAmountTF.getText().replaceAll(",", "").length() == 0){
-            Notifications.create().title("Please choose a destination").showInformation();
+            Notifications.create().title("يرجى اختيار وجهة").showInformation();
         }else {
             final List<TransLine> transLineList = transLineService.getItems(0,
                     10,

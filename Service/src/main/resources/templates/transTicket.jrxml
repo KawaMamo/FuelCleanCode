@@ -102,7 +102,7 @@
                 </textElement>
                 <textFieldExpression><![CDATA["الجهة المرسلة إليها المحروقات"]]></textFieldExpression>
             </textField>
-            <textField textAdjust="ScaleFont">
+            <textField textAdjust="StretchHeight">
                 <reportElement mode="Opaque" x="341" y="45" width="172" height="30" backcolor="#E0DDDA" uuid="4ff5537d-faf4-4457-b4cc-d3b140392b9e">
                     <property name="com.jaspersoft.studio.unit.height" value="px"/>
                 </reportElement>
