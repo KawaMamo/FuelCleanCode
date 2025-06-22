@@ -1,6 +1,8 @@
 package com.example.desktop.transportation;
 
+import com.example.desktop.delete.DeleteConfirmation;
 import com.example.model.TableController;
+import com.example.model.document.DocumentService;
 import com.example.model.modal.Modal;
 import com.example.model.tools.FormType;
 import com.example.model.transportation.TransportationService;
@@ -182,6 +184,13 @@ public class TransScan implements TableController {
             throw new RuntimeException(e);
         }
 
+    }
 
+    @FXML
+    void delete(){
+        DeleteConfirmation.deleteUrl = transportationService.getEndPoint()+"/documents";
+        DeleteConfirmation.controller = this;
+        DeleteConfirmation.selected = selectedTransportation.getId();
+        Modal.start(this.getClass(), "/com/example/desktop/delete/deleteConfirmation.fxml");
     }
 }

@@ -27,7 +27,7 @@ public class DocumentService implements Service<Document, CreateDocumentRequest,
 
     @Override
     public String getEndPoint() {
-        return null;
+        return "document";
     }
 
     @Override

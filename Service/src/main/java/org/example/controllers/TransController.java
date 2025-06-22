@@ -11,7 +11,6 @@ import org.example.contract.request.create.CreateDocumentRequest;
 import org.example.contract.request.create.CreateTransRequest;
 import org.example.contract.request.update.UpdateTransRequest;
 import org.example.contract.response.TransResponse;
-import org.example.entities.TransLogEntity;
 import org.example.entities.TransportationEntity;
 import org.example.entities.TransportationType;
 import org.example.mappers.TransMapper;
@@ -21,6 +20,7 @@ import org.example.security.UserData;
 import org.example.specifications.*;
 import org.example.useCases.create.CreateTrans;
 import org.example.useCases.delete.DeleteTrans;
+import org.example.useCases.delete.DeleteTransDocuments;
 import org.example.useCases.update.UpdateTrans;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.domain.Page;
@@ -49,17 +49,19 @@ public class TransController {
     private final TransMapper transMapper;
     private final UpdateTrans updateTrans;
     private final DeleteTrans deleteTrans;
+    private final DeleteTransDocuments deleteTransDocuments;
 
     public TransController(CreateTrans createTrans,
                            TransRepoJpa transRepoJpa,
                            PagedResourcesAssembler pagedResourcesAssembler,
-                           TransMapper transMapper, UpdateTrans updateTrans, DeleteTrans deleteTrans) {
+                           TransMapper transMapper, UpdateTrans updateTrans, DeleteTrans deleteTrans, DeleteTransDocuments deleteTransDocuments) {
         this.createTrans = createTrans;
         this.transRepoJpa = transRepoJpa;
         this.pagedResourcesAssembler = pagedResourcesAssembler;
         this.transMapper = transMapper;
         this.updateTrans = updateTrans;
         this.deleteTrans = deleteTrans;
+        this.deleteTransDocuments = deleteTransDocuments;
     }
 
     @PostMapping
@@ -100,6 +102,11 @@ public class TransController {
     @DeleteMapping("/{id}")
     public TransResponse deleteTrans(@PathVariable Long id){
         return deleteTrans.execute(id);
+    }
+
+    @DeleteMapping("/documents/{id}")
+    public TransResponse deleteTransDocs(@PathVariable Long id){
+        return deleteTransDocuments.execute(id);
     }
 
     @GetMapping("/RefineryReport/{exportType}/{id}/{start}/{end}/{type}")

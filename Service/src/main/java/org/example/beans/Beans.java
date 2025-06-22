@@ -807,6 +807,11 @@ public class Beans {
     DeleteDocument deleteDocument(DocumentRepo documentRepo, DocumentDomainMapper documentDomainMapper){
         return new DeleteDocument(documentDomainMapper, documentRepo);
     }
+
+    @Bean
+    DeleteTransDocuments deleteTransDocuments(TransRepo transRepo, DomainTransMapper domainTransMapper){
+        return new DeleteTransDocuments(transRepo, domainTransMapper);
+    }
     @Bean
     TokenService tokenService(){
         return new TokenService();

@@ -1,6 +1,7 @@
 package org.example.useCases.delete;
 
 import org.example.contract.repository.DocumentRepo;
+import org.example.contract.repository.TransRepo;
 import org.example.contract.response.DocumentResponse;
 import org.example.mappers.DocumentDomainMapper;
 import org.example.model.Document;

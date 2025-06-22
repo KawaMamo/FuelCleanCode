@@ -46,8 +46,9 @@
       <HBox nodeOrientation="RIGHT_TO_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <children>
             <Button mnemonicParsing="false" onAction="#search" text="بحث" />
-            <Button mnemonicParsing="false" onAction="#upload" text="upload" />
-            <Button mnemonicParsing="false" onAction="#preview" text="preview" />
+            <Button mnemonicParsing="false" onAction="#upload" text="رفع ملف" />
+            <Button mnemonicParsing="false" onAction="#preview" text="معاينة" />
+            <Button mnemonicParsing="false" onAction="#delete" text=" حذف الملفات المرفقة" />
             <Separator maxWidth="1.7976931348623157E308" opacity="0.0" HBox.hgrow="ALWAYS" />
             <Button mnemonicParsing="false" onAction="#pageUp" text="+" />
             <TextField fx:id="page" alignment="CENTER" prefHeight="26.0" prefWidth="34.0" text="1" />

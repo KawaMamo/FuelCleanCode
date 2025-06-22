@@ -9,7 +9,7 @@ import org.example.model.OfficePayment;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-05-04T15:55:05+0300",
+    date = "2025-06-22T17:50:21+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class OfficePaymentDomainMapperImpl implements OfficePaymentDomainMapper {

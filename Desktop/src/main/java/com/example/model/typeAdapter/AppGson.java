@@ -40,6 +40,7 @@ public class AppGson {
      @Override
      public Document deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
          final Document document = new Document();
+         document.setId(Long.parseLong(jsonElement.getAsJsonObject().get("id").toString()));
          document.setContent(jsonElement.getAsJsonObject().get("content").toString().getBytes(StandardCharsets.UTF_8));
          document.setType(jsonElement.getAsJsonObject().get("type").toString());
          document.setUrl(jsonElement.getAsJsonObject().get("url").toString());

@@ -6,7 +6,7 @@ import org.example.model.TrafficCenter;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-06-20T16:08:50+0300",
+    date = "2025-06-22T17:50:30+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class TrafficCenterMapperImpl implements TrafficCenterMapper {
