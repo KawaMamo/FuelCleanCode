@@ -15,6 +15,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
+import org.controlsfx.control.Notifications;
 import org.example.model.Document;
 import org.example.model.Transportation;
 
@@ -166,7 +167,13 @@ public class TransScan implements TableController {
                 .addAll(extFilterPNG, extFilterpng);
         File file = fileChooser.showOpenDialog(null);
         String request = "{\"fileName\": \""+file.getName()+"\",\n \"type\": \"png\"\n}";
-        final Transportation transportation = transportationService.uploadImage(selectedTransportation.getId(), file.getPath(), request);
+        try {
+            final Transportation transportation = transportationService.uploadImage(selectedTransportation.getId(), file.getPath(), request);
+            if(Objects.nonNull(transportation))
+                Notifications.create().title("successful").showInformation();
+        }catch (Exception e){
+            Notifications.create().text(e.getMessage()).showError();
+        }
         loadDocuments();
     }
 
