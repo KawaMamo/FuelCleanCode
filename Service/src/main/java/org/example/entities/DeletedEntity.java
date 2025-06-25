@@ -13,9 +13,8 @@ public class DeletedEntity {
     @Column(name = "id")
     private Long id;
 
-    private String tableName;
+    private String className;
     @Column(columnDefinition="text")
     private String jsonValue;
     private LocalDateTime createdAt;
-    private String userId;
 }

@@ -14,8 +14,6 @@ import org.example.validators.update.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.security.Principal;
-
 @Configuration
 public class Beans {
 
@@ -796,8 +794,8 @@ public class Beans {
         return new DeleteTrafficCenter(trafficCenterRepo, trafficCenterDomainMapper);
     }
     @Bean
-    DeleteTrans deleteTrans(TransRepo transRepo, DomainTransMapper transDomainMapper){
-        return new DeleteTrans(transRepo, transDomainMapper);
+    DeleteTrans deleteTrans(TransRepo transRepo, DomainTransMapper transDomainMapper, DeletedRepo deletedRepo){
+        return new DeleteTrans(transRepo, transDomainMapper, deletedRepo);
     }
     @Bean
     DeleteTransferMaterial deleteTransferMaterial(TransferMaterialRepo transferMaterialRepo, TransferMaterialDomainMapper transferMaterialDomainMapper){
@@ -808,8 +806,8 @@ public class Beans {
         return new DeleteTransLine(transLineRepo, transLineDomainMapper);
     }
     @Bean
-    DeleteTransLog deleteTransLog(TransLogRepo transLogRepo, TransLogDomainMapper transLogDomainMapper){
-        return new DeleteTransLog(transLogDomainMapper, transLogRepo);
+    DeleteTransLog deleteTransLog(TransLogRepo transLogRepo, TransLogDomainMapper transLogDomainMapper, DeletedRepo deletedRepo){
+        return new DeleteTransLog(transLogDomainMapper, transLogRepo, deletedRepo);
     }
     @Bean
     DeleteVehicle deleteVehicle(VehicleRepo vehicleRepo, VehicleDomainMapper vehicleDomainMapper){
