@@ -44,6 +44,7 @@ import org.example.model.*;
 
 import java.io.*;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.*;
 
 public class AddTransportation {
@@ -436,7 +437,8 @@ public class AddTransportation {
                         selectedVehicleId,
                         Long.parseLong(sizeTF.getText().replaceAll(",", "")),
                         type,
-                        false));
+                        false,
+                        dateDP.getValue().atTime(LocalTime.now())));
                 controller.addData(transportation);
                 addedTransport = transportation;
             }

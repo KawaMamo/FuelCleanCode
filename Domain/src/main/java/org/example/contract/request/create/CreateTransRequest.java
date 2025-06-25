@@ -7,6 +7,10 @@ import org.example.contract.request.Request;
 import org.example.model.Refinery;
 import org.example.model.TransportationType;
 import org.example.model.Vehicle;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,5 +21,6 @@ public class CreateTransRequest implements Request {
     private Long size;
     private TransportationType type;
     private Boolean isPriced;
+    private LocalDateTime createdAt;
 
 }

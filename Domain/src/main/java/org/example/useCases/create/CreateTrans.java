@@ -32,7 +32,7 @@ public class CreateTrans {
 
         validator.validate(request);
         final Transportation transportation = domainTransMapper.toDomain(request);
-        addSystemValues(transportation);
+        //addSystemValues(transportation);
         final Transportation save = transRepo.save(transportation);
         vehicleRepo.findById(save.getVehicle().getId()).ifPresent(save::setVehicle);
         refineryRepo.findById(save.getRefinery().getId()).ifPresent(save::setRefinery);

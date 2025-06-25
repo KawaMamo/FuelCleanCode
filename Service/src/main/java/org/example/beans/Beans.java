@@ -14,6 +14,8 @@ import org.example.validators.update.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.security.Principal;
+
 @Configuration
 public class Beans {
 
@@ -760,8 +762,18 @@ public class Beans {
         return new DeleteOffice(officeRepo, officeDomainMapper);
     }
     @Bean
-    DeletePartition deletePartition(PartitionRepo partitionRepo, PartitionDomainMapper partitionDomainMapper){
-        return new DeletePartition(partitionRepo, partitionDomainMapper);
+    DeletePartition deletePartition(PartitionRepo partitionRepo, PartitionDomainMapper partitionDomainMapper, DeletedRepo deletedRepo){
+        return new DeletePartition(partitionRepo, partitionDomainMapper, deletedRepo);
+    }
+
+    @Bean
+    DeletedRepo deletedRepo(DeletedRepository deletedRepository, DeletedMapper mapper){
+        return new DeletedAdapter(deletedRepository, mapper);
+    }
+
+    @Bean
+    DeletedMapper deletedMapper(){
+        return new DeletedMapperImpl();
     }
     @Bean
     DeletePerson deletePerson(PersonRepo personRepo, PersonDomainMapper personDomainMapper){

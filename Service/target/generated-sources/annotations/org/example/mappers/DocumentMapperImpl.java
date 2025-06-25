@@ -7,7 +7,7 @@ import org.example.model.Document;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-06-22T17:50:30+0300",
+    date = "2025-06-25T17:55:26+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class DocumentMapperImpl implements DocumentMapper {
