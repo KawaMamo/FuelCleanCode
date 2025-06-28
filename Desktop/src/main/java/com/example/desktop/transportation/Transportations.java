@@ -81,7 +81,10 @@ public class Transportations implements TableController {
                 }
         );
 
-        tableTbl.getColumns().addAll(idCol, vehicleCol, refineryCol, sizeCol, partitionsCol, dateCol);
+        TableColumn<Transportation, String> typeColumn = new TableColumn<>("Type");
+        typeColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getType().toString()));
+
+        tableTbl.getColumns().addAll(idCol, vehicleCol, refineryCol, sizeCol, partitionsCol, dateCol, typeColumn);
         tableTbl.setItems(observableList);
     }
 
