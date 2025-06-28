@@ -73,7 +73,13 @@ public class Transportations implements TableController {
         );
 
         TableColumn<Transportation,String> dateCol = new TableColumn<>("date");
-        dateCol.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getCreatedAt().toString()));
+        dateCol.setCellValueFactory(
+                (data) -> {
+                    if(Objects.nonNull(data.getValue().getCreatedAt()))
+                        return new SimpleStringProperty(data.getValue().getCreatedAt().toString());
+                    else return new SimpleStringProperty("");
+                }
+        );
 
         tableTbl.getColumns().addAll(idCol, vehicleCol, refineryCol, sizeCol, partitionsCol, dateCol);
         tableTbl.setItems(observableList);

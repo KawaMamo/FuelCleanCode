@@ -44,7 +44,7 @@ public class CreateTransLog {
         final FatCreateTransLogRequest fatCreateTransLogRequest = new FatCreateTransLogRequest();
         extracted(request, reason, fatCreateTransLogRequest);
         final TransLog transLog = transLogDomainMapper.requestToDomain(fatCreateTransLogRequest);
-        transLog.setCreatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
+        transLog.setCreatedAt(((Transportation) reason).getCreatedAt());
         final TransLog save = transLogRepo.save(transLog);
         vehicleRepo.findById(save.getVehicle().getId()).ifPresent(save::setVehicle);
         transLineRepo.findById(save.getTransLine().getId()).ifPresent(save::setTransLine);
