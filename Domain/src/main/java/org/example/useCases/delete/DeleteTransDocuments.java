@@ -18,7 +18,7 @@ public class DeleteTransDocuments {
     }
 
     public TransResponse execute(Long id){
-        final Transportation transportation = transRepo.findById(id).orElseThrow(NoSuchElementException::new);
+        final Transportation transportation = transRepo.findByIdAndDeletedAt(id, null).orElseThrow(NoSuchElementException::new);
         transportation.setDocument(null);
         final Transportation save = transRepo.save(transportation);
         return mapper.toResponse(save);

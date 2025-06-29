@@ -426,7 +426,8 @@ public class AddTransportation {
                         false,
                         selectedVehicleId,
                         Long.parseLong(sizeTF.getText().replaceAll(",", "")),
-                        type));
+                        type,
+                        null));
                 controller.loadData();
                 addedTransport = transportation;
             }
@@ -495,7 +496,8 @@ public class AddTransportation {
                         true,
                         transportation.getVehicle().getId(),
                         transportation.getSize(),
-                        transportation.getType()));
+                        transportation.getType(),
+                        null));
                 loadData();
                 Notifications.create().title("Info").text("Updated "+partition.getGasStation().getName()).showInformation();
             }

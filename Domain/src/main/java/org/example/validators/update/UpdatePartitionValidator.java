@@ -47,7 +47,7 @@ public class UpdatePartitionValidator {
             errorDetails.add(new ValidationErrorDetails(GAS_STATION_FIELD, ELEMENT_NOT_FOUND));
         }
 
-        if(transRepo.findById(request.getTransportationId()).isEmpty()){
+        if(transRepo.findByIdAndDeletedAt(request.getTransportationId(), null).isEmpty()){
             errorDetails.add(new ValidationErrorDetails(TRANS_FIELD, ELEMENT_NOT_FOUND));
         }
 

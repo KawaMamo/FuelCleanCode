@@ -49,7 +49,7 @@ public class CreateTransLog {
         vehicleRepo.findById(save.getVehicle().getId()).ifPresent(save::setVehicle);
         transLineRepo.findById(save.getTransLine().getId()).ifPresent(save::setTransLine);
         if(reason instanceof Transportation){
-            transRepo.findById(save.getTransportation().getId()).ifPresent(save::setTransportation);
+            transRepo.findByIdAndDeletedAt(save.getTransportation().getId(), null).ifPresent(save::setTransportation);
         }else if(reason instanceof TransferMaterials){
             transferMaterialRepo.findById(save.getTransportation().getId()).ifPresent(save::setTransportation);
         }

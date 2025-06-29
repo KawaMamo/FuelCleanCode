@@ -42,7 +42,7 @@ public class UpdateTransLogValidator {
             errorDetails.add(new ValidationErrorDetails(VEHICLE_FIELD, ELEMENT_NOT_FOUND));
         }
 
-        if(Objects.isNull(transRepo.findById(request.getTransportationId()))){
+        if(Objects.isNull(transRepo.findByIdAndDeletedAt(request.getTransportationId(), null))){
             errorDetails.add(new ValidationErrorDetails(TRANS_LINE_FIELD, ELEMENT_NOT_FOUND));
         }
 

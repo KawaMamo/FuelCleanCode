@@ -49,7 +49,7 @@ public class UpdateTransValidator {
             errorDetails.add(new ValidationErrorDetails(TYPE_ENUM, ILLEGAL_VALUE));
         }
 
-        transRepo.findById(request.getId()).ifPresent(transportation -> {
+        transRepo.findByIdAndDeletedAt(request.getId(), null).ifPresent(transportation -> {
             Long size = 0L;
             for (Partition partition : transportation.getPartitions()) {
                 size += partition.getAmount();

@@ -7,6 +7,7 @@ import org.example.repositories.TransRepoJpa;
 import org.example.entities.TransportationEntity;
 import org.example.security.UserData;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 public class TransAdapter implements TransRepo {
@@ -27,6 +28,14 @@ public class TransAdapter implements TransRepo {
         final TransportationEntity save = transRepoJpa.save(transportationEntity);
 
         return transMapper.entityToDomain(save);
+    }
+
+    @Override
+    public Optional<Transportation> findByIdAndDeletedAt(Long id, LocalDateTime deletedAt) {
+        final Optional<TransportationEntity> byId = transRepoJpa.findByIdAndDeletedAt(id,deletedAt);
+        final TransportationEntity transportationEntity = byId.orElse(null);
+        final Transportation transportation = transMapper.entityToDomain(transportationEntity);
+        return Optional.ofNullable(transportation);
     }
 
     @Override

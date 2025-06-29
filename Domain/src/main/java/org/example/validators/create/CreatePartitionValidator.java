@@ -30,7 +30,7 @@ public class CreatePartitionValidator {
     public void validate(CreatePartitionRequest request){
         Set<ValidationErrorDetails> errorDetails = new HashSet<>();
 
-        transRepo.findById(request.getTransportationId())
+        transRepo.findByIdAndDeletedAt(request.getTransportationId(), null)
                 .ifPresent(transportation -> {
                     final Optional<Partition> reduce = transportation.getPartitions().stream()
                             .reduce((partition, partition2) -> {
@@ -57,7 +57,7 @@ public class CreatePartitionValidator {
             errorDetails.add(new ValidationErrorDetails(GAS_STATION_FIELD, ELEMENT_NOT_FOUND));
         }
 
-        if(transRepo.findById(request.getTransportationId()).isEmpty()){
+        if(transRepo.findByIdAndDeletedAt(request.getTransportationId(), null).isEmpty()){
             errorDetails.add(new ValidationErrorDetails(TRANS_FIELD, ELEMENT_NOT_FOUND));
         }
 

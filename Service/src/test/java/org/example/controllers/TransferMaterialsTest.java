@@ -1,7 +1,9 @@
 package org.example.controllers;
 
-import org.example.contract.response.OfficeResponse;
+import org.example.contract.request.create.*;
+import org.example.contract.response.*;
 import org.example.entities.TransportationType;
+import org.example.model.Money;
 import org.example.specifications.SearchFilter;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.security.Principal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Base64;
 import java.util.List;
 
@@ -59,10 +62,9 @@ public class TransferMaterialsTest {
     private ForfeitController forfeitController;
 
     /*@Test
-    @Disabled
     void contextLoads() {
-        final OfficeResponse office1 = officeController.createOffice(new CreateOfficeRequest("office 1"));
-        final OfficeResponse office2 = officeController.createOffice(new CreateOfficeRequest("office 2"));
+        final OfficeResponse office1 = officeController.createOffice(new CreateOfficeRequest("office 1"+(int)(Math.random()*100)));
+        final OfficeResponse office2 = officeController.createOffice(new CreateOfficeRequest("office 2"+(int)(Math.random()*100)));
         assertNotNull(office1);
         assertNotNull(office2);
 
@@ -126,13 +128,17 @@ public class TransferMaterialsTest {
         final TransResponse trans1 = transController.createTrans(new CreateTransRequest(refinery1.getId(),
                 vehicle1.getId(),
                 25000L,
-                TransportationType.NORMAL));
+                org.example.model.TransportationType.NORMAL,
+                false,
+                LocalDateTime.now()));
         assertNotNull(trans1);
 
         final TransResponse trans2 = transController.createTrans(new CreateTransRequest(refinery1.getId(),
                 vehicle1.getId(),
                 25000L,
-                TransportationType.NORMAL));
+                org.example.model.TransportationType.NORMAL,
+                false,
+                LocalDateTime.now()));
         assertNotNull(trans2);
 
         final PriceCategoryResponse priceCategory1 = priceCategoryController.execute(
@@ -179,7 +185,7 @@ public class TransferMaterialsTest {
                 material1.getId(),
                 45000L,
                 new Money("USD", 10D),
-                TransportationType.NORMAL));
+                org.example.model.TransportationType.NORMAL));
         assertNotNull(transferMaterial1);
 
         final TransferMaterialResponse transferMaterial2 = transferMaterialController.createTransferMaterial(
@@ -188,10 +194,10 @@ public class TransferMaterialsTest {
                         material2.getId(),
                         45000L,
                         new Money("USD", 12D),
-                        TransportationType.NORMAL));
+                        org.example.model.TransportationType.NORMAL));
         assertNotNull(transferMaterial2);
 
-        *//*final PartitionResponse partition1 = partitionController.createPartition(new CreatePartitionRequest(material1.getId(),
+        final PartitionResponse partition1 = partitionController.createPartition(new CreatePartitionRequest(material1.getId(),
                 45000,
                 42000,
                 new Money("SP", 12D),
@@ -209,10 +215,10 @@ public class TransferMaterialsTest {
                 "notes",
                 "extra notes",
                 trans2.getId()));
-        assertNotNull(partition2);*//*
+        assertNotNull(partition2);
 
-    }*/
-    /*@Test
+    }
+    @Test
     void testClientsReceivedMaterials() throws Exception {
         final ResponseEntity<String> html = partitionController.getClientReceivedMaterials(6L,
                 LocalDate.parse("2024-01-01"),
@@ -278,9 +284,9 @@ public class TransferMaterialsTest {
         String htmlContent = new String(decode);
         final boolean b = htmlContent.startsWith("<!DOCTYPE");
         assertTrue(b);
-    }*/
+    }
 
-    /*@Test
+    @Test
     void testForfeitReport() throws Exception {
         final ResponseEntity<String> html = forfeitController.getForfeitReport(3L,
                 LocalDate.parse("2024-01-01"),
@@ -290,9 +296,9 @@ public class TransferMaterialsTest {
         String htmlContent = new String(decode);
         final boolean b = htmlContent.startsWith("<!DOCTYPE");
         assertTrue(b);
-    }*/
+    }
 
-    /*@Test
+    @Test
     void testPrinciple() throws Exception {
         final SearchFilter searchFilter = new SearchFilter(new String[]{"id"}, new String[]{"0"}, new String[]{">"}, null);
 

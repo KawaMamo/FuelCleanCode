@@ -40,7 +40,7 @@ public class UpdateTrans {
     }
 
     public TransResponse addDocument(Long id, CreateDocumentRequest request){
-        final Transportation transportation = transRepo.findById(id).orElseThrow(NoSuchElementException::new);
+        final Transportation transportation = transRepo.findByIdAndDeletedAt(id, null).orElseThrow(NoSuchElementException::new);
         final Document document = new Document();
         document.setType(request.getType());
         document.setUrl(request.getFileName());

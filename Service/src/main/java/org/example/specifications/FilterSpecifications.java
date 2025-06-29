@@ -48,6 +48,10 @@ public class FilterSpecifications<T> implements Specification<T> {
                 }else {
                     predicates.add(builder.equal(root.get(criteria.getKey()), criteria.getValue()));
                 }
+            }else if (criteria.getOperation().equalsIgnoreCase("null")){
+                predicates.add(builder.isNull(root.get(criteria.getKey())));
+            }else if (criteria.getOperation().equalsIgnoreCase("notNull")){
+                predicates.add(builder.isNotNull(root.get(criteria.getKey())));
             }
         }
         return builder.and(predicates.toArray(new Predicate[0]));

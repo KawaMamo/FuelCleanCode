@@ -40,7 +40,7 @@ public class CreatePartition {
         final Partition partition = mapper.requestToDomain(request);
         partition.setCreatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         final Partition save = partitionRepo.save(partition);
-        transRepo.findById(save.getTransportation().getId()).ifPresent(save::setTransportation);
+        transRepo.findByIdAndDeletedAt(save.getTransportation().getId(), null).ifPresent(save::setTransportation);
         gasStationRepo.findById(save.getGasStation().getId()).ifPresentOrElse(save::setGasStation, NoSuchElementException::new);
         materialRepo.findById(save.getMaterial().getId()).ifPresent(save::setMaterial);
         return mapper.domainToResponse(save);

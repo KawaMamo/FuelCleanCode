@@ -759,20 +759,7 @@ public class Beans {
     DeleteOffice deleteOffice(OfficeRepo officeRepo, OfficeDomainMapper officeDomainMapper){
         return new DeleteOffice(officeRepo, officeDomainMapper);
     }
-    @Bean
-    DeletePartition deletePartition(PartitionRepo partitionRepo, PartitionDomainMapper partitionDomainMapper, DeletedRepo deletedRepo){
-        return new DeletePartition(partitionRepo, partitionDomainMapper, deletedRepo);
-    }
 
-    @Bean
-    DeletedRepo deletedRepo(DeletedRepository deletedRepository, DeletedMapper mapper){
-        return new DeletedAdapter(deletedRepository, mapper);
-    }
-
-    @Bean
-    DeletedMapper deletedMapper(){
-        return new DeletedMapperImpl();
-    }
     @Bean
     DeletePerson deletePerson(PersonRepo personRepo, PersonDomainMapper personDomainMapper){
         return new DeletePerson(personRepo, personDomainMapper);
@@ -794,9 +781,10 @@ public class Beans {
         return new DeleteTrafficCenter(trafficCenterRepo, trafficCenterDomainMapper);
     }
     @Bean
-    DeleteTrans deleteTrans(TransRepo transRepo, DomainTransMapper transDomainMapper, DeletedRepo deletedRepo){
-        return new DeleteTrans(transRepo, transDomainMapper, deletedRepo);
+    DeleteTrans deleteTrans(TransRepo transRepo, DomainTransMapper transDomainMapper){
+        return new DeleteTrans(transRepo, transDomainMapper);
     }
+
     @Bean
     DeleteTransferMaterial deleteTransferMaterial(TransferMaterialRepo transferMaterialRepo, TransferMaterialDomainMapper transferMaterialDomainMapper){
         return new DeleteTransferMaterial(transferMaterialDomainMapper, transferMaterialRepo);
@@ -805,9 +793,14 @@ public class Beans {
     DeleteTransLine deleteTransLine(TransLineRepo transLineRepo, TransLineDomainMapper transLineDomainMapper){
         return new DeleteTransLine(transLineRepo, transLineDomainMapper);
     }
+
     @Bean
-    DeleteTransLog deleteTransLog(TransLogRepo transLogRepo, TransLogDomainMapper transLogDomainMapper, DeletedRepo deletedRepo){
-        return new DeleteTransLog(transLogDomainMapper, transLogRepo, deletedRepo);
+    DeletePartition deletePartition(PartitionRepo partitionRepo, PartitionDomainMapper partitionDomainMapper){
+        return new DeletePartition(partitionRepo, partitionDomainMapper);
+    }
+    @Bean
+    DeleteTransLog deleteTransLog(TransLogRepo transLogRepo, TransLogDomainMapper transLogDomainMapper){
+        return new DeleteTransLog(transLogDomainMapper, transLogRepo);
     }
     @Bean
     DeleteVehicle deleteVehicle(VehicleRepo vehicleRepo, VehicleDomainMapper vehicleDomainMapper){

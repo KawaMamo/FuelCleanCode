@@ -19,7 +19,7 @@ public class TransportationTypeDetector {
 
     public TransportationReason detect(Long requestId){
         try {
-            final Optional<Transportation> byId = transRepo.findById(requestId);
+            final Optional<Transportation> byId = transRepo.findByIdAndDeletedAt(requestId, null);
             if(byId.isPresent())
                 return byId.get();
         }catch (Exception e) {}

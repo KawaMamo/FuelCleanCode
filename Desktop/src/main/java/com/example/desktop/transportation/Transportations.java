@@ -3,6 +3,7 @@ package com.example.desktop.transportation;
 import com.example.model.TableController;
 import com.example.model.modal.Modal;
 import com.example.model.tools.FormType;
+import com.example.model.tools.QueryBuilder;
 import com.example.model.transportation.TransportationService;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -14,6 +15,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.controlsfx.control.Notifications;
+import org.example.contract.request.update.UpdateTransRequest;
 import org.example.model.Forfeit;
 import org.example.model.Partition;
 import org.example.model.Transportation;
@@ -41,6 +43,9 @@ public class Transportations implements TableController {
 
     @FXML
     private void initialize(){
+        final QueryBuilder queryBuilder = new QueryBuilder();
+        queryBuilder.addQueryParameter("deletedAt", "null", "null");
+        setQuery(queryBuilder.getQuery());
         loadData();
         setTable();
         tableTbl.getSelectionModel().selectedItemProperty().addListener((observableValue, Transportation, t1) -> selectedTransportation = t1);
@@ -84,7 +89,15 @@ public class Transportations implements TableController {
         TableColumn<Transportation, String> typeColumn = new TableColumn<>("Type");
         typeColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getType().toString()));
 
-        tableTbl.getColumns().addAll(idCol, vehicleCol, refineryCol, sizeCol, partitionsCol, dateCol, typeColumn);
+        TableColumn<Transportation, String> isDeletedColumn = new TableColumn<>("deletedAt");
+        isDeletedColumn.setCellValueFactory(data -> {
+            String str = "";
+            if(Objects.nonNull(data.getValue().getDeletedAt()))
+                str = data.getValue().getDeletedAt().toString();
+            return new SimpleStringProperty(str);
+        });
+
+        tableTbl.getColumns().addAll(idCol, vehicleCol, refineryCol, sizeCol, partitionsCol, dateCol, typeColumn, isDeletedColumn);
         tableTbl.setItems(observableList);
     }
 
@@ -131,10 +144,34 @@ public class Transportations implements TableController {
     @FXML
     void filterByPriced(){
         String btnText = alternator%2==0?"غير مسعر":"مسعر";
-        setQuery("&key=isPriced&value="+alternator%2+"&operation=%3A&sort=id,desc");
+        QueryBuilder queryBuilder = new QueryBuilder();
+        queryBuilder.addQueryParameter("isPriced", String.valueOf(alternator%2), ":");
+        queryBuilder.addQueryParameter("deletedAt", "null", "null");
+        setQuery(queryBuilder.getQuery());
         alternator++;
         loadData();
         filterByPricedBtn.setText(btnText);
+    }
+
+    @FXML
+    void deletedTrans(){
+        QueryBuilder queryBuilder = new QueryBuilder();
+        queryBuilder.addQueryParameter("deletedAt", "null", "notNull");
+        setQuery(queryBuilder.getQuery());
+        loadData();
+    }
+
+    @FXML
+    void restore(){
+        final UpdateTransRequest updateTransRequest = new UpdateTransRequest(selectedTransportation.getId(),
+                selectedTransportation.getRefinery().getId(),
+                selectedTransportation.getIsPriced(),
+                selectedTransportation.getVehicle().getId(),
+                selectedTransportation.getSize(),
+                selectedTransportation.getType(),
+                null);
+        final Transportation transportation = transportationService.editItem(updateTransRequest);
+        loadData();
     }
 
     @Override
