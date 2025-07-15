@@ -45,6 +45,7 @@ public class Transportations implements TableController {
     private void initialize(){
         final QueryBuilder queryBuilder = new QueryBuilder();
         queryBuilder.addQueryParameter("deletedAt", "null", "null");
+        queryBuilder.sort();
         setQuery(queryBuilder.getQuery());
         loadData();
         setTable();
