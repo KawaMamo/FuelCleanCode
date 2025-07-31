@@ -60,5 +60,15 @@ public class JpaTest {
         Assert.assertNotNull(html);
     }
 
+    @Test
+    void testProductionReport(){
+        final ResponseEntity<String> html = partitionController.getRefineryProductionReport(3L, LocalDate.parse("2024-01-01"),
+                LocalDate.parse("2025-12-12"),
+                TransportationType.NORMAL, "HTML");
+        final String htmlPage = new String(Base64.getDecoder().decode(html.getBody()));
+        Assert.assertTrue(htmlPage.startsWith("<!DOCTYPE html"));
+        Assert.assertNotNull(html);
+    }
+
 
 }

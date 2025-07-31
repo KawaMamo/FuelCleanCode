@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="driverReport" pageWidth="773" pageHeight="1094" columnWidth="733" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="05df0005-cc25-4e8d-893b-c0b802b106f6">
+    <property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.jrdax"/>
+    <property name="com.jaspersoft.studio.unit." value="pixel"/>
+    <property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+    <property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+    <property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+    <property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+    <property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+    <property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+    <property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+    <property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+    <parameter name="refineryName" class="java.lang.String"/>
+    <parameter name="nowLocalDT" class="java.time.LocalDateTime"/>
+    <queryString language="SQL">
+        <![CDATA[select * from partition_entity;]]>
+    </queryString>
+    <field name="amountSum" class="java.lang.Integer">
+
+    </field>
+    <field name="materialName" class="java.lang.String"/>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="68" splitType="Stretch">
+            <image>
+                <reportElement x="0" y="2" width="140" height="50" uuid="6ed21efe-895c-4d16-b472-52bcacf6e4cf"/>
+                <imageExpression><![CDATA["icons/SadLogo.png"]]></imageExpression>
+            </image>
+            <textField>
+                <reportElement mode="Transparent" x="216" y="10" width="300" height="34" backcolor="#FC9356" uuid="77efb66f-11ea-4efa-a4b9-885d9fcb0587"/>
+                <textElement textAlignment="Center">
+                    <font size="24" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["إجمالي إنتاج المصفاة"]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+    <pageHeader>
+        <band height="62" splitType="Stretch">
+            <property name="com.jaspersoft.studio.unit.height" value="px"/>
+            <staticText>
+                <reportElement x="630" y="2" width="97" height="27" uuid="085d68e2-ab04-4710-8d11-f01ca16f71e9"/>
+                <textElement textAlignment="Center">
+                    <font size="18"/>
+                </textElement>
+                <text><![CDATA[المادة ]]></text>
+            </staticText>
+            <textField textAdjust="ScaleFont">
+                <reportElement x="9" y="2" width="231" height="27" uuid="fba09b6d-23bc-4f65-a35c-a376337601b1">
+                    <property name="com.jaspersoft.studio.unit.width" value="px"/>
+                </reportElement>
+                <textElement>
+                    <font size="19" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{refineryName}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="450" y="30" width="276" height="28" uuid="8498e5ee-dde3-48cd-83b6-b5322874704a"/>
+                <textElement textAlignment="Right">
+                    <font size="15"/>
+                </textElement>
+                <text><![CDATA[التقرير اليومي بتاريخ]]></text>
+            </staticText>
+            <textField textAdjust="ScaleFont">
+                <reportElement x="10" y="29" width="230" height="28" uuid="5cc713f4-3a9d-4acb-a5ac-26d0b38908c8">
+                    <property name="com.jaspersoft.studio.unit.width" value="px"/>
+                </reportElement>
+                <textElement>
+                    <font size="18" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{nowLocalDT}]]></textFieldExpression>
+            </textField>
+        </band>
+    </pageHeader>
+    <columnHeader>
+        <band height="33" splitType="Stretch">
+            <staticText>
+                <reportElement mode="Opaque" x="686" y="0" width="46" height="28" backcolor="#00BCE4" uuid="018c709f-bacb-43ba-8780-27d736a61d93">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1ccd3784-06bd-424a-9026-8b2b118101de"/>
+                </reportElement>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="16"/>
+                </textElement>
+                <text><![CDATA[No.]]></text>
+            </staticText>
+            <staticText>
+                <reportElement stretchType="ContainerHeight" mode="Opaque" x="339" y="0" width="344" height="28" backcolor="#00BCE4" uuid="6560324c-9586-4985-ab6d-a29ff3e8a7ca">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c8a134d1-31fc-4bbf-ac63-5991fcd1d111"/>
+                </reportElement>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="18"/>
+                </textElement>
+                <text><![CDATA[المادة]]></text>
+            </staticText>
+            <staticText>
+                <reportElement mode="Opaque" x="1" y="0" width="338" height="28" backcolor="#00BCE4" uuid="6d5afb82-ac01-4905-a4d5-9640e6527b85">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="19f12742-051d-47aa-8fc2-ba6039f5d783"/>
+                </reportElement>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="19"/>
+                </textElement>
+                <text><![CDATA[الكمية]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="36" splitType="Stretch">
+            <textField>
+                <reportElement x="686" y="1" width="46" height="30" uuid="e38df709-cff3-4960-94c4-8cbbd8201292">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1ccd3784-06bd-424a-9026-8b2b118101de"/>
+                </reportElement>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="15"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="339" y="1" width="346" height="30" uuid="f471c4c8-de39-433b-87ef-5212cfc24c69">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c8a134d1-31fc-4bbf-ac63-5991fcd1d111"/>
+                </reportElement>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="18"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{materialName}]]></textFieldExpression>
+            </textField>
+            <textField textAdjust="ScaleFont">
+                <reportElement x="1" y="1" width="338" height="30" uuid="0137ffd0-a442-4103-b2ea-055ba70f9870">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="19f12742-051d-47aa-8fc2-ba6039f5d783"/>
+                </reportElement>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="16"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{amountSum}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <summary>
+        <band height="25" splitType="Stretch"/>
+    </summary>
+</jasperReport>

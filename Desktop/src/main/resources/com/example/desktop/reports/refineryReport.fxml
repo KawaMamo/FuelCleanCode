@@ -56,6 +56,7 @@
                   <DatePicker fx:id="startDP" />
                   <DatePicker fx:id="endDP" />
                   <Button mnemonicParsing="false" onAction="#report" text="إنشاء تقرير" />
+                  <Button mnemonicParsing="false" onAction="#productionReport" text="الإجمالي" />
                   <Separator maxWidth="1.7976931348623157E308" opacity="0.0" HBox.hgrow="ALWAYS" />
                   <Button mnemonicParsing="false" onAction="#pageUp" text="+" />
                   <TextField fx:id="page" alignment="CENTER" prefHeight="26.0" prefWidth="34.0" text="1" />

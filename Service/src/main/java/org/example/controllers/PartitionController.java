@@ -5,6 +5,7 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.export.ooxml.JRXlsxExporter;
 import net.sf.jasperreports.export.SimpleExporterInput;
 import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
+import org.example.auxiliary.Production;
 import org.example.contract.request.create.CreatePartitionRequest;
 import org.example.contract.request.update.UpdatePartitionRequest;
 import org.example.contract.response.PartitionResponse;
@@ -38,6 +39,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
+import java.util.stream.Stream;
 
 @RestController
 @RequestMapping("api/v1/partition")
@@ -311,6 +313,49 @@ public class PartitionController {
             throw new RuntimeException(e);
         }
     }
+
+    @GetMapping("/RefineryProductionReport/{exportType}/{id}/{start}/{end}/{type}")
+    public ResponseEntity<String> getRefineryProductionReport(@PathVariable Long id,
+                                                    @PathVariable LocalDate start,
+                                                    @PathVariable LocalDate end,
+                                                    @PathVariable TransportationType type,
+                                                    @PathVariable String exportType){
+        final List<String[]> production = partitionRepository.getRefineryProduction(id,
+                LocalDateTime.of(start, LocalTime.MIN),
+                LocalDateTime.of(end, LocalTime.MAX),
+                type);
+
+        final List<Production> productionList = production.stream().map(list -> new Production(Integer.parseInt(list[0]), list[1], list[2])).toList();
+
+        Map<String, Object> params = new HashMap<>();
+        params.put("nowLocalDT", LocalDateTime.now());
+        params.put("refineryName", productionList.get(0).getRefineryName());
+
+        try {
+            final JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(productionList);
+            JasperReport regionReport = JasperCompileManager.compileReport(new ClassPathResource("templates/refineryProduction.jrxml").getInputStream());
+            final JasperPrint jasperPrint = JasperFillManager.fillReport(regionReport, params, jrBeanCollectionDataSource);
+            File file = null;
+            if(exportType.equals("HTML")){
+                file = new File("DriverReport.html");
+                JasperExportManager.exportReportToHtmlFile(jasperPrint,
+                        file.getAbsolutePath());
+            }else if(exportType.equals("XLSX")){
+                file = new File("DriverReport.xlsx");
+                JRXlsxExporter exporter = new JRXlsxExporter();
+                exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
+                exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(file.getAbsolutePath()));
+                exporter.exportReport();
+            }
+            assert file != null;
+            try(final FileInputStream fileInputStream = new FileInputStream(file);){
+                return ResponseEntity.ok(Base64.getEncoder().encodeToString(fileInputStream.readAllBytes()));
+            }
+        } catch (JRException | IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     @GetMapping("/DailyReport/{exportType}/{materialId}/{start}/{end}/{type}")
     public ResponseEntity<String> getDailyReport(@PathVariable Long materialId,

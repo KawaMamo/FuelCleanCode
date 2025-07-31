@@ -110,6 +110,12 @@ public class PartitionService implements Service<Partition, CreatePartitionReque
         return stringHttpResponse.body().getBytes(StandardCharsets.UTF_8);
     }
 
+    public byte[] getRefineryProductionReport(String exportType, String transType, LocalDate startDate, LocalDate endDate, Long id){
+
+        final HttpResponse<String> stringHttpResponse = client.parallelGet(getEndPoint()+"/RefineryProductionReport" + "/" + exportType + "/" + id + "/" + startDate + "/" + endDate + "/" + transType);
+        return stringHttpResponse.body().getBytes(StandardCharsets.UTF_8);
+    }
+
 
     public byte[] getDailyReport(String exportType, String transType, LocalDate startDate, LocalDate endDate, Long id){
 

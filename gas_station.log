@@ -35,3 +35,19 @@
 2025-07-31T13:16:31.442+03:00  WARN 20036 --- [http-nio-9091-exec-1] org.example.security.CustomFilter        : /api/v1/trans headers org.apache.tomcat.util.http.ValuesEnumerator@19f08382
 2025-07-31T13:16:49.102+03:00  WARN 20036 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/refinery
 2025-07-31T13:16:49.119+03:00  WARN 20036 --- [http-nio-9091-exec-2] org.example.security.CustomFilter        : /api/v1/refinery headers org.apache.tomcat.util.http.ValuesEnumerator@c446411
+2025-07-31T14:02:48.814+03:00  WARN 20036 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/material
+2025-07-31T14:02:48.829+03:00  WARN 20036 --- [http-nio-9091-exec-6] org.example.security.CustomFilter        : /api/v1/material headers org.apache.tomcat.util.http.ValuesEnumerator@5171c912
+2025-07-31T14:11:51.840+03:00  WARN 20036 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/material
+2025-07-31T14:11:51.857+03:00  WARN 20036 --- [http-nio-9091-exec-9] org.example.security.CustomFilter        : /api/v1/material headers org.apache.tomcat.util.http.ValuesEnumerator@65eec377
+2025-07-31T14:12:09.191+03:00  WARN 20036 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/partition/DailyReport/HTML/1/2025-07-30/2025-07-31/NORMAL
+2025-07-31T14:12:09.231+03:00  WARN 20036 --- [http-nio-9091-exec-7] org.example.security.CustomFilter        : /api/v1/partition/DailyReport/HTML/1/2025-07-30/2025-07-31/NORMAL headers org.apache.tomcat.util.http.ValuesEnumerator@16408751
+2025-07-31T14:12:09.292+03:00  WARN 20036 --- [http-nio-9091-exec-7] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.example.controllers.PartitionController
+2025-07-31T14:20:25.466+03:00  WARN 20036 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m16s456ms541µs400ns).
+2025-07-31T17:42:57.554+03:00  WARN 20036 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3h8m9s302ms96µs).
+2025-07-31T18:01:08.902+03:00  WARN 20036 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/client-payment
+2025-07-31T18:01:08.917+03:00  WARN 20036 --- [http-nio-9091-exec-10] org.example.security.CustomFilter        : /api/v1/client-payment headers org.apache.tomcat.util.http.ValuesEnumerator@4698a53f
+2025-07-31T18:01:16.080+03:00  WARN 20036 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/gas-station/all
+2025-07-31T18:01:16.093+03:00  WARN 20036 --- [http-nio-9091-exec-4] org.example.security.CustomFilter        : /api/v1/gas-station/all headers org.apache.tomcat.util.http.ValuesEnumerator@1fa11e1e
+2025-07-31T18:01:45.263+03:00  INFO 20036 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-31T18:01:45.267+03:00  INFO 20036 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-07-31T18:01:45.267+03:00  INFO 20036 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
