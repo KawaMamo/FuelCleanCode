@@ -2,13 +2,9 @@ package org.example.controllers;
 
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-import net.sf.jasperreports.engine.export.JRPdfExporter;
 import net.sf.jasperreports.engine.export.ooxml.JRXlsxExporter;
 import net.sf.jasperreports.export.SimpleExporterInput;
 import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
-import net.sf.jasperreports.renderers.BatikRenderer;
-import org.apache.batik.bridge.UserAgent;
-import org.apache.batik.bridge.UserAgentAdapter;
 import org.example.contract.request.create.CreatePartitionRequest;
 import org.example.contract.request.update.UpdatePartitionRequest;
 import org.example.contract.response.PartitionResponse;
@@ -292,9 +288,49 @@ public class PartitionController {
         params.put("refineryName", logEntityList.get(0).getTransportationEntity().getRefinery().getTranslation());
 
         try {
-
             final JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(logEntityList);
             JasperReport regionReport = JasperCompileManager.compileReport(new ClassPathResource("templates/refineryReport.jrxml").getInputStream());
+            final JasperPrint jasperPrint = JasperFillManager.fillReport(regionReport, params, jrBeanCollectionDataSource);
+            File file = null;
+            if(exportType.equals("HTML")){
+                file = new File("DriverReport.html");
+                JasperExportManager.exportReportToHtmlFile(jasperPrint,
+                        file.getAbsolutePath());
+            }else if(exportType.equals("XLSX")){
+                file = new File("DriverReport.xlsx");
+                JRXlsxExporter exporter = new JRXlsxExporter();
+                exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
+                exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(file.getAbsolutePath()));
+                exporter.exportReport();
+            }
+            assert file != null;
+            try(final FileInputStream fileInputStream = new FileInputStream(file);){
+                return ResponseEntity.ok(Base64.getEncoder().encodeToString(fileInputStream.readAllBytes()));
+            }
+        } catch (JRException | IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @GetMapping("/DailyReport/{exportType}/{materialId}/{start}/{end}/{type}")
+    public ResponseEntity<String> getDailyReport(@PathVariable Long materialId,
+                                                    @PathVariable LocalDate start,
+                                                    @PathVariable LocalDate end,
+                                                    @PathVariable TransportationType type,
+                                                    @PathVariable String exportType){
+
+        final List<PartitionEntity> partitionEntityList = partitionRepository.findByMaterial_IdAndTransportationEntity_TypeAndCreatedAtBetween(materialId,
+                type,
+                LocalDateTime.of(start, LocalTime.MIN),
+                LocalDateTime.of(end, LocalTime.MAX));
+
+        Map<String, Object> params = new HashMap<>();
+        params.put("nowLocalDT", LocalDateTime.now());
+        params.put("materialName", partitionEntityList.get(0).getMaterial().getName());
+
+        try {
+            final JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(partitionEntityList);
+            JasperReport regionReport = JasperCompileManager.compileReport(new ClassPathResource("templates/dailyReport.jrxml").getInputStream());
             final JasperPrint jasperPrint = JasperFillManager.fillReport(regionReport, params, jrBeanCollectionDataSource);
             File file = null;
             if(exportType.equals("HTML")){

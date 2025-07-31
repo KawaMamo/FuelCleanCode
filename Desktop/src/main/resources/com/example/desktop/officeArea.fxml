@@ -33,6 +33,7 @@
                   <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#persons" prefHeight="30.0" text="الأشخاص" />
                   <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#trafficCenters" prefHeight="30.0" text="م. المرور" />
                   <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#transferMaterials" prefHeight="30.0" text="النقل بين العملاء" />
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#dailyReport" prefHeight="30.0" text="الفرز اليومي" />
                </children>
                <padding>
                   <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />

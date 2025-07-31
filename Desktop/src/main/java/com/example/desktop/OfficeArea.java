@@ -1,6 +1,7 @@
 package com.example.desktop;
 
 import com.example.desktop.person.Persons;
+import com.example.desktop.reports.DailyReport;
 import com.example.desktop.reports.DriverReport;
 import com.example.desktop.reports.RefineryReport;
 import com.example.desktop.reports.RegionReport;
@@ -142,6 +143,20 @@ public class OfficeArea {
         try {
             final Node node = loader.load();
             final TransferMaterialsTblCont controller = loader.getController();
+            workArea.getChildren().clear();
+            workArea.getChildren().add(node);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    void dailyReport(){
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("reports/dailyReport.fxml"));
+        try {
+            final Node node = loader.load();
+            final DailyReport controller = loader.getController();
             workArea.getChildren().clear();
             workArea.getChildren().add(node);
         } catch (IOException e) {
