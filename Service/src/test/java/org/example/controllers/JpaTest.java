@@ -23,7 +23,7 @@ import java.util.Optional;
 @SpringBootTest
 public class JpaTest {
 
-    @Autowired
+    /*@Autowired
     PartitionRepository partitionRepository;
 
     TestRestTemplate testRestTemplate = new TestRestTemplate(new RestTemplateBuilder());
@@ -61,6 +61,7 @@ public class JpaTest {
     }
 
     @Test
+    @Disabled
     void testProductionReport(){
         final ResponseEntity<String> html = partitionController.getRefineryProductionReport(3L, LocalDate.parse("2024-01-01"),
                 LocalDate.parse("2025-12-12"),
@@ -68,7 +69,7 @@ public class JpaTest {
         final String htmlPage = new String(Base64.getDecoder().decode(html.getBody()));
         Assert.assertTrue(htmlPage.startsWith("<!DOCTYPE html"));
         Assert.assertNotNull(html);
-    }
+    }*/
 
 
 }

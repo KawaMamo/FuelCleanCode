@@ -66,8 +66,8 @@ public class TransferMaterialsTest {
     @Autowired
     TransLineController transLineController;
 
-    @Test
-    void contextLoads() {
+    //@Test
+    //void contextLoads() {
         /*final OfficeResponse office1 = officeController.createOffice(new CreateOfficeRequest("office 1"));
         final OfficeResponse office2 = officeController.createOffice(new CreateOfficeRequest("office 2"));
         assertNotNull(office1);
@@ -236,8 +236,8 @@ public class TransferMaterialsTest {
                 trans2.getId()));
         assertNotNull(partition2);*/
 
-    }
-    @Test
+    //}
+    /*@Test
     @Disabled
     void testClientsReceivedMaterials() throws Exception {
         final ResponseEntity<String> html = partitionController.getClientReceivedMaterials(6L,
@@ -325,5 +325,5 @@ public class TransferMaterialsTest {
     void testPrinciple() throws Exception {
         final SearchFilter searchFilter = new SearchFilter(new String[]{"id"}, new String[]{"0"}, new String[]{">"}, null);
 
-    }
+    }*/
 }

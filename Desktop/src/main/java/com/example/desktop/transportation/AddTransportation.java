@@ -282,7 +282,10 @@ public class AddTransportation {
                                 "key=priceCategory&value=" +
                                         selectedPriceCatId + "&operation=%3A&key=material&value=" +
                                         selectedMaterialId + "&operation=%3A&sort=id,desc");
-                        priceLbl.setText(categories.get(0).getPrice().getAmount()+" "+categories.get(0).getPrice().getCurrency());
+                        if(categories.size()>0) {
+                            priceLbl.setText(categories.get(0).getPrice().getAmount() + " " + categories.get(0).getPrice().getCurrency());
+                        }
+                        else priceLbl.setText("-");
                     }
 
                 }
@@ -296,23 +299,26 @@ public class AddTransportation {
             }
         });
 
-        materialTF.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
-                if(materialTF.getValue().length()>0){
-                    final Material material = materials.get(materialNames.indexOf(materialTF.getValue()));
-                    if(Objects.nonNull(material)) {
-                        selectedMaterialId = material.getId();
-                        categories = categoryService.getItems(0,
-                                1,
-                                "key=priceCategory&value=" +
-                                        selectedPriceCatId + "&operation=%3A&key=material&value=" +
-                                        selectedMaterialId + "&operation=%3A&sort=id,desc");
-                        priceLbl.setText(categories.get(0).getPrice().getAmount()+" "+categories.get(0).getPrice().getCurrency());
+        materialTF.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+                    @Override
+                    public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                        if(t1.length()>0 && Objects.nonNull(selectedPriceCatId)){
+                            final Material material = materials.get(materialNames.indexOf(t1));
+                            if(Objects.nonNull(material)) {
+                                selectedMaterialId = material.getId();
+                                categories = categoryService.getItems(0,
+                                        1,
+                                        "key=priceCategory&value=" +
+                                                selectedPriceCatId + "&operation=%3A&key=material&value=" +
+                                                selectedMaterialId + "&operation=%3A&sort=id,desc");
+                                if(categories.size()>0)
+                                    priceLbl.setText(categories.get(0).getPrice().getAmount()+" "+categories.get(0).getPrice().getCurrency());
+                                else priceLbl.setText("-");
+                            }
+                        }
                     }
                 }
-            }
-        });
+                );
 
         partitionsTbl.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Partition>() {
             @Override

@@ -8,8 +8,8 @@ import org.example.model.PaidToParent;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-07-30T12:03:58+0300",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
+    date = "2025-08-17T17:16:28+0300",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class PaidToParentDomainMapperImpl implements PaidToParentDomainMapper {
 

@@ -50,7 +50,7 @@
         <groupExpression><![CDATA[$F{id}]]></groupExpression>
     </group>
     <background>
-        <band splitType="Stretch"/>
+        <band splitType="Immediate"/>
     </background>
     <title>
         <band height="68" splitType="Stretch">
@@ -105,7 +105,7 @@
         </band>
     </pageHeader>
     <columnHeader>
-        <band height="33" splitType="Stretch">
+        <band height="28" splitType="Stretch">
             <staticText>
                 <reportElement mode="Opaque" x="686" y="0" width="46" height="28" backcolor="#00BCE4" uuid="018c709f-bacb-43ba-8780-27d736a61d93">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1ccd3784-06bd-424a-9026-8b2b118101de"/>
@@ -190,9 +190,9 @@
         </band>
     </columnHeader>
     <detail>
-        <band height="36" splitType="Stretch">
+        <band height="30" splitType="Stretch">
             <textField>
-                <reportElement x="686" y="1" width="46" height="30" uuid="e38df709-cff3-4960-94c4-8cbbd8201292">
+                <reportElement x="686" y="0" width="46" height="30" uuid="e38df709-cff3-4960-94c4-8cbbd8201292">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1ccd3784-06bd-424a-9026-8b2b118101de"/>
                 </reportElement>
                 <textElement textAlignment="Center" verticalAlignment="Middle">
@@ -201,7 +201,7 @@
                 <textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement x="637" y="1" width="49" height="30" uuid="971a6241-1b15-4425-8565-60af31852720">
+                <reportElement x="637" y="0" width="49" height="30" uuid="971a6241-1b15-4425-8565-60af31852720">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a8700d48-a6d8-4b3b-99f0-6f0254aa7395"/>
                 </reportElement>
                 <textElement textAlignment="Center" verticalAlignment="Middle">
@@ -210,7 +210,7 @@
                 <textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
             </textField>
             <textField textAdjust="ScaleFont">
-                <reportElement x="89" y="1" width="151" height="30" uuid="d461b10f-d1ab-4832-9539-6b49dd08a86e">
+                <reportElement x="89" y="0" width="151" height="30" uuid="d461b10f-d1ab-4832-9539-6b49dd08a86e">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="025c342a-7980-4cf2-ad82-62fe62252d8b"/>
                 </reportElement>
                 <textElement textAlignment="Center" verticalAlignment="Middle">
@@ -219,7 +219,7 @@
                 <textFieldExpression><![CDATA[$F{gasStation.name}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement x="540" y="1" width="97" height="30" uuid="f471c4c8-de39-433b-87ef-5212cfc24c69">
+                <reportElement x="540" y="0" width="97" height="30" uuid="f471c4c8-de39-433b-87ef-5212cfc24c69">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c8a134d1-31fc-4bbf-ac63-5991fcd1d111"/>
                 </reportElement>
                 <textElement textAlignment="Center" verticalAlignment="Middle">
@@ -228,7 +228,7 @@
                 <textFieldExpression><![CDATA[$F{transportationEntity.vehicle.plateNumber}]]></textFieldExpression>
             </textField>
             <textField textAdjust="ScaleFont">
-                <reportElement x="440" y="1" width="100" height="30" uuid="781b0879-3e99-4692-af5b-aefcd90e10e7">
+                <reportElement x="440" y="0" width="100" height="30" uuid="781b0879-3e99-4692-af5b-aefcd90e10e7">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a47c2703-a990-4630-aad9-fcadcaf19349"/>
                 </reportElement>
                 <textElement textAlignment="Center" verticalAlignment="Middle">
@@ -237,7 +237,7 @@
                 <textFieldExpression><![CDATA[$F{transportationEntity.vehicle.driver.name}]]></textFieldExpression>
             </textField>
             <textField textAdjust="ScaleFont">
-                <reportElement x="1" y="1" width="88" height="30" uuid="0137ffd0-a442-4103-b2ea-055ba70f9870">
+                <reportElement x="1" y="0" width="88" height="30" uuid="0137ffd0-a442-4103-b2ea-055ba70f9870">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="19f12742-051d-47aa-8fc2-ba6039f5d783"/>
                 </reportElement>
                 <textElement textAlignment="Center" verticalAlignment="Middle">
@@ -246,7 +246,7 @@
                 <textFieldExpression><![CDATA[$F{createdAt}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement x="240" y="1" width="65" height="30" uuid="7e6a7f3d-1bfd-467f-8d4f-b355cbb30068">
+                <reportElement x="240" y="0" width="65" height="30" uuid="7e6a7f3d-1bfd-467f-8d4f-b355cbb30068">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c439e139-9c6f-484f-95a9-fca59d304a16"/>
                 </reportElement>
                 <textElement textAlignment="Center" verticalAlignment="Middle">
@@ -255,7 +255,7 @@
                 <textFieldExpression><![CDATA[$F{transportationEntity.vehicle.size}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement x="375" y="1" width="65" height="30" uuid="c4036edb-3b2a-4492-9733-a8ff6c6d9a68">
+                <reportElement x="375" y="0" width="65" height="30" uuid="c4036edb-3b2a-4492-9733-a8ff6c6d9a68">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c439e139-9c6f-484f-95a9-fca59d304a16"/>
                 </reportElement>
                 <textElement textAlignment="Center" verticalAlignment="Middle">
@@ -264,7 +264,7 @@
                 <textFieldExpression><![CDATA[$F{transportationEntity.refinery.name}]]></textFieldExpression>
             </textField>
             <textField textAdjust="ScaleFont">
-                <reportElement x="305" y="1" width="70" height="30" uuid="02c85f00-65b3-4fa3-bb27-14dbad6e3655">
+                <reportElement x="305" y="0" width="70" height="30" uuid="02c85f00-65b3-4fa3-bb27-14dbad6e3655">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c439e139-9c6f-484f-95a9-fca59d304a16"/>
                 </reportElement>
                 <textElement textAlignment="Center" verticalAlignment="Middle">
