@@ -364,7 +364,7 @@ public class PartitionController {
                                                     @PathVariable TransportationType type,
                                                     @PathVariable String exportType){
 
-        final List<PartitionEntity> partitionEntityList = partitionRepository.findByMaterial_IdAndTransportationEntity_TypeAndCreatedAtBetween(materialId,
+        final List<PartitionEntity> partitionEntityList = partitionRepository.findByMaterial_IdAndTransportationEntity_TypeAndTransportationEntity_CreatedAtBetween(materialId,
                 type,
                 LocalDateTime.of(start, LocalTime.MIN),
                 LocalDateTime.of(end, LocalTime.MAX));

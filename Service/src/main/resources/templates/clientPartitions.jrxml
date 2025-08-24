@@ -13,7 +13,7 @@
         <property name="com.jaspersoft.studio.field.label" value="id"/>
         <property name="com.jaspersoft.studio.field.tree.path" value="trans_log_entity"/>
     </field>
-    <field name="createdAt" class="java.time.LocalDateTime">
+    <field name="transportationEntity.createdAt" class="java.time.LocalDateTime">
         <property name="com.jaspersoft.studio.field.name" value="createdAt"/>
         <property name="com.jaspersoft.studio.field.label" value="createdAt"/>
         <property name="com.jaspersoft.studio.field.tree.path" value="trans_log_entity"/>
@@ -182,7 +182,7 @@
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="19f12742-051d-47aa-8fc2-ba6039f5d783"/>
                 </reportElement>
                 <textElement textAlignment="Center"/>
-                <textFieldExpression><![CDATA[$F{createdAt}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{transportationEntity.createdAt}]]></textFieldExpression>
             </textField>
             <textField textAdjust="ScaleFont">
                 <reportElement x="210" y="0" width="77" height="30" uuid="7e6a7f3d-1bfd-467f-8d4f-b355cbb30068">

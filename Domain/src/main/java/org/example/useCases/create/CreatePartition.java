@@ -8,11 +8,13 @@ import org.example.contract.request.create.CreatePartitionRequest;
 import org.example.contract.response.PartitionResponse;
 import org.example.mappers.PartitionDomainMapper;
 import org.example.model.Partition;
+import org.example.model.Transportation;
 import org.example.validators.create.CreatePartitionValidator;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 public class CreatePartition {
     private final CreatePartitionValidator validator;
@@ -38,9 +40,11 @@ public class CreatePartition {
     public PartitionResponse execute(CreatePartitionRequest request){
         validator.validate(request);
         final Partition partition = mapper.requestToDomain(request);
-        partition.setCreatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
+        final Optional<Transportation> byIdAndDeletedAt = transRepo.findByIdAndDeletedAt(request.getTransportationId(), null);
+        final Transportation transportation = byIdAndDeletedAt.orElseThrow();
+        partition.setCreatedAt(transportation.getCreatedAt());
         final Partition save = partitionRepo.save(partition);
-        transRepo.findByIdAndDeletedAt(save.getTransportation().getId(), null).ifPresent(save::setTransportation);
+        byIdAndDeletedAt.ifPresent(save::setTransportation);
         gasStationRepo.findById(save.getGasStation().getId()).ifPresentOrElse(save::setGasStation, NoSuchElementException::new);
         materialRepo.findById(save.getMaterial().getId()).ifPresent(save::setMaterial);
         return mapper.domainToResponse(save);
