@@ -9,6 +9,7 @@ import com.example.model.transportation.TransportationService;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -150,6 +151,7 @@ public class TransScan implements TableController {
 
     @FXML
     void search() {
+        loadData();
         AddTransportation.controller = this;
         AddTransportation.formType = FormType.GET;
         Modal.start(this.getClass(), "addTransportation.fxml");
@@ -169,8 +171,13 @@ public class TransScan implements TableController {
         String request = "{\"fileName\": \""+file.getName()+"\",\n \"type\": \"png\"\n}";
         try {
             final Transportation transportation = transportationService.uploadImage(selectedTransportation.getId(), file.getPath(), request);
-            if(Objects.nonNull(transportation))
+
+            if(Objects.nonNull(transportation)) {
+                final FilteredList<Transportation> filtered =
+                        observableList.filtered(trans -> Objects.equals(trans.getId(), selectedTransportation.getId()));
+                filtered.get(0).setDocument(transportation.getDocument());
                 Notifications.create().title("successful").showInformation();
+            }
         }catch (Exception e){
             Notifications.create().text(e.getMessage()).showError();
         }

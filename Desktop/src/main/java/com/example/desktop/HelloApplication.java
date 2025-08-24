@@ -10,6 +10,7 @@ import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Objects;
 
 public class HelloApplication extends Application {
     public static Stage primaryStage;
@@ -39,7 +40,8 @@ public class HelloApplication extends Application {
     private static void showError(Thread t, Throwable e) {
         while (e.getCause() instanceof InvocationTargetException)
             e = e.getCause();
-        Notifications.create().title("Error").text(e.getCause().getMessage()).hideAfter(Duration.minutes(1)).showError();
+        if(Objects.nonNull(e.getCause()))
+            Notifications.create().title("Error").text(e.getCause().getMessage()).hideAfter(Duration.minutes(1)).showError();
     }
 
     public static void main(String[] args) {
