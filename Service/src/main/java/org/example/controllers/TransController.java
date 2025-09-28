@@ -95,6 +95,12 @@ public class TransController {
         return transRepoJpa.findAll().stream().map(transMapper::entityToDomain).toList();
     }
 
+    @GetMapping("/withoutDocuments")
+    public PagedModel<Transportation> getWithoutDocumentsTrans(Pageable pageable){
+        final Page<Transportation> map = transRepoJpa.findAllByDocumentIsEmpty(pageable).map(transMapper::entityToDomain);
+        return pagedResourcesAssembler.toModel(map);
+    }
+
     @PatchMapping
     public ResponseEntity<TransResponse> updateTrans(@RequestBody UpdateTransRequest request){
         return ResponseEntity.ok(updateTrans.execute(request));

@@ -2,6 +2,8 @@ package org.example.repositories;
 
 import org.example.entities.TransportationEntity;
 import org.example.entities.TransportationType;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
@@ -20,4 +22,5 @@ public interface TransRepoJpa extends JpaRepository<TransportationEntity, Long>,
 
     Optional<TransportationEntity> findByIdAndDeletedAt(Long id, LocalDateTime deletedAt);
 
+    Page<TransportationEntity> findAllByDocumentIsEmpty(Pageable pageable);
 }

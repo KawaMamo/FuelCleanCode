@@ -5,6 +5,7 @@ import com.example.model.TableController;
 import com.example.model.document.DocumentService;
 import com.example.model.modal.Modal;
 import com.example.model.tools.FormType;
+import com.example.model.tools.QueryBuilder;
 import com.example.model.transportation.TransportationService;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -43,6 +44,7 @@ public class TransScan implements TableController {
     public static Document selectedDocument;
     private final TransportationService transportationService = TransportationService.getInstance();
     private String query = null;
+    private Boolean withoutDocuments = false;
 
     @FXML
     private void initialize(){
@@ -73,9 +75,14 @@ public class TransScan implements TableController {
     @Override
     public void loadData() {
         final List<Transportation> items;
-        if(Objects.isNull(query))
-            items = transportationService.getItems(Integer.parseInt(page.getText()) - 1, 15);
-        else items = transportationService.getItems(Integer.parseInt(page.getText()) - 1, 15, query);
+        if(withoutDocuments)
+            items = transportationService.getItemsWithoutDocuments(Integer.parseInt(page.getText()) - 1, 15);
+        else {
+            if(Objects.isNull(query))
+                items = transportationService.getItems(Integer.parseInt(page.getText()) - 1, 15);
+            else items = transportationService.getItems(Integer.parseInt(page.getText()) - 1, 15, query);
+        }
+
 
         if(Objects.nonNull(items))
             observableList = FXCollections.observableList(items);
@@ -206,5 +213,15 @@ public class TransScan implements TableController {
         DeleteConfirmation.controller = this;
         DeleteConfirmation.selected = selectedTransportation.getId();
         Modal.start(this.getClass(), "/com/example/desktop/delete/deleteConfirmation.fxml");
+    }
+
+    @FXML
+    void withoutDocuments(){
+        QueryBuilder queryBuilder = new QueryBuilder();
+        queryBuilder.addQueryParameter("document", "null", "null");
+        queryBuilder.sort();
+        query = queryBuilder.getQuery();
+        withoutDocuments = true;
+        loadData();
     }
 }
