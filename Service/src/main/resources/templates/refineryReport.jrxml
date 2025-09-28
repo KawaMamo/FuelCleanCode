@@ -32,9 +32,9 @@
         <property name="com.jaspersoft.studio.field.label" value="updatedAt"/>
         <property name="com.jaspersoft.studio.field.tree.path" value="trans_log_entity"/>
     </field>
-    <field name="gasStation.name" class="java.lang.String">
-        <property name="com.jaspersoft.studio.field.name" value="gasStation.name"/>
-        <property name="com.jaspersoft.studio.field.label" value="gasStation.name"/>
+    <field name="gasStation.translation" class="java.lang.String">
+        <property name="com.jaspersoft.studio.field.name" value="gasStation.translation"/>
+        <property name="com.jaspersoft.studio.field.label" value="gasStation.translation"/>
         <property name="com.jaspersoft.studio.field.tree.path" value="trans_log_entity"/>
     </field>
     <field name="transportationEntity.vehicle.size" class="java.lang.Integer">
@@ -216,7 +216,7 @@
                 <textElement textAlignment="Center" verticalAlignment="Middle">
                     <font size="18"/>
                 </textElement>
-                <textFieldExpression><![CDATA[$F{gasStation.name}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{gasStation.translation}]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement x="540" y="1" width="97" height="30" uuid="f471c4c8-de39-433b-87ef-5212cfc24c69">

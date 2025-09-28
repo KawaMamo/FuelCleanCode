@@ -4,6 +4,7 @@ import com.example.desktop.buyer.Buyers;
 import com.example.desktop.clientPayment.ClientPayments;
 import com.example.desktop.gasStation.GasStationDetails;
 import com.example.desktop.officePayment.OfficePayments;
+import com.example.desktop.reports.DailyReport;
 import com.example.desktop.reports.DriverReport;
 import com.example.desktop.reports.OfficeReport;
 import com.example.desktop.reports.RefineryReport;
@@ -192,6 +193,20 @@ public class AccountantArea {
         try {
             final Node node = loader.load();
             final Sellers controller = loader.getController();
+            workArea.getChildren().clear();
+            workArea.getChildren().add(node);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    void dailyReport(){
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("reports/dailyReport.fxml"));
+        try {
+            final Node node = loader.load();
+            final DailyReport controller = loader.getController();
             workArea.getChildren().clear();
             workArea.getChildren().add(node);
         } catch (IOException e) {

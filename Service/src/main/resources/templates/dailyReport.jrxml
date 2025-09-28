@@ -16,6 +16,7 @@
     <property name="net.sf.jasperreports.export.xls.remove.empty.space.between.rows" value="true"/>
     <property name="net.sf.jasperreports.export.xls.detect.cell.type" value="true"/>
     <property name="net.sf.jasperreports.export.xls.repeat.headers" value="false"/>
+
     <parameter name="materialName" class="java.lang.String"/>
     <parameter name="nowLocalDT" class="java.time.LocalDateTime"/>
     <queryString language="SQL">
@@ -59,32 +60,20 @@
         <band splitType="Immediate"/>
     </background>
     <title>
-        <band height="68" splitType="Stretch">
+        <band height="122" splitType="Stretch">
             <image>
-                <reportElement x="0" y="2" width="140" height="50" uuid="6ed21efe-895c-4d16-b472-52bcacf6e4cf"/>
+                <reportElement x="1" y="2" width="88" height="50" uuid="6ed21efe-895c-4d16-b472-52bcacf6e4cf"/>
                 <imageExpression><![CDATA["icons/SadLogo.png"]]></imageExpression>
             </image>
-            <textField>
-                <reportElement mode="Transparent" x="216" y="10" width="300" height="34" backcolor="#FC9356" uuid="77efb66f-11ea-4efa-a4b9-885d9fcb0587"/>
+            <textField textAdjust="ScaleFont">
+                <reportElement mode="Transparent" x="220" y="10" width="340" height="34" backcolor="#FC9356" uuid="77efb66f-11ea-4efa-a4b9-885d9fcb0587"/>
                 <textElement textAlignment="Center">
                     <font size="24" isBold="true"/>
                 </textElement>
                 <textFieldExpression><![CDATA["الفرز اليومي حسب نوع المادة"]]></textFieldExpression>
             </textField>
-        </band>
-    </title>
-    <pageHeader>
-        <band height="62" splitType="Stretch">
-            <property name="com.jaspersoft.studio.unit.height" value="px"/>
-            <staticText>
-                <reportElement x="630" y="2" width="97" height="27" uuid="085d68e2-ab04-4710-8d11-f01ca16f71e9"/>
-                <textElement textAlignment="Center">
-                    <font size="18"/>
-                </textElement>
-                <text><![CDATA[المادة ]]></text>
-            </staticText>
             <textField textAdjust="ScaleFont">
-                <reportElement x="9" y="2" width="231" height="27" uuid="fba09b6d-23bc-4f65-a35c-a376337601b1">
+                <reportElement x="1" y="56" width="219" height="27" uuid="fba09b6d-23bc-4f65-a35c-a376337601b1">
                     <property name="com.jaspersoft.studio.unit.width" value="px"/>
                 </reportElement>
                 <textElement>
@@ -92,15 +81,8 @@
                 </textElement>
                 <textFieldExpression><![CDATA[$P{materialName}]]></textFieldExpression>
             </textField>
-            <staticText>
-                <reportElement x="450" y="30" width="276" height="28" uuid="8498e5ee-dde3-48cd-83b6-b5322874704a"/>
-                <textElement textAlignment="Right">
-                    <font size="15"/>
-                </textElement>
-                <text><![CDATA[التقرير اليومي بتاريخ]]></text>
-            </staticText>
             <textField textAdjust="ScaleFont">
-                <reportElement x="10" y="29" width="230" height="28" uuid="5cc713f4-3a9d-4acb-a5ac-26d0b38908c8">
+                <reportElement x="1" y="83" width="219" height="28" uuid="5cc713f4-3a9d-4acb-a5ac-26d0b38908c8">
                     <property name="com.jaspersoft.studio.unit.width" value="px"/>
                 </reportElement>
                 <textElement>
@@ -108,10 +90,25 @@
                 </textElement>
                 <textFieldExpression><![CDATA[$P{nowLocalDT}]]></textFieldExpression>
             </textField>
+            <staticText>
+                <reportElement x="637" y="56" width="95" height="27" uuid="085d68e2-ab04-4710-8d11-f01ca16f71e9"/>
+                <textElement textAlignment="Center">
+                    <font size="18"/>
+                </textElement>
+                <text><![CDATA[المادة ]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="480" y="83" width="252" height="28" uuid="8498e5ee-dde3-48cd-83b6-b5322874704a"/>
+                <textElement textAlignment="Right">
+                    <font size="15"/>
+                </textElement>
+                <text><![CDATA[التقرير اليومي بتاريخ]]></text>
+            </staticText>
         </band>
-    </pageHeader>
+    </title>
     <columnHeader>
         <band height="28" splitType="Stretch">
+            <printWhenExpression><![CDATA[$V{PAGE_NUMBER} == 1]]></printWhenExpression>
             <staticText>
                 <reportElement mode="Opaque" x="686" y="0" width="46" height="28" backcolor="#00BCE4" uuid="018c709f-bacb-43ba-8780-27d736a61d93">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1ccd3784-06bd-424a-9026-8b2b118101de"/>
@@ -126,7 +123,7 @@
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a8700d48-a6d8-4b3b-99f0-6f0254aa7395"/>
                 </reportElement>
                 <textElement textAlignment="Center" verticalAlignment="Middle">
-                    <font size="16"/>
+                    <font size="14"/>
                 </textElement>
                 <text><![CDATA[المعرف]]></text>
             </staticText>
@@ -144,7 +141,7 @@
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c8a134d1-31fc-4bbf-ac63-5991fcd1d111"/>
                 </reportElement>
                 <textElement textAlignment="Center" verticalAlignment="Middle">
-                    <font size="18"/>
+                    <font size="14"/>
                 </textElement>
                 <text><![CDATA[رقم المركبة]]></text>
             </staticText>
@@ -171,7 +168,7 @@
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c439e139-9c6f-484f-95a9-fca59d304a16"/>
                 </reportElement>
                 <textElement textAlignment="Center" verticalAlignment="Middle">
-                    <font size="19"/>
+                    <font size="14"/>
                 </textElement>
                 <text><![CDATA[السعة]]></text>
             </staticText>
@@ -180,7 +177,7 @@
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c439e139-9c6f-484f-95a9-fca59d304a16"/>
                 </reportElement>
                 <textElement textAlignment="Center" verticalAlignment="Middle">
-                    <font size="19"/>
+                    <font size="14"/>
                 </textElement>
                 <text><![CDATA[المصفاة]]></text>
             </staticText>
@@ -198,7 +195,7 @@
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c439e139-9c6f-484f-95a9-fca59d304a16"/>
                 </reportElement>
                 <textElement textAlignment="Center" verticalAlignment="Middle">
-                    <font size="19"/>
+                    <font size="14"/>
                 </textElement>
                 <text><![CDATA[السعر]]></text>
             </staticText>
@@ -206,8 +203,8 @@
                 <reportElement mode="Opaque" x="220" y="0" width="40" height="28" backcolor="#00BCE4" uuid="5dd3d9bc-ead9-4d56-b463-ca962c18e024">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c439e139-9c6f-484f-95a9-fca59d304a16"/>
                 </reportElement>
-                <textElement textAlignment="Center" verticalAlignment="Middle">
-                    <font size="19"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+                    <font size="14"/>
                 </textElement>
                 <text><![CDATA[العملة]]></text>
             </staticText>
@@ -278,7 +275,7 @@
                 </textElement>
                 <textFieldExpression><![CDATA[$F{transportationEntity.vehicle.size}]]></textFieldExpression>
             </textField>
-            <textField>
+            <textField textAdjust="ScaleFont">
                 <reportElement x="415" y="0" width="65" height="30" uuid="c4036edb-3b2a-4492-9733-a8ff6c6d9a68">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c439e139-9c6f-484f-95a9-fca59d304a16"/>
                 </reportElement>

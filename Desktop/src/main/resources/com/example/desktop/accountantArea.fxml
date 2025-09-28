@@ -37,6 +37,7 @@
                   <Button mnemonicParsing="false" onAction="#sellerPayment" prefHeight="30.0" text="دفعات التجار" />
                   <Button mnemonicParsing="false" onAction="#sellers" prefHeight="30.0" text="التجار" />
                   <Button mnemonicParsing="false" onAction="#pricing" prefHeight="30.0" text="التسعير" />
+                  <Button mnemonicParsing="false" onAction="#dailyReport" prefHeight="30.0" text="الفرز اليومي" />
                </children>
                <padding>
                   <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
