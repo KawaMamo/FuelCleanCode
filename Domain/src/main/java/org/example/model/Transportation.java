@@ -19,4 +19,5 @@ public class Transportation extends TransportationReason{
     private List<Document> document;
     private LocalDateTime deletedAt;
     private Vehicle vehicle;
+    private Long UserId;
 }

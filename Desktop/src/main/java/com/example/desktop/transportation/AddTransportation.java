@@ -295,7 +295,9 @@ public class AddTransportation {
         priceCateTF.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                notesTF.setText(t1);
+                if(formType.equals(FormType.CREATE)){
+                    notesTF.setText(t1);
+                }
             }
         });
 

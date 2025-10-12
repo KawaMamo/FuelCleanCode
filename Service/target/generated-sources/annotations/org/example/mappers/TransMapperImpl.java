@@ -39,7 +39,7 @@ import org.mapstruct.factory.Mappers;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-09-28T17:01:29+0300",
+    date = "2025-10-12T17:26:31+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class TransMapperImpl implements TransMapper {
@@ -67,6 +67,7 @@ public class TransMapperImpl implements TransMapper {
         transportationEntity.setUpdatedAt( transportation.getUpdatedAt() );
         transportationEntity.setDeletedAt( transportation.getDeletedAt() );
         transportationEntity.setTransLogs( transLogListToTransLogEntitySet( transportation.getTransLogs() ) );
+        transportationEntity.setUserId( transportation.getUserId() );
 
         return transportationEntity;
     }
@@ -92,6 +93,7 @@ public class TransMapperImpl implements TransMapper {
         transportation.setUpdatedAt( transportationEntity.getUpdatedAt() );
         transportation.setTransLogs( transLogEntitySetToTransLogList( transportationEntity.getTransLogs() ) );
         transportation.setDeletedAt( transportationEntity.getDeletedAt() );
+        transportation.setUserId( transportationEntity.getUserId() );
 
         return transportation;
     }

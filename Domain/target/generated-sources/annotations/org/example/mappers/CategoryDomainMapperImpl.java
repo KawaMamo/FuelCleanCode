@@ -10,7 +10,7 @@ import org.example.model.PriceCategory;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-09-28T14:29:37+0300",
+    date = "2025-10-12T17:26:00+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class CategoryDomainMapperImpl implements CategoryDomainMapper {

@@ -26,7 +26,7 @@ import org.mapstruct.factory.Mappers;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-09-28T17:01:29+0300",
+    date = "2025-10-12T17:26:32+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class VehicleMapperImpl implements VehicleMapper {
@@ -95,6 +95,7 @@ public class VehicleMapperImpl implements VehicleMapper {
         buyOperation1.setDocument( documentListToDocumentEntityList( buyOperation.getDocument() ) );
         buyOperation1.setDeletedAt( buyOperation.getDeletedAt() );
         buyOperation1.setTransLogs( transLogListToTransLogEntitySet( buyOperation.getTransLogs() ) );
+        buyOperation1.setUserId( buyOperation.getUserId() );
         buyOperation1.setSource( buyOperation.getSource() );
 
         return buyOperation1;

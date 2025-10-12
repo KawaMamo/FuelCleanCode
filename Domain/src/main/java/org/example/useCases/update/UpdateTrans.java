@@ -35,6 +35,7 @@ public class UpdateTrans {
         final Transportation transportation = mapper.toDomain(request);
         transportation.setCreatedAt(original.getCreatedAt());
         transportation.setUpdatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
+        transportation.setUserId(original.getUserId());
         final Transportation save = transRepo.save(transportation);
         return mapper.toResponse(save);
     }

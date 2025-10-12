@@ -8,6 +8,7 @@ import org.example.entities.TransportationEntity;
 import org.example.security.UserData;
 
 import java.time.LocalDateTime;
+import java.util.LinkedHashMap;
 import java.util.Optional;
 
 public class TransAdapter implements TransRepo {
@@ -24,7 +25,12 @@ public class TransAdapter implements TransRepo {
     public Transportation save(Transportation transportation) {
 
         final TransportationEntity transportationEntity = transMapper.domainToEntity(transportation);
-        transportationEntity.setUserId(UserData.UserId);
+        for (LinkedHashMap<String, String> role : UserData.roles) {
+            if(role.get("authority").equals("TRANS_OFFICE")){
+                transportationEntity.setUserId(UserData.UserId);
+            }
+        }
+
         final TransportationEntity save = transRepoJpa.save(transportationEntity);
 
         return transMapper.entityToDomain(save);
