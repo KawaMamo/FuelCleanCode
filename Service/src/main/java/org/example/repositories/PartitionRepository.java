@@ -19,7 +19,7 @@ public interface PartitionRepository extends JpaRepository<PartitionEntity, Long
     @Query("SELECT p FROM PartitionEntity p JOIN p.gasStation g JOIN g.region r JOIN p.transportationEntity t WHERE r.id = ?1 AND t.createdAt BETWEEN ?2 AND ?3 AND t.type = ?4")
     List<PartitionEntity> getPartitionEntities(Long id, LocalDateTime start, LocalDateTime end, TransportationType type);
 
-    @Query("SELECT p FROM PartitionEntity p JOIN p.gasStation g JOIN g.region r JOIN p.transportationEntity t " +
+    @Query("SELECT p FROM PartitionEntity p JOIN p.gasStation g JOIN g.region r JOIN p.transportationEntity t JOIN t.transLogs l " +
             "WHERE p.transportationEntity.refinery.id = ?1 AND t.createdAt BETWEEN ?2 AND ?3 AND t.type = ?4")
     List<PartitionEntity> getPartitionEntitiesByRefinery(Long id, LocalDateTime start, LocalDateTime end, TransportationType type);
 

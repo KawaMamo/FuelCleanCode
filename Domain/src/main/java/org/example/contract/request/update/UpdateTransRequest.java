@@ -20,5 +20,6 @@ public class UpdateTransRequest {
     private Long vehicle_id;
     private Long size;
     private TransportationType type;
+    private LocalDateTime createdAt;
     private LocalDateTime deletedAt;
 }

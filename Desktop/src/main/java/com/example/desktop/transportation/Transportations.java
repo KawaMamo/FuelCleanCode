@@ -170,6 +170,7 @@ public class Transportations implements TableController {
                 selectedTransportation.getVehicle().getId(),
                 selectedTransportation.getSize(),
                 selectedTransportation.getType(),
+                selectedTransportation.getCreatedAt(),
                 null);
         final Transportation transportation = transportationService.editItem(updateTransRequest);
         loadData();

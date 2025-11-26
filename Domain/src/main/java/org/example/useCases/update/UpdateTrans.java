@@ -33,7 +33,7 @@ public class UpdateTrans {
         final Transportation original = transRepo.findById(request.getId()).orElseThrow(NoSuchElementException::new);
         validator.validate(request);
         final Transportation transportation = mapper.toDomain(request);
-        transportation.setCreatedAt(original.getCreatedAt());
+        transportation.setCreatedAt(request.getCreatedAt());
         transportation.setUpdatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         transportation.setUserId(original.getUserId());
         final Transportation save = transRepo.save(transportation);
