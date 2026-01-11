@@ -7,7 +7,7 @@ import org.example.model.Seller;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-11-26T22:26:41+0300",
+    date = "2026-01-11T23:34:23+0100",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 public class SellerPaymentMapperImpl implements SellerPaymentMapper {

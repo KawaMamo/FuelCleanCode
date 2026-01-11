@@ -19,8 +19,8 @@
         </processorPath>
         <module name="Service" />
         <module name="Document-Service" />
-        <module name="Desktop" />
         <module name="Domain" />
+        <module name="Desktop" />
       </profile>
     </annotationProcessing>
   </component>
