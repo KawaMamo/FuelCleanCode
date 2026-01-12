@@ -1,0 +1,45 @@
+spring:
+  datasource:
+    #SERVER-DEPLOY#url: jdbc:mysql://mysqldb:3306/usersdb
+    url: jdbc:mysql://localhost:3306/usersdb
+    username: user
+    password: pass
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+      format_sql: true;
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQLDialect
+
+  application:
+    name: identity-provider
+
+  profiles:
+        active: docker
+
+
+server:
+  port: 9090
+
+  error:
+    include-message: ALWAYS
+    include-binding-errors: ALWAYS
+
+super:
+  admin:
+    username: admin
+    password: password
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /api-docs
+
+
+
+

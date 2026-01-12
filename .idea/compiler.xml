@@ -18,9 +18,10 @@
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.5.3.Final/mapstruct-1.5.3.Final.jar" />
         </processorPath>
         <module name="Service" />
+        <module name="Identity-Provider" />
         <module name="Document-Service" />
-        <module name="Domain" />
         <module name="Desktop" />
+        <module name="Domain" />
       </profile>
     </annotationProcessing>
   </component>
