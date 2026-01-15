@@ -35,8 +35,5 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
 
-  domain:
-    build: ./Domain
-
 volumes:
   mysql_data:
