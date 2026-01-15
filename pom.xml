@@ -11,7 +11,7 @@
     <modules>
         <module>Domain</module>
         <module>Service</module>
-        <module>Document-Service</module>
+        <!--<module>Document-Service</module>-->
         <module>Identity-Provider</module>
     </modules>
 
