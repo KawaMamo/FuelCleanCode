@@ -1,0 +1,39 @@
+name: FuelCleanCode
+
+services:
+  core-service:
+    build: ./Service
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://fuel-db:3306/fuelDB
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_PROFILES_ACTIVE: cloud
+      IDENTITY_PROVIDER_HOST: http://identity-provider
+    ports:
+      - "9091:9091"
+    depends_on:
+      - fuel-db
+
+  identity-provider:
+    build: ./Identity-Provider
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://fuel-db:3306/fuelDB
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    ports:
+      - "9090:9090"
+    depends_on:
+      - fuel-db
+
+  fuel-db:
+    image: mysql:8
+    environment:
+      MYSQL_DATABASE: fuelDB
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+        - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
