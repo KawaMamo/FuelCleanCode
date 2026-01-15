@@ -1,6 +1,11 @@
 version: 0.2
 
 phases:
+  install:
+    commands:
+      - echo "Installing dependencies"
+      - mvn install -DskipTests
+
   pre_build:
     commands:
       - ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
