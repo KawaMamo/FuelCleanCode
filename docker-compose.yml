@@ -7,7 +7,7 @@ services:
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://fuel-db:3306/fuelDB
       SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_DATASOURCE_PASSWORD: rootroot
       SPRING_PROFILES_ACTIVE: cloud
       IDENTITY_PROVIDER_HOST: http://identity-provider
     ports:
@@ -21,7 +21,7 @@ services:
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://fuel-db:3306/fuelDB
       SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_DATASOURCE_PASSWORD: rootroot
     ports:
       - "9090:9090"
     depends_on:
