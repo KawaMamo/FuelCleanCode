@@ -16,7 +16,7 @@ services:
       - fuel-db
 
   identity-provider:
-    image: ${ECR_REGISTRY}/${ECR_REPO_NAME}/identity-provider-${IMAGE_TAG}
+    image: ${ECR_REGISTRY}/${ECR_REPO_NAME}/identity-provider:${IMAGE_TAG}
     build: ./Identity-Provider
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://fuel-db:3306/fuelDB
