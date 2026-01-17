@@ -2,11 +2,6 @@ version: 0.2
 env:
   variables:
     ECR_REPO_NAME: fuel
-    SPRING_DATASOURCE_URL: jdbc:mysql://fueldb.cezw8cgiq5bj.us-east-1.rds.amazonaws.com:3306/fuelDB
-    SPRING_DATASOURCE_USERNAME: root
-    SPRING_DATASOURCE_PASSWORD: rootroot
-    SPRING_PROFILES_ACTIVE: cloud
-
 phases:
   install:
     commands:
