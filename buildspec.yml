@@ -27,6 +27,5 @@ phases:
       - docker-compose push
 
 artifacts:
-    files:
-      - '**/*'
-    name: fuel-$(date +%Y-%m-%d)
+  files:
+    - '**/*'
