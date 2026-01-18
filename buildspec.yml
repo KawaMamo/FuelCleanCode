@@ -21,8 +21,12 @@ phases:
     commands:
       - echo Building Docker images...
       - docker-compose build
-
   post_build:
     commands:
       - echo Pushing Docker images...
       - docker-compose push
+
+artifacts:
+    files:
+      - '**/*'
+    name: fuel-$(date +%Y-%m-%d)
