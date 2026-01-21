@@ -1,6 +1,6 @@
 # 📌 FuelCleanCode
 
-A clean‑code and architecture‑oriented Java project demonstrating a modular structure with different domain and service layers.  
+This is a clean‑code and architecture‑oriented Java project demonstrating a modular structure with different domain and service layers.  
 This repository uses **Maven** to manage dependencies and build lifecycles.
 
 ---
